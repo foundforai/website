@@ -1,0 +1,195 @@
+You are building a modern, fast, conversion focused website for FoundForAI.com, an AI SEO consulting business that makes websites discoverable by AI search engines and agents. Voice is clear, expert, human. Design is clean, responsive, mobile first, Montserrat for headlines, Lato for body, minimal motion, high Lighthouse scores.
+
+Create routes and pages
+Home, What Is AI SEO, Audit, Services, About, Blog index and markdown post template, Contact, Thank You after form submit, 404
+
+Global goals
+Explain AI SEO readiness in plain English, capture leads via a Free AI Readiness Audit form, seed authority with starter resources, ship perfect technical SEO, schema, and GEO defaults
+
+Navigation
+Top nav with Home, What Is AI SEO, Services, Blog, About, Contact, sticky CTA button that says Get My Free Audit and links to slash audit
+Footer with NAP that reads Found For AI comma Cottonwood Heights comma Utah comma tel plus one eight zero one eight nine eight two four five six comma email you at foundforai dot com comma social links to LinkedIn and X, copyright with current year
+
+Homepage content
+Hero headline, Is Your Website Ready To Be Found By AI
+Subheadline, We optimize your site for AI search comma schema comma and GEO visibility
+Primary CTA, Get My Free Audit, links to slash audit
+Three value cards titled Schema, GEO, AI Readiness, each with two sentence explanations
+Static scorecard mock section that shows categories Schema comma AI Readiness comma GEO comma Performance with sample grades
+Short credibility strip with logos placeholder
+Testimonials placeholder with two cards
+Section titled Questions You Might Ask ChatGPT About AI SEO with the following H2 blocks and clear one paragraph answers
+H2, How do I make my website visible to AI searches, paragraph explains schema markup comma structured content comma headings comma and clear facts
+H2, What is AI SEO and why does it matter, paragraph explains shift from keywords to machine understanding comma structured data and FAQs
+H2, How do I check if my site is AI ready, paragraph points to the free audit and scorecard on slash audit
+H2, What kind of schema helps AI understand my website, paragraph mentions LocalBusiness comma Service comma FAQPage comma Article
+H2, Can AI help me get more customers, paragraph explains AI assistants now surface businesses directly in answers
+
+What Is AI SEO page
+Intro section that explains the difference between classic SEO and AI discovery
+Table titled Old SEO vs AI SEO with rows Keywords vs Entities comma Backlinks vs Structured data comma Long blogs vs Clear facts and FAQs comma Human only reading vs AI agents reading HTML and JSON LD
+CTA block linking to slash audit
+Inline FAQ section mirroring the homepage questions
+
+Audit page at slash audit
+Lead form fields, full name comma email comma website URL comma consent checkbox
+Copy that says You will receive a personalized AI Readiness Scorecard within 24 hours
+On submit, route to slash thank hyphen you and show success state with a console log stub, do not implement external email, include a TODO hook to wire email or webhook later
+Secondary note offering Priority Audit in one hour for forty nine dollars as an upsell placeholder
+
+Thank You page
+Headline, Your AI Readiness Audit Is In Progress
+Explain next steps comma expected timeline comma what will be in the scorecard comma how to book a call
+
+Services page
+Three packages
+Free Audit, quick scan and top three fixes
+Pro Audit, two hundred ninety nine USD, full schema and GEO review comma prioritized action plan comma code snippets
+Done For You Optimization, seven hundred fifty USD and up, we implement JSON LD comma metadata comma GEO corrections comma and content structure fixes
+Each package includes a Request Audit button linking to slash audit
+
+About page
+Founder section for Dustin Crump with photo placeholder and short bio
+Mission statement, We help small businesses stay visible in the AI search era
+Micro proof section with three bullets, transparent comma practical comma results focused
+
+Blog
+Markdown based posts with title comma date comma author comma og image, generate two starter posts titled What Is Schema Markup And Why It Matters For AI Search, and How To Make Your Website AI Discoverable
+
+Contact page
+Simple form with name comma email comma message plus direct mailto link and an embedded map centered on Cottonwood Heights Utah
+
+Technical SEO and performance
+Each page sets a unique title and meta description that mention AI SEO comma schema comma GEO, set canonical URLs, set og title comma og description comma og image at slash assets slash og hyphen default dot jpg, set twitter card summary large image, html lang en
+Use semantic HTML comma proper heading hierarchy comma accessible labels and aria attributes for forms comma focus states comma keyboard navigation, lazy load large images, avoid layout shift in hero, ship a fast responsive layout
+
+Crawl and index
+Generate robots dot txt that allows crawl and disallows slash admin if present, include the line Sitemap colon https colon slash slash foundforai dot com slash sitemap dot xml
+Generate a dynamic sitemap dot xml that lists all pages and blog posts with lastmod dates
+Create llms dot txt at root with these lines
+User hyphen Agent colon star
+Allow colon slash
+Sitemap colon https colon slash slash foundforai dot com slash sitemap dot xml
+Contact colon mailto colon you at foundforai dot com
+Policy colon Public content may be used for indexing and answering comma attribution requested as Found For AI
+
+Analytics
+Add a simple window analytics push on form submit with event name audit hyphen form hyphen submitted and payload of email and website domain, leave a TODO to wire Plausible or GA4
+
+Primary JSON LD schema
+Inject the following single graph on every page and keep the same at id anchors
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://foundforai.com/#org",
+      "name": "Found For AI",
+      "legalName": "Found For AI LLC",
+      "url": "https://foundforai.com",
+      "logo": "https://foundforai.com/assets/logo.png",
+      "sameAs": [
+        "https://www.linkedin.com/in/fripse",
+        "https://x.com/fripseai"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://foundforai.com/#website",
+      "url": "https://foundforai.com",
+      "name": "Found For AI",
+      "publisher": { "@id": "https://foundforai.com/#org" },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://foundforai.com/#local",
+      "name": "Found For AI",
+      "image": "https://foundforai.com/assets/office.jpg",
+      "url": "https://foundforai.com",
+      "telephone": "+18018982456",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Cottonwood Heights",
+        "addressRegion": "UT",
+        "postalCode": "84121",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 40.619,
+        "longitude": -111.810
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Cottonwood Heights" },
+        { "@type": "City", "name": "Salt Lake City" },
+        { "@type": "City", "name": "Sandy" },
+        { "@type": "City", "name": "Draper" }
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      ],
+      "parentOrganization": { "@id": "https://foundforai.com/#org" },
+      "hasMap": "https://www.google.com/maps/place/Cottonwood+Heights,+UT"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://foundforai.com/#service-ai-seo",
+      "serviceType": "AI SEO Readiness Audit and Optimization",
+      "provider": { "@id": "https://foundforai.com/#org" },
+      "areaServed": "United States",
+      "offers": {
+        "@type": "Offer",
+        "price": "299",
+        "priceCurrency": "USD",
+        "url": "https://foundforai.com/services"
+      }
+    },
+    {
+      "@type":"FAQPage",
+      "mainEntity":[
+        {
+          "@type":"Question",
+          "name":"How do I make my website visible to AI searches?",
+          "acceptedAnswer":{"@type":"Answer","text":"You can make your website visible to AI searches by adding schema markup, clear headings, and structured content that AI systems can read and interpret. Found For AI audits and fixes your site to ensure visibility in ChatGPT, Perplexity, and other AI driven search tools."}
+        },
+        {
+          "@type":"Question",
+          "name":"What is AI SEO and why does it matter?",
+          "acceptedAnswer":{"@type":"Answer","text":"AI SEO focuses on optimizing your website so AI models can understand it, not only search engines. This includes structured data, semantic HTML, and FAQ sections that directly answer user intent."}
+        },
+        {
+          "@type":"Question",
+          "name":"How do I check if my site is AI ready?",
+          "acceptedAnswer":{"@type":"Answer","text":"Use Found For AI’s free audit to analyze schema, GEO data, and content structure, then get an AI Readiness Scorecard with prioritized fixes."}
+        },
+        {
+          "@type":"Question",
+          "name":"What kind of schema helps AI understand my website?",
+          "acceptedAnswer":{"@type":"Answer","text":"LocalBusiness, Service, FAQPage, and Article are the most impactful, they tell AI who you are, what you offer, and how to contact you."}
+        },
+        {
+          "@type":"Question",
+          "name":"Can AI help me get more customers?",
+          "acceptedAnswer":{"@type":"Answer","text":"Yes, AI assistants and search now surface businesses directly in answers. Being AI optimized increases your chances of being recommended."}
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+Implementation notes
+Use a modern stack inside Replit that outputs static files or Next like pages with serverless friendly form handlers
+Provide a simple form handler stub that validates inputs and logs payload to console
+Generate robots dot txt, sitemap dot xml, and llms dot txt to the public root
+Create an assets folder with logo dot png and og hyphen default dot jpg placeholders
+Ensure consistent NAP in the footer matches the schema
