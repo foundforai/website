@@ -57,7 +57,7 @@ export default function Contact() {
   return (
     <PageLayout
       title="Contact Found For AI - Get In Touch | Cottonwood Heights, Utah"
-      description="Contact Found For AI for AI SEO consulting. Located in Cottonwood Heights, Utah. Call +1-801-898-2456 or email you@foundforai.com."
+      description="Contact Found For AI for AI SEO consulting. Located in Cottonwood Heights, Utah. Call +1-801-898-2456 or email info@foundforai.com."
       canonical="https://foundforai.com/contact"
     >
       <section className="py-16 md:py-24 bg-background">
@@ -151,8 +151,8 @@ export default function Contact() {
                     </div>
                     <div>
                       <h3 className="font-semibold mb-1">Email</h3>
-                      <a href="mailto:you@foundforai.com" className="text-muted-foreground hover:text-primary transition-colors" data-testid="link-contact-email">
-                        you@foundforai.com
+                      <a href="mailto:info@foundforai.com" className="text-muted-foreground hover:text-primary transition-colors" data-testid="link-contact-email">
+                        info@foundforai.com
                       </a>
                     </div>
                   </div>

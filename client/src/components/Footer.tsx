@@ -19,8 +19,8 @@ export default function Footer() {
                 </a>
               </p>
               <p>
-                <a href="mailto:you@foundforai.com" className="hover:text-primary transition-colors" data-testid="link-email">
-                  you@foundforai.com
+                <a href="mailto:info@foundforai.com" className="hover:text-primary transition-colors" data-testid="link-email">
+                  info@foundforai.com
                 </a>
               </p>
             </address>
