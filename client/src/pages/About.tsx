@@ -1,7 +1,6 @@
 import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from '@/components/ui/card';
 import { Check } from 'lucide-react';
-import founderImage from '@assets/generated_images/Founder_headshot_Dustin_Crump_ecfd1909.png';
 
 export default function About() {
   const values = [
@@ -27,18 +26,24 @@ export default function About() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
                 <div className="flex justify-center">
                   <img
-                    src={founderImage}
+                    src="/assets/dustin-crump.jpg"
                     alt="Dustin Crump, Founder of Found For AI"
                     className="rounded-full w-48 h-48 object-cover"
                   />
                 </div>
                 <div className="md:col-span-2 space-y-4">
                   <h2 className="text-2xl font-bold">Dustin Crump</h2>
-                  <p className="text-muted-foreground">
-                    Dustin is an AI SEO specialist who recognized early that the shift to AI-powered search would fundamentally change how businesses are discovered online. After seeing countless quality businesses struggle to appear in ChatGPT and Perplexity results, he founded Found For AI to bridge the gap.
+                  <p className="text-lg text-muted-foreground font-medium">
+                    Founder, Found For AI
                   </p>
                   <p className="text-muted-foreground">
-                    With a background in technical SEO and structured data, Dustin helps businesses implement the schema markup, GEO optimization, and content structure needed to thrive in the AI search era.
+                    Dustin Crump is an AI SEO strategist and founder of Found For AI, a consultancy built around one simple belief — the next era of search belongs to those who optimize for machines that think, not just humans who type.
+                  </p>
+                  <p className="text-muted-foreground">
+                    After years in technical SEO and structured data design, Dustin saw a growing blind spot: great businesses were invisible in ChatGPT, Perplexity, and other AI-driven discovery tools. Found For AI was built to fix that.
+                  </p>
+                  <p className="text-muted-foreground">
+                    Today, Dustin helps companies future-proof their visibility with schema markup, geo-structured optimization, and content designed to be understood by AI crawlers — not just indexed by Google. His mission is to make sure real businesses get found, trusted, and chosen in the age of intelligent search.
                   </p>
                 </div>
               </div>
