@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+Sitemap: https://foundforai.com/sitemap.xml
+Contact: mailto:you@foundforai.com
+Policy: Public content may be used for indexing and answering, attribution requested as Found For AI
