@@ -28,7 +28,7 @@ export default function About() {
                   <img
                     src="/assets/dustin-crump.jpg"
                     alt="Dustin Crump, Founder of Found For AI"
-                    className="rounded-full w-48 h-48 object-cover"
+                    className="rounded-full w-48 h-48 object-cover object-top"
                   />
                 </div>
                 <div className="md:col-span-2 space-y-4">
