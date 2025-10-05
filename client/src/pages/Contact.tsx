@@ -21,17 +21,37 @@ export default function Contact() {
     e.preventDefault();
     setLoading(true);
 
-    // TODO: Wire to email service or webhook
-    console.log('Contact form submitted:', formData);
-
-    setTimeout(() => {
-      setLoading(false);
-      toast({
-        title: 'Message Sent!',
-        description: 'We\'ll get back to you within 24 hours.',
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
       });
-      setFormData({ name: '', email: '', message: '' });
-    }, 1000);
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast({
+          title: 'Message Sent!',
+          description: data.message,
+        });
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        toast({
+          variant: 'destructive',
+          title: 'Submission Failed',
+          description: data.message || 'Please check your information and try again.',
+        });
+      }
+    } catch (error) {
+      toast({
+        variant: 'destructive',
+        title: 'Error',
+        description: 'Something went wrong. Please try again.',
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

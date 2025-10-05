@@ -23,29 +23,46 @@ export default function Audit() {
     e.preventDefault();
     setLoading(true);
 
-    // TODO: Wire to email service or webhook
-    console.log('Audit form submitted:', {
-      ...formData,
-      domain: new URL(formData.websiteUrl).hostname,
-    });
-
-    // TODO: Implement analytics tracking
-    if (typeof window !== 'undefined' && (window as any).analytics) {
-      (window as any).analytics.push({
-        event: 'audit-form-submitted',
-        email: formData.email,
-        domain: new URL(formData.websiteUrl).hostname,
+    try {
+      const response = await fetch('/api/audit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
       });
-    }
 
-    setTimeout(() => {
-      setLoading(false);
+      const data = await response.json();
+
+      if (response.ok) {
+        // TODO: Implement analytics tracking
+        if (typeof window !== 'undefined' && (window as any).analytics) {
+          (window as any).analytics.push({
+            event: 'audit-form-submitted',
+            email: formData.email,
+            domain: new URL(formData.websiteUrl).hostname,
+          });
+        }
+
+        toast({
+          title: 'Audit Request Submitted!',
+          description: data.message,
+        });
+        setLocation('/thank-you');
+      } else {
+        toast({
+          variant: 'destructive',
+          title: 'Submission Failed',
+          description: data.message || 'Please check your information and try again.',
+        });
+      }
+    } catch (error) {
       toast({
-        title: 'Audit Request Submitted!',
-        description: 'We\'ll send your AI Readiness Scorecard within 24 hours.',
+        variant: 'destructive',
+        title: 'Error',
+        description: 'Something went wrong. Please try again.',
       });
-      setLocation('/thank-you');
-    }, 1000);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
