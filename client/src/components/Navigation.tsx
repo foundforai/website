@@ -21,10 +21,10 @@ export default function Navigation() {
   return (
     <nav className="sticky top-0 z-50 backdrop-blur-md bg-background/90 border-b">
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-24">
           <Link href="/" data-testid="link-home">
             <div className="hover-elevate rounded-lg px-2 py-1">
-              <img src={logoImage} alt="Found For AI" className="h-14 w-auto" />
+              <img src={logoImage} alt="Found For AI" className="h-16 w-auto" />
             </div>
           </Link>
 
