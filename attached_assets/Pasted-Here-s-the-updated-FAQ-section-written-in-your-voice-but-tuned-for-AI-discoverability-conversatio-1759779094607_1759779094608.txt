@@ -1,0 +1,79 @@
+Here’s the updated FAQ section, written in your voice but tuned for AI discoverability — conversational, authoritative, and machine-readable:
+💬 Expanded FAQ for FoundForAI
+Q1: Why are AI queries different than Google searches?
+A1: When people use Google, they type keywords like “AI consultant near me.”
+When they ask ChatGPT or Perplexity, they ask full questions like “Who can help me make my business more visible to AI?”
+AI queries are conversational and context-driven. Instead of scanning a list of links, the AI gives one or two answers it trusts — which means if your business isn’t in that answer set, you’re invisible.
+Q2: Why do I need to be found by AI?
+A2: Because AI is already the new front door of the internet.
+Every day, more customers are asking AI tools for recommendations instead of searching on Google.
+Being “found by AI” means your website and brand are structured in a way that large language models can read, understand, and recommend you with confidence.
+Q3: Will AI searches replace Google?
+A3: Not overnight — but it’s already happening quietly.
+Google itself is transforming into an AI-driven search engine (Search Generative Experience). At the same time, platforms like ChatGPT, Perplexity, and Claude are becoming people’s go-to research tools.
+Traditional SEO isn’t going away completely, but the next era of visibility is AI-first.
+Q4: Will AI searches and queries help customers find my business?
+A4: Absolutely — if your site is AI-readable.
+When your business uses structured data, FAQs, and clear context, AI systems can confidently include your brand in their answers.
+That’s what FoundForAI helps you do: make your website visible, trusted, and recommended by AI tools.
+Q5: What does it mean to be “Found by AI”?
+A5: Being “Found by AI” means your website, services, and business details are optimized so AI tools can interpret them correctly and recommend you when users ask related questions.
+Q6: How do I know if my site is AI-ready?
+A6: You can request a free AI Readiness Audit at FoundForAI.com/audit. We’ll check how visible your brand is across AI tools and give you a custom action plan to improve it.
+Updated Schema Markup (paste into <head>)
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why are AI queries different than Google searches?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AI queries are conversational and context-driven. Instead of scanning a list of links like Google, AI gives one or two answers it trusts. If your business isn't part of that trusted answer set, you’re invisible to customers using AI tools like ChatGPT and Perplexity."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do I need to be found by AI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "More customers are now asking AI tools for recommendations instead of searching on Google. Being found by AI means your business information is structured so large language models can read, understand, and confidently recommend your brand."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will AI searches replace Google?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AI-driven discovery is already reshaping how people find information. Google is moving toward an AI-based experience (SGE), and platforms like ChatGPT, Claude, and Perplexity are becoming new discovery channels. Traditional SEO still matters, but AI visibility is now essential."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will AI searches and queries help customers find my business?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — if your website is AI-readable. Structured data, FAQs, and contextual clarity make it easy for AI systems to understand what you do and include your business in relevant responses."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does it mean to be Found by AI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Being Found by AI means your website, services, and business details are optimized so AI tools can interpret them correctly and recommend you when users ask related questions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I know if my site is AI-ready?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can request a free AI Readiness Audit at FoundForAI.com/audit. We'll assess your visibility across AI tools and provide a personalized plan to increase your discoverability."
+      }
+    }
+  ]
+}
+</script>
