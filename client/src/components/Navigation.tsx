@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import ThemeToggle from './ThemeToggle';
-import logoImage from '@assets/generated_images/Found_For_AI_logo_8b3e70da.png';
+import logoImage from '@assets/Found For AI Logo-3_1759775010167.png';
 
 export default function Navigation() {
   const [location] = useLocation();
@@ -23,9 +23,8 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link href="/" data-testid="link-home">
-            <div className="flex items-center gap-2 hover-elevate rounded-lg px-2 py-1">
-              <img src={logoImage} alt="Found For AI" className="h-8 w-8" />
-              <span className="font-bold text-lg">Found For AI</span>
+            <div className="hover-elevate rounded-lg px-2 py-1">
+              <img src={logoImage} alt="Found For AI" className="h-10 w-auto" />
             </div>
           </Link>
 
