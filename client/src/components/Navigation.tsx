@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import ThemeToggle from './ThemeToggle';
-import logoImage from '@assets/FF-2_1759777421776.png';
+import logoImage from '@assets/FF-3_1759777860752.png';
 
 export default function Navigation() {
   const [location] = useLocation();
