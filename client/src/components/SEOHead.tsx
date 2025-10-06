@@ -135,28 +135,33 @@ export default function SEOHead({ title, description, canonical, ogImage = '/ass
           "mainEntity":[
             {
               "@type":"Question",
-              "name":"How do I make my website visible to AI searches?",
-              "acceptedAnswer":{"@type":"Answer","text":"You can make your website visible to AI searches by adding schema markup, clear headings, and structured content that AI systems can read and interpret. Found For AI audits and fixes your site to ensure visibility in ChatGPT, Perplexity, and other AI driven search tools."}
+              "name":"Why are AI queries different than Google searches?",
+              "acceptedAnswer":{"@type":"Answer","text":"AI queries are conversational and context-driven. Instead of scanning a list of links like Google, AI gives one or two answers it trusts. If your business isn't part of that trusted answer set, you're invisible to customers using AI tools like ChatGPT and Perplexity."}
             },
             {
               "@type":"Question",
-              "name":"What is AI SEO and why does it matter?",
-              "acceptedAnswer":{"@type":"Answer","text":"AI SEO focuses on optimizing your website so AI models can understand it, not only search engines. This includes structured data, semantic HTML, and FAQ sections that directly answer user intent."}
+              "name":"Why do I need to be found by AI?",
+              "acceptedAnswer":{"@type":"Answer","text":"More customers are now asking AI tools for recommendations instead of searching on Google. Being found by AI means your business information is structured so large language models can read, understand, and confidently recommend your brand."}
             },
             {
               "@type":"Question",
-              "name":"How do I check if my site is AI ready?",
-              "acceptedAnswer":{"@type":"Answer","text":"Use Found For AI's free audit to analyze schema, GEO data, and content structure, then get an AI Readiness Scorecard with prioritized fixes."}
+              "name":"Will AI searches replace Google?",
+              "acceptedAnswer":{"@type":"Answer","text":"AI-driven discovery is already reshaping how people find information. Google is moving toward an AI-based experience (SGE), and platforms like ChatGPT, Claude, and Perplexity are becoming new discovery channels. Traditional SEO still matters, but AI visibility is now essential."}
             },
             {
               "@type":"Question",
-              "name":"What kind of schema helps AI understand my website?",
-              "acceptedAnswer":{"@type":"Answer","text":"LocalBusiness, Service, FAQPage, and Article are the most impactful, they tell AI who you are, what you offer, and how to contact you."}
+              "name":"Will AI searches and queries help customers find my business?",
+              "acceptedAnswer":{"@type":"Answer","text":"Yes — if your website is AI-readable. Structured data, FAQs, and contextual clarity make it easy for AI systems to understand what you do and include your business in relevant responses."}
             },
             {
               "@type":"Question",
-              "name":"Can AI help me get more customers?",
-              "acceptedAnswer":{"@type":"Answer","text":"Yes, AI assistants and search now surface businesses directly in answers. Being AI optimized increases your chances of being recommended."}
+              "name":"What does it mean to be Found by AI?",
+              "acceptedAnswer":{"@type":"Answer","text":"Being Found by AI means your website, services, and business details are optimized so AI tools can interpret them correctly and recommend you when users ask related questions."}
+            },
+            {
+              "@type":"Question",
+              "name":"How do I know if my site is AI-ready?",
+              "acceptedAnswer":{"@type":"Answer","text":"You can request a free AI Readiness Audit at FoundForAI.com/audit. We'll assess your visibility across AI tools and provide a personalized plan to increase your discoverability."}
             }
           ]
         }

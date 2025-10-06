@@ -3,24 +3,28 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 export default function FAQSection() {
   const faqs = [
     {
-      question: 'How do I make my website visible to AI searches?',
-      answer: 'You can make your website visible to AI searches by adding schema markup, clear headings, and structured content that AI systems can read and interpret. Found For AI audits and fixes your site to ensure visibility in ChatGPT, Perplexity, and other AI-driven search tools.',
+      question: 'Why are AI queries different than Google searches?',
+      answer: 'AI queries are conversational and context-driven. Instead of scanning a list of links like Google, AI gives one or two answers it trusts. If your business isn\'t part of that trusted answer set, you\'re invisible to customers using AI tools like ChatGPT and Perplexity.',
     },
     {
-      question: 'What is AI SEO and why does it matter?',
-      answer: 'AI SEO focuses on optimizing your website so AI models can understand it, not only search engines. This includes structured data, semantic HTML, and FAQ sections that directly answer user intent. As AI assistants become the primary way people search, being discoverable is critical.',
+      question: 'Why do I need to be found by AI?',
+      answer: 'More customers are now asking AI tools for recommendations instead of searching on Google. Being found by AI means your business information is structured so large language models can read, understand, and confidently recommend your brand.',
     },
     {
-      question: 'How do I check if my site is AI ready?',
-      answer: 'Use Found For AI\'s free audit to analyze schema, GEO data, and content structure, then get an AI Readiness Scorecard with prioritized fixes. We identify exactly what\'s missing and how to implement it.',
+      question: 'Will AI searches replace Google?',
+      answer: 'AI-driven discovery is already reshaping how people find information. Google is moving toward an AI-based experience (SGE), and platforms like ChatGPT, Claude, and Perplexity are becoming new discovery channels. Traditional SEO still matters, but AI visibility is now essential.',
     },
     {
-      question: 'What kind of schema helps AI understand my website?',
-      answer: 'LocalBusiness, Service, FAQPage, and Article are the most impactful. They tell AI who you are, what you offer, and how to contact you. Proper schema markup is the language AI uses to extract and present information.',
+      question: 'Will AI searches and queries help customers find my business?',
+      answer: 'Yes — if your website is AI-readable. Structured data, FAQs, and contextual clarity make it easy for AI systems to understand what you do and include your business in relevant responses.',
     },
     {
-      question: 'Can AI help me get more customers?',
-      answer: 'Yes! AI assistants and search now surface businesses directly in answers. Being AI-optimized increases your chances of being recommended when potential customers ask questions about services you offer.',
+      question: 'What does it mean to be Found by AI?',
+      answer: 'Being Found by AI means your website, services, and business details are optimized so AI tools can interpret them correctly and recommend you when users ask related questions.',
+    },
+    {
+      question: 'How do I know if my site is AI-ready?',
+      answer: 'You can request a free AI Readiness Audit at FoundForAI.com/audit. We\'ll assess your visibility across AI tools and provide a personalized plan to increase your discoverability.',
     },
   ];
 
