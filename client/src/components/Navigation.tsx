@@ -21,17 +21,17 @@ export default function Navigation() {
   return (
     <nav className="sticky top-0 z-50 backdrop-blur-md bg-background/90 border-b">
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           <Link href="/" data-testid="link-home">
             <div className="hover-elevate rounded-lg px-2 py-1">
-              <img src={logoImage} alt="Found For AI" className="h-10 w-auto" />
+              <img src={logoImage} alt="Found For AI" className="h-14 w-auto" />
             </div>
           </Link>
 
           <div className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => (
               <Link key={link.href} href={link.href} data-testid={`link-${link.label.toLowerCase().replace(/\s+/g, '-')}`}>
-                <span className={`text-sm font-medium transition-colors hover:text-primary ${location === link.href ? 'text-primary' : 'text-muted-foreground'}`}>
+                <span className={`text-base font-medium transition-colors hover:text-primary ${location === link.href ? 'text-primary' : 'text-muted-foreground'}`}>
                   {link.label}
                 </span>
               </Link>
