@@ -8,6 +8,66 @@ export default function BlogPost() {
 
   //TODO: remove mock functionality - replace with actual markdown parsing
   const posts: Record<string, any> = {
+    'are-you-ready-to-be-found-by-ai': {
+      title: 'Are You Ready to Be Found by AI? Why Traditional SEO Is About to Change Forever',
+      date: '2025-01-20',
+      author: 'Dustin Crump',
+      content: `
+        <p>When was the last time you Googled something?</p>
+        
+        <p>Exactly. You're not even doing that as much anymore, right? You're asking ChatGPT, Perplexity, or another AI assistant. And pretty soon, you'll be asking them everything.</p>
+        
+        <p>Now think about your customers.</p>
+        
+        <p>They're going to be doing the same thing.</p>
+        
+        <p>That's where FoundForAI comes in.</p>
+        
+        <p>Because the way people find businesses is changing — and most companies have no idea it's already happening.</p>
+
+        <h2>The Shift: From Search to Suggestion</h2>
+        
+        <p>In the old world, you typed a keyword and scrolled through results.</p>
+        
+        <p>In the new world, AI does the searching for you — and only shows one or two answers.</p>
+        
+        <p>If your business isn't visible to AI, it doesn't exist in that conversation.</p>
+
+        <h2>What "Being Found by AI" Really Means</h2>
+        
+        <p>It means your website, services, and reputation are structured so that AI models can:</p>
+        
+        <ul>
+          <li>Understand what you do</li>
+          <li>Trust your information</li>
+          <li>Confidently recommend you when someone asks</li>
+        </ul>
+        
+        <p>That's what AI SEO (or AI discoverability) is all about.</p>
+        
+        <p>It's not keyword stuffing. It's clarity, context, and clean data.</p>
+        
+        <p>At FoundForAI, we help businesses:</p>
+        
+        <ul>
+          <li>Add the schema markup that makes your content machine-readable</li>
+          <li>Structure your pages for natural-language questions</li>
+          <li>Optimize your brand presence for LLMs like ChatGPT and Perplexity</li>
+        </ul>
+        
+        <p>So when someone asks, "Who's the best AI consultant near me?" — the answer isn't random anymore. It's you.</p>
+
+        <h2>The Future Is Already Here</h2>
+        
+        <p>AI-driven discovery is happening quietly right now.</p>
+        
+        <p>If you wait for "everyone else to catch on," you'll be buried behind the ones who didn't.</p>
+        
+        <p>Your business deserves to be visible in the new search era — and that starts today.</p>
+        
+        <p><a href="/audit" class="text-primary hover:underline">Get your free AI Readiness Audit</a> and find out if your business is visible to AI at FoundForAI.com/audit</p>
+      `,
+    },
     'what-is-schema-markup': {
       title: 'What Is Schema Markup And Why It Matters For AI Search',
       date: '2025-01-15',

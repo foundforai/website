@@ -8,6 +8,13 @@ export default function BlogIndex() {
   //TODO: remove mock functionality - replace with actual blog post data
   const posts = [
     {
+      slug: 'are-you-ready-to-be-found-by-ai',
+      title: 'Are You Ready to Be Found by AI? Why Traditional SEO Is About to Change Forever',
+      date: '2025-01-20',
+      author: 'Dustin Crump',
+      excerpt: 'The way people find businesses is changing. AI assistants are replacing search engines, and if your business isn\'t visible to AI, it doesn\'t exist in that conversation.',
+    },
+    {
       slug: 'what-is-schema-markup',
       title: 'What Is Schema Markup And Why It Matters For AI Search',
       date: '2025-01-15',
