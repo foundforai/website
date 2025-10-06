@@ -24,16 +24,27 @@ export default function Audit() {
     setLoading(true);
 
     try {
-      const response = await fetch('/api/audit', {
+      // TODO: Replace with your actual Formspree endpoint
+      const FORMSPREE_ENDPOINT = 'https://formspree.io/f/movklzvl';
+      
+      const response = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          fullName: formData.fullName,
+          email: formData.email,
+          websiteUrl: formData.websiteUrl,
+          consent: formData.consent ? 'Yes' : 'No',
+          _subject: 'New audit request from Found For AI website',
+          _language: 'en',
+        }),
       });
 
-      const data = await response.json();
-
       if (response.ok) {
-        // TODO: Implement analytics tracking
+        // Track analytics if available
         if (typeof window !== 'undefined' && (window as any).analytics) {
           (window as any).analytics.push({
             event: 'audit-form-submitted',
@@ -43,22 +54,24 @@ export default function Audit() {
         }
 
         toast({
-          title: 'Audit Request Submitted!',
-          description: data.message,
+          title: 'Thanks - we will be in touch soon.',
+          description: 'You will receive your scorecard within 24 hours.',
         });
+        
+        // Redirect to thank you page
         setLocation('/thank-you');
       } else {
         toast({
           variant: 'destructive',
           title: 'Submission Failed',
-          description: data.message || 'Please check your information and try again.',
+          description: 'Please email info@foundforai.com directly.',
         });
       }
     } catch (error) {
       toast({
         variant: 'destructive',
         title: 'Error',
-        description: 'Something went wrong. Please try again.',
+        description: 'Submission failed. Please email info@foundforai.com.',
       });
     } finally {
       setLoading(false);
@@ -90,11 +103,14 @@ export default function Audit() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6" acceptCharset="UTF-8">
+                <input type="hidden" name="_honeypot" tabIndex={-1} autoComplete="off" />
+                
                 <div className="space-y-2">
                   <Label htmlFor="fullName">Full Name *</Label>
                   <Input
                     id="fullName"
+                    name="fullName"
                     type="text"
                     required
                     value={formData.fullName}
@@ -108,6 +124,7 @@ export default function Audit() {
                   <Label htmlFor="email">Email *</Label>
                   <Input
                     id="email"
+                    name="email"
                     type="email"
                     required
                     value={formData.email}
@@ -121,6 +138,7 @@ export default function Audit() {
                   <Label htmlFor="websiteUrl">Website URL *</Label>
                   <Input
                     id="websiteUrl"
+                    name="websiteUrl"
                     type="url"
                     required
                     value={formData.websiteUrl}
@@ -133,6 +151,7 @@ export default function Audit() {
                 <div className="flex items-start space-x-2">
                   <Checkbox
                     id="consent"
+                    name="consent"
                     required
                     checked={formData.consent}
                     onCheckedChange={(checked) => setFormData({ ...formData, consent: checked as boolean })}
@@ -150,7 +169,7 @@ export default function Audit() {
                   disabled={loading}
                   data-testid="button-submit-audit"
                 >
-                  {loading ? 'Submitting...' : 'Get My Free Scorecard'}
+                  {loading ? 'Sending...' : 'Get My Free Scorecard'}
                 </Button>
               </form>
 

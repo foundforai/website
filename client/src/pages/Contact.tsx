@@ -22,32 +22,42 @@ export default function Contact() {
     setLoading(true);
 
     try {
-      const response = await fetch('/api/contact', {
+      // TODO: Replace with your actual Formspree endpoint
+      const FORMSPREE_ENDPOINT = 'https://formspree.io/f/movklzvl';
+      
+      const response = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _subject: 'New message from Found For AI website',
+          _language: 'en',
+        }),
       });
-
-      const data = await response.json();
 
       if (response.ok) {
         toast({
-          title: 'Message Sent!',
-          description: data.message,
+          title: 'Thanks - we will be in touch soon.',
+          description: 'Your message has been sent successfully.',
         });
         setFormData({ name: '', email: '', message: '' });
       } else {
         toast({
           variant: 'destructive',
           title: 'Submission Failed',
-          description: data.message || 'Please check your information and try again.',
+          description: 'Please email info@foundforai.com directly.',
         });
       }
     } catch (error) {
       toast({
         variant: 'destructive',
         title: 'Error',
-        description: 'Something went wrong. Please try again.',
+        description: 'Submission failed. Please email info@foundforai.com.',
       });
     } finally {
       setLoading(false);
@@ -77,11 +87,14 @@ export default function Contact() {
                 <CardTitle className="text-2xl">Send Us a Message</CardTitle>
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6" acceptCharset="UTF-8">
+                  <input type="hidden" name="_honeypot" tabIndex={-1} autoComplete="off" />
+                  
                   <div className="space-y-2">
                     <Label htmlFor="name">Name *</Label>
                     <Input
                       id="name"
+                      name="name"
                       type="text"
                       required
                       value={formData.name}
@@ -95,6 +108,7 @@ export default function Contact() {
                     <Label htmlFor="contact-email">Email *</Label>
                     <Input
                       id="contact-email"
+                      name="email"
                       type="email"
                       required
                       value={formData.email}
@@ -108,6 +122,7 @@ export default function Contact() {
                     <Label htmlFor="message">Message *</Label>
                     <Textarea
                       id="message"
+                      name="message"
                       required
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
