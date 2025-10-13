@@ -180,6 +180,12 @@ export default function BlogPost() {
             className="prose prose-lg max-w-none prose-headings:font-bold prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-4 prose-p:text-muted-foreground prose-p:leading-relaxed prose-ul:text-muted-foreground prose-li:my-1 prose-strong:text-foreground prose-a:text-primary prose-a:no-underline hover:prose-a:underline"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
+
+          <div className="mt-12 pt-8 border-t">
+            <p className="text-sm text-muted-foreground">
+              Looking for AI automations? See <a href="https://fripse.com" target="_blank" rel="noopener" className="text-primary hover:underline" data-testid="link-fripse-blog">Fripse AI</a>.
+            </p>
+          </div>
         </div>
       </article>
     </PageLayout>

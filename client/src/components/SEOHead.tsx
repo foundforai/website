@@ -69,7 +69,8 @@ export default function SEOHead({ title, description, canonical, ogImage = '/ass
           "logo": "https://foundforai.com/assets/logo.png",
           "sameAs": [
             "https://www.linkedin.com/in/fripse",
-            "https://x.com/fripseai"
+            "https://x.com/fripseai",
+            "https://fripse.com"
           ]
         },
         {

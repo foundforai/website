@@ -70,6 +70,13 @@ export default function About() {
               </div>
             </CardContent>
           </Card>
+
+          <div className="mt-12">
+            <h2 className="text-2xl font-bold mb-4">Our Partner</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              Found For AI is part of the Fripse AI ecosystem. If you need automation, CRM workflows, or AI-powered internal tools, visit <a href="https://fripse.com" target="_blank" rel="noopener" className="text-primary hover:underline" data-testid="link-fripse-partner">Fripse AI</a>.
+            </p>
+          </div>
         </div>
       </section>
     </PageLayout>

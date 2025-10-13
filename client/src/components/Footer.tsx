@@ -74,7 +74,10 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
+        <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground space-y-2">
+          <p>
+            Powered by <a href="https://fripse.com" target="_blank" rel="noopener" className="hover:text-primary transition-colors" data-testid="link-fripse">Fripse AI</a> — automation systems for small businesses.
+          </p>
           <p>&copy; {currentYear} Found For AI. All rights reserved.</p>
         </div>
       </div>
