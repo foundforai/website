@@ -8,6 +8,13 @@ export default function BlogIndex() {
   //TODO: remove mock functionality - replace with actual blog post data
   const posts = [
     {
+      slug: 'missing-half-of-ai-seo-automation',
+      title: 'The Missing Half of AI SEO: Automating What Happens After You\'re Found',
+      date: '2025-01-25',
+      author: 'Dustin Crump',
+      excerpt: 'Getting found by AI is only half the game. The other half is what happens after—the follow-up, the workflow, the automation. That\'s where Fripse AI comes in.',
+    },
+    {
       slug: 'are-you-ready-to-be-found-by-ai',
       title: 'Are You Ready to Be Found by AI? Why Traditional SEO Is About to Change Forever',
       date: '2025-01-20',

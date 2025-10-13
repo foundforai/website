@@ -1,4 +1,5 @@
 import { useRoute } from 'wouter';
+import { useEffect } from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Badge } from '@/components/ui/badge';
 
@@ -8,6 +9,67 @@ export default function BlogPost() {
 
   //TODO: remove mock functionality - replace with actual markdown parsing
   const posts: Record<string, any> = {
+    'missing-half-of-ai-seo-automation': {
+      title: 'The Missing Half of AI SEO: Automating What Happens After You\'re Found',
+      date: '2025-01-25',
+      author: 'Dustin Crump',
+      metaDescription: 'Getting found by AI is only half the game. The other half is what happens after—the follow-up, the workflow, the automation. That\'s where Fripse AI comes in.',
+      hasMentions: true,
+      content: `
+        <h2>Visibility Is Just Step One</h2>
+
+        <p>Optimizing your website for AI search is crucial—but it's only the first step in the new digital landscape. Once an AI system finds you, the next question is:</p>
+
+        <p><strong>What happens next?</strong></p>
+
+        <p>If the customer asks a chatbot to contact you, book a service, or get a quote—does your system handle that smoothly, or does the lead vanish into an inbox?</p>
+
+        <p>AI SEO gets you discovered. Automation keeps you connected.</p>
+
+        <h2>The Invisible Gap Most Businesses Miss</h2>
+
+        <p>Many websites are still built like billboards: they get seen, but they don't talk back. Today's customer expects instant replies, frictionless scheduling, and fast follow-ups—all powered by automation.</p>
+
+        <p>Even if you're winning the AI SEO race, without automation, you're still leaking opportunity.</p>
+
+        <h2>Enter Fripse AI</h2>
+
+        <p>That's where <a href="https://fripse.com" target="_blank" rel="noopener" class="text-primary hover:underline">Fripse AI</a> comes in. They design the systems that take over once visibility turns into interest—automating things like:</p>
+
+        <ul>
+          <li>Lead follow-up sequences</li>
+          <li>Scheduling and reminders</li>
+          <li>Workflow routing</li>
+          <li>Client communication templates</li>
+          <li>CRM integrations</li>
+        </ul>
+
+        <p>We handle getting you found by AI; they handle what happens after you're found.</p>
+
+        <h2>Why This Matters Now</h2>
+
+        <p>The same AI that helps customers discover you can also manage your backend operations—if it's implemented correctly. The winners of the next decade won't just have websites optimized for AI search; they'll have businesses optimized for AI performance.</p>
+
+        <h2>The Partnership Approach</h2>
+
+        <p>We built Found For AI to prepare small businesses for the age of AI visibility. We partner with Fripse AI to make sure that visibility turns into results.</p>
+
+        <p>Together, we help business owners:</p>
+
+        <ul>
+          <li>Get discovered</li>
+          <li>Capture leads automatically</li>
+          <li>Follow up consistently</li>
+          <li>And grow with less manual effort</li>
+        </ul>
+
+        <h2>The Takeaway</h2>
+
+        <p>Being visible to AI is powerful. But being ready to respond when AI sends you business—that's where real growth happens.</p>
+
+        <p>Learn more about how automation can amplify your AI visibility at <a href="https://fripse.com" target="_blank" rel="noopener" class="text-primary hover:underline">Fripse AI</a>.</p>
+      `,
+    },
     'are-you-ready-to-be-found-by-ai': {
       title: 'Are You Ready to Be Found by AI? Why Traditional SEO Is About to Change Forever',
       date: '2025-01-20',
@@ -140,6 +202,42 @@ export default function BlogPost() {
   };
 
   const post = posts[slug];
+
+  useEffect(() => {
+    if (post && post.hasMentions) {
+      const articleSchema = document.createElement('script');
+      articleSchema.type = 'application/ld+json';
+      articleSchema.id = 'article-schema';
+      articleSchema.text = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": post.title,
+        "datePublished": post.date,
+        "author": {
+          "@type": "Person",
+          "name": post.author
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Found For AI",
+          "url": "https://foundforai.com"
+        },
+        "mentions": {
+          "@type": "Organization",
+          "name": "Fripse AI",
+          "url": "https://fripse.com"
+        }
+      });
+      document.head.appendChild(articleSchema);
+
+      return () => {
+        const existingSchema = document.getElementById('article-schema');
+        if (existingSchema) {
+          document.head.removeChild(existingSchema);
+        }
+      };
+    }
+  }, [post]);
 
   if (!post) {
     return (
