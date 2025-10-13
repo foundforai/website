@@ -1,13 +1,34 @@
 import { Link, useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ThemeToggle from './ThemeToggle';
-import logoImage from '@assets/FoundforAI logo_1760397414942.png';
+import logoLight from '@assets/FoundforAI logo_1760397414942.png';
+import logoDark from '@assets/FoundforAI logo black_1760398204155.png';
 
 export default function Navigation() {
   const [location] = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+    setTheme(initialTheme);
+
+    const observer = new MutationObserver(() => {
+      const isDark = document.documentElement.classList.contains('dark');
+      setTheme(isDark ? 'dark' : 'light');
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   const navLinks = [
     { href: '/', label: 'Home' },
@@ -24,7 +45,11 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-24">
           <Link href="/" data-testid="link-home">
             <div className="hover-elevate rounded-lg px-2 py-1">
-              <img src={logoImage} alt="Found For AI" className="h-48 w-auto" />
+              <img 
+                src={theme === 'dark' ? logoDark : logoLight} 
+                alt="Found For AI" 
+                className="h-48 w-auto" 
+              />
             </div>
           </Link>
 
