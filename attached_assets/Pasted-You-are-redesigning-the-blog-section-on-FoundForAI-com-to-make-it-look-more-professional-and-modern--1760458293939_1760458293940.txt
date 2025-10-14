@@ -1,0 +1,49 @@
+You are redesigning the blog section on FoundForAI.com to make it look more professional and modern.
+
+Current problem:
+The blog list looks plain and default. It needs stronger typography, visual hierarchy, and design polish to feel like a trusted publication.
+
+Goal:
+Make the “AI SEO Insights” section look like a professional tech or AI industry blog (similar to HubSpot, OpenAI, or Notion’s blog design). It should look clean, authoritative, and modern.
+
+Instructions:
+• Keep the current title “AI SEO Insights” but increase the visual weight and presence:
+  - Set font-size to 3rem and font-weight to 800
+  - Add subtle gradient or accent underline that matches the brand color (#007CFF)
+• Adjust subtitle (“Practical guides for making your website AI-discoverable”) to lighter gray (#6B7280) and slightly larger font (1.125rem) for legibility.
+• Add more vertical spacing (padding-top: 3rem, padding-bottom: 2rem) around the blog header section.
+
+Blog post card styling:
+• Use card-style layout with soft shadow (box-shadow: 0 2px 6px rgba(0,0,0,0.08)) and subtle hover lift (transform: translateY(-3px)).
+• Add rounded corners (border-radius: 10px) and light border (#e5e7eb).
+• Increase padding inside cards to 1.5rem.
+• Title font-size: 1.5rem, weight 700.
+• Excerpt font-size: 1.05rem, line-height: 1.6.
+• Keep author and date smaller, medium-gray text (#6B7280).
+• Add hover state: title text color changes to brand blue (#007CFF), cursor pointer.
+
+Grid layout:
+• On desktop: 2 columns for blog cards (min 300px width each, gap: 2rem).
+• On tablet/mobile: 1 column full width.
+• Center the whole blog section with max-width: 1100px and margin auto.
+
+Featured post:
+• The first post (most recent) should be styled slightly larger — full width card with larger image placeholder, headline font-size 1.75rem, and “Featured” badge in brand blue.
+
+Typography:
+• Use Inter or Lato for body text, Montserrat or Poppins for headings.
+• Ensure clear hierarchy between headline, meta info, and excerpt.
+
+Optional enhancements:
+• Add subtle animated arrow on hover for “read more” link → transforms to shift right 5px.
+• Include placeholder thumbnail images for each post (16:9 aspect ratio, gray background until image added).
+• Add pagination or “Load more” button at bottom styled with blue outline and rounded corners.
+
+Accessibility & Performance:
+• Maintain proper heading tags (H1 for main blog title, H2 for post titles).
+• Alt attributes on all images.
+• Responsive across all devices.
+
+Deliverables:
+Generate updated HTML/CSS for the blog index page and a reusable “post card” component styled as above.
+Keep all existing blog content intact — this is purely a style enhancement.

@@ -1,6 +1,5 @@
 import { Link } from 'wouter';
 import PageLayout from '@/components/PageLayout';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ArrowRight } from 'lucide-react';
 
@@ -13,6 +12,7 @@ export default function BlogIndex() {
       date: '2025-01-25',
       author: 'Dustin Crump',
       excerpt: 'Getting found by AI is only half the game. The other half is what happens after—the follow-up, the workflow, the automation. That\'s where Fripse AI comes in.',
+      readTime: '5 min read',
     },
     {
       slug: 'are-you-ready-to-be-found-by-ai',
@@ -20,6 +20,7 @@ export default function BlogIndex() {
       date: '2025-01-20',
       author: 'Dustin Crump',
       excerpt: 'The way people find businesses is changing. AI assistants are replacing search engines, and if your business isn\'t visible to AI, it doesn\'t exist in that conversation.',
+      readTime: '4 min read',
     },
     {
       slug: 'what-is-schema-markup',
@@ -27,6 +28,7 @@ export default function BlogIndex() {
       date: '2025-01-15',
       author: 'Dustin Crump',
       excerpt: 'Learn how schema markup helps AI understand your website and why it\'s essential for being discovered by ChatGPT, Perplexity, and other AI search tools.',
+      readTime: '6 min read',
     },
     {
       slug: 'how-to-make-website-ai-discoverable',
@@ -34,8 +36,11 @@ export default function BlogIndex() {
       date: '2025-01-10',
       author: 'Dustin Crump',
       excerpt: 'A step-by-step guide to optimizing your website for AI search engines. Implement schema, structure content, and ensure your business shows up in AI-powered answers.',
+      readTime: '7 min read',
     },
   ];
+
+  const [featuredPost, ...regularPosts] = posts;
 
   return (
     <PageLayout
@@ -43,35 +48,109 @@ export default function BlogIndex() {
       description="Expert insights on AI SEO, schema markup implementation, GEO optimization, and making your website discoverable by AI search engines like ChatGPT and Perplexity."
       canonical="https://foundforai.com/blog"
     >
-      <section className="py-16 md:py-24 bg-background">
-        <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+      <section className="py-12 md:py-16 bg-background">
+        <div className="max-w-[1100px] mx-auto px-4 md:px-6 lg:px-8">
+          {/* Header Section */}
+          <div className="text-center pt-12 pb-8">
+            <h1 className="text-5xl md:text-6xl font-extrabold mb-4 relative inline-block">
               AI SEO Insights
+              <span className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#007CFF] to-[#00BFFF] rounded-full"></span>
             </h1>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-lg text-[#6B7280] mt-6 max-w-2xl mx-auto">
               Practical guides for making your website AI-discoverable
             </p>
           </div>
 
-          <div className="space-y-8">
-            {posts.map((post) => (
-              <Link key={post.slug} href={`/blog/${post.slug}`}>
-                <Card className="hover-elevate transition-all duration-200 cursor-pointer">
-                  <CardHeader>
-                    <div className="flex items-center gap-3 mb-2">
-                      <Badge variant="outline">{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</Badge>
-                      <span className="text-sm text-muted-foreground">by {post.author}</span>
+          {/* Featured Post */}
+          <Link href={`/blog/${featuredPost.slug}`} data-testid={`link-featured-${featuredPost.slug}`}>
+            <article 
+              className="group mb-12 bg-card rounded-xl border border-border overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+            >
+              <div className="grid md:grid-cols-2 gap-0">
+                {/* Image Placeholder */}
+                <div className="relative bg-gradient-to-br from-[#007CFF]/10 to-[#00BFFF]/20 aspect-[16/9] md:aspect-auto flex items-center justify-center">
+                  <div className="text-6xl text-[#007CFF]/30 font-bold">AI</div>
+                  <Badge 
+                    className="absolute top-4 left-4 bg-[#007CFF] text-white hover:bg-[#0066CC] border-0"
+                    data-testid="badge-featured"
+                  >
+                    Featured
+                  </Badge>
+                </div>
+                
+                {/* Content */}
+                <div className="p-8 md:p-10 flex flex-col justify-center">
+                  <div className="flex items-center gap-3 mb-4 text-sm text-[#6B7280]">
+                    <span data-testid="text-featured-date">
+                      {new Date(featuredPost.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                    </span>
+                    <span>•</span>
+                    <span data-testid="text-featured-author">by {featuredPost.author}</span>
+                    <span>•</span>
+                    <span data-testid="text-featured-readtime">{featuredPost.readTime}</span>
+                  </div>
+                  
+                  <h2 
+                    className="text-[1.75rem] font-bold mb-4 transition-colors group-hover:text-[#007CFF]"
+                    data-testid="text-featured-title"
+                  >
+                    {featuredPost.title}
+                  </h2>
+                  
+                  <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6" data-testid="text-featured-excerpt">
+                    {featuredPost.excerpt}
+                  </p>
+                  
+                  <div className="flex items-center text-[#007CFF] font-semibold group-hover:gap-3 gap-2 transition-all">
+                    <span data-testid="link-featured-read-more">Read More</span>
+                    <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                  </div>
+                </div>
+              </div>
+            </article>
+          </Link>
+
+          {/* Regular Posts Grid */}
+          <div className="grid md:grid-cols-2 gap-8">
+            {regularPosts.map((post) => (
+              <Link key={post.slug} href={`/blog/${post.slug}`} data-testid={`link-post-${post.slug}`}>
+                <article 
+                  className="group bg-card rounded-xl border border-border overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-lg hover:-translate-y-1 h-full"
+                >
+                  {/* Image Placeholder */}
+                  <div className="relative bg-gradient-to-br from-[#007CFF]/10 to-[#00BFFF]/20 aspect-[16/9] flex items-center justify-center">
+                    <div className="text-5xl text-[#007CFF]/30 font-bold">AI</div>
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="p-6">
+                    <div className="flex items-center gap-3 mb-3 text-sm text-[#6B7280]">
+                      <span data-testid={`text-post-date-${post.slug}`}>
+                        {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                      </span>
+                      <span>•</span>
+                      <span data-testid={`text-post-author-${post.slug}`}>by {post.author}</span>
+                      <span>•</span>
+                      <span data-testid={`text-post-readtime-${post.slug}`}>{post.readTime}</span>
                     </div>
-                    <CardTitle className="text-2xl group flex items-center justify-between">
+                    
+                    <h2 
+                      className="text-xl md:text-2xl font-bold mb-3 transition-colors group-hover:text-[#007CFF] leading-tight"
+                      data-testid={`text-post-title-${post.slug}`}
+                    >
                       {post.title}
-                      <ArrowRight className="h-5 w-5 text-primary group-hover:translate-x-1 transition-transform" />
-                    </CardTitle>
-                    <CardDescription className="text-base pt-2">
+                    </h2>
+                    
+                    <p className="text-base text-muted-foreground leading-relaxed mb-4" data-testid={`text-post-excerpt-${post.slug}`}>
                       {post.excerpt}
-                    </CardDescription>
-                  </CardHeader>
-                </Card>
+                    </p>
+                    
+                    <div className="flex items-center text-[#007CFF] font-semibold group-hover:gap-3 gap-2 transition-all">
+                      <span data-testid={`link-post-read-more-${post.slug}`}>Read More</span>
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </div>
+                  </div>
+                </article>
               </Link>
             ))}
           </div>
