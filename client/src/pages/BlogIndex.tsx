@@ -2,6 +2,10 @@ import { Link } from 'wouter';
 import PageLayout from '@/components/PageLayout';
 import { Badge } from '@/components/ui/badge';
 import { ArrowRight } from 'lucide-react';
+import aiAutomationImg from '@assets/stock_images/ai_automation_workfl_1fb79544.jpg';
+import aiSearchImg from '@assets/stock_images/artificial_intellige_8c98905d.jpg';
+import schemaMarkupImg from '@assets/stock_images/schema_markup_struct_0763f9a1.jpg';
+import websiteOptimizationImg from '@assets/stock_images/website_optimization_b4ff5bda.jpg';
 
 export default function BlogIndex() {
   //TODO: remove mock functionality - replace with actual blog post data
@@ -13,6 +17,7 @@ export default function BlogIndex() {
       author: 'Dustin Crump',
       excerpt: 'Getting found by AI is only half the game. The other half is what happens after—the follow-up, the workflow, the automation. That\'s where Fripse AI comes in.',
       readTime: '5 min read',
+      image: aiAutomationImg,
     },
     {
       slug: 'are-you-ready-to-be-found-by-ai',
@@ -21,6 +26,7 @@ export default function BlogIndex() {
       author: 'Dustin Crump',
       excerpt: 'The way people find businesses is changing. AI assistants are replacing search engines, and if your business isn\'t visible to AI, it doesn\'t exist in that conversation.',
       readTime: '4 min read',
+      image: aiSearchImg,
     },
     {
       slug: 'what-is-schema-markup',
@@ -29,6 +35,7 @@ export default function BlogIndex() {
       author: 'Dustin Crump',
       excerpt: 'Learn how schema markup helps AI understand your website and why it\'s essential for being discovered by ChatGPT, Perplexity, and other AI search tools.',
       readTime: '6 min read',
+      image: schemaMarkupImg,
     },
     {
       slug: 'how-to-make-website-ai-discoverable',
@@ -37,6 +44,7 @@ export default function BlogIndex() {
       author: 'Dustin Crump',
       excerpt: 'A step-by-step guide to optimizing your website for AI search engines. Implement schema, structure content, and ensure your business shows up in AI-powered answers.',
       readTime: '7 min read',
+      image: websiteOptimizationImg,
     },
   ];
 
@@ -67,9 +75,13 @@ export default function BlogIndex() {
               className="group mb-12 bg-card rounded-xl border border-border overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
             >
               <div className="grid md:grid-cols-2 gap-0">
-                {/* Image Placeholder */}
-                <div className="relative bg-gradient-to-br from-[#007CFF]/10 to-[#00BFFF]/20 aspect-[16/9] md:aspect-auto flex items-center justify-center">
-                  <div className="text-6xl text-[#007CFF]/30 font-bold">AI</div>
+                {/* Image */}
+                <div className="relative aspect-[16/9] md:aspect-auto overflow-hidden">
+                  <img 
+                    src={featuredPost.image} 
+                    alt={featuredPost.title}
+                    className="w-full h-full object-cover"
+                  />
                   <Badge 
                     className="absolute top-4 left-4 bg-[#007CFF] text-white hover:bg-[#0066CC] border-0"
                     data-testid="badge-featured"
@@ -117,9 +129,13 @@ export default function BlogIndex() {
                 <article 
                   className="group bg-card rounded-xl border border-border overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-lg hover:-translate-y-1 h-full"
                 >
-                  {/* Image Placeholder */}
-                  <div className="relative bg-gradient-to-br from-[#007CFF]/10 to-[#00BFFF]/20 aspect-[16/9] flex items-center justify-center">
-                    <div className="text-5xl text-[#007CFF]/30 font-bold">AI</div>
+                  {/* Image */}
+                  <div className="relative aspect-[16/9] overflow-hidden">
+                    <img 
+                      src={post.image} 
+                      alt={post.title}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
                   </div>
                   
                   {/* Content */}
