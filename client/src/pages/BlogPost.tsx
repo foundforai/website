@@ -2,6 +2,10 @@ import { useRoute } from 'wouter';
 import { useEffect } from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Badge } from '@/components/ui/badge';
+import aiAutomationImg from '@assets/stock_images/ai_automation_workfl_1fb79544.jpg';
+import aiSearchImg from '@assets/stock_images/artificial_intellige_8c98905d.jpg';
+import schemaMarkupImg from '@assets/stock_images/schema_markup_struct_0763f9a1.jpg';
+import websiteOptimizationImg from '@assets/stock_images/website_optimization_b4ff5bda.jpg';
 
 export default function BlogPost() {
   const [, params] = useRoute('/blog/:slug');
@@ -15,6 +19,7 @@ export default function BlogPost() {
       author: 'Dustin Crump',
       metaDescription: 'Getting found by AI is only half the game. The other half is what happens after—the follow-up, the workflow, the automation. That\'s where Fripse AI comes in.',
       hasMentions: true,
+      image: aiAutomationImg,
       content: `
         <h2>Visibility Is Just Step One</h2>
 
@@ -74,6 +79,7 @@ export default function BlogPost() {
       title: 'Are You Ready to Be Found by AI? Why Traditional SEO Is About to Change Forever',
       date: '2025-01-20',
       author: 'Dustin Crump',
+      image: aiSearchImg,
       content: `
         <p>When was the last time you Googled something?</p>
         
@@ -134,6 +140,7 @@ export default function BlogPost() {
       title: 'What Is Schema Markup And Why It Matters For AI Search',
       date: '2025-01-15',
       author: 'Dustin Crump',
+      image: schemaMarkupImg,
       content: `
         <p>Schema markup is structured data that you add to your website to help search engines and AI understand your content. Think of it as labels and context that explain what your website is about, who you are, and what you offer.</p>
 
@@ -169,6 +176,7 @@ export default function BlogPost() {
       title: 'How To Make Your Website AI Discoverable',
       date: '2025-01-10',
       author: 'Dustin Crump',
+      image: websiteOptimizationImg,
       content: `
         <p>AI search is fundamentally different from traditional search. When someone asks ChatGPT or Perplexity for recommendations, the AI scans the web for structured, clear information. Here's how to ensure your business shows up.</p>
 
@@ -263,7 +271,7 @@ export default function BlogPost() {
       canonical={`https://foundforai.com/blog/${slug}`}
     >
       <article className="py-16 md:py-24 bg-background">
-        <div className="max-w-3xl mx-auto px-4 md:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8">
           <header className="mb-12">
             <div className="flex items-center gap-3 mb-4">
               <Badge variant="outline">
@@ -271,7 +279,18 @@ export default function BlogPost() {
               </Badge>
               <span className="text-sm text-muted-foreground">by {post.author}</span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold">{post.title}</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-8">{post.title}</h1>
+            
+            {post.image && (
+              <div className="rounded-xl overflow-hidden mb-8">
+                <img 
+                  src={post.image} 
+                  alt={post.title}
+                  className="w-full h-auto object-cover aspect-[21/9]"
+                  data-testid="img-article-featured"
+                />
+              </div>
+            )}
           </header>
 
           <div 
