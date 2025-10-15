@@ -31,8 +31,6 @@ export default function Hero() {
               alt="AI SEO Illustration" 
               className="w-full h-auto rounded-xl"
               loading="eager"
-              width="1024"
-              height="1024"
             />
           </div>
         </div>
