@@ -48,7 +48,7 @@ export default function Navigation() {
               <img 
                 src={theme === 'dark' ? logoDark : logoLight} 
                 alt="Found For AI" 
-                className="h-48 w-auto" 
+                className="w-[90px] sm:w-[120px] md:w-[180px] h-auto" 
               />
             </div>
           </Link>
