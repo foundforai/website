@@ -81,9 +81,6 @@ export default function BlogIndex() {
                     src={featuredPost.image} 
                     alt={featuredPost.title}
                     className="w-full h-full object-cover"
-                    loading="lazy"
-                    width="600"
-                    height="338"
                   />
                   <Badge 
                     className="absolute top-4 left-4 bg-[#007CFF] text-white hover:bg-[#0066CC] border-0"
@@ -138,9 +135,6 @@ export default function BlogIndex() {
                       src={post.image} 
                       alt={post.title}
                       className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                      loading="lazy"
-                      width="550"
-                      height="309"
                     />
                   </div>
                   
