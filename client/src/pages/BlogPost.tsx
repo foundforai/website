@@ -288,6 +288,9 @@ export default function BlogPost() {
                   alt={post.title}
                   className="w-full h-auto object-cover aspect-[21/9]"
                   data-testid="img-article-featured"
+                  loading="lazy"
+                  width="1200"
+                  height="514"
                 />
               </div>
             )}
