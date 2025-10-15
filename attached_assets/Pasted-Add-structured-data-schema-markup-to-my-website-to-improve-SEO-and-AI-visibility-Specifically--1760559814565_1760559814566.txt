@@ -1,0 +1,66 @@
+Add structured data (schema markup) to my website to improve SEO and AI visibility.
+
+Specifically:
+	•	Inside the <head> section of my homepage (index.html), insert the following JSON-LD script block after the canonical tag but before the closing </head> tag:
+		<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "FoundForAI",
+  "url": "https://foundforai.com",
+  "applicationCategory": "SEO, AI Optimization, Marketing Automation",
+  "operatingSystem": "All",
+  "description": "FoundForAI helps businesses optimize their online presence for AI-driven search engines like ChatGPT, Gemini, and Perplexity. We make your business discoverable by AI.",
+  "creator": {
+    "@type": "Organization",
+    "name": "FoundForAI",
+    "url": "https://foundforai.com",
+    "logo": "https://foundforai.com/logo.png",
+    "sameAs": [
+      "https://www.linkedin.com/company/foundforai",
+      "https://x.com/fripseai"
+    ]
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why do I need to be found by AI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because AI assistants like ChatGPT, Gemini, and Perplexity are the new search engines. Your customers are asking AI, not Google — and if AI can’t see you, you don’t exist to them."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will AI searches replace Google?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AI searches are already reshaping discovery. They won’t fully replace Google overnight, but they’ll become the main way people find businesses by 2026."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does FoundForAI help my business?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We make your business visible to AI by optimizing your website content, metadata, and structure for AI crawlers — so your business appears in AI-generated answers and search results."
+      }
+    }
+  ]
+}
+</script>
+	•	Keep all existing tags (like canonical, title, meta) intact.
+	•	Validate the JSON automatically if possible.
+	•	Once added, redeploy the site.
