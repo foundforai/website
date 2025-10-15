@@ -10,6 +10,7 @@ import Services from "@/pages/Services";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
 import ThankYou from "@/pages/ThankYou";
+import PurchaseConfirmation from "@/pages/PurchaseConfirmation";
 import BlogIndex from "@/pages/BlogIndex";
 import BlogPost from "@/pages/BlogPost";
 import NotFound from "@/pages/NotFound";
@@ -24,6 +25,7 @@ function Router() {
       <Route path="/about" component={About} />
       <Route path="/contact" component={Contact} />
       <Route path="/thank-you" component={ThankYou} />
+      <Route path="/purchase-complete" component={PurchaseConfirmation} />
       <Route path="/blog" component={BlogIndex} />
       <Route path="/blog/:slug" component={BlogPost} />
       <Route component={NotFound} />
