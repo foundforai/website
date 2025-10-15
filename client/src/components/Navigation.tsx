@@ -4,7 +4,7 @@ import { Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import ThemeToggle from './ThemeToggle';
 import logoLight from '@assets/FoundforAI logo White_1760552497828.png';
-import logoDark from '@assets/FoundforAI logo black_1760398204155.png';
+import logoDark from '@assets/FoundforAI logo black-2_1760552544405.png';
 
 export default function Navigation() {
   const [location] = useLocation();
