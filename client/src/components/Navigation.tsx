@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import ThemeToggle from './ThemeToggle';
-import logoLight from '@assets/FoundforAI logo_1760397414942.png';
+import logoLight from '@assets/FoundforAI logo White_1760552497828.png';
 import logoDark from '@assets/FoundforAI logo black_1760398204155.png';
 
 export default function Navigation() {
