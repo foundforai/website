@@ -34,6 +34,7 @@ export default function Navigation() {
     { href: '/', label: 'Home' },
     { href: '/what-is-ai-seo', label: 'What Is AI SEO' },
     { href: '/services', label: 'Services' },
+    { href: '/pricing', label: 'Pricing & Plans' },
     { href: '/blog', label: 'Blog' },
     { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact' },

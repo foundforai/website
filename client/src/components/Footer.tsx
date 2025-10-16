@@ -1,5 +1,5 @@
 import { Link } from 'wouter';
-import { Linkedin } from 'lucide-react';
+import { Linkedin, ArrowRight } from 'lucide-react';
 import { SiX } from 'react-icons/si';
 
 export default function Footer() {
@@ -43,6 +43,11 @@ export default function Footer() {
               </Link>
               <Link href="/contact" data-testid="link-footer-contact">
                 <span className="hover:text-primary transition-colors">Contact</span>
+              </Link>
+              <Link href="/pricing" data-testid="link-footer-pricing">
+                <span className="hover:text-primary transition-colors inline-flex items-center gap-1 font-semibold">
+                  View Pricing <ArrowRight className="h-3 w-3" />
+                </span>
               </Link>
             </nav>
           </div>
