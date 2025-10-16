@@ -140,8 +140,6 @@ export default function Pricing() {
                 </ul>
                 <a 
                   href="https://calendar.app.google/VUK3jfv6jSf1ezHv5" 
-                  target="_blank" 
-                  rel="noopener"
                   data-testid="button-pro-schedule"
                 >
                   <Button size="lg" variant="default" className="w-full font-semibold">
@@ -193,8 +191,6 @@ export default function Pricing() {
                 </ul>
                 <a 
                   href="https://calendar.app.google/VUK3jfv6jSf1ezHv5" 
-                  target="_blank" 
-                  rel="noopener"
                   data-testid="button-enterprise-schedule"
                 >
                   <Button size="lg" className="w-full font-semibold">
