@@ -31,15 +31,13 @@ export default function BookCall() {
 
           <Card className="overflow-hidden">
             <CardContent className="p-0">
-              <div className="relative w-full" style={{ paddingBottom: '100%', minHeight: '700px' }}>
-                <iframe 
-                  src="https://calendar.app.google/VUK3jfv6jSf1ezHv5"
-                  title="Schedule a Call with Found For AI"
-                  className="absolute top-0 left-0 w-full h-full border-0"
-                  style={{ minHeight: '700px' }}
-                  data-testid="iframe-calendar"
-                />
-              </div>
+              <iframe 
+                src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0TBty7FQKU14y-JAsDvBsSOg6gBFfKUFgL2bMbTtGRStp_ieewrvmOy_tc28RXE-0tXgRIMDI1?gv=true"
+                title="Schedule a Call with Found For AI"
+                className="w-full border-0"
+                style={{ height: '600px' }}
+                data-testid="iframe-calendar"
+              />
             </CardContent>
           </Card>
 
