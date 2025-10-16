@@ -197,7 +197,7 @@ export default function Pricing() {
                   rel="noopener"
                   data-testid="button-enterprise-schedule"
                 >
-                  <Button size="lg" variant="outline" className="w-full font-semibold">
+                  <Button size="lg" className="w-full font-semibold">
                     Schedule a Call
                   </Button>
                 </a>
