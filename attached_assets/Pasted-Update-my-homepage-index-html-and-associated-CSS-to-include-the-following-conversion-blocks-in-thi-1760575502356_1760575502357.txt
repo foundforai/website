@@ -1,0 +1,57 @@
+Update my homepage (index.html and associated CSS) to include the following conversion blocks in this exact order, fully responsive, matching the site’s current colors and button styles. Do not remove existing SEO tags or the canonical tag.
+
+1) HERO (top of page)
+	•	Headline: “Be found by AI, not just Google.”
+	•	Subhead: “Optimize your website so ChatGPT, Gemini, and Perplexity can actually see your business — not just search engines.”
+	•	Primary CTA button:
+		<a class="btn primary" href="/pricing">Run My AI Visibility Check →</a>
+		Include a light background, big type, centered content, with good mobile spacing.
+
+2) PROOF STRIP (narrow band under hero)
+	•	Three short quote chips with small media-style logos or icons side-by-side on desktop, stacked on mobile:
+	•	“AI search is changing everything.” — Forbes
+	•	“SEO as we know it is over.” — Search Engine Journal
+	•	“Early AI optimization wins visibility.” — HubSpot Research
+	•	Keep it subtle, grayscale logos, accessible contrast.
+
+3) EXPLAINER: “Why AI SEO Is Exploding in 2025”
+	•	Section title + brief paragraph explaining that AI assistants are becoming the new discovery engines and sites must be AI-readable (schema, sitemaps, metadata).
+	•	Add three stat cards in a 3-column grid (stack on mobile):
+	•	63% “Consumers now ask AI before Google.”
+	•	90% “Websites are not yet visible to ChatGPT.”
+	•	#1 “Structured data drives AI answers.”
+
+4) OFFER CARD: Starter Fix — $495
+	•	Title: “Starter Fix — $495, delivered within 7 business days”
+	•	Subtext: “Complete AI SEO audit and technical setup for up to 10 pages.”
+	•	Bullets: Schema.org validation, robots.txt + llms.txt, sitemap creation + Search Console submission, OpenGraph/Twitter cards, Core Web Vitals report, AI bot access permissions.
+	•	Primary CTA button (open in new tab):
+		<a class="btn primary" href="https://square.link/u/o25cVCY4" target="_blank" rel="noopener">
+  Book Starter Fix – $495
+</a>
+Add a small note under the button: “Secure checkout via Square.”
+
+5) UPSELL TILES (3 cards below the offer)
+	•	Card A: Pro Visibility Plan — “Ongoing AI optimization, 5-cluster topic buildout, monthly reporting.”
+	<a class="btn secondary" href="https://calendar.app.google/VUK3jfv6jSf1ezHv5" target="_blank" rel="noopener">Schedule a Call</a>
+		Card B: Enterprise & Agency Integration — “White-label or multi-site AI SEO for larger teams.”
+		<a class="btn secondary" href="https://calendar.app.google/VUK3jfv6jSf1ezHv5" target="_blank" rel="noopener">Schedule a Call</a>
+		Card C: Custom Audit — “Tailored analysis for unique stacks or web apps.”
+		<a class="btn secondary" href="https://calendar.app.google/VUK3jfv6jSf1ezHv5" target="_blank" rel="noopener">Schedule a Call</a>
+		Use equal-width cards with soft shadows and hover lift, stack on mobile.
+
+6) FINAL CTA (footer-adjacent section)
+	•	Headline: “Get Your Tech SEO & AI SEO Issues Fixed.”
+	•	Subtext: “Every day you’re invisible to AI search, you’re losing customers. Let’s change that.”
+	•	Button linking to /pricing: View Pricing & Get Started →
+
+Global/UX details:
+	•	Ensure buttons use existing primary/secondary styles, add subtle hover transitions.
+	•	Add loading="lazy" to below-the-fold images, and include explicit width/height to prevent layout shift.
+	•	Keep typography consistent, ensure mobile spacing and tap targets are accessible.
+	•	Add this small note somewhere near the footer: “Questions? support@foundforai.com — 24-hour response.”
+
+Navigation update:
+	•	In the top nav, add Pricing & Plans linking to /pricing. Also add a footer text link “View Pricing → /pricing”.
+
+Do not remove any existing meta tags, canonical tag, or existing schema. Keep the page fast and accessible, then redeploy.
