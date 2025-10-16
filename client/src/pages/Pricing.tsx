@@ -138,14 +138,11 @@ export default function Pricing() {
                     <span className="text-sm">Quarterly strategy reviews</span>
                   </li>
                 </ul>
-                <a 
-                  href="https://calendar.app.google/VUK3jfv6jSf1ezHv5" 
-                  data-testid="button-pro-schedule"
-                >
-                  <Button size="lg" variant="default" className="w-full font-semibold">
+                <Link href="/book-call">
+                  <Button size="lg" variant="default" className="w-full font-semibold" data-testid="button-pro-schedule">
                     Schedule a Call
                   </Button>
-                </a>
+                </Link>
               </CardContent>
             </Card>
 
@@ -189,14 +186,11 @@ export default function Pricing() {
                     <span className="text-sm">Volume pricing</span>
                   </li>
                 </ul>
-                <a 
-                  href="https://calendar.app.google/VUK3jfv6jSf1ezHv5" 
-                  data-testid="button-enterprise-schedule"
-                >
-                  <Button size="lg" className="w-full font-semibold">
+                <Link href="/book-call">
+                  <Button size="lg" className="w-full font-semibold" data-testid="button-enterprise-schedule">
                     Schedule a Call
                   </Button>
-                </a>
+                </Link>
               </CardContent>
             </Card>
           </div>
