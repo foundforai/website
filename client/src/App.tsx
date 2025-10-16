@@ -7,6 +7,7 @@ import Home from "@/pages/Home";
 import WhatIsAISEO from "@/pages/WhatIsAISEO";
 import Audit from "@/pages/Audit";
 import Services from "@/pages/Services";
+import Pricing from "@/pages/Pricing";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
 import ThankYou from "@/pages/ThankYou";
@@ -22,6 +23,7 @@ function Router() {
       <Route path="/what-is-ai-seo" component={WhatIsAISEO} />
       <Route path="/audit" component={Audit} />
       <Route path="/services" component={Services} />
+      <Route path="/pricing" component={Pricing} />
       <Route path="/about" component={About} />
       <Route path="/contact" component={Contact} />
       <Route path="/thank-you" component={ThankYou} />

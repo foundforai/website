@@ -1,0 +1,41 @@
+Create a new page called pricing.html for my website foundforai.com.
+
+Design a clean, modern pricing layout that matches the existing site style. Use responsive cards or rows for each package with soft shadows, rounded corners, and good spacing.
+
+Page structure:
+	•	Hero section at top:
+Headline: “Choose Your Level of AI Visibility”
+Subtext: “Start with the Starter Fix or book a strategy call for advanced plans.”
+	•	Three pricing cards in one row (stack vertically on mobile):
+Card 1 — Starter Fix — $495
+	•	Short paragraph: “7-day AI SEO audit + technical setup for up to 10 pages.”
+	•	Bullet list:
+	•	AI SEO & technical audit
+	•	Schema.org validation
+	•	robots.txt + llms.txt setup
+	•	Sitemap creation & submission
+	•	OpenGraph & Twitter Card setup
+	•	Core Web Vitals report
+	•	AI bot access permissions
+	•	Primary CTA button:
+		<a class="btn primary" href="https://square.link/u/o25cVCY4" target="_blank" rel="noopener">
+  Book Starter Fix – $495
+</a>
+Card 2 — Pro Visibility Plan
+	•	Paragraph: “Ongoing AI optimization, 5-cluster topic buildout, monthly reporting, and growth tracking.”
+	•	Secondary CTA button:
+		<a class="btn secondary" href="https://calendar.app.google/VUK3jfv6jSf1ezHv5" target="_blank" rel="noopener">
+  Schedule a Call
+</a>
+Card 3 — Enterprise / Agency
+	•	Paragraph: “White-label or multi-site integration for agencies and large enterprises.”
+	•	Secondary CTA button:
+		<a class="btn secondary" href="https://calendar.app.google/VUK3jfv6jSf1ezHv5" target="_blank" rel="noopener">
+  Schedule a Call
+</a>
+Add subtle hover animations on buttons and cards (e.g., scale up 1.02, shadow deepen).
+	•	Keep colors consistent with the rest of the site (same accent blue and typography).
+	•	Add an FAQ section at the bottom titled “Questions About AI Visibility?” with 2–3 short Q&As about turnaround time, deliverables, and refunds.
+	•	Add internal link buttons back to the homepage and the purchase-complete page (/purchase-complete).
+
+Ensure all text and buttons are fully responsive and accessible.
