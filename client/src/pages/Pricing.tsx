@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -5,6 +6,80 @@ import { Link } from 'wouter';
 import { Check, ArrowRight } from 'lucide-react';
 
 export default function Pricing() {
+  useEffect(() => {
+    const serviceSchema = document.createElement('script');
+    serviceSchema.type = 'application/ld+json';
+    serviceSchema.id = 'service-schema';
+    serviceSchema.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "AI Visibility Starter Fix",
+      "description": "Delivered within 7 business days — includes AI SEO audit and technical setup for up to 10 pages.",
+      "provider": {
+        "@type": "Organization",
+        "name": "FoundForAI",
+        "url": "https://foundforai.com"
+      },
+      "areaServed": {
+        "@type": "Place",
+        "name": "United States"
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "USD",
+        "price": "495.00",
+        "url": "https://foundforai.com/pricing",
+        "availability": "https://schema.org/InStock"
+      }
+    });
+    document.head.appendChild(serviceSchema);
+
+    const faqSchema = document.createElement('script');
+    faqSchema.type = 'application/ld+json';
+    faqSchema.id = 'pricing-faq-schema';
+    faqSchema.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How long does the Starter Fix take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Starter Fix is delivered within 7 business days. You'll receive a report, technical setup updates, and a follow-up call to review results."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's included in the Starter Fix?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Your Starter Fix includes a full AI SEO audit, Schema.org setup, sitemap creation, robots.txt and llms.txt configuration, OpenGraph and Twitter card setup, and Core Web Vitals report."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I upgrade later?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, you can upgrade to the Pro Visibility Plan for ongoing AI SEO optimization and content strategy at any time."
+          }
+        }
+      ]
+    });
+    document.head.appendChild(faqSchema);
+
+    return () => {
+      const existingServiceSchema = document.getElementById('service-schema');
+      const existingFaqSchema = document.getElementById('pricing-faq-schema');
+      if (existingServiceSchema) {
+        document.head.removeChild(existingServiceSchema);
+      }
+      if (existingFaqSchema) {
+        document.head.removeChild(existingFaqSchema);
+      }
+    };
+  }, []);
   const faqs = [
     {
       question: "What's the turnaround time?",
