@@ -39,11 +39,74 @@ export default function SEOHead({ title, description, canonical, ogImage = '/ass
       document.head.appendChild(ogImageMeta);
     }
 
+    const ogImageWidth = document.querySelector('meta[property="og:image:width"]') || document.createElement('meta');
+    ogImageWidth.setAttribute('property', 'og:image:width');
+    ogImageWidth.setAttribute('content', '1200');
+    if (!document.querySelector('meta[property="og:image:width"]')) {
+      document.head.appendChild(ogImageWidth);
+    }
+
+    const ogImageHeight = document.querySelector('meta[property="og:image:height"]') || document.createElement('meta');
+    ogImageHeight.setAttribute('property', 'og:image:height');
+    ogImageHeight.setAttribute('content', '630');
+    if (!document.querySelector('meta[property="og:image:height"]')) {
+      document.head.appendChild(ogImageHeight);
+    }
+
+    const ogType = document.querySelector('meta[property="og:type"]') || document.createElement('meta');
+    ogType.setAttribute('property', 'og:type');
+    ogType.setAttribute('content', 'website');
+    if (!document.querySelector('meta[property="og:type"]')) {
+      document.head.appendChild(ogType);
+    }
+
+    const ogUrl = document.querySelector('meta[property="og:url"]') || document.createElement('meta');
+    ogUrl.setAttribute('property', 'og:url');
+    ogUrl.setAttribute('content', canonical || 'https://foundforai.com');
+    if (!document.querySelector('meta[property="og:url"]')) {
+      document.head.appendChild(ogUrl);
+    }
+
+    const ogSiteName = document.querySelector('meta[property="og:site_name"]') || document.createElement('meta');
+    ogSiteName.setAttribute('property', 'og:site_name');
+    ogSiteName.setAttribute('content', 'Found For AI');
+    if (!document.querySelector('meta[property="og:site_name"]')) {
+      document.head.appendChild(ogSiteName);
+    }
+
+    const ogLocale = document.querySelector('meta[property="og:locale"]') || document.createElement('meta');
+    ogLocale.setAttribute('property', 'og:locale');
+    ogLocale.setAttribute('content', 'en_US');
+    if (!document.querySelector('meta[property="og:locale"]')) {
+      document.head.appendChild(ogLocale);
+    }
+
     const twitterCard = document.querySelector('meta[name="twitter:card"]') || document.createElement('meta');
     twitterCard.setAttribute('name', 'twitter:card');
     twitterCard.setAttribute('content', 'summary_large_image');
     if (!document.querySelector('meta[name="twitter:card"]')) {
       document.head.appendChild(twitterCard);
+    }
+
+    const twitterTitle = document.querySelector('meta[name="twitter:title"]') || document.createElement('meta');
+    twitterTitle.setAttribute('name', 'twitter:title');
+    twitterTitle.setAttribute('content', title);
+    if (!document.querySelector('meta[name="twitter:title"]')) {
+      document.head.appendChild(twitterTitle);
+    }
+
+    const twitterDescription = document.querySelector('meta[name="twitter:description"]') || document.createElement('meta');
+    twitterDescription.setAttribute('name', 'twitter:description');
+    twitterDescription.setAttribute('content', description);
+    if (!document.querySelector('meta[name="twitter:description"]')) {
+      document.head.appendChild(twitterDescription);
+    }
+
+    const twitterImage = document.querySelector('meta[name="twitter:image"]') || document.createElement('meta');
+    twitterImage.setAttribute('name', 'twitter:image');
+    twitterImage.setAttribute('content', `https://foundforai.com${ogImage}`);
+    if (!document.querySelector('meta[name="twitter:image"]')) {
+      document.head.appendChild(twitterImage);
     }
 
     if (canonical) {
