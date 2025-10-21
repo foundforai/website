@@ -7,7 +7,7 @@ interface SEOHeadProps {
   ogImage?: string;
 }
 
-export default function SEOHead({ title, description, canonical, ogImage = '/assets/og-default.jpg' }: SEOHeadProps) {
+export default function SEOHead({ title, description, canonical, ogImage = '/og-image.jpg' }: SEOHeadProps) {
   useEffect(() => {
     document.title = title;
     
@@ -62,7 +62,8 @@ export default function SEOHead({ title, description, canonical, ogImage = '/ass
 
     const ogUrl = document.querySelector('meta[property="og:url"]') || document.createElement('meta');
     ogUrl.setAttribute('property', 'og:url');
-    ogUrl.setAttribute('content', canonical || 'https://foundforai.com');
+    const canonicalUrl = canonical ? canonical.replace(/\/$/, '') : 'https://foundforai.com';
+    ogUrl.setAttribute('content', canonicalUrl);
     if (!document.querySelector('meta[property="og:url"]')) {
       document.head.appendChild(ogUrl);
     }

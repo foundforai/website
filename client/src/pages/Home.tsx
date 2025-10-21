@@ -124,9 +124,10 @@ export default function Home() {
 
   return (
     <PageLayout
-      title="Found For AI - Make Your Website Discoverable by AI Search"
-      description="AI SEO consulting that optimizes your website for ChatGPT, Perplexity, and AI-driven search. Get schema markup, GEO optimization, and AI readiness audits."
-      canonical="https://foundforai.com/"
+      title="Found for AI"
+      description="Be found by AI, not just Google."
+      canonical="https://foundforai.com"
+      ogImage="/og-image.jpg"
     >
       {/* 1. HERO SECTION */}
       <section className="py-20 md:py-32 bg-gradient-to-br from-background via-primary/5 to-accent/5">
