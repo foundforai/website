@@ -124,16 +124,16 @@ export default function Home() {
 
   return (
     <PageLayout
-      title="Found for AI"
-      description="Be found by AI, not just Google."
+      title="Found For AI | Be Found by AI, Not Just Google"
+      description="Found For AI helps businesses get discovered by AI search engines like ChatGPT, Gemini, and Perplexity. We optimize your site's structure, schema, and content so you're visible to the new era of AI search."
       canonical="https://foundforai.com"
-      ogImage="/og-image.jpg"
+      ogImage="/logo.png"
     >
       {/* 1. HERO SECTION */}
       <section className="py-20 md:py-32 bg-gradient-to-br from-background via-primary/5 to-accent/5">
         <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Be found by AI, not just Google.
+            Be found by AI, not just Google — with Found For AI.
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-8">
             Optimize your website so ChatGPT, Gemini, and Perplexity can actually see your business — not just search engines.
