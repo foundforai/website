@@ -8,6 +8,7 @@ import Home from "@/pages/Home";
 import WhatIsAISEO from "@/pages/WhatIsAISEO";
 import WhatIsFoundForAI from "@/pages/WhatIsFoundForAI";
 import Audit from "@/pages/Audit";
+import ReadinessReport from "@/pages/ReadinessReport";
 import Services from "@/pages/Services";
 import Pricing from "@/pages/Pricing";
 import BookCall from "@/pages/BookCall";
@@ -28,6 +29,7 @@ function Router() {
         <Route path="/what-is-ai-seo" component={WhatIsAISEO} />
         <Route path="/what-is-found-for-ai" component={WhatIsFoundForAI} />
         <Route path="/audit" component={Audit} />
+        <Route path="/readiness-report" component={ReadinessReport} />
         <Route path="/services" component={Services} />
         <Route path="/pricing" component={Pricing} />
         <Route path="/book-call" component={BookCall} />
