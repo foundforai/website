@@ -424,6 +424,35 @@
     transform: scale(0.98);
   }
 
+  .btn.ghost {
+    background: transparent;
+    border: 2px solid hsl(var(--primary));
+    color: hsl(var(--primary));
+  }
+
+  .btn.ghost:hover {
+    background: hsl(var(--primary) / 0.08);
+  }
+
+  .btn.ghost:active {
+    transform: scale(0.98);
+  }
+
+  /* CTA Row Layout */
+  .cta-row {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 18px;
+  }
+
+  @media (max-width: 640px) {
+    .cta-row .btn {
+      width: 100%;
+    }
+  }
+
   /* Content Section */
   .content {
     max-width: 900px;
