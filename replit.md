@@ -32,11 +32,12 @@ Preferred communication style: Simple, everyday language.
 - Toast notifications for user feedback via shadcn/ui toast system
 
 **Key Pages & Routes**
-- Marketing pages: Home, What Is AI SEO, Services, About
+- Marketing pages: Home, What Is AI SEO, What is Found For AI?, Services, About
 - Lead generation: Audit form (with thank you page)
 - Content: Blog index and dynamic blog post pages
 - Utility: Contact form, 404 page
 - All pages implement SEO metadata via custom SEOHead component
+- Brand entity page: /what-is-found-for-ai with Organization, WebPage, and FAQPage schemas
 
 ### Backend Architecture
 
@@ -105,5 +106,12 @@ Preferred communication style: Simple, everyday language.
 
 **SEO & Discoverability**
 - Static `robots.txt` and `llms.txt` files in public directory
-- Schema.org markup implementation planned (not currently in codebase)
-- Sitemap reference at https://foundforai.com/sitemap.xml (not generated)
+- Schema.org markup implementation:
+  - Organization schema on "What is Found For AI?" page with company details (Salt Lake City, UT)
+  - WebPage schema for brand entity definition
+  - FAQPage schema with 3 common questions
+- WWW to apex domain redirect (301) via middleware
+- Sitemap.xml maintained with all public pages
+- Open Graph and Twitter Card meta tags on all pages
+- Custom .btn.primary and .btn.secondary CSS classes for consistent CTA styling
+- Google AI Overview brand recognition optimization
