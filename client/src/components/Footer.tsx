@@ -32,6 +32,9 @@ export default function Footer() {
               <Link href="/what-is-ai-seo" data-testid="link-footer-what-is-ai-seo">
                 <span className="hover:text-primary transition-colors">What Is AI SEO</span>
               </Link>
+              <Link href="/what-is-found-for-ai" data-testid="link-footer-what-is-found-for-ai">
+                <span className="hover:text-primary transition-colors">What is Found For AI?</span>
+              </Link>
               <Link href="/services" data-testid="link-footer-services">
                 <span className="hover:text-primary transition-colors">Services</span>
               </Link>
