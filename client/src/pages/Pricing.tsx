@@ -98,7 +98,7 @@ export default function Pricing() {
   return (
     <PageLayout
       title="Pricing - AI SEO Services & Plans | Found For AI"
-      description="Choose your level of AI visibility. Start with the Starter Fix ($495) or book a strategy call for advanced AI SEO plans."
+      description="Choose your level of AI visibility. Get your AI Visibility Audit ($495) or book a strategy call for advanced AI SEO plans."
       canonical="https://foundforai.com/pricing"
     >
       {/* Hero Section */}
@@ -109,7 +109,7 @@ export default function Pricing() {
               Choose Your Level of AI Visibility
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Start with the Starter Fix or book a strategy call for advanced plans.
+              Get your AI Visibility Audit or book a strategy call for advanced plans.
             </p>
           </div>
 
