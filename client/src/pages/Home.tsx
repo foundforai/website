@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -6,6 +6,72 @@ import { Link } from 'wouter';
 import { Check, TrendingUp, Search, Zap, ArrowRight } from 'lucide-react';
 
 export default function Home() {
+  const [currentAssistant, setCurrentAssistant] = useState<'chatgpt' | 'gemini' | 'perplexity'>('chatgpt');
+  const [isAfter, setIsAfter] = useState(false);
+
+  const ANSWERS = {
+    chatgpt: {
+      before: {
+        text: "I couldn't find enough structured information about this business. It may not provide clear entity data or schema for assistants.",
+        badges: ["No schema", "Entity unknown", "Not cited"]
+      },
+      after: {
+        text: "Found For AI is a studio that makes businesses discoverable in AI search (ChatGPT, Gemini, Perplexity) using AI SEO and AEO. Based in Utah; services include schema implementation, sitemaps, and performance tuning.",
+        badges: ["Valid JSON-LD", "Recognized entity", "Cited in answers"]
+      }
+    },
+    gemini: {
+      before: {
+        text: "This brand isn't clearly defined as an entity. Content lacks structured data and consistent metadata.",
+        badges: ["Weak entity", "Missing schema"]
+      },
+      after: {
+        text: "Found For AI (Utah) helps companies appear in AI answers via structured data (JSON-LD), llms.txt/robots.txt, and AEO content. Starter Fix completes in ~7 business days for up to 10 pages.",
+        badges: ["Organization schema", "Sitemap submitted", "Assistant-ready copy"]
+      }
+    },
+    perplexity: {
+      before: {
+        text: "Limited signals detected. I can't confidently summarize this business.",
+        badges: ["Low confidence", "Unstructured"]
+      },
+      after: {
+        text: "Found For AI improves AI visibility with entity mapping, schema validation, and speed optimizations, enabling assistants to parse and reference the site.",
+        badges: ["Entity mapped", "Fast render", "LLM-accessible"]
+      }
+    }
+  };
+
+  const JSONLD = {
+    before: {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "(missing)",
+      "url": "(missing)",
+      "description": "(not provided)"
+    },
+    after: {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Found For AI",
+      "url": "https://foundforai.com",
+      "logo": "https://foundforai.com/logo.png",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "UT",
+        "addressCountry": "US"
+      },
+      "sameAs": [
+        "https://x.com/foundforai",
+        "https://www.linkedin.com/company/foundforai"
+      ]
+    }
+  };
+
+  const mode = isAfter ? 'after' : 'before';
+  const currentAnswer = ANSWERS[currentAssistant][mode];
+  const currentJSON = JSONLD[mode];
+
   useEffect(() => {
     const softwareAppSchema = document.createElement('script');
     softwareAppSchema.type = 'application/ld+json';
@@ -151,31 +217,97 @@ export default function Home() {
         </ul>
       </section>
 
-      {/* 3. AI DEMO (Before vs After) */}
-      <section className="ai-demo" id="ai-demo">
-        <h2>How AI sees your business — before and after</h2>
-        <p className="sub">We optimize your structure so assistants can read and recommend you.</p>
-        <div className="demo-grid">
-          <article className="demo-card">
-            <h3>Before</h3>
-            <img src="/assets/demo-before.svg" alt="AI response before optimization" loading="lazy" width="640" height="400" data-testid="demo-before-image" />
-            <ul className="ticks">
-              <li>Missing entities & schema</li>
-              <li>Inconsistent metadata</li>
-              <li>Not referenced in AI answers</li>
-            </ul>
-          </article>
-          <article className="demo-card after">
-            <h3>After</h3>
-            <img src="/assets/demo-after.svg" alt="AI response after optimization" loading="lazy" width="640" height="400" data-testid="demo-after-image" />
-            <ul className="ticks">
-              <li>Recognized brand/entity</li>
-              <li>Valid JSON-LD & sitemap</li>
-              <li>Shows up in AI answers</li>
-            </ul>
-          </article>
+      {/* 3. AI LAB - Interactive Demo */}
+      <section id="ai-lab" className="ai-lab">
+        <h2 className="ai-lab__title">See how AI answers change after optimization</h2>
+        <p className="ai-lab__sub">
+          Switch assistants and compare before vs. after. We structure entities + schema so AI can cite your brand.
+        </p>
+
+        <div className="ai-lab__tabs" role="tablist" aria-label="AI assistants">
+          <button
+            className={`tab ${currentAssistant === 'chatgpt' ? 'is-active' : ''}`}
+            onClick={() => setCurrentAssistant('chatgpt')}
+            role="tab"
+            aria-selected={currentAssistant === 'chatgpt'}
+            data-testid="tab-chatgpt"
+          >
+            ChatGPT
+          </button>
+          <button
+            className={`tab ${currentAssistant === 'gemini' ? 'is-active' : ''}`}
+            onClick={() => setCurrentAssistant('gemini')}
+            role="tab"
+            aria-selected={currentAssistant === 'gemini'}
+            data-testid="tab-gemini"
+          >
+            Gemini
+          </button>
+          <button
+            className={`tab ${currentAssistant === 'perplexity' ? 'is-active' : ''}`}
+            onClick={() => setCurrentAssistant('perplexity')}
+            role="tab"
+            aria-selected={currentAssistant === 'perplexity'}
+            data-testid="tab-perplexity"
+          >
+            Perplexity
+          </button>
+          <div className="toggle">
+            <span>Before</span>
+            <label className="switch">
+              <input
+                id="aiToggle"
+                type="checkbox"
+                checked={isAfter}
+                onChange={(e) => setIsAfter(e.target.checked)}
+                aria-label="Toggle Before/After"
+                data-testid="toggle-before-after"
+              />
+              <span className="slider"></span>
+            </label>
+            <span>After</span>
+          </div>
         </div>
-        <Link href="/pricing" className="btn primary demo-cta" data-testid="button-demo-cta">
+
+        <div className="ai-lab__grid">
+          <article className="answer" aria-live="polite">
+            <div className="answer__header">
+              <div className="dot"></div>
+              <div className="dot"></div>
+              <div className="dot"></div>
+            </div>
+            <div className="answer__body" data-testid="answer-body">
+              {currentAnswer.text.split('Found For AI').map((part, index, arr) =>
+                index < arr.length - 1 ? (
+                  <span key={index}>
+                    {part}
+                    <mark>Found For AI</mark>
+                  </span>
+                ) : (
+                  part
+                )
+              )}
+            </div>
+            <div className="answer__badges" data-testid="answer-badges">
+              {currentAnswer.badges.map((badge, index) => (
+                <span key={index} className="badge">
+                  {badge}
+                </span>
+              ))}
+            </div>
+          </article>
+
+          <aside className="code">
+            <div className="code__label">JSON-LD (Organization)</div>
+            <pre>
+              <code className="language-json" data-testid="code-block">
+                {JSON.stringify(currentJSON, null, 2)}
+              </code>
+            </pre>
+          </aside>
+        </div>
+
+        <Link href="/pricing" className="btn primary ai-lab__cta" data-testid="button-ai-lab-cta">
           Get My AI Visibility Audit →
         </Link>
       </section>
