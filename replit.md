@@ -39,6 +39,15 @@ Preferred communication style: Simple, everyday language.
 - All pages implement SEO metadata via custom SEOHead component
 - Brand entity page: /what-is-found-for-ai with Organization, WebPage, and FAQPage schemas
 
+**Interactive Demos**
+- AI Lab (Homepage): Sanitized interactive demo using fictional "Sparkle Floors" business
+  - Vanilla JavaScript implementation (not React state) within useEffect
+  - Three tabs (ChatGPT, Gemini, Perplexity) showing before/after AI optimization results
+  - Collapsible JSON-LD code example (hidden by default)
+  - Uses sparkle-floors.example domain (NO real Found For AI production data exposed)
+  - Right panel shows human-readable summary with bullet points
+  - All demo data is fictional for privacy/security
+
 ### Backend Architecture
 
 **Server Framework**
