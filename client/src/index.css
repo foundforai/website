@@ -708,19 +708,56 @@
     padding: 4px 10px;
   }
 
-  .code {
+  .panel {
     border: 1px solid hsl(var(--border));
-    background: hsl(220 85% 8%);
-    color: hsl(210 100% 85%);
+    background: hsl(var(--card));
     border-radius: 14px;
-    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.06);
-    padding: 14px;
+    padding: 16px;
   }
 
-  .code__label {
-    font-size: 0.8rem;
-    opacity: 0.8;
-    margin-bottom: 6px;
+  .panel__title {
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .panel__desc {
+    margin: 0 0 12px;
+    opacity: 0.9;
+    font-size: 0.95rem;
+  }
+
+  .panel__ticks {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 12px;
+  }
+
+  .panel__ticks li {
+    margin: 8px 0;
+    padding-left: 18px;
+    position: relative;
+  }
+
+  .panel__ticks li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: hsl(var(--primary));
+  }
+
+  .code-block {
+    background: hsl(220 85% 8%);
+    color: hsl(210 100% 85%);
+    padding: 12px;
+    border-radius: 8px;
+    overflow: auto;
+    max-height: 320px;
+    margin-top: 12px;
+  }
+
+  .code-block code {
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
   }
 
   .code pre {

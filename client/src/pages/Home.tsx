@@ -6,71 +6,125 @@ import { Link } from 'wouter';
 import { Check, TrendingUp, Search, Zap, ArrowRight } from 'lucide-react';
 
 export default function Home() {
-  const [currentAssistant, setCurrentAssistant] = useState<'chatgpt' | 'gemini' | 'perplexity'>('chatgpt');
-  const [isAfter, setIsAfter] = useState(false);
+  useEffect(() => {
+    // AI Lab demo logic - sanitized with Sparkle Floors example
+    const DEMO = {
+      chatgpt: {
+        before: {
+          text: "I couldn't find enough structured information about Sparkle Floors. It may not expose entities or schema that assistants use to cite businesses.",
+          badges: ["No schema", "Entity unknown", "Not cited"]
+        },
+        after: {
+          text: "Sparkle Floors is a residential floor refinishing service in Denver, Colorado. They specialize in hardwood refinishing and use eco-friendly finishes. (Example result after implementing JSON-LD and sitemaps.)",
+          badges: ["Valid JSON-LD", "Recognized entity", "Cited in answers"]
+        }
+      },
+      gemini: {
+        before: {
+          text: "Limited structured signals for Sparkle Floors were detected; assistants can't summarize the business confidently.",
+          badges: ["Weak entity", "Missing schema"]
+        },
+        after: {
+          text: "Sparkle Floors (Denver) provides hardwood refinishing services. After AEO, assistants can identify offerings, service area, and contact info for quoting.",
+          badges: ["Organization schema", "Sitemap present", "Answer-ready copy"]
+        }
+      },
+      perplexity: {
+        before: {
+          text: "Not enough machine-readable context to form an answer about Sparkle Floors.",
+          badges: ["Low confidence", "Unstructured"]
+        },
+        after: {
+          text: "Sparkle Floors appears in assistant answers with service descriptions and local availability after schema and entity alignment.",
+          badges: ["Entity mapped", "Local info available", "Assistant-ready"]
+        }
+      }
+    };
 
-  const ANSWERS = {
-    chatgpt: {
-      before: {
-        text: "I couldn't find enough structured information about this business. It may not provide clear entity data or schema for assistants.",
-        badges: ["No schema", "Entity unknown", "Not cited"]
-      },
-      after: {
-        text: "Found For AI is a studio that makes businesses discoverable in AI search (ChatGPT, Gemini, Perplexity) using AI SEO and AEO. Based in Utah; services include schema implementation, sitemaps, and performance tuning.",
-        badges: ["Valid JSON-LD", "Recognized entity", "Cited in answers"]
-      }
-    },
-    gemini: {
-      before: {
-        text: "This brand isn't clearly defined as an entity. Content lacks structured data and consistent metadata.",
-        badges: ["Weak entity", "Missing schema"]
-      },
-      after: {
-        text: "Found For AI (Utah) helps companies appear in AI answers via structured data (JSON-LD), llms.txt/robots.txt, and AEO content. Starter Fix completes in ~7 business days for up to 10 pages.",
-        badges: ["Organization schema", "Sitemap submitted", "Assistant-ready copy"]
-      }
-    },
-    perplexity: {
-      before: {
-        text: "Limited signals detected. I can't confidently summarize this business.",
-        badges: ["Low confidence", "Unstructured"]
-      },
-      after: {
-        text: "Found For AI improves AI visibility with entity mapping, schema validation, and speed optimizations, enabling assistants to parse and reference the site.",
-        badges: ["Entity mapped", "Fast render", "LLM-accessible"]
-      }
-    }
-  };
-
-  const JSONLD = {
-    before: {
+    const EXAMPLE_JSON = {
       "@context": "https://schema.org",
       "@type": "Organization",
-      "name": "(missing)",
-      "url": "(missing)",
-      "description": "(not provided)"
-    },
-    after: {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Found For AI",
-      "url": "https://foundforai.com",
-      "logo": "https://foundforai.com/logo.png",
+      "name": "Sparkle Floors",
+      "url": "https://sparkle-floors.example",
+      "logo": "https://sparkle-floors.example/logo.png",
       "address": {
         "@type": "PostalAddress",
-        "addressRegion": "UT",
+        "addressLocality": "Denver",
+        "addressRegion": "CO",
         "addressCountry": "US"
       },
       "sameAs": [
-        "https://x.com/foundforai",
-        "https://www.linkedin.com/company/foundforai"
+        "https://x.com/sparkle-floors",
+        "https://www.linkedin.com/company/sparkle-floors"
       ]
-    }
-  };
+    };
 
-  const mode = isAfter ? 'after' : 'before';
-  const currentAnswer = ANSWERS[currentAssistant][mode];
-  const currentJSON = JSONLD[mode];
+    const tabs = document.querySelectorAll('.tab');
+    const toggle = document.getElementById('aiToggle') as HTMLInputElement;
+    const answerBody = document.getElementById('answerBody');
+    const answerBadges = document.getElementById('answerBadges');
+    const viewBtn = document.getElementById('viewCodeBtn');
+    const codeBlock = document.querySelector('#codeBlock code');
+    const panelTicks = document.getElementById('panelTicks');
+
+    if (!tabs.length || !toggle || !answerBody || !answerBadges || !viewBtn || !codeBlock || !panelTicks) {
+      return;
+    }
+
+    let current = 'chatgpt';
+
+    function render() {
+      const mode = toggle!.checked ? 'after' : 'before';
+      const { text, badges } = DEMO[current as keyof typeof DEMO][mode];
+      
+      answerBody!.innerHTML = text.replace(/Sparkle Floors/g, '<mark>Sparkle Floors</mark>');
+      answerBadges!.innerHTML = badges.map((b: string) => `<span class="badge">${b}</span>`).join('');
+
+      const ticks = mode === 'after' ? [
+        "Recognized brand/entity",
+        "Valid JSON-LD & sitemap",
+        "Shows up in AI answers"
+      ] : [
+        "Missing entities & schema",
+        "Inconsistent metadata",
+        "Not referenced in AI answers"
+      ];
+      panelTicks!.innerHTML = ticks.map((t: string) => `<li>${t}</li>`).join('');
+
+      codeBlock!.textContent = JSON.stringify(EXAMPLE_JSON, null, 2);
+    }
+
+    tabs.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        tabs.forEach((b) => {
+          b.classList.remove('is-active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('is-active');
+        btn.setAttribute('aria-selected', 'true');
+        current = (btn as HTMLElement).dataset.assistant || 'chatgpt';
+        render();
+      });
+    });
+
+    toggle.addEventListener('change', render);
+
+    viewBtn.addEventListener('click', () => {
+      const codeEl = document.getElementById('codeBlock');
+      const expanded = viewBtn.getAttribute('aria-expanded') === 'true';
+      if (!expanded) {
+        codeEl!.hidden = false;
+        viewBtn.setAttribute('aria-expanded', 'true');
+        viewBtn.textContent = 'Hide example JSON-LD';
+      } else {
+        codeEl!.hidden = true;
+        viewBtn.setAttribute('aria-expanded', 'false');
+        viewBtn.textContent = 'View example JSON-LD';
+      }
+    });
+
+    render();
+  }, []);
 
   useEffect(() => {
     const softwareAppSchema = document.createElement('script');
@@ -217,59 +271,19 @@ export default function Home() {
         </ul>
       </section>
 
-      {/* 3. AI LAB - Interactive Demo */}
+      {/* 3. AI LAB - Interactive Demo (Sanitized) */}
       <section id="ai-lab" className="ai-lab">
         <h2 className="ai-lab__title">See how AI answers change after optimization</h2>
-        <p className="ai-lab__sub">
-          Switch assistants and compare before vs. after. We structure entities + schema so AI can cite your brand.
-        </p>
+        <p className="ai-lab__sub">Switch assistants and compare before vs. after. We structure entities + schema so AI can cite your brand.</p>
 
         <div className="ai-lab__tabs" role="tablist" aria-label="AI assistants">
-          <button
-            className={`tab ${currentAssistant === 'chatgpt' ? 'is-active' : ''}`}
-            onClick={() => setCurrentAssistant('chatgpt')}
-            role="tab"
-            aria-selected={currentAssistant === 'chatgpt'}
-            data-testid="tab-chatgpt"
-          >
-            ChatGPT
-          </button>
-          <button
-            className={`tab ${currentAssistant === 'gemini' ? 'is-active' : ''}`}
-            onClick={() => setCurrentAssistant('gemini')}
-            role="tab"
-            aria-selected={currentAssistant === 'gemini'}
-            data-testid="tab-gemini"
-          >
-            Gemini
-          </button>
-          <button
-            className={`tab ${currentAssistant === 'perplexity' ? 'is-active' : ''}`}
-            onClick={() => setCurrentAssistant('perplexity')}
-            role="tab"
-            aria-selected={currentAssistant === 'perplexity'}
-            data-testid="tab-perplexity"
-          >
-            Perplexity
-          </button>
+          <button className="tab is-active" data-assistant="chatgpt" role="tab" aria-selected="true" data-testid="tab-chatgpt">ChatGPT</button>
+          <button className="tab" data-assistant="gemini" role="tab" aria-selected="false" data-testid="tab-gemini">Gemini</button>
+          <button className="tab" data-assistant="perplexity" role="tab" aria-selected="false" data-testid="tab-perplexity">Perplexity</button>
           <div className="toggle">
             <span>Before</span>
-            <label 
-              className="switch" 
-              data-testid="toggle-label-before-after"
-              onClick={(e) => {
-                e.preventDefault();
-                setIsAfter(!isAfter);
-              }}
-            >
-              <input
-                id="aiToggle"
-                type="checkbox"
-                checked={isAfter}
-                readOnly
-                aria-label="Toggle Before/After"
-                data-testid="toggle-before-after"
-              />
+            <label className="switch" data-testid="toggle-label-before-after">
+              <input id="aiToggle" type="checkbox" aria-label="Toggle Before/After" data-testid="toggle-before-after" />
               <span className="slider"></span>
             </label>
             <span>After</span>
@@ -279,38 +293,20 @@ export default function Home() {
         <div className="ai-lab__grid">
           <article className="answer" aria-live="polite">
             <div className="answer__header">
-              <div className="dot"></div>
-              <div className="dot"></div>
-              <div className="dot"></div>
+              <div className="dot"></div><div className="dot"></div><div className="dot"></div>
             </div>
-            <div className="answer__body" data-testid="answer-body">
-              {currentAnswer.text.split('Found For AI').map((part, index, arr) =>
-                index < arr.length - 1 ? (
-                  <span key={index}>
-                    {part}
-                    <mark>Found For AI</mark>
-                  </span>
-                ) : (
-                  part
-                )
-              )}
-            </div>
-            <div className="answer__badges" data-testid="answer-badges">
-              {currentAnswer.badges.map((badge, index) => (
-                <span key={index} className="badge">
-                  {badge}
-                </span>
-              ))}
-            </div>
+            <div className="answer__body" id="answerBody" data-testid="answer-body"></div>
+            <div className="answer__badges" id="answerBadges" data-testid="answer-badges"></div>
           </article>
 
-          <aside className="code">
-            <div className="code__label">JSON-LD (Organization)</div>
-            <pre>
-              <code className="language-json" data-testid="code-block">
-                {JSON.stringify(currentJSON, null, 2)}
-              </code>
-            </pre>
+          <aside className="panel">
+            <div className="panel__title">Example: <strong>Sparkle Floors</strong></div>
+            <p className="panel__desc">This shows the difference between a site with no structured data and the same business after we implement AEO best practices. By default we show the human summary — click "View example JSON-LD" to inspect a sanitized example for a fictional business.</p>
+
+            <ul className="panel__ticks" id="panelTicks"></ul>
+
+            <button id="viewCodeBtn" className="btn secondary" aria-expanded="false" data-testid="button-view-code">View example JSON-LD</button>
+            <pre id="codeBlock" className="code-block" hidden data-testid="code-block"><code className="language-json"></code></pre>
           </aside>
         </div>
 

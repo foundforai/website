@@ -1,0 +1,190 @@
+Replace the current AI Demo / AI Lab section with a sanitized demo that uses an example business (Sparkle Floors) and hides real site JSON-LD by default. Keep tabs (ChatGPT / Gemini / Perplexity) and Before/After toggle. On the right, show a short human-readable summary and a collapsed “View example JSON-LD” code panel that reveals a sanitized snippet for Sparkle Floors only when clicked. Do not display or reference any real Found For AI production JSON-LD or credentials.
+
+HTML (insert in place of old demo):
+<section id="ai-lab" class="ai-lab">
+  <h2 class="ai-lab__title">See how AI answers change after optimization</h2>
+  <p class="ai-lab__sub">Switch assistants and compare before vs. after. We structure entities + schema so AI can cite your brand.</p>
+
+  <div class="ai-lab__tabs" role="tablist" aria-label="AI assistants">
+    <button class="tab is-active" data-assistant="chatgpt" role="tab" aria-selected="true">ChatGPT</button>
+    <button class="tab" data-assistant="gemini" role="tab" aria-selected="false">Gemini</button>
+    <button class="tab" data-assistant="perplexity" role="tab" aria-selected="false">Perplexity</button>
+    <div class="toggle">
+      <span>Before</span>
+      <label class="switch">
+        <input id="aiToggle" type="checkbox" aria-label="Toggle Before/After">
+        <span class="slider"></span>
+      </label>
+      <span>After</span>
+    </div>
+  </div>
+
+  <div class="ai-lab__grid">
+    <!-- Answer card -->
+    <article class="answer" aria-live="polite">
+      <div class="answer__header">
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      </div>
+      <div class="answer__body" id="answerBody"></div>
+      <div class="answer__badges" id="answerBadges"></div>
+    </article>
+
+    <!-- Right panel: human-friendly summary + collapsible example JSON-LD -->
+    <aside class="panel">
+      <div class="panel__title">Example: <strong>Sparkle Floors</strong></div>
+      <p class="panel__desc">This shows the difference between a site with no structured data and the same business after we implement AEO best practices. By default we show the human summary — click “View example JSON-LD” to inspect a sanitized example for a fictional business.</p>
+
+      <ul class="panel__ticks" id="panelTicks"></ul>
+
+      <button id="viewCodeBtn" class="btn secondary" aria-expanded="false">View example JSON-LD</button>
+      <pre id="codeBlock" class="code-block" hidden><code class="language-json"></code></pre>
+    </aside>
+  </div>
+
+  <a class="btn primary ai-lab__cta" href="/pricing">Get My AI Visibility Audit →</a>
+</section>
+CSS (append to main CSS — adjust tokens if needed):
+.ai-lab{padding:56px 16px;max-width:1100px;margin:0 auto}
+.ai-lab__title{text-align:center;margin:0 0 6px}
+.ai-lab__sub{text-align:center;opacity:.85;max-width:800px;margin:0 auto 20px}
+.ai-lab__tabs{display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap;margin-bottom:16px}
+.tab{border:1px solid #e5e7eb;background:#fff;border-radius:999px;padding:8px 14px;font-weight:600;cursor:pointer}
+.tab.is-active{background:#eef4ff;border-color:#c9dcff}
+.toggle{display:flex;gap:8px;align-items:center;margin-left:8px}
+.switch{position:relative;display:inline-block;width:44px;height:24px}
+.switch input{opacity:0;width:0;height:0}
+.slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:#ddd;transition:.2s;border-radius:999px}
+.slider:before{position:absolute;content:"";height:18px;width:18px;left:3px;top:3px;background:#fff;transition:.2s;border-radius:50%}
+input:checked + .slider{background:#3b82f6}
+input:checked + .slider:before{transform:translateX(20px)}
+
+.ai-lab__grid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
+@media (max-width:900px){.ai-lab__grid{grid-template-columns:1fr}}
+
+.answer{border:1px solid #e5e7eb;background:#fff;border-radius:14px;box-shadow:0 6px 22px rgba(0,0,0,.06);overflow:hidden}
+.answer__header{display:flex;gap:6px;padding:10px;background:#f3f4f6}
+.answer__header .dot{height:10px;width:10px;border-radius:50%;background:#d1d5db}
+.answer__body{padding:18px 18px 6px;font-size:1.02rem;line-height:1.65}
+.answer__body mark{background:#fffbcc;padding:0 .2em;border-radius:4px}
+.answer__badges{display:flex;gap:8px;flex-wrap:wrap;padding:0 14px 16px}
+.badge{font-size:.8rem;border:1px solid #d1fae5;background:#ecfdf5;color:#065f46;border-radius:999px;padding:4px 10px}
+
+.panel{border:1px solid #e5e7eb;background:#fbfdff;border-radius:14px;padding:16px}
+.panel__title{font-weight:700;margin-bottom:8px}
+.panel__desc{margin:0 0 12px;opacity:.9}
+.panel__ticks{list-style:none;padding:0;margin:0 0 12px}
+.panel__ticks li{margin:8px 0;padding-left:18px;position:relative}
+.panel__ticks li:before{content:"•";position:absolute;left:0;color:#2563eb}
+.code-block{background:#0b1220;color:#dbeafe;padding:12px;border-radius:8px;overflow:auto;max-height:320px}
+.ai-lab__cta{display:block;width:max-content;margin:18px auto 0}
+JS (add before </body>; keeps everything client-side; no real data leaked):
+<script>
+(function(){
+  // Sanitized demo content for a fictional business (Sparkle Floors)
+  const DEMO = {
+    chatgpt: {
+      before: {
+        text: "I couldn't find enough structured information about Sparkle Floors. It may not expose entities or schema that assistants use to cite businesses.",
+        badges: ["No schema", "Entity unknown", "Not cited"]
+      },
+      after: {
+        text: "Sparkle Floors is a residential floor refinishing service in Denver, Colorado. They specialize in hardwood refinishing and use eco-friendly finishes. (Example result after implementing JSON-LD and sitemaps.)",
+        badges: ["Valid JSON-LD", "Recognized entity", "Cited in answers"]
+      }
+    },
+    gemini: {
+      before: {
+        text: "Limited structured signals for Sparkle Floors were detected; assistants can’t summarize the business confidently.",
+        badges: ["Weak entity", "Missing schema"]
+      },
+      after: {
+        text: "Sparkle Floors (Denver) provides hardwood refinishing services. After AEO, assistants can identify offerings, service area, and contact info for quoting.",
+        badges: ["Organization schema", "Sitemap present", "Answer-ready copy"]
+      }
+    },
+    perplexity: {
+      before: {
+        text: "Not enough machine-readable context to form an answer about Sparkle Floors.",
+        badges: ["Low confidence","Unstructured"]
+      },
+      after: {
+        text: "Sparkle Floors appears in assistant answers with service descriptions and local availability after schema and entity alignment.",
+        badges: ["Entity mapped","Local info available","Assistant-ready"]
+      }
+    }
+  };
+
+  const EXAMPLE_JSON = {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"Sparkle Floors",
+    "url":"https://sparkle-floors.example",
+    "logo":"https://sparkle-floors.example/logo.png",
+    "address":{"@type":"PostalAddress","addressLocality":"Denver","addressRegion":"CO","addressCountry":"US"},
+    "sameAs":["https://x.com/sparkle-floors","https://www.linkedin.com/company/sparkle-floors"]
+  };
+
+  const tabs = document.querySelectorAll('.tab');
+  const toggle = document.getElementById('aiToggle');
+  const answerBody = document.getElementById('answerBody');
+  const answerBadges = document.getElementById('answerBadges');
+  const viewBtn = document.getElementById('viewCodeBtn');
+  const codeBlock = document.querySelector('#codeBlock code');
+  const panelTicks = document.getElementById('panelTicks');
+
+  let current = 'chatgpt';
+  function render(){
+    const mode = toggle.checked ? 'after' : 'before';
+    const {text, badges} = DEMO[current][mode];
+    answerBody.innerHTML = text.replace(/Sparkle Floors/g,'<mark>Sparkle Floors</mark>');
+    answerBadges.innerHTML = badges.map(b=>`<span class="badge">${b}</span>`).join('');
+
+    // Right panel ticks (human readable)
+    const ticks = mode === 'after' ? [
+      "Recognized brand/entity",
+      "Valid JSON-LD & sitemap",
+      "Shows up in AI answers"
+    ] : [
+      "Missing entities & schema",
+      "Inconsistent metadata",
+      "Not referenced in AI answers"
+    ];
+    panelTicks.innerHTML = ticks.map(t=>`<li>${t}</li>`).join('');
+
+    codeBlock.textContent = JSON.stringify(EXAMPLE_JSON, null, 2);
+  }
+
+  tabs.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      tabs.forEach(b=>b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      current = btn.dataset.assistant;
+      render();
+    });
+  });
+
+  toggle.addEventListener('change', render);
+
+  viewBtn.addEventListener('click', ()=>{
+    const codeEl = document.getElementById('codeBlock');
+    const expanded = viewBtn.getAttribute('aria-expanded') === 'true';
+    if(!expanded){
+      codeEl.hidden = false;
+      viewBtn.setAttribute('aria-expanded','true');
+      viewBtn.textContent = 'Hide example JSON-LD';
+    } else {
+      codeEl.hidden = true;
+      viewBtn.setAttribute('aria-expanded','false');
+      viewBtn.textContent = 'View example JSON-LD';
+    }
+  });
+
+  // initial render
+  render();
+})();
+</script>
+Important notes for Replit dev:
+	•	Do not include any production JSON-LD or site credentials. The right panel must only contain the sanitized EXAMPLE_JSON for Sparkle Floors.
+	•	Leave any existing Organization schema for Found For AI in the page head untouched.
+	•	Replace the old demo markup; ensure no console errors.
+	•	Deploy and test in mobile and desktop.
