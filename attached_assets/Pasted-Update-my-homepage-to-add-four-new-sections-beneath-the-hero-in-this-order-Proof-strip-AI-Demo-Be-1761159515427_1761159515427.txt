@@ -1,0 +1,131 @@
+Update my homepage to add four new sections beneath the hero in this order: Proof strip, AI Demo (Before/After), Founder note/testimonial, and FAQ (with JSON-LD schema). Keep existing styles; extend with minimal CSS. Use lazy loading for images and preserve accessibility (alt text, proper headings).
+
+2) PROOF STRIP (immediately under hero)
+
+Insert this band with subtle grayscale logos and short trust text:
+<section class="proof-strip" aria-label="Trusted AI search tools">
+  <p class="proof-text">Trusted by teams optimizing for AI search tools:</p>
+  <ul class="logo-row">
+    <li><img src="/assets/logos/chatgpt.svg" alt="ChatGPT" loading="lazy"></li>
+    <li><img src="/assets/logos/gemini.svg" alt="Google Gemini" loading="lazy"></li>
+    <li><img src="/assets/logos/perplexity.svg" alt="Perplexity" loading="lazy"></li>
+    <li><img src="/assets/logos/claude.svg" alt="Claude" loading="lazy"></li>
+    <li><img src="/assets/logos/copilot.svg" alt="Microsoft Copilot" loading="lazy"></li>
+  </ul>
+</section>
+
+3) AI DEMO (Before vs After)
+
+Add a visual “show, don’t tell” block. Use two cards; allow me to swap screenshots later. Include a CTA to Pricing.
+<section class="ai-demo" id="ai-demo">
+  <h2>How AI sees your business — before and after</h2>
+  <p class="sub">We optimize your structure so assistants can read and recommend you.</p>
+  <div class="demo-grid">
+    <article class="demo-card">
+      <h3>Before</h3>
+      <img src="/assets/demo-before.png" alt="AI response before optimization" loading="lazy" width="640" height="400">
+      <ul class="ticks">
+        <li>Missing entities & schema</li>
+        <li>Inconsistent metadata</li>
+        <li>Not referenced in AI answers</li>
+      </ul>
+    </article>
+    <article class="demo-card after">
+      <h3>After</h3>
+      <img src="/assets/demo-after.png" alt="AI response after optimization" loading="lazy" width="640" height="400">
+      <ul class="ticks">
+        <li>Recognized brand/entity</li>
+        <li>Valid JSON-LD & sitemap</li>
+        <li>Shows up in AI answers</li>
+      </ul>
+    </article>
+  </div>
+  <a class="btn primary demo-cta" href="/pricing">Get My AI Visibility Audit →</a>
+</section>
+4) FOUNDER NOTE / TESTIMONIAL
+
+Add a human credibility block. (Use my real name + swap headshot path if available.)
+<section class="founder" aria-label="Founder note">
+  <div class="founder-wrap">
+    <img class="headshot" src="/assets/dustin-headshot.jpg" alt="Dustin Crump" loading="lazy" width="96" height="96">
+    <blockquote>
+      “I built Found For AI after hearing the same question from business owners: ‘How do we show up in ChatGPT?’ We make your site readable by AI — fast.”
+    </blockquote>
+    <p class="sig">— <strong>Dustin Crump</strong>, Founder</p>
+  </div>
+</section>
+5) FAQ (visible content + JSON-LD schema)
+
+Add a compact FAQ with details/summary and include FAQPage JSON-LD.
+<section class="faq" id="faq">
+  <h2>FAQ</h2>
+  <details>
+    <summary>What does “Found for AI” actually mean?</summary>
+    <p>Your site is structured so AI assistants can understand what you do, who you serve, and when to recommend you — not just index a page.</p>
+  </details>
+  <details>
+    <summary>How is this different from traditional SEO?</summary>
+    <p>We prioritize entities, JSON-LD schema, sitemaps, metadata consistency, and performance so AI models can parse and cite your content.</p>
+  </details>
+  <details>
+    <summary>How fast is the Starter Fix?</summary>
+    <p>Delivered within 7 business days for up to 10 pages, including audit, schema, sitemap, robots/llms.txt, and OG/Twitter cards.</p>
+  </details>
+</section>
+
+<!-- FAQ JSON-LD (place in <head> or just before </body>) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does “Found for AI” actually mean?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Your site is structured so AI assistants can understand what you do, who you serve, and when to recommend you — not just index a page." }
+    },
+    {
+      "@type": "Question",
+      "name": "How is this different from traditional SEO?",
+      "acceptedAnswer": { "@type": "Answer", "text": "We prioritize entities, JSON-LD schema, sitemaps, metadata consistency, and performance so AI models can parse and cite your content." }
+    },
+    {
+      "@type": "Question",
+      "name": "How fast is the Starter Fix?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Delivered within 7 business days for up to 10 pages, including audit, schema, sitemap, robots/llms.txt, and OG/Twitter cards." }
+    }
+  ]
+}
+</script>
+Minimal CSS (append to main CSS; keep tokens consistent)
+.proof-strip{padding:16px 0;border-top:1px solid #eee;border-bottom:1px solid #eee;background:#fafafa;text-align:center}
+.proof-strip .proof-text{margin:0 0 8px;font-size:.95rem;opacity:.85}
+.logo-row{display:flex;gap:20px;justify-content:center;align-items:center;flex-wrap:wrap;padding:0;margin:0;list-style:none}
+.logo-row img{height:24px;opacity:.75;filter:grayscale(1);transition:opacity .2s}
+.logo-row img:hover{opacity:1}
+
+.ai-demo{padding:56px 16px;text-align:center}
+.ai-demo .sub{opacity:.85;margin:0 auto 24px;max-width:720px}
+.demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:1100px;margin:16px auto}
+.demo-card{border:1px solid #eee;border-radius:14px;padding:16px;background:#fff;text-align:left;box-shadow:0 1px 6px rgba(0,0,0,.03)}
+.demo-card h3{margin:0 0 8px}
+.demo-card img{width:100%;height:auto;border-radius:10px;display:block}
+.demo-card.after{border-color:#d8e6ff;background:#f7fbff}
+.ticks{margin:12px 0 0 18px}
+.demo-cta{margin-top:16px}
+@media (max-width:860px){.demo-grid{grid-template-columns:1fr}}
+
+.founder{padding:40px 16px;background:#f9fafb}
+.founder-wrap{max-width:820px;margin:0 auto;text-align:center}
+.headshot{border-radius:50%;border:2px solid #eee;margin-bottom:12px}
+.founder blockquote{font-size:1.05rem;line-height:1.7;margin:0 auto 6px;max-width:720px}
+.founder .sig{opacity:.8;margin:0}
+
+.faq{padding:48px 16px;max-width:900px;margin:0 auto}
+.faq details{margin:10px 0;padding:12px;border:1px solid #eee;border-radius:10px;background:#fff}
+.faq summary{cursor:pointer;font-weight:600}
+Housekeeping
+	•	Add placeholder SVG logos in /assets/logos/ if they don’t exist; otherwise use text fallback.
+	•	Ensure images demo-before.png and demo-after.png exist; if not, create simple placeholders.
+	•	Keep all existing meta, canonical, and other schema intact.
+	•	Deploy when complete.
