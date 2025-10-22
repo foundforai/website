@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { auditSubmissionSchema, contactSubmissionSchema } from "@shared/schema";
+import { auditSubmissionSchema, contactSubmissionSchema, readinessReportSubmissionSchema } from "@shared/schema";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   app.post("/api/audit", async (req, res) => {
@@ -58,6 +58,50 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
     } catch (error: any) {
       console.error('Contact submission error:', error);
+      res.status(400).json({ 
+        success: false, 
+        message: error.message || 'Invalid submission data' 
+      });
+    }
+  });
+
+  app.post("/api/readiness-report", async (req, res) => {
+    try {
+      const validatedData = readinessReportSubmissionSchema.parse(req.body);
+      
+      const domain = new URL(validatedData.url).hostname;
+      
+      // Compute lite score
+      let score = 78;
+      if (!/^https:\/\//i.test(validatedData.url)) score -= 10;
+      if (/\/$/.test(validatedData.url)) score += 2;
+      if (/\.(io|ai|com)$/i.test(validatedData.url)) score += 5;
+      score = Math.max(0, Math.min(100, score));
+      
+      // TODO: Wire to email service (SendGrid, Resend, etc.) or webhook
+      console.log('=== READINESS REPORT SUBMISSION ===');
+      console.log('Name:', validatedData.name);
+      console.log('Email:', validatedData.email);
+      console.log('Website URL:', validatedData.url);
+      console.log('Domain:', domain);
+      console.log('Priority:', validatedData.priority);
+      console.log('Computed Score:', score);
+      console.log('Timestamp:', new Date().toISOString());
+      console.log('===================================');
+      
+      await storage.saveReadinessReportSubmission({
+        ...validatedData,
+        domain,
+        score,
+      });
+
+      res.json({ 
+        success: true,
+        score,
+        message: 'Check complete. We\'ll email your full results and next steps.' 
+      });
+    } catch (error: any) {
+      console.error('Readiness report submission error:', error);
       res.status(400).json({ 
         success: false, 
         message: error.message || 'Invalid submission data' 

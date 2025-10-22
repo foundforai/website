@@ -5,12 +5,14 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { useToast } from '@/hooks/use-toast';
+import { apiRequest } from '@/lib/queryClient';
 
 interface FormData {
   name: string;
   email: string;
   url: string;
-  priority: string;
+  priority: 'learn' | 'soon' | 'now';
 }
 
 interface ScoreResult {
@@ -19,6 +21,7 @@ interface ScoreResult {
 }
 
 export default function ReadinessReport() {
+  const { toast } = useToast();
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -27,14 +30,6 @@ export default function ReadinessReport() {
   });
   const [result, setResult] = useState<ScoreResult | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  function computeScore(url: string): number {
-    let score = 78;
-    if (!/^https:\/\//i.test(url)) score -= 10;
-    if (/\/$/.test(url)) score += 2;
-    if(/\.(io|ai|com)$/i.test(url)) score += 5;
-    return Math.max(0, Math.min(100, score));
-  }
 
   function getFindings(score: number): string[] {
     if (score < 70) {
@@ -59,32 +54,50 @@ export default function ReadinessReport() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const score = computeScore(formData.url.trim());
-    const findings = getFindings(score);
+    try {
+      const response = await apiRequest('POST', '/api/readiness-report', formData);
 
-    setResult({ score, findings });
+      const data = await response.json();
 
-    // TODO: Send lead to backend/Formspree
-    // Example: await fetch('/api/audit', { method: 'POST', ... });
+      if (!data.success) {
+        throw new Error(data.message || 'Submission failed');
+      }
 
-    // Analytics event
-    if (typeof window !== 'undefined' && (window as any).dataLayer) {
-      (window as any).dataLayer.push({
-        event: 'lead_submit',
-        form: 'readiness_report',
-        priority: formData.priority
+      const score = data.score;
+      const findings = getFindings(score);
+
+      setResult({ score, findings });
+
+      // Analytics event
+      if (typeof window !== 'undefined' && (window as any).dataLayer) {
+        (window as any).dataLayer.push({
+          event: 'lead_submit',
+          form: 'readiness_report',
+          priority: formData.priority
+        });
+      }
+
+      toast({
+        title: "Check complete!",
+        description: data.message,
       });
+
+      // Smooth scroll to result
+      setTimeout(() => {
+        document.getElementById('result')?.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'start' 
+        });
+      }, 100);
+    } catch (error: any) {
+      toast({
+        title: "Submission failed",
+        description: error.message || "Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
     }
-
-    setIsSubmitting(false);
-
-    // Smooth scroll to result
-    setTimeout(() => {
-      document.getElementById('result')?.scrollIntoView({ 
-        behavior: 'smooth', 
-        block: 'start' 
-      });
-    }, 100);
   }
 
   return (

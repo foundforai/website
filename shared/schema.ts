@@ -33,3 +33,12 @@ export const contactSubmissionSchema = z.object({
 });
 
 export type ContactSubmission = z.infer<typeof contactSubmissionSchema>;
+
+export const readinessReportSubmissionSchema = z.object({
+  name: z.string().min(1, "Name is required"),
+  email: z.string().email("Valid email is required"),
+  url: z.string().url("Valid website URL is required"),
+  priority: z.enum(["learn", "soon", "now"]),
+});
+
+export type ReadinessReportSubmission = z.infer<typeof readinessReportSubmissionSchema>;
