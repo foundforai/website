@@ -45,26 +45,26 @@ export default function Home() {
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Why do I need to be found by AI?",
+          "name": "What does \"Found for AI\" actually mean?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Because AI assistants like ChatGPT, Gemini, and Perplexity are the new search engines. Your customers are asking AI, not Google — and if AI can't see you, you don't exist to them."
+            "text": "Your site is structured so AI assistants can understand what you do, who you serve, and when to recommend you — not just index a page."
           }
         },
         {
           "@type": "Question",
-          "name": "Will AI searches replace Google?",
+          "name": "How is this different from traditional SEO?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "AI searches are already reshaping discovery. They won't fully replace Google overnight, but they'll become the main way people find businesses by 2026."
+            "text": "We prioritize entities, JSON-LD schema, sitemaps, metadata consistency, and performance so AI models can parse and cite your content."
           }
         },
         {
           "@type": "Question",
-          "name": "How does FoundForAI help my business?",
+          "name": "How fast is the Starter Fix?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "We make your business visible to AI by optimizing your website content, metadata, and structure for AI crawlers — so your business appears in AI-generated answers and search results."
+            "text": "Delivered within 7 business days for up to 10 pages, including audit, schema, sitemap, robots/llms.txt, and OG/Twitter cards."
           }
         }
       ]
@@ -140,24 +140,75 @@ export default function Home() {
       </section>
 
       {/* 2. PROOF STRIP */}
-      <section className="py-8 bg-muted/30 border-y">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {proofQuotes.map((item, index) => (
-              <div key={index} className="text-center" data-testid={`proof-quote-${index}`}>
-                <p className="text-sm md:text-base text-muted-foreground italic">
-                  "{item.quote}"
-                </p>
-                <p className="text-xs md:text-sm font-semibold mt-2 text-foreground">
-                  — {item.source}
-                </p>
-              </div>
-            ))}
-          </div>
+      <section className="proof-strip" aria-label="Trusted AI search tools">
+        <p className="proof-text">Trusted by teams optimizing for AI search tools:</p>
+        <ul className="logo-row">
+          <li><img src="/assets/logos/chatgpt.svg" alt="ChatGPT" loading="lazy" data-testid="logo-chatgpt" /></li>
+          <li><img src="/assets/logos/gemini.svg" alt="Google Gemini" loading="lazy" data-testid="logo-gemini" /></li>
+          <li><img src="/assets/logos/perplexity.svg" alt="Perplexity" loading="lazy" data-testid="logo-perplexity" /></li>
+          <li><img src="/assets/logos/claude.svg" alt="Claude" loading="lazy" data-testid="logo-claude" /></li>
+          <li><img src="/assets/logos/copilot.svg" alt="Microsoft Copilot" loading="lazy" data-testid="logo-copilot" /></li>
+        </ul>
+      </section>
+
+      {/* 3. AI DEMO (Before vs After) */}
+      <section className="ai-demo" id="ai-demo">
+        <h2>How AI sees your business — before and after</h2>
+        <p className="sub">We optimize your structure so assistants can read and recommend you.</p>
+        <div className="demo-grid">
+          <article className="demo-card">
+            <h3>Before</h3>
+            <img src="/assets/demo-before.svg" alt="AI response before optimization" loading="lazy" width="640" height="400" data-testid="demo-before-image" />
+            <ul className="ticks">
+              <li>Missing entities & schema</li>
+              <li>Inconsistent metadata</li>
+              <li>Not referenced in AI answers</li>
+            </ul>
+          </article>
+          <article className="demo-card after">
+            <h3>After</h3>
+            <img src="/assets/demo-after.svg" alt="AI response after optimization" loading="lazy" width="640" height="400" data-testid="demo-after-image" />
+            <ul className="ticks">
+              <li>Recognized brand/entity</li>
+              <li>Valid JSON-LD & sitemap</li>
+              <li>Shows up in AI answers</li>
+            </ul>
+          </article>
+        </div>
+        <Link href="/pricing" className="btn primary demo-cta" data-testid="button-demo-cta">
+          Get My AI Visibility Audit →
+        </Link>
+      </section>
+
+      {/* 4. FOUNDER NOTE / TESTIMONIAL */}
+      <section className="founder" aria-label="Founder note">
+        <div className="founder-wrap">
+          <img className="headshot" src="/assets/dustin-crump.jpg" alt="Dustin Crump" loading="lazy" width="96" height="96" data-testid="founder-headshot" />
+          <blockquote>
+            "I built Found For AI after hearing the same question from business owners: 'How do we show up in ChatGPT?' We make your site readable by AI — fast."
+          </blockquote>
+          <p className="sig">— <strong>Dustin Crump</strong>, Founder</p>
         </div>
       </section>
 
-      {/* 3. EXPLAINER SECTION */}
+      {/* 5. FAQ */}
+      <section className="faq" id="faq">
+        <h2>FAQ</h2>
+        <details data-testid="faq-found-for-ai">
+          <summary data-testid="faq-summary-found-for-ai">What does "Found for AI" actually mean?</summary>
+          <p>Your site is structured so AI assistants can understand what you do, who you serve, and when to recommend you — not just index a page.</p>
+        </details>
+        <details data-testid="faq-different-seo">
+          <summary data-testid="faq-summary-different-seo">How is this different from traditional SEO?</summary>
+          <p>We prioritize entities, JSON-LD schema, sitemaps, metadata consistency, and performance so AI models can parse and cite your content.</p>
+        </details>
+        <details data-testid="faq-starter-speed">
+          <summary data-testid="faq-summary-starter-speed">How fast is the Starter Fix?</summary>
+          <p>Delivered within 7 business days for up to 10 pages, including audit, schema, sitemap, robots/llms.txt, and OG/Twitter cards.</p>
+        </details>
+      </section>
+
+      {/* 6. EXPLAINER SECTION */}
       <section className="py-16 md:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -186,7 +237,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. OFFER CARD - Starter Fix $495 */}
+      {/* 7. OFFER CARD - Starter Fix $495 */}
       <section className="py-16 md:py-24 bg-gradient-to-br from-primary/5 to-accent/5">
         <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8">
           <Card className="border-2 border-primary shadow-xl">
@@ -231,7 +282,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. UPSELL TILES */}
+      {/* 8. UPSELL TILES */}
       <section className="py-16 md:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -265,7 +316,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. FINAL CTA */}
+      {/* 9. FINAL CTA */}
       <section className="py-16 md:py-24 bg-gradient-to-br from-primary/10 to-accent/10">
         <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
