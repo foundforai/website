@@ -256,6 +256,7 @@ export default function Home() {
             <span>Before</span>
             <label 
               className="switch" 
+              data-testid="toggle-label-before-after"
               onClick={(e) => {
                 e.preventDefault();
                 setIsAfter(!isAfter);
