@@ -254,9 +254,14 @@ export default function Home() {
         <h1>Found for AI.</h1>
         <h2>The new way to be discovered.</h2>
         <p>We help your business show up where customers actually search — in AI assistants like ChatGPT, Gemini, and Perplexity. From schema to AI visibility audits, we make sure your site is findable in the next era of search.</p>
-        <Link href="/pricing" className="btn primary" data-testid="button-hero-cta">
-          Get My AI Visibility Audit →
-        </Link>
+        <div className="cta-row">
+          <Link href="/readiness-report" className="btn primary" data-testid="button-free-check">
+            Run Free AI Visibility Check →
+          </Link>
+          <a href="https://square.link/u/o25cVCY4" target="_blank" rel="noopener" className="btn ghost" data-testid="button-buy-starter">
+            Buy Starter Fix – $495 →
+          </a>
+        </div>
       </section>
 
       {/* 2. PROOF STRIP */}

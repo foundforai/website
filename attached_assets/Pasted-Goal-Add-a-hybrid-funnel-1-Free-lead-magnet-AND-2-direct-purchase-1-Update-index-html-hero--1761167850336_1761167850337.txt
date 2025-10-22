@@ -1,0 +1,115 @@
+Goal: Add a hybrid funnel: (1) Free lead magnet AND (2) direct purchase.
+
+1) Update index.html hero CTAs
+Replace the current single CTA block with this 2-button layout (keep your headline/subhead as-is):
+<div class="cta-row">
+  <a class="btn primary" href="/readiness-report">Run Free AI Visibility Check →</a>
+  <a class="btn ghost" href="https://square.link/u/o25cVCY4" target="_blank" rel="noopener">
+    Buy Starter Fix – $495 →
+  </a>
+</div>
+2) Add CSS (append to main stylesheet)
+.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+.btn.ghost{background:transparent;border:2px solid var(--brand, #1f3b82);color:var(--brand, #1f3b82)}
+.btn.ghost:hover{background:rgba(31,59,130,.08)}
+@media (max-width:640px){.cta-row .btn{width:100%}}
+3) Create a new page: readiness-report.html (URL: /readiness-report)
+Purpose: capture leads and show a quick “lite audit” result with an upsell.
+
+HEAD (keep canonical + existing schema):
+	•	<title>: Free AI Visibility Check | Found For AI
+	•	<meta name="description">: Run a free AI visibility check. See how AI assistants read your site, then get a clear plan to fix issues.
+	•	Canonical: <link rel="canonical" href="https://foundforai.com/readiness-report">
+
+BODY markup:
+<section class="hero hero--brand" style="text-align:center;padding:48px 16px">
+  <h1>Free AI Visibility Check</h1>
+  <p>Tell us where to look. We’ll run a quick read of your site’s AI-readiness and show a lite score instantly.</p>
+</section>
+
+<section class="content" style="max-width:860px;margin:0 auto;padding:0 16px 32px">
+  <form id="auditForm" class="card" style="padding:16px;border:1px solid #e5e7eb;border-radius:12px;background:#fff">
+    <div class="grid">
+      <label>Full name<input name="name" required placeholder="Jane Doe"></label>
+      <label>Email<input name="email" type="email" required placeholder="jane@company.com"></label>
+      <label>Website URL<input name="url" type="url" required placeholder="https://example.com"></label>
+      <label>Priority
+        <select name="priority">
+          <option value="learn">Just exploring</option>
+          <option value="soon">Need this soon</option>
+          <option value="now">Ready to buy now</option>
+        </select>
+      </label>
+    </div>
+    <button class="btn primary" type="submit">Run Free Check →</button>
+    <p class="fineprint">We’ll email your full results and next steps. No spam.</p>
+  </form>
+
+  <div id="result" class="card" style="display:none;margin-top:16px;padding:16px;border:1px solid #e5e7eb;border-radius:12px;background:#f9fafb">
+    <h2 style="margin-top:0">Your Lite AI Visibility Score: <span id="score">—</span></h2>
+    <ul id="findings" style="line-height:1.7;margin:12px 0 0 18px"></ul>
+    <div class="cta-block" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:16px">
+      <a class="btn primary" href="https://square.link/u/o25cVCY4" target="_blank" rel="noopener">Buy Starter Fix – $495 →</a>
+      <a class="btn ghost" href="/pricing">See What’s Included →</a>
+    </div>
+  </div>
+</section>
+4) Add lightweight JS to simulate a quick result + capture lead
+(Place before </body>. If you use Formspree or Google Forms, add the POST in the submit handler where noted.)
+<script>
+(function(){
+  const form = document.getElementById('auditForm');
+  const result = document.getElementById('result');
+  const scoreEl = document.getElementById('score');
+  const findingsEl = document.getElementById('findings');
+
+  function computeScore(url){
+    // trivial “feel real” scoring: dock points if missing https or www, reward TLDs
+    let score = 78;
+    if(!/^https:\/\//i.test(url)) score -= 10;
+    if(/\/$/.test(url)) score += 2;
+    if(/\.(io|ai|com)$/i.test(url)) score += 5;
+    score = Math.max(0, Math.min(100, score));
+    return score;
+  }
+
+  function findings(score){
+    const out = [];
+    if(score < 70){
+      out.push("Missing or incomplete structured data (JSON-LD).");
+      out.push("Inconsistent metadata or sitemap not detected.");
+    } else if(score < 85){
+      out.push("Basic schema detected, but entities may be unclear.");
+      out.push("Opportunity to improve answer-ready content.");
+    } else {
+      out.push("Solid baseline. Next step: entity tightening & AEO content.");
+      out.push("Consider Pro plan for topic clusters + reporting.");
+    }
+    return out;
+  }
+
+  form.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(form));
+    const score = computeScore(data.url.trim());
+    scoreEl.textContent = score + "/100";
+    findingsEl.innerHTML = findings(score).map(li=>`<li>${li}</li>`).join("");
+    result.style.display = 'block';
+
+    // TODO: send lead to your backend/Formspree/Google Form
+    // Example (Formspree): await fetch('https://formspree.io/f/yourid', {method:'POST', headers:{'Accept':'application/json'}, body:new FormData(form)});
+
+    // Optional: fire a lightweight event for analytics
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({event:'lead_submit', form:'readiness_report', priority:data.priority});
+
+    // Smooth scroll to result
+    result.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+})();
+</script>
+5) Footer + sitemap
+	•	Add a footer text link: Free AI Visibility Check → /readiness-report
+	•	Add /readiness-report to sitemap.xml.
+
+6) Keep all existing meta, canonical, and schema intact. Deploy.
