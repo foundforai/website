@@ -124,26 +124,21 @@ export default function Home() {
 
   return (
     <PageLayout
-      title="Found For AI | Be Found by AI, Not Just Google"
-      description="Found For AI helps businesses get discovered by AI search engines like ChatGPT, Gemini, and Perplexity. We optimize your site's structure, schema, and content so you're visible to the new era of AI search."
+      title="Found For AI | The New Way to Be Discovered"
+      description="Found For AI helps businesses become visible in AI search engines like ChatGPT, Gemini, and Perplexity. We build your discoverability for the next era of search."
       canonical="https://foundforai.com"
       ogImage="/logo.png"
     >
       {/* 1. HERO SECTION */}
-      <section className="py-20 md:py-32 bg-gradient-to-br from-background via-primary/5 to-accent/5">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Be found by AI, not just Google — with Found For AI.
-          </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            Optimize your website so ChatGPT, Gemini, and Perplexity can actually see your business — not just search engines.
-          </p>
-          <Link href="/pricing">
-            <Button size="lg" className="text-lg px-8 font-semibold" data-testid="button-hero-cta">
-              Run My AI Visibility Check <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </Link>
-        </div>
+      <section className="hero hero--brand">
+        <h1>Found for AI.</h1>
+        <h2>The new way to be discovered.</h2>
+        <p>We help your business show up where customers actually search — in AI assistants like ChatGPT, Gemini, and Perplexity. From schema to AI visibility audits, we make sure your site is findable in the next era of search.</p>
+        <Link href="/pricing">
+          <Button size="lg" className="btn primary" data-testid="button-hero-cta">
+            Start with the Starter Fix →
+          </Button>
+        </Link>
       </section>
 
       {/* 2. PROOF STRIP */}

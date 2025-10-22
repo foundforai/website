@@ -351,4 +351,33 @@
   .border.hover-elevate:not(.no-hover-interaction-elevate)::after {
     inset: -1px;
   }
+
+  /* Hero Brand Section */
+  .hero--brand {
+    padding: 80px 16px;
+    text-align: center;
+  }
+
+  .hero--brand h1 {
+    font-size: clamp(36px, 6vw, 64px);
+    margin: 0 0 8px;
+  }
+
+  .hero--brand h2 {
+    font-size: clamp(20px, 3.5vw, 28px);
+    opacity: 0.9;
+    margin: 0 0 16px;
+  }
+
+  .hero--brand p {
+    max-width: 820px;
+    margin: 0 auto 24px;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 640px) {
+    .hero--brand {
+      padding: 48px 16px;
+    }
+  }
 }
