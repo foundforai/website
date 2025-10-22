@@ -33,11 +33,18 @@ Preferred communication style: Simple, everyday language.
 
 **Key Pages & Routes**
 - Marketing pages: Home, What Is AI SEO, What is Found For AI?, Services, About
-- Lead generation: Audit form (with thank you page)
+- Lead generation: Audit form (with thank you page), **Readiness Report** (free AI visibility check)
 - Content: Blog index and dynamic blog post pages
 - Utility: Contact form, 404 page
 - All pages implement SEO metadata via custom SEOHead component
 - Brand entity page: /what-is-found-for-ai with Organization, WebPage, and FAQPage schemas
+
+**Hybrid Funnel Strategy**
+- Homepage features dual CTAs: "Run Free AI Visibility Check" (lead magnet) + "Buy Starter Fix – $495" (direct purchase)
+- Free AI Visibility Check (/readiness-report): Lead capture form with instant lite score (0-100) based on URL analysis
+- Results page displays findings with upsell CTAs to Starter Fix and pricing page
+- Responsive .cta-row layout collapses to full-width buttons on mobile
+- .btn.ghost style provides outline button variant for secondary CTAs
 
 **Interactive Demos**
 - AI Lab (Homepage): Sanitized interactive demo using fictional "Sparkle Floors" business
@@ -58,11 +65,13 @@ Preferred communication style: Simple, everyday language.
 
 **API Design**
 - RESTful API endpoints under `/api` prefix
-- Two primary endpoints:
+- Three primary endpoints:
   - `POST /api/audit` - Handles audit form submissions
   - `POST /api/contact` - Handles contact form submissions
+  - `POST /api/readiness-report` - Handles readiness report form submissions with lite scoring
 - Zod schemas for request validation (defined in shared schema)
 - JSON response format with success/error states
+- Readiness report endpoint computes lite AI visibility score (0-100) server-side and returns it with submission confirmation
 
 **Development Workflow**
 - Vite dev server in middleware mode for HMR during development
@@ -90,6 +99,7 @@ Preferred communication style: Simple, everyday language.
 - User: id (UUID), username (unique), password
 - Audit Submission: fullName, email, websiteUrl, domain (extracted), consent (boolean)
 - Contact Submission: name, email, message
+- Readiness Report Submission: name, email, url, priority (learn|soon|now), domain (extracted), score (computed)
 - All submissions include server-side timestamp
 
 ### External Dependencies

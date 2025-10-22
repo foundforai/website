@@ -162,7 +162,7 @@ export default function ReadinessReport() {
                 <Label htmlFor="priority">Priority</Label>
                 <Select
                   value={formData.priority}
-                  onValueChange={(value) => setFormData({ ...formData, priority: value })}
+                  onValueChange={(value) => setFormData({ ...formData, priority: value as 'learn' | 'soon' | 'now' })}
                 >
                   <SelectTrigger id="priority" data-testid="select-priority">
                     <SelectValue />
