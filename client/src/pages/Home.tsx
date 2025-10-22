@@ -254,12 +254,18 @@ export default function Home() {
           </button>
           <div className="toggle">
             <span>Before</span>
-            <label className="switch">
+            <label 
+              className="switch" 
+              onClick={(e) => {
+                e.preventDefault();
+                setIsAfter(!isAfter);
+              }}
+            >
               <input
                 id="aiToggle"
                 type="checkbox"
                 checked={isAfter}
-                onChange={(e) => setIsAfter(e.target.checked)}
+                readOnly
                 aria-label="Toggle Before/After"
                 data-testid="toggle-before-after"
               />

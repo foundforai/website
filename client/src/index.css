@@ -543,76 +543,196 @@
     opacity: 1;
   }
 
-  /* AI Demo */
-  .ai-demo {
+  /* AI Lab - Interactive Demo */
+  .ai-lab {
     padding: 56px 16px;
-    text-align: center;
+    max-width: 1100px;
+    margin: 0 auto;
   }
 
-  .ai-demo h2 {
+  .ai-lab__title {
+    text-align: center;
+    margin: 0 0 6px;
     font-size: 2rem;
     font-weight: 600;
-    margin-bottom: 12px;
   }
 
-  .ai-demo .sub {
+  .ai-lab__sub {
+    text-align: center;
     opacity: 0.85;
-    margin: 0 auto 24px;
-    max-width: 720px;
+    max-width: 800px;
+    margin: 0 auto 20px;
   }
 
-  .demo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    max-width: 1100px;
-    margin: 16px auto;
+  .ai-lab__tabs {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
   }
 
-  .demo-card {
+  .tab {
     border: 1px solid hsl(var(--border));
-    border-radius: 14px;
-    padding: 16px;
-    background: hsl(var(--card));
-    text-align: left;
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.03);
-  }
-
-  .demo-card h3 {
-    margin: 0 0 8px;
-    font-size: 1.25rem;
+    background: hsl(var(--background));
+    border-radius: 999px;
+    padding: 8px 14px;
     font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
   }
 
-  .demo-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    display: block;
+  .tab:hover {
+    background: hsl(var(--muted));
   }
 
-  .demo-card.after {
-    border-color: hsl(var(--accent) / 0.5);
-    background: hsl(var(--accent) / 0.05);
+  .tab.is-active {
+    background: hsl(var(--primary) / 0.1);
+    border-color: hsl(var(--primary) / 0.3);
+    color: hsl(var(--primary));
   }
 
-  .demo-card .ticks {
-    margin: 12px 0 0 18px;
-    padding-left: 0;
+  .toggle {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-left: 8px;
   }
 
-  .demo-card .ticks li {
-    margin: 6px 0;
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
   }
 
-  .demo-cta {
-    margin-top: 16px;
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
   }
 
-  @media (max-width: 860px) {
-    .demo-grid {
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: hsl(var(--muted));
+    transition: 0.2s;
+    border-radius: 999px;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    top: 3px;
+    background: hsl(var(--background));
+    transition: 0.2s;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background: hsl(var(--primary));
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(20px);
+  }
+
+  .ai-lab__grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 16px;
+  }
+
+  @media (max-width: 900px) {
+    .ai-lab__grid {
       grid-template-columns: 1fr;
     }
+  }
+
+  .answer {
+    border: 1px solid hsl(var(--border));
+    background: hsl(var(--card));
+    border-radius: 14px;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+  }
+
+  .answer__header {
+    display: flex;
+    gap: 6px;
+    padding: 10px;
+    background: hsl(var(--muted));
+  }
+
+  .answer__header .dot {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    background: hsl(var(--muted-foreground) / 0.3);
+  }
+
+  .answer__body {
+    padding: 18px 18px 6px;
+    font-size: 1.02rem;
+    line-height: 1.65;
+  }
+
+  .answer__body mark {
+    background: hsl(var(--accent) / 0.2);
+    padding: 0 0.2em;
+    border-radius: 4px;
+    color: hsl(var(--accent-foreground));
+  }
+
+  .answer__badges {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 0 14px 16px;
+  }
+
+  .badge {
+    font-size: 0.8rem;
+    border: 1px solid hsl(var(--accent) / 0.3);
+    background: hsl(var(--accent) / 0.1);
+    color: hsl(var(--accent-foreground));
+    border-radius: 999px;
+    padding: 4px 10px;
+  }
+
+  .code {
+    border: 1px solid hsl(var(--border));
+    background: hsl(220 85% 8%);
+    color: hsl(210 100% 85%);
+    border-radius: 14px;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.06);
+    padding: 14px;
+  }
+
+  .code__label {
+    font-size: 0.8rem;
+    opacity: 0.8;
+    margin-bottom: 6px;
+  }
+
+  .code pre {
+    margin: 0;
+    overflow: auto;
+    max-height: 360px;
+  }
+
+  .ai-lab__cta {
+    display: block;
+    width: max-content;
+    margin: 18px auto 0;
   }
 
   /* Founder Section */
