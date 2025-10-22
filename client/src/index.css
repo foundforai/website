@@ -663,6 +663,15 @@
     border-radius: 14px;
     box-shadow: 0 6px 22px rgba(0, 0, 0, 0.06);
     overflow: hidden;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+
+  /* Optional polish: add a small 'alive' animation on After mode */
+  .ai-lab input:checked ~ * .answer,
+  .ai-lab input:checked ~ .ai-lab__grid .answer,
+  .ai-lab:has(input:checked) .answer {
+    box-shadow: 0 0 12px rgba(59, 130, 246, 0.15);
+    border-color: #c7d2fe;
   }
 
   .answer__header {
@@ -685,11 +694,16 @@
     line-height: 1.65;
   }
 
+  /* ===== Enhanced Highlight + Badge Styles for AI Demo ===== */
+  
+  /* Highlight: make 'Sparkle Floors' pop like a verified term */
   .answer__body mark {
-    background: hsl(var(--accent) / 0.2);
-    padding: 0 0.2em;
+    background: rgba(59, 130, 246, 0.25);
+    color: #1e40af;
+    font-weight: 600;
+    padding: 0.1em 0.3em;
     border-radius: 4px;
-    color: hsl(var(--accent-foreground));
+    transition: background 0.2s ease, color 0.2s ease;
   }
 
   .answer__badges {
@@ -699,13 +713,23 @@
     padding: 0 14px 16px;
   }
 
+  /* Badges: improve contrast and readability */
   .badge {
     font-size: 0.8rem;
-    border: 1px solid hsl(var(--accent) / 0.3);
-    background: hsl(var(--accent) / 0.1);
-    color: hsl(var(--accent-foreground));
+    background: #e0f2fe;
+    color: #075985;
+    border: 1px solid #bae6fd;
+    font-weight: 600;
     border-radius: 999px;
-    padding: 4px 10px;
+    padding: 5px 12px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+  }
+
+  .badge:hover {
+    background: #bae6fd;
+    color: #0c4a6e;
+    transform: translateY(-1px);
   }
 
   .panel {
