@@ -1,0 +1,119 @@
+Create a new page at what-is-found-for-ai.html (URL: /what-is-found-for-ai) that defines the brand and helps Google/Gemini/ChatGPT recognize Found For AI as an entity. Keep styles consistent with the site.
+
+1) HEAD (SEO + OG/Twitter + Canonical)
+	•	<title>: What is Found For AI? | The New Way to Be Discovered
+	•	<meta name="description">: Found For AI is a Utah-based technology studio that makes businesses discoverable by AI search engines like ChatGPT, Gemini, and Perplexity through AI-first SEO, schema, and technical setup.
+	•	Canonical: <link rel="canonical" href="https://foundforai.com/what-is-found-for-ai" />
+	•	OG/Twitter tags mirroring title/description and og:url=https://foundforai.com/what-is-found-for-ai, og:type=article, og:image=https://foundforai.com/logo.png.
+
+2) HERO (top of page)
+<section class="hero hero--brand">
+  <h1>What is Found For AI?</h1>
+  <p>Found For AI is a technology studio that makes businesses discoverable in AI search — so you’re visible to ChatGPT, Gemini, and Perplexity, not just Google.</p>
+  <a class="btn primary" href="/pricing">Get My AI Visibility Audit →</a>
+</section>
+3) BODY CONTENT (clear sections)
+<section class="content">
+  <h2>Who we are</h2>
+  <p><strong>Found For AI</strong> helps real businesses become visible in AI assistants. We structure your site with schema, fix technical SEO, and tune performance so AI systems can read and trust your content.</p>
+
+  <h2>What we do</h2>
+  <ul>
+    <li>AI Visibility audit and action plan</li>
+    <li>Schema.org (JSON-LD) implementation and validation</li>
+    <li>robots.txt &amp; <code>llms.txt</code>, sitemap creation and submission</li>
+    <li>OpenGraph/Twitter cards and metadata cleanup</li>
+    <li>Core Web Vitals tuning for better crawl/render</li>
+  </ul>
+
+  <h2>Why it matters now</h2>
+  <p>Customers increasingly ask AI — not just search engines — for recommendations. If AI can’t parse your site, you’re invisible where decisions are being made.</p>
+
+  <h2>How we work</h2>
+  <ol>
+    <li><strong>Audit:</strong> We analyze how AI currently sees your site.</li>
+    <li><strong>Fix:</strong> We implement schema, sitemaps, metadata, and performance improvements.</li>
+    <li><strong>Grow:</strong> Ongoing optimization (optional) to expand AI visibility.</li>
+  </ol>
+
+  <div class="cta-block">
+    <a class="btn primary" href="/pricing">View Pricing &amp; Book the Starter Fix →</a>
+    <a class="btn secondary" href="/services">See All Services →</a>
+  </div>
+</section>
+4) FAQ (bottom of page)
+<section class="faq">
+  <h2>FAQ</h2>
+  <details><summary>Are you an agency or a product?</summary><p>We’re a focused studio with a productized service model. You get fast deliverables and clear outcomes.</p></details>
+  <details><summary>How fast is the Starter Fix?</summary><p>Delivered within 7 business days for up to 10 pages.</p></details>
+  <details><summary>Can I upgrade?</summary><p>Yes — our Pro Visibility Plan adds ongoing optimization and reporting.</p></details>
+</section>
+5) Minimal CSS additions (extend site styles; keep it lean):
+.content{max-width:900px;margin:0 auto;padding:32px 16px;line-height:1.7}
+.cta-block{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0}
+.faq details{margin:8px 0;padding:12px;border:1px solid #eee;border-radius:10px}
+6) JSON-LD schema in <head> (enhanced Organization + WebPage + FAQPage)
+Insert after canonical:
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Found For AI",
+  "url": "https://foundforai.com",
+  "logo": "https://foundforai.com/logo.png",
+  "foundingDate": "2024",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Salt Lake City",
+    "addressRegion": "UT",
+    "addressCountry": "US"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "Customer Support",
+    "email": "support@foundforai.com"
+  },
+  "sameAs": [
+    "https://x.com/foundforai",
+    "https://www.linkedin.com/company/foundforai"
+  ],
+  "description": "Found For AI makes businesses discoverable in AI search engines (ChatGPT, Gemini, Perplexity) with AI-first SEO, schema, and technical setup."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "What is Found For AI?",
+  "url": "https://foundforai.com/what-is-found-for-ai",
+  "about": {
+    "@type": "Organization",
+    "name": "Found For AI",
+    "url": "https://foundforai.com"
+  },
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "Found For AI"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Are you an agency or a product?","acceptedAnswer":{"@type":"Answer","text":"We’re a focused studio with a productized service model. You get fast deliverables and clear outcomes."}},
+    {"@type":"Question","name":"How fast is the Starter Fix?","acceptedAnswer":{"@type":"Answer","text":"Delivered within 7 business days for up to 10 pages."}},
+    {"@type":"Question","name":"Can I upgrade?","acceptedAnswer":{"@type":"Answer","text":"Yes — our Pro Visibility Plan adds ongoing optimization and reporting."}}
+  ]
+}
+</script>
+7) Navigation & sitemap updates
+	•	Add a footer link: What is Found For AI? → /what-is-found-for-ai
+	•	Do not add to the main nav right now.
+	•	Add the new URL to /sitemap.xml.
+
+8) Link hygiene
+	•	Use HTTPS canonical internal links (no www, no http).
+
+9) Deploy and ensure the page passes Google Rich Results (FAQ + Organization + WebPage detected).
