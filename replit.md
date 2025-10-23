@@ -32,12 +32,13 @@ Preferred communication style: Simple, everyday language.
 - Toast notifications for user feedback via shadcn/ui toast system
 
 **Key Pages & Routes**
-- Marketing pages: Home, What Is AI SEO, What is Found For AI?, Services, About
+- Marketing pages: Home, What Is AI SEO, What is Found For AI?, **AEO (Answer Engine Optimization)**, Services, About
 - Lead generation: Audit form (with thank you page), **Readiness Report** (free AI visibility check)
 - Content: Blog index and dynamic blog post pages
 - Utility: Contact form, 404 page
 - All pages implement SEO metadata via custom SEOHead component
 - Brand entity page: /what-is-found-for-ai with Organization, WebPage, and FAQPage schemas
+- AEO page (/aeo): Dedicated explainer page for Answer Engine Optimization with comparison tables and benefit cards
 
 **Hybrid Funnel Strategy**
 - Homepage features dual CTAs: "Run Free AI Visibility Check" (lead magnet) + "Buy Starter Fix – $495" (direct purchase)
@@ -46,8 +47,15 @@ Preferred communication style: Simple, everyday language.
 - Responsive .cta-row layout collapses to full-width buttons on mobile
 - .btn.ghost style provides outline button variant for secondary CTAs
 
-**Interactive Demos**
-- AI Lab (Homepage): Sanitized interactive demo using fictional "Sparkle Floors" business
+**Interactive Demos & Educational Content**
+- **AEO Explainer Block (Homepage)**: Educational section below hero explaining Answer Engine Optimization
+  - Two-column grid layout with "Why it matters" and "What we implement" cards
+  - SEO vs AEO comparison table with 4 key differences
+  - Three CTAs: Free AI Visibility Check, Learn more about AEO, Buy Starter Fix
+  - Intentionally NO FAQ schema to avoid duplicate FAQPage issues
+  - Custom CSS styling using design tokens (responsive grid, subtle shadows)
+  
+- **AI Lab (Homepage)**: Sanitized interactive demo using fictional "Sparkle Floors" business
   - Vanilla JavaScript implementation (not React state) within useEffect
   - Three tabs (ChatGPT, Gemini, Perplexity) showing before/after AI optimization results
   - Collapsible JSON-LD code example (hidden by default)
@@ -128,9 +136,26 @@ Preferred communication style: Simple, everyday language.
 - Schema.org markup implementation:
   - Organization schema on "What is Found For AI?" page with company details (Salt Lake City, UT)
   - WebPage schema for brand entity definition
-  - FAQPage schema with 3 common questions
+  - FAQPage schemas on three pages only (Home, WhatIsFoundForAI, Pricing) - each matches visible FAQ content
+  - NO duplicate FAQPage schemas (removed global schema from SEOHead.tsx)
 - WWW to apex domain redirect (301) via middleware
-- Sitemap.xml maintained with all public pages
+- Sitemap.xml maintained with all public pages including /aeo
 - Open Graph and Twitter Card meta tags on all pages
-- Custom .btn.primary and .btn.secondary CSS classes for consistent CTA styling
+- Custom .btn.primary, .btn.secondary, and .btn.ghost CSS classes for consistent CTA styling
 - Google AI Overview brand recognition optimization
+
+## Recent Changes
+
+### October 23, 2025
+- **AEO Feature Implementation**: Added comprehensive Answer Engine Optimization content
+  - Created dedicated /aeo page with full explainer content, comparison tables, and CTAs
+  - Added AEO explainer section to homepage below hero (no FAQ schema to avoid duplicates)
+  - Custom CSS styling for .aeo, .aeo-card, .aeo-compare, .aeo-rows classes
+  - Updated sitemap.xml to include /aeo page
+  - Registered /aeo route in App.tsx
+  
+- **Fixed Duplicate FAQPage Schema Error**: Resolved duplicate schema validation issues
+  - Removed global FAQPage schema from SEOHead.tsx @graph array
+  - Updated Pricing.tsx FAQPage schema to match visible FAQ questions exactly
+  - Verified Home, WhatIsFoundForAI, and Pricing pages each have exactly ONE FAQPage schema
+  - Confirmed About and ReadinessReport pages have zero FAQPage schemas (no visible FAQs)
