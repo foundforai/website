@@ -63,11 +63,9 @@ export default function Home() {
     const toggle = document.getElementById('aiToggle') as HTMLInputElement;
     const answerBody = document.getElementById('answerBody');
     const answerBadges = document.getElementById('answerBadges');
-    const viewBtn = document.getElementById('viewCodeBtn');
-    const codeBlock = document.querySelector('#codeBlock code');
     const panelTicks = document.getElementById('panelTicks');
 
-    if (!tabs.length || !toggle || !answerBody || !answerBadges || !viewBtn || !codeBlock || !panelTicks) {
+    if (!tabs.length || !toggle || !answerBody || !answerBadges || !panelTicks) {
       return;
     }
 
@@ -90,8 +88,6 @@ export default function Home() {
         "Not referenced in AI answers"
       ];
       panelTicks!.innerHTML = ticks.map((t: string) => `<li>${t}</li>`).join('');
-
-      codeBlock!.textContent = JSON.stringify(EXAMPLE_JSON, null, 2);
     }
 
     tabs.forEach((btn) => {
@@ -108,20 +104,6 @@ export default function Home() {
     });
 
     toggle.addEventListener('change', render);
-
-    viewBtn.addEventListener('click', () => {
-      const codeEl = document.getElementById('codeBlock');
-      const expanded = viewBtn.getAttribute('aria-expanded') === 'true';
-      if (!expanded) {
-        codeEl!.hidden = false;
-        viewBtn.setAttribute('aria-expanded', 'true');
-        viewBtn.textContent = 'Hide example JSON-LD';
-      } else {
-        codeEl!.hidden = true;
-        viewBtn.setAttribute('aria-expanded', 'false');
-        viewBtn.textContent = 'View example JSON-LD';
-      }
-    });
 
     render();
   }, []);
@@ -306,12 +288,9 @@ export default function Home() {
 
           <aside className="panel">
             <div className="panel__title">Example: <strong>Sparkle Floors</strong></div>
-            <p className="panel__desc">This shows the difference between a site with no structured data and the same business after we implement AEO best practices. By default we show the human summary — click "View example JSON-LD" to inspect a sanitized example for a fictional business.</p>
+            <p className="panel__desc">This shows the difference between a site with no structured data and the same business after we implement AEO best practices.</p>
 
             <ul className="panel__ticks" id="panelTicks"></ul>
-
-            <button id="viewCodeBtn" className="btn secondary" aria-expanded="false" data-testid="button-view-code">View example JSON-LD</button>
-            <pre id="codeBlock" className="code-block" hidden data-testid="code-block"><code className="language-json"></code></pre>
           </aside>
         </div>
 
