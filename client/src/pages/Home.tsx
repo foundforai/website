@@ -246,7 +246,60 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. PROOF STRIP */}
+      {/* 2. AEO EXPLAINER */}
+      <section className="aeo" id="aeo-explainer">
+        <h2>What is AEO (Answer Engine Optimization)?</h2>
+        <p className="aeo-lead">
+          AEO makes your content show up inside AI-generated answers (ChatGPT, Gemini, Perplexity) — not just as blue links.
+          We structure your site so assistants can <strong>understand</strong>, <strong>trust</strong>, and <strong>cite</strong> your brand.
+        </p>
+
+        <div className="aeo-grid">
+          <div className="aeo-card">
+            <h3>Why it matters</h3>
+            <ul>
+              <li>Earn citations inside AI answers</li>
+              <li>Be machine-readable with JSON-LD & entities</li>
+              <li>Ship answer-ready, conversational content</li>
+            </ul>
+          </div>
+
+          <div className="aeo-card">
+            <h3>What we implement</h3>
+            <ul>
+              <li>Entity & schema mapping (Organization, Service, FAQ)</li>
+              <li>Sitemaps, robots/llms.txt, metadata cleanup</li>
+              <li>Performance tuning for fast renderability</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="aeo-compare">
+          <h3>SEO vs AEO, in one glance</h3>
+          <ul className="aeo-rows">
+            <li><span>SEO</span><span>Ranks pages/keywords in Google</span></li>
+            <li><span>AEO</span><span>Gets your brand cited in AI answers</span></li>
+            <li><span>SEO</span><span>Focus on links & on-page signals</span></li>
+            <li><span>AEO</span><span>Focus on entities, schema, answer formatting</span></li>
+          </ul>
+        </div>
+
+        <div className="cta-block">
+          <Link href="/readiness-report" className="btn primary" data-testid="button-aeo-visibility-check">
+            Run Free AI Visibility Check →
+          </Link>
+          <Link href="/aeo" className="btn ghost" data-testid="button-aeo-learn-more">
+            Learn more about AEO →
+          </Link>
+          <a href="https://square.link/u/o25cVCY4" target="_blank" rel="noopener" className="btn ghost" data-testid="button-aeo-buy-starter">
+            Buy Starter Fix – $495 →
+          </a>
+        </div>
+
+        <p className="aeo-note">Note: This section is informational only. We intentionally do not add FAQ schema here to avoid duplicate FAQPage issues.</p>
+      </section>
+
+      {/* 3. PROOF STRIP */}
       <section className="proof-strip" aria-label="Trusted AI search tools">
         <p className="proof-text">Trusted by teams optimizing for AI search tools:</p>
         <ul className="logo-row">
@@ -258,7 +311,7 @@ export default function Home() {
         </ul>
       </section>
 
-      {/* 3. AI LAB - Interactive Demo (Sanitized) */}
+      {/* 4. AI LAB - Interactive Demo (Sanitized) */}
       <section id="ai-lab" className="ai-lab">
         <h2 className="ai-lab__title">See how AI answers change after optimization</h2>
         <p className="ai-lab__sub">Switch assistants and compare before vs. after. We structure entities + schema so AI can cite your brand.</p>
@@ -299,7 +352,7 @@ export default function Home() {
         </Link>
       </section>
 
-      {/* 4. FOUNDER NOTE / TESTIMONIAL */}
+      {/* 5. FOUNDER NOTE / TESTIMONIAL */}
       <section className="founder" aria-label="Founder note">
         <div className="founder-wrap">
           <img className="headshot" src="/assets/dustin-crump.jpg" alt="Dustin Crump" loading="lazy" width="96" height="96" data-testid="founder-headshot" />
@@ -310,7 +363,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. FAQ */}
+      {/* 6. FAQ */}
       <section className="faq" id="faq">
         <h2>FAQ</h2>
         <details data-testid="faq-found-for-ai">
@@ -327,7 +380,7 @@ export default function Home() {
         </details>
       </section>
 
-      {/* 6. EXPLAINER SECTION */}
+      {/* 7. EXPLAINER SECTION */}
       <section className="py-16 md:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -356,7 +409,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. OFFER CARD - Starter Fix $495 */}
+      {/* 8. OFFER CARD - Starter Fix $495 */}
       <section className="py-16 md:py-24 bg-gradient-to-br from-primary/5 to-accent/5">
         <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8">
           <Card className="border-2 border-primary shadow-xl">

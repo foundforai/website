@@ -1,0 +1,71 @@
+Goal: Add an “AEO (Answer Engine Optimization)” explainer block to the homepage below the hero. Link to /aeo and keep your current CTAs. Do not add any new FAQ schema here.
+
+1) Insert this HTML block under the hero
+<!-- AEO Explainer -->
+<section class="aeo" id="aeo-explainer">
+  <h2>What is AEO (Answer Engine Optimization)?</h2>
+  <p class="aeo-lead">
+    AEO makes your content show up inside AI-generated answers (ChatGPT, Gemini, Perplexity) — not just as blue links.
+    We structure your site so assistants can <strong>understand</strong>, <strong>trust</strong>, and <strong>cite</strong> your brand.
+  </p>
+
+  <div class="aeo-grid">
+    <div class="aeo-card">
+      <h3>Why it matters</h3>
+      <ul>
+        <li>Earn citations inside AI answers</li>
+        <li>Be machine-readable with JSON-LD & entities</li>
+        <li>Ship answer-ready, conversational content</li>
+      </ul>
+    </div>
+
+    <div class="aeo-card">
+      <h3>What we implement</h3>
+      <ul>
+        <li>Entity & schema mapping (Organization, Service, FAQ)</li>
+        <li>Sitemaps, robots/llms.txt, metadata cleanup</li>
+        <li>Performance tuning for fast renderability</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="aeo-compare">
+    <h3>SEO vs AEO, in one glance</h3>
+    <ul class="aeo-rows">
+      <li><span>SEO</span><span>Ranks pages/keywords in Google</span></li>
+      <li><span>AEO</span><span>Gets your brand cited in AI answers</span></li>
+      <li><span>SEO</span><span>Focus on links & on-page signals</span></li>
+      <li><span>AEO</span><span>Focus on entities, schema, answer formatting</span></li>
+    </ul>
+  </div>
+
+  <div class="cta-block">
+    <a class="btn primary" href="/readiness-report">Run Free AI Visibility Check →</a>
+    <a class="btn ghost" href="/aeo">Learn more about AEO →</a>
+    <a class="btn ghost" href="https://square.link/u/o25cVCY4" target="_blank" rel="noopener">Buy Starter Fix – $495 →</a>
+  </div>
+
+  <p class="aeo-note">Note: This section is informational only. We intentionally do not add FAQ schema here to avoid duplicate FAQPage issues.</p>
+</section>
+2) Append minimal CSS (match your tokens; adjust colors if needed)
+.aeo{padding:56px 16px;max-width:1100px;margin:0 auto}
+.aeo h2{margin-bottom:6px;text-align:center}
+.aeo-lead{max-width:900px;margin:0 auto 20px;text-align:center;opacity:.9;line-height:1.7}
+.aeo-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:12px 0 8px}
+@media (max-width:900px){.aeo-grid{grid-template-columns:1fr}}
+.aeo-card{border:1px solid #e5e7eb;border-radius:14px;background:#fff;padding:16px;box-shadow:0 1px 8px rgba(0,0,0,.04)}
+.aeo-card h3{margin:0 0 8px}
+.aeo-card ul{margin:0 0 0 18px;line-height:1.7}
+.aeo-compare{margin-top:16px;border:1px dashed #dbeafe;background:#f8fbff;border-radius:12px;padding:14px}
+.aeo-compare h3{margin:0 0 8px}
+.aeo-rows{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr}
+.aeo-rows li{display:grid;grid-template-columns:120px 1fr;gap:12px;padding:8px 0;border-bottom:1px solid #eef2f7}
+.aeo-rows li:last-child{border-bottom:none}
+.cta-block{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:16px}
+.btn.ghost{background:transparent;border:2px solid var(--brand, #1f3b82);color:var(--brand, #1f3b82)}
+.btn.ghost:hover{background:rgba(31,59,130,.08)}
+.aeo-note{margin-top:10px;text-align:center;font-size:.9rem;opacity:.7}
+3) Link hygiene & sitemap
+	•	Ensure /aeo exists; if not, add the AEO page you created earlier and include it in sitemap.xml.
+	•	Keep all existing schema intact; do not add new FAQ JSON-LD here.
+	•	Deploy.
