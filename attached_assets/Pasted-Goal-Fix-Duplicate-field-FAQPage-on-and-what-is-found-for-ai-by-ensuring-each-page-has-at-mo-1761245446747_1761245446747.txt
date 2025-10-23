@@ -1,0 +1,47 @@
+Goal: Fix “Duplicate field ‘FAQPage’” on / and /what-is-found-for-ai by ensuring each page has at most one FAQPage JSON-LD block, and only if that page renders a visible FAQ section.
+
+Tasks:
+	1.	Search the project for @type": "FAQPage" and list all files/lines. Remove duplicates so there is exactly one FAQPage per page that actually shows FAQ content.
+	2.	If a page has no visible FAQ UI (<details><summary> or similar), remove its FAQPage block entirely.
+	3.	Make the remaining JSON-LD a single top-level script (not nested) with an id so we don’t double-include later:
+		<!-- Keep exactly ONE of these on a page that shows FAQ -->
+<script id="faq-schema" type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does “Found for AI” actually mean?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Your site is structured so AI assistants can understand what you do, who you serve, and when to recommend you — not just index a page."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is AEO different from traditional SEO?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SEO targets pages and keywords; AEO targets entities and answers using JSON-LD, consistent metadata, and answer-ready copy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How fast is the Starter Fix?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Delivered within 7 business days for up to 10 pages (schema, sitemap, robots/llms.txt, and OG/Twitter cards)."
+      }
+    }
+  ]
+}
+</script>
+	4.	Ensure there is no second FAQPage script in the page (check both <head> and bottom of <body> and any layout/partial includes). Do not nest FAQPage inside Organization or WebPage.
+	5.	If templates/partials auto-inject FAQ schema, guard them so they only render on pages that actually display FAQ content (e.g., with a template flag).
+	6.	Save and deploy.
+
+Post-deploy checks:
+	•	Run the Rich Results Test on / and /what-is-found-for-ai → it should detect zero FAQPage blocks on pages without FAQ, or one on pages with FAQ.
+	•	In Search Console, open the issue → Validate Fix.
+	

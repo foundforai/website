@@ -43,26 +43,26 @@ export default function Pricing() {
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "How long does the Starter Fix take?",
+          "name": "What's the turnaround time?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The Starter Fix is delivered within 7 business days. You'll receive a report, technical setup updates, and a follow-up call to review results."
+            "text": "The Starter Fix is completed within 7 business days. Pro Visibility Plans begin implementation within 48 hours of strategy call completion."
           }
         },
         {
           "@type": "Question",
-          "name": "What's included in the Starter Fix?",
+          "name": "What exactly do I receive?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Your Starter Fix includes a full AI SEO audit, Schema.org setup, sitemap creation, robots.txt and llms.txt configuration, OpenGraph and Twitter card setup, and Core Web Vitals report."
+            "text": "You'll get a complete technical audit report, all schema markup files, configuration files (robots.txt, llms.txt), sitemap setup, and a prioritized roadmap for ongoing optimization."
           }
         },
         {
           "@type": "Question",
-          "name": "Can I upgrade later?",
+          "name": "Do you offer refunds?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, you can upgrade to the Pro Visibility Plan for ongoing AI SEO optimization and content strategy at any time."
+            "text": "We offer a satisfaction guarantee. If you're not happy with the Starter Fix deliverables, we'll revise until you are. Enterprise clients receive custom SLAs."
           }
         }
       ]
