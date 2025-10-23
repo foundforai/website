@@ -1,0 +1,44 @@
+Goal: Eliminate the “Duplicate field ‘FAQPage’” error by ensuring each page has at most one FAQPage JSON-LD block that reflects visible FAQs.
+
+Tasks:
+	1.	Search the project for @type": "FAQPage" and list occurrences. Remove duplicates so there is one block per page that has an FAQ section.
+	2.	Do not add FAQPage to pages with no visible FAQ content.
+	3.	Replace any multiple blocks with a single merged block following this template (update Q/A text to match the page’s visible FAQs):
+		<!-- Keep exactly one FAQPage block per page -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does “Found for AI” actually mean?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Your site is structured so AI assistants can understand what you do, who you serve, and when to recommend you — not just index a page."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is AEO different from traditional SEO?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SEO targets pages and keywords; AEO targets entities and answers using JSON-LD, consistent metadata, and answer-ready copy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How fast is the Starter Fix?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Delivered within 7 business days for up to 10 pages (schema, sitemap, robots/llms.txt, and OG/Twitter cards)."
+      }
+    }
+  ]
+}
+</script>
+	4.	Ensure FAQPage is not nested inside other JSON-LD objects (e.g., Organization, WebPage). Each schema type should be its own top-level script tag.
+	5.	On pages with multiple FAQ sections, keep one FAQPage block and include all questions in the single mainEntity array.
+	6.	Remove any microdata/HTML itemtype="FAQPage" if present; use JSON-LD only to avoid duplication.
+	7.	Save, deploy, and verify with Google’s Rich Results Test (FAQ detected once per page).
+	
