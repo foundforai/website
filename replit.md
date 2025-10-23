@@ -33,7 +33,8 @@ Preferred communication style: Simple, everyday language.
 
 **Key Pages & Routes**
 - Marketing pages: Home, What Is AI SEO, What is Found For AI?, **AEO (Answer Engine Optimization)**, Services, About
-- Lead generation: Audit form (with thank you page), **Readiness Report** (free AI visibility check)
+- Lead generation: **Audit form at /audit** (free AI visibility check, with thank you page)
+  - /readiness-report redirects to /audit for backward compatibility
 - Content: Blog index and dynamic blog post pages
 - Utility: Contact form, 404 page
 - All pages implement SEO metadata via custom SEOHead component
@@ -42,8 +43,8 @@ Preferred communication style: Simple, everyday language.
 
 **Hybrid Funnel Strategy**
 - Homepage features dual CTAs: "Run Free AI Visibility Check" (lead magnet) + "Buy Starter Fix – $495" (direct purchase)
-- Free AI Visibility Check (/readiness-report): Lead capture form with instant lite score (0-100) based on URL analysis
-- Results page displays findings with upsell CTAs to Starter Fix and pricing page
+- Free AI Visibility Check (/audit): Lead capture form for AI visibility audits
+- All "Run Free AI Visibility Check" CTAs throughout the site point to /audit
 - Responsive .cta-row layout collapses to full-width buttons on mobile
 - .btn.ghost style provides outline button variant for secondary CTAs
 
@@ -73,13 +74,12 @@ Preferred communication style: Simple, everyday language.
 
 **API Design**
 - RESTful API endpoints under `/api` prefix
-- Three primary endpoints:
-  - `POST /api/audit` - Handles audit form submissions
+- Primary endpoints:
+  - `POST /api/audit` - Handles audit form submissions (main lead capture)
   - `POST /api/contact` - Handles contact form submissions
-  - `POST /api/readiness-report` - Handles readiness report form submissions with lite scoring
+  - `POST /api/readiness-report` - Legacy endpoint (kept for backward compatibility)
 - Zod schemas for request validation (defined in shared schema)
 - JSON response format with success/error states
-- Readiness report endpoint computes lite AI visibility score (0-100) server-side and returns it with submission confirmation
 
 **Development Workflow**
 - Vite dev server in middleware mode for HMR during development
@@ -147,6 +147,12 @@ Preferred communication style: Simple, everyday language.
 ## Recent Changes
 
 ### October 23, 2025
+- **URL Structure Simplification**: Consolidated audit/readiness-report URLs
+  - /readiness-report now redirects to /audit for cleaner URL structure
+  - Updated all CTAs throughout site (Home, AEO, Footer) to point to /audit
+  - Created Redirect component using wouter for client-side redirects
+  - Maintained backward compatibility with old /readiness-report URLs
+
 - **AEO Feature Implementation**: Added comprehensive Answer Engine Optimization content
   - Created dedicated /aeo page with full explainer content, comparison tables, and CTAs
   - Added AEO explainer section to homepage below hero (no FAQ schema to avoid duplicates)

@@ -4,12 +4,12 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import ScrollToTop from "@/components/ScrollToTop";
+import Redirect from "@/components/Redirect";
 import Home from "@/pages/Home";
 import WhatIsAISEO from "@/pages/WhatIsAISEO";
 import WhatIsFoundForAI from "@/pages/WhatIsFoundForAI";
 import AEO from "@/pages/AEO";
 import Audit from "@/pages/Audit";
-import ReadinessReport from "@/pages/ReadinessReport";
 import Services from "@/pages/Services";
 import Pricing from "@/pages/Pricing";
 import BookCall from "@/pages/BookCall";
@@ -31,7 +31,9 @@ function Router() {
         <Route path="/what-is-found-for-ai" component={WhatIsFoundForAI} />
         <Route path="/aeo" component={AEO} />
         <Route path="/audit" component={Audit} />
-        <Route path="/readiness-report" component={ReadinessReport} />
+        <Route path="/readiness-report">
+          <Redirect to="/audit" />
+        </Route>
         <Route path="/services" component={Services} />
         <Route path="/pricing" component={Pricing} />
         <Route path="/book-call" component={BookCall} />

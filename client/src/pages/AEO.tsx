@@ -38,7 +38,7 @@ export default function AEO() {
             We structure your site so assistants can understand, trust, and cite your brand.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/readiness-report">
+            <Link href="/audit">
               <Button size="lg" className="font-semibold group" data-testid="button-hero-check">
                 Run Free AI Visibility Check
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
@@ -136,7 +136,7 @@ export default function AEO() {
                 Run your free AI Visibility Check or grab the Starter Fix package to get AI-ready in 7 business days.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/readiness-report">
+                <Link href="/audit">
                   <Button size="lg" className="font-semibold group" data-testid="button-cta-check">
                     Run Free AI Visibility Check →
                   </Button>

@@ -29,7 +29,7 @@ export default function Footer() {
           <div>
             <h3 className="font-bold text-lg mb-4">Quick Links</h3>
             <nav className="flex flex-col gap-2 text-sm text-muted-foreground">
-              <Link href="/readiness-report" data-testid="link-footer-readiness-report">
+              <Link href="/audit" data-testid="link-footer-audit">
                 <span className="hover:text-primary transition-colors inline-flex items-center gap-1 font-semibold">
                   Free AI Visibility Check <ArrowRight className="h-3 w-3" />
                 </span>
