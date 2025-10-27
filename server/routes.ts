@@ -1,9 +1,24 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
+import { readFileSync } from "fs";
+import { join } from "path";
 import { storage } from "./storage";
 import { auditSubmissionSchema, contactSubmissionSchema, readinessReportSubmissionSchema } from "@shared/schema";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Serve static readiness-report.html for SEO (200 OK with content)
+  app.get("/readiness-report", (req, res) => {
+    try {
+      const htmlPath = join(process.cwd(), "client/public/readiness-report.html");
+      const htmlContent = readFileSync(htmlPath, "utf-8");
+      res.setHeader("Content-Type", "text/html");
+      res.status(200).send(htmlContent);
+    } catch (error) {
+      console.error("Error serving readiness-report.html:", error);
+      res.status(500).send("Error loading page");
+    }
+  });
+
   app.post("/api/audit", async (req, res) => {
     try {
       const validatedData = auditSubmissionSchema.parse(req.body);

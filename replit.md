@@ -34,7 +34,7 @@ Preferred communication style: Simple, everyday language.
 **Key Pages & Routes**
 - Marketing pages: Home, What Is AI SEO, What is Found For AI?, **AEO (Answer Engine Optimization)**, Services, About
 - Lead generation: **Audit form at /audit** (free AI visibility check, with thank you page)
-  - /readiness-report redirects to /audit for backward compatibility
+  - **/readiness-report**: Static HTML "processing" page (200 OK) with WebPage schema, auto-redirects to /purchase-complete after 5 seconds via meta refresh (for SEO/GSC indexing)
 - Content: Blog index and dynamic blog post pages
 - Utility: Contact form, 404 page
 - All pages implement SEO metadata via custom SEOHead component
@@ -147,11 +147,17 @@ Preferred communication style: Simple, everyday language.
 ## Recent Changes
 
 ### October 23, 2025
-- **URL Structure Simplification**: Consolidated audit/readiness-report URLs
-  - /readiness-report now redirects to /audit for cleaner URL structure
-  - Updated all CTAs throughout site (Home, AEO, Footer) to point to /audit
-  - Created Redirect component using wouter for client-side redirects
-  - Maintained backward compatibility with old /readiness-report URLs
+- **Readiness Report SEO Page**: Created static HTML page at /readiness-report for SEO/GSC
+  - Returns 200 OK with actual content (not a redirect)
+  - Shows "Preparing Your AI Visibility Report..." message
+  - Auto-redirects to /purchase-complete after 5 seconds via meta refresh
+  - Includes WebPage schema for proper indexing
+  - Removed React route so static HTML file loads directly
+  - Listed in sitemap.xml for full crawlability
+
+- **URL Structure Update**: Updated CTAs to point to /audit
+  - All "Run Free AI Visibility Check" CTAs throughout site (Home, AEO, Footer) now point to /audit
+  - /audit is the primary lead capture form
 
 - **AEO Feature Implementation**: Added comprehensive Answer Engine Optimization content
   - Created dedicated /aeo page with full explainer content, comparison tables, and CTAs

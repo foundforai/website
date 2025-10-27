@@ -31,9 +31,6 @@ function Router() {
         <Route path="/what-is-found-for-ai" component={WhatIsFoundForAI} />
         <Route path="/aeo" component={AEO} />
         <Route path="/audit" component={Audit} />
-        <Route path="/readiness-report">
-          <Redirect to="/audit" />
-        </Route>
         <Route path="/services" component={Services} />
         <Route path="/pricing" component={Pricing} />
         <Route path="/book-call" component={BookCall} />
