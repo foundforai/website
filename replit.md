@@ -146,6 +146,12 @@ Preferred communication style: Simple, everyday language.
 
 ## Recent Changes
 
+### October 27, 2025
+- **Search Route Cleanup**: Removed /search route and added GSC soft 404 fix
+  - Added `Disallow: /search` to robots.txt
+  - Added 301 redirect from /search to / in routes.ts
+  - Prevents GSC soft 404 errors for non-existent search page
+
 ### October 23, 2025
 - **Readiness Report SEO Page**: Created static HTML page at /readiness-report for SEO/GSC
   - Returns 200 OK with actual content (not a redirect)

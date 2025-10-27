@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /admin
+Disallow: /search
 Disallow: /http:/
 
 Sitemap: https://foundforai.com/sitemap.xml

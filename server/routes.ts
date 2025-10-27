@@ -19,6 +19,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Redirect /search to homepage (fixes GSC soft 404)
+  app.get("/search", (req, res) => {
+    res.redirect(301, "/");
+  });
+
   app.post("/api/audit", async (req, res) => {
     try {
       const validatedData = auditSubmissionSchema.parse(req.body);
