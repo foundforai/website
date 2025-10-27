@@ -64,7 +64,7 @@ export default function Footer() {
             <h3 className="font-bold text-lg mb-4">Connect</h3>
             <div className="flex gap-4">
               <a
-                href="https://www.linkedin.com/in/fripse"
+                href="https://www.linkedin.com/company/foundforai"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover-elevate rounded-lg p-2"
@@ -74,7 +74,7 @@ export default function Footer() {
                 <Linkedin className="h-5 w-5" />
               </a>
               <a
-                href="https://x.com/fripseai"
+                href="https://x.com/foundforai"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover-elevate rounded-lg p-2"

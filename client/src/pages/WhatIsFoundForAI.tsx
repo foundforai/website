@@ -12,8 +12,13 @@ export default function WhatIsFoundForAI() {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Found For AI",
+      "alternateName": ["FoundForAI", "Found for AI Consulting", "Found For AI SEO"],
       "url": "https://foundforai.com",
-      "logo": "https://foundforai.com/assets/logo.png",
+      "logo": "https://foundforai.com/found-for-ai-logo-black.png",
+      "image": [
+        "https://foundforai.com/found-for-ai-logo-black.png",
+        "https://foundforai.com/found-for-ai-logo-white.png"
+      ],
       "foundingDate": "2024",
       "address": {
         "@type": "PostalAddress",
@@ -26,10 +31,18 @@ export default function WhatIsFoundForAI() {
         "contactType": "Customer Support",
         "email": "support@foundforai.com"
       },
+      "founder": {
+        "@type": "Person",
+        "name": "Dustin Crump",
+        "url": "https://www.linkedin.com/in/fripse"
+      },
       "sameAs": [
         "https://x.com/foundforai",
-        "https://www.linkedin.com/company/foundforai"
+        "https://www.linkedin.com/company/foundforai",
+        "https://www.facebook.com/foundforai",
+        "https://www.instagram.com/foundforai"
       ],
+      "brand": { "@type": "Brand", "name": "Found For AI" },
       "description": "Found For AI makes businesses discoverable in AI search engines (ChatGPT, Gemini, Perplexity) with AI-first SEO, schema, and technical setup."
     });
     document.head.appendChild(orgSchema);
@@ -107,7 +120,7 @@ export default function WhatIsFoundForAI() {
       title="What is Found For AI? | The New Way to Be Discovered"
       description="Found For AI is a Utah-based technology studio that makes businesses discoverable by AI search engines like ChatGPT, Gemini, and Perplexity through AI-first SEO, schema, and technical setup."
       canonical="https://foundforai.com/what-is-found-for-ai"
-      ogImage="/assets/logo.png"
+      ogImage="/found-for-ai-logo-black.png"
     >
       {/* Hero Section */}
       <section className="hero hero--brand">

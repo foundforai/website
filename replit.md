@@ -147,6 +147,20 @@ Preferred communication style: Simple, everyday language.
 ## Recent Changes
 
 ### October 27, 2025
+- **Logo and Brand Schema Updates**: Integrated new official logo files across the site
+  - Added found-for-ai-logo-black.png and found-for-ai-logo-white.png to public directory
+  - Updated Navigation component to use new logos with theme-aware display
+  - Updated Organization schema across all pages with comprehensive brand information:
+    - Added alternateName array for brand variations
+    - Updated logo and image URLs to new files
+    - Added founder information (Dustin Crump)
+    - Updated sameAs links to company social profiles (LinkedIn, X, Facebook, Instagram)
+    - Added Brand entity reference
+  - Updated Open Graph and Twitter Card meta tags with new logo
+  - Added favicon links in index.html
+  - Updated Footer social links to company profiles
+  - Default OG image now uses found-for-ai-logo-black.png
+
 - **Search Route Cleanup**: Removed /search route and added GSC soft 404 fix
   - Added `Disallow: /search` to robots.txt
   - Added 301 redirect from /search to / in routes.ts

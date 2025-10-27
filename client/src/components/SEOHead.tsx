@@ -7,7 +7,7 @@ interface SEOHeadProps {
   ogImage?: string;
 }
 
-export default function SEOHead({ title, description, canonical, ogImage = '/og-image.jpg' }: SEOHeadProps) {
+export default function SEOHead({ title, description, canonical, ogImage = '/found-for-ai-logo-black.png' }: SEOHeadProps) {
   useEffect(() => {
     document.title = title;
     
@@ -128,14 +128,26 @@ export default function SEOHead({ title, description, canonical, ogImage = '/og-
           "@type": "Organization",
           "@id": "https://foundforai.com/#org",
           "name": "Found For AI",
-          "legalName": "Found For AI LLC",
+          "alternateName": ["FoundForAI", "Found for AI Consulting", "Found For AI SEO"],
           "url": "https://foundforai.com",
-          "logo": "https://foundforai.com/assets/logo.png",
+          "logo": "https://foundforai.com/found-for-ai-logo-black.png",
+          "image": [
+            "https://foundforai.com/found-for-ai-logo-black.png",
+            "https://foundforai.com/found-for-ai-logo-white.png"
+          ],
+          "description": "Found For AI helps businesses become discoverable inside AI assistants like ChatGPT, Gemini, and Perplexity through AEO (Answer Engine Optimization).",
+          "founder": {
+            "@type": "Person",
+            "name": "Dustin Crump",
+            "url": "https://www.linkedin.com/in/fripse"
+          },
           "sameAs": [
-            "https://www.linkedin.com/in/fripse",
-            "https://x.com/fripseai",
-            "https://fripse.com"
-          ]
+            "https://www.linkedin.com/company/foundforai",
+            "https://x.com/foundforai",
+            "https://www.facebook.com/foundforai",
+            "https://www.instagram.com/foundforai"
+          ],
+          "brand": { "@type": "Brand", "name": "Found For AI" }
         },
         {
           "@type": "WebSite",

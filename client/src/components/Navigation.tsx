@@ -3,8 +3,6 @@ import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import ThemeToggle from './ThemeToggle';
-import logoLight from '@assets/FoundforAI logo White_1760552497828.png';
-import logoDark from '@assets/FoundforAI logo black-2_1760552544405.png';
 
 export default function Navigation() {
   const [location] = useLocation();
@@ -47,8 +45,8 @@ export default function Navigation() {
           <Link href="/" data-testid="link-home">
             <div className="hover-elevate rounded-lg px-2 py-1">
               <img 
-                src={theme === 'dark' ? logoDark : logoLight} 
-                alt="Found For AI" 
+                src={theme === 'dark' ? '/found-for-ai-logo-white.png' : '/found-for-ai-logo-black.png'} 
+                alt={theme === 'dark' ? 'Found For AI logo white version' : 'Found For AI logo black version'}
                 className="w-[90px] sm:w-[120px] md:w-[180px] h-auto" 
               />
             </div>
