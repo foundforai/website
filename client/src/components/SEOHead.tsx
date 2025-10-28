@@ -7,7 +7,7 @@ interface SEOHeadProps {
   ogImage?: string;
 }
 
-export default function SEOHead({ title, description, canonical, ogImage = '/found-for-ai-logo-black.png' }: SEOHeadProps) {
+export default function SEOHead({ title, description, canonical, ogImage = '/found-for-ai-logo-white.png' }: SEOHeadProps) {
   useEffect(() => {
     document.title = title;
     
@@ -130,10 +130,10 @@ export default function SEOHead({ title, description, canonical, ogImage = '/fou
           "name": "Found For AI",
           "alternateName": ["FoundForAI", "Found for AI Consulting", "Found For AI SEO"],
           "url": "https://foundforai.com",
-          "logo": "https://foundforai.com/found-for-ai-logo-black.png",
+          "logo": "https://foundforai.com/found-for-ai-logo-white.png",
           "image": [
-            "https://foundforai.com/found-for-ai-logo-black.png",
-            "https://foundforai.com/found-for-ai-logo-white.png"
+            "https://foundforai.com/found-for-ai-logo-white.png",
+            "https://foundforai.com/found-for-ai-logo-black.png"
           ],
           "description": "Found For AI helps businesses become discoverable inside AI assistants like ChatGPT, Gemini, and Perplexity through AEO (Answer Engine Optimization).",
           "founder": {

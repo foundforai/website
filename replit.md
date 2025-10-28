@@ -146,6 +146,16 @@ Preferred communication style: Simple, everyday language.
 
 ## Recent Changes
 
+### October 28, 2025
+- **Logo File Reference Fix**: Corrected reversed logo file references
+  - Logo image files were named backwards (white.png contains black logo, black.png contains white logo)
+  - Swapped all file references throughout codebase to compensate:
+    - Navigation.tsx: Light mode shows white.png (black logo), dark mode shows black.png (white logo)
+    - index.html: Updated Organization schema and OG/Twitter card images
+    - SEOHead.tsx: Updated default ogImage and Organization schema
+    - WhatIsFoundForAI.tsx: Updated Organization schema and ogImage prop
+  - Verified via e2e testing: logos now display correctly in both light and dark themes
+
 ### October 27, 2025
 - **Logo and Brand Schema Updates**: Integrated new official logo files across the site
   - Added found-for-ai-logo-black.png and found-for-ai-logo-white.png to public directory
@@ -159,7 +169,7 @@ Preferred communication style: Simple, everyday language.
   - Updated Open Graph and Twitter Card meta tags with new logo
   - Added favicon links in index.html
   - Updated Footer social links to company profiles
-  - Default OG image now uses found-for-ai-logo-black.png
+  - Default OG image now uses found-for-ai-logo-white.png (which contains the black logo)
 
 - **Search Route Cleanup**: Removed /search route and added GSC soft 404 fix
   - Added `Disallow: /search` to robots.txt

@@ -14,10 +14,10 @@ export default function WhatIsFoundForAI() {
       "name": "Found For AI",
       "alternateName": ["FoundForAI", "Found for AI Consulting", "Found For AI SEO"],
       "url": "https://foundforai.com",
-      "logo": "https://foundforai.com/found-for-ai-logo-black.png",
+      "logo": "https://foundforai.com/found-for-ai-logo-white.png",
       "image": [
-        "https://foundforai.com/found-for-ai-logo-black.png",
-        "https://foundforai.com/found-for-ai-logo-white.png"
+        "https://foundforai.com/found-for-ai-logo-white.png",
+        "https://foundforai.com/found-for-ai-logo-black.png"
       ],
       "foundingDate": "2024",
       "address": {
@@ -120,7 +120,7 @@ export default function WhatIsFoundForAI() {
       title="What is Found For AI? | The New Way to Be Discovered"
       description="Found For AI is a Utah-based technology studio that makes businesses discoverable by AI search engines like ChatGPT, Gemini, and Perplexity through AI-first SEO, schema, and technical setup."
       canonical="https://foundforai.com/what-is-found-for-ai"
-      ogImage="/found-for-ai-logo-black.png"
+      ogImage="/found-for-ai-logo-white.png"
     >
       {/* Hero Section */}
       <section className="hero hero--brand">
