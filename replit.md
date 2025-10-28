@@ -147,6 +147,18 @@ Preferred communication style: Simple, everyday language.
 ## Recent Changes
 
 ### October 28, 2025
+- **Homepage AEO Section Reorganization**: Moved AEO explainer section for better conversion flow
+  - Moved entire "What is AEO (Answer Engine Optimization)" section from position 2 (after hero) to position 9 (directly before final CTA)
+  - New homepage structure: Hero → Proof Strip → AI Lab → Founder Note → FAQ → Stats → Starter Fix Offer → Upsell Tiles → **AEO Explainer** → Final CTA
+  - Added subtle horizontal divider (border-muted-foreground/20) between AEO section and final CTA for visual separation
+  - Preserved all original styling (.aeo, .aeo-lead, .aeo-grid, .aeo-card, .aeo-compare, .aeo-rows, .cta-block)
+  - All three CTAs in AEO section verified working:
+    - "Run Free AI Visibility Check" → /audit
+    - "Learn more about AEO" → /aeo
+    - "Buy Starter Fix – $495" → Square checkout (external, target="_blank")
+  - Maintained note about no FAQ schema to avoid duplicate FAQPage issues
+  - Verified via e2e testing: section appears in correct position above "Get Your Tech SEO & AI SEO Issues Fixed" heading
+
 - **Logo File Reference Fix**: Corrected reversed logo file references
   - Logo image files were named backwards (white.png contains black logo, black.png contains white logo)
   - Swapped all file references throughout codebase to compensate:
