@@ -147,6 +147,11 @@ Preferred communication style: Simple, everyday language.
 ## Recent Changes
 
 ### October 28, 2025
+- **Readiness Report Meta Tag Update**: Added robots noindex/nofollow meta tag
+  - Added `<meta name="robots" content="noindex, nofollow" />` to /readiness-report.html
+  - Prevents search engines from indexing this temporary processing page
+  - Page still returns 200 OK for GSC but won't appear in search results
+
 - **Homepage AEO Section Reorganization**: Moved AEO explainer section for better conversion flow
   - Moved entire "What is AEO (Answer Engine Optimization)" section from position 2 (after hero) to position 9 (directly before final CTA)
   - New homepage structure: Hero → Proof Strip → AI Lab → Founder Note → FAQ → Stats → Starter Fix Offer → Upsell Tiles → **AEO Explainer** → Final CTA
