@@ -27,7 +27,7 @@ export default function Pricing() {
       "offers": {
         "@type": "Offer",
         "priceCurrency": "USD",
-        "price": "495.00",
+        "price": "795.00",
         "url": "https://foundforai.com/pricing",
         "availability": "https://schema.org/InStock"
       }
@@ -46,7 +46,7 @@ export default function Pricing() {
           "name": "What's the turnaround time?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The Starter Fix is completed within 7 business days. Pro Visibility Plans begin implementation within 48 hours of strategy call completion."
+            "text": "The AI Visibility and Search Fix is completed within 7 business days. Pro Visibility Plans begin implementation within 48 hours of strategy call completion."
           }
         },
         {
@@ -62,7 +62,7 @@ export default function Pricing() {
           "name": "Do you offer refunds?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "We offer a satisfaction guarantee. If you're not happy with the Starter Fix deliverables, we'll revise until you are. Enterprise clients receive custom SLAs."
+            "text": "We offer a satisfaction guarantee. If you're not happy with the AI Visibility and Search Fix deliverables, we'll revise until you are. Enterprise clients receive custom SLAs."
           }
         }
       ]
@@ -83,7 +83,7 @@ export default function Pricing() {
   const faqs = [
     {
       question: "What's the turnaround time?",
-      answer: "The Starter Fix is completed within 7 business days. Pro Visibility Plans begin implementation within 48 hours of strategy call completion."
+      answer: "The AI Visibility and Search Fix is completed within 7 business days. Pro Visibility Plans begin implementation within 48 hours of strategy call completion."
     },
     {
       question: "What exactly do I receive?",
@@ -91,7 +91,7 @@ export default function Pricing() {
     },
     {
       question: "Do you offer refunds?",
-      answer: "We offer a satisfaction guarantee. If you're not happy with the Starter Fix deliverables, we'll revise until you are. Enterprise clients receive custom SLAs."
+      answer: "We offer a satisfaction guarantee. If you're not happy with the AI Visibility and Search Fix deliverables, we'll revise until you are. Enterprise clients receive custom SLAs."
     }
   ];
 
@@ -115,11 +115,11 @@ export default function Pricing() {
 
           {/* Pricing Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            {/* Card 1: Starter Fix */}
+            {/* Card 1: AI Visibility and Search Fix */}
             <Card className="relative transition-all duration-300 hover:shadow-xl hover:scale-[1.02] border-2">
               <CardHeader className="text-center pb-8">
-                <CardTitle className="text-2xl mb-2">Starter Fix</CardTitle>
-                <div className="text-4xl font-bold text-primary mb-2">$495</div>
+                <CardTitle className="text-2xl mb-2">AI Visibility and Search Fix</CardTitle>
+                <div className="text-4xl font-bold text-primary mb-2">$795</div>
                 <CardDescription className="text-base">
                   7-day AI SEO audit + technical setup for up to 10 pages.
                 </CardDescription>
@@ -162,7 +162,7 @@ export default function Pricing() {
                   data-testid="button-starter-fix"
                 >
                   <Button size="lg" className="w-full font-semibold">
-                    Book Starter Fix – $495
+                    Book AI Visibility and Search Fix – $795
                   </Button>
                 </a>
               </CardContent>
@@ -186,7 +186,7 @@ export default function Pricing() {
                 <ul className="space-y-3">
                   <li className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-sm">Everything in Starter Fix</span>
+                    <span className="text-sm">Everything in AI Visibility and Search Fix</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />

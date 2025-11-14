@@ -241,7 +241,7 @@ export default function Home() {
             Run Free AI Visibility Check →
           </Link>
           <a href="https://square.link/u/o25cVCY4" target="_blank" rel="noopener" className="btn ghost" data-testid="button-buy-starter">
-            Buy Starter Fix – $495 →
+            Buy AI Visibility and Search Fix – $795 →
           </a>
         </div>
       </section>
@@ -481,7 +481,7 @@ export default function Home() {
             Learn more about AEO →
           </Link>
           <a href="https://square.link/u/o25cVCY4" target="_blank" rel="noopener" className="btn ghost" data-testid="button-aeo-buy-starter">
-            Buy Starter Fix – $495 →
+            Buy AI Visibility and Search Fix – $795 →
           </a>
         </div>
 
