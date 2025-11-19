@@ -22,12 +22,12 @@ app.use((req, res, next) => {
   const host = req.get('host');
   const protocol = req.protocol;
   
-  // Skip redirects in development (localhost)
-  if (host?.includes('localhost') || host?.includes('127.0.0.1')) {
+  // Skip ALL redirects in development environment
+  if (app.get('env') === 'development') {
     return next();
   }
   
-  // Check if we need to redirect
+  // Production only: Check if we need to redirect
   const needsHttps = protocol !== 'https';
   const needsWwwStrip = host?.startsWith('www.');
   
