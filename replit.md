@@ -146,6 +146,20 @@ Preferred communication style: Simple, everyday language.
 
 ## Recent Changes
 
+### November 19, 2025
+- **Google Search Console Redirect Fix**: Implemented proper canonical URL enforcement
+  - Updated Express middleware in server/index.ts to force HTTPS and strip www subdomain
+  - All non-canonical URLs now redirect with single 301 to https://foundforai.com (no chains)
+  - Redirect logic handles:
+    - http://foundforai.com → https://foundforai.com (301)
+    - http://www.foundforai.com → https://foundforai.com (301)
+    - https://www.foundforai.com → https://foundforai.com (301)
+    - https://foundforai.com → no redirect (canonical)
+  - Localhost/development traffic exempted from redirects
+  - Fixes GSC "Page with redirect" indexing issues
+  - All sitemap URLs already use canonical format (verified)
+  - All internal links and canonical tags already use canonical format (verified)
+
 ### October 28, 2025
 - **Readiness Report Meta Tag Update**: Added robots noindex/nofollow meta tag
   - Added `<meta name="robots" content="noindex, nofollow" />` to /readiness-report.html

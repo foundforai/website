@@ -1,0 +1,52 @@
+You are a senior full stack developer helping me fix Google Search Console issues for my site foundforai.com.
+
+Context:
+Google Search Console shows a Page indexing issue, type "Page with redirect", with validation failed. Example URLs:
+- http://www.foundforai.com/
+- https://www.foundforai.com/
+- https://foundforai.com/readiness-report
+
+I want Google to treat https://foundforai.com as the only canonical version of my site, with clean 301 redirects and no redirecting URLs inside my sitemap or internal links.
+
+Task:
+1) Inspect this Replit project and identify:
+   - What serves the site, for example Express server, static hosting config, or something else
+   - Where redirects or domain handling are configured
+   - Where sitemap.xml, robots.txt, and HTML <head> tags are defined
+
+2) Implement domain and protocol canonicalization so that:
+   - http://foundforai.com and http://www.foundforai.com and https://www.foundforai.com
+     all return a single 301 redirect directly to https://foundforai.com
+   - There are no redirect chains, every non canonical URL goes to https://foundforai.com in one step
+
+   If this is an Express app, add middleware near the top that:
+   - Forces HTTPS
+   - Strips the www subdomain
+   Use permanent 301 status codes.
+
+3) Fix internal links and canonical tags:
+   - Update all internal links so they point directly to the canonical URLs,
+     for example use https://foundforai.com/ and https://foundforai.com/readiness-report
+     not http or www versions
+   - In every HTML page, set a single <link rel="canonical"> tag that matches
+     the final non redirect URL for that page
+
+4) Fix sitemap.xml:
+   - Open sitemap.xml in this project
+   - Remove any http or www URLs
+   - Make sure it only contains live, non redirect URLs that respond with HTTP 200, for example:
+        https://foundforai.com/
+        https://foundforai.com/readiness-report
+   - Ensure the <loc> values exactly match the canonical URLs
+
+5) Double check:
+   - After your edits, briefly describe what changed
+   - Show me the final versions of:
+        - The redirect logic or server config you edited
+        - sitemap.xml
+        - An example HTML file with the correct canonical tag
+   - Confirm that the three example URLs from Search Console will now:
+        a) either return 301 to https://foundforai.com
+        b) or return 200 and no longer redirect, and match what is in sitemap.xml
+
+Write clean, commented code so I can understand the redirect rules you add.

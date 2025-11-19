@@ -6,13 +6,41 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// Redirect www to apex domain
+// ============================================================================
+// CANONICAL URL ENFORCEMENT - Force HTTPS and strip www subdomain
+// ============================================================================
+// This middleware ensures all traffic goes to https://foundforai.com
+// with a single 301 redirect (no chains) for optimal SEO.
+//
+// Examples:
+//   http://foundforai.com/           → https://foundforai.com/
+//   http://www.foundforai.com/       → https://foundforai.com/
+//   https://www.foundforai.com/      → https://foundforai.com/
+//   https://foundforai.com/          → no redirect (canonical)
+// ============================================================================
 app.use((req, res, next) => {
   const host = req.get('host');
-  if (host && host.startsWith('www.')) {
-    const newHost = host.replace(/^www\./, '');
-    return res.redirect(301, `${req.protocol}://${newHost}${req.originalUrl}`);
+  const protocol = req.protocol;
+  
+  // Skip redirects in development (localhost)
+  if (host?.includes('localhost') || host?.includes('127.0.0.1')) {
+    return next();
   }
+  
+  // Check if we need to redirect
+  const needsHttps = protocol !== 'https';
+  const needsWwwStrip = host?.startsWith('www.');
+  
+  // If either condition is true, construct canonical URL and redirect
+  if (needsHttps || needsWwwStrip) {
+    const canonicalHost = host ? host.replace(/^www\./, '') : 'foundforai.com';
+    const canonicalUrl = `https://${canonicalHost}${req.originalUrl}`;
+    
+    // 301 Permanent Redirect - tells Google this is the final canonical URL
+    return res.redirect(301, canonicalUrl);
+  }
+  
+  // Already canonical, continue
   next();
 });
 
