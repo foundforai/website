@@ -356,13 +356,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. OFFER CARD - Starter Fix $495 */}
+      {/* 7. OFFER CARD - AI Visibility and Search Fix $795 */}
       <section className="py-16 md:py-24 bg-gradient-to-br from-primary/5 to-accent/5">
         <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8">
           <Card className="border-2 border-primary shadow-xl">
             <CardHeader className="text-center pb-8">
               <CardTitle className="text-3xl md:text-4xl mb-2">
-                Starter Fix — $495
+                AI Visibility and Search Fix — $795
               </CardTitle>
               <CardDescription className="text-lg">
                 Delivered within 7 business days
@@ -389,7 +389,7 @@ export default function Home() {
                   data-testid="button-starter-fix"
                 >
                   <Button size="lg" className="w-full md:w-auto text-lg px-12 font-semibold">
-                    Book Starter Fix – $495
+                    Book AI Visibility and Search Fix – $795
                   </Button>
                 </a>
                 <p className="text-sm text-muted-foreground">
