@@ -3,6 +3,10 @@ import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 
 const app = express();
+
+// Trust proxy - required for correct protocol detection behind load balancers/proxies
+app.set('trust proxy', true);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -20,7 +24,6 @@ app.use(express.urlencoded({ extended: false }));
 // ============================================================================
 app.use((req, res, next) => {
   const host = req.get('host');
-  const protocol = req.protocol;
   
   // Skip ALL redirects in development environment
   if (app.get('env') === 'development') {
@@ -28,6 +31,10 @@ app.use((req, res, next) => {
   }
   
   // Production only: Check if we need to redirect
+  // Use X-Forwarded-Proto header for correct protocol detection behind proxies
+  const forwardedProto = req.get('x-forwarded-proto');
+  const protocol = forwardedProto || req.protocol;
+  
   const needsHttps = protocol !== 'https';
   const needsWwwStrip = host?.startsWith('www.');
   
