@@ -1,5 +1,5 @@
 import { Link } from 'wouter';
-import { Linkedin, ArrowRight } from 'lucide-react';
+import { Linkedin, ArrowRight, Instagram, Facebook } from 'lucide-react';
 import { SiX } from 'react-icons/si';
 
 export default function Footer() {
@@ -82,6 +82,26 @@ export default function Footer() {
                 data-testid="link-twitter"
               >
                 <SiX className="h-5 w-5" />
+              </a>
+              <a
+                href="https://instagram.com/foundforai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover-elevate rounded-lg p-2"
+                aria-label="Instagram"
+                data-testid="link-instagram"
+              >
+                <Instagram className="h-5 w-5" />
+              </a>
+              <a
+                href="https://facebook.com/foundforai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover-elevate rounded-lg p-2"
+                aria-label="Facebook"
+                data-testid="link-facebook"
+              >
+                <Facebook className="h-5 w-5" />
               </a>
             </div>
           </div>
