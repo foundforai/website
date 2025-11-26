@@ -246,7 +246,36 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. PROOF STRIP */}
+      {/* 2. EXPLAINER SECTION - "Why AI SEO Is Exploding in 2025" (Moved to here) */}
+      <section className="py-16 md:py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Why AI SEO Is Exploding in 2025
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              AI assistants are becoming the new discovery engines. Sites must be AI-readable with proper schema, sitemaps, and metadata to be found in this new landscape.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {stats.map((stat, index) => (
+              <Card key={index} className="text-center" data-testid={`stat-card-${index}`}>
+                <CardContent className="p-8">
+                  <div className="text-5xl md:text-6xl font-bold text-primary mb-4">
+                    {stat.value}
+                  </div>
+                  <p className="text-base text-muted-foreground">
+                    {stat.label}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 3. PROOF STRIP */}
       <section className="proof-strip" aria-label="Trusted AI search tools">
         <p className="proof-text">Trusted by teams optimizing for AI search tools:</p>
         <ul className="logo-row">
@@ -258,7 +287,7 @@ export default function Home() {
         </ul>
       </section>
 
-      {/* 3. AI LAB - Interactive Demo (Sanitized) */}
+      {/* 4. AI LAB - Interactive Demo (Sanitized) */}
       <section id="ai-lab" className="ai-lab">
         <h2 className="ai-lab__title">See how AI answers change after optimization</h2>
         <p className="ai-lab__sub">Switch assistants and compare before vs. after. We structure entities + schema so AI can cite your brand.</p>
@@ -299,64 +328,7 @@ export default function Home() {
         </Link>
       </section>
 
-      {/* 4. FOUNDER NOTE / TESTIMONIAL */}
-      <section className="founder" aria-label="Founder note">
-        <div className="founder-wrap">
-          <img className="headshot" src="/assets/dustin-crump.jpg" alt="Dustin Crump" loading="lazy" width="96" height="96" data-testid="founder-headshot" />
-          <blockquote>
-            "I built Found For AI after hearing the same question from business owners: 'How do we show up in ChatGPT?' We make your site readable by AI — fast."
-          </blockquote>
-          <p className="sig">— <strong>Dustin Crump</strong>, Founder</p>
-        </div>
-      </section>
-
-      {/* 5. FAQ */}
-      <section className="faq" id="faq">
-        <h2>FAQ</h2>
-        <details data-testid="faq-found-for-ai">
-          <summary data-testid="faq-summary-found-for-ai">What does "Found for AI" actually mean?</summary>
-          <p>Your site is structured so AI assistants can understand what you do, who you serve, and when to recommend you — not just index a page.</p>
-        </details>
-        <details data-testid="faq-different-seo">
-          <summary data-testid="faq-summary-different-seo">How is this different from traditional SEO?</summary>
-          <p>We prioritize entities, JSON-LD schema, sitemaps, metadata consistency, and performance so AI models can parse and cite your content.</p>
-        </details>
-        <details data-testid="faq-starter-speed">
-          <summary data-testid="faq-summary-starter-speed">How fast is the Starter Fix?</summary>
-          <p>Delivered within 7 business days for up to 10 pages, including audit, schema, sitemap, robots/llms.txt, and OG/Twitter cards.</p>
-        </details>
-      </section>
-
-      {/* 6. EXPLAINER SECTION */}
-      <section className="py-16 md:py-24 bg-background">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Why AI SEO Is Exploding in 2025
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              AI assistants are becoming the new discovery engines. Sites must be AI-readable with proper schema, sitemaps, and metadata to be found in this new landscape.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {stats.map((stat, index) => (
-              <Card key={index} className="text-center" data-testid={`stat-card-${index}`}>
-                <CardContent className="p-8">
-                  <div className="text-5xl md:text-6xl font-bold text-primary mb-4">
-                    {stat.value}
-                  </div>
-                  <p className="text-base text-muted-foreground">
-                    {stat.label}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 7. OFFER CARD - AI Visibility and Search Fix $795 */}
+      {/* 5. OFFER CARD - AI Visibility and Search Fix $795 */}
       <section className="py-16 md:py-24 bg-gradient-to-br from-primary/5 to-accent/5">
         <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8">
           <Card className="border-2 border-primary shadow-xl">
@@ -401,7 +373,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 8. UPSELL TILES */}
+      {/* 6. UPSELL TILES */}
       <section className="py-16 md:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -435,7 +407,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 9. AEO EXPLAINER */}
+      {/* 7. AEO EXPLAINER */}
       <section className="aeo" id="aeo-explainer">
         <h2>What is AEO (Answer Engine Optimization)?</h2>
         <p className="aeo-lead">
@@ -493,7 +465,7 @@ export default function Home() {
         <hr className="border-t border-muted-foreground/20 my-8" />
       </div>
 
-      {/* 10. FINAL CTA */}
+      {/* 8. FINAL CTA */}
       <section className="py-16 md:py-24 bg-gradient-to-br from-primary/10 to-accent/10">
         <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -525,6 +497,34 @@ export default function Home() {
             — 24-hour response.
           </p>
         </div>
+      </section>
+
+      {/* 9. FOUNDER NOTE / TESTIMONIAL (Moved to bottom) */}
+      <section className="founder" aria-label="Founder note">
+        <div className="founder-wrap">
+          <img className="headshot" src="/assets/dustin-crump.jpg" alt="Dustin Crump" loading="lazy" width="96" height="96" data-testid="founder-headshot" />
+          <blockquote>
+            "I built Found For AI after hearing the same question from business owners: 'How do we show up in ChatGPT?' We make your site readable by AI — fast."
+          </blockquote>
+          <p className="sig">— <strong>Dustin Crump</strong>, Founder</p>
+        </div>
+      </section>
+
+      {/* 10. FAQ (Moved to very bottom) */}
+      <section className="faq" id="faq">
+        <h2>FAQ</h2>
+        <details data-testid="faq-found-for-ai">
+          <summary data-testid="faq-summary-found-for-ai">What does "Found for AI" actually mean?</summary>
+          <p>Your site is structured so AI assistants can understand what you do, who you serve, and when to recommend you — not just index a page.</p>
+        </details>
+        <details data-testid="faq-different-seo">
+          <summary data-testid="faq-summary-different-seo">How is this different from traditional SEO?</summary>
+          <p>We prioritize entities, JSON-LD schema, sitemaps, metadata consistency, and performance so AI models can parse and cite your content.</p>
+        </details>
+        <details data-testid="faq-starter-speed">
+          <summary data-testid="faq-summary-starter-speed">How fast is the Starter Fix?</summary>
+          <p>Delivered within 7 business days for up to 10 pages, including audit, schema, sitemap, robots/llms.txt, and OG/Twitter cards.</p>
+        </details>
       </section>
     </PageLayout>
   );
