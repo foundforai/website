@@ -482,23 +482,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SUPPORT NOTE */}
-      <section className="py-8 bg-muted/20">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 text-center">
-          <p className="text-sm text-muted-foreground">
-            Questions?{' '}
-            <a
-              href="mailto:support@foundforai.com"
-              className="text-primary hover:underline font-medium"
-              data-testid="link-support-email"
-            >
-              support@foundforai.com
-            </a>{' '}
-            — 24-hour response.
-          </p>
-        </div>
-      </section>
-
       {/* 9. FOUNDER NOTE / TESTIMONIAL (Moved to bottom) */}
       <section className="founder" aria-label="Founder note">
         <div className="founder-wrap">
@@ -525,6 +508,23 @@ export default function Home() {
           <summary data-testid="faq-summary-starter-speed">How fast is the Starter Fix?</summary>
           <p>Delivered within 7 business days for up to 10 pages, including audit, schema, sitemap, robots/llms.txt, and OG/Twitter cards.</p>
         </details>
+      </section>
+
+      {/* SUPPORT NOTE (Moved to very bottom) */}
+      <section className="py-8 bg-muted/20">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 text-center">
+          <p className="text-sm text-muted-foreground">
+            Questions?{' '}
+            <a
+              href="mailto:support@foundforai.com"
+              className="text-primary hover:underline font-medium"
+              data-testid="link-support-email"
+            >
+              support@foundforai.com
+            </a>{' '}
+            — 24-hour response.
+          </p>
+        </div>
       </section>
     </PageLayout>
   );
