@@ -27,7 +27,7 @@ export default function Pricing() {
       "offers": {
         "@type": "Offer",
         "priceCurrency": "USD",
-        "price": "795.00",
+        "price": "1595.00",
         "url": "https://foundforai.com/pricing",
         "availability": "https://schema.org/InStock"
       }
@@ -119,7 +119,7 @@ export default function Pricing() {
             <Card className="relative transition-all duration-300 hover:shadow-xl hover:scale-[1.02] border-2">
               <CardHeader className="text-center pb-8">
                 <CardTitle className="text-2xl mb-2">AI Visibility and Search Fix</CardTitle>
-                <div className="text-4xl font-bold text-primary mb-2">$795</div>
+                <div className="text-4xl font-bold text-primary mb-2">$1595</div>
                 <CardDescription className="text-base">
                   7-day AI SEO audit + technical setup for up to 10 pages.
                 </CardDescription>
@@ -162,7 +162,7 @@ export default function Pricing() {
                   data-testid="button-starter-fix"
                 >
                   <Button size="lg" className="w-full font-semibold">
-                    Book AI Visibility and Search Fix – $795
+                    Book AI Visibility and Search Fix – $1595
                   </Button>
                 </a>
               </CardContent>
