@@ -351,19 +351,11 @@ export default function Home() {
               </ul>
 
               <div className="text-center space-y-3">
-                <a
-                  href="https://square.link/u/o25cVCY4"
-                  target="_blank"
-                  rel="noopener"
-                  data-testid="button-starter-fix"
-                >
-                  <Button size="lg" className="w-full md:w-auto text-lg px-12 font-semibold">
-                    Book AI Visibility and Search Fix – $1595
+                <Link href="/audit">
+                  <Button size="lg" className="w-full md:w-auto text-lg px-12 font-semibold" data-testid="button-starter-fix">
+                    Run Free AI Visibility Check →
                   </Button>
-                </a>
-                <p className="text-sm text-muted-foreground">
-                  Secure checkout via Square.
-                </p>
+                </Link>
               </div>
             </CardContent>
           </Card>
