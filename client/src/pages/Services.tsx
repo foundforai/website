@@ -8,7 +8,7 @@ export default function Services() {
   const services = [
     {
       name: 'AI Visibility Starter Fix',
-      price: '$795',
+      price: '$1595',
       description: '7-day AI SEO audit + technical setup for up to 10 pages',
       features: [
         'AI SEO & technical audit',
