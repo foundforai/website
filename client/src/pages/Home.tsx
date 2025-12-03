@@ -240,9 +240,6 @@ export default function Home() {
           <Link href="/audit" className="btn primary" data-testid="button-free-check">
             Run Free AI Visibility Check →
           </Link>
-          <a href="https://square.link/u/o25cVCY4" target="_blank" rel="noopener" className="btn ghost" data-testid="button-buy-starter">
-            Buy AI Visibility and Search Fix – $1595 →
-          </a>
         </div>
       </section>
 
@@ -452,9 +449,6 @@ export default function Home() {
           <Link href="/aeo" className="btn ghost" data-testid="button-aeo-learn-more">
             Learn more about AEO →
           </Link>
-          <a href="https://square.link/u/o25cVCY4" target="_blank" rel="noopener" className="btn ghost" data-testid="button-aeo-buy-starter">
-            Buy AI Visibility and Search Fix – $1595 →
-          </a>
         </div>
 
         <p className="aeo-note">Note: This section is informational only. We intentionally do not add FAQ schema here to avoid duplicate FAQPage issues.</p>
