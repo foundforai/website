@@ -325,44 +325,7 @@ export default function Home() {
         </Link>
       </section>
 
-      {/* 5. OFFER CARD - AI Visibility and Search Fix $795 */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-primary/5 to-accent/5">
-        <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8">
-          <Card className="border-2 border-primary shadow-xl">
-            <CardHeader className="text-center pb-8">
-              <CardTitle className="text-3xl md:text-4xl mb-2">
-                AI Visibility and Search Fix — $1595
-              </CardTitle>
-              <CardDescription className="text-lg">
-                Delivered within 7 business days
-              </CardDescription>
-              <p className="text-base text-muted-foreground mt-2">
-                Complete AI SEO audit and technical setup for up to 10 pages.
-              </p>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <ul className="space-y-3 mb-8">
-                {starterFeatures.map((feature, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <Check className="h-6 w-6 text-accent shrink-0 mt-0.5" />
-                    <span className="text-base">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="text-center space-y-3">
-                <Link href="/audit">
-                  <Button size="lg" className="w-full md:w-auto text-lg px-12 font-semibold" data-testid="button-starter-fix">
-                    Run Free AI Visibility Check →
-                  </Button>
-                </Link>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* 6. UPSELL TILES */}
+      {/* 5. UPSELL TILES */}
       <section className="py-16 md:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
