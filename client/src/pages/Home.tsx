@@ -397,7 +397,7 @@ export default function Home() {
           </ul>
         </div>
 
-        <div className="cta-block">
+        <div className="cta-block text-center">
           <Link href="/audit" className="btn primary" data-testid="button-aeo-visibility-check">
             Run Free AI Visibility Check →
           </Link>
