@@ -241,7 +241,7 @@ export default function Home() {
             Run Free AI Visibility Check →
           </Link>
           <a href="https://square.link/u/o25cVCY4" target="_blank" rel="noopener" className="btn ghost" data-testid="button-buy-starter">
-            Buy AI Visibility and Search Fix – $795 →
+            Buy AI Visibility and Search Fix – $1595 →
           </a>
         </div>
       </section>
@@ -334,7 +334,7 @@ export default function Home() {
           <Card className="border-2 border-primary shadow-xl">
             <CardHeader className="text-center pb-8">
               <CardTitle className="text-3xl md:text-4xl mb-2">
-                AI Visibility and Search Fix — $795
+                AI Visibility and Search Fix — $1595
               </CardTitle>
               <CardDescription className="text-lg">
                 Delivered within 7 business days
@@ -361,7 +361,7 @@ export default function Home() {
                   data-testid="button-starter-fix"
                 >
                   <Button size="lg" className="w-full md:w-auto text-lg px-12 font-semibold">
-                    Book AI Visibility and Search Fix – $795
+                    Book AI Visibility and Search Fix – $1595
                   </Button>
                 </a>
                 <p className="text-sm text-muted-foreground">
@@ -453,7 +453,7 @@ export default function Home() {
             Learn more about AEO →
           </Link>
           <a href="https://square.link/u/o25cVCY4" target="_blank" rel="noopener" className="btn ghost" data-testid="button-aeo-buy-starter">
-            Buy AI Visibility and Search Fix – $795 →
+            Buy AI Visibility and Search Fix – $1595 →
           </a>
         </div>
 
