@@ -30,16 +30,13 @@ export default function Navigation() {
 
   const navLinks = [
     { href: '/', label: 'Home' },
-    { href: '/scorecard', label: 'AI Scorecard' },
+    { href: '/what-is-ai-seo', label: 'What Is AI SEO' },
+    { href: '/services', label: 'Services' },
+    { href: '/pricing', label: 'Pricing & Plans' },
+    { href: '/blog', label: 'Blog' },
+    { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact' },
   ];
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <nav className="sticky top-0 z-50 backdrop-blur-md bg-background/90 border-b">
@@ -65,20 +62,13 @@ export default function Navigation() {
             ))}
           </div>
 
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-2">
             <ThemeToggle />
-            <button
-              onClick={() => scrollToSection('pricing')}
-              className="text-muted-foreground hover:text-primary font-semibold transition-colors"
-              data-testid="button-nav-ai-search-fix"
-            >
-              AI Search Fix
-            </button>
-            <a href="https://square.link/u/o25cVCY4" target="_blank" rel="noopener noreferrer">
-              <Button data-testid="button-nav-fix-visibility" className="bg-[#007CFF] hover:bg-[#0066FF] font-semibold">
-                Fix My AI Visibility
+            <Link href="/audit">
+              <Button data-testid="button-get-audit-header" className="font-semibold">
+                Get My Free Audit
               </Button>
-            </a>
+            </Link>
           </div>
 
           <div className="flex md:hidden items-center gap-2">
@@ -109,11 +99,11 @@ export default function Navigation() {
                 </div>
               </Link>
             ))}
-            <a href="https://square.link/u/o25cVCY4" target="_blank" rel="noopener noreferrer">
-              <Button className="w-full font-semibold bg-[#007CFF] hover:bg-[#0066FF]" data-testid="button-nav-fix-visibility-mobile" onClick={() => setMobileMenuOpen(false)}>
-                Fix My AI Visibility
+            <Link href="/audit">
+              <Button className="w-full font-semibold" data-testid="button-get-audit-mobile" onClick={() => setMobileMenuOpen(false)}>
+                Get My Free Audit
               </Button>
-            </a>
+            </Link>
           </div>
         </div>
       )}
