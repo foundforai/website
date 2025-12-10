@@ -1,357 +1,176 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Link } from 'wouter';
-import { Check, TrendingUp, Search, Zap, ArrowRight } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Check, Mail, ArrowRight } from 'lucide-react';
 
 export default function Home() {
-  useEffect(() => {
-    // AI Lab demo logic - sanitized with Sparkle Floors example
-    const DEMO = {
-      chatgpt: {
-        before: {
-          text: "I couldn't find enough structured information about Sparkle Floors. It may not expose entities or schema that assistants use to cite businesses.",
-          badges: ["No schema", "Entity unknown", "Not cited"]
-        },
-        after: {
-          text: "Sparkle Floors is a residential floor refinishing service in Denver, Colorado. They specialize in hardwood refinishing and use eco-friendly finishes. (Example result after implementing JSON-LD and sitemaps.)",
-          badges: ["Valid JSON-LD", "Recognized entity", "Cited in answers"]
-        }
-      },
-      gemini: {
-        before: {
-          text: "Limited structured signals for Sparkle Floors were detected; assistants can't summarize the business confidently.",
-          badges: ["Weak entity", "Missing schema"]
-        },
-        after: {
-          text: "Sparkle Floors (Denver) provides hardwood refinishing services. After AEO, assistants can identify offerings, service area, and contact info for quoting.",
-          badges: ["Organization schema", "Sitemap present", "Answer-ready copy"]
-        }
-      },
-      perplexity: {
-        before: {
-          text: "Not enough machine-readable context to form an answer about Sparkle Floors.",
-          badges: ["Low confidence", "Unstructured"]
-        },
-        after: {
-          text: "Sparkle Floors appears in assistant answers with service descriptions and local availability after schema and entity alignment.",
-          badges: ["Entity mapped", "Local info available", "Assistant-ready"]
-        }
-      }
-    };
-
-    const EXAMPLE_JSON = {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Sparkle Floors",
-      "url": "https://sparkle-floors.example",
-      "logo": "https://sparkle-floors.example/logo.png",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Denver",
-        "addressRegion": "CO",
-        "addressCountry": "US"
-      },
-      "sameAs": [
-        "https://x.com/sparkle-floors",
-        "https://www.linkedin.com/company/sparkle-floors"
-      ]
-    };
-
-    const tabs = document.querySelectorAll('.tab');
-    const toggle = document.getElementById('aiToggle') as HTMLInputElement;
-    const answerBody = document.getElementById('answerBody');
-    const answerBadges = document.getElementById('answerBadges');
-    const panelTicks = document.getElementById('panelTicks');
-
-    if (!tabs.length || !toggle || !answerBody || !answerBadges || !panelTicks) {
-      return;
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
+  };
 
-    let current = 'chatgpt';
-
-    function render() {
-      const mode = toggle!.checked ? 'after' : 'before';
-      const { text, badges } = DEMO[current as keyof typeof DEMO][mode];
-      
-      answerBody!.innerHTML = text.replace(/Sparkle Floors/g, '<mark>Sparkle Floors</mark>');
-      answerBadges!.innerHTML = badges.map((b: string) => `<span class="badge">${b}</span>`).join('');
-
-      const ticks = mode === 'after' ? [
-        "Recognized brand/entity",
-        "Valid JSON-LD & sitemap",
-        "Shows up in AI answers"
-      ] : [
-        "Missing entities & schema",
-        "Inconsistent metadata",
-        "Not referenced in AI answers"
-      ];
-      panelTicks!.innerHTML = ticks.map((t: string) => `<li>${t}</li>`).join('');
-    }
-
-    tabs.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        tabs.forEach((b) => {
-          b.classList.remove('is-active');
-          b.setAttribute('aria-selected', 'false');
-        });
-        btn.classList.add('is-active');
-        btn.setAttribute('aria-selected', 'true');
-        current = (btn as HTMLElement).dataset.assistant || 'chatgpt';
-        render();
-      });
-    });
-
-    toggle.addEventListener('change', render);
-
-    render();
-  }, []);
-
-  useEffect(() => {
-    const softwareAppSchema = document.createElement('script');
-    softwareAppSchema.type = 'application/ld+json';
-    softwareAppSchema.id = 'software-app-schema';
-    softwareAppSchema.text = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "FoundForAI",
-      "url": "https://foundforai.com",
-      "applicationCategory": "SEO, AI Optimization, Marketing Automation",
-      "operatingSystem": "All",
-      "description": "FoundForAI helps businesses optimize their online presence for AI-driven search engines like ChatGPT, Gemini, and Perplexity. We make your business discoverable by AI.",
-      "creator": {
-        "@type": "Organization",
-        "name": "FoundForAI",
-        "url": "https://foundforai.com",
-        "logo": "https://foundforai.com/logo.png",
-        "sameAs": [
-          "https://www.linkedin.com/company/foundforai",
-          "https://x.com/fripseai"
-        ]
-      },
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      }
-    });
-    document.head.appendChild(softwareAppSchema);
-
-    const faqSchema = document.createElement('script');
-    faqSchema.type = 'application/ld+json';
-    faqSchema.id = 'homepage-faq-schema';
-    faqSchema.text = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What does \"Found for AI\" actually mean?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Your site is structured so AI assistants can understand what you do, who you serve, and when to recommend you — not just index a page."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How is this different from traditional SEO?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We prioritize entities, JSON-LD schema, sitemaps, metadata consistency, and performance so AI models can parse and cite your content."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How fast is the Starter Fix?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Delivered within 7 business days for up to 10 pages, including audit, schema, sitemap, robots/llms.txt, and OG/Twitter cards."
-          }
-        }
-      ]
-    });
-    document.head.appendChild(faqSchema);
-
-    return () => {
-      const existingSoftwareSchema = document.getElementById('software-app-schema');
-      const existingFaqSchema = document.getElementById('homepage-faq-schema');
-      if (existingSoftwareSchema) {
-        document.head.removeChild(existingSoftwareSchema);
-      }
-      if (existingFaqSchema) {
-        document.head.removeChild(existingFaqSchema);
-      }
-    };
-  }, []);
-
-  const proofQuotes = [
-    { quote: "AI search is changing everything.", source: "Forbes" },
-    { quote: "SEO as we know it is over.", source: "Search Engine Journal" },
-    { quote: "Early AI optimization wins visibility.", source: "HubSpot Research" },
+  const painPoints = [
+    'AI cannot identify what services you offer',
+    'AI cannot confirm your service area or location',
+    'AI cannot connect your booking link or contact info',
+    'AI cannot read your common questions and answers',
+    'AI does not know which pages matter most',
+    'AI cannot see clear trust signals',
   ];
 
-  const stats = [
-    { value: "63%", label: "Consumers now ask AI before Google." },
-    { value: "90%", label: "Websites are not yet visible to ChatGPT." },
-    { value: "#1", label: "Structured data drives AI answers." },
-  ];
-
-  const starterFeatures = [
-    "Schema.org validation",
-    "robots.txt + llms.txt",
-    "Sitemap creation + Search Console submission",
-    "OpenGraph/Twitter cards",
-    "Core Web Vitals report",
-    "AI bot access permissions",
-  ];
-
-  const upsellTiles = [
+  const solutionCards = [
     {
-      title: "Pro Visibility Plan",
-      description: "Ongoing AI optimization, 5-cluster topic buildout, monthly reporting.",
-      link: "https://calendar.app.google/VUK3jfv6jSf1ezHv5",
+      step: 'Step One',
+      title: 'AI Visibility Audit',
+      description: 'We scan your website through the same lens modern AI tools use and reveal what is unreadable or missing. You receive a simple before and after report.',
     },
     {
-      title: "Enterprise & Agency Integration",
-      description: "White-label or multi-site AI SEO for larger teams.",
-      link: "https://calendar.app.google/VUK3jfv6jSf1ezHv5",
+      step: 'Step Two',
+      title: 'AI Readability Layer Installation',
+      description: 'We install the data layer that translates your business into a format AI understands instantly. This includes services, service area, hours, booking info, FAQs, business details, trust signals.',
     },
     {
-      title: "Custom Audit",
-      description: "Tailored analysis for unique stacks or web apps.",
-      link: "https://calendar.app.google/VUK3jfv6jSf1ezHv5",
+      step: 'Step Three',
+      title: 'AI Search Optimization And Verification',
+      description: 'We test your visibility inside leading AI tools and confirm they understand what you offer, recommend you properly, and link to correct pages.',
     },
   ];
+
+  const features = [
+    'AI visibility audit + AI readability layer',
+    'Before and after visibility report',
+    'Seven business day turnaround + sixty day fix it free guarantee',
+  ];
+
+  const proofPoints = [
+    'AI can clearly describe what you do.',
+    'AI can see your service area and contact details.',
+    'AI has a reason to recommend you instead of a competitor.',
+  ];
+
+  const faqs = [
+    {
+      question: 'What\'s the turnaround time?',
+      answer: 'This is a fast, one time fix. Once you check out, our team begins your audit and installs your AI readability layer. Your upgraded visibility is live within seven business days.',
+    },
+    {
+      question: 'What if something is wrong or missing?',
+      answer: 'We guarantee it. If anything inside your new AI readability layer is incorrect, missing, or breaks within sixty days, we fix it at no cost.',
+    },
+    {
+      question: 'Can I talk to someone first?',
+      answer: 'Absolutely. Email this page to a partner or team member, or reach out to us directly. We\'re happy to discuss your specific situation before you purchase.',
+    },
+  ];
+
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
   return (
     <PageLayout
-      title="Found For AI | The New Way to Be Discovered"
-      description="Found For AI helps businesses become visible in AI search engines like ChatGPT, Gemini, and Perplexity. We build your discoverability for the next era of search."
+      title="AI Search Fix – AI Visibility & Readability for Local Businesses | Found For AI"
+      description="Make AI recommend your business. One-time AI Search Fix ($1,595) includes audit, schema installation, and AI verification in 7 days."
       canonical="https://foundforai.com"
-      ogImage="/logo.png"
     >
-      {/* 1. HERO SECTION */}
-      <section className="hero hero--brand">
-        <h1>Found for AI.</h1>
-        <h2>The new way to be discovered.</h2>
-        <p>We help your business show up where customers actually search — in AI assistants like ChatGPT, Gemini, and Perplexity. From schema to AI visibility audits, we make sure your site is findable in the next era of search.</p>
-        <div className="cta-row">
-          <Link href="/audit" className="btn primary" data-testid="button-free-check">
-            Run Free AI Visibility Check →
-          </Link>
-        </div>
-      </section>
+      {/* Navigation handled by Navigation component */}
 
-      {/* 2. EXPLAINER SECTION - "Why AI SEO Is Exploding in 2025" (Moved to here) */}
-      <section className="py-16 md:py-24 bg-background">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+      {/* HERO SECTION */}
+      <section className="hero-section min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0B1F35] via-[#1a2f47] to-[#0B1F35] relative overflow-hidden">
+        {/* Background accent circle */}
+        <div className="absolute top-20 right-10 w-96 h-96 bg-[#007CFF] opacity-10 rounded-full blur-3xl"></div>
+        
+        <div className="max-w-5xl mx-auto px-4 md:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Why AI SEO Is Exploding in 2025
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              AI assistants are becoming the new discovery engines. Sites must be AI-readable with proper schema, sitemaps, and metadata to be found in this new landscape.
+            <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6 space-y-2">
+              <div style={{ color: '#0B1F35' }} className="font-bold text-5xl md:text-6xl">
+                Be the Business
+              </div>
+              <div style={{ color: '#007CFF' }} className="font-bold text-6xl md:text-7xl">
+                AI Recommends First.
+              </div>
+            </h1>
+            
+            <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+              AI tools like ChatGPT, Perplexity, and Google Gemini now decide which local businesses to recommend. If AI cannot read your site, it cannot recommend you.
             </p>
-          </div>
+            
+            <p className="text-lg text-gray-400 mb-12 max-w-3xl mx-auto">
+              We install the missing AI readability layer so AI can finally understand your services, location, and booking link.
+            </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {stats.map((stat, index) => (
-              <Card key={index} className="text-center" data-testid={`stat-card-${index}`}>
-                <CardContent className="p-8">
-                  <div className="text-5xl md:text-6xl font-bold text-primary mb-4">
-                    {stat.value}
-                  </div>
-                  <p className="text-base text-muted-foreground">
-                    {stat.label}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 3. PROOF STRIP */}
-      <section className="proof-strip" aria-label="Trusted AI search tools">
-        <p className="proof-text">Trusted by teams optimizing for AI search tools:</p>
-        <ul className="logo-row">
-          <li><img src="/assets/logos/chatgpt.svg" alt="ChatGPT" loading="lazy" data-testid="logo-chatgpt" /></li>
-          <li><img src="/assets/logos/gemini.svg" alt="Google Gemini" loading="lazy" data-testid="logo-gemini" /></li>
-          <li><img src="/assets/logos/perplexity.svg" alt="Perplexity" loading="lazy" data-testid="logo-perplexity" /></li>
-          <li><img src="/assets/logos/claude.svg" alt="Claude" loading="lazy" data-testid="logo-claude" /></li>
-          <li><img src="/assets/logos/copilot.svg" alt="Microsoft Copilot" loading="lazy" data-testid="logo-copilot" /></li>
-        </ul>
-      </section>
-
-      {/* 4. AI LAB - Interactive Demo (Sanitized) */}
-      <section id="ai-lab" className="ai-lab">
-        <h2 className="ai-lab__title">See how AI answers change after optimization</h2>
-        <p className="ai-lab__sub">Switch assistants and compare before vs. after. We structure entities + schema so AI can cite your brand.</p>
-
-        <div className="ai-lab__tabs" role="tablist" aria-label="AI assistants">
-          <button className="tab is-active" data-assistant="chatgpt" role="tab" aria-selected="true" data-testid="tab-chatgpt">ChatGPT</button>
-          <button className="tab" data-assistant="gemini" role="tab" aria-selected="false" data-testid="tab-gemini">Gemini</button>
-          <button className="tab" data-assistant="perplexity" role="tab" aria-selected="false" data-testid="tab-perplexity">Perplexity</button>
-          <div className="toggle">
-            <span>Before</span>
-            <label className="switch" data-testid="toggle-label-before-after">
-              <input id="aiToggle" type="checkbox" aria-label="Toggle Before/After" data-testid="toggle-before-after" />
-              <span className="slider"></span>
-            </label>
-            <span>After</span>
-          </div>
-        </div>
-
-        <div className="ai-lab__grid">
-          <article className="answer" aria-live="polite">
-            <div className="answer__header">
-              <div className="dot"></div><div className="dot"></div><div className="dot"></div>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+              <a href="https://square.link/u/o25cVCY4" target="_blank" rel="noopener noreferrer">
+                <Button 
+                  size="lg" 
+                  className="bg-[#007CFF] hover:bg-[#0066FF] text-white font-semibold px-8 text-lg h-auto py-4"
+                  data-testid="button-hero-fix-visibility"
+                >
+                  Fix My AI Visibility — 1,595 dollars
+                </Button>
+              </a>
             </div>
-            <div className="answer__body" id="answerBody" data-testid="answer-body"></div>
-            <div className="answer__badges" id="answerBadges" data-testid="answer-badges"></div>
-          </article>
-
-          <aside className="panel">
-            <div className="panel__title">Example: <strong>Sparkle Floors</strong></div>
-            <p className="panel__desc">This shows the difference between a site with no structured data and the same business after we implement AEO best practices.</p>
-
-            <ul className="panel__ticks" id="panelTicks"></ul>
-          </aside>
+            
+            <p className="text-sm text-gray-400 mb-8">One time, done for you, delivered in seven business days.</p>
+            
+            <button
+              onClick={() => scrollToSection('solution')}
+              className="text-[#007CFF] hover:text-[#0066FF] font-semibold underline underline-offset-4 transition-colors"
+              data-testid="button-see-included"
+            >
+              See everything that is included.
+            </button>
+          </div>
         </div>
-
-        <Link href="/pricing" className="btn primary ai-lab__cta" data-testid="button-ai-lab-cta">
-          Get My AI Visibility Audit →
-        </Link>
       </section>
 
-      {/* 5. UPSELL TILES */}
-      <section className="py-16 md:py-24 bg-background">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+      {/* PAIN SECTION */}
+      <section id="pain" className="py-16 md:py-24 bg-[#0B1F35]">
+        <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 text-center">
+            Why Your Business Is Not Showing Up In AI Search
+          </h2>
+          
+          <p className="text-gray-300 text-lg mb-12 text-center max-w-2xl mx-auto">
+            AI does not read websites like humans do. It looks for structured data signals that tell it what your business is, where you are, and what to recommend.
+          </p>
+
+          <ul className="space-y-4 mb-12">
+            {painPoints.map((point, index) => (
+              <li key={index} className="flex items-start gap-4 text-gray-300 text-lg">
+                <span className="text-[#007CFF] font-bold flex-shrink-0 mt-1">•</span>
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+
+          <p className="text-center text-white text-xl font-semibold bg-[#007CFF]/10 border border-[#007CFF]/30 rounded-lg p-6">
+            If AI cannot understand your business, it cannot recommend you to your next customer.
+          </p>
+        </div>
+      </section>
+
+      {/* SOLUTION SECTION */}
+      <section id="solution" className="py-16 md:py-24 bg-gradient-to-br from-[#1a2f47] to-[#0B1F35]">
+        <div className="max-w-6xl mx-auto px-4 md:px-6 lg:px-8">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 text-center">
+            What We Install To Make AI Recommend You
+          </h2>
+          
+          <p className="text-gray-300 text-lg mb-16 text-center max-w-3xl mx-auto">
+            Our AI Search Fix adds a focused AI readability layer so tools like ChatGPT, Perplexity, and Google Gemini can finally understand, trust, and recommend your business.
+          </p>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {upsellTiles.map((tile, index) => (
-              <Card
-                key={index}
-                className="transition-all duration-300 hover:shadow-lg hover:scale-[1.02]"
-                data-testid={`upsell-card-${index}`}
-              >
+            {solutionCards.map((card, index) => (
+              <Card key={index} className="bg-[#0B1F35] border-[#007CFF]/30 text-white">
                 <CardHeader>
-                  <CardTitle className="text-xl mb-2">{tile.title}</CardTitle>
-                  <CardDescription className="text-base">
-                    {tile.description}
-                  </CardDescription>
+                  <div className="text-[#007CFF] font-semibold text-sm mb-2">{card.step}</div>
+                  <CardTitle className="text-2xl text-white">{card.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <a
-                    href={tile.link}
-                    target="_blank"
-                    rel="noopener"
-                    data-testid={`button-${tile.title.toLowerCase().replace(/\s+/g, '-')}`}
-                  >
-                    <Button variant="secondary" size="lg" className="w-full font-semibold">
-                      Schedule a Call
-                    </Button>
-                  </a>
+                  <p className="text-gray-300 text-base leading-relaxed">{card.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -359,122 +178,176 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. AEO EXPLAINER */}
-      <section className="aeo" id="aeo-explainer">
-        <h2>What is AEO (Answer Engine Optimization)?</h2>
-        <p className="aeo-lead">
-          AEO makes your content show up inside AI-generated answers (ChatGPT, Gemini, Perplexity) — not just as blue links.
-          We structure your site so assistants can <strong>understand</strong>, <strong>trust</strong>, and <strong>cite</strong> your brand.
-        </p>
-
-        <div className="aeo-grid">
-          <div className="aeo-card">
-            <h3>Why it matters</h3>
-            <ul>
-              <li>Earn citations inside AI answers</li>
-              <li>Be machine-readable with JSON-LD & entities</li>
-              <li>Ship answer-ready, conversational content</li>
-            </ul>
-          </div>
-
-          <div className="aeo-card">
-            <h3>What we implement</h3>
-            <ul>
-              <li>Entity & schema mapping (Organization, Service, FAQ)</li>
-              <li>Sitemaps, robots/llms.txt, metadata cleanup</li>
-              <li>Performance tuning for fast renderability</li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="aeo-compare">
-          <h3>SEO vs AEO, in one glance</h3>
-          <ul className="aeo-rows">
-            <li><span>SEO</span><span>Ranks pages/keywords in Google</span></li>
-            <li><span>AEO</span><span>Gets your brand cited in AI answers</span></li>
-            <li><span>SEO</span><span>Focus on links & on-page signals</span></li>
-            <li><span>AEO</span><span>Focus on entities, schema, answer formatting</span></li>
-          </ul>
-        </div>
-
-        <div className="cta-block">
-          <Link href="/audit" className="btn primary" data-testid="button-aeo-visibility-check">
-            Run Free AI Visibility Check →
-          </Link>
-          <Link href="/aeo" className="btn ghost" data-testid="button-aeo-learn-more">
-            Learn more about AEO →
-          </Link>
-        </div>
-
-        <p className="aeo-note">Note: This section is informational only. We intentionally do not add FAQ schema here to avoid duplicate FAQPage issues.</p>
-      </section>
-
-      {/* DIVIDER */}
-      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-        <hr className="border-t border-muted-foreground/20 my-8" />
-      </div>
-
-      {/* 8. FINAL CTA */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-primary/10 to-accent/10">
-        <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Get Your Tech SEO & AI SEO Issues Fixed.
+      {/* DELIVERY + GUARANTEE SECTION */}
+      <section className="py-16 md:py-24 bg-[#0B1F35]">
+        <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 text-center">
+            Delivered In Seven Business Days, Guaranteed
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Every day you're invisible to AI search, you're losing customers. Let's change that.
+          
+          <p className="text-gray-300 text-lg mb-12 text-center">
+            This is a fast, one time fix. Once you check out, our team begins your audit and installs your AI readability layer. Your upgraded visibility is live within seven business days.
           </p>
-          <Link href="/pricing">
-            <Button size="lg" className="text-lg px-8 font-semibold" data-testid="button-final-cta">
-              View Pricing & Get Started <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </Link>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <div className="text-center">
+              <p className="text-white font-semibold text-lg">No long projects</p>
+            </div>
+            <div className="text-center">
+              <p className="text-white font-semibold text-lg">No confusing back and forth</p>
+            </div>
+            <div className="text-center">
+              <p className="text-white font-semibold text-lg">No agency retainers</p>
+            </div>
+          </div>
+
+          <Card className="bg-gradient-to-br from-[#1a2f47] to-[#0B1F35] border-[#007CFF]/30 text-white">
+            <CardHeader>
+              <CardTitle className="text-2xl text-white">Our "We Fix It Free" Guarantee</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-300 text-lg">
+                If anything inside your new AI readability layer is incorrect, missing, or breaks within sixty days, we fix it at no cost.
+              </p>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
-      {/* 9. FOUNDER NOTE / TESTIMONIAL (Moved to bottom) */}
-      <section className="founder" aria-label="Founder note">
-        <div className="founder-wrap">
-          <img className="headshot" src="/assets/dustin-crump.jpg" alt="Dustin Crump" loading="lazy" width="96" height="96" data-testid="founder-headshot" />
-          <blockquote>
-            "I built Found For AI after hearing the same question from business owners: 'How do we show up in ChatGPT?' We make your site readable by AI — fast."
-          </blockquote>
-          <p className="sig">— <strong>Dustin Crump</strong>, Founder</p>
-        </div>
-      </section>
-
-      {/* 10. FAQ (Moved to very bottom) */}
-      <section className="faq" id="faq">
-        <h2>FAQ</h2>
-        <details data-testid="faq-found-for-ai">
-          <summary data-testid="faq-summary-found-for-ai">What does "Found for AI" actually mean?</summary>
-          <p>Your site is structured so AI assistants can understand what you do, who you serve, and when to recommend you — not just index a page.</p>
-        </details>
-        <details data-testid="faq-different-seo">
-          <summary data-testid="faq-summary-different-seo">How is this different from traditional SEO?</summary>
-          <p>We prioritize entities, JSON-LD schema, sitemaps, metadata consistency, and performance so AI models can parse and cite your content.</p>
-        </details>
-        <details data-testid="faq-starter-speed">
-          <summary data-testid="faq-summary-starter-speed">How fast is the Starter Fix?</summary>
-          <p>Delivered within 7 business days for up to 10 pages, including audit, schema, sitemap, robots/llms.txt, and OG/Twitter cards.</p>
-        </details>
-      </section>
-
-      {/* SUPPORT NOTE (Moved to very bottom) */}
-      <section className="py-8 bg-muted/20">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 text-center">
-          <p className="text-sm text-muted-foreground">
-            Questions?{' '}
-            <a
-              href="mailto:support@foundforai.com"
-              className="text-primary hover:underline font-medium"
-              data-testid="link-support-email"
-            >
-              support@foundforai.com
-            </a>{' '}
-            — 24-hour response.
+      {/* PRICING SECTION */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-[#1a2f47] to-[#0B1F35]">
+        <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            One Time AI Search Fix, Built For Local Businesses
+          </h2>
+          
+          <p className="text-gray-300 text-lg mb-12 max-w-3xl mx-auto">
+            Get complete AI visibility and readability in one deliverable. No subscriptions, no ongoing fees.
           </p>
+
+          <div className="bg-[#0B1F35] border border-[#007CFF]/30 rounded-lg p-8 md:p-12 mb-12">
+            <div className="text-5xl md:text-6xl font-bold text-white mb-8">
+              1,595 dollars
+              <span className="text-lg text-gray-400 block mt-2">one time</span>
+            </div>
+
+            <ul className="space-y-4 mb-12 text-left">
+              {features.map((feature, index) => (
+                <li key={index} className="flex items-start gap-3 text-gray-300 text-base">
+                  <Check className="h-6 w-6 text-[#007CFF] flex-shrink-0 mt-0.5" />
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="space-y-4">
+              <a href="https://square.link/u/o25cVCY4" target="_blank" rel="noopener noreferrer">
+                <Button 
+                  size="lg" 
+                  className="w-full bg-[#007CFF] hover:bg-[#0066FF] text-white font-semibold text-lg h-auto py-4"
+                  data-testid="button-pricing-fix-visibility"
+                >
+                  Fix My AI Visibility Now
+                </Button>
+              </a>
+              <p className="text-sm text-gray-400">Takes less than two minutes to get started</p>
+            </div>
+          </div>
+
+          <button
+            onClick={() => {
+              const subject = encodeURIComponent('Found For AI Search Fix');
+              const body = encodeURIComponent(`Check out this AI Search Fix for local businesses:\n\n${window.location.href}`);
+              window.location.href = `mailto:?subject=${subject}&body=${body}`;
+            }}
+            className="text-[#007CFF] hover:text-[#0066FF] font-semibold flex items-center justify-center gap-2 transition-colors"
+            data-testid="button-share-email"
+          >
+            <Mail className="h-5 w-5" />
+            Need to talk to a partner? Email this page to them.
+          </button>
         </div>
       </section>
+
+      {/* PROOF SECTION */}
+      <section className="py-16 md:py-24 bg-[#0B1F35]">
+        <div className="max-w-5xl mx-auto px-4 md:px-6 lg:px-8">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-16 text-center">
+            What Happens After The Fix
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {proofPoints.map((point, index) => (
+              <div key={index} className="bg-[#1a2f47] border border-[#007CFF]/20 rounded-lg p-8">
+                <p className="text-white text-lg font-semibold">{point}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ SECTION */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-[#1a2f47] to-[#0B1F35]">
+        <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-12 text-center">
+            Common Questions
+          </h2>
+
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <div key={index} className="bg-[#0B1F35] border border-[#007CFF]/30 rounded-lg overflow-hidden">
+                <button
+                  onClick={() => setOpenFaqIndex(openFaqIndex === index ? null : index)}
+                  className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-[#1a2f47] transition-colors"
+                  data-testid={`button-faq-${index}`}
+                >
+                  <h3 className="text-white font-semibold text-lg">{faq.question}</h3>
+                  <span className={`text-[#007CFF] transition-transform ${openFaqIndex === index ? 'rotate-180' : ''}`}>
+                    <ArrowRight className="h-5 w-5" />
+                  </span>
+                </button>
+                {openFaqIndex === index && (
+                  <div className="px-6 py-4 border-t border-[#007CFF]/30 bg-[#1a2f47]/50">
+                    <p className="text-gray-300">{faq.answer}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="bg-[#0B1F35] border-t border-[#007CFF]/30 py-12">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-8">
+            <div>
+              <h3 className="text-white font-bold text-lg mb-2">Found For AI</h3>
+              <p className="text-gray-400">AI visibility and AI readability upgrades for local businesses.</p>
+            </div>
+            <div className="grid grid-cols-2 gap-6">
+              <div>
+                <h4 className="text-white font-semibold mb-3">Pages</h4>
+                <ul className="space-y-2">
+                  <li><a href="/" className="text-gray-400 hover:text-[#007CFF] transition-colors" data-testid="link-footer-home">Home</a></li>
+                  <li><a href="/scorecard" className="text-gray-400 hover:text-[#007CFF] transition-colors" data-testid="link-footer-scorecard">AI Scorecard</a></li>
+                  <li><a href="/contact" className="text-gray-400 hover:text-[#007CFF] transition-colors" data-testid="link-footer-contact">Contact</a></li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="text-white font-semibold mb-3">Legal</h4>
+                <ul className="space-y-2">
+                  <li><a href="/privacy" className="text-gray-400 hover:text-[#007CFF] transition-colors" data-testid="link-footer-privacy">Privacy</a></li>
+                  <li><a href="/terms" className="text-gray-400 hover:text-[#007CFF] transition-colors" data-testid="link-footer-terms">Terms</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div className="border-t border-[#007CFF]/30 pt-8 text-center text-gray-400">
+            <p>&copy; 2025 Found For AI. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </PageLayout>
   );
 }
