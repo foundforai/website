@@ -99,14 +99,12 @@ export default function Home() {
       {/* HERO SECTION */}
       <section className="py-16 md:py-24 lg:py-32 bg-background">
         <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8 text-center">
-          <div className="mt-24 md:mt-28 mb-12 md:mb-14">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-2 leading-[1.1]">
-              <span className="text-[#0B1F35] dark:text-white">Be the Business</span>
-            </h1>
-            <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-[1.1]" style={{ color: '#007CFF' }}>
-              AI Recommends First.
-            </h2>
-          </div>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-2">
+            <span className="text-[#0B1F35] dark:text-white">Be the Business</span>
+          </h1>
+          <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-8" style={{ color: '#007CFF' }}>
+            AI Recommends First.
+          </h2>
           
           <p className="text-lg md:text-xl text-muted-foreground mb-6 max-w-3xl mx-auto">
             AI tools like ChatGPT, Perplexity, and Google Gemini now decide which local businesses to recommend. If AI cannot read your site, it cannot recommend your business.
