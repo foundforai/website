@@ -1,0 +1,142 @@
+You are an expert web designer and developer working inside an existing website project for foundforai.com.
+
+Important
+• Do NOT modify or delete any other pages (What Is AI SEO, Services, Pricing & Plans, Blog, About, Contact, etc).
+• Do NOT change their URLs.
+• Do NOT remove the existing site-wide header or footer.
+
+Your job
+• Update ONLY the main homepage content.
+• Keep the existing top navigation bar exactly as it is in structure and links.
+• You may change the text of the rightmost CTA button, but keep the button itself and its styling.
+
+Header / nav
+• Keep logo, menu items, and layout exactly as they are now.
+• Change the rightmost button text from “Get My Free Audit” to “Get AI Search Fix”.
+• Have that button scroll to the main pricing/offer section on the homepage using an anchor link (for example, id="ai-search-fix").
+
+Homepage hero (inside the main content area)
+Replace the current hero section on the homepage with this new one.
+
+Hero headline on two lines, centered and bold:
+Line 1: "Be the Business" (color #0B1F35)
+Line 2: "AI Recommends First." (color #007CFF, slightly larger or heavier than line 1)
+
+Subheadline under the headline:
+"AI tools like ChatGPT, Perplexity, and Google Gemini now decide which local businesses to recommend. If AI cannot read your site, it cannot recommend your business."
+
+Supporting line:
+"We install the missing AI readability layer so AI can finally understand your services, location, and booking link."
+
+Primary hero button under that text:
+Text: "Fix My AI Visibility — 1,595 dollars"
+Link: [https://square.link/u/o25cVCY4](https://square.link/u/o25cVCY4)
+Small line under button: "One time, done for you, delivered in seven business days."
+
+Secondary hero text link under that:
+Text: "See everything that is included"
+Scrolls down to the “What We Install” section.
+
+Below the hero, replace the rest of the homepage main content with these sections.
+
+Section: Why you are not showing up in AI search
+Title: "Why Your Business Is Not Showing Up In AI Search"
+
+Paragraph: explain that AI does not read websites like humans and relies on a machine-readable layer that most sites do not have. Your site can look great to people but blurry or incomplete to AI.
+
+Bullet list:
+• AI cannot identify what services you actually offer
+• AI cannot confirm your service area or location
+• AI cannot connect your booking link or contact info
+• AI cannot read your common questions and answers
+• AI does not know which pages on your site matter most
+• AI cannot see clear proof that you are a trusted business
+
+Final line in bold:
+"If AI cannot understand your business, it cannot recommend you to your next customer."
+
+Section: What we install
+Title: "What We Install To Make AI Recommend You"
+
+Intro sentence:
+"Our AI Search Fix adds a focused AI readability layer so tools like ChatGPT, Perplexity, and Google Gemini can finally understand, trust, and recommend your business."
+
+Create three responsive cards, stacked on mobile and side by side on larger screens.
+
+Card one
+Title: "Step One — AI Visibility Audit"
+Body: We scan your website the way modern AI tools do and show what is unreadable or missing. You get a simple before and after report.
+
+Card two
+Title: "Step Two — AI Readability Layer Installation"
+Body: We install a clean data layer that includes your services, service area, hours, contact and booking info, common questions and answers, core business details, and trust signals.
+
+Card three
+Title: "Step Three — AI Search Optimization And Verification"
+Body: We test your visibility in leading AI tools and confirm they understand what you offer, recommend you correctly, and link to the right pages.
+
+Section: Delivery and guarantee
+Title: "Delivered In Seven Business Days, Guaranteed"
+
+Paragraph:
+"This is a fast, one time fix. Once you check out, our team starts your AI visibility audit and installs your full AI readability layer. Your upgraded AI visibility is live within seven business days."
+
+Below that, three short lines, each on its own line (no bullets needed):
+No long projects
+No confusing back and forth
+No agency retainers
+
+Guarantee card with subtle background:
+Title: "Our We Fix It Free Guarantee"
+Text: "If anything inside your new AI readability layer is incorrect, missing, or breaks within sixty days, we fix it at no cost. This is not a subscription or a trial. It is a real upgrade to how AI understands and recommends your business."
+
+Section: Pricing / main offer
+Give this section an id of "ai-search-fix" so the nav button and hero CTAs can scroll here.
+
+Title: "One Time AI Search Fix, Built For Local Businesses"
+
+Short paragraph about the value: upgrading AI visibility instead of wasting more budget sending traffic to a site AI cannot read.
+
+Big price text: "$1,595"
+Smaller text under it: "one time"
+
+Checklist under the price:
+• AI visibility audit and AI readability layer install
+• Before and after AI visibility report
+• Seven business day turnaround plus sixty day fix it free guarantee
+
+Primary button (same styling as other primary buttons):
+Text: "Fix My AI Visibility Now"
+Link: [https://square.link/u/o25cVCY4](https://square.link/u/o25cVCY4)
+Subtext directly under button: "Takes less than two minutes to get started"
+
+Secondary text link below:
+"Need to talk to a partner? Email this page to them."
+Use a mailto link with subject "Found For AI Search Fix" and include the page URL in the body.
+
+Section: Proof
+Title: "What Happens After The Fix"
+
+Three short blurbs, simple styling:
+"AI can clearly describe what you do."
+"AI can see your service area and contact details."
+"AI has a reason to recommend you instead of a competitor."
+
+Section: Common Questions
+Title: "Common Questions"
+
+Include these three Q&A items in the visible content:
+
+1. "Is this a monthly subscription?"
+   Answer: "No. This is a one time project. We install your AI readability layer, deliver your report, and stand behind the work with our sixty day fix it free guarantee."
+
+2. "Do you need to rebuild my website?"
+   Answer: "Usually no. We add an AI focused data layer around your existing site so AI tools can read what you already have. If we see anything that truly needs to be rebuilt, we will tell you before any extra work is done."
+
+3. "Can my current web person do this?"
+   Answer: "Most web teams are focused on design, content, and regular search. AI visibility is a different skill set. We only do AI search and AI readability work, which is why agencies often bring us in behind the scenes to handle this part."
+
+Keep the existing footer as it is now for the rest of the site. Do not alter links to the other pages.
+
+Output
+Update ONLY the homepage file. Preserve header, nav, and footer. Make sure the page remains fully responsive and visually consistent with the rest of the site.
