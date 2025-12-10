@@ -77,9 +77,9 @@ export default function Home() {
       {/* Navigation handled by Navigation component */}
 
       {/* HERO SECTION */}
-      <section className="hero-section min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0B1F35] via-[#1a2f47] to-[#0B1F35] relative overflow-hidden">
+      <section className="hero-section min-h-screen flex items-center justify-center bg-white relative overflow-hidden">
         {/* Background accent circle */}
-        <div className="absolute top-20 right-10 w-96 h-96 bg-[#007CFF] opacity-10 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 right-10 w-96 h-96 bg-[#007CFF] opacity-5 rounded-full blur-3xl"></div>
         
         <div className="max-w-5xl mx-auto px-4 md:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12">
@@ -92,11 +92,11 @@ export default function Home() {
               </div>
             </h1>
             
-            <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed">
               AI tools like ChatGPT, Perplexity, and Google Gemini now decide which local businesses to recommend. If AI cannot read your site, it cannot recommend you.
             </p>
             
-            <p className="text-lg text-gray-400 mb-12 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
               We install the missing AI readability layer so AI can finally understand your services, location, and booking link.
             </p>
 
@@ -112,7 +112,7 @@ export default function Home() {
               </a>
             </div>
             
-            <p className="text-sm text-gray-400 mb-8">One time, done for you, delivered in seven business days.</p>
+            <p className="text-sm text-gray-600 mb-8">One time, done for you, delivered in seven business days.</p>
             
             <button
               onClick={() => scrollToSection('solution')}
@@ -126,51 +126,51 @@ export default function Home() {
       </section>
 
       {/* PAIN SECTION */}
-      <section id="pain" className="py-16 md:py-24 bg-[#0B1F35]">
+      <section id="pain" className="py-16 md:py-24 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 text-center">
             Why Your Business Is Not Showing Up In AI Search
           </h2>
           
-          <p className="text-gray-300 text-lg mb-12 text-center max-w-2xl mx-auto">
+          <p className="text-gray-700 text-lg mb-12 text-center max-w-2xl mx-auto">
             AI does not read websites like humans do. It looks for structured data signals that tell it what your business is, where you are, and what to recommend.
           </p>
 
           <ul className="space-y-4 mb-12">
             {painPoints.map((point, index) => (
-              <li key={index} className="flex items-start gap-4 text-gray-300 text-lg">
+              <li key={index} className="flex items-start gap-4 text-gray-700 text-lg">
                 <span className="text-[#007CFF] font-bold flex-shrink-0 mt-1">•</span>
                 <span>{point}</span>
               </li>
             ))}
           </ul>
 
-          <p className="text-center text-white text-xl font-semibold bg-[#007CFF]/10 border border-[#007CFF]/30 rounded-lg p-6">
+          <p className="text-center text-gray-900 text-xl font-semibold bg-[#007CFF]/5 border border-[#007CFF]/20 rounded-lg p-6">
             If AI cannot understand your business, it cannot recommend you to your next customer.
           </p>
         </div>
       </section>
 
       {/* SOLUTION SECTION */}
-      <section id="solution" className="py-16 md:py-24 bg-gradient-to-br from-[#1a2f47] to-[#0B1F35]">
+      <section id="solution" className="py-16 md:py-24 bg-white">
         <div className="max-w-6xl mx-auto px-4 md:px-6 lg:px-8">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 text-center">
             What We Install To Make AI Recommend You
           </h2>
           
-          <p className="text-gray-300 text-lg mb-16 text-center max-w-3xl mx-auto">
+          <p className="text-gray-700 text-lg mb-16 text-center max-w-3xl mx-auto">
             Our AI Search Fix adds a focused AI readability layer so tools like ChatGPT, Perplexity, and Google Gemini can finally understand, trust, and recommend your business.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {solutionCards.map((card, index) => (
-              <Card key={index} className="bg-[#0B1F35] border-[#007CFF]/30 text-white">
+              <Card key={index} className="bg-white border border-gray-200 text-gray-900">
                 <CardHeader>
                   <div className="text-[#007CFF] font-semibold text-sm mb-2">{card.step}</div>
-                  <CardTitle className="text-2xl text-white">{card.title}</CardTitle>
+                  <CardTitle className="text-2xl text-gray-900">{card.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-300 text-base leading-relaxed">{card.description}</p>
+                  <p className="text-gray-700 text-base leading-relaxed">{card.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -179,34 +179,34 @@ export default function Home() {
       </section>
 
       {/* DELIVERY + GUARANTEE SECTION */}
-      <section className="py-16 md:py-24 bg-[#0B1F35]">
+      <section className="py-16 md:py-24 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 text-center">
             Delivered In Seven Business Days, Guaranteed
           </h2>
           
-          <p className="text-gray-300 text-lg mb-12 text-center">
+          <p className="text-gray-700 text-lg mb-12 text-center">
             This is a fast, one time fix. Once you check out, our team begins your audit and installs your AI readability layer. Your upgraded visibility is live within seven business days.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             <div className="text-center">
-              <p className="text-white font-semibold text-lg">No long projects</p>
+              <p className="text-gray-900 font-semibold text-lg">No long projects</p>
             </div>
             <div className="text-center">
-              <p className="text-white font-semibold text-lg">No confusing back and forth</p>
+              <p className="text-gray-900 font-semibold text-lg">No confusing back and forth</p>
             </div>
             <div className="text-center">
-              <p className="text-white font-semibold text-lg">No agency retainers</p>
+              <p className="text-gray-900 font-semibold text-lg">No agency retainers</p>
             </div>
           </div>
 
-          <Card className="bg-gradient-to-br from-[#1a2f47] to-[#0B1F35] border-[#007CFF]/30 text-white">
+          <Card className="bg-white border border-gray-200 text-gray-900">
             <CardHeader>
-              <CardTitle className="text-2xl text-white">Our "We Fix It Free" Guarantee</CardTitle>
+              <CardTitle className="text-2xl text-gray-900">Our "We Fix It Free" Guarantee</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-gray-300 text-lg">
+              <p className="text-gray-700 text-lg">
                 If anything inside your new AI readability layer is incorrect, missing, or breaks within sixty days, we fix it at no cost.
               </p>
             </CardContent>
@@ -215,25 +215,25 @@ export default function Home() {
       </section>
 
       {/* PRICING SECTION */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-[#1a2f47] to-[#0B1F35]">
+      <section className="py-16 md:py-24 bg-white">
         <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             One Time AI Search Fix, Built For Local Businesses
           </h2>
           
-          <p className="text-gray-300 text-lg mb-12 max-w-3xl mx-auto">
+          <p className="text-gray-700 text-lg mb-12 max-w-3xl mx-auto">
             Get complete AI visibility and readability in one deliverable. No subscriptions, no ongoing fees.
           </p>
 
-          <div className="bg-[#0B1F35] border border-[#007CFF]/30 rounded-lg p-8 md:p-12 mb-12">
-            <div className="text-5xl md:text-6xl font-bold text-white mb-8">
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-8 md:p-12 mb-12">
+            <div className="text-5xl md:text-6xl font-bold text-gray-900 mb-8">
               1,595 dollars
-              <span className="text-lg text-gray-400 block mt-2">one time</span>
+              <span className="text-lg text-gray-600 block mt-2">one time</span>
             </div>
 
             <ul className="space-y-4 mb-12 text-left">
               {features.map((feature, index) => (
-                <li key={index} className="flex items-start gap-3 text-gray-300 text-base">
+                <li key={index} className="flex items-start gap-3 text-gray-700 text-base">
                   <Check className="h-6 w-6 text-[#007CFF] flex-shrink-0 mt-0.5" />
                   <span>{feature}</span>
                 </li>
@@ -250,7 +250,7 @@ export default function Home() {
                   Fix My AI Visibility Now
                 </Button>
               </a>
-              <p className="text-sm text-gray-400">Takes less than two minutes to get started</p>
+              <p className="text-sm text-gray-600">Takes less than two minutes to get started</p>
             </div>
           </div>
 
@@ -270,16 +270,16 @@ export default function Home() {
       </section>
 
       {/* PROOF SECTION */}
-      <section className="py-16 md:py-24 bg-[#0B1F35]">
+      <section className="py-16 md:py-24 bg-gray-50">
         <div className="max-w-5xl mx-auto px-4 md:px-6 lg:px-8">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-16 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-16 text-center">
             What Happens After The Fix
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {proofPoints.map((point, index) => (
-              <div key={index} className="bg-[#1a2f47] border border-[#007CFF]/20 rounded-lg p-8">
-                <p className="text-white text-lg font-semibold">{point}</p>
+              <div key={index} className="bg-white border border-gray-200 rounded-lg p-8">
+                <p className="text-gray-900 text-lg font-semibold">{point}</p>
               </div>
             ))}
           </div>
@@ -287,28 +287,28 @@ export default function Home() {
       </section>
 
       {/* FAQ SECTION */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-[#1a2f47] to-[#0B1F35]">
+      <section className="py-16 md:py-24 bg-white">
         <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-12 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-12 text-center">
             Common Questions
           </h2>
 
           <div className="space-y-4">
             {faqs.map((faq, index) => (
-              <div key={index} className="bg-[#0B1F35] border border-[#007CFF]/30 rounded-lg overflow-hidden">
+              <div key={index} className="bg-gray-50 border border-gray-200 rounded-lg overflow-hidden">
                 <button
                   onClick={() => setOpenFaqIndex(openFaqIndex === index ? null : index)}
-                  className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-[#1a2f47] transition-colors"
+                  className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-100 transition-colors"
                   data-testid={`button-faq-${index}`}
                 >
-                  <h3 className="text-white font-semibold text-lg">{faq.question}</h3>
+                  <h3 className="text-gray-900 font-semibold text-lg">{faq.question}</h3>
                   <span className={`text-[#007CFF] transition-transform ${openFaqIndex === index ? 'rotate-180' : ''}`}>
                     <ArrowRight className="h-5 w-5" />
                   </span>
                 </button>
                 {openFaqIndex === index && (
-                  <div className="px-6 py-4 border-t border-[#007CFF]/30 bg-[#1a2f47]/50">
-                    <p className="text-gray-300">{faq.answer}</p>
+                  <div className="px-6 py-4 border-t border-gray-200 bg-white">
+                    <p className="text-gray-700">{faq.answer}</p>
                   </div>
                 )}
               </div>
@@ -318,7 +318,7 @@ export default function Home() {
       </section>
 
       {/* FOOTER */}
-      <footer className="bg-[#0B1F35] border-t border-[#007CFF]/30 py-12">
+      <footer className="bg-gray-900 border-t border-gray-800 py-12">
         <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-8">
             <div>
@@ -343,7 +343,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="border-t border-[#007CFF]/30 pt-8 text-center text-gray-400">
+          <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
             <p>&copy; 2025 Found For AI. All rights reserved.</p>
           </div>
         </div>
