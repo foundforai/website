@@ -107,7 +107,7 @@ export default function Home() {
                   className="bg-[#007CFF] hover:bg-[#0066FF] text-white font-semibold px-8 text-lg h-auto py-4"
                   data-testid="button-hero-fix-visibility"
                 >
-                  Fix My AI Visibility — 1,595 dollars
+                  Fix My AI Visibility — $1,595
                 </Button>
               </a>
             </div>
@@ -227,7 +227,7 @@ export default function Home() {
 
           <div className="bg-gray-50 border border-gray-200 rounded-lg p-8 md:p-12 mb-12">
             <div className="text-5xl md:text-6xl font-bold text-gray-900 mb-8">
-              1,595 dollars
+              $1,595
               <span className="text-lg text-gray-600 block mt-2">one time</span>
             </div>
 
