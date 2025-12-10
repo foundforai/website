@@ -100,7 +100,7 @@ export default function Home() {
       <section className="py-16 md:py-24 lg:py-32 bg-background">
         <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-2">
-            <span style={{ color: '#0B1F35' }} className="dark:text-foreground">Be the Business</span>
+            <span className="text-[#0B1F35] dark:text-white">Be the Business</span>
           </h1>
           <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-8" style={{ color: '#007CFF' }}>
             AI Recommends First.
