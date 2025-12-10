@@ -64,11 +64,11 @@ export default function Navigation() {
 
           <div className="hidden md:flex items-center gap-2">
             <ThemeToggle />
-            <Link href="/audit">
+            <a href="/#ai-search-fix">
               <Button data-testid="button-get-audit-header" className="font-semibold">
-                Get My Free Audit
+                Get AI Search Fix
               </Button>
-            </Link>
+            </a>
           </div>
 
           <div className="flex md:hidden items-center gap-2">
@@ -99,11 +99,11 @@ export default function Navigation() {
                 </div>
               </Link>
             ))}
-            <Link href="/audit">
+            <a href="/#ai-search-fix">
               <Button className="w-full font-semibold" data-testid="button-get-audit-mobile" onClick={() => setMobileMenuOpen(false)}>
-                Get My Free Audit
+                Get AI Search Fix
               </Button>
-            </Link>
+            </a>
           </div>
         </div>
       )}
