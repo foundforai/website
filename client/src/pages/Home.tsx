@@ -53,22 +53,9 @@ export default function Home() {
     >
       {/* HERO SECTION WITH SCANNER EMBED */}
       <section className="scanner-embed-section py-12 md:py-16 px-5 text-center bg-background">
-        <h1 
-          className="font-montserrat font-bold text-3xl md:text-4xl lg:text-5xl mb-2 text-[#0A2463] dark:text-white"
-          style={{ fontFamily: "'Montserrat', sans-serif" }}
-        >
-          Be the Business
-        </h1>
-        <h1 
-          className="font-montserrat font-bold text-3xl md:text-4xl lg:text-5xl mt-0"
-          style={{ fontFamily: "'Montserrat', sans-serif", color: '#007CFF' }}
-        >
-          AI Recommends First.
-        </h1>
-
         <iframe 
           src="https://foundforaivisibilityaudit.replit.app" 
-          className="w-full max-w-[900px] h-[600px] md:h-[750px] border-none mx-auto mt-8 md:mt-10 block rounded-xl"
+          className="w-full max-w-[900px] h-[600px] md:h-[750px] border-none mx-auto block rounded-xl"
           style={{ boxShadow: '0 4px 20px rgba(0,0,0,0.08)' }}
           loading="lazy"
           title="AI Visibility Audit Scanner"
