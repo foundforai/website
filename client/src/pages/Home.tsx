@@ -51,52 +51,29 @@ export default function Home() {
       canonical="https://foundforai.com"
       ogImage="/found-for-ai-logo-white.png"
     >
-      {/* HERO SECTION */}
-      <section className="py-16 md:py-24 lg:py-32 bg-background">
-        <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8 text-center">
-          <div className="leading-[1.3] mb-8">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-              <span className="text-[#0B1F35] dark:text-white">Be the Business</span>
-            </h1>
-            <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold" style={{ color: '#007CFF' }}>
-              AI Recommends First.
-            </h2>
-          </div>
-          
-          <p className="text-lg md:text-xl text-muted-foreground mb-6 max-w-3xl mx-auto">
-            AI tools like ChatGPT, Perplexity, and Google Gemini now decide which local businesses to recommend. If AI cannot read your site, it cannot recommend your business.
-          </p>
-          
-          <p className="text-base md:text-lg text-foreground mb-8 max-w-2xl mx-auto font-medium">
-            We install the missing AI readability layer so AI can finally understand your services, location, and booking link.
-          </p>
-          
-          <div className="space-y-4">
-            <a
-              href="https://square.link/u/o25cVCY4"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-testid="button-hero-cta"
-            >
-              <Button size="lg" className="text-lg px-8 py-6 font-semibold">
-                Fix My AI Visibility — $1,595
-              </Button>
-            </a>
-            <p className="text-sm text-muted-foreground">
-              One time, done for you, delivered in seven business days.
-            </p>
-          </div>
-          
-          <div className="mt-6">
-            <a
-              href="#what-we-install"
-              className="text-primary hover:underline font-medium"
-              data-testid="link-see-included"
-            >
-              See everything that is included
-            </a>
-          </div>
-        </div>
+      {/* HERO SECTION WITH SCANNER EMBED */}
+      <section className="scanner-embed-section py-12 md:py-16 px-5 text-center bg-background">
+        <h1 
+          className="font-montserrat font-bold text-3xl md:text-4xl lg:text-5xl mb-2 text-[#0A2463] dark:text-white"
+          style={{ fontFamily: "'Montserrat', sans-serif" }}
+        >
+          Be the Business
+        </h1>
+        <h1 
+          className="font-montserrat font-bold text-3xl md:text-4xl lg:text-5xl mt-0"
+          style={{ fontFamily: "'Montserrat', sans-serif", color: '#007CFF' }}
+        >
+          AI Recommends First.
+        </h1>
+
+        <iframe 
+          src="https://foundforaivisibilityaudit.replit.app" 
+          className="w-full max-w-[900px] h-[600px] md:h-[750px] border-none mx-auto mt-8 md:mt-10 block rounded-xl"
+          style={{ boxShadow: '0 4px 20px rgba(0,0,0,0.08)' }}
+          loading="lazy"
+          title="AI Visibility Audit Scanner"
+          data-testid="iframe-scanner-embed"
+        />
       </section>
 
       {/* WHY YOU'RE NOT SHOWING UP IN AI SEARCH */}
