@@ -1,9 +1,23 @@
+import { useEffect } from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Check, Mail } from 'lucide-react';
 
 export default function Home() {
+  useEffect(() => {
+    const handleMessage = (event: MessageEvent) => {
+      if (event.data && event.data.type === "resize-iframe") {
+        const frame = document.getElementById("ai-scanner-frame") as HTMLIFrameElement;
+        if (frame && event.data.height) {
+          frame.style.height = event.data.height + "px";
+        }
+      }
+    };
+    window.addEventListener("message", handleMessage);
+    return () => window.removeEventListener("message", handleMessage);
+  }, []);
+
   const whyNotShowingUp = [
     "AI cannot identify what services you actually offer",
     "AI cannot confirm your service area or location",
@@ -54,9 +68,14 @@ export default function Home() {
       {/* HERO SECTION WITH SCANNER EMBED */}
       <section className="scanner-embed-section py-12 md:py-16 px-5 text-center bg-background">
         <iframe 
+          id="ai-scanner-frame"
           src="https://foundforaivisibilityaudit.replit.app" 
-          className="w-full max-w-[900px] h-[600px] md:h-[750px] border-none mx-auto block rounded-xl"
-          style={{ boxShadow: '0 4px 20px rgba(0,0,0,0.08)' }}
+          className="w-full max-w-[900px] border-none mx-auto block rounded-xl"
+          style={{ 
+            height: '1200px',
+            marginTop: '40px',
+            boxShadow: '0 4px 20px rgba(0,0,0,0.08)' 
+          }}
           loading="lazy"
           title="AI Visibility Audit Scanner"
           data-testid="iframe-scanner-embed"
