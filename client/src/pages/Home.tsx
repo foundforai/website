@@ -72,9 +72,10 @@ export default function Home() {
           src="https://foundforaivisibilityaudit.replit.app" 
           className="w-full max-w-[900px] border-none mx-auto block rounded-xl"
           style={{ 
-            height: '1200px',
+            height: '600px',
             marginTop: '40px',
-            boxShadow: '0 4px 20px rgba(0,0,0,0.08)' 
+            boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+            transition: 'height 0.3s ease'
           }}
           loading="lazy"
           title="AI Visibility Audit Scanner"
