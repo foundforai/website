@@ -6,16 +6,32 @@ import { Check, Mail } from 'lucide-react';
 
 export default function Home() {
   useEffect(() => {
+    const updateIframeHeight = (height: number) => {
+      const frame = document.getElementById("ai-scanner-frame") as HTMLIFrameElement;
+      if (!frame) return;
+      const newHeight = Math.max(height, 700);
+      frame.style.height = newHeight + "px";
+    };
+
     const handleMessage = (event: MessageEvent) => {
       if (event.data && event.data.type === "resize-iframe") {
-        const frame = document.getElementById("ai-scanner-frame") as HTMLIFrameElement;
-        if (frame && event.data.height) {
-          frame.style.height = event.data.height + "px";
-        }
+        updateIframeHeight(event.data.height);
       }
     };
+
     window.addEventListener("message", handleMessage);
-    return () => window.removeEventListener("message", handleMessage);
+
+    const intervalId = setInterval(() => {
+      const frame = document.getElementById("ai-scanner-frame") as HTMLIFrameElement;
+      if (frame && frame.contentWindow) {
+        frame.contentWindow.postMessage({ type: "request-height" }, "*");
+      }
+    }, 800);
+
+    return () => {
+      window.removeEventListener("message", handleMessage);
+      clearInterval(intervalId);
+    };
   }, []);
 
   const whyNotShowingUp = [
@@ -70,12 +86,11 @@ export default function Home() {
         <iframe 
           id="ai-scanner-frame"
           src="https://foundforaivisibilityaudit.replit.app" 
-          className="w-full max-w-[900px] border-none mx-auto block rounded-xl"
+          className="w-full max-w-[900px] border-none mx-auto block rounded-xl overflow-hidden"
           style={{ 
             height: '600px',
             marginTop: '40px',
-            boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
-            transition: 'height 0.3s ease'
+            transition: 'height 0.25s ease'
           }}
           loading="lazy"
           title="AI Visibility Audit Scanner"
