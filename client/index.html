@@ -91,12 +91,15 @@
   ],
   "parentOrganization": { "@id": "https://foundforai.com/#org" },
   "hasMap": "https://www.google.com/maps/place/Cottonwood+Heights,+UT",
-  "potentialAction": {
-    "@type": "ContactAction",
-    "name": "Contact Found For AI",
-    "target": "https://foundforai.com/contact"
-  }
-}
+      "potentialAction": {
+        "@type": "CommunicateAction",
+        "name": "Contact Found For AI",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://foundforai.com/contact"
+        }
+      }
+
     </script>
     <script type="application/ld+json">
 {
@@ -106,7 +109,7 @@
   "serviceType": "AI SEO Readiness Audit and Optimization",
   "provider": { "@id": "https://foundforai.com/#org" },
   "areaServed": "United States",
-  "makesOffer": {
+  "offers": {
     "@type": "Offer",
     "price": "1595",
     "priceCurrency": "USD",
