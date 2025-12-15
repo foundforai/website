@@ -22,7 +22,8 @@ export default function About() {
           </h1>
 
           <p className="text-lg text-muted-foreground mb-12 text-center max-w-3xl mx-auto">
-            Found For AI is an AI visibility consulting company founded by Dustin Crump. Found For AI helps real businesses become visible and trusted in AI-powered search engines such as Google Gemini, ChatGPT, and Perplexity.
+            Found For AI is an AI visibility consulting company founded by Dustin Crump. Found For AI helps real businesses become visible and trusted in AI-powered search engines such as Google Gemini, ChatGPT, and Perplexity.{' '}
+            <a href="/blog/what-is-found-for-ai" className="text-primary hover:underline" data-testid="link-about-what-is-found-for-ai">Learn more about what we do</a>.
           </p>
 
           <Card className="mb-12">

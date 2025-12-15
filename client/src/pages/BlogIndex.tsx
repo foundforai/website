@@ -11,6 +11,16 @@ export default function BlogIndex() {
   //TODO: remove mock functionality - replace with actual blog post data
   const posts = [
     {
+      slug: 'what-is-found-for-ai',
+      title: 'What Is Found For AI?',
+      date: new Date().toISOString().split('T')[0],
+      author: 'Dustin Crump',
+      excerpt: 'Found For AI is a consulting firm that helps real businesses become visible, understandable, and recommendable in AI-powered search.',
+      readTime: '5 min read',
+      image: aiSearchImg,
+      featured: true,
+    },
+    {
       slug: 'missing-half-of-ai-seo-automation',
       title: 'The Missing Half of AI SEO: Automating What Happens After You\'re Found',
       date: '2025-01-25',

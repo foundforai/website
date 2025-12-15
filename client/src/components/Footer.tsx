@@ -49,6 +49,9 @@ export default function Footer() {
               <Link href="/about" data-testid="link-footer-about">
                 <span className="hover:text-primary transition-colors">About</span>
               </Link>
+              <Link href="/blog/what-is-found-for-ai" data-testid="link-footer-what-is-found-for-ai-blog">
+                <span className="hover:text-primary transition-colors">What Is Found For AI</span>
+              </Link>
               <Link href="/contact" data-testid="link-footer-contact">
                 <span className="hover:text-primary transition-colors">Contact</span>
               </Link>

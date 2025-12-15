@@ -13,6 +13,102 @@ export default function BlogPost() {
 
   //TODO: remove mock functionality - replace with actual markdown parsing
   const posts: Record<string, any> = {
+    'what-is-found-for-ai': {
+      title: 'What Is Found For AI?',
+      date: new Date().toISOString().split('T')[0],
+      author: 'Dustin Crump',
+      metaDescription: 'Found For AI is a consulting firm that helps real businesses become visible, understandable, and recommendable in AI-powered search.',
+      image: aiSearchImg,
+      content: `
+        <h2>What Is Found For AI?</h2>
+
+        <p>Found For AI is a consulting firm that helps real businesses become visible, understandable, and recommendable in AI-powered search.</p>
+
+        <p>As search shifts away from traditional keyword results and toward AI-generated answers, many legitimate businesses are becoming invisible — not because they aren't good, but because AI systems don't clearly understand who they are, what they do, or when to recommend them.</p>
+
+        <p>Found For AI exists to fix that.</p>
+
+        <hr />
+
+        <h2>The Problem Found For AI Solves</h2>
+
+        <p>AI search tools like Google Gemini, ChatGPT, and other AI-driven discovery systems don't search the web the same way humans do.</p>
+
+        <p>Instead of scanning pages for keywords, they try to <strong>understand entities</strong>:</p>
+
+        <ul>
+          <li>Who a business is</li>
+          <li>What services it offers</li>
+          <li>Where it operates</li>
+          <li>When it should be recommended</li>
+          <li>Why it is credible</li>
+        </ul>
+
+        <p>Most business websites were never built with this kind of understanding in mind. As a result, AI systems either skip them entirely or misinterpret them.</p>
+
+        <p>Found For AI helps businesses close that gap.</p>
+
+        <hr />
+
+        <h2>What Found For AI Does</h2>
+
+        <p>Found For AI works with businesses to make their websites and online presence <strong>AI-readable</strong>, not just human-readable.</p>
+
+        <p>That includes:</p>
+
+        <ul>
+          <li>Clarifying what the business is and is not</li>
+          <li>Structuring information so AI systems can interpret it accurately</li>
+          <li>Aligning on-site content with how AI models evaluate trust and relevance</li>
+          <li>Ensuring businesses are correctly represented across AI-driven discovery tools</li>
+        </ul>
+
+        <p>The goal is simple:<br /><strong>Be the business AI recommends first.</strong></p>
+
+        <hr />
+
+        <h2>Who Found For AI Is For</h2>
+
+        <p>Found For AI works with:</p>
+
+        <ul>
+          <li>Local and regional service businesses</li>
+          <li>Professional services firms</li>
+          <li>Consultants and agencies</li>
+          <li>Real companies that rely on being discovered, trusted, and chosen</li>
+        </ul>
+
+        <p>This is not about chasing trends or gaming algorithms.<br />It's about making sure legitimate businesses are not left behind as search evolves.</p>
+
+        <hr />
+
+        <h2>Who Founded Found For AI</h2>
+
+        <p>Found For AI was founded by <strong>Dustin Crump</strong>, a longtime technical SEO strategist who saw a growing disconnect between how businesses present themselves online and how AI systems actually interpret them.</p>
+
+        <p>After years of watching strong businesses disappear from AI-driven answers — even while ranking well in traditional search — Found For AI was created to address that blind spot.</p>
+
+        <hr />
+
+        <h2>Why Found For AI Matters Now</h2>
+
+        <p>AI search is no longer experimental. It's already shaping how customers find businesses.</p>
+
+        <p>Companies that adapt early will be:</p>
+
+        <ul>
+          <li>Seen more often</li>
+          <li>Trusted more quickly</li>
+          <li>Recommended more confidently by AI systems</li>
+        </ul>
+
+        <p>Found For AI helps businesses prepare for that future — without hype, shortcuts, or guesswork.</p>
+
+        <hr />
+
+        <p>If you want to understand how visible your business is to AI search today, you can scan your website at <a href="https://foundforai.com" class="text-primary hover:underline">https://foundforai.com</a>.</p>
+      `,
+    },
     'missing-half-of-ai-seo-automation': {
       title: 'The Missing Half of AI SEO: Automating What Happens After You\'re Found',
       date: '2025-01-25',
