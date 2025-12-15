@@ -285,7 +285,7 @@ export default function Home() {
 
       {/* SUPPORT NOTE */}
       <section className="py-8 bg-muted/20">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 text-center">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 text-center space-y-2">
           <p className="text-sm text-muted-foreground">
             Questions?{' '}
             <a
@@ -296,6 +296,15 @@ export default function Home() {
               support@foundforai.com
             </a>{' '}
             — 24-hour response.
+          </p>
+          <p className="text-sm text-muted-foreground">
+            <a
+              href="https://foundforai.com/blog/what-is-found-for-ai"
+              className="text-primary hover:underline"
+              data-testid="link-home-what-is-found-for-ai"
+            >
+              What Is Found For AI?
+            </a>
           </p>
         </div>
       </section>
