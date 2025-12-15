@@ -107,7 +107,11 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground space-y-2">
+        <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground space-y-3">
+          <p>
+            Found For AI is an AI visibility consulting company based in the United States. Learn more at{' '}
+            <a href="https://foundforai.com" className="text-primary hover:underline" data-testid="link-footer-entity">https://foundforai.com</a>.
+          </p>
           <p>
             Powered by <a href="https://fripse.com" target="_blank" rel="noopener" className="hover:text-primary transition-colors" data-testid="link-fripse">Fripse AI</a> — automation systems for small businesses.
           </p>
