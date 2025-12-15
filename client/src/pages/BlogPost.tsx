@@ -18,7 +18,7 @@ export default function BlogPost() {
       date: new Date().toISOString().split('T')[0],
       author: 'Dustin Crump',
       metaDescription: 'Found For AI is a consulting firm that helps real businesses become visible, understandable, and recommendable in AI-powered search.',
-      image: aiSearchImg,
+      image: 'https://images.unsplash.com/photo-1516382799247-87df95d790b7?q=80&w=2674&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       content: `
         <h2>What Is Found For AI?</h2>
 
