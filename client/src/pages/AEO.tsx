@@ -6,36 +6,55 @@ import { ArrowRight, Check } from 'lucide-react';
 
 export default function AEO() {
   const benefits = [
-    "AI assistants cite your brand in answers",
-    "Machine-readable with JSON-LD schema",
-    "Answer-ready conversational content",
-    "Entity mapping (Organization, Service, FAQ)",
-    "Structured sitemaps and metadata",
-    "Fast renderability for AI crawlers"
+    "AI assistants reference your brand in answers",
+    "Your business details are clearly understood by AI systems",
+    "Your services, location, and FAQs are interpreted correctly",
+    "Your site is reliable and trustworthy from an AI perspective"
   ];
 
-  const seoVsAeo = [
-    { aspect: 'Goal', seo: 'Rank pages/keywords in Google', aeo: 'Get cited in AI answers' },
-    { aspect: 'Focus', seo: 'Links & on-page signals', aeo: 'Entities, schema, answer formatting' },
-    { aspect: 'Content', seo: 'Blog posts, keywords', aeo: 'FAQs, clear facts, structured data' },
-    { aspect: 'Tech', seo: 'Meta tags, header optimization', aeo: 'JSON-LD, robots/llms.txt, entities' }
+  const implementations = [
+    {
+      title: "AI Data Layer Installation",
+      description: "We install a clean, consistent AI Data Layer that clearly defines your business identity — including who you are, what you offer, where you operate, and how customers engage with you."
+    },
+    {
+      title: "AI Visibility Layer Optimization",
+      description: "We ensure AI systems can reliably access and interpret your business information across your site."
+    },
+    {
+      title: "Answer-Ready Content",
+      description: "We organize key information like services, FAQs, and locations so AI can confidently reference your business."
+    },
+    {
+      title: "Discovery & Access Signals",
+      description: "We make it easy for AI systems to discover and read your site without friction."
+    },
+    {
+      title: "Performance & Clarity Cleanup",
+      description: "Fast loading pages and clear structure help AI systems understand your site efficiently."
+    }
   ];
 
   return (
     <PageLayout
       title="What is AEO (Answer Engine Optimization)? | Found For AI"
-      description="AEO makes your content show up inside AI-generated answers from ChatGPT, Gemini, and Perplexity. Learn how to structure your site so AI assistants can understand, trust, and cite your brand."
+      description="AEO helps your business appear inside AI-generated answers from tools like ChatGPT, Gemini, and Perplexity — not just as a link, but as a recommended source."
       canonical="https://foundforai.com/aeo"
     >
       {/* Hero Section */}
       <section className="py-16 md:py-24 bg-gradient-to-br from-primary/5 to-accent/5">
         <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            What is AEO (Answer Engine Optimization)?
+            What Is AEO (Answer Engine Optimization)?
           </h1>
-          <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-            AEO makes your content show up <strong>inside AI-generated answers</strong> (ChatGPT, Gemini, Perplexity) — not just as blue links.
-            We structure your site so assistants can understand, trust, and cite your brand.
+          <p className="text-xl text-muted-foreground mb-6 max-w-3xl mx-auto leading-relaxed">
+            AEO helps your business appear inside AI-generated answers from tools like ChatGPT, Gemini, and Perplexity — not just as a link, but as a recommended source.
+          </p>
+          <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
+            Instead of optimizing only for search engines, AEO ensures AI systems can understand, trust, and accurately represent your business when answering real customer questions.
+          </p>
+          <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
+            At Found For AI, we do this by installing your <strong>AI Data Layer</strong> and strengthening your <strong>AI Visibility Layer</strong> — so AI assistants know who you are, what you offer, and when to recommend you.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/audit">
@@ -56,9 +75,13 @@ export default function AEO() {
       {/* Why AEO Matters */}
       <section className="py-16 md:py-24 bg-background">
         <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center">
             Why AEO Matters
           </h2>
+          <p className="text-lg text-muted-foreground mb-12 text-center max-w-2xl mx-auto">
+            AI assistants are quickly becoming the first place people ask questions. If AI can't clearly read your business, it won't recommend you.
+          </p>
+          <p className="text-lg font-medium mb-8 text-center">AEO helps ensure that:</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
             {benefits.map((benefit, index) => (
               <Card key={index}>
@@ -74,54 +97,44 @@ export default function AEO() {
 
       {/* SEO vs AEO Comparison */}
       <section className="py-16 md:py-24 bg-muted/30">
-        <div className="max-w-5xl mx-auto px-4 md:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-            SEO vs AEO, in One Glance
+            SEO vs AEO, At a Glance
           </h2>
-          <Card className="overflow-hidden">
-            <CardContent className="p-0">
-              <table className="w-full">
-                <thead>
-                  <tr className="bg-primary text-primary-foreground">
-                    <th className="py-4 px-6 text-left font-semibold">Aspect</th>
-                    <th className="py-4 px-6 text-left font-semibold">SEO</th>
-                    <th className="py-4 px-6 text-left font-semibold">AEO</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {seoVsAeo.map((row, index) => (
-                    <tr key={index} className={index % 2 === 0 ? 'bg-muted/50' : 'bg-background'}>
-                      <td className="py-4 px-6 font-semibold text-foreground">{row.aspect}</td>
-                      <td className="py-4 px-6 text-muted-foreground">{row.seo}</td>
-                      <td className="py-4 px-6 text-accent font-medium">{row.aeo}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </CardContent>
-          </Card>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <Card>
+              <CardContent className="p-8">
+                <h3 className="text-xl font-bold mb-4">SEO</h3>
+                <p className="text-muted-foreground mb-4">SEO focuses on ranking pages in search engines.</p>
+                <p className="text-muted-foreground">SEO helps people find you.</p>
+              </CardContent>
+            </Card>
+            <Card className="border-accent">
+              <CardContent className="p-8">
+                <h3 className="text-xl font-bold mb-4 text-accent">AEO</h3>
+                <p className="text-muted-foreground mb-4">AEO focuses on being cited and recommended by AI.</p>
+                <p className="text-muted-foreground">AEO helps AI recommend you.</p>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </section>
 
       {/* What We Implement */}
       <section className="py-16 md:py-24 bg-background">
         <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
             What We Implement
           </h2>
-          <div className="prose prose-lg max-w-none text-muted-foreground space-y-6 mb-12">
-            <p>
-              <strong>Entity & Schema Mapping:</strong> We implement Organization, Service, FAQ, and other schema types so AI understands your business structure.
-            </p>
-            <p>
-              <strong>Sitemaps & Discovery:</strong> robots.txt, llms.txt, and properly formatted sitemaps ensure AI crawlers can access and index your content.
-            </p>
-            <p>
-              <strong>Metadata Cleanup:</strong> Consistent OpenGraph, Twitter cards, and meta descriptions across all pages.
-            </p>
-            <p>
-              <strong>Performance Tuning:</strong> Fast page loads and clean HTML make your site easier for AI to render and parse.
-            </p>
+          <div className="space-y-6">
+            {implementations.map((item, index) => (
+              <Card key={index}>
+                <CardContent className="p-6">
+                  <h3 className="text-lg font-bold mb-2">{item.title}</h3>
+                  <p className="text-muted-foreground">{item.description}</p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
@@ -133,7 +146,7 @@ export default function AEO() {
             <CardContent className="p-8 text-center">
               <h3 className="text-3xl font-bold mb-4">Ready to Get Started?</h3>
               <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Run your free AI Visibility Check or grab the Starter Fix package to get AI-ready in 7 business days.
+                Run your free AI Visibility Check to see how AI systems currently interpret your business — or grab the Starter Fix to install your AI Data Layer and become AI-ready quickly.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/audit">
@@ -143,7 +156,7 @@ export default function AEO() {
                 </Link>
                 <a href="https://square.link/u/o25cVCY4" target="_blank" rel="noopener">
                   <Button variant="outline" size="lg" className="font-semibold" data-testid="button-cta-buy">
-                    Buy Starter Fix – $495 →
+                    Buy Starter Fix – $1,595 →
                   </Button>
                 </a>
               </div>

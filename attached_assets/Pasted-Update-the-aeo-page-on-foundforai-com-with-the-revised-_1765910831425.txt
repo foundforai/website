@@ -1,0 +1,75 @@
+Update the /aeo page on foundforai.com with the revised AEO content using Found For AI branded language.
+
+Actions to take:
+
+1. Replace the entire existing page content for the /aeo page with the following updated copy.
+   - Remove all mentions of “structured data,” “schema,” “JSON-LD,” or similar technical terms.
+   - Use only the branded language: “AI Data Layer” and “AI Visibility Layer.”
+   - Keep the page layout clean and readable for non-technical business owners.
+
+--- NEW PAGE CONTENT ---
+
+What Is AEO (Answer Engine Optimization)?
+
+AEO helps your business appear inside AI-generated answers from tools like ChatGPT, Gemini, and Perplexity — not just as a link, but as a recommended source.
+
+Instead of optimizing only for search engines, AEO ensures AI systems can understand, trust, and accurately represent your business when answering real customer questions.
+
+At Found For AI, we do this by installing your AI Data Layer and strengthening your AI Visibility Layer — so AI assistants know who you are, what you offer, and when to recommend you.
+
+[Run Free AI Visibility Check]
+[View Pricing]
+
+Why AEO Matters
+
+AI assistants are quickly becoming the first place people ask questions.  
+If AI can’t clearly read your business, it won’t recommend you.
+
+AEO helps ensure that:
+• AI assistants reference your brand in answers  
+• Your business details are clearly understood by AI systems  
+• Your services, location, and FAQs are interpreted correctly  
+• Your site is reliable and trustworthy from an AI perspective  
+
+SEO vs AEO, At a Glance
+
+SEO focuses on ranking pages in search engines.  
+AEO focuses on being cited and recommended by AI.
+
+SEO helps people find you.  
+AEO helps AI recommend you.
+
+What We Implement
+
+AI Data Layer Installation  
+We install a clean, consistent AI Data Layer that clearly defines your business identity — including who you are, what you offer, where you operate, and how customers engage with you.
+
+AI Visibility Layer Optimization  
+We ensure AI systems can reliably access and interpret your business information across your site.
+
+Answer-Ready Content  
+We organize key information like services, FAQs, and locations so AI can confidently reference your business.
+
+Discovery & Access Signals  
+We make it easy for AI systems to discover and read your site without friction.
+
+Performance & Clarity Cleanup  
+Fast loading pages and clear structure help AI systems understand your site efficiently.
+
+Ready to Get Started?
+
+Run your free AI Visibility Check to see how AI systems currently interpret your business — or grab the Starter Fix to install your AI Data Layer and become AI-ready quickly.
+
+[Run Free AI Visibility Check →]  
+[Buy Starter Fix – $1,595 →]
+
+--- END CONTENT ---
+
+2. Update any pricing references on this page:
+   - Change “$495” to “$1,595” everywhere it appears.
+   - Ensure buttons, CTA text, and pricing labels all reflect $1,595.
+
+3. Do not modify site-wide schema, metadata, navigation, or other pages.
+   This update applies only to the /aeo page content and pricing text.
+
+After updating, confirm the page renders correctly and the new price is shown consistently.
