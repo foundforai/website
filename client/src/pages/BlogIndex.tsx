@@ -39,15 +39,6 @@ export default function BlogIndex() {
       image: aiSearchImg,
     },
     {
-      slug: 'what-is-schema-markup',
-      title: 'What Is Schema Markup And Why It Matters For AI Search',
-      date: '2025-01-15',
-      author: 'Dustin Crump',
-      excerpt: 'Learn how schema markup helps AI understand your website and why it\'s essential for being discovered by ChatGPT, Perplexity, and other AI search tools.',
-      readTime: '6 min read',
-      image: schemaMarkupImg,
-    },
-    {
       slug: 'how-to-make-website-ai-discoverable',
       title: 'How To Make Your Website AI Discoverable',
       date: '2025-01-10',

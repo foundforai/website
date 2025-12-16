@@ -232,42 +232,6 @@ export default function BlogPost() {
         <p><a href="/audit" class="text-primary hover:underline">Get your free AI Readiness Audit</a> and find out if your business is visible to AI at FoundForAI.com/audit</p>
       `,
     },
-    'what-is-schema-markup': {
-      title: 'What Is Schema Markup And Why It Matters For AI Search',
-      date: '2025-01-15',
-      author: 'Dustin Crump',
-      image: schemaMarkupImg,
-      content: `
-        <p>Schema markup is structured data that you add to your website to help search engines and AI understand your content. Think of it as labels and context that explain what your website is about, who you are, and what you offer.</p>
-
-        <h2>Why Schema Matters for AI</h2>
-        <p>AI models like ChatGPT, Perplexity, and Google's AI Overviews don't read your website the way humans do. They look for structured, machine-readable data to understand:</p>
-        <ul>
-          <li>Your business name, location, and contact information</li>
-          <li>The services or products you offer</li>
-          <li>Customer reviews and ratings</li>
-          <li>Frequently asked questions</li>
-          <li>Article content and authorship</li>
-        </ul>
-
-        <h2>The Most Important Schema Types</h2>
-        <p>For most businesses, these schema types deliver the biggest impact:</p>
-        <ul>
-          <li><strong>LocalBusiness</strong> - Essential for any business with a physical location</li>
-          <li><strong>Service</strong> - Describes what you offer and pricing</li>
-          <li><strong>FAQPage</strong> - Helps AI answer user questions directly</li>
-          <li><strong>Article</strong> - For blog posts and content marketing</li>
-        </ul>
-
-        <h2>How to Implement Schema</h2>
-        <p>Schema is added to your website as JSON-LD code in the page head. While you can implement it manually, it's easy to make mistakes. Found For AI provides ready-to-use code snippets tailored to your business in every Pro Audit.</p>
-
-        <h2>Real Results</h2>
-        <p>Websites with proper schema markup are significantly more likely to appear in AI-generated answers. When ChatGPT or Perplexity recommends businesses, they pull from structured data first.</p>
-
-        <p>Ready to see how your schema stacks up? <a href="/audit" class="text-primary hover:underline">Get your free AI Readiness Audit</a>.</p>
-      `,
-    },
     'how-to-make-website-ai-discoverable': {
       title: 'How To Make Your Website AI Discoverable',
       date: '2025-01-10',
