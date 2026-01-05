@@ -18,8 +18,9 @@ export default function BlogPost() {
       subtitle: 'AI tools don\'t browse websites like humans or rank them like Google. They recommend businesses they understand and trust. Here\'s what those businesses do differently.',
       date: new Date().toISOString().split('T')[0],
       author: 'Dustin Crump',
-      metaDescription: 'AI tools don\'t browse websites like humans or rank them like Google. They recommend businesses they understand and trust. Here\'s what those businesses do differently.',
+      metaDescription: 'AI tools recommend only a few businesses. See the patterns smart owners follow to get recommended and find out how your site looks to AI.',
       image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2534&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      hasArticleSchema: true,
       content: `
         <p>More customers are asking AI tools questions like "Who should I call?" or "What's the best option near me?"</p>
         
@@ -364,7 +365,45 @@ export default function BlogPost() {
         }
       };
     }
-  }, [post]);
+
+    if (post && post.hasArticleSchema) {
+      const articleSchema = document.createElement('script');
+      articleSchema.type = 'application/ld+json';
+      articleSchema.id = 'blogpost-article-schema';
+      articleSchema.text = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": post.title,
+        "description": post.metaDescription,
+        "datePublished": post.date,
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": `https://foundforai.com/blog/${slug}`
+        },
+        "author": {
+          "@type": "Person",
+          "name": post.author
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Found For AI",
+          "url": "https://foundforai.com",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://foundforai.com/found-for-ai-logo-white.png"
+          }
+        }
+      });
+      document.head.appendChild(articleSchema);
+
+      return () => {
+        const existingSchema = document.getElementById('blogpost-article-schema');
+        if (existingSchema) {
+          document.head.removeChild(existingSchema);
+        }
+      };
+    }
+  }, [post, slug]);
 
   if (!post) {
     return (
@@ -385,8 +424,8 @@ export default function BlogPost() {
 
   return (
     <PageLayout
-      title={`${post.title} | Found For AI Blog`}
-      description={post.content.substring(0, 160)}
+      title={post.title}
+      description={post.metaDescription || post.content.substring(0, 160)}
       canonical={`https://foundforai.com/blog/${slug}`}
     >
       <article className="py-16 md:py-24 bg-background">

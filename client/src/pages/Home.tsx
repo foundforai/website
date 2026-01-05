@@ -345,6 +345,14 @@ export default function Home() {
             >
               What Is Found For AI?
             </a>
+            {' · '}
+            <a
+              href="/blog/7-things-smart-business-owners-do-to-get-recommended-by-ai"
+              className="text-primary hover:underline"
+              data-testid="link-home-7-things"
+            >
+              How to get recommended by AI
+            </a>
           </p>
         </div>
       </section>
