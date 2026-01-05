@@ -28,9 +28,49 @@ export default function Home() {
       }
     }, 800);
 
+    // FAQPage Schema for homepage
+    const faqSchema = document.createElement('script');
+    faqSchema.type = 'application/ld+json';
+    faqSchema.id = 'home-faq-schema';
+    faqSchema.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is this a monthly subscription?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. This is a one time project. We install your AI readability layer, deliver your report, and stand behind the work with our sixty day fix it free guarantee."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you need to rebuild my website?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usually no. We add an AI-focused data layer around your existing site so AI tools can read what you already have. If we see anything that truly needs to be rebuilt, we will tell you before any extra work is done."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can my current web person do this?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most web teams are focused on design, content, and regular search. AI visibility is a different skill set. We only do AI search and AI readability work, which is why agencies often bring us in behind the scenes to handle this part."
+          }
+        }
+      ]
+    });
+    document.head.appendChild(faqSchema);
+
     return () => {
       window.removeEventListener("message", handleMessage);
       clearInterval(intervalId);
+      const existingFaq = document.getElementById('home-faq-schema');
+      if (existingFaq) {
+        document.head.removeChild(existingFaq);
+      }
     };
   }, []);
 
