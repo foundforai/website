@@ -7,9 +7,6 @@ const app = express();
 // Trust proxy - required for correct protocol detection behind load balancers/proxies
 app.set('trust proxy', true);
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-
 // ============================================================================
 // CANONICAL URL ENFORCEMENT - Force HTTPS and strip www subdomain
 // ============================================================================
@@ -50,6 +47,9 @@ app.use((req, res, next) => {
   // Already canonical, continue
   next();
 });
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 app.use((req, res, next) => {
   const start = Date.now();
