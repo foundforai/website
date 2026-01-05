@@ -11,14 +11,23 @@ export default function BlogIndex() {
   //TODO: remove mock functionality - replace with actual blog post data
   const posts = [
     {
+      slug: '7-things-smart-business-owners-do-to-get-recommended-by-ai',
+      title: '7 Things Smart Business Owners Do to Get Recommended by AI',
+      date: new Date().toISOString().split('T')[0],
+      author: 'Dustin Crump',
+      excerpt: 'AI tools don\'t browse websites like humans or rank them like Google. They recommend businesses they understand and trust. Here\'s what those businesses do differently.',
+      readTime: '2 min read',
+      image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2534&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      featured: true,
+    },
+    {
       slug: 'what-is-found-for-ai',
       title: 'What Is Found For AI?',
-      date: new Date().toISOString().split('T')[0],
+      date: '2025-01-03',
       author: 'Dustin Crump',
       excerpt: 'Found For AI is a consulting firm that helps real businesses become visible, understandable, and recommendable in AI-powered search.',
       readTime: '5 min read',
       image: 'https://images.unsplash.com/photo-1516382799247-87df95d790b7?q=80&w=2674&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      featured: true,
     },
     {
       slug: 'missing-half-of-ai-seo-automation',

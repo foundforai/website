@@ -13,6 +13,65 @@ export default function BlogPost() {
 
   //TODO: remove mock functionality - replace with actual markdown parsing
   const posts: Record<string, any> = {
+    '7-things-smart-business-owners-do-to-get-recommended-by-ai': {
+      title: '7 Things Smart Business Owners Do to Get Recommended by AI',
+      subtitle: 'AI tools don\'t browse websites like humans or rank them like Google. They recommend businesses they understand and trust. Here\'s what those businesses do differently.',
+      date: new Date().toISOString().split('T')[0],
+      author: 'Dustin Crump',
+      metaDescription: 'AI tools don\'t browse websites like humans or rank them like Google. They recommend businesses they understand and trust. Here\'s what those businesses do differently.',
+      image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2534&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      content: `
+        <p>More customers are asking AI tools questions like "Who should I call?" or "What's the best option near me?"</p>
+        
+        <p>When that happens, AI rarely gives a long list. It usually recommends one or two businesses.</p>
+        
+        <p>Those recommendations aren't random.</p>
+        
+        <p>After reviewing many business websites, a clear pattern shows up. The businesses that get recommended tend to do a few things consistently, often without realizing it.</p>
+        
+        <p>Here are seven of them.</p>
+
+        <h2>1. They make it easy to understand what they do</h2>
+        
+        <p>AI doesn't guess. Businesses that get recommended clearly explain what they offer and who it's for. No clever wording. No ambiguity. If the AI has to interpret your business, it usually moves on.</p>
+
+        <h2>2. They look legitimate everywhere, not just on their website</h2>
+        
+        <p>AI cross-checks information. Businesses that show up tend to have consistent details across their website and the rest of the web. When information doesn't line up, confidence drops fast.</p>
+
+        <h2>3. Their information doesn't contradict itself</h2>
+        
+        <p>Conflicting service descriptions, locations, or messaging introduce doubt. Smart business owners remove those contradictions so AI systems see one clear, consistent story.</p>
+
+        <h2>4. They answer real customer questions directly</h2>
+        
+        <p>AI exists to answer questions. Businesses that show up tend to make key information easy to find and easy to understand. Clear answers beat clever marketing language every time.</p>
+
+        <h2>5. Their website is structured for machines, not just people</h2>
+        
+        <p>Many websites look great to humans but are confusing to AI. Businesses that get recommended tend to have an underlying structure that helps machines identify what matters and what can be trusted.</p>
+
+        <h2>6. They reduce uncertainty</h2>
+        
+        <p>AI avoids recommending businesses when it's unsure. Smart owners remove doubt around services, location, credibility, and relevance so the recommendation feels safe.</p>
+
+        <h2>7. They've adapted to how search is changing</h2>
+        
+        <p>The biggest difference is mindset. Businesses that show up in AI answers understand that visibility now means being clear, consistent, and reference-worthy to systems that summarize the web.</p>
+
+        <hr />
+
+        <h2>Want to see how your business looks to AI?</h2>
+        
+        <p>Most business owners have no idea how AI systems interpret their website. That's normal.</p>
+        
+        <p>Our AI Visibility Audit shows how AI tools read your site, where confidence breaks down, and what's helping or hurting your chances of being recommended.</p>
+        
+        <p>No guesswork. No jargon. Just clarity.</p>
+        
+        <p><a href="/audit" class="text-primary hover:underline font-semibold">Get Your Free AI Visibility Audit →</a></p>
+      `,
+    },
     'what-is-found-for-ai': {
       title: 'What Is Found For AI?',
       date: new Date().toISOString().split('T')[0],
@@ -339,7 +398,11 @@ export default function BlogPost() {
               </Badge>
               <span className="text-sm text-muted-foreground">by {post.author}</span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-8">{post.title}</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">{post.title}</h1>
+            
+            {post.subtitle && (
+              <p className="text-xl text-muted-foreground mb-8 max-w-3xl">{post.subtitle}</p>
+            )}
             
             {post.image && (
               <div className="rounded-xl overflow-hidden mb-8">
