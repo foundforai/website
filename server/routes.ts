@@ -19,6 +19,19 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Serve static ai-visibility.html sales landing page
+  app.get("/ai-visibility", (req, res) => {
+    try {
+      const htmlPath = join(process.cwd(), "client/public/ai-visibility.html");
+      const htmlContent = readFileSync(htmlPath, "utf-8");
+      res.setHeader("Content-Type", "text/html");
+      res.status(200).send(htmlContent);
+    } catch (error) {
+      console.error("Error serving ai-visibility.html:", error);
+      res.status(500).send("Error loading page");
+    }
+  });
+
   // Redirect /search to homepage (fixes GSC soft 404)
   app.get("/search", (req, res) => {
     res.redirect(301, "/");
