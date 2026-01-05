@@ -1,0 +1,73 @@
+Build a single-page, mobile-first landing page for Found For AI focused on sales conversion from cold outreach.
+
+Goal: Make it extremely easy for a business owner to take a low-commitment next step after a short conversation.
+
+Brand
+• Company name: Found For AI
+• Tone: calm, confident, plain English, non-hype
+• Visual style: clean SaaS, lots of white space, professional
+• Use a modern sans-serif font (Inter, Montserrat, or similar)
+
+Page Structure
+
+Header
+• Logo text: “Found For AI” (left aligned)
+• No navigation menu
+
+Hero Section (centered)
+• Headline (large, bold):
+“We help AI tools correctly understand your business so they can recommend you.”
+
+• Subhead (smaller, muted text below headline):
+“Takes under 5 minutes. No commitment.”
+
+• Primary CTA button:
+Text: “Check My Business (Free)”
+Style: primary blue button, rounded corners
+Action: link to this Typeform URL
+https://foundforai.typeform.com/to/izAuAcBg
+
+• Secondary CTA button (outline style):
+Text: “Talk to a Human First”
+Action: scroll to contact section or open email link
+
+Trust Section (short, below hero)
+• Three simple bullet points with check icons:
+– “AI can’t recommend what it can’t understand”
+– “We organize your business info so AI can read it”
+– “No long contracts or ongoing fees”
+
+What Happens Next Section
+• Simple numbered steps:
+
+Answer a few quick questions
+
+We fix what AI can’t see
+
+AI systems begin using the info over the next 2–8 weeks
+
+• Include a small disclaimer:
+“AI platforms control when and how recommendations appear.”
+
+Talk to a Human Section
+• Short copy:
+“Prefer to ask a few questions first?”
+• Button:
+Text: “Email a Real Person”
+Link to: support@foundforai.com
+ (mailto link)
+
+Footer
+• Small text:
+“Found For AI helps businesses become AI-readable and AI-eligible.”
+• No social links, no legal clutter
+
+Technical Requirements
+• Use simple HTML + CSS (no frameworks unless necessary)
+• Mobile responsive
+• Fast load
+• No blog, no pricing tables, no SEO extras
+
+Output
+• Produce the full page code ready to deploy
+• Keep everything minimal and conversion-focused
