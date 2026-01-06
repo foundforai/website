@@ -1,0 +1,81 @@
+Update the AI Visibility results follow-up page to feel calm, human, and clearly branded, not like an error or warning.
+
+1. Layout and alignment
+
+Change the page from center-aligned text to left-aligned
+
+Constrain content to a readable max width (around 700–760px)
+
+Improve vertical spacing so the page feels airy and intentional
+
+2. Branding
+
+Add the Found For AI logo in the top-left corner, small and understated (header-sized, not hero-sized)
+
+Make the logo link back to https://foundforai.com
+
+Add a subtle text link near the logo:
+“← Back to FoundForAI.com”
+
+Do not add a full navigation bar
+
+3. Color usage
+
+Use Found For AI brand colors sparingly
+
+Apply brand color to:
+
+The main headline (or a subtle underline/accent)
+
+The primary CTA button
+
+Avoid warning colors, alerts, yellow boxes, or error-style UI
+
+This page should feel reassuring, not corrective
+
+4. Replace the existing headline and copy with this exact copy
+
+Headline
+Questions about your AI visibility?
+Talk to a human who’s already looked at your results.
+
+Subheadline
+We’ve already seen what AI tools can and can’t understand about your business.
+This is a short, no-pressure conversation to help you make sense of what you’re seeing and decide what to do next.
+
+Section label
+Why this call exists
+
+Body copy
+AI tools don’t recommend what they can’t clearly understand.
+Your results reflect how visible and interpretable your business is to AI right now.
+
+This call isn’t about selling.
+It’s about clarity.
+
+We’ll walk through:
+
+What your results actually mean
+
+Where AI is getting confused or missing context
+
+What fixing those gaps would involve
+
+Whether it makes sense to act now or wait
+
+5. CTA
+
+Primary button text:
+Talk to a Human
+
+Button should use the brand primary color
+
+Button should open the existing scheduling or contact flow already wired for this page
+
+6. Overall goal
+
+This page should feel like a calm handoff from automation to a real person
+
+It should feel obviously part of the Found For AI experience
+
+Avoid anything that feels like an error, warning, or failed score state

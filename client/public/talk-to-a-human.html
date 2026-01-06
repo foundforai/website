@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Talk to a Human | Found For AI</title>
-  <meta name="description" content="Questions about your AI Visibility Score? Talk to a human who's already looked at your results.">
+  <meta name="description" content="Questions about your AI visibility? Talk to a human who's already looked at your results.">
   <link rel="canonical" href="https://foundforai.com/talk-to-a-human">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,107 +24,138 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    .container {
-      max-width: 640px;
+    .page-wrapper {
+      max-width: 760px;
       margin: 0 auto;
       padding: 0 24px;
     }
 
-    /* Header Section */
-    .header {
-      padding: 60px 0 40px;
-      text-align: center;
+    /* Header with logo */
+    .site-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 24px 0;
+      border-bottom: 1px solid #f1f5f9;
+      margin-bottom: 48px;
     }
 
-    .header h1 {
-      font-size: 1.75rem;
+    .logo-link {
+      display: block;
+    }
+
+    .logo {
+      height: 28px;
+      width: auto;
+    }
+
+    .back-link {
+      font-size: 0.8125rem;
+      color: #94a3b8;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Main content - left aligned */
+    .content {
+      text-align: left;
+    }
+
+    .headline {
+      font-size: 1.875rem;
       font-weight: 700;
-      line-height: 1.3;
+      line-height: 1.25;
       margin-bottom: 20px;
-      color: #1a1a2e;
+      color: #1e40af;
     }
 
-    .header p {
+    .subheadline {
       font-size: 1.0625rem;
       color: #64748b;
+      margin-bottom: 48px;
+      max-width: 600px;
     }
 
-    /* Why Section */
-    .why-section {
-      padding: 40px 0;
-    }
-
-    .why-section h2 {
-      font-size: 1.125rem;
+    /* Section */
+    .section-label {
+      font-size: 0.8125rem;
       font-weight: 600;
-      color: #64748b;
-      margin-bottom: 24px;
+      color: #94a3b8;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .why-content p {
-      font-size: 1.0625rem;
-      color: #334155;
+      letter-spacing: 0.08em;
       margin-bottom: 20px;
     }
 
-    .why-content p:last-of-type {
-      margin-bottom: 24px;
+    .body-copy {
+      margin-bottom: 32px;
     }
 
-    .walkthrough-list {
-      list-style: none;
+    .body-copy p {
+      font-size: 1rem;
+      color: #334155;
+      margin-bottom: 16px;
+    }
+
+    .body-copy p:last-of-type {
       margin-bottom: 0;
     }
 
-    .walkthrough-list li {
-      font-size: 1rem;
-      color: #334155;
-      padding-left: 24px;
-      position: relative;
-      margin-bottom: 10px;
-    }
-
-    .walkthrough-list li::before {
-      content: "\2022";
-      position: absolute;
-      left: 8px;
-      color: #64748b;
-    }
-
-    /* Reassurance Section */
-    .reassurance {
-      padding: 40px 0;
-    }
-
-    .check-list {
-      list-style: none;
-    }
-
-    .check-list li {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+    .walkthrough-intro {
       font-size: 1rem;
       color: #334155;
       margin-bottom: 12px;
     }
 
-    .check-list li:last-child {
-      margin-bottom: 0;
+    .walkthrough-list {
+      list-style: none;
+      margin-bottom: 40px;
     }
 
-    .check-icon {
-      flex-shrink: 0;
-      width: 20px;
-      height: 20px;
-      color: #16a34a;
+    .walkthrough-list li {
+      font-size: 1rem;
+      color: #334155;
+      padding-left: 20px;
+      position: relative;
+      margin-bottom: 8px;
+    }
+
+    .walkthrough-list li::before {
+      content: "\2022";
+      position: absolute;
+      left: 4px;
+      color: #1e40af;
+    }
+
+    /* CTA Button */
+    .cta-section {
+      margin-bottom: 48px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 16px 32px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      background: #1e40af;
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background: #1e3a8a;
     }
 
     /* Calendar Section */
     .calendar-section {
       padding: 40px 0;
+      border-top: 1px solid #f1f5f9;
     }
 
     .calendar-embed {
@@ -136,7 +167,6 @@
     /* Final Note */
     .final-note {
       padding: 32px 0 60px;
-      text-align: center;
     }
 
     .final-note p {
@@ -147,89 +177,72 @@
 
     /* Responsive */
     @media (min-width: 640px) {
-      .header {
-        padding: 80px 0 48px;
+      .site-header {
+        padding: 32px 0;
+        margin-bottom: 64px;
       }
 
-      .header h1 {
+      .headline {
         font-size: 2.25rem;
       }
 
-      .why-section,
-      .reassurance,
+      .subheadline {
+        margin-bottom: 56px;
+      }
+
       .calendar-section {
-        padding: 48px 0;
+        padding: 56px 0;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
-  <header class="header">
-    <div class="container">
-      <h1>Questions about your AI Visibility Score?<br>Talk to a human who's already looked at your results.</h1>
-      <p>We've already seen what AI tools can and can't understand about your business. This is a short, no-pressure conversation to help you make sense of your score and decide next steps.</p>
-    </div>
-  </header>
+  <div class="page-wrapper">
+    <!-- Header with logo -->
+    <header class="site-header">
+      <a href="https://foundforai.com" class="logo-link" data-testid="link-logo-home">
+        <img src="/found-for-ai-logo-white.png" alt="Found For AI" class="logo">
+      </a>
+      <a href="https://foundforai.com" class="back-link" data-testid="link-back-main">&larr; Back to FoundForAI.com</a>
+    </header>
 
-  <!-- Why Section -->
-  <section class="why-section">
-    <div class="container">
-      <h2>Why this call exists</h2>
-      <div class="why-content">
-        <p>AI tools don't recommend what they can't clearly understand.<br>Your score reflects how visible and interpretable your business is right now.</p>
-        <p>This call is not about selling.<br>It's about clarity.</p>
-        <p>We'll walk through:</p>
-        <ul class="walkthrough-list">
-          <li>What your score actually means</li>
-          <li>Where AI is getting confused or missing context</li>
-          <li>What fixing those gaps would involve</li>
-          <li>Whether it makes sense to act now or wait</li>
-        </ul>
+    <!-- Main Content -->
+    <main class="content">
+      <h1 class="headline">Questions about your AI visibility?<br>Talk to a human who's already looked at your results.</h1>
+      
+      <p class="subheadline">We've already seen what AI tools can and can't understand about your business. This is a short, no-pressure conversation to help you make sense of what you're seeing and decide what to do next.</p>
+
+      <p class="section-label">Why this call exists</p>
+
+      <div class="body-copy">
+        <p>AI tools don't recommend what they can't clearly understand.<br>Your results reflect how visible and interpretable your business is to AI right now.</p>
+        <p>This call isn't about selling.<br>It's about clarity.</p>
       </div>
-    </div>
-  </section>
 
-  <!-- Reassurance Section -->
-  <section class="reassurance">
-    <div class="container">
-      <ul class="check-list">
-        <li>
-          <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"></polyline>
-          </svg>
-          <span>No sales script</span>
-        </li>
-        <li>
-          <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"></polyline>
-          </svg>
-          <span>No obligation</span>
-        </li>
-        <li>
-          <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"></polyline>
-          </svg>
-          <span>Clear next steps either way</span>
-        </li>
+      <p class="walkthrough-intro">We'll walk through:</p>
+      <ul class="walkthrough-list">
+        <li>What your results actually mean</li>
+        <li>Where AI is getting confused or missing context</li>
+        <li>What fixing those gaps would involve</li>
+        <li>Whether it makes sense to act now or wait</li>
       </ul>
-    </div>
-  </section>
 
-  <!-- Calendar Section -->
-  <section class="calendar-section">
-    <div class="container">
+      <div class="cta-section">
+        <a href="#calendar" class="btn-primary" data-testid="button-talk-human">Talk to a Human</a>
+      </div>
+    </main>
+
+    <!-- Calendar Section -->
+    <section class="calendar-section" id="calendar">
       <!-- Google Calendar Appointment Scheduling begin -->
       <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0ZVFj44GtaR0Dpdx10CaRzyTNRb7Dm0h2JPQqWZjfFEAh7cxiT_ZXATWiA4ukHUSyJoW5JbhMk?gv=true" class="calendar-embed" frameborder="0"></iframe>
       <!-- end Google Calendar Appointment Scheduling -->
-    </div>
-  </section>
+    </section>
 
-  <!-- Final Note -->
-  <footer class="final-note">
-    <div class="container">
+    <!-- Final Note -->
+    <footer class="final-note">
       <p>If booking doesn't feel right yet, that's okay.<br>Clarity is the goal, not pressure.</p>
-    </div>
-  </footer>
+    </footer>
+  </div>
 </body>
 </html>
