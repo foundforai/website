@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Talk to a Human | Found For AI</title>
-  <meta name="description" content="Questions about your AI visibility? Talk to a human who's already looked at your results.">
+  <meta name="description" content="Questions about your AI visibility? Talk to a human who's already reviewed your results.">
   <link rel="canonical" href="https://foundforai.com/talk-to-a-human">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,7 +25,7 @@
     }
 
     .page-wrapper {
-      max-width: 760px;
+      max-width: 720px;
       margin: 0 auto;
       padding: 0 24px;
     }
@@ -34,10 +34,9 @@
     .site-header {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 20px;
       padding: 24px 0;
-      border-bottom: 1px solid #f1f5f9;
-      margin-bottom: 48px;
+      margin-bottom: 56px;
     }
 
     .logo-link {
@@ -45,7 +44,7 @@
     }
 
     .logo {
-      height: 126px;
+      height: 48px;
       width: auto;
     }
 
@@ -64,33 +63,46 @@
       text-align: left;
     }
 
-    .headline {
-      font-size: 1.875rem;
+    /* Hero headline block */
+    .hero-block {
+      margin-bottom: 48px;
+    }
+
+    .headline-primary {
+      font-size: 2rem;
       font-weight: 700;
-      line-height: 1.25;
-      margin-bottom: 20px;
+      line-height: 1.2;
+      color: #1e40af;
+      margin-bottom: 8px;
+    }
+
+    .headline-secondary {
+      font-size: 1.5rem;
+      font-weight: 600;
+      line-height: 1.3;
       color: #1e40af;
     }
 
     .subheadline {
       font-size: 1.0625rem;
       color: #64748b;
-      margin-bottom: 48px;
+      margin-top: 24px;
       max-width: 600px;
+    }
+
+    /* Section divider */
+    .section-divider {
+      height: 1px;
+      background: #e2e8f0;
+      margin: 48px 0 32px;
     }
 
     /* Section */
     .section-label {
-      font-size: 0.8125rem;
+      font-size: 1rem;
       font-weight: 600;
-      color: #94a3b8;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
+      color: #334155;
       margin-bottom: 20px;
-    }
-
-    .body-copy {
-      margin-bottom: 32px;
     }
 
     .body-copy p {
@@ -99,19 +111,16 @@
       margin-bottom: 16px;
     }
 
-    .body-copy p:last-of-type {
-      margin-bottom: 0;
-    }
-
     .walkthrough-intro {
       font-size: 1rem;
       color: #334155;
+      margin-top: 24px;
       margin-bottom: 12px;
     }
 
     .walkthrough-list {
       list-style: none;
-      margin-bottom: 40px;
+      margin-bottom: 0;
     }
 
     .walkthrough-list li {
@@ -122,6 +131,10 @@
       margin-bottom: 8px;
     }
 
+    .walkthrough-list li:last-child {
+      margin-bottom: 0;
+    }
+
     .walkthrough-list li::before {
       content: "\2022";
       position: absolute;
@@ -129,9 +142,16 @@
       color: #1e40af;
     }
 
-    /* CTA Button */
+    /* CTA Section */
     .cta-section {
+      margin-top: 48px;
       margin-bottom: 48px;
+    }
+
+    .cta-helper {
+      font-size: 0.9375rem;
+      color: #64748b;
+      margin-bottom: 16px;
     }
 
     .btn-primary {
@@ -154,8 +174,8 @@
 
     /* Calendar Section */
     .calendar-section {
-      padding: 40px 0;
-      border-top: 1px solid #f1f5f9;
+      padding: 48px 0;
+      border-top: 1px solid #e2e8f0;
     }
 
     .calendar-embed {
@@ -179,15 +199,19 @@
     @media (min-width: 640px) {
       .site-header {
         padding: 32px 0;
-        margin-bottom: 64px;
+        margin-bottom: 72px;
       }
 
-      .headline {
-        font-size: 2.25rem;
-      }
-
-      .subheadline {
+      .hero-block {
         margin-bottom: 56px;
+      }
+
+      .headline-primary {
+        font-size: 2.5rem;
+      }
+
+      .headline-secondary {
+        font-size: 1.75rem;
       }
 
       .calendar-section {
@@ -208,15 +232,25 @@
 
     <!-- Main Content -->
     <main class="content">
-      <h1 class="headline">Questions about your AI visibility?<br>Talk to a human who's already looked at your results.</h1>
-      
-      <p class="subheadline">We've already seen what AI tools can and can't understand about your business. This is a short, no-pressure conversation to help you make sense of what you're seeing and decide what to do next.</p>
+      <!-- Hero Block -->
+      <div class="hero-block">
+        <h1>
+          <span class="headline-primary">Questions about your AI visibility?</span>
+          <span class="headline-secondary">Talk to a human who's already reviewed your results.</span>
+        </h1>
+        <p class="subheadline">We've already seen what AI tools can and can't understand about your business. This is a short, no-pressure conversation to help you make sense of what you're seeing and decide what to do next.</p>
+      </div>
 
-      <p class="section-label">Why this call exists</p>
+      <!-- Section Divider -->
+      <div class="section-divider"></div>
+
+      <!-- Why Section -->
+      <p class="section-label">Why this conversation exists</p>
 
       <div class="body-copy">
-        <p>AI tools don't recommend what they can't clearly understand.<br>Your results reflect how visible and interpretable your business is to AI right now.</p>
-        <p>This call isn't about selling.<br>It's about clarity.</p>
+        <p>AI tools don't recommend what they can't clearly understand.</p>
+        <p>Your results reflect how visible and interpretable your business is to AI right now.</p>
+        <p>This call isn't about selling. It's about clarity.</p>
       </div>
 
       <p class="walkthrough-intro">We'll walk through:</p>
@@ -227,7 +261,9 @@
         <li>Whether it makes sense to act now or wait</li>
       </ul>
 
+      <!-- CTA Section -->
       <div class="cta-section">
+        <p class="cta-helper">If you want clarity without a sales pitch, this is the fastest way.</p>
         <a href="#calendar" class="btn-primary" data-testid="button-talk-human">Talk to a Human</a>
       </div>
     </main>
