@@ -1,0 +1,73 @@
+Create a new standalone page on the FoundForAI website at the URL:
+
+/talk-to-a-human
+
+This page is a Contextual Sales Assist Page used after a user completes an AI Visibility audit inside our embedded app.
+
+Important rules:
+• Do NOT generate or rewrite any copy
+• Use the copy exactly as written below
+• Clean, minimal layout
+• Mobile-friendly
+• Centered content with max-width
+• No navbar links out
+• No footer CTAs
+• This page should feel calm, clear, and human
+
+Page Content (use exactly)
+
+Headline (H1):
+Questions about your AI Visibility Score?
+Talk to a human who’s already looked at your results.
+
+Subtext (paragraph):
+We’ve already seen what AI tools can and can’t understand about your business.
+This is a short, no-pressure conversation to help you make sense of your score and decide next steps.
+
+Section: Why this call exists
+
+AI tools don’t recommend what they can’t clearly understand.
+Your score reflects how visible and interpretable your business is right now.
+
+This call is not about selling.
+It’s about clarity.
+
+We’ll walk through:
+• What your score actually means
+• Where AI is getting confused or missing context
+• What fixing those gaps would involve
+• Whether it makes sense to act now or wait
+
+Reassurance bullets (display as simple checkmarks):
+
+• No sales script
+• No obligation
+• Clear next steps either way
+
+Calendar Embed Section
+
+Place the embedded calendar directly below the reassurance bullets.
+
+Embed this exact iframe:
+
+<!-- Google Calendar Appointment Scheduling begin -->
+<iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0ZVFj44GtaR0Dpdx10CaRzyTNRb7Dm0h2JPQqWZjfFEAh7cxiT_ZXATWiA4ukHUSyJoW5JbhMk?gv=true" style="border: 0" width="100%" height="600" frameborder="0"></iframe>
+<!-- end Google Calendar Appointment Scheduling -->
+
+
+Ensure:
+• Full width inside the content container
+• Responsive on mobile
+• No additional padding that makes it feel cramped
+
+Final note (small text under calendar):
+If booking doesn’t feel right yet, that’s okay.
+Clarity is the goal, not pressure.
+
+Technical notes
+
+• Page should be indexable but not aggressively SEO’d
+• No schema required
+• Fast load
+• Simple CSS
+• Respect existing FoundForAI brand styles

@@ -32,6 +32,19 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Serve static talk-to-a-human.html contextual sales assist page
+  app.get("/talk-to-a-human", (req, res) => {
+    try {
+      const htmlPath = join(process.cwd(), "client/public/talk-to-a-human.html");
+      const htmlContent = readFileSync(htmlPath, "utf-8");
+      res.setHeader("Content-Type", "text/html");
+      res.status(200).send(htmlContent);
+    } catch (error) {
+      console.error("Error serving talk-to-a-human.html:", error);
+      res.status(500).send("Error loading page");
+    }
+  });
+
   // Redirect /search to homepage (fixes GSC soft 404)
   app.get("/search", (req, res) => {
     res.redirect(301, "/");
