@@ -1,0 +1,76 @@
+Update the page at https://foundforai.com/fix-plan/thanks
+ to reflect the new positioning “AI Visibility Review” while keeping the URL, routing, and page structure the same.
+
+Do NOT change the URL, file path, or navigation.
+
+1. Update the page header
+
+Replace the existing header with:
+
+We’ve got it.
+Your AI Visibility Review request is in.
+
+2. Update the intro copy
+
+Replace the current introductory text with:
+
+A human is now reviewing your AI visibility scan to understand exactly how AI tools interpret your business and where context is being missed.
+
+You’ll receive your AI Visibility Review within 24–48 hours.
+
+3. Update the “What you’ll get” section
+
+Use the following section header:
+
+What you’ll get
+
+And update the bullet points to:
+
+• Where AI tools are misinterpreting or missing your business context
+• Which issues actually matter vs. which ones don’t
+• What would most improve AI recommendations
+• Whether taking action now is even worth it
+
+Below the bullets, include this line:
+
+This isn’t a checklist or a sales pitch.
+It’s a clear recommendation you can use to decide what to do next.
+
+4. Update the “What happens after” section
+
+Use the section header:
+
+What happens after
+
+Replace the paragraph with:
+
+Once your AI Visibility Review is ready, you can review it on your own.
+
+If you want to walk through it together, you can book a short, no-pressure call to talk through the findings and possible next steps.
+
+5. CTA button
+
+Keep the existing CTA button but ensure it reads:
+
+Talk to a human
+
+The button should continue to link to the existing destination and open in a new tab if it already does.
+
+6. Supporting text under the CTA
+
+Update the supporting text to:
+
+You don’t need to book a call.
+We’ll email your AI Visibility Review either way.
+
+7. Design constraints
+
+Keep layout, spacing, and styling the same
+
+No pricing or payment links on this page
+
+Maintain calm, confident tone consistent with the rest of the funnel
+
+This is a copy and positioning update only.
+
+Confirm once all references to “Fix Plan” on /fix-plan/thanks have been replaced with “AI Visibility Review.”
