@@ -1,0 +1,95 @@
+Update the /services page to align with the new AI Visibility Starter Fix positioning.
+
+Goals:
+- Present one clear primary service
+- Eliminate parallel service confusion
+- Reinforce the "start here" narrative
+- Match the confidence and hierarchy of the pricing page
+
+---
+
+Page headline changes:
+
+Replace the main headline with:
+"Our Core Service: AI Visibility Fix"
+
+Replace subheadline with:
+"A one-time implementation that fixes how AI tools understand and recommend your business."
+
+---
+
+Primary service section (top of page):
+
+Create or update the first service section to:
+
+Title:
+"AI Visibility Starter Fix"
+
+Description:
+"This is where every engagement starts. We implement the technical and contextual changes your site needs so AI tools like ChatGPT, Perplexity, and Google Gemini can clearly understand, trust, and recommend your business."
+
+Bullet points (use these or similar):
+- AI visibility audit
+- AI readability layer installation
+- Business context and trust signal corrections
+- Verification across major AI tools
+
+CTA button:
+Text: "Start My AI Visibility Fix"
+Link: https://foundforai.com/fix-plan
+
+Helper text below button:
+"Most businesses start here"
+
+Visually emphasize this section using:
+- Stronger background or border
+- Larger spacing
+- Clear separation from other services
+
+---
+
+Secondary services section:
+
+Rename section header to:
+"Additional Services (After the Fix)"
+
+---
+
+Pro Visibility Plan service card updates:
+
+Title:
+"Ongoing AI Visibility Optimization"
+
+Description:
+"For businesses that want continued optimization, reporting, and growth after their AI Visibility Fix is complete."
+
+CTA:
+"Schedule a Call"
+
+Add small subtext:
+"Available after completing the Starter Fix"
+
+---
+
+Enterprise / Agency service card updates:
+
+Title:
+"Enterprise & Agency Integration"
+
+Description:
+"For multi-site, agency, or large-scale AI visibility implementations."
+
+CTA:
+"Schedule a Call"
+
+Add small subtext:
+"Custom scope, post-fix"
+
+---
+
+Global cleanup rules:
+
+- Remove language that suggests choosing between services upfront
+- Do not present services as equal options
+- Do not add pricing to secondary services
+- Ensure the Starter Fix is visually dominant and clearly the first step
