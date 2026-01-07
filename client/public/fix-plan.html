@@ -77,36 +77,19 @@
     .subheadline {
       font-size: 1.0625rem;
       color: #64748b;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
       max-width: 580px;
     }
 
-    .hero-price {
-      display: inline-block;
-      padding: 16px 24px;
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 8px;
-    }
-
-    .hero-price-label {
+    .hero-meta {
       font-size: 0.9375rem;
-      font-weight: 600;
-      color: #1a1a2e;
-    }
-
-    .hero-price-amount {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #1e40af;
-      margin-left: 8px;
-    }
-
-    .hero-price-note {
-      display: block;
-      font-size: 0.8125rem;
       color: #64748b;
-      margin-top: 6px;
+      line-height: 1.8;
+    }
+
+    .hero-meta strong {
+      font-weight: 600;
+      color: #475569;
     }
 
     /* Context intro */
@@ -214,6 +197,30 @@
       color: #64748b;
     }
 
+    /* Pricing section */
+    .pricing-section {
+      margin-bottom: 32px;
+      padding: 28px 0;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .pricing-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-bottom: 16px;
+    }
+
+    .pricing-text {
+      font-size: 0.9375rem;
+      color: #475569;
+      margin-bottom: 8px;
+    }
+
+    .pricing-text:last-of-type {
+      margin-bottom: 0;
+    }
+
     /* CTA section */
     .cta-container {
       background: #f8fafc;
@@ -228,13 +235,7 @@
       font-size: 1.125rem;
       font-weight: 600;
       color: #1a1a2e;
-      margin-bottom: 8px;
-    }
-
-    .cta-subtext {
-      font-size: 0.9375rem;
-      color: #64748b;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
     .btn-primary {
@@ -320,11 +321,11 @@
       <div class="hero">
         <h1 class="headline">Turn your AI scan into a clear fix plan.</h1>
         <p class="subheadline">A human-reviewed breakdown of what's blocking AI from recommending your business—and what to do about it.</p>
-        <div class="hero-price">
-          <span class="hero-price-label">Fix Plan Review</span>
-          <span class="hero-price-amount">$1,595</span>
-          <span class="hero-price-note">Applied toward implementation if you move forward</span>
-        </div>
+        <p class="hero-meta">
+          <strong>Fix Plan Review</strong><br>
+          A $1,595 human-reviewed decision brief<br>
+          Applied toward implementation if you decide to move forward
+        </p>
       </div>
 
       <!-- Context intro -->
@@ -395,10 +396,17 @@
         </div>
       </div>
 
+      <!-- Pricing section -->
+      <div class="pricing-section">
+        <h2 class="pricing-title">What this costs</h2>
+        <p class="pricing-text">The Fix Plan Review is $1,595.</p>
+        <p class="pricing-text">If you decide to move forward, that amount is applied toward implementation.</p>
+        <p class="pricing-text">No pressure. No obligation.</p>
+      </div>
+
       <!-- CTA -->
       <div class="cta-container">
         <p class="cta-headline">Ready to get clarity?</p>
-        <p class="cta-subtext">No pressure. No obligation. No wasted work either way.</p>
         <a href="/fix-plan/request" class="btn-primary" data-testid="button-request-fix-plan">Request my Fix Plan</a>
         <a href="https://foundforai.com/talk-to-a-human" target="_blank" rel="noopener" class="secondary-link" data-testid="link-talk-human">Talk to a human first &rarr;</a>
       </div>
