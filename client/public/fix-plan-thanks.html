@@ -94,9 +94,22 @@
       margin-bottom: 0;
     }
 
+    .emphasis {
+      font-weight: 600;
+      color: #1a1a2e;
+    }
+
+    .section-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-bottom: 16px;
+    }
+
     .list {
       list-style: none;
-      margin: 20px 0;
+      margin: 0 0 20px 0;
+      padding: 0;
     }
 
     .list li {
@@ -107,33 +120,35 @@
       margin-bottom: 10px;
     }
 
-    .list li::before {
-      content: "\2022";
-      position: absolute;
-      left: 4px;
-      color: #1e40af;
+    .list li:last-child {
+      margin-bottom: 0;
     }
 
-    .emphasis {
-      font-weight: 500;
-      color: #1a1a2e;
+    .list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 6px;
+      height: 6px;
+      background: #1e40af;
+      border-radius: 50%;
+    }
+
+    .supporting-text {
+      font-size: 0.9375rem;
+      color: #475569;
+      margin-top: 20px;
     }
 
     .divider {
       height: 1px;
       background: #e2e8f0;
-      margin: 48px 0;
+      margin: 40px 0;
     }
 
-    .next-step-section {
+    .cta-section {
       margin-bottom: 48px;
-    }
-
-    .section-title {
-      font-size: 1.125rem;
-      font-weight: 600;
-      color: #1a1a2e;
-      margin-bottom: 12px;
     }
 
     .btn-secondary {
@@ -147,7 +162,7 @@
       border: 1px solid #1e40af;
       border-radius: 8px;
       transition: background 0.2s ease, color 0.2s ease;
-      margin-top: 16px;
+      margin-top: 20px;
     }
 
     .btn-secondary:hover {
@@ -159,12 +174,12 @@
       font-size: 0.875rem;
       color: #94a3b8;
       margin-top: 20px;
+      line-height: 1.6;
     }
 
     .footer {
       padding: 32px 0 60px;
       border-top: 1px solid #e2e8f0;
-      margin-top: 40px;
     }
 
     .footer p {
@@ -191,7 +206,7 @@
       }
 
       .divider {
-        margin: 56px 0;
+        margin: 48px 0;
       }
     }
   </style>
@@ -212,31 +227,33 @@
       </div>
 
       <div class="section">
-        <p class="body-text">A human will review your AI visibility scan and prepare a clear Fix Plan for your business.</p>
-        <p class="body-text emphasis">You'll receive it within 24–48 hours.</p>
-      </div>
-
-      <div class="section">
-        <p class="body-text">The plan will cover:</p>
-        <ul class="list">
-          <li>Where AI tools are getting confused</li>
-          <li>Which issues actually matter</li>
-          <li>What to fix first, and what can wait</li>
-          <li>Whether it makes sense to move forward right now</li>
-        </ul>
-      </div>
-
-      <div class="section">
-        <p class="body-text">No pressure.<br>No obligation.</p>
-        <p class="body-text emphasis">Just clarity.</p>
+        <p class="body-text">A human is now reviewing your AI visibility scan to identify what's actually blocking AI tools from understanding and recommending your business.</p>
+        <p class="body-text emphasis">You'll receive your Fix Plan within 24–48 hours.</p>
       </div>
 
       <div class="divider"></div>
 
-      <div class="next-step-section">
-        <h2 class="section-title">Want to walk through it together?</h2>
-        <p class="body-text">If you'd like to talk through your Fix Plan once it's ready, you can book a short, no-pressure call.</p>
-        <a href="https://foundforai.com/talk-to-a-human" target="_blank" rel="noopener" class="btn-secondary" data-testid="button-talk-human">Talk to a human</a>
+      <div class="section">
+        <h2 class="section-title">What you'll get</h2>
+        <ul class="list">
+          <li>Where AI tools are misinterpreting or missing context</li>
+          <li>Which issues actually matter vs. which ones don't</li>
+          <li>What to fix first, and what can wait</li>
+          <li>Whether taking action now is even worth it</li>
+        </ul>
+        <p class="supporting-text">This isn't a checklist or a sales pitch.<br>It's a decision-making brief.</p>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="section">
+        <h2 class="section-title">What happens after</h2>
+        <p class="body-text">Once your Fix Plan is ready, you can review it on your own.</p>
+        <p class="body-text">If you want to walk through it together, you can book a short, no-pressure call to talk through the findings and next steps.</p>
+      </div>
+
+      <div class="cta-section">
+        <a href="/talk-to-a-human" target="_blank" rel="noopener" class="btn-secondary" data-testid="button-talk-human">Talk to a human</a>
         <p class="reassurance">You don't need to book a call.<br>We'll email your Fix Plan either way.</p>
       </div>
     </main>
