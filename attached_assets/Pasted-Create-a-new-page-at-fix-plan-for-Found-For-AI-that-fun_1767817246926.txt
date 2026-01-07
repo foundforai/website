@@ -1,0 +1,188 @@
+Create a new page at /fix-plan for Found For AI that functions as a high-conversion clarity step after the AI scan.
+
+Overall goals
+
+Convert scan curiosity into a confident next step
+
+Feel calm, premium, and human, not salesy
+
+Use Hormozi-style clarity and inevitability without hype
+
+Protect proprietary methodology, do not explain implementation details
+
+Layout & styling
+
+Left-aligned content
+
+Center the container with a max width of ~720px
+
+Clean, modern typography
+
+Generous spacing between sections
+
+Use Found For AI brand colors sparingly
+
+No stock photos, no illustrations required
+
+Mobile-first and responsive
+
+Page content (use this copy exactly)
+Hero
+
+Headline (H1)
+Turn your AI scan results into a clear fix plan.
+
+Subheadline
+A human-reviewed breakdown of what’s actually blocking AI from recommending your business, and what to do about it.
+
+Context section
+
+You just ran an AI visibility scan.
+
+It showed gaps. Confusion. Missing signals.
+
+What it didn’t tell you is:
+
+Which issues actually matter
+
+What order to fix them in
+
+Whether fixing anything right now is even worth it
+
+Most business owners get stuck right here.
+
+This step exists to remove that uncertainty.
+
+Mechanism (high-level, no details)
+
+What this Fix Plan does
+
+AI tools don’t recommend what they can’t clearly understand.
+
+This plan identifies:
+
+Where AI is misinterpreting your business
+
+Where critical context is missing or fragmented
+
+Which fixes will move the needle vs which ones won’t
+
+No SEO jargon.
+No guesswork.
+No busywork.
+
+Just clarity.
+
+Deliverables
+
+What you’ll receive
+
+A human review of your AI scan results
+
+A clear explanation of where AI is getting confused
+
+A prioritized fix list, in plain English
+
+Guidance on whether to act now or wait
+
+A recommendation for next steps, with or without us
+
+This is not a sales call.
+It’s a decision-making asset.
+
+Qualification
+
+This is a good fit if you:
+
+Want AI tools to understand and recommend your business
+
+Don’t want to guess what “AI-ready” means
+
+Value clarity over tactics
+
+This is not a fit if you:
+
+Want a DIY checklist
+
+Are chasing quick SEO hacks
+
+Expect guarantees or instant rankings
+
+Process
+
+How it works
+
+Submit a few details so we can align the review
+
+A human reviews your AI visibility results
+
+You receive your Fix Plan with a clear recommendation
+
+Pricing
+
+Fix Plan Review
+$1,595
+
+Applied toward implementation if you decide to move forward.
+
+No pressure.
+No obligation.
+No wasted work either way.
+
+Primary CTA
+
+Add a primary button with this exact text:
+
+Request my Fix Plan
+
+This button should:
+
+Be visually dominant
+
+Use the primary brand color
+
+Link to the Formspree-backed form flow you are wiring next (do not hardcode Square here)
+
+Secondary CTA
+
+Below the primary button, add a lighter secondary link:
+
+Talk to a human first →
+
+This should:
+
+Open in a new tab
+
+Link to https://foundforai.com/talk-to-a-human
+
+Be visually secondary, not competing
+
+Header
+
+Include a small Found For AI logo in the top-left
+
+Logo links to https://foundforai.com
+
+Optional subtle text link nearby:
+“← Back to FoundForAI.com”
+
+No full navigation bar.
+
+Do NOT
+
+Do not add testimonials
+
+Do not add FAQs
+
+Do not explain schema, SEO, or technical steps
+
+Do not add additional CTAs
+
+Do not embed payment on this page
+
+Success criteria
+
+The page should make a qualified business owner think:
+“This makes sense. This is the obvious next step.”
+
+Build the page and leave everything else unchanged.

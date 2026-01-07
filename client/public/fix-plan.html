@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fix Plan | Found For AI</title>
+  <meta name="description" content="Turn your AI scan results into a clear fix plan. A human-reviewed breakdown of what's actually blocking AI from recommending your business.">
+  <link rel="canonical" href="https://foundforai.com/fix-plan">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.7;
+      color: #1a1a2e;
+      background: #ffffff;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page-wrapper {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    .site-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 24px 0;
+      margin-bottom: 56px;
+    }
+
+    .logo-link {
+      display: block;
+    }
+
+    .logo {
+      height: 48px;
+      width: auto;
+    }
+
+    .back-link {
+      font-size: 0.8125rem;
+      color: #94a3b8;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Content */
+    .content {
+      text-align: left;
+    }
+
+    /* Hero */
+    .hero {
+      margin-bottom: 56px;
+    }
+
+    .headline {
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: #1e40af;
+      margin-bottom: 16px;
+    }
+
+    .subheadline {
+      font-size: 1.125rem;
+      color: #64748b;
+      max-width: 600px;
+    }
+
+    /* Sections */
+    .section {
+      margin-bottom: 48px;
+    }
+
+    .section-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-bottom: 20px;
+    }
+
+    .body-text {
+      font-size: 1rem;
+      color: #334155;
+      margin-bottom: 16px;
+    }
+
+    .body-text:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .emphasis {
+      font-weight: 500;
+      color: #1a1a2e;
+    }
+
+    .list {
+      list-style: none;
+      margin: 16px 0;
+    }
+
+    .list li {
+      font-size: 1rem;
+      color: #334155;
+      padding-left: 20px;
+      position: relative;
+      margin-bottom: 8px;
+    }
+
+    .list li::before {
+      content: "\2022";
+      position: absolute;
+      left: 4px;
+      color: #1e40af;
+    }
+
+    .divider {
+      height: 1px;
+      background: #e2e8f0;
+      margin: 48px 0;
+    }
+
+    /* Pricing */
+    .pricing-block {
+      margin-bottom: 8px;
+    }
+
+    .price-label {
+      font-size: 1rem;
+      color: #64748b;
+      margin-bottom: 4px;
+    }
+
+    .price {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1a1a2e;
+    }
+
+    .price-note {
+      font-size: 0.9375rem;
+      color: #64748b;
+      margin-top: 12px;
+      margin-bottom: 24px;
+    }
+
+    /* CTA */
+    .cta-section {
+      margin-top: 40px;
+      margin-bottom: 80px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 18px 36px;
+      font-size: 1.0625rem;
+      font-weight: 600;
+      text-decoration: none;
+      background: #1e40af;
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background: #1e3a8a;
+    }
+
+    .secondary-link {
+      display: block;
+      margin-top: 20px;
+      font-size: 0.9375rem;
+      color: #64748b;
+      text-decoration: none;
+    }
+
+    .secondary-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 32px 0 60px;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .footer p {
+      font-size: 0.875rem;
+      color: #94a3b8;
+    }
+
+    /* Responsive */
+    @media (min-width: 640px) {
+      .site-header {
+        padding: 32px 0;
+        margin-bottom: 72px;
+      }
+
+      .headline {
+        font-size: 2.5rem;
+      }
+
+      .hero {
+        margin-bottom: 64px;
+      }
+
+      .section {
+        margin-bottom: 56px;
+      }
+
+      .divider {
+        margin: 56px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <!-- Header -->
+    <header class="site-header">
+      <a href="https://foundforai.com" class="logo-link" data-testid="link-logo-home">
+        <img src="/found-for-ai-logo-white.png" alt="Found For AI" class="logo">
+      </a>
+      <a href="https://foundforai.com" class="back-link" data-testid="link-back-main">&larr; Back to FoundForAI.com</a>
+    </header>
+
+    <!-- Content -->
+    <main class="content">
+      <!-- Hero -->
+      <div class="hero">
+        <h1 class="headline">Turn your AI scan results into a clear fix plan.</h1>
+        <p class="subheadline">A human-reviewed breakdown of what's actually blocking AI from recommending your business, and what to do about it.</p>
+      </div>
+
+      <!-- Context -->
+      <div class="section">
+        <p class="body-text">You just ran an AI visibility scan.</p>
+        <p class="body-text">It showed gaps. Confusion. Missing signals.</p>
+        <p class="body-text">What it didn't tell you is:</p>
+        <ul class="list">
+          <li>Which issues actually matter</li>
+          <li>What order to fix them in</li>
+          <li>Whether fixing anything right now is even worth it</li>
+        </ul>
+        <p class="body-text">Most business owners get stuck right here.</p>
+        <p class="body-text emphasis">This step exists to remove that uncertainty.</p>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Mechanism -->
+      <div class="section">
+        <h2 class="section-title">What this Fix Plan does</h2>
+        <p class="body-text">AI tools don't recommend what they can't clearly understand.</p>
+        <p class="body-text">This plan identifies:</p>
+        <ul class="list">
+          <li>Where AI is misinterpreting your business</li>
+          <li>Where critical context is missing or fragmented</li>
+          <li>Which fixes will move the needle vs which ones won't</li>
+        </ul>
+        <p class="body-text">No SEO jargon.<br>No guesswork.<br>No busywork.</p>
+        <p class="body-text emphasis">Just clarity.</p>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Deliverables -->
+      <div class="section">
+        <h2 class="section-title">What you'll receive</h2>
+        <ul class="list">
+          <li>A human review of your AI scan results</li>
+          <li>A clear explanation of where AI is getting confused</li>
+          <li>A prioritized fix list, in plain English</li>
+          <li>Guidance on whether to act now or wait</li>
+          <li>A recommendation for next steps, with or without us</li>
+        </ul>
+        <p class="body-text" style="margin-top: 20px;">This is not a sales call.<br>It's a decision-making asset.</p>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Qualification -->
+      <div class="section">
+        <h2 class="section-title">This is a good fit if you:</h2>
+        <ul class="list">
+          <li>Want AI tools to understand and recommend your business</li>
+          <li>Don't want to guess what "AI-ready" means</li>
+          <li>Value clarity over tactics</li>
+        </ul>
+
+        <h2 class="section-title" style="margin-top: 32px;">This is not a fit if you:</h2>
+        <ul class="list">
+          <li>Want a DIY checklist</li>
+          <li>Are chasing quick SEO hacks</li>
+          <li>Expect guarantees or instant rankings</li>
+        </ul>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Process -->
+      <div class="section">
+        <h2 class="section-title">How it works</h2>
+        <ul class="list">
+          <li>Submit a few details so we can align the review</li>
+          <li>A human reviews your AI visibility results</li>
+          <li>You receive your Fix Plan with a clear recommendation</li>
+        </ul>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Pricing -->
+      <div class="section">
+        <p class="price-label">Fix Plan Review</p>
+        <p class="price">$1,595</p>
+        <p class="price-note">Applied toward implementation if you decide to move forward.</p>
+        <p class="body-text">No pressure.<br>No obligation.<br>No wasted work either way.</p>
+      </div>
+
+      <!-- CTA -->
+      <div class="cta-section">
+        <a href="/request-fix-plan" class="btn-primary" data-testid="button-request-fix-plan">Request my Fix Plan</a>
+        <a href="https://foundforai.com/talk-to-a-human" target="_blank" rel="noopener" class="secondary-link" data-testid="link-talk-human">Talk to a human first &rarr;</a>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Found For AI helps businesses become visible and recommendable to AI.</p>
+    </footer>
+  </div>
+</body>
+</html>
