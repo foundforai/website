@@ -112,7 +112,7 @@ export default function Home() {
 
   const emailSubject = encodeURIComponent("Found For AI Search Fix");
   const emailBody = encodeURIComponent("Check out this AI Search Fix service: https://foundforai.com");
-  const mailtoLink = `mailto:?subject=${emailSubject}&body=${emailBody}`;
+  const mailtoLink = `mailto:sales@foundforai.com?subject=${emailSubject}&body=${emailBody}`;
 
   return (
     <PageLayout
@@ -243,13 +243,11 @@ export default function Home() {
           
           <div className="space-y-4">
             <a
-              href="https://square.link/u/o25cVCY4"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="https://foundforai.com/fix-plan"
               data-testid="button-pricing-cta"
             >
               <Button size="lg" className="text-lg px-8 py-6 font-semibold">
-                Fix My AI Visibility Now
+                Get My AI Visibility Fix
               </Button>
             </a>
             <p className="text-sm text-muted-foreground">
