@@ -8,7 +8,7 @@
   <link rel="canonical" href="https://foundforai.com/fix-plan">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
@@ -24,18 +24,14 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    .page-wrapper {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
+    /* Header */
     .site-header {
+      max-width: 1200px;
+      margin: 0 auto;
       display: flex;
       align-items: center;
-      gap: 20px;
-      padding: 24px 0;
-      margin-bottom: 48px;
+      justify-content: space-between;
+      padding: 20px 24px;
     }
 
     .logo-link {
@@ -43,233 +39,304 @@
     }
 
     .logo {
-      height: 96px;
+      height: 72px;
       width: auto;
     }
 
     .back-link {
-      font-size: 0.8125rem;
-      color: #94a3b8;
+      font-size: 0.875rem;
+      color: #64748b;
       text-decoration: none;
+      font-weight: 500;
     }
 
     .back-link:hover {
-      text-decoration: underline;
-    }
-
-    .content {
-      text-align: left;
-    }
-
-    /* Hero */
-    .hero {
-      margin-bottom: 48px;
-    }
-
-    .headline {
-      font-size: 2rem;
-      font-weight: 700;
-      line-height: 1.2;
       color: #1e40af;
-      margin-bottom: 12px;
     }
 
-    .subheadline {
-      font-size: 1.0625rem;
-      color: #64748b;
-      margin-bottom: 28px;
-      max-width: 580px;
-    }
-
-    .hero-meta {
-      font-size: 0.9375rem;
-      color: #64748b;
-      line-height: 1.8;
-    }
-
-    .hero-meta strong {
-      font-weight: 600;
-      color: #475569;
-    }
-
-    /* Context intro */
-    .context-intro {
-      margin-bottom: 40px;
-      padding-bottom: 40px;
-      border-bottom: 1px solid #e2e8f0;
-    }
-
-    .context-intro p {
-      font-size: 1rem;
-      color: #334155;
-      margin-bottom: 12px;
-    }
-
-    .context-intro p:last-child {
-      margin-bottom: 0;
-    }
-
-    .emphasis {
-      font-weight: 600;
-      color: #1a1a2e;
-    }
-
-    /* Cards grid */
-    .cards-grid {
-      display: grid;
-      gap: 24px;
-      margin-bottom: 48px;
-    }
-
-    .card {
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 28px;
-    }
-
-    .card-title {
-      font-size: 1rem;
-      font-weight: 600;
-      color: #1a1a2e;
-      margin-bottom: 16px;
-    }
-
-    .card-text {
-      font-size: 0.9375rem;
-      color: #475569;
-      margin-bottom: 12px;
-    }
-
-    .card-text:last-of-type {
-      margin-bottom: 0;
-    }
-
-    .card-list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    .card-list li {
-      font-size: 0.9375rem;
-      color: #475569;
-      padding-left: 18px;
-      position: relative;
-      margin-bottom: 8px;
-    }
-
-    .card-list li:last-child {
-      margin-bottom: 0;
-    }
-
-    .card-list li::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 10px;
-      width: 6px;
-      height: 6px;
-      background: #1e40af;
-      border-radius: 50%;
-    }
-
-    .card-list.muted li::before {
-      background: #94a3b8;
-    }
-
-    /* Fit section with two columns */
-    .fit-grid {
-      display: grid;
-      gap: 16px;
-    }
-
-    .fit-column h4 {
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: #1a1a2e;
-      margin-bottom: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.025em;
-    }
-
-    .fit-column.not-fit h4 {
-      color: #64748b;
-    }
-
-    /* Pricing section */
-    .pricing-section {
-      margin-bottom: 32px;
-      padding: 28px 0;
-      border-top: 1px solid #e2e8f0;
-    }
-
-    .pricing-title {
-      font-size: 1rem;
-      font-weight: 600;
-      color: #1a1a2e;
-      margin-bottom: 16px;
-    }
-
-    .pricing-text {
-      font-size: 0.9375rem;
-      color: #475569;
-      margin-bottom: 8px;
-    }
-
-    .pricing-text:last-of-type {
-      margin-bottom: 0;
-    }
-
-    /* CTA section */
-    .cta-container {
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 32px;
+    /* Hero Section */
+    .hero-section {
+      background: linear-gradient(135deg, rgba(30, 64, 175, 0.08) 0%, rgba(20, 184, 166, 0.08) 100%);
+      padding: 80px 24px;
       text-align: center;
-      margin-bottom: 60px;
     }
 
-    .cta-headline {
-      font-size: 1.125rem;
-      font-weight: 600;
+    .hero-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero-headline {
+      font-size: 2.75rem;
+      font-weight: 800;
+      line-height: 1.15;
       color: #1a1a2e;
       margin-bottom: 20px;
     }
 
+    .hero-subheadline {
+      font-size: 1.25rem;
+      color: #475569;
+      margin-bottom: 40px;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-price {
+      margin-bottom: 12px;
+    }
+
+    .hero-price-amount {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: #1e40af;
+    }
+
+    .hero-price-label {
+      font-size: 1.125rem;
+      color: #64748b;
+      margin-top: 4px;
+    }
+
+    .hero-price-detail {
+      font-size: 1rem;
+      color: #64748b;
+      margin-bottom: 32px;
+    }
+
     .btn-primary {
       display: inline-block;
-      padding: 16px 32px;
-      font-size: 1rem;
-      font-weight: 600;
+      padding: 18px 40px;
+      font-size: 1.125rem;
+      font-weight: 700;
       text-decoration: none;
       background: #1e40af;
       color: #ffffff;
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      transition: background 0.2s ease;
+      transition: background 0.2s ease, transform 0.1s ease;
     }
 
     .btn-primary:hover {
       background: #1e3a8a;
+      transform: translateY(-1px);
     }
 
-    .secondary-link {
-      display: block;
-      margin-top: 16px;
+    .hero-cta-note {
       font-size: 0.875rem;
-      color: #64748b;
+      color: #94a3b8;
+      margin-top: 16px;
+    }
+
+    /* Section Base */
+    .section {
+      padding: 80px 24px;
+    }
+
+    .section-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-alt {
+      background: #f8fafc;
+    }
+
+    .section-headline {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    /* What We Fix */
+    .fix-list {
+      list-style: none;
+      margin: 0 0 32px 0;
+      padding: 0;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .fix-list li {
+      font-size: 1.125rem;
+      color: #334155;
+      padding: 16px 0 16px 40px;
+      position: relative;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .fix-list li:last-child {
+      border-bottom: none;
+    }
+
+    .fix-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 22px;
+      width: 20px;
+      height: 20px;
+      background: #1e40af;
+      border-radius: 50%;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .fix-closing {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      text-align: center;
+    }
+
+    /* How This Works */
+    .steps-grid {
+      display: grid;
+      gap: 32px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .step-item {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .step-number {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      background: #1e40af;
+      color: #ffffff;
+      font-size: 1.25rem;
+      font-weight: 700;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .step-content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-bottom: 8px;
+    }
+
+    .step-content p {
+      font-size: 1rem;
+      color: #475569;
+    }
+
+    /* Delivery Section */
+    .delivery-body {
+      font-size: 1.125rem;
+      color: #475569;
+      text-align: center;
+      margin-bottom: 32px;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .delivery-bullets {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .delivery-bullets span {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .delivery-bullets span::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      background: #14b8a6;
+      border-radius: 50%;
+    }
+
+    /* Guarantee Section */
+    .guarantee-box {
+      background: linear-gradient(135deg, rgba(20, 184, 166, 0.1) 0%, rgba(30, 64, 175, 0.1) 100%);
+      border: 2px solid rgba(20, 184, 166, 0.3);
+      border-radius: 16px;
+      padding: 48px;
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .guarantee-headline {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 16px;
+    }
+
+    .guarantee-body {
+      font-size: 1.0625rem;
+      color: #475569;
+      line-height: 1.8;
+    }
+
+    /* Final CTA Section */
+    .cta-section {
+      background: #1e40af;
+      padding: 80px 24px;
+      text-align: center;
+    }
+
+    .cta-headline {
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 32px;
+    }
+
+    .btn-cta-light {
+      display: inline-block;
+      padding: 18px 40px;
+      font-size: 1.125rem;
+      font-weight: 700;
       text-decoration: none;
+      background: #ffffff;
+      color: #1e40af;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.1s ease;
     }
 
-    .secondary-link:hover {
-      text-decoration: underline;
+    .btn-cta-light:hover {
+      background: #f1f5f9;
+      transform: translateY(-1px);
     }
 
+    .cta-note {
+      font-size: 0.9375rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin-top: 20px;
+    }
+
+    /* Footer */
     .footer {
-      padding: 32px 0 60px;
+      padding: 32px 24px;
+      text-align: center;
       border-top: 1px solid #e2e8f0;
     }
 
@@ -278,144 +345,158 @@
       color: #94a3b8;
     }
 
-    @media (min-width: 640px) {
-      .site-header {
-        padding: 32px 0;
-        margin-bottom: 56px;
+    /* Responsive */
+    @media (max-width: 640px) {
+      .hero-section {
+        padding: 60px 20px;
       }
 
-      .headline {
-        font-size: 2.25rem;
+      .hero-headline {
+        font-size: 2rem;
       }
 
-      .hero {
-        margin-bottom: 56px;
+      .hero-subheadline {
+        font-size: 1.0625rem;
       }
 
-      .cards-grid {
-        gap: 28px;
+      .hero-price-amount {
+        font-size: 2.75rem;
       }
 
-      .fit-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 24px;
+      .section {
+        padding: 60px 20px;
       }
 
-      .cta-container {
-        padding: 40px 48px;
+      .section-headline {
+        font-size: 1.625rem;
+      }
+
+      .step-item {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+        align-items: center;
+      }
+
+      .delivery-bullets {
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+      }
+
+      .guarantee-box {
+        padding: 32px 24px;
+      }
+
+      .cta-headline {
+        font-size: 1.75rem;
       }
     }
   </style>
 </head>
 <body>
-  <div class="page-wrapper">
-    <header class="site-header">
-      <a href="https://foundforai.com" class="logo-link" data-testid="link-logo-home">
-        <img src="/found-for-ai-logo-white.png" alt="Found For AI" class="logo">
-      </a>
-      <a href="https://foundforai.com" class="back-link" data-testid="link-back-main">&larr; Back to FoundForAI.com</a>
-    </header>
+  <!-- Header -->
+  <header class="site-header">
+    <a href="https://foundforai.com" class="logo-link" data-testid="link-logo-home">
+      <img src="/found-for-ai-logo-white.png" alt="Found For AI" class="logo">
+    </a>
+    <a href="https://foundforai.com" class="back-link" data-testid="link-back-main">&larr; Back to FoundForAI.com</a>
+  </header>
 
-    <main class="content">
-      <!-- Hero -->
-      <div class="hero">
-        <h1 class="headline">AI Visibility Fix</h1>
-        <p class="subheadline">We implement the changes needed for AI tools to understand and recommend your business.</p>
-        <p class="hero-meta">
-          <strong>$1,595 for us to implement the AI visibility fixes</strong><br>
-          We do the work. You get the results.
-        </p>
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-inner">
+      <h1 class="hero-headline">Fix Your AI Visibility. We Do the Work.</h1>
+      <p class="hero-subheadline">Your site has already been reviewed. This is the step where we correct what's blocking AI tools from recommending your business.</p>
+      
+      <div class="hero-price">
+        <div class="hero-price-amount">$1,595</div>
+        <div class="hero-price-label">one time</div>
       </div>
+      <p class="hero-price-detail">Execution, not advice. No subscription. No long term contract.</p>
+      
+      <a href="/fix-plan/request" class="btn-primary" data-testid="button-hero-cta">Fix My AI Visibility Now</a>
+      <p class="hero-cta-note">Takes less than two minutes to get started</p>
+    </div>
+  </section>
 
-      <!-- Context intro -->
-      <div class="context-intro">
-        <p>We've already reviewed how AI sees your business.</p>
-        <p>Now you know what's missing and where AI is getting confused. The AI Visibility Fix is where we actually correct what's blocking AI recommendations.</p>
-        <p class="emphasis">This is execution, not advice.</p>
-      </div>
+  <!-- What We Fix -->
+  <section class="section">
+    <div class="section-inner">
+      <h2 class="section-headline">What We Fix</h2>
+      <ul class="fix-list">
+        <li>AI Data Layer corrections and enhancements</li>
+        <li>Missing or unclear business context for AI systems</li>
+        <li>Content clarity issues that confuse AI tools</li>
+        <li>Technical blockers preventing AI systems from reading your site correctly</li>
+      </ul>
+      <p class="fix-closing">We handle the technical work. You don't have to.</p>
+    </div>
+  </section>
 
-      <!-- Cards -->
-      <div class="cards-grid">
-        <!-- What we fix -->
-        <div class="card">
-          <h2 class="card-title">What we fix</h2>
-          <p class="card-text">We implement the changes your site needs so AI tools can clearly understand and recommend your business:</p>
-          <ul class="card-list">
-            <li>AI Data Layer corrections and enhancements</li>
-            <li>Missing or unclear business context for AI systems</li>
-            <li>Content clarity issues that confuse AI tools</li>
-            <li>Technical blockers that prevent AI from reading your site correctly</li>
-          </ul>
-          <p class="card-text" style="margin-top: 16px;">We handle the technical work. You don't have to.</p>
-        </div>
-
-        <!-- What you get -->
-        <div class="card">
-          <h2 class="card-title">What you get</h2>
-          <ul class="card-list">
-            <li>All priority fixes implemented on your site</li>
-            <li>Documentation of every change made</li>
-            <li>Before/after verification of AI visibility</li>
-            <li>Guidance on maintaining visibility going forward</li>
-            <li>Optional walkthrough call to review the completed work</li>
-          </ul>
-          <p class="card-text" style="margin-top: 16px;">This is done-for-you implementation.</p>
-        </div>
-
-        <!-- Good fit / Not a fit -->
-        <div class="card">
-          <h2 class="card-title">Is this right for you?</h2>
-          <div class="fit-grid">
-            <div class="fit-column">
-              <h4>Good fit</h4>
-              <ul class="card-list">
-                <li>Already received your free AI Visibility Review</li>
-                <li>Want the fixes done for you</li>
-                <li>Ready to invest in real improvements</li>
-              </ul>
-            </div>
-            <div class="fit-column not-fit">
-              <h4>Not a fit</h4>
-              <ul class="card-list muted">
-                <li>Haven't completed a scan yet</li>
-                <li>Looking for a DIY guide</li>
-                <li>Just want advice, not execution</li>
-              </ul>
-            </div>
+  <!-- How This Works -->
+  <section class="section section-alt">
+    <div class="section-inner">
+      <h2 class="section-headline">How This Works</h2>
+      <div class="steps-grid">
+        <div class="step-item">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Confirm Your Details</h3>
+            <p>Complete the short form with your business information. This takes less than two minutes.</p>
           </div>
         </div>
-
-        <!-- How it works -->
-        <div class="card">
-          <h2 class="card-title">How it works</h2>
-          <ul class="card-list">
-            <li>Confirm your details and get started</li>
-            <li>We implement all priority fixes on your site</li>
-            <li>You receive documentation of completed work within 10 business days</li>
-            <li>Optional: Schedule a call to review the changes together</li>
-          </ul>
+        <div class="step-item">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>We Implement the Fixes</h3>
+            <p>Our team gets to work correcting the AI visibility issues identified in your review.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>Your AI Visibility Goes Live</h3>
+            <p>You receive documentation of all completed work and confirmation that AI tools can now read your site correctly.</p>
+          </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- Pricing section -->
-      <div class="pricing-section">
-        <h2 class="pricing-title">Investment</h2>
-        <p class="pricing-text">$1,595 for us to implement the AI visibility fixes.</p>
-        <p class="pricing-text">This is the cost of execution—not planning, not advice.</p>
-        <p class="pricing-text">We do the work. You see the results.</p>
+  <!-- Delivery Section -->
+  <section class="section">
+    <div class="section-inner">
+      <h2 class="section-headline">Delivered in Seven Business Days</h2>
+      <p class="delivery-body">Once you check out, our team implements the AI visibility fixes directly. Your updated AI visibility goes live within seven business days.</p>
+      <div class="delivery-bullets">
+        <span>One time fix</span>
+        <span>No retainers</span>
+        <span>No ongoing commitments</span>
       </div>
+    </div>
+  </section>
 
-      <!-- CTA -->
-      <div class="cta-container">
-        <p class="cta-headline">Ready to get your AI visibility fixed?</p>
-        <a href="/fix-plan/request" class="btn-primary" data-testid="button-request-fix-plan">Fix my AI visibility</a>
-        <a href="https://foundforai.com/talk-to-a-human" target="_blank" rel="noopener" class="secondary-link" data-testid="link-talk-human">Talk to a human first &rarr;</a>
+  <!-- Guarantee Section -->
+  <section class="section section-alt">
+    <div class="section-inner">
+      <div class="guarantee-box">
+        <h2 class="guarantee-headline">Our We Fix It Free Guarantee</h2>
+        <p class="guarantee-body">If anything we implement is incorrect, missing, or breaks within sixty days, we fix it at no cost. This is a real upgrade to how AI understands and recommends your business.</p>
       </div>
-    </main>
+    </div>
+  </section>
 
-    <footer class="footer">
-      <p>Found For AI helps businesses become visible and recommendable to AI.</p>
-    </footer>
-  </div>
+  <!-- Final CTA Section -->
+  <section class="cta-section">
+    <h2 class="cta-headline">Ready to Fix Your AI Visibility?</h2>
+    <a href="/fix-plan/request" class="btn-cta-light" data-testid="button-final-cta">Fix My AI Visibility Now</a>
+    <p class="cta-note">We've already reviewed your site. This is the execution step.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>Found For AI helps businesses become visible and recommendable to AI.</p>
+  </footer>
 </body>
 </html>

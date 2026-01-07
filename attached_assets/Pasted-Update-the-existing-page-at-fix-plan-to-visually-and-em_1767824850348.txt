@@ -1,0 +1,93 @@
+Update the existing page at /fix-plan to visually and emotionally match the main FoundForAI homepage.
+
+Do NOT change the URL.
+Do NOT change the core offer or price.
+This is a conversion and hierarchy upgrade, not a rebuild.
+
+Goals
+• Increase contrast, visual rhythm, and authority
+• Make this page feel like the decision moment
+• Reduce explanation, increase inevitability
+• Match the color blocks and section cadence used on the main site
+
+Hero Section
+Replace the current hero with:
+
+Headline (large, bold)
+“Fix Your AI Visibility. We Do the Work.”
+
+Subheadline
+“Your site has already been reviewed. This is the step where we correct what’s blocking AI tools from recommending your business.”
+
+Price Callout
+$1,595 one time
+
+Smaller supporting line:
+“Execution, not advice. No subscription. No long term contract.”
+
+Primary CTA Button
+Text: Fix My AI Visibility Now
+Style: Same primary button styling as the main homepage
+
+Secondary line below CTA (small, muted):
+“Takes less than two minutes to get started”
+
+Section Styling
+Break the page into clearly separated sections using alternating light background colors (matching the homepage):
+
+Section 1: What We Fix
+Section 2: How This Works
+Section 3: Delivery + Guarantee
+
+Add generous spacing and visual separation between sections.
+
+What We Fix (Rewrite for Clarity + Confidence)
+
+Replace existing bullets with:
+
+• AI Data Layer corrections and enhancements
+• Missing or unclear business context for AI systems
+• Content clarity issues that confuse AI tools
+• Technical blockers preventing AI systems from reading your site correctly
+
+Closing line (bold):
+“We handle the technical work. You don’t have to.”
+
+Delivery Section
+
+Headline:
+“Delivered in Seven Business Days”
+
+Body:
+“Once you check out, our team implements the AI visibility fixes directly. Your updated AI visibility goes live within seven business days.”
+
+Simple bullets:
+• One time fix
+• No retainers
+• No ongoing commitments
+
+Guarantee Section
+
+Highlight box with light background:
+
+Our We Fix It Free Guarantee
+“If anything we implement is incorrect, missing, or breaks within sixty days, we fix it at no cost. This is a real upgrade to how AI understands and recommends your business.”
+
+Final CTA Section
+
+Full width section with strong contrast:
+
+Headline:
+“Ready to Fix Your AI Visibility?”
+
+Primary CTA button:
+Fix My AI Visibility Now
+
+Secondary text below:
+“We’ve already reviewed your site. This is the execution step.”
+
+Important
+• Keep tone confident and direct
+• Avoid explaining AI concepts
+• Avoid words like “plan,” “proposal,” or “strategy”
+• This page should feel stronger than the homepage, not softer
