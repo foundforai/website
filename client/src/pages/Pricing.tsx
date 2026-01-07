@@ -13,8 +13,8 @@ export default function Pricing() {
     serviceSchema.text = JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Service",
-      "name": "AI Visibility Starter Fix",
-      "description": "Delivered within 7 business days — includes AI SEO audit and technical setup for up to 10 pages.",
+      "name": "AI Visibility Fix",
+      "description": "A one-time implementation that fixes how AI tools understand and recommend your business.",
       "provider": {
         "@type": "Organization",
         "name": "FoundForAI",
@@ -46,7 +46,7 @@ export default function Pricing() {
           "name": "What's the turnaround time?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The AI Visibility and Search Fix is completed within 7 business days. Pro Visibility Plans begin implementation within 48 hours of strategy call completion."
+            "text": "The AI Visibility Fix is completed within 7 business days."
           }
         },
         {
@@ -54,7 +54,7 @@ export default function Pricing() {
           "name": "What exactly do I receive?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "You'll get a complete technical audit report, all schema markup files, configuration files (robots.txt, llms.txt), sitemap setup, and a prioritized roadmap for ongoing optimization."
+            "text": "You'll receive a complete implementation of AI visibility fixes, documentation of all changes made, and verification that AI tools can now read your site correctly."
           }
         },
         {
@@ -62,7 +62,7 @@ export default function Pricing() {
           "name": "Do you offer refunds?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "We offer a satisfaction guarantee. If you're not happy with the AI Visibility and Search Fix deliverables, we'll revise until you are. Enterprise clients receive custom SLAs."
+            "text": "We offer a 60-day fix-it-free guarantee. If anything we implement is incorrect, missing, or breaks within sixty days, we fix it at no cost."
           }
         }
       ]
@@ -83,22 +83,22 @@ export default function Pricing() {
   const faqs = [
     {
       question: "What's the turnaround time?",
-      answer: "The AI Visibility and Search Fix is completed within 7 business days. Pro Visibility Plans begin implementation within 48 hours of strategy call completion."
+      answer: "The AI Visibility Fix is completed within 7 business days."
     },
     {
       question: "What exactly do I receive?",
-      answer: "You'll get a complete technical audit report, all schema markup files, configuration files (robots.txt, llms.txt), sitemap setup, and a prioritized roadmap for ongoing optimization."
+      answer: "You'll receive a complete implementation of AI visibility fixes, documentation of all changes made, and verification that AI tools can now read your site correctly."
     },
     {
       question: "Do you offer refunds?",
-      answer: "We offer a satisfaction guarantee. If you're not happy with the AI Visibility and Search Fix deliverables, we'll revise until you are. Enterprise clients receive custom SLAs."
+      answer: "We offer a 60-day fix-it-free guarantee. If anything we implement is incorrect, missing, or breaks within sixty days, we fix it at no cost."
     }
   ];
 
   return (
     <PageLayout
-      title="Pricing - AI SEO Services & Plans | Found For AI"
-      description="Choose your level of AI visibility. Get your AI Visibility Audit ($495) or book a strategy call for advanced AI SEO plans."
+      title="Pricing - AI Visibility Fix | Found For AI"
+      description="Start with the AI Visibility Fix. One clear starting point for $1,595. Additional options only if you need them."
       canonical="https://foundforai.com/pricing"
     >
       {/* Hero Section */}
@@ -106,103 +106,100 @@ export default function Pricing() {
         <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Choose Your Level of AI Visibility
+              Start With the AI Visibility Fix
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Get your AI Visibility Audit or book a strategy call for advanced plans.
+              One clear starting point. Additional options only if you need them.
             </p>
           </div>
 
           {/* Pricing Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            {/* Card 1: AI Visibility and Search Fix */}
-            <Card className="relative transition-all duration-300 hover:shadow-xl hover:scale-[1.02] border-2">
-              <CardHeader className="text-center pb-8">
-                <CardTitle className="text-2xl mb-2">AI Visibility and Search Fix</CardTitle>
-                <div className="text-4xl font-bold text-primary mb-2">$1595</div>
-                <CardDescription className="text-base">
-                  7-day AI SEO audit + technical setup for up to 10 pages.
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16 items-start">
+            {/* Card 1: AI Visibility Fix (Start Here) - Emphasized */}
+            <Card className="relative transition-all duration-300 hover:shadow-xl border-primary border-2 shadow-lg lg:scale-105 lg:-mt-4 lg:mb-4">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                <span className="bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold">
+                  Start Here
+                </span>
+              </div>
+              <CardHeader className="text-center pb-8 pt-8">
+                <CardTitle className="text-2xl mb-2">AI Visibility Fix</CardTitle>
+                <div className="text-4xl font-bold text-primary mb-2">$1,595</div>
+                <p className="text-sm text-muted-foreground">one time</p>
+                <CardDescription className="text-base mt-4">
+                  A one-time implementation that fixes how AI tools understand and recommend your business.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <ul className="space-y-3">
                   <li className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-sm">AI SEO & technical audit</span>
+                    <span className="text-sm">AI Data Layer corrections and enhancements</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-sm">Schema.org validation</span>
+                    <span className="text-sm">Missing business context for AI systems</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-sm">robots.txt + llms.txt setup</span>
+                    <span className="text-sm">Content clarity fixes for AI tools</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-sm">Sitemap creation & submission</span>
+                    <span className="text-sm">Technical blockers resolved</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-sm">OpenGraph & Twitter Card setup</span>
+                    <span className="text-sm">Documentation of all changes</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-sm">Core Web Vitals report</span>
+                    <span className="text-sm">7 business day delivery</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-sm">AI bot access permissions</span>
+                    <span className="text-sm">60-day fix-it-free guarantee</span>
                   </li>
                 </ul>
                 <a 
-                  href="https://square.link/u/o25cVCY4" 
-                  target="_blank" 
-                  rel="noopener"
+                  href="https://foundforai.com/fix-plan" 
                   data-testid="button-starter-fix"
                 >
                   <Button size="lg" className="w-full font-semibold">
-                    Book AI Visibility and Search Fix – $1595
+                    Start My AI Visibility Fix
                   </Button>
                 </a>
+                <p className="text-sm text-muted-foreground text-center">Most businesses start here</p>
               </CardContent>
             </Card>
 
-            {/* Card 2: Pro Visibility Plan */}
-            <Card className="relative transition-all duration-300 hover:shadow-xl hover:scale-[1.02] border-primary border-2 shadow-lg">
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                <span className="bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold">
-                  Most Popular
-                </span>
-              </div>
+            {/* Card 2: Ongoing Optimization (After the Fix) */}
+            <Card className="relative transition-all duration-300 hover:shadow-xl hover:scale-[1.02] border-2">
               <CardHeader className="text-center pb-8">
-                <CardTitle className="text-2xl mb-2">Pro Visibility Plan</CardTitle>
+                <CardTitle className="text-2xl mb-2">Ongoing Optimization</CardTitle>
+                <p className="text-sm text-muted-foreground mb-2">(After the Fix)</p>
                 <div className="text-4xl font-bold text-primary mb-2">Custom</div>
                 <CardDescription className="text-base">
-                  Ongoing AI optimization, 5-cluster topic buildout, monthly reporting, and growth tracking.
+                  For businesses that want continuous AI visibility growth after their initial fix.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <ul className="space-y-3">
                   <li className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-sm">Everything in AI Visibility and Search Fix</span>
+                    <span className="text-sm">Everything in AI Visibility Fix</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-sm">5-cluster topic architecture</span>
+                    <span className="text-sm">Monthly AI visibility monitoring</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-sm">Monthly AI visibility reporting</span>
+                    <span className="text-sm">Ongoing optimization updates</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-sm">Ongoing schema optimization</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-sm">Growth tracking & analytics</span>
+                    <span className="text-sm">Growth tracking & reporting</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
@@ -214,27 +211,28 @@ export default function Pricing() {
                   </li>
                 </ul>
                 <Link href="/book-call">
-                  <Button size="lg" variant="default" className="w-full font-semibold" data-testid="button-pro-schedule">
+                  <Button size="lg" variant="outline" className="w-full font-semibold" data-testid="button-pro-schedule">
                     Schedule a Call
                   </Button>
                 </Link>
+                <p className="text-sm text-muted-foreground text-center">Available after completing the AI Visibility Fix</p>
               </CardContent>
             </Card>
 
-            {/* Card 3: Enterprise/Agency */}
+            {/* Card 3: Enterprise & Agency Expansion */}
             <Card className="relative transition-all duration-300 hover:shadow-xl hover:scale-[1.02] border-2">
               <CardHeader className="text-center pb-8">
-                <CardTitle className="text-2xl mb-2">Enterprise / Agency</CardTitle>
+                <CardTitle className="text-2xl mb-2">Enterprise & Agency Expansion</CardTitle>
                 <div className="text-4xl font-bold text-primary mb-2">Custom</div>
                 <CardDescription className="text-base">
-                  White-label or multi-site integration for agencies and large enterprises.
+                  For multi-site, agency, or large-scale implementations.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <ul className="space-y-3">
                   <li className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-sm">Everything in Pro Plan</span>
+                    <span className="text-sm">Everything in Ongoing Optimization</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
@@ -254,18 +252,15 @@ export default function Pricing() {
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-sm">API access & integrations</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
                     <span className="text-sm">Volume pricing</span>
                   </li>
                 </ul>
                 <Link href="/book-call">
-                  <Button size="lg" className="w-full font-semibold" data-testid="button-enterprise-schedule">
+                  <Button size="lg" variant="outline" className="w-full font-semibold" data-testid="button-enterprise-schedule">
                     Schedule a Call
                   </Button>
                 </Link>
+                <p className="text-sm text-muted-foreground text-center">Custom scope, post-fix</p>
               </CardContent>
             </Card>
           </div>
