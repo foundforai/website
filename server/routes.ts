@@ -71,6 +71,19 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Serve static fix-plan-thanks.html confirmation page
+  app.get("/fix-plan/thanks", (req, res) => {
+    try {
+      const htmlPath = join(process.cwd(), "client/public/fix-plan-thanks.html");
+      const htmlContent = readFileSync(htmlPath, "utf-8");
+      res.setHeader("Content-Type", "text/html");
+      res.status(200).send(htmlContent);
+    } catch (error) {
+      console.error("Error serving fix-plan-thanks.html:", error);
+      res.status(500).send("Error loading page");
+    }
+  });
+
   // Redirect /search to homepage (fixes GSC soft 404)
   app.get("/search", (req, res) => {
     res.redirect(301, "/");
