@@ -7,16 +7,16 @@ import FAQSection from '@/components/FAQSection';
 
 export default function WhatIsAISEO() {
   const comparisonData = [
-    { old: 'Keywords', new: 'Entities' },
-    { old: 'Backlinks', new: 'Structured data' },
-    { old: 'Long blogs', new: 'Clear facts and FAQs' },
-    { old: 'Human-only reading', new: 'AI agents reading HTML and JSON-LD' },
+    { old: 'Keywords', new: 'Meaning and context' },
+    { old: 'Backlinks', new: 'Verified business facts' },
+    { old: 'Long blog posts', new: 'Clear answers and summaries' },
+    { old: 'Content written only for people', new: 'AI systems interpreting your site' },
   ];
 
   return (
     <PageLayout
       title="What Is AI SEO - Understanding AI Search Optimization | Found For AI"
-      description="Learn the difference between traditional SEO and AI SEO. Discover how schema markup, structured data, and semantic content help AI find your business."
+      description="Learn the difference between traditional SEO and AI SEO. Discover how to make your business clearly understandable to AI systems like ChatGPT and Perplexity."
       canonical="https://foundforai.com/what-is-ai-seo"
     >
       <section className="py-16 md:py-24 bg-background">
@@ -27,10 +27,13 @@ export default function WhatIsAISEO() {
           
           <div className="prose prose-lg max-w-none text-muted-foreground space-y-6 mb-12">
             <p>
-              AI SEO is the practice of optimizing your website so that AI models like ChatGPT, Perplexity, and Google's AI Overviews can understand, extract, and recommend your content. Unlike traditional SEO that focuses on keyword rankings, AI SEO ensures your business is discoverable when users ask AI assistants natural language questions.
+              AI SEO is the practice of making your business clearly understandable to AI systems like ChatGPT, Perplexity, and Google's AI results so they can confidently recommend you when users ask questions.
             </p>
             <p>
-              The shift is fundamental: AI doesn't crawl for keywords—it reads structured data, semantic HTML, and clear content to understand who you are, what you offer, and when to recommend you.
+              Unlike traditional SEO, which focused on ranking pages for keywords, AI SEO focuses on clarity, context, and trust. AI systems don't search the web the way humans do. They interpret information to decide which businesses are relevant, credible, and worth mentioning.
+            </p>
+            <p>
+              The shift is fundamental. AI systems don't hunt for keywords. They interpret meaning, context, and signals of credibility to understand who you are, what you offer, and when you're a good recommendation.
             </p>
           </div>
 
@@ -51,7 +54,7 @@ export default function WhatIsAISEO() {
                   {comparisonData.map((row, index) => (
                     <tr key={index} className={index % 2 === 0 ? 'bg-muted/50' : 'bg-background'}>
                       <td className="py-4 px-6 text-red-600 dark:text-red-400 font-medium">{row.old}</td>
-                      <td className="py-4 px-6 text-accent-foreground font-medium">{row.new}</td>
+                      <td className="py-4 px-6 text-green-700 dark:text-green-400 font-medium">{row.new}</td>
                     </tr>
                   ))}
                 </tbody>

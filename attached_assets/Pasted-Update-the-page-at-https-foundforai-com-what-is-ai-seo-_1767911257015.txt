@@ -1,0 +1,67 @@
+Update the page at https://foundforai.com/what-is-ai-seo with the following requirements.
+
+GOALS
+- Remove technical “how” language that gives away implementation details
+- Keep the explanation high-level, authoritative, and non-technical
+- Fix the comparison table so all text is visible in light mode
+- Do NOT add new sections or change layout structure
+- Do NOT mention specific technical formats or tactics
+
+---
+
+SECTION: Page Intro / Definition
+
+Replace the existing introductory copy with the following:
+
+TITLE:
+What Is AI SEO?
+
+BODY COPY:
+AI SEO is the practice of making your business clearly understandable to AI systems like ChatGPT, Perplexity, and Google’s AI results so they can confidently recommend you when users ask questions.
+
+Unlike traditional SEO, which focused on ranking pages for keywords, AI SEO focuses on clarity, context, and trust. AI systems don’t search the web the way humans do. They interpret information to decide which businesses are relevant, credible, and worth mentioning.
+
+Replace any paragraph that mentions how AI “reads” specific formats with this sentence instead:
+
+The shift is fundamental. AI systems don’t hunt for keywords. They interpret meaning, context, and signals of credibility to understand who you are, what you offer, and when you’re a good recommendation.
+
+---
+
+SECTION: Old SEO vs AI SEO Table
+
+Keep the table layout exactly the same, but replace the row text as follows.
+
+LEFT COLUMN (Old SEO):
+- Keywords
+- Backlinks
+- Long blog posts
+- Content written only for people
+
+RIGHT COLUMN (AI SEO):
+- Meaning and context
+- Verified business facts
+- Clear answers and summaries
+- AI systems interpreting your site
+
+---
+
+DESIGN FIX (IMPORTANT)
+
+Ensure that all table text is clearly visible in light mode.
+- Do not use white or near-white text on light backgrounds
+- Use the same text color styling for both columns
+- Maintain dark-mode compatibility, but prioritize light-mode readability
+
+---
+
+DO NOT:
+- Mention structured data
+- Mention schema
+- Mention semantic HTML
+- Mention JSON-LD
+- Mention entities as a technical concept
+- Change URLs
+- Change navigation
+- Change page structure
+
+Only update copy and text styling as specified.
