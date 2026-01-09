@@ -55,7 +55,7 @@ export default function Audit() {
 
         toast({
           title: 'Thanks - we will be in touch soon.',
-          description: 'You will receive your scorecard within 24 hours.',
+          description: 'You will receive your AI Visibility Review shortly.',
         });
         
         // Redirect to thank you page
@@ -80,26 +80,26 @@ export default function Audit() {
 
   return (
     <PageLayout
-      title="Free AI Readiness Audit - Get Your Website Scorecard | Found For AI"
-      description="Request a free AI SEO audit. Get a personalized scorecard analyzing your schema markup, GEO optimization, and AI discoverability within 24 hours."
+      title="Free AI Visibility Review - See How AI Tools Understand Your Business | Found For AI"
+      description="Request a free AI Visibility Review. Get a clear snapshot of how visible your business is to AI tools like ChatGPT and Perplexity."
       canonical="https://foundforai.com/audit"
     >
       <section className="py-16 md:py-24 bg-gradient-to-br from-background via-primary/5 to-accent/5">
         <div className="max-w-2xl mx-auto px-4 md:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Get Your Free AI Readiness Audit
+              Get Your Free AI Visibility Review
             </h1>
             <p className="text-lg text-muted-foreground">
-              Receive a personalized AI Readiness Scorecard within 24 hours
+              Get a clear snapshot of how visible your business is to AI tools.
             </p>
           </div>
 
           <Card className="shadow-xl">
             <CardHeader>
-              <CardTitle className="text-2xl">Request Your Audit</CardTitle>
+              <CardTitle className="text-2xl">Request Your Review</CardTitle>
               <CardDescription>
-                We'll analyze your website's schema, GEO data, and content structure to show you exactly how AI-ready you are.
+                We'll review how clearly AI tools can understand your business, what they're missing, and where visibility may be breaking down.
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -158,7 +158,7 @@ export default function Audit() {
                     data-testid="checkbox-consent"
                   />
                   <Label htmlFor="consent" className="text-sm font-normal leading-relaxed cursor-pointer">
-                    I consent to receive my AI Readiness Scorecard and occasional AI SEO insights via email.
+                    I consent to receive my AI Visibility Review and occasional insights by email.
                   </Label>
                 </div>
 
@@ -169,21 +169,10 @@ export default function Audit() {
                   disabled={loading}
                   data-testid="button-submit-audit"
                 >
-                  {loading ? 'Sending...' : 'Get My Free Scorecard'}
+                  {loading ? 'Sending...' : 'Get My Free AI Visibility Review'}
                 </Button>
               </form>
 
-              <div className="mt-8 pt-8 border-t">
-                <p className="text-sm text-muted-foreground text-center mb-3">
-                  Need results faster?
-                </p>
-                <div className="bg-muted rounded-lg p-4 text-center">
-                  <p className="font-semibold mb-1">Priority Audit - $49</p>
-                  <p className="text-sm text-muted-foreground">
-                    Get your scorecard in 1 hour with actionable recommendations
-                  </p>
-                </div>
-              </div>
             </CardContent>
           </Card>
         </div>
