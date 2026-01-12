@@ -13,6 +13,175 @@ export default function BlogPost() {
 
   //TODO: remove mock functionality - replace with actual markdown parsing
   const posts: Record<string, any> = {
+    'mental-model-shift-ai-search': {
+      title: 'The Mental Model Shift Businesses Are Missing About AI Search',
+      subtitle: 'Most business websites are still written for keyword matching and human browsing. AI systems don\'t browse — they interpret.',
+      date: '2025-01-12',
+      author: 'Dustin Crump',
+      metaDescription: 'AI search and Google search look similar on the surface, but under the hood they work completely differently. Learn the mental model shift businesses need to make.',
+      hasArticleSchema: true,
+      image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2565&auto=format&fit=crop&ixlib=rb-4.1.0',
+      content: `
+        <p>AI search and Google search look similar on the surface. You type words into a box. You get an answer.</p>
+
+        <p>But under the hood, they are built for completely different goals — and that difference is already affecting which businesses get recommended and which ones quietly disappear.</p>
+
+        <p>Most businesses haven't caught this yet.<br />They're still optimizing for how search used to work.</p>
+
+        <h2>Google search asks: "Where is the answer?"</h2>
+
+        <p>Traditional search engines like Google are discovery systems.</p>
+
+        <p>When you search, Google's job is to find pages on the internet that might contain the answer, rank them, and send you there. It doesn't explain. It doesn't synthesize. It points.</p>
+
+        <p>That's why classic SEO focuses on:</p>
+
+        <ul>
+          <li>Keywords</li>
+          <li>Backlinks</li>
+          <li>Long-form content</li>
+          <li>Ranking position</li>
+        </ul>
+
+        <p>Google assumes you will do the reading, comparing, and deciding.</p>
+
+        <h2>AI search asks: "Can I explain the answer?"</h2>
+
+        <p>AI systems work differently.</p>
+
+        <p>When someone asks an AI tool a question, it isn't trying to send them elsewhere. It's trying to be the answer.</p>
+
+        <p>That means the system has to:</p>
+
+        <ul>
+          <li>Understand who you are</li>
+          <li>Understand what you offer</li>
+          <li>Understand when you are relevant</li>
+          <li>Decide whether it's confident enough to mention you</li>
+        </ul>
+
+        <p>AI doesn't browse websites the way humans do.<br />It interprets them.</p>
+
+        <p><strong>This is the mental model shift most businesses are missing.</strong></p>
+
+        <h2>Keywords vs understanding</h2>
+
+        <p>Google treats queries like signals.</p>
+
+        <p>Short, fragmented phrases work because Google is matching keywords across billions of pages.</p>
+
+        <p>AI treats queries like intent.</p>
+
+        <p>People write full sentences. They add context. They ask follow-ups. The system tracks meaning across the conversation.</p>
+
+        <p><strong>Google search:</strong><br /><em>best hvac company salt lake city</em></p>
+
+        <p><strong>AI query:</strong><br /><em>"I just bought a house and need a reliable HVAC company that can handle both repairs and ongoing maintenance — who should I call?"</em></p>
+
+        <p>One system matches words.<br />The other tries to understand the situation.</p>
+
+        <h2>Why this matters for your website</h2>
+
+        <p>Most business websites were built for human browsing plus keyword indexing.</p>
+
+        <p>That worked when search engines acted like directories.</p>
+
+        <p>But AI systems aren't scanning your site looking for keywords. They're trying to answer questions like:</p>
+
+        <ul>
+          <li>What does this business actually do?</li>
+          <li>Is this service clearly defined?</li>
+          <li>Is the information consistent and complete?</li>
+          <li>Can I confidently recommend this company?</li>
+        </ul>
+
+        <p>If the answer isn't clear, the AI doesn't "rank you lower."</p>
+
+        <p><strong>It simply doesn't mention you.</strong></p>
+
+        <h2>Retrieval vs synthesis</h2>
+
+        <p>Google retrieves.</p>
+
+        <p>It shows you links and trusts you to figure things out.</p>
+
+        <p>AI synthesizes.</p>
+
+        <p>It combines information, summarizes, explains, and recommends.</p>
+
+        <p>That's why prompts like "explain this like I'm 12" work with AI but not with Google. AI is designed to produce answers, not just locate them.</p>
+
+        <p>From a business perspective, this changes everything.</p>
+
+        <p>You're no longer competing just to be found.<br /><strong>You're competing to be understood well enough to be chosen.</strong></p>
+
+        <h2>Ambiguity exposes the gap</h2>
+
+        <p>When a search query is ambiguous, Google often returns mixed results.</p>
+
+        <p>AI systems try to resolve ambiguity or ask clarifying questions.</p>
+
+        <p>That difference matters because business information is often ambiguous by default.</p>
+
+        <p>If your site doesn't clearly explain:</p>
+
+        <ul>
+          <li>Your services</li>
+          <li>Your location</li>
+          <li>Your availability</li>
+          <li>Your booking path</li>
+        </ul>
+
+        <p>AI has no incentive to guess.</p>
+
+        <p>And when AI doesn't feel confident, it moves on.</p>
+
+        <h2>Follow-up is the new reality</h2>
+
+        <p>Google resets every time you search.</p>
+
+        <p>AI builds context.</p>
+
+        <p>Someone can ask:</p>
+
+        <p><em>"What about a cheaper option?"</em></p>
+
+        <p>And the system knows exactly what "that" refers to.</p>
+
+        <p>This means recommendations aren't isolated moments. They're part of an ongoing reasoning process.</p>
+
+        <p>If your business information can't survive that process, it won't surface.</p>
+
+        <h2>The uncomfortable truth</h2>
+
+        <p>Most business websites still assume:</p>
+
+        <ul>
+          <li>Humans will read everything</li>
+          <li>Search engines will connect the dots</li>
+          <li>Rankings equal visibility</li>
+        </ul>
+
+        <p>That assumption is breaking.</p>
+
+        <p>AI systems don't browse.<br />They interpret.</p>
+
+        <p>If your site isn't structured in a way an AI can confidently understand, it may never recommend you — even if you rank well in Google.</p>
+
+        <p>That's the shift.</p>
+
+        <p>Not new tools.<br />Not new tactics.<br /><strong>A new mental model.</strong></p>
+
+        <p>And the businesses that adapt to it early won't just keep their visibility — they'll own it.</p>
+      `,
+      customCta: {
+        headline: 'Want to know how visible your business actually is to AI?',
+        copy: 'We\'ve already seen how often AI tools fail to understand otherwise great businesses. A quick visibility scan shows what AI can and can\'t interpret about your site — and whether it\'s likely to recommend you.',
+        buttonText: 'Check My AI Visibility',
+        buttonLink: '/',
+        footnote: 'No pitch. No obligation. Just clarity.',
+      },
+    },
     '7-things-smart-business-owners-do-to-get-recommended-by-ai': {
       title: '7 Things Smart Business Owners Do to Get Recommended by AI',
       subtitle: 'AI tools don\'t browse websites like humans or rank them like Google. They recommend businesses they understand and trust. Here\'s what those businesses do differently.',
@@ -460,11 +629,30 @@ export default function BlogPost() {
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
 
-          <div className="mt-12 pt-8 border-t">
-            <p className="text-sm text-muted-foreground">
-              Looking for AI automations? See <a href="https://fripse.com" target="_blank" rel="noopener" className="text-primary hover:underline" data-testid="link-fripse-blog">Fripse AI</a>.
-            </p>
-          </div>
+          {post.customCta ? (
+            <div className="mt-16 p-8 md:p-10 bg-muted/50 border rounded-xl text-center">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4">{post.customCta.headline}</h2>
+              <p className="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto leading-relaxed">
+                {post.customCta.copy}
+              </p>
+              <a 
+                href={post.customCta.buttonLink}
+                className="inline-block px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-colors"
+                data-testid="button-article-cta"
+              >
+                {post.customCta.buttonText}
+              </a>
+              {post.customCta.footnote && (
+                <p className="text-sm text-muted-foreground mt-4">{post.customCta.footnote}</p>
+              )}
+            </div>
+          ) : (
+            <div className="mt-12 pt-8 border-t">
+              <p className="text-sm text-muted-foreground">
+                Looking for AI automations? See <a href="https://fripse.com" target="_blank" rel="noopener" className="text-primary hover:underline" data-testid="link-fripse-blog">Fripse AI</a>.
+              </p>
+            </div>
+          )}
         </div>
       </article>
     </PageLayout>

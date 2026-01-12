@@ -1,0 +1,223 @@
+Build a new blog article page for FoundForAI with the following requirements:
+
+Page type
+
+Blog article
+
+URL slug: /blog/mental-model-shift-ai-search
+
+SEO-friendly, fast-loading, clean layout
+
+Use existing site styles, fonts, colors, spacing
+
+Mobile-first, readable, no gimmicks
+
+Page structure
+
+Hero section
+
+H1 (large, bold):
+
+The Mental Model Shift Businesses Are Missing About AI Search
+
+Subheading (smaller, muted):
+
+Most business websites are still written for keyword matching and human browsing. AI systems don’t browse — they interpret.
+
+Article body
+
+Use comfortable reading width
+
+Clear section headings
+
+No technical implementation details
+
+Educational, authoritative, calm
+
+No emojis
+
+No sales language in the body
+
+Article copy (use verbatim)
+
+
+The Mental Model Shift Businesses Are Missing About AI Search
+
+AI search and Google search look similar on the surface. You type words into a box. You get an answer.
+
+But under the hood, they are built for completely different goals — and that difference is already affecting which businesses get recommended and which ones quietly disappear.
+
+Most businesses haven’t caught this yet.
+They’re still optimizing for how search used to work.
+
+Google search asks: “Where is the answer?”
+
+Traditional search engines like Google are discovery systems.
+
+When you search, Google’s job is to find pages on the internet that might contain the answer, rank them, and send you there. It doesn’t explain. It doesn’t synthesize. It points.
+
+That’s why classic SEO focuses on:
+
+• Keywords
+• Backlinks
+• Long-form content
+• Ranking position
+
+Google assumes you will do the reading, comparing, and deciding.
+
+AI search asks: “Can I explain the answer?”
+
+AI systems work differently.
+
+When someone asks an AI tool a question, it isn’t trying to send them elsewhere. It’s trying to be the answer.
+
+That means the system has to:
+
+• Understand who you are
+• Understand what you offer
+• Understand when you are relevant
+• Decide whether it’s confident enough to mention you
+
+AI doesn’t browse websites the way humans do.
+It interprets them.
+
+This is the mental model shift most businesses are missing.
+
+Keywords vs understanding
+
+Google treats queries like signals.
+
+Short, fragmented phrases work because Google is matching keywords across billions of pages.
+
+AI treats queries like intent.
+
+People write full sentences. They add context. They ask follow-ups. The system tracks meaning across the conversation.
+
+Google search:
+
+best hvac company salt lake city
+
+AI query:
+
+“I just bought a house and need a reliable HVAC company that can handle both repairs and ongoing maintenance — who should I call?”
+
+One system matches words.
+The other tries to understand the situation.
+
+Why this matters for your website
+
+Most business websites were built for human browsing plus keyword indexing.
+
+That worked when search engines acted like directories.
+
+But AI systems aren’t scanning your site looking for keywords. They’re trying to answer questions like:
+
+• What does this business actually do?
+• Is this service clearly defined?
+• Is the information consistent and complete?
+• Can I confidently recommend this company?
+
+If the answer isn’t clear, the AI doesn’t “rank you lower.”
+
+It simply doesn’t mention you.
+
+Retrieval vs synthesis
+
+Google retrieves.
+
+It shows you links and trusts you to figure things out.
+
+AI synthesizes.
+
+It combines information, summarizes, explains, and recommends.
+
+That’s why prompts like “explain this like I’m 12” work with AI but not with Google. AI is designed to produce answers, not just locate them.
+
+From a business perspective, this changes everything.
+
+You’re no longer competing just to be found.
+You’re competing to be understood well enough to be chosen.
+
+Ambiguity exposes the gap
+
+When a search query is ambiguous, Google often returns mixed results.
+
+AI systems try to resolve ambiguity or ask clarifying questions.
+
+That difference matters because business information is often ambiguous by default.
+
+If your site doesn’t clearly explain:
+
+• Your services
+• Your location
+• Your availability
+• Your booking path
+
+AI has no incentive to guess.
+
+And when AI doesn’t feel confident, it moves on.
+
+Follow-up is the new reality
+
+Google resets every time you search.
+
+AI builds context.
+
+Someone can ask:
+
+“What about a cheaper option?”
+
+And the system knows exactly what “that” refers to.
+
+This means recommendations aren’t isolated moments. They’re part of an ongoing reasoning process.
+
+If your business information can’t survive that process, it won’t surface.
+
+The uncomfortable truth
+
+Most business websites still assume:
+
+• Humans will read everything
+• Search engines will connect the dots
+• Rankings equal visibility
+
+That assumption is breaking.
+
+AI systems don’t browse.
+They interpret.
+
+If your site isn’t structured in a way an AI can confidently understand, it may never recommend you — even if you rank well in Google.
+
+That’s the shift.
+
+Not new tools.
+Not new tactics.
+A new mental model.
+
+And the businesses that adapt to it early won’t just keep their visibility — they’ll own it.
+
+CTA section (at the bottom)
+
+Design this as a calm, visually distinct section (light background, subtle border).
+
+CTA headline
+
+Want to know how visible your business actually is to AI?
+
+CTA copy
+
+We’ve already seen how often AI tools fail to understand otherwise great businesses.
+A quick visibility scan shows what AI can and can’t interpret about your site — and whether it’s likely to recommend you.
+
+Primary button
+
+Text:
+
+Check My AI Visibility
+
+Link to:
+/ (homepage app scan)
+
+Secondary text (small, muted, below button)
+
+No pitch. No obligation. Just clarity.

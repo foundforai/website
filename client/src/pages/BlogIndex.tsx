@@ -11,6 +11,16 @@ export default function BlogIndex() {
   //TODO: remove mock functionality - replace with actual blog post data
   const posts = [
     {
+      slug: 'mental-model-shift-ai-search',
+      title: 'The Mental Model Shift Businesses Are Missing About AI Search',
+      date: '2025-01-12',
+      author: 'Dustin Crump',
+      excerpt: 'Most business websites are still written for keyword matching and human browsing. AI systems don\'t browse — they interpret.',
+      readTime: '6 min read',
+      image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2565&auto=format&fit=crop&ixlib=rb-4.1.0',
+      featured: true,
+    },
+    {
       slug: '7-things-smart-business-owners-do-to-get-recommended-by-ai',
       title: '7 Things Smart Business Owners Do to Get Recommended by AI',
       date: new Date().toISOString().split('T')[0],
@@ -18,7 +28,6 @@ export default function BlogIndex() {
       excerpt: 'AI tools don\'t browse websites like humans or rank them like Google. They recommend businesses they understand and trust. Here\'s what those businesses do differently.',
       readTime: '2 min read',
       image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2534&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      featured: true,
     },
     {
       slug: 'what-is-found-for-ai',
