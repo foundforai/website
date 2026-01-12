@@ -18,7 +18,10 @@ export default function BlogPost() {
       subtitle: 'Most business websites are still written for keyword matching and human browsing. AI systems don\'t browse — they interpret.',
       date: '2025-01-12',
       author: 'Dustin Crump',
-      metaDescription: 'AI search and Google search look similar on the surface, but under the hood they work completely differently. Learn the mental model shift businesses need to make.',
+      metaDescription: 'AI search doesn\'t work like Google. Learn why businesses built for keywords are disappearing from AI answers — and what visibility really means now.',
+      ogDescription: 'AI systems don\'t browse websites — they interpret them. Here\'s why that changes how businesses get recommended.',
+      twitterDescription: 'Why AI search works differently than Google — and why most businesses haven\'t adapted yet.',
+      schemaDescription: 'AI search doesn\'t rank pages the way Google does. It interprets meaning, context, and clarity to decide what to recommend.',
       hasArticleSchema: true,
       image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2565&auto=format&fit=crop&ixlib=rb-4.1.0',
       content: `
@@ -543,8 +546,9 @@ export default function BlogPost() {
         "@context": "https://schema.org",
         "@type": "Article",
         "headline": post.title,
-        "description": post.metaDescription,
+        "description": post.schemaDescription || post.metaDescription,
         "datePublished": post.date,
+        "dateModified": post.dateModified || post.date,
         "mainEntityOfPage": {
           "@type": "WebPage",
           "@id": `https://foundforai.com/blog/${slug}`
@@ -573,6 +577,29 @@ export default function BlogPost() {
       };
     }
   }, [post, slug]);
+
+  useEffect(() => {
+    if (post) {
+      const ogType = document.querySelector('meta[property="og:type"]');
+      if (ogType) {
+        ogType.setAttribute('content', 'article');
+      }
+
+      if (post.ogDescription) {
+        const ogDesc = document.querySelector('meta[property="og:description"]');
+        if (ogDesc) {
+          ogDesc.setAttribute('content', post.ogDescription);
+        }
+      }
+
+      if (post.twitterDescription) {
+        const twitterDesc = document.querySelector('meta[name="twitter:description"]');
+        if (twitterDesc) {
+          twitterDesc.setAttribute('content', post.twitterDescription);
+        }
+      }
+    }
+  }, [post]);
 
   if (!post) {
     return (

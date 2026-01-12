@@ -1,0 +1,90 @@
+Update the blog article at:
+/blog/mental-model-shift-ai-search
+
+GOALS
+- Ensure proper SEO metadata
+- Add safe, high-level schema markup
+- Make the article understandable to search engines and AI systems
+- Do NOT expose technical implementation details
+- Do NOT change visible article copy
+
+---
+
+PART 1: SEO META TAGS
+
+Add or update the following in the <head> for this page only.
+
+Title tag:
+The Mental Model Shift Businesses Are Missing About AI Search
+
+Meta description:
+AI search doesn’t work like Google. Learn why businesses built for keywords are disappearing from AI answers — and what visibility really means now.
+
+Canonical URL:
+https://foundforai.com/blog/mental-model-shift-ai-search
+
+Open Graph tags:
+- og:title: The Mental Model Shift Businesses Are Missing About AI Search
+- og:description: AI systems don’t browse websites — they interpret them. Here’s why that changes how businesses get recommended.
+- og:type: article
+- og:url: https://foundforai.com/blog/mental-model-shift-ai-search
+
+Twitter card:
+- twitter:card: summary_large_image
+- twitter:title: The Mental Model Shift Businesses Are Missing About AI Search
+- twitter:description: Why AI search works differently than Google — and why most businesses haven’t adapted yet.
+
+---
+
+PART 2: ARTICLE STRUCTURED DATA (Schema)
+
+Add JSON-LD schema using @type: Article.
+
+Requirements:
+- Use @context: https://schema.org
+- @type: Article
+- headline: The Mental Model Shift Businesses Are Missing About AI Search
+- description: AI search doesn’t rank pages the way Google does. It interprets meaning, context, and clarity to decide what to recommend.
+- author:
+  - @type: Person
+  - name: Dustin Crump
+- publisher:
+  - @type: Organization
+  - name: Found For AI
+  - url: https://foundforai.com
+- mainEntityOfPage:
+  - @type: WebPage
+  - @id: https://foundforai.com/blog/mental-model-shift-ai-search
+- datePublished: use the article publish date
+- dateModified: use the same date initially
+
+IMPORTANT:
+- Do NOT include FAQ schema
+- Do NOT include HowTo schema
+- Do NOT include technical terms like schema, structured data, entities, or JSON-LD in visible copy
+- This schema should describe the article, not explain AI SEO mechanics
+
+Inject the JSON-LD cleanly into the page <head> or just before </body>.
+
+---
+
+PART 3: CONTENT STRUCTURE CHECK
+
+Ensure:
+- One H1 only (the article title)
+- Section headers use H2
+- Paragraphs are readable width
+- No keyword stuffing
+- No forced SEO phrases
+
+---
+
+PART 4: VALIDATION
+
+After implementation:
+- The page should validate as an Article in Rich Results Test
+- No schema warnings
+- No layout or copy changes
+- Page remains fast-loading
+
+Do not modify any other pages.
