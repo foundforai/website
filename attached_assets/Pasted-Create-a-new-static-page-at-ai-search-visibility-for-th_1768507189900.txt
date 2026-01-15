@@ -1,0 +1,99 @@
+Create a new static page at /ai-search-visibility for the Found For AI website.
+
+Important rules:
+• Use the provided copy exactly as written
+• Do not rewrite, summarize, or rephrase any text
+• Do not add marketing language or additional sections
+• Do not modify the homepage
+
+Page Content
+
+Insert the following copy verbatim, preserving headings, paragraphs, bullet points, and tables:
+AI Search Visibility for Businesses
+
+What does Found For AI do?
+
+Found For AI helps businesses become visible to AI assistants like ChatGPT, Google Gemini, and Perplexity. We install and optimize an AI readable data layer on your website so modern AI systems can correctly understand your services, location, and booking options, and confidently recommend your business when customers ask for help.
+
+H2
+
+What is AI Search Visibility?
+
+AI search visibility is the ability for your business to be recognized, understood, and referenced by AI powered search tools. Unlike traditional search engines that rank web pages, AI assistants generate answers. If your business information is not structured clearly, AI systems cannot reliably include you in those answers.
+
+H2
+
+How AI Tools Decide Which Businesses to Recommend
+
+AI assistants evaluate businesses based on clarity and trust, not design or keywords. They look for:
+
+• Structured data that defines services, location, and contact details
+• Clear entity relationships between your brand, services, and people
+• Consistent information across your website and public profiles
+• Verifiable signals that confirm your business is real and current
+
+If these signals are missing or fragmented, AI tools skip your business.
+
+H2
+
+What Found For AI Actually Does
+
+<table> <tr> <th>Problem</th> <th>What We Fix</th> </tr> <tr> <td>AI cannot understand your services</td> <td>We structure your services using AI readable schema</td> </tr> <tr> <td>Your booking link is invisible to AI</td> <td>We expose scheduling and contact actions to AI systems</td> </tr> <tr> <td>Business details are unclear or inconsistent</td> <td>We normalize and connect your business data</td> </tr> <tr> <td>Your site works for humans but not AI</td> <td>We add a dedicated AI visibility layer</td> </tr> </table>
+H2
+
+Who This Is For
+
+• Local service businesses
+• Professional service firms
+• Marketing and web agencies
+• SaaS and online service companies
+
+If customers might ask AI for recommendations in your category, this applies to you.
+
+H2
+
+How This Is Different From Traditional SEO
+
+<table> <tr> <th>AI Search Visibility</th> <th>Traditional SEO</th> </tr> <tr> <td>Optimizes for AI generated answers</td> <td>Optimizes for search result rankings</td> </tr> <tr> <td>Focuses on structured data and entities</td> <td>Focuses on keywords and backlinks</td> </tr> <tr> <td>Designed for assistants like ChatGPT and Gemini</td> <td>Designed for Google search results</td> </tr> </table>
+H2
+
+Frequently Asked Questions
+
+How long does it take for AI systems to use this information?
+AI platforms update on their own timelines. Most changes are reflected within two to eight weeks after implementation.
+
+Does this replace SEO?
+No. AI search visibility complements traditional SEO by addressing how AI assistants interpret and recommend businesses.
+
+Do you need to rebuild my website?
+Usually no. We work with your existing site and add an AI focused data layer.
+
+Is this a monthly service?
+No. This is typically a one time implementation, with optional future expansions.
+Schema Requirements
+
+Add one consolidated JSON-LD block that includes:
+
+• Organization schema for Found For AI
+• WebPage schema for /ai-search-visibility
+• Service schema for “AI Search Visibility Optimization”
+• FAQPage schema matching the visible FAQs
+
+All entities must be connected using @id references.
+Do not duplicate Organization or Service schema from other pages.
+
+Technical Requirements
+
+• Semantic HTML
+• Proper heading hierarchy
+• Mobile friendly
+• Fast loading
+• No JavaScript required
+
+Linking
+
+After building the page, recommend adding a single link to this page in:
+• The site footer, or
+• A secondary navigation item
+
+Do not surface this page in the homepage hero or primary marketing sections.

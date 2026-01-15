@@ -19,6 +19,7 @@ import ThankYou from "@/pages/ThankYou";
 import PurchaseConfirmation from "@/pages/PurchaseConfirmation";
 import BlogIndex from "@/pages/BlogIndex";
 import BlogPost from "@/pages/BlogPost";
+import AISearchVisibility from "@/pages/AISearchVisibility";
 import NotFound from "@/pages/NotFound";
 
 function Router() {
@@ -40,6 +41,7 @@ function Router() {
         <Route path="/purchase-complete" component={PurchaseConfirmation} />
         <Route path="/blog" component={BlogIndex} />
         <Route path="/blog/:slug" component={BlogPost} />
+        <Route path="/ai-search-visibility" component={AISearchVisibility} />
         <Route component={NotFound} />
       </Switch>
     </>
