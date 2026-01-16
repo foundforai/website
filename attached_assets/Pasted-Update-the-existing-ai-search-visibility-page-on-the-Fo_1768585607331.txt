@@ -147,12 +147,4 @@ Use this schema EXACTLY as written
 }
 </script>
 
-Final checks before completing
 
-• Confirm this schema appears only on /ai-search-visibility
-• Confirm no pricing schema elsewhere conflicts with $1,595
-• Do not modify homepage schema
-
-When finished, briefly report:
-• Which file was updated
-• Where the schema was inserted
