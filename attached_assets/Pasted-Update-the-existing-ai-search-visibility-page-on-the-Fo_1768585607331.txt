@@ -1,0 +1,158 @@
+Update the existing /ai-search-visibility page on the Found For AI website.
+
+Important rules
+• Do NOT modify any visible page content
+• Do NOT change layout, copy, headings, or styling
+• Do NOT touch the homepage or any global layout files
+• This task is ONLY to add page specific schema
+
+What to do
+
+Add a single consolidated JSON-LD schema block inside the <head> of the /ai-search-visibility page.
+
+If a schema block already exists on this page
+• Remove it
+• Replace it with the consolidated schema below
+
+Do NOT duplicate this schema anywhere else on the site.
+
+Use this schema EXACTLY as written
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://foundforai.com/#org",
+      "name": "Found For AI",
+      "url": "https://foundforai.com",
+      "logo": "https://foundforai.com/found-for-ai-logo-white.png",
+      "sameAs": [
+        "https://www.linkedin.com/company/foundforai",
+        "https://x.com/foundforai",
+        "https://www.instagram.com/foundforai"
+      ],
+      "founder": {
+        "@type": "Person",
+        "name": "Dustin Crump",
+        "url": "https://www.linkedin.com/in/fripse",
+        "knowsAbout": [
+          "AI search visibility",
+          "structured data",
+          "schema.org",
+          "AI assistants",
+          "answer engine optimization"
+        ]
+      },
+      "knowsAbout": [
+        "AI search visibility",
+        "AI readability",
+        "LLM discovery",
+        "schema optimization",
+        "AI assistants"
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://foundforai.com/ai-search-visibility#page",
+      "url": "https://foundforai.com/ai-search-visibility",
+      "name": "AI Search Visibility for Businesses",
+      "isPartOf": {
+        "@id": "https://foundforai.com/#website"
+      },
+      "about": {
+        "@id": "https://foundforai.com/#service-ai-visibility"
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://foundforai.com/#service-ai-visibility",
+      "name": "AI Search Visibility Optimization",
+      "serviceType": "AI Search Visibility Optimization",
+      "description": "Optimization of websites and business data so AI assistants can understand, trust, and recommend a business in AI generated answers.",
+      "provider": {
+        "@id": "https://foundforai.com/#org"
+      },
+      "serviceAudience": {
+        "@type": "Audience",
+        "audienceType": [
+          "Local service businesses",
+          "Professional services",
+          "Agencies",
+          "Online businesses"
+        ]
+      },
+      "availableChannel": {
+        "@type": "ServiceChannel",
+        "serviceLocation": {
+          "@type": "VirtualLocation",
+          "url": "https://foundforai.com"
+        }
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "United States"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "1595",
+        "priceCurrency": "USD",
+        "url": "https://foundforai.com/services",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://foundforai.com/ai-search-visibility#faq",
+      "isPartOf": {
+        "@id": "https://foundforai.com/ai-search-visibility#page"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How long does it take for AI systems to use this information?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "AI platforms update on their own timelines. Most changes are reflected within two to eight weeks after implementation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this replace SEO?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. AI search visibility complements traditional SEO by addressing how AI assistants interpret and recommend businesses."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you need to rebuild my website?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usually no. Found For AI works with your existing site and adds an AI focused data layer."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this a monthly service?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. This is typically a one time implementation, with optional future expansions."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+Final checks before completing
+
+• Confirm this schema appears only on /ai-search-visibility
+• Confirm no pricing schema elsewhere conflicts with $1,595
+• Do not modify homepage schema
+
+When finished, briefly report:
+• Which file was updated
+• Where the schema was inserted

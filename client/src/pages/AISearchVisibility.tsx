@@ -14,37 +14,87 @@ export default function AISearchVisibility() {
           "@id": "https://foundforai.com/#org",
           "name": "Found For AI",
           "url": "https://foundforai.com",
-          "logo": "https://foundforai.com/found-for-ai-logo-white.png"
-        },
-        {
-          "@type": "WebSite",
-          "@id": "https://foundforai.com/#website",
-          "url": "https://foundforai.com",
-          "name": "Found For AI",
-          "publisher": { "@id": "https://foundforai.com/#org" }
+          "logo": "https://foundforai.com/found-for-ai-logo-white.png",
+          "sameAs": [
+            "https://www.linkedin.com/company/foundforai",
+            "https://x.com/foundforai",
+            "https://www.instagram.com/foundforai"
+          ],
+          "founder": {
+            "@type": "Person",
+            "name": "Dustin Crump",
+            "url": "https://www.linkedin.com/in/fripse",
+            "knowsAbout": [
+              "AI search visibility",
+              "structured data",
+              "schema.org",
+              "AI assistants",
+              "answer engine optimization"
+            ]
+          },
+          "knowsAbout": [
+            "AI search visibility",
+            "AI readability",
+            "LLM discovery",
+            "schema optimization",
+            "AI assistants"
+          ]
         },
         {
           "@type": "WebPage",
-          "@id": "https://foundforai.com/ai-search-visibility",
+          "@id": "https://foundforai.com/ai-search-visibility#page",
           "url": "https://foundforai.com/ai-search-visibility",
           "name": "AI Search Visibility for Businesses",
-          "description": "Found For AI helps businesses become visible to AI assistants like ChatGPT, Google Gemini, and Perplexity through AI readable data layers.",
-          "isPartOf": { "@id": "https://foundforai.com/#website" },
-          "about": { "@id": "https://foundforai.com/ai-search-visibility#service" },
-          "publisher": { "@id": "https://foundforai.com/#org" }
+          "isPartOf": {
+            "@id": "https://foundforai.com/#website"
+          },
+          "about": {
+            "@id": "https://foundforai.com/#service-ai-visibility"
+          }
         },
         {
           "@type": "Service",
-          "@id": "https://foundforai.com/ai-search-visibility#service",
+          "@id": "https://foundforai.com/#service-ai-visibility",
           "name": "AI Search Visibility Optimization",
-          "description": "We install and optimize an AI readable data layer on your website so modern AI systems can correctly understand your services, location, and booking options.",
-          "provider": { "@id": "https://foundforai.com/#org" },
-          "serviceType": "AI Search Optimization",
-          "areaServed": "United States"
+          "serviceType": "AI Search Visibility Optimization",
+          "description": "Optimization of websites and business data so AI assistants can understand, trust, and recommend a business in AI generated answers.",
+          "provider": {
+            "@id": "https://foundforai.com/#org"
+          },
+          "serviceAudience": {
+            "@type": "Audience",
+            "audienceType": [
+              "Local service businesses",
+              "Professional services",
+              "Agencies",
+              "Online businesses"
+            ]
+          },
+          "availableChannel": {
+            "@type": "ServiceChannel",
+            "serviceLocation": {
+              "@type": "VirtualLocation",
+              "url": "https://foundforai.com"
+            }
+          },
+          "areaServed": {
+            "@type": "Country",
+            "name": "United States"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "1595",
+            "priceCurrency": "USD",
+            "url": "https://foundforai.com/services",
+            "availability": "https://schema.org/InStock"
+          }
         },
         {
           "@type": "FAQPage",
           "@id": "https://foundforai.com/ai-search-visibility#faq",
+          "isPartOf": {
+            "@id": "https://foundforai.com/ai-search-visibility#page"
+          },
           "mainEntity": [
             {
               "@type": "Question",
@@ -67,7 +117,7 @@ export default function AISearchVisibility() {
               "name": "Do you need to rebuild my website?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Usually no. We work with your existing site and add an AI focused data layer."
+                "text": "Usually no. Found For AI works with your existing site and adds an AI focused data layer."
               }
             },
             {
