@@ -323,7 +323,7 @@ export default function Home() {
               href="https://foundforai.com/fix-plan"
               data-testid="button-pricing-cta"
             >
-              <Button size="lg" className="text-lg px-8 py-6 font-semibold">
+              <Button size="lg" className="text-lg px-8 py-6 font-semibold" style={{ backgroundColor: '#0F5FDB', borderColor: '#0F5FDB' }}>
                 Get My AI Visibility Fix
               </Button>
             </a>
