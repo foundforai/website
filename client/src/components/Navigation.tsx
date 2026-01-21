@@ -65,7 +65,7 @@ export default function Navigation() {
           <div className="hidden md:flex items-center gap-2">
             <ThemeToggle />
             <a href="/#ai-search-fix">
-              <Button data-testid="button-get-audit-header" className="font-semibold">
+              <Button data-testid="button-get-audit-header" className="font-semibold" style={{ backgroundColor: '#0F5FDB', borderColor: '#0F5FDB' }}>
                 Get AI Search Fix
               </Button>
             </a>
@@ -100,7 +100,7 @@ export default function Navigation() {
               </Link>
             ))}
             <a href="/#ai-search-fix">
-              <Button className="w-full font-semibold" data-testid="button-get-audit-mobile" onClick={() => setMobileMenuOpen(false)}>
+              <Button className="w-full font-semibold" style={{ backgroundColor: '#0F5FDB', borderColor: '#0F5FDB' }} data-testid="button-get-audit-mobile" onClick={() => setMobileMenuOpen(false)}>
                 Get AI Search Fix
               </Button>
             </a>
