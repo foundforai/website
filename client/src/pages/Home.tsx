@@ -125,12 +125,11 @@ export default function Home() {
       <section className="py-16 md:py-24 px-5 text-center bg-background">
         <div className="max-w-[950px] mx-auto">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
-            Be the Business AI Recommends First
+            Is AI Recommending Your Competition?
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground mb-6 max-w-3xl mx-auto leading-relaxed">
-            Most business websites were built for human visitors — not AI systems.
-            If AI can't clearly understand your site, it won't recommend you.
+            If AI can't confidently understand your website, it won't recommend you — it will recommend someone else.
           </p>
           
           <p className="text-lg text-foreground mb-8 max-w-3xl mx-auto">
