@@ -122,7 +122,10 @@ export default function Home() {
       ogImage="/found-for-ai-logo-white.png"
     >
       {/* SECTION 1: HERO / IDENTITY SECTION */}
-      <section className="py-16 md:py-24 px-5 text-center bg-background">
+      <section 
+        className="py-20 md:py-28 px-5 text-center"
+        style={{ background: 'linear-gradient(to right, #EEF3FA, #E6F0FF)' }}
+      >
         <div className="max-w-[950px] mx-auto">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 tracking-tight leading-tight">
             <span className="block">Is AI Recommending</span>
@@ -158,11 +161,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Visual break before scanner */}
-      <div className="h-px bg-border/50 max-w-4xl mx-auto" />
-
       {/* SECTION 2: SCANNER APP */}
-      <section id="scanner-section" className="scanner-embed-section py-12 md:py-16 px-5 text-center bg-muted/20">
+      <section id="scanner-section" className="scanner-embed-section py-16 md:py-20 px-5 text-center bg-white">
         <div className="max-w-[950px] mx-auto">
           <iframe 
             id="ai-scanner-frame"
