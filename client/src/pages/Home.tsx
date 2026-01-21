@@ -132,11 +132,17 @@ export default function Home() {
             <span className="block font-extrabold tracking-tighter">Your Competition?</span>
           </h1>
           
-          <p className="text-lg md:text-xl text-muted-foreground/80 mb-6 max-w-2xl mx-auto leading-relaxed">
+          <p 
+            className="text-lg md:text-xl mb-6 max-w-2xl mx-auto leading-relaxed font-medium"
+            style={{ color: '#1e293b' }}
+          >
             If AI can't confidently understand your website, it won't recommend you, it will recommend someone else.
           </p>
           
-          <p className="text-sm text-muted-foreground/60 mb-12 max-w-2xl mx-auto">
+          <p 
+            className="text-sm mb-12 max-w-2xl mx-auto"
+            style={{ color: '#475569' }}
+          >
             Found For AI helps businesses become readable, understandable, and recommendable by AI-powered search and answer engines.
           </p>
           
