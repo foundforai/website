@@ -123,7 +123,7 @@ export default function Home() {
     >
       {/* SECTION 1: HERO / IDENTITY SECTION */}
       <section 
-        className="py-20 md:py-28 px-5 text-center"
+        className="pt-20 md:pt-28 pb-10 md:pb-14 px-5 text-center"
         style={{ background: 'linear-gradient(to right, #EEF3FA, #E6F0FF)' }}
       >
         <div className="max-w-[950px] mx-auto">
@@ -161,11 +161,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Soft divider between hero and scanner */}
-      <div className="h-px bg-gray-200/60" />
-
       {/* SECTION 2: SCANNER APP */}
-      <section id="scanner-section" className="scanner-embed-section py-16 md:py-20 px-5 text-center bg-white">
+      <section 
+        id="scanner-section" 
+        className="scanner-embed-section pt-10 md:pt-12 pb-16 md:pb-20 px-5 text-center bg-white"
+        style={{ boxShadow: '0 -1px 3px rgba(0,0,0,0.04)' }}
+      >
         <div className="max-w-[950px] mx-auto">
           <iframe 
             id="ai-scanner-frame"
