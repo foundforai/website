@@ -124,8 +124,9 @@ export default function Home() {
       {/* SECTION 1: HERO / IDENTITY SECTION */}
       <section className="py-16 md:py-24 px-5 text-center bg-background">
         <div className="max-w-[950px] mx-auto">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
-            Is AI Recommending Your <span className="highlight">Competition</span>?
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight leading-tight">
+            <span className="block">Is AI Recommending</span>
+            <span className="block text-[1.1em] font-extrabold">Your Competition?</span>
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground mb-6 max-w-3xl mx-auto leading-relaxed">
