@@ -125,15 +125,15 @@ export default function Home() {
       <section className="py-16 md:py-24 px-5 text-center bg-background">
         <div className="max-w-[950px] mx-auto">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
-            Is AI Recommending Your Competition?
+            Is AI Recommending Your <span className="highlight">Competition</span>?
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground mb-6 max-w-3xl mx-auto leading-relaxed">
             If AI can't confidently understand your website, it won't recommend you, it will recommend someone else.
           </p>
           
-          <p className="text-lg text-foreground mb-8 max-w-3xl mx-auto">
-            Found For AI is a B2B AI visibility consulting company that helps businesses become readable, understandable, and recommendable by AI-powered search and answer engines.
+          <p className="text-base text-muted-foreground mb-10 max-w-3xl mx-auto">
+            Found For AI helps businesses become readable, understandable, and recommendable by AI-powered search and answer engines.
           </p>
           
           <div className="flex flex-col items-center gap-3">
@@ -156,6 +156,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Visual break before scanner */}
+      <div className="h-px bg-border/50 max-w-4xl mx-auto" />
 
       {/* SECTION 2: SCANNER APP */}
       <section id="scanner-section" className="scanner-embed-section py-12 md:py-16 px-5 text-center bg-muted/20">
