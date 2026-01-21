@@ -161,25 +161,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 2: EXPLANATORY BRIDGE */}
-      <section className="py-8 md:py-10 px-5 bg-white">
-        <div 
-          className="max-w-[850px] mx-auto rounded-2xl px-8 py-8 md:px-10 md:py-10"
-          style={{ 
-            backgroundColor: '#F5F7FA',
-            boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
-          }}
-        >
-          <h2 className="text-xl md:text-2xl font-bold mb-5 text-foreground">
-            Being "seen" by AI isn't the same as being recommended.
+      {/* SECTION 2: TRANSITION / REFRAME */}
+      <section 
+        className="py-6 md:py-8 px-5 text-center"
+        style={{ backgroundColor: '#F8FAFC' }}
+      >
+        <div className="max-w-[700px] mx-auto">
+          <h2 className="text-xl md:text-2xl font-bold mb-4 text-foreground leading-snug">
+            AI isn't ranking websites anymore.<br />
+            It's choosing businesses.
           </h2>
-          <div className="text-base md:text-lg text-muted-foreground/80 leading-relaxed space-y-3 mb-6">
-            <p>AI tools don't browse websites like humans.</p>
-            <p>They look for clear, trusted business signals they can understand and reuse.</p>
-            <p>If those signals are missing, AI will recommend someone else.</p>
-          </div>
+          <p className="text-base text-muted-foreground/80 leading-relaxed mb-4">
+            If AI can't clearly understand what you do, who you serve, and where you operate,<br className="hidden md:inline" />
+            it won't recommend you, it will recommend someone else.
+          </p>
           <p className="text-sm text-muted-foreground/60">
-            The scanner below shows what AI can and can't understand about your website.
+            The scan below shows whether AI can actually recommend your business.
           </p>
         </div>
       </section>
