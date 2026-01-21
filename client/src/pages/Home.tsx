@@ -127,7 +127,7 @@ export default function Home() {
         style={{ background: 'linear-gradient(to right, #EEF3FA, #E6F0FF)' }}
       >
         <div className="max-w-[950px] mx-auto">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 tracking-tight leading-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 tracking-tight leading-none">
             <span className="block">Is AI Recommending</span>
             <span className="block font-extrabold tracking-tighter">Your Competition?</span>
           </h1>
@@ -160,6 +160,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Soft divider between hero and scanner */}
+      <div className="h-px bg-gray-200/60" />
 
       {/* SECTION 2: SCANNER APP */}
       <section id="scanner-section" className="scanner-embed-section py-16 md:py-20 px-5 text-center bg-white">
