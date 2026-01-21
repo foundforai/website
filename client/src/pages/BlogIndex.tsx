@@ -81,9 +81,9 @@ export default function BlogIndex() {
           <div className="text-center pt-12 pb-8">
             <h1 className="text-5xl md:text-6xl font-extrabold mb-4 relative inline-block">
               AI SEO Insights
-              <span className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#007CFF] to-[#00BFFF] rounded-full"></span>
+              <span className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#0F5FDB] to-[#3B82F6] rounded-full"></span>
             </h1>
-            <p className="text-lg text-[#6B7280] mt-6 max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground mt-6 max-w-2xl mx-auto">
               Practical guides for making your website AI-discoverable
             </p>
           </div>
@@ -102,7 +102,7 @@ export default function BlogIndex() {
                     className="w-full h-full object-cover"
                   />
                   <Badge 
-                    className="absolute top-4 left-4 bg-[#007CFF] text-white hover:bg-[#0066CC] border-0"
+                    className="absolute top-4 left-4 bg-[#0F5FDB] text-white hover:bg-[#0D4FC4] border-0"
                     data-testid="badge-featured"
                   >
                     Featured
@@ -111,7 +111,7 @@ export default function BlogIndex() {
                 
                 {/* Content */}
                 <div className="p-8 md:p-10 flex flex-col justify-center">
-                  <div className="flex items-center gap-3 mb-4 text-sm text-[#6B7280]">
+                  <div className="flex items-center gap-3 mb-4 text-sm text-muted-foreground">
                     <span data-testid="text-featured-date">
                       {new Date(featuredPost.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                     </span>
@@ -122,7 +122,7 @@ export default function BlogIndex() {
                   </div>
                   
                   <h2 
-                    className="text-[1.75rem] font-bold mb-4 transition-colors group-hover:text-[#007CFF]"
+                    className="text-[1.75rem] font-bold mb-4 transition-colors group-hover:text-[#0F5FDB]"
                     data-testid="text-featured-title"
                   >
                     {featuredPost.title}
@@ -132,7 +132,7 @@ export default function BlogIndex() {
                     {featuredPost.excerpt}
                   </p>
                   
-                  <div className="flex items-center text-[#007CFF] font-semibold group-hover:gap-3 gap-2 transition-all">
+                  <div className="flex items-center text-[#0F5FDB] font-semibold group-hover:gap-3 gap-2 transition-all">
                     <span data-testid="link-featured-read-more">Read More</span>
                     <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                   </div>
@@ -159,7 +159,7 @@ export default function BlogIndex() {
                   
                   {/* Content */}
                   <div className="p-6">
-                    <div className="flex items-center gap-3 mb-3 text-sm text-[#6B7280]">
+                    <div className="flex items-center gap-3 mb-3 text-sm text-muted-foreground">
                       <span data-testid={`text-post-date-${post.slug}`}>
                         {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                       </span>
@@ -170,7 +170,7 @@ export default function BlogIndex() {
                     </div>
                     
                     <h2 
-                      className="text-xl md:text-2xl font-bold mb-3 transition-colors group-hover:text-[#007CFF] leading-tight"
+                      className="text-xl md:text-2xl font-bold mb-3 transition-colors group-hover:text-[#0F5FDB] leading-tight"
                       data-testid={`text-post-title-${post.slug}`}
                     >
                       {post.title}
@@ -180,7 +180,7 @@ export default function BlogIndex() {
                       {post.excerpt}
                     </p>
                     
-                    <div className="flex items-center text-[#007CFF] font-semibold group-hover:gap-3 gap-2 transition-all">
+                    <div className="flex items-center text-[#0F5FDB] font-semibold group-hover:gap-3 gap-2 transition-all">
                       <span data-testid={`link-post-read-more-${post.slug}`}>Read More</span>
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </div>
