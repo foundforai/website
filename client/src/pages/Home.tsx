@@ -129,7 +129,7 @@ export default function Home() {
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground mb-6 max-w-3xl mx-auto leading-relaxed">
-            If AI can't confidently understand your website, it won't recommend you — it will recommend someone else.
+            If AI can't confidently understand your website, it won't recommend you, it will recommend someone else.
           </p>
           
           <p className="text-lg text-foreground mb-8 max-w-3xl mx-auto">
