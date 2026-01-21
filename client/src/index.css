@@ -738,8 +738,8 @@
   
   /* Highlight: make 'Sparkle Floors' pop like a verified term */
   .answer__body mark {
-    background: rgba(59, 130, 246, 0.25);
-    color: #1e40af;
+    background: rgba(15, 95, 219, 0.25);
+    color: #0F5FDB;
     font-weight: 600;
     padding: 0.1em 0.3em;
     border-radius: 4px;
