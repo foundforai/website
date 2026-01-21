@@ -45,7 +45,7 @@ export default function WhatIsAISEO() {
             <CardContent className="p-0">
               <table className="w-full">
                 <thead>
-                  <tr className="bg-primary text-primary-foreground">
+                  <tr className="text-white" style={{ backgroundColor: '#0F5FDB' }}>
                     <th className="py-4 px-6 text-left font-semibold">Old SEO</th>
                     <th className="py-4 px-6 text-left font-semibold">AI SEO</th>
                   </tr>
@@ -62,14 +62,14 @@ export default function WhatIsAISEO() {
             </CardContent>
           </Card>
 
-          <Card className="bg-gradient-to-br from-primary/10 to-accent/10 border-2">
+          <Card className="border-2" style={{ background: 'linear-gradient(to bottom right, rgba(15, 95, 219, 0.1), rgba(15, 95, 219, 0.05))' }}>
             <CardContent className="p-8 text-center">
               <h3 className="text-2xl font-bold mb-4">Ready to Get AI Ready?</h3>
               <p className="text-lg text-muted-foreground mb-6">
                 Get your free AI Readiness Scorecard and discover exactly what's holding you back from AI discovery.
               </p>
               <Link href="/audit">
-                <Button size="lg" className="font-semibold group" data-testid="button-get-audit-cta">
+                <Button size="lg" className="font-semibold group" style={{ backgroundColor: '#0F5FDB', borderColor: '#0F5FDB' }} data-testid="button-get-audit-cta">
                   Get My Free Audit
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
