@@ -163,19 +163,24 @@ export default function Home() {
 
       {/* SECTION 2: TRANSITION / REFRAME */}
       <section 
-        className="py-6 md:py-8 px-5 text-center"
+        className="py-10 md:py-12 px-5 text-center"
         style={{ backgroundColor: '#F8FAFC' }}
       >
         <div className="max-w-[700px] mx-auto">
-          <h2 className="text-xl md:text-2xl font-bold mb-4 text-foreground leading-snug">
+          <h2 className="text-xl md:text-2xl font-bold mb-5 text-foreground leading-snug">
             AI isn't ranking websites anymore.<br />
             It's choosing businesses.
           </h2>
-          <p className="text-base text-muted-foreground/80 leading-relaxed mb-4">
-            If AI can't clearly understand what you do, who you serve, and where you operate,<br className="hidden md:inline" />
-            it won't recommend you, it will recommend someone else.
+          <p 
+            className="text-base md:text-lg mb-5 leading-relaxed"
+            style={{ color: '#1e293b' }}
+          >
+            If AI can't clearly understand what you do, who you serve, and where you operate, it won't recommend you, it will recommend someone else.
           </p>
-          <p className="text-sm text-muted-foreground/60">
+          <p 
+            className="text-sm md:text-base"
+            style={{ color: '#475569' }}
+          >
             The scan below shows whether AI can actually recommend your business.
           </p>
         </div>
