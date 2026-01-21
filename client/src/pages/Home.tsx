@@ -161,9 +161,6 @@ export default function Home() {
       {/* SECTION 2: SCANNER APP */}
       <section id="scanner-section" className="scanner-embed-section py-12 md:py-16 px-5 text-center bg-muted/20">
         <div className="max-w-[950px] mx-auto">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-8 text-foreground">
-            See how AI systems currently interpret your website
-          </h2>
           <iframe 
             id="ai-scanner-frame"
             src="https://foundforaivisibilityaudit.replit.app" 
