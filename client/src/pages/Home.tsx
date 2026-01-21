@@ -150,6 +150,7 @@ export default function Home() {
             <Button 
               size="lg" 
               className="text-lg px-8"
+              style={{ backgroundColor: '#0F5FDB', borderColor: '#0F5FDB' }}
               onClick={() => {
                 const scannerSection = document.getElementById('scanner-section');
                 if (scannerSection) {
