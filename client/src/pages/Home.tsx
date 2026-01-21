@@ -121,21 +121,63 @@ export default function Home() {
       canonical="https://foundforai.com"
       ogImage="/found-for-ai-logo-white.png"
     >
-      {/* HERO SECTION WITH SCANNER EMBED */}
-      <section className="scanner-embed-section py-12 md:py-16 px-5 text-center bg-background">
-        <iframe 
-          id="ai-scanner-frame"
-          src="https://foundforaivisibilityaudit.replit.app" 
-          className="w-full max-w-[900px] border-none mx-auto block rounded-xl overflow-hidden"
-          style={{ 
-            height: '600px',
-            marginTop: '40px',
-            transition: 'height 0.25s ease'
-          }}
-          loading="lazy"
-          title="AI Visibility Audit Scanner"
-          data-testid="iframe-scanner-embed"
-        />
+      {/* SECTION 1: HERO / IDENTITY SECTION */}
+      <section className="py-16 md:py-24 px-5 text-center bg-background">
+        <div className="max-w-[950px] mx-auto">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
+            Be the Business AI Recommends First
+          </h1>
+          
+          <p className="text-xl md:text-2xl text-muted-foreground mb-6 max-w-3xl mx-auto leading-relaxed">
+            Most business websites were built for human visitors — not AI systems.
+            If AI can't clearly understand your site, it won't recommend you.
+          </p>
+          
+          <p className="text-lg text-foreground mb-8 max-w-3xl mx-auto">
+            Found For AI is a B2B AI visibility consulting company that helps businesses become readable, understandable, and recommendable by AI-powered search and answer engines.
+          </p>
+          
+          <div className="flex flex-col items-center gap-3">
+            <Button 
+              size="lg" 
+              className="text-lg px-8"
+              onClick={() => {
+                const scannerSection = document.getElementById('scanner-section');
+                if (scannerSection) {
+                  scannerSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              data-testid="button-hero-cta"
+            >
+              Run Free AI Visibility Report
+            </Button>
+            <p className="text-sm text-muted-foreground">
+              No signup required. Instant results.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 2: SCANNER APP */}
+      <section id="scanner-section" className="scanner-embed-section py-12 md:py-16 px-5 text-center bg-muted/20">
+        <div className="max-w-[950px] mx-auto">
+          <h2 className="text-2xl md:text-3xl font-semibold mb-8 text-foreground">
+            See how AI systems currently interpret your website
+          </h2>
+          <iframe 
+            id="ai-scanner-frame"
+            src="https://foundforaivisibilityaudit.replit.app" 
+            className="w-full max-w-[900px] border-none mx-auto block rounded-xl overflow-hidden"
+            style={{ 
+              height: '600px',
+              marginTop: '40px',
+              transition: 'height 0.25s ease'
+            }}
+            loading="lazy"
+            title="AI Visibility Audit Scanner"
+            data-testid="iframe-scanner-embed"
+          />
+        </div>
       </section>
 
       {/* WHY YOU'RE NOT SHOWING UP IN AI SEARCH */}

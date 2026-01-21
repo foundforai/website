@@ -1,0 +1,57 @@
+Update the homepage layout to introduce a new Section 1 above the scanner app, and move the existing scanner embed into Section 2.
+
+Do NOT change the scanner app code itself. Only restructure the homepage layout and content.
+
+### SECTION 1 (New Hero / Identity Section)
+
+Insert a new section directly below the main navigation and above the scanner embed with the following content:
+
+H1 (large, bold):
+Be the Business AI Recommends First
+
+Subheadline (supporting text, readable, not marketing fluff):
+Most business websites were built for human visitors — not AI systems.
+If AI can’t clearly understand your site, it won’t recommend you.
+
+Identity clarifier line (this must appear exactly as written, as plain text):
+Found For AI is a B2B AI visibility consulting company that helps businesses become readable, understandable, and recommendable by AI-powered search and answer engines.
+
+Primary CTA button:
+Run Free AI Visibility Report
+
+Secondary helper text below the button (smaller, muted):
+No signup required. Instant results.
+
+Style this section clean and modern:
+• Centered layout
+• Max width around 900–1000px
+• Clear vertical spacing
+• No background animation
+• Use existing site fonts and brand colors
+• Keep copy highly readable for non-technical business owners
+
+### SECTION 2 (Scanner App)
+
+Move the existing scanner iframe embed (https://foundforaivisibilityaudit.replit.app) into a new Section 2 directly below Section 1.
+
+Add a simple section intro above the iframe, such as:
+See how AI systems currently interpret your website
+
+Ensure:
+• The scanner iframe behavior stays exactly the same
+• Auto-resizing still works
+• No duplicate scanner embeds remain
+• The scanner is not the first visible element on page load
+
+### IMPORTANT CONSTRAINTS
+
+• Do not remove or modify any SEO metadata, schema, or head tags
+• Do not rename components unless required for layout
+• Do not change routing or URLs
+• This change applies only to the homepage
+
+After implementation, the homepage should clearly:
+1) Define what Found For AI is
+2) Explain the problem AI causes for businesses
+3) Invite users to run the free report
+4) Then present the scanner as proof
