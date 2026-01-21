@@ -124,16 +124,16 @@ export default function Home() {
       {/* SECTION 1: HERO / IDENTITY SECTION */}
       <section className="py-16 md:py-24 px-5 text-center bg-background">
         <div className="max-w-[950px] mx-auto">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight leading-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 tracking-tight leading-tight">
             <span className="block">Is AI Recommending</span>
-            <span className="block text-[1.1em] font-extrabold">Your Competition?</span>
+            <span className="block font-extrabold tracking-tighter">Your Competition?</span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-muted-foreground mb-6 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-muted-foreground/80 mb-6 max-w-2xl mx-auto leading-relaxed">
             If AI can't confidently understand your website, it won't recommend you, it will recommend someone else.
           </p>
           
-          <p className="text-base text-muted-foreground mb-10 max-w-3xl mx-auto">
+          <p className="text-sm text-muted-foreground/60 mb-12 max-w-2xl mx-auto">
             Found For AI helps businesses become readable, understandable, and recommendable by AI-powered search and answer engines.
           </p>
           
