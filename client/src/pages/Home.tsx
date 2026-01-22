@@ -251,29 +251,30 @@ export default function Home() {
               </div>
             </div>
             
-            {/* Right: Line Graph */}
-            <div className="flex items-center justify-center">
+            {/* Right: Elegant Curve */}
+            <div className="flex items-center justify-center py-8">
               <svg 
-                viewBox="0 0 300 200" 
-                className="w-full max-w-md h-auto"
-                aria-label="Graph showing AI-driven recommendations increasing sharply over time"
+                viewBox="0 0 400 200" 
+                className="w-full max-w-lg h-auto"
+                aria-label="Symbolic curve illustrating AI adoption momentum"
               >
-                {/* Axes */}
-                <line x1="40" y1="160" x2="280" y2="160" stroke="#e2e8f0" strokeWidth="1" />
-                <line x1="40" y1="160" x2="40" y2="20" stroke="#e2e8f0" strokeWidth="1" />
+                {/* Gradient Definition */}
+                <defs>
+                  <linearGradient id="curveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#e2e8f0" />
+                    <stop offset="40%" stopColor="#94a3b8" />
+                    <stop offset="100%" stopColor="#0F5FDB" />
+                  </linearGradient>
+                </defs>
                 
-                {/* Trend Line - Sharp upward curve */}
+                {/* Smooth exponential curve */}
                 <path 
-                  d="M 50 150 Q 100 145, 140 130 Q 180 110, 210 70 Q 240 30, 270 15" 
+                  d="M 20 160 C 80 158, 150 150, 220 120 C 280 95, 320 50, 380 20" 
                   fill="none" 
-                  stroke="#0F5FDB" 
-                  strokeWidth="2.5"
+                  stroke="url(#curveGradient)" 
+                  strokeWidth="2"
                   strokeLinecap="round"
                 />
-                
-                {/* Axis Labels */}
-                <text x="160" y="185" textAnchor="middle" fontSize="11" fill="#94a3b8">Time</text>
-                <text x="20" y="90" textAnchor="middle" fontSize="11" fill="#94a3b8" transform="rotate(-90, 20, 90)">AI Recommendations</text>
               </svg>
             </div>
           </div>
