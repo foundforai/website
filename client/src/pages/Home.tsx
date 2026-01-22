@@ -254,7 +254,7 @@ export default function Home() {
             {/* Right: Elegant Curve with Editorial Callouts */}
             <div className="flex items-center justify-center py-12 md:py-16 overflow-visible">
               <svg 
-                viewBox="0 0 420 280" 
+                viewBox="0 0 420 320" 
                 className="w-full max-w-lg h-auto overflow-visible"
                 style={{ overflow: 'visible' }}
                 aria-label="Symbolic curve illustrating AI adoption momentum with key milestones"
@@ -268,31 +268,36 @@ export default function Home() {
                   </linearGradient>
                 </defs>
                 
-                {/* Smooth exponential curve */}
-                <path 
-                  d="M 30 200 C 90 198, 160 190, 230 160 C 290 135, 330 90, 390 60" 
-                  fill="none" 
-                  stroke="url(#curveGradient)" 
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                />
+                {/* LAYER 1: Curve (rendered first, appears behind) */}
+                <g className="curve-layer">
+                  <path 
+                    d="M 30 220 C 90 218, 160 210, 230 175 C 290 145, 330 95, 390 60" 
+                    fill="none" 
+                    stroke="url(#curveGradient)" 
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                </g>
                 
-                {/* Left Callout - Early Stage */}
-                <circle cx="70" cy="198" r="3" fill="#cbd5e1" />
-                <text x="70" y="225" textAnchor="middle" fontSize="10" fontWeight="500" fill="#94a3b8">Early AI Search Adoption</text>
-                <text x="70" y="240" textAnchor="middle" fontSize="9" fill="#cbd5e1">Limited usage, experimental</text>
-                
-                {/* Middle Callout - Transition */}
-                <circle cx="230" cy="160" r="4" fill="#64748b" />
-                <text x="230" y="187" textAnchor="middle" fontSize="10" fontWeight="500" fill="#64748b">Mainstream Shift</text>
-                <text x="230" y="202" textAnchor="middle" fontSize="9" fill="#94a3b8">AI answers begin</text>
-                <text x="230" y="215" textAnchor="middle" fontSize="9" fill="#94a3b8">replacing rankings</text>
-                
-                {/* Right Callout - Now */}
-                <circle cx="380" cy="65" r="5" fill="#0F5FDB" />
-                <text x="380" y="42" textAnchor="middle" fontSize="11" fontWeight="600" fill="#0F5FDB">Now</text>
-                <text x="325" y="95" textAnchor="start" fontSize="9" fill="#64748b">AI tools actively</text>
-                <text x="325" y="108" textAnchor="start" fontSize="9" fill="#64748b">recommend businesses</text>
+                {/* LAYER 2: Dots and Annotations (rendered last, appears on top) */}
+                <g className="annotation-layer">
+                  {/* Left Callout - Early Stage (text below curve with 20px gap) */}
+                  <circle cx="70" cy="218" r="3" fill="#cbd5e1" />
+                  <text x="70" y="252" textAnchor="middle" fontSize="10" fontWeight="500" fill="#94a3b8">Early AI Search Adoption</text>
+                  <text x="70" y="268" textAnchor="middle" fontSize="9" fill="#cbd5e1">Limited usage, experimental</text>
+                  
+                  {/* Middle Callout - Transition (text below curve with 20px gap) */}
+                  <circle cx="230" cy="175" r="4" fill="#64748b" />
+                  <text x="230" y="210" textAnchor="middle" fontSize="10" fontWeight="500" fill="#64748b">Mainstream Shift</text>
+                  <text x="230" y="226" textAnchor="middle" fontSize="9" fill="#94a3b8">AI answers begin</text>
+                  <text x="230" y="240" textAnchor="middle" fontSize="9" fill="#94a3b8">replacing rankings</text>
+                  
+                  {/* Right Callout - Now (text above curve with 16px gap) */}
+                  <circle cx="380" cy="65" r="5" fill="#0F5FDB" />
+                  <text x="380" y="32" textAnchor="middle" fontSize="11" fontWeight="600" fill="#0F5FDB">Now</text>
+                  <text x="380" y="46" textAnchor="middle" fontSize="9" fill="#64748b">AI tools actively</text>
+                  <text x="380" y="58" textAnchor="middle" fontSize="9" fill="#64748b">recommend businesses</text>
+                </g>
               </svg>
             </div>
           </div>
