@@ -201,6 +201,90 @@ export default function Home() {
         </div>
       </section>
 
+      {/* SECTION 2: CONTEXT & URGENCY */}
+      <section className="py-16 md:py-24 px-5 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 
+              className="text-3xl md:text-4xl lg:text-[2.75rem] font-bold mb-4 tracking-tight"
+              style={{ fontFamily: "'Montserrat', sans-serif", color: '#1a1a2e' }}
+            >
+              AI Is Already Choosing Who Gets Found
+            </h2>
+            <p className="text-sm md:text-base" style={{ color: '#64748b' }}>
+              Search behavior is shifting faster than most businesses realize.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+            {/* Left: Stat Blocks */}
+            <div className="space-y-8">
+              <div className="border-l-2 pl-5" style={{ borderColor: '#0F5FDB' }}>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-lg font-bold" style={{ color: '#1a1a2e' }}>AI Search Adoption</span>
+                  <span className="text-sm font-medium" style={{ color: '#16a34a' }}>↑</span>
+                </div>
+                <p className="text-sm" style={{ color: '#64748b' }}>Exploding usage across consumers and businesses</p>
+              </div>
+              
+              <div className="border-l-2 pl-5" style={{ borderColor: '#e2e8f0' }}>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-lg font-bold" style={{ color: '#1a1a2e' }}>Traditional Rankings</span>
+                  <span className="text-sm font-medium" style={{ color: '#dc2626' }}>↓</span>
+                </div>
+                <p className="text-sm" style={{ color: '#64748b' }}>Replaced by direct recommendations</p>
+              </div>
+              
+              <div className="border-l-2 pl-5" style={{ borderColor: '#0F5FDB' }}>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-lg font-bold" style={{ color: '#1a1a2e' }}>Local + B2B Discovery</span>
+                  <span className="text-sm font-medium" style={{ color: '#16a34a' }}>↑</span>
+                </div>
+                <p className="text-sm" style={{ color: '#64748b' }}>Increasingly driven by AI answers</p>
+              </div>
+              
+              <div className="border-l-2 pl-5" style={{ borderColor: '#e2e8f0' }}>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-lg font-bold" style={{ color: '#1a1a2e' }}>Website Readability</span>
+                </div>
+                <p className="text-sm" style={{ color: '#64748b' }}>Now a prerequisite, not an optimization</p>
+              </div>
+            </div>
+            
+            {/* Right: Line Graph */}
+            <div className="flex items-center justify-center">
+              <svg 
+                viewBox="0 0 300 200" 
+                className="w-full max-w-md h-auto"
+                aria-label="Graph showing AI-driven recommendations increasing sharply over time"
+              >
+                {/* Axes */}
+                <line x1="40" y1="160" x2="280" y2="160" stroke="#e2e8f0" strokeWidth="1" />
+                <line x1="40" y1="160" x2="40" y2="20" stroke="#e2e8f0" strokeWidth="1" />
+                
+                {/* Trend Line - Sharp upward curve */}
+                <path 
+                  d="M 50 150 Q 100 145, 140 130 Q 180 110, 210 70 Q 240 30, 270 15" 
+                  fill="none" 
+                  stroke="#0F5FDB" 
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                />
+                
+                {/* Axis Labels */}
+                <text x="160" y="185" textAnchor="middle" fontSize="11" fill="#94a3b8">Time</text>
+                <text x="20" y="90" textAnchor="middle" fontSize="11" fill="#94a3b8" transform="rotate(-90, 20, 90)">AI Recommendations</text>
+              </svg>
+            </div>
+          </div>
+          
+          {/* Supporting Copy */}
+          <p className="text-center text-sm mt-12 max-w-2xl mx-auto" style={{ color: '#64748b' }}>
+            AI-powered tools like Google Gemini, ChatGPT, and Perplexity are rapidly becoming the default way people discover businesses.
+          </p>
+        </div>
+      </section>
+
       {/* SECTION 3: SCANNER APP */}
       <section 
         id="scanner-section" 
