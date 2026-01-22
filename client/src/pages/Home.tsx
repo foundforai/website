@@ -1,8 +1,10 @@
 import { useEffect } from 'react';
+import { Link } from 'wouter';
 import PageLayout from '@/components/PageLayout';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Check, Mail } from 'lucide-react';
+import { Check, Mail, ArrowRight } from 'lucide-react';
+import heroImage from '@/assets/images/hero-business-team.png';
 
 export default function Home() {
   useEffect(() => {
@@ -121,75 +123,71 @@ export default function Home() {
       canonical="https://foundforai.com"
       ogImage="/found-for-ai-logo-white.png"
     >
-      {/* SECTION 1: HERO / IDENTITY SECTION */}
+      {/* SECTION 1: HERO - Two Column Layout */}
       <section 
-        className="pt-20 md:pt-28 pb-10 md:pb-14 px-5 text-center"
+        className="pt-20 md:pt-28 pb-16 md:pb-20 px-5"
         style={{ background: 'linear-gradient(to right, #EEF3FA, #E6F0FF)' }}
       >
-        <div className="max-w-[950px] mx-auto">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 tracking-tight leading-none">
-            <span className="block">Is AI Recommending</span>
-            <span className="block font-extrabold tracking-tighter">Your Competition?</span>
-          </h1>
-          
-          <p 
-            className="text-lg md:text-xl mb-6 max-w-2xl mx-auto leading-relaxed font-medium"
-            style={{ color: '#1e293b' }}
-          >
-            If AI can't confidently understand your website, it won't recommend you, it will recommend someone else.
-          </p>
-          
-          <p 
-            className="text-sm mb-12 max-w-2xl mx-auto"
-            style={{ color: '#475569' }}
-          >
-            Found For AI helps businesses become readable, understandable, and recommendable by AI-powered search and answer engines.
-          </p>
-          
-          <div className="flex flex-col items-center gap-3">
-            <Button 
-              size="lg" 
-              className="text-lg px-8"
-              style={{ backgroundColor: '#0F5FDB', borderColor: '#0F5FDB' }}
-              onClick={() => {
-                const scannerSection = document.getElementById('scanner-section');
-                if (scannerSection) {
-                  scannerSection.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-              data-testid="button-hero-cta"
-            >
-              Run Free AI Visibility Report
-            </Button>
-            <p className="text-sm text-muted-foreground">
-              No signup required. Instant results.
-            </p>
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+            {/* Left Column: Copy + CTAs */}
+            <div className="text-left">
+              <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold mb-6 tracking-tight leading-[1.1]" style={{ color: '#1e293b' }}>
+                Be the Business<br />
+                AI Recommends First.
+              </h1>
+              
+              <p 
+                className="text-lg md:text-xl mb-4 leading-relaxed font-medium"
+                style={{ color: '#1e293b' }}
+              >
+                AI search tools don't rank websites anymore.<br className="hidden md:block" />
+                They choose which businesses to recommend.
+              </p>
+              
+              <p 
+                className="text-sm md:text-base mb-8"
+                style={{ color: '#475569' }}
+              >
+                If AI can't clearly understand what you do, where you operate, and how to book you, it won't choose you.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row items-start gap-4">
+                <Button 
+                  size="lg" 
+                  className="text-base px-6 py-3 font-semibold"
+                  style={{ backgroundColor: '#0F5FDB', color: '#ffffff', border: 'none' }}
+                  onClick={() => {
+                    const scannerSection = document.getElementById('scanner-section');
+                    if (scannerSection) {
+                      scannerSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                  data-testid="button-hero-cta"
+                >
+                  See How AI Sees Your Business
+                </Button>
+                <Link 
+                  href="/what-is-ai-seo"
+                  className="inline-flex items-center gap-1 text-sm font-medium py-3 transition-colors"
+                  style={{ color: '#0F5FDB' }}
+                  data-testid="link-hero-secondary"
+                >
+                  How AI Search Works <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </div>
+            
+            {/* Right Column: Hero Image */}
+            <div className="order-first md:order-last">
+              <img 
+                src={heroImage} 
+                alt="Business team reviewing AI visibility data on laptop" 
+                className="w-full h-auto rounded-xl shadow-lg"
+                data-testid="img-hero"
+              />
+            </div>
           </div>
-        </div>
-      </section>
-
-      {/* SECTION 2: TRANSITION / REFRAME */}
-      <section 
-        className="py-10 md:py-12 px-5 text-center"
-        style={{ backgroundColor: '#F8FAFC' }}
-      >
-        <div className="max-w-[700px] mx-auto">
-          <h2 className="text-xl md:text-2xl font-bold mb-5 text-foreground leading-snug">
-            AI isn't ranking websites anymore.<br />
-            It's choosing businesses.
-          </h2>
-          <p 
-            className="text-base md:text-lg mb-5 leading-relaxed"
-            style={{ color: '#1e293b' }}
-          >
-            If AI can't clearly understand what you do, who you serve, and where you operate, it won't recommend you, it will recommend someone else.
-          </p>
-          <p 
-            className="text-sm md:text-base"
-            style={{ color: '#475569' }}
-          >
-            The scan below shows whether AI can actually recommend your business.
-          </p>
         </div>
       </section>
 
