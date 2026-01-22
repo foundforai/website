@@ -132,28 +132,20 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Left Column: Copy + CTAs */}
-            <div className="text-left">
-              <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold mb-6 tracking-tight leading-[1.1]" style={{ color: '#1e293b' }}>
-                Be the Business<br />
-                AI Recommends First.
+            <div className="text-center md:text-left">
+              <h1 className="text-4xl md:text-5xl lg:text-[3.25rem] font-bold mb-6 tracking-tight leading-[1.1]" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                <span style={{ color: '#1a1a2e' }}>Is AI Recommending</span><br />
+                <span style={{ color: '#0F5FDB' }}>Your Business?</span>
               </h1>
               
               <p 
-                className="text-lg md:text-xl mb-4 leading-relaxed font-medium"
-                style={{ color: '#1e293b' }}
-              >
-                AI search tools don't rank websites anymore.<br className="hidden md:block" />
-                They choose which businesses to recommend.
-              </p>
-              
-              <p 
-                className="text-sm md:text-base mb-8"
+                className="text-lg md:text-xl mb-8 leading-relaxed"
                 style={{ color: '#475569' }}
               >
-                If AI can't clearly understand what you do, where you operate, and how to book you, it won't choose you.
+                If AI can't confidently understand what you do, where you operate, and how customers contact you, it won't recommend you.
               </p>
               
-              <div className="flex flex-col sm:flex-row items-start gap-4">
+              <div className="flex flex-col sm:flex-row items-center md:items-start gap-4">
                 <Button 
                   size="lg" 
                   className="text-base px-6 py-3 font-semibold"
