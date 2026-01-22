@@ -149,7 +149,7 @@ export default function Home() {
                 className="text-sm mb-8"
                 style={{ color: '#64748b' }}
               >
-                Built for B2B service businesses that rely on AI-powered search tools like Google Gemini, ChatGPT, and Perplexity to drive recommendations.
+                Found For AI helps B2B service businesses get discovered and recommended by AI-powered search tools like Google Gemini, ChatGPT, and Perplexity.
               </p>
               
               <div className="flex flex-col sm:flex-row items-center md:items-start gap-4">
