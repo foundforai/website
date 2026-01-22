@@ -139,10 +139,17 @@ export default function Home() {
               </h1>
               
               <p 
-                className="text-lg md:text-xl mb-8 leading-relaxed"
+                className="text-lg md:text-xl mb-4 leading-relaxed"
                 style={{ color: '#475569' }}
               >
                 If AI can't confidently understand what you do, where you operate, and how customers contact you, it won't recommend you.
+              </p>
+              
+              <p 
+                className="text-sm mb-8"
+                style={{ color: '#64748b' }}
+              >
+                Built for B2B service businesses that rely on AI-powered search tools like Google Gemini, ChatGPT, and Perplexity to drive recommendations.
               </p>
               
               <div className="flex flex-col sm:flex-row items-center md:items-start gap-4">
