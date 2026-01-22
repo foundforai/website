@@ -146,8 +146,18 @@ export default function Home() {
               </p>
               
               <p 
-                className="text-sm mb-8"
-                style={{ color: '#64748b' }}
+                className="sr-only"
+                style={{
+                  position: 'absolute',
+                  width: '1px',
+                  height: '1px',
+                  padding: 0,
+                  margin: '-1px',
+                  overflow: 'hidden',
+                  clip: 'rect(0, 0, 0, 0)',
+                  whiteSpace: 'nowrap',
+                  border: 0
+                }}
               >
                 Found For AI helps B2B service businesses get discovered and recommended by AI-powered search tools like Google Gemini, ChatGPT, and Perplexity.
               </p>
