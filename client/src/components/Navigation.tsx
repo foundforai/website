@@ -45,7 +45,7 @@ export default function Navigation() {
           <Link href="/" data-testid="link-home">
             <div className="hover-elevate rounded-lg px-2 py-1">
               <img 
-                src="/found-for-ai-logo.png" 
+                src={theme === 'dark' ? '/found-for-ai-logo-dark.png' : '/found-for-ai-logo.png'} 
                 alt="Found For AI logo"
                 className="w-[90px] sm:w-[120px] md:w-[180px] h-auto" 
               />
