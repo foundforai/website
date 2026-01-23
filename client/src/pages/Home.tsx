@@ -126,22 +126,18 @@ export default function Home() {
     >
       {/* SECTION 1: HERO - Two Column Layout */}
       <section 
-        className="pt-20 md:pt-28 pb-16 md:pb-20 px-5"
-        style={{ background: 'linear-gradient(to right, #EEF3FA, #E6F0FF)' }}
+        className="pt-20 md:pt-28 pb-16 md:pb-20 px-5 bg-gradient-to-r from-slate-100 to-blue-50 dark:from-slate-900 dark:to-slate-800"
       >
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Left Column: Copy + CTAs */}
             <div className="text-center md:text-left">
               <h1 className="text-4xl md:text-5xl lg:text-[3.25rem] font-bold mb-6 tracking-tight leading-[1.1]" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-                <span style={{ color: '#1a1a2e' }}>Is AI Recommending</span><br />
-                <span style={{ color: '#0F5FDB' }}>Your Business?</span>
+                <span className="text-slate-900 dark:text-slate-100">Is AI Recommending</span><br />
+                <span className="text-[#0F5FDB]">Your Business?</span>
               </h1>
               
-              <p 
-                className="text-lg md:text-xl mb-4 leading-relaxed"
-                style={{ color: '#475569' }}
-              >
+              <p className="text-lg md:text-xl mb-4 leading-relaxed text-slate-600 dark:text-slate-300">
                 If AI can't confidently understand what you do, where you operate, and how customers contact you, it won't recommend you.
               </p>
               
@@ -202,16 +198,16 @@ export default function Home() {
       </section>
 
       {/* SECTION 2: CONTEXT & URGENCY */}
-      <section className="py-16 md:py-24 px-5 bg-white">
+      <section className="py-16 md:py-24 px-5 bg-white dark:bg-slate-900">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12 md:mb-16">
             <h2 
-              className="text-3xl md:text-4xl lg:text-[2.75rem] font-bold mb-4 tracking-tight"
-              style={{ fontFamily: "'Montserrat', sans-serif", color: '#1a1a2e' }}
+              className="text-3xl md:text-4xl lg:text-[2.75rem] font-bold mb-4 tracking-tight text-slate-900 dark:text-slate-100"
+              style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
               AI Is Already Choosing Who Gets Found
             </h2>
-            <p className="text-sm md:text-base" style={{ color: '#64748b' }}>
+            <p className="text-sm md:text-base text-slate-500 dark:text-slate-400">
               Search behavior is shifting faster than most businesses realize.
             </p>
           </div>
@@ -219,35 +215,35 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
             {/* Left: Stat Blocks */}
             <div className="space-y-8">
-              <div className="border-l-2 pl-5" style={{ borderColor: '#0F5FDB' }}>
+              <div className="border-l-2 border-[#0F5FDB] pl-5">
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="text-lg font-bold" style={{ color: '#1a1a2e' }}>AI Search Adoption</span>
-                  <span className="text-sm font-medium" style={{ color: '#16a34a' }}>↑</span>
+                  <span className="text-lg font-bold text-slate-900 dark:text-slate-100">AI Search Adoption</span>
+                  <span className="text-sm font-medium text-green-600">↑</span>
                 </div>
-                <p className="text-sm" style={{ color: '#64748b' }}>Exploding usage across consumers and businesses</p>
+                <p className="text-sm text-slate-500 dark:text-slate-400">Exploding usage across consumers and businesses</p>
               </div>
               
-              <div className="border-l-2 pl-5" style={{ borderColor: '#e2e8f0' }}>
+              <div className="border-l-2 border-slate-200 dark:border-slate-700 pl-5">
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="text-lg font-bold" style={{ color: '#1a1a2e' }}>Traditional Rankings</span>
-                  <span className="text-sm font-medium" style={{ color: '#dc2626' }}>↓</span>
+                  <span className="text-lg font-bold text-slate-900 dark:text-slate-100">Traditional Rankings</span>
+                  <span className="text-sm font-medium text-red-600">↓</span>
                 </div>
-                <p className="text-sm" style={{ color: '#64748b' }}>Replaced by direct recommendations</p>
+                <p className="text-sm text-slate-500 dark:text-slate-400">Replaced by direct recommendations</p>
               </div>
               
-              <div className="border-l-2 pl-5" style={{ borderColor: '#0F5FDB' }}>
+              <div className="border-l-2 border-[#0F5FDB] pl-5">
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="text-lg font-bold" style={{ color: '#1a1a2e' }}>Local + B2B Discovery</span>
-                  <span className="text-sm font-medium" style={{ color: '#16a34a' }}>↑</span>
+                  <span className="text-lg font-bold text-slate-900 dark:text-slate-100">Local + B2B Discovery</span>
+                  <span className="text-sm font-medium text-green-600">↑</span>
                 </div>
-                <p className="text-sm" style={{ color: '#64748b' }}>Increasingly driven by AI answers</p>
+                <p className="text-sm text-slate-500 dark:text-slate-400">Increasingly driven by AI answers</p>
               </div>
               
-              <div className="border-l-2 pl-5" style={{ borderColor: '#e2e8f0' }}>
+              <div className="border-l-2 border-slate-200 dark:border-slate-700 pl-5">
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="text-lg font-bold" style={{ color: '#1a1a2e' }}>Website Readability</span>
+                  <span className="text-lg font-bold text-slate-900 dark:text-slate-100">Website Readability</span>
                 </div>
-                <p className="text-sm" style={{ color: '#64748b' }}>Now a prerequisite, not an optimization</p>
+                <p className="text-sm text-slate-500 dark:text-slate-400">Now a prerequisite, not an optimization</p>
               </div>
             </div>
             
@@ -303,7 +299,7 @@ export default function Home() {
           </div>
           
           {/* Supporting Copy */}
-          <p className="text-center text-sm mt-12 max-w-2xl mx-auto" style={{ color: '#64748b' }}>
+          <p className="text-center text-sm mt-12 max-w-2xl mx-auto text-slate-500 dark:text-slate-400">
             AI-powered tools like Google Gemini, ChatGPT, and Perplexity are rapidly becoming the default way people discover businesses.
           </p>
         </div>
@@ -312,7 +308,7 @@ export default function Home() {
       {/* SECTION 3: SCANNER APP */}
       <section 
         id="scanner-section" 
-        className="scanner-embed-section pt-8 md:pt-10 pb-16 md:pb-20 px-5 text-center bg-white"
+        className="scanner-embed-section pt-8 md:pt-10 pb-16 md:pb-20 px-5 text-center bg-white dark:bg-slate-900"
       >
         <div className="max-w-[950px] mx-auto">
           <iframe 
