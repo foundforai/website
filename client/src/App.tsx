@@ -20,6 +20,7 @@ import PurchaseConfirmation from "@/pages/PurchaseConfirmation";
 import BlogIndex from "@/pages/BlogIndex";
 import BlogPost from "@/pages/BlogPost";
 import AISearchVisibility from "@/pages/AISearchVisibility";
+import Insights from "@/pages/Insights";
 import NotFound from "@/pages/NotFound";
 
 function Router() {
@@ -42,6 +43,7 @@ function Router() {
         <Route path="/blog" component={BlogIndex} />
         <Route path="/blog/:slug" component={BlogPost} />
         <Route path="/ai-search-visibility" component={AISearchVisibility} />
+        <Route path="/insights" component={Insights} />
         <Route component={NotFound} />
       </Switch>
     </>

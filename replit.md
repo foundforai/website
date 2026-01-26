@@ -36,6 +36,7 @@ Preferred communication style: Simple, everyday language.
 - Lead generation: **Audit form at /audit** (free AI visibility check, with thank you page)
   - **/readiness-report**: Static HTML "processing" page (200 OK) with WebPage schema, auto-redirects to /purchase-complete after 5 seconds via meta refresh (for SEO/GSC indexing)
 - Content: Blog index and dynamic blog post pages
+- Editorial: **/insights** - References external writing and thought leadership by Dustin Crump (no CTAs, no forms, clean editorial layout with WebPage schema)
 - Utility: Contact form, 404 page
 - All pages implement SEO metadata via custom SEOHead component
 - Brand entity page: /what-is-found-for-ai with Organization, WebPage, and FAQPage schemas
