@@ -1,6 +1,6 @@
 import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from '@/components/ui/card';
-import { Check } from 'lucide-react';
+import { Check, ExternalLink } from 'lucide-react';
 
 export default function About() {
   const values = [
@@ -81,6 +81,27 @@ export default function About() {
             <p className="text-muted-foreground leading-relaxed">
               Found For AI is part of the Fripse AI ecosystem. If you need automation, CRM workflows, or AI-powered internal tools, visit <a href="https://fripse.com" target="_blank" rel="noopener" className="text-primary hover:underline" data-testid="link-fripse-partner">Fripse AI</a>.
             </p>
+          </div>
+
+          <div className="mt-12 pt-8 border-t border-border">
+            <h2 className="text-xl font-bold mb-3">Writing & Perspectives</h2>
+            <p className="text-muted-foreground mb-4">
+              Dustin also writes about AI visibility and how modern AI systems interpret businesses online.
+            </p>
+            <div className="space-y-2">
+              <p className="font-medium">Why AI Can't Recommend Your Business (Even If Your Website Looks Great)</p>
+              <p className="text-sm text-muted-foreground">Published on LinkedIn</p>
+              <a
+                href="https://www.linkedin.com/pulse/why-ai-cant-recommend-your-business-even-website-looks-dustin-crump-r5r7c/?trackingId=7bFuIRCgb%2B4PF28z4UfPVQ%3D%3D"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline"
+                data-testid="link-about-linkedin-article"
+              >
+                Read the article
+                <ExternalLink className="h-3.5 w-3.5" />
+              </a>
+            </div>
           </div>
         </div>
       </section>
