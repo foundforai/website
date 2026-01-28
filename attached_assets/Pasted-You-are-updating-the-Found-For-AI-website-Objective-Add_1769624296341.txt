@@ -1,0 +1,66 @@
+You are updating the Found For AI website.
+
+Objective:
+Add a single, subtle mention that Found For AI can deploy a lightweight website only when required for AI visibility, and ensure the FAQPage schema is updated to match the new FAQ content.
+
+Guardrails (must follow):
+
+Do NOT add a new service, page, nav item, pricing, or visuals related to websites
+
+Do NOT frame websites as a standalone offering
+
+Do NOT mention tools, platforms, CMSs, builders, or Replit
+
+Preserve Found For AI’s positioning as an AI visibility company, not a web agency
+
+Use professional, plain-language, infrastructure-focused tone
+
+Never promise rankings, placement, or guaranteed AI behavior
+
+======================
+ON-PAGE COPY UPDATES
+
+Homepage placement
+Immediately after the primary explanation of the AI Visibility Tune-Up and before any pricing, scanners, or CTAs, insert one muted sentence in smaller text.
+
+Homepage copy (use verbatim):
+
+“If your business doesn’t have a website, we deploy a lightweight AI-readable site so AI systems can understand and recommend you.”
+
+This sentence should not be visually emphasized and should not be repeated elsewhere.
+
+FAQ section
+Add exactly one new FAQ item.
+
+FAQ copy (use verbatim):
+
+Q: What if I don’t have a website?
+A: That’s fine. AI systems need a place to read your services, location, and booking information. If you don’t have a website, we create a simple AI-ready site as part of making your business AI-eligible.
+
+Do not add follow-up FAQs or cross-links.
+
+======================
+SCHEMA UPDATE REQUIREMENTS
+
+Update the existing FAQPage JSON-LD schema to include this new question and answer
+
+Ensure the schema exactly matches the on-page FAQ wording
+
+Preserve all existing FAQ entries already present in the schema
+
+Do not remove, rewrite, or reorder existing FAQ items unless required for schema validity
+
+Validate that the resulting JSON-LD contains no syntax errors and uses proper mainEntity formatting
+
+======================
+FINAL CHECKS
+
+No additional references to “websites” appear anywhere else on the site
+
+No change to the Services page
+
+No new schema types added beyond FAQPage
+
+The result should reduce sales friction for businesses without websites while keeping Found For AI positioned as a focused AI visibility product
+
+Implement these changes cleanly and conservatively.

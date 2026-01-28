@@ -62,6 +62,14 @@ export default function Home() {
             "@type": "Answer",
             "text": "Most web teams are focused on design, content, and regular search. AI visibility is a different skill set. We only do AI search and AI readability work, which is why agencies often bring us in behind the scenes to handle this part."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "What if I don't have a website?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "That's fine. AI systems need a place to read your services, location, and booking information. If you don't have a website, we create a simple AI-ready site as part of making your business AI-eligible."
+          }
         }
       ]
     });
@@ -374,6 +382,10 @@ export default function Home() {
               </Card>
             ))}
           </div>
+          
+          <p className="text-sm text-muted-foreground text-center mt-8 max-w-2xl mx-auto">
+            If your business doesn't have a website, we deploy a lightweight AI-readable site so AI systems can understand and recommend you.
+          </p>
         </div>
       </section>
 
@@ -505,6 +517,15 @@ export default function Home() {
             </summary>
             <p className="text-muted-foreground py-3 pl-4">
               Most web teams are focused on design, content, and regular search. AI visibility is a different skill set. We only do AI search and AI readability work, which is why agencies often bring us in behind the scenes to handle this part.
+            </p>
+          </details>
+          
+          <details className="mb-4" data-testid="faq-no-website">
+            <summary className="cursor-pointer text-lg font-semibold py-3" data-testid="faq-summary-no-website">
+              What if I don't have a website?
+            </summary>
+            <p className="text-muted-foreground py-3 pl-4">
+              That's fine. AI systems need a place to read your services, location, and booking information. If you don't have a website, we create a simple AI-ready site as part of making your business AI-eligible.
             </p>
           </details>
         </div>
