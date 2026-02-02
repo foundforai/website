@@ -1,0 +1,56 @@
+You are updating the page at:
+https://foundforai.com/about
+
+Goal
+Strengthen internal linking and conceptual clarity by referencing the canonical explainer page:
+https://foundforai.com/what-is-found-for-ai
+
+This should help both human readers and AI systems understand:
+- Who Found For AI is
+- What Found For AI means conceptually
+- Where to go for a deeper explanation
+
+Constraints
+Do not rewrite the entire About page.
+Do not change the page’s purpose, tone, or structure.
+Do not add marketing language, hype, or claims.
+Use commas only, no dashes.
+Preserve existing content unless explicitly instructed.
+Do not add structured data to the About page.
+
+Required changes
+
+1. Add a single contextual link to the explainer page
+
+In the introductory section of the About page, after the first paragraph that explains what Found For AI does, insert a short standalone sentence that links to the explainer page.
+
+Use this exact sentence, with the link embedded naturally:
+
+If you want a clear explanation of what Found For AI is and how AI systems decide which businesses to recommend, read the full explainer here.
+
+The words “full explainer here” should link to:
+https://foundforai.com/what-is-found-for-ai
+
+Do not alter this sentence.
+
+2. Optional secondary reference near the bottom
+
+Near the bottom of the page, in the section that references writing, perspectives, or educational content, add one additional line:
+
+For a deeper breakdown of AI visibility and AI driven discovery, see What is Found For AI.
+
+Link “What is Found For AI” to:
+https://foundforai.com/what-is-found-for-ai
+
+Do not add more than these two links.
+
+Quality checks before completion
+- Confirm the About page still focuses on people and mission
+- Confirm the explainer page is clearly positioned as the definition reference
+- Confirm no duplicate links were added
+- Confirm no layout or styling issues were introduced
+
+Deliverable
+Apply the updates and show:
+- The updated About page content
+- The exact locations where links were added

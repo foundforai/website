@@ -21,9 +21,13 @@ export default function About() {
             About Found For AI
           </h1>
 
-          <p className="text-lg text-muted-foreground mb-12 text-center max-w-3xl mx-auto">
-            Found For AI is an AI visibility consulting company founded by Dustin Crump. Found For AI helps real businesses become visible and trusted in AI-powered search engines such as Google Gemini, ChatGPT, and Perplexity.{' '}
-            <a href="https://foundforai.com/blog/what-is-found-for-ai" className="text-primary hover:underline" data-testid="link-about-what-is-found-for-ai">Learn more about what Found For AI is and how it works.</a>
+          <p className="text-lg text-muted-foreground mb-6 text-center max-w-3xl mx-auto">
+            Found For AI is an AI visibility consulting company founded by Dustin Crump. Found For AI helps real businesses become visible and trusted in AI-powered search engines such as Google Gemini, ChatGPT, and Perplexity.
+          </p>
+          
+          <p className="text-muted-foreground mb-12 text-center max-w-3xl mx-auto">
+            If you want a clear explanation of what Found For AI is and how AI systems decide which businesses to recommend, read the{' '}
+            <a href="https://foundforai.com/what-is-found-for-ai" className="text-primary hover:underline" data-testid="link-about-explainer">full explainer here</a>.
           </p>
 
           <Card className="mb-12">
@@ -102,6 +106,10 @@ export default function About() {
                 <ExternalLink className="h-3.5 w-3.5" />
               </a>
             </div>
+            <p className="text-sm text-muted-foreground mt-6">
+              For a deeper breakdown of AI visibility and AI driven discovery, see{' '}
+              <a href="https://foundforai.com/what-is-found-for-ai" className="text-primary hover:underline" data-testid="link-about-explainer-bottom">What is Found For AI</a>.
+            </p>
           </div>
         </div>
       </section>
