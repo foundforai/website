@@ -82,26 +82,34 @@ export default function WhatIsFoundForAI() {
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Are you an agency or a product?",
+          "name": "What is AI visibility",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "We're a focused studio with a productized service model. You get fast deliverables and clear outcomes."
+            "text": "AI visibility refers to how clearly AI systems like Google Gemini, ChatGPT, and Perplexity can understand, evaluate, and recommend a business. It focuses on machine comprehension of a business's services, location, and trust signals, not just keyword rankings."
           }
         },
         {
           "@type": "Question",
-          "name": "How fast is the Starter Fix?",
+          "name": "How is AI search different from traditional SEO",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Delivered within 7 business days for up to 10 pages."
+            "text": "Traditional SEO focuses on ranking web pages based on keywords and links. AI search focuses on recommending businesses based on entity clarity, structured data, and confidence signals, often delivering direct answers instead of lists of results."
           }
         },
         {
           "@type": "Question",
-          "name": "Can I upgrade?",
+          "name": "Why don't AI tools recommend some businesses",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, our Pro Visibility Plan adds ongoing optimization and reporting."
+            "text": "AI tools may not recommend a business if they cannot clearly parse what the business does, where it operates, or whether it is trustworthy. Missing structured data, inconsistent business information, or unclear content can make a business effectively invisible to AI systems."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does AI visibility replace SEO",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. AI visibility builds on many SEO fundamentals but extends them for AI-driven discovery. SEO helps pages get indexed, while AI visibility helps businesses get understood and recommended by AI systems."
           }
         }
       ]
@@ -292,28 +300,36 @@ export default function WhatIsFoundForAI() {
           <div className="mb-12">
             <h2 className="text-2xl font-bold mb-6">FAQ</h2>
             <div className="space-y-4">
-              <details data-testid="faq-agency">
-                <summary className="cursor-pointer text-lg font-semibold py-3" data-testid="faq-summary-agency">
-                  Are you an agency or a product?
+              <details data-testid="faq-ai-visibility">
+                <summary className="cursor-pointer text-lg font-semibold py-3" data-testid="faq-summary-ai-visibility">
+                  What is AI visibility
                 </summary>
                 <p className="text-muted-foreground py-3 pl-4">
-                  We are a focused studio with a productized service model. You get fast deliverables and clear outcomes.
+                  AI visibility refers to how clearly AI systems like Google Gemini, ChatGPT, and Perplexity can understand, evaluate, and recommend a business. It focuses on machine comprehension of a business's services, location, and trust signals, not just keyword rankings.
                 </p>
               </details>
-              <details data-testid="faq-speed">
-                <summary className="cursor-pointer text-lg font-semibold py-3" data-testid="faq-summary-speed">
-                  How fast is the Starter Fix?
+              <details data-testid="faq-ai-vs-seo">
+                <summary className="cursor-pointer text-lg font-semibold py-3" data-testid="faq-summary-ai-vs-seo">
+                  How is AI search different from traditional SEO
                 </summary>
                 <p className="text-muted-foreground py-3 pl-4">
-                  Delivered within 7 business days for up to 10 pages.
+                  Traditional SEO focuses on ranking web pages based on keywords and links. AI search focuses on recommending businesses based on entity clarity, structured data, and confidence signals, often delivering direct answers instead of lists of results.
                 </p>
               </details>
-              <details data-testid="faq-upgrade">
-                <summary className="cursor-pointer text-lg font-semibold py-3" data-testid="faq-summary-upgrade">
-                  Can I upgrade?
+              <details data-testid="faq-not-recommended">
+                <summary className="cursor-pointer text-lg font-semibold py-3" data-testid="faq-summary-not-recommended">
+                  Why don't AI tools recommend some businesses
                 </summary>
                 <p className="text-muted-foreground py-3 pl-4">
-                  Yes, our Pro Visibility Plan adds ongoing optimization and reporting.
+                  AI tools may not recommend a business if they cannot clearly parse what the business does, where it operates, or whether it is trustworthy. Missing structured data, inconsistent business information, or unclear content can make a business effectively invisible to AI systems.
+                </p>
+              </details>
+              <details data-testid="faq-replace-seo">
+                <summary className="cursor-pointer text-lg font-semibold py-3" data-testid="faq-summary-replace-seo">
+                  Does AI visibility replace SEO
+                </summary>
+                <p className="text-muted-foreground py-3 pl-4">
+                  No. AI visibility builds on many SEO fundamentals but extends them for AI-driven discovery. SEO helps pages get indexed, while AI visibility helps businesses get understood and recommended by AI systems.
                 </p>
               </details>
             </div>

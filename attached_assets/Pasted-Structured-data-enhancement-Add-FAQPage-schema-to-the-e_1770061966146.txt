@@ -1,0 +1,87 @@
+Structured data enhancement
+Add FAQPage schema to the explainer page using JSON LD.
+
+Include 3 to 4 FAQ items that directly explain the concept, not services.
+Questions should focus on AI visibility and AI search behavior.
+Answers should be concise, neutral, and educational.
+
+Do not include pricing, sales language, or calls to action in FAQ answers.
+Ensure FAQPage schema does not conflict with any existing FAQ schema on other pages.
+Structured data enhancement
+Add FAQPage schema to the explainer page using JSON LD.
+
+Include 4 FAQ items that directly explain the concept, not services.
+Questions should focus on AI visibility and AI search behavior.
+Answers should be concise, neutral, and educational.
+Do not include pricing, sales language, or calls to action in FAQ answers.
+Ensure FAQPage schema does not conflict with any existing FAQ schema on other pages.
+
+Implementation details
+Render the FAQ content visibly on the page in an FAQ section.
+Inject the FAQPage JSON LD into the head using the existing SEO or Head component, do not place a raw script tag inside the visible FAQ markup.
+Use exactly this JSON LD content, do not rewrite it, do not paraphrase.
+
+FAQPage JSON LD
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is AI visibility",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AI visibility refers to how clearly AI systems like Google Gemini, ChatGPT, and Perplexity can understand, evaluate, and recommend a business. It focuses on machine comprehension of a business’s services, location, and trust signals, not just keyword rankings."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is AI search different from traditional SEO",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Traditional SEO focuses on ranking web pages based on keywords and links. AI search focuses on recommending businesses based on entity clarity, structured data, and confidence signals, often delivering direct answers instead of lists of results."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why don’t AI tools recommend some businesses",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AI tools may not recommend a business if they cannot clearly parse what the business does, where it operates, or whether it is trustworthy. Missing structured data, inconsistent business information, or unclear content can make a business effectively invisible to AI systems."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does AI visibility replace SEO",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. AI visibility builds on many SEO fundamentals but extends them for AI-driven discovery. SEO helps pages get indexed, while AI visibility helps businesses get understood and recommended by AI systems."
+      }
+    }
+  ]
+}
+
+The exact FAQ content (human-readable)
+
+These should also appear visibly on the page in an FAQ section.
+
+FAQ 1
+
+What is AI visibility
+AI visibility refers to how clearly AI systems like Google Gemini, ChatGPT, and Perplexity can understand, evaluate, and recommend a business. It focuses on machine comprehension of a business’s services, location, and trust signals, not just keyword rankings.
+
+FAQ 2
+
+How is AI search different from traditional SEO
+Traditional SEO focuses on ranking web pages based on keywords and links. AI search focuses on recommending businesses based on entity clarity, structured data, and confidence signals, often delivering direct answers instead of lists of results.
+
+FAQ 3
+
+Why don’t AI tools recommend some businesses
+AI tools may not recommend a business if they cannot clearly parse what the business does, where it operates, or whether it is trustworthy. Missing structured data, inconsistent business information, or unclear content can make a business effectively invisible to AI systems.
+
+FAQ 4
+
+Does AI visibility replace SEO
+No. AI visibility builds on many SEO fundamentals but extends them for AI-driven discovery. SEO helps pages get indexed, while AI visibility helps businesses get understood and recommended by AI systems.
+
