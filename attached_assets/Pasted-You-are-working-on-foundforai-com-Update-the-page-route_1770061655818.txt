@@ -1,0 +1,75 @@
+You are working on foundforai.com. Update the page route and content for:
+https://foundforai.com/what-is-found-for-ai
+
+Goal
+Turn this page into a true explainer and canonical reference page for Gemini and other AI systems.
+It must feel educational and citeable first, sales second.
+Do NOT create a new page or new URL. Keep this URL as the canonical explainer.
+
+Constraints
+Keep the visual design calm and modern.
+Keep existing site header, footer, and styling system.
+Do not remove Services or Pricing pages, only adjust this explainer page content and layout.
+Keep CTAs, but demote them below the core explanation.
+Avoid hype language, avoid guarantees, avoid keyword stuffing.
+Use commas exclusively, do not use dashes.
+
+Content changes
+At the very top of the page, before any CTA buttons, add a Definition block.
+
+Definition block content
+Heading, Definition
+Body copy, Found For AI is a framework and implementation approach that helps businesses become discoverable and recommendable by AI systems like Google Gemini, ChatGPT, and Perplexity, by improving how clearly machines can understand what a business does, where it operates, and how confident they should be recommending it.
+
+Directly under that, add a new section with this heading
+How AI systems decide which businesses to recommend
+
+Include a short, plain language explanation in 4 to 6 bullet points that covers:
+Entity clarity, consistent business facts across the web, structured data, content that answers real questions, crawl and render health, trust signals like reviews and citations
+
+Then add a simple comparison section with this heading
+AI search vs traditional SEO
+
+Render it as a clean two column layout, not a table if tables are hard, but two columns are preferred.
+Left column label, Traditional SEO
+Right column label, AI search and recommendation
+Include 4 to 6 concise line items, for example ranking pages vs recommending businesses, keywords and links vs entity understanding and confidence, lists of results vs direct answers and actions, homepage persuasion vs referenceable definitions
+
+Then add a section with this heading
+What Found For AI is, and what it is not
+
+Provide two short lists, each 3 to 5 bullets.
+Keep it neutral and confidence building.
+
+Move CTAs
+Move the primary CTA, Get My AI Visibility Audit, below the sections above, ideally after AI search vs traditional SEO.
+Add a subtle line above the CTA, If you want help implementing this, start here.
+Keep a secondary CTA lower on the page linking to Services and Pricing.
+
+Services detail
+Keep the What we do list, but move it below the educational sections, and tighten the copy so it reads as implementation options, not the definition of the concept.
+
+SEO and schema changes
+Add canonical tag pointing to https://foundforai.com/what-is-found-for-ai
+Ensure the page has a single H1, What is Found For AI
+Add Organization schema on the site globally if not already, and add WebPage schema for this page with:
+name, What is Found For AI
+description, use the definition sentence above
+url, https://foundforai.com/what-is-found-for-ai
+about, Found For AI, AI visibility, AI search recommendations
+publisher, Found For AI
+If you already have schema components, reuse them, do not duplicate conflicting schema.
+
+Internal linking
+Add one small internal link near the top, Learn how this differs from SEO, anchor to the AI search vs traditional SEO section.
+Add one link near the bottom, About the founder, anchor to a short founder blurb section or link to /about.
+
+Quality checks
+Make sure the page still loads fast, no new heavy images.
+No broken links.
+No duplicate H1s.
+Confirm canonical tag renders in the head.
+Confirm schema validates as JSON LD.
+
+Deliverable
+Implement the changes, show me the updated page component code, and list the file paths changed.
