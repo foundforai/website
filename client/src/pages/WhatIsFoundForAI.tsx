@@ -299,7 +299,7 @@ export default function WhatIsFoundForAI() {
             </Link>
           </div>
 
-          {/* FAQ Section */}
+          {/* FAQ Section - Conceptual (with schema) */}
           <div className="mb-12">
             <h2 className="text-2xl font-bold mb-6">FAQ</h2>
             <div className="space-y-4">
@@ -333,6 +333,37 @@ export default function WhatIsFoundForAI() {
                 </summary>
                 <p className="text-muted-foreground py-3 pl-4">
                   No. AI visibility builds on many SEO fundamentals but extends them for AI-driven discovery. SEO helps pages get indexed, while AI visibility helps businesses get understood and recommended by AI systems.
+                </p>
+              </details>
+            </div>
+          </div>
+
+          {/* Service FAQ Section - No schema markup */}
+          <div className="mb-12">
+            <h3 className="text-xl font-bold mb-4 text-muted-foreground">Working with Found For AI</h3>
+            <div className="space-y-4">
+              <details data-testid="faq-agency">
+                <summary className="cursor-pointer text-lg font-semibold py-3" data-testid="faq-summary-agency">
+                  Are you an agency or a product
+                </summary>
+                <p className="text-muted-foreground py-3 pl-4">
+                  We are a focused studio with a productized service model. You get fast deliverables and clear outcomes.
+                </p>
+              </details>
+              <details data-testid="faq-speed">
+                <summary className="cursor-pointer text-lg font-semibold py-3" data-testid="faq-summary-speed">
+                  How fast is the Starter Fix
+                </summary>
+                <p className="text-muted-foreground py-3 pl-4">
+                  Delivered within 7 business days for up to 10 pages.
+                </p>
+              </details>
+              <details data-testid="faq-upgrade">
+                <summary className="cursor-pointer text-lg font-semibold py-3" data-testid="faq-summary-upgrade">
+                  Can I upgrade
+                </summary>
+                <p className="text-muted-foreground py-3 pl-4">
+                  Yes, our Pro Visibility Plan adds ongoing optimization and reporting.
                 </p>
               </details>
             </div>

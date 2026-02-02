@@ -1,0 +1,49 @@
+Fix Google Search Console FAQ structured data error on:
+https://foundforai.com/what-is-found-for-ai
+
+Problem
+Google Search Console reports Duplicate field "FAQPage" because there are multiple FAQPage JSON LD blocks on the same page.
+
+Goal
+This page must contain exactly one FAQPage JSON LD block, and it must be the conceptual, educational FAQ.
+The service related FAQ must remain visible on the page, but must not be marked up as FAQPage structured data.
+
+Constraints
+Do not change the page URL.
+Do not remove any visible FAQ content.
+Do not change FAQ wording unless required to match the conceptual FAQ items listed below.
+Do not add new FAQ items.
+Ensure there is exactly one JSON LD script on this page with "@type": "FAQPage".
+
+Keep as the only FAQPage schema on this page
+Use FAQPage JSON LD only for these four questions and answers:
+- What is AI visibility
+- How is AI search different from traditional SEO
+- Why don’t AI tools recommend some businesses
+- Does AI visibility replace SEO
+
+Remove schema from these service FAQs but keep them visible in HTML
+- Are you an agency or a product
+- How fast is the Starter Fix
+- Can I upgrade
+
+Implementation requirements
+- Search the codebase for all JSON LD blocks on this page that include "@type": "FAQPage".
+- Remove or disable the FAQPage JSON LD block that contains the service FAQs.
+- Confirm there is only one remaining FAQPage JSON LD block on this page.
+- Ensure the remaining FAQPage JSON LD block matches the four conceptual FAQs exactly.
+- If the site has a reusable FAQ component that automatically injects FAQPage JSON LD, add a flag or prop so the service FAQ renders without JSON LD.
+- Do not inject FAQPage JSON LD globally, it should be page specific.
+
+Verification
+After changes:
+- Confirm the page renders both FAQ sections visibly.
+- Confirm only one FAQPage JSON LD script is present in the rendered HTML.
+- Confirm the JSON LD validates.
+- Provide the file paths changed and show the updated code for the FAQ schema injection portion.
+
+Deliverable
+Implement the fix and output:
+- The exact FAQPage JSON LD used on this page
+- Where the service FAQ is rendered without schema
+- The list of files modified
