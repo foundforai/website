@@ -149,7 +149,7 @@ export default function WhatIsFoundForAI() {
           <div className="mb-12">
             <h2 className="text-xl font-semibold mb-4 text-foreground">Definition</h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Found For AI is a framework and implementation approach that helps businesses become discoverable and recommendable by AI systems like Google Gemini, ChatGPT, and Perplexity, by improving how clearly machines can understand what a business does, where it operates, and how confident they should be recommending it.
+              Found For AI is a framework and implementation approach that helps businesses become discoverable and recommendable by AI systems like Google Gemini, ChatGPT, and Perplexity, by improving how clearly machines understand what a business does, where it operates, and how confident they should be recommending it.
             </p>
             <p className="text-sm text-muted-foreground mt-4">
               <a href="#ai-vs-seo" className="text-primary hover:underline">
@@ -160,7 +160,10 @@ export default function WhatIsFoundForAI() {
 
           {/* How AI Systems Decide */}
           <div className="mb-12">
-            <h2 className="text-2xl font-bold mb-6">How AI systems decide which businesses to recommend</h2>
+            <h2 className="text-2xl font-bold mb-4">How AI systems decide which businesses to recommend</h2>
+            <p className="text-muted-foreground mb-6">
+              AI systems rely on a combination of technical clarity, consistency, and trust signals when deciding whether to recommend a business.
+            </p>
             <ul className="space-y-3 text-muted-foreground">
               <li className="flex items-start gap-3">
                 <span className="text-primary mt-1">•</span>
@@ -193,8 +196,8 @@ export default function WhatIsFoundForAI() {
           <div id="ai-vs-seo" className="mb-12 scroll-mt-24">
             <h2 className="text-2xl font-bold mb-6">AI search vs traditional SEO</h2>
             <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-lg font-semibold mb-4 text-muted-foreground">Traditional SEO</h3>
+              <div className="p-6 bg-muted/30 rounded-lg">
+                <h3 className="text-lg font-bold mb-4 text-foreground">Traditional SEO</h3>
                 <ul className="space-y-3 text-muted-foreground">
                   <li>Ranking pages in a list of results</li>
                   <li>Optimizing for keywords and backlinks</li>
@@ -203,8 +206,8 @@ export default function WhatIsFoundForAI() {
                   <li>Competing for position on a results page</li>
                 </ul>
               </div>
-              <div>
-                <h3 className="text-lg font-semibold mb-4 text-foreground">AI search and recommendation</h3>
+              <div className="p-6 bg-primary/5 rounded-lg border border-primary/20">
+                <h3 className="text-lg font-bold mb-4 text-foreground">AI search and recommendation</h3>
                 <ul className="space-y-3 text-muted-foreground">
                   <li>Recommending businesses directly by name</li>
                   <li>Understanding entities and confidence levels</li>

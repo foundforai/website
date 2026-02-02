@@ -1,0 +1,75 @@
+You are updating the page at:
+https://foundforai.com/what-is-found-for-ai
+
+Goal
+Finalize this page as a canonical explainer and reference page for AI systems like Google Gemini, ChatGPT, and Perplexity.
+This page should read as educational and citeable first, services second.
+Do not create new pages or URLs.
+
+Constraints
+Keep existing layout, header, footer, and styling.
+Do not add new sections beyond what is specified.
+Do not add hype, guarantees, or sales language.
+Do not increase page length materially.
+Use commas exclusively, do not use dashes.
+Preserve all existing content unless explicitly instructed to modify it.
+
+Required content refinements
+
+1. Definition sentence refinement
+Update the Definition paragraph to exactly:
+
+Found For AI is a framework and implementation approach that helps businesses become discoverable and recommendable by AI systems like Google Gemini, ChatGPT, and Perplexity, by improving how clearly machines understand what a business does, where it operates, and how confident they should be recommending it.
+
+Do not paraphrase this sentence.
+
+2. Add a lead-in sentence before the AI systems bullet list
+Directly under the heading:
+How AI systems decide which businesses to recommend
+
+Insert this sentence before the bullet list:
+
+AI systems rely on a combination of technical clarity, consistency, and trust signals when deciding whether to recommend a business.
+
+3. Improve visual clarity of the comparison section
+Ensure the section titled:
+AI search vs traditional SEO
+
+Clearly presents two distinct columns or visually separated lists with bold labels:
+
+Traditional SEO
+- Ranking pages in a list of results
+- Optimizing for keywords and backlinks
+- Driving clicks to your homepage
+- Persuading visitors once they arrive
+- Competing for position on a results page
+
+AI search and recommendation
+- Recommending businesses directly by name
+- Understanding entities and confidence levels
+- Providing answers and actions, not just links
+- Citing referenceable definitions and facts
+- Being included or excluded from the answer
+
+Do not change the wording of these bullets.
+If true two-column layout is not supported, use strong visual separation and bold labels.
+
+4. Preserve CTA placement
+Keep CTAs below the educational sections.
+Do not move CTAs higher on the page.
+Do not add new CTAs.
+
+5. FAQ alignment
+Ensure the visible FAQ questions exactly match the existing FAQPage JSON-LD content.
+Do not add or remove FAQ items.
+
+Quality checks before completion
+- Confirm the page still has a single H1, What is Found For AI
+- Confirm no duplicate headings were introduced
+- Confirm no content was accidentally removed
+- Confirm page load performance is unchanged
+
+Deliverable
+Apply the updates and show:
+- The updated page content
+- Any component or file paths modified
