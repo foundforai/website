@@ -147,7 +147,7 @@ export default function Home() {
               
               <div className="sr-only">
                 <p>
-                  Found For AI is an AI visibility framework and implementation service that helps businesses get discovered and recommended by AI-powered search systems like ChatGPT, Google Gemini, and Perplexity.
+                  Found For AI is a company that offers an AI visibility framework and implementation service that helps businesses get discovered and recommended by AI-powered search systems like ChatGPT, Google Gemini, and Perplexity.
                 </p>
               </div>
               
