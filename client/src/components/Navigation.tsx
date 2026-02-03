@@ -43,7 +43,7 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24">
           <Link href="/" data-testid="link-home">
-            <div className="hover-elevate rounded-lg px-2 py-1">
+            <div className="rounded-lg px-2 py-1">
               <img 
                 src={theme === 'dark' ? '/found-for-ai-logo-dark.png' : '/found-for-ai-logo.png'} 
                 alt="Found For AI logo"
