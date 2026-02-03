@@ -1,0 +1,55 @@
+Update the homepage hero section of foundforai.com.
+
+Goal
+Strengthen entity clarity for AI systems without changing the visible homepage design.
+
+Context
+The current visible hero copy says:
+“Found For AI helps businesses become visible in AI search engines…”
+
+This wording is vague and does not clearly define what Found For AI is.
+We want to add a precise canonical definition for machines while keeping the current visual layout unchanged.
+
+Constraints
+- Do NOT change visible hero copy or page layout.
+- Do NOT add new visible headings or paragraphs.
+- Do NOT remove existing content.
+- Do NOT use display:none or aria-hidden.
+- The definition must remain crawlable and accessible to search engines and AI systems.
+
+Exact implementation requirements
+
+1. Add a hidden canonical definition directly under the homepage H1
+Insert the following HTML immediately after the main H1 in the hero section:
+
+<div class="sr-only">
+  <p>
+    Found For AI is an AI visibility framework and implementation service that helps businesses get discovered and recommended by AI-powered search systems like ChatGPT, Google Gemini, and Perplexity.
+  </p>
+</div>
+
+Important:
+- Use an existing “sr-only” or “visually-hidden” utility class if available.
+- If none exists, create one that hides content visually but keeps it accessible (no display:none).
+
+2. Update homepage meta description
+In the <head> metadata for the homepage, replace or set the meta description to exactly:
+
+<meta name="description" content="Found For AI is an AI visibility framework and implementation service that helps businesses get discovered and recommended by AI-powered search systems like ChatGPT, Google Gemini, and Perplexity.">
+
+3. Do not introduce duplicate Organization schema
+Do not add or modify Organization schema on this task unless one already exists.
+This task is strictly about clarifying the homepage entity definition.
+
+4. Verify outcome
+After the update:
+- The homepage looks visually identical to before
+- No new text appears to users
+- The canonical definition is present in HTML and metadata
+- AI systems can clearly identify Found For AI as a company, framework, and implementation service
+
+Deliverable
+Return confirmation of:
+- Where the hidden definition was inserted
+- What class was used for visual hiding
+- Confirmation that the visible hero did not change

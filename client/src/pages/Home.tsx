@@ -128,7 +128,7 @@ export default function Home() {
   return (
     <PageLayout
       title="Found For AI | Be the Business AI Recommends First"
-      description="AI tools like ChatGPT, Perplexity, and Google Gemini now decide which local businesses to recommend. We install the missing AI readability layer so AI can finally understand your services, location, and booking link."
+      description="Found For AI is an AI visibility framework and implementation service that helps businesses get discovered and recommended by AI-powered search systems like ChatGPT, Google Gemini, and Perplexity."
       canonical="https://foundforai.com"
       ogImage="/found-for-ai-logo-white.png"
     >
@@ -144,6 +144,12 @@ export default function Home() {
                 <span className="text-slate-900 dark:text-slate-100">Is AI Recommending</span><br />
                 <span className="text-[#0F5FDB]">Your Business?</span>
               </h1>
+              
+              <div className="sr-only">
+                <p>
+                  Found For AI is an AI visibility framework and implementation service that helps businesses get discovered and recommended by AI-powered search systems like ChatGPT, Google Gemini, and Perplexity.
+                </p>
+              </div>
               
               <p className="text-lg md:text-xl mb-4 leading-relaxed text-slate-600 dark:text-slate-300">
                 If AI can't confidently understand what you do, where you operate, and how customers contact you, it won't recommend you.
