@@ -4,47 +4,40 @@ import { setupVite, serveStatic, log } from "./vite";
 
 const app = express();
 
-// Trust proxy - required for correct protocol detection behind load balancers/proxies
 app.set('trust proxy', true);
 
-// ============================================================================
-// CANONICAL URL ENFORCEMENT - Force HTTPS and strip www subdomain
-// ============================================================================
-// This middleware ensures all traffic goes to https://foundforai.com
-// with a single 301 redirect (no chains) for optimal SEO.
-//
-// Examples:
-//   http://foundforai.com/           → https://foundforai.com/
-//   http://www.foundforai.com/       → https://foundforai.com/
-//   https://www.foundforai.com/      → https://foundforai.com/
-//   https://foundforai.com/          → no redirect (canonical)
-// ============================================================================
+app.get('/health', (_req, res) => {
+  res.status(200).send('ok');
+});
+
 app.use((req, res, next) => {
   const host = req.get('host');
-  
-  // Skip ALL redirects in development environment
+
   if (app.get('env') === 'development') {
     return next();
   }
-  
-  // Production only: Check if we need to redirect
-  // Use X-Forwarded-Proto header for correct protocol detection behind proxies
+
+  if (
+    req.path === '/health' ||
+    host?.includes('localhost') ||
+    req.ip === '127.0.0.1' ||
+    req.ip === '::1'
+  ) {
+    return next();
+  }
+
   const forwardedProto = req.get('x-forwarded-proto');
   const protocol = forwardedProto || req.protocol;
-  
+
   const needsHttps = protocol !== 'https';
   const needsWwwStrip = host?.startsWith('www.');
-  
-  // If either condition is true, construct canonical URL and redirect
+
   if (needsHttps || needsWwwStrip) {
     const canonicalHost = host ? host.replace(/^www\./, '') : 'foundforai.com';
     const canonicalUrl = `https://${canonicalHost}${req.originalUrl}`;
-    
-    // 301 Permanent Redirect - tells Google this is the final canonical URL
     return res.redirect(301, canonicalUrl);
   }
-  
-  // Already canonical, continue
+
   next();
 });
 
@@ -101,11 +94,7 @@ app.use((req, res, next) => {
     serveStatic(app);
   }
 
-  // ALWAYS serve the app on the port specified in the environment variable PORT
-  // Other ports are firewalled. Default to 5000 if not specified.
-  // this serves both the API and the client.
-  // It is the only port that is not firewalled.
-  const port = parseInt(process.env.PORT || '5000', 10);
+  const port = parseInt(process.env.PORT || '3000', 10);
   server.listen({
     port,
     host: "0.0.0.0",
