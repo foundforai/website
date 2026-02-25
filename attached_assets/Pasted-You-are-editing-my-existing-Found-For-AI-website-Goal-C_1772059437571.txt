@@ -1,0 +1,55 @@
+You are editing my existing Found For AI website 
+
+Goal:
+Create a new lead magnet flow with two routes:
+1) /playbook, email capture form (Formspree)
+2) /playbook/thanks, success page with instant PDF download + talk to a human CTA
+
+Constraints:
+- Do not redesign the site. Use existing layout components, typography, spacing, and button styles.
+- Keep it fast, clean, mobile friendly.
+- Do not add any pricing.
+- Do not mention any “60 day guarantee”.
+- Collect email only.
+- Use my existing Formspree endpoint: https://formspree.io/f/movklzvl
+- After successful submit, redirect to /playbook/thanks
+- If submission fails, show a simple inline error message and keep the user on /playbook.
+
+PDF hosting:
+- The download link on /playbook/thanks should point to:
+  https://foundforai.com/found-for-ai-readability-playbook.pdf
+- If that PDF file does not exist yet, still build the page and show the button, but also include a small line:
+  “If the download doesn’t start, refresh in a minute. We’re updating the file.”
+
+/playbook page content:
+- Headline: “AI Readability Playbook”
+- Subheadline: “The fastest fixes to help your business get discovered and recommended by AI search and assistants, with a simple checklist you can use in 15 minutes.”
+- Body: 2 short paragraphs max:
+  Paragraph 1: Explain that people are asking AI tools who to hire, and this checklist shows the fastest clarity + trust fixes.
+  Paragraph 2: Mention the AI Visibility Tune Up as the done for you option, without hard selling.
+- Form:
+  Label: “Email”
+  Placeholder: “you@company.com”
+  Button text: “Send me the playbook”
+- Under the button, add small text:
+  “We’ll email you the download link instantly.”
+- Add a secondary link under the form:
+  “Prefer to talk it through? Talk to a human” linking to https://foundforai.com/talk-to-a-human
+
+/playbook/thanks page content:
+- Headline: “Your playbook is ready”
+- One line: “Click below to download instantly, we also emailed you a copy.”
+- Primary button: “Download the playbook” linking to https://foundforai.com/found-for-ai-readability-playbook.pdf
+- Secondary button: “Talk to a human” linking to https://foundforai.com/talk-to-a-human
+- Add a small line at the bottom:
+  “Next step: If you want this installed fast and correctly, ask about the AI Visibility Tune Up.”
+
+Routing:
+- Add these routes to the existing router setup.
+- Ensure both pages have a way back to Home in the existing nav or footer.
+
+After implementation:
+- Confirm both routes render.
+- Confirm the form posts to Formspree.
+- Confirm redirect to /playbook/thanks on success.
+- Output the file paths you created or edited so I can find them quickly.

@@ -21,6 +21,8 @@ import BlogIndex from "@/pages/BlogIndex";
 import BlogPost from "@/pages/BlogPost";
 import AISearchVisibility from "@/pages/AISearchVisibility";
 import Insights from "@/pages/Insights";
+import Playbook from "@/pages/Playbook";
+import PlaybookThanks from "@/pages/PlaybookThanks";
 import NotFound from "@/pages/NotFound";
 
 function Router() {
@@ -44,6 +46,8 @@ function Router() {
         <Route path="/blog/:slug" component={BlogPost} />
         <Route path="/ai-search-visibility" component={AISearchVisibility} />
         <Route path="/insights" component={Insights} />
+        <Route path="/playbook/thanks" component={PlaybookThanks} />
+        <Route path="/playbook" component={Playbook} />
         <Route component={NotFound} />
       </Switch>
     </>
