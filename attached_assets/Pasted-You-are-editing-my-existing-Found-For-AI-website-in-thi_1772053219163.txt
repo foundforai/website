@@ -1,0 +1,28 @@
+You are editing my existing Found For AI website in this Replit project.
+
+Goal: Update the copy on the page at route /what-is-ai-seo to match the recommendations below. Do not redesign the page, do not change fonts, colors, layout, components, or spacing. Only update text content and add two small text sections in the correct spots. Keep internal links working.
+
+Requirements
+- Keep the page title as: "What Is AI SEO?"
+- Update the opening definition paragraph to:
+  "AI SEO is the practice of making your business clearly understandable to AI systems like ChatGPT, Perplexity, and Google’s AI results, so they can confidently recommend you when people ask for help."
+- Immediately after that paragraph, add this sentence:
+  "At Found For AI, we call this AI visibility, we install an AI readability layer plus structured data so the machines and humans see the same truth."
+- Keep the “Old SEO vs AI SEO” table as is unless the table is currently broken. If it is broken, fix formatting but do not change the meaning.
+- Under the section "Ready to Get AI Ready?" and before the button/link CTA, insert a short section titled "Who this is for" with this text:
+  "If you sell a real service in a real place, HVAC, dental, plumbing, med spa, legal, home services, and you rely on phone calls, bookings, or estimates, this matters now."
+- Keep the CTA button text "Get My Free Audit" and keep it linked to the current audit URL already used on the page.
+- Immediately after the CTA button, insert a section titled "What you get in the free scorecard" with this text:
+  "A snapshot of what AI can see about your business today, what it cannot, the top visibility gaps holding you back, and the fastest fixes to become recommendable."
+- Replace the FAQ section header:
+  Change "Questions You Might Ask ChatGPT About AI SEO" to "Questions People Ask AI Tools About Your Business"
+- In the FAQ item about Google replacing searches, remove the parenthetical reference to "SGE" and replace that sentence with:
+  "Google is moving toward AI first results, and assistants like ChatGPT and Perplexity are becoming major discovery channels."
+- In the FAQ item "Will AI searches and queries help customers find my business?" replace the answer with:
+  "It can, if your site makes your services, locations, and proof easy for AI systems to interpret. We fix that with structured data, clear answers, and an AI readability layer."
+- Do not add any new pages. Do not rename routes. Do not change navigation.
+
+After making changes
+- Confirm the route still renders without errors.
+- Confirm the CTA link still works.
+- Output the final updated page content exactly as it appears in the component so I can review it.

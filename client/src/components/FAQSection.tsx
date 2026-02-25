@@ -10,11 +10,11 @@ export default function FAQSection() {
     },
     {
       question: 'Will AI searches replace Google?',
-      answer: 'AI-driven discovery is already reshaping how people find information. Google is moving toward an AI-based experience (SGE), and platforms like ChatGPT, Claude, and Perplexity are becoming new discovery channels. Traditional SEO still matters, but AI visibility is now essential.',
+      answer: 'AI-driven discovery is already reshaping how people find information. Google is moving toward AI first results, and assistants like ChatGPT and Perplexity are becoming major discovery channels. Traditional SEO still matters, but AI visibility is now essential.',
     },
     {
       question: 'Will AI searches and queries help customers find my business?',
-      answer: 'Yes — if your website is AI-readable. Structured data, FAQs, and contextual clarity make it easy for AI systems to understand what you do and include your business in relevant responses.',
+      answer: 'It can, if your site makes your services, locations, and proof easy for AI systems to interpret. We fix that with structured data, clear answers, and an AI readability layer.',
     },
     {
       question: 'What does it mean to be Found by AI?',
@@ -31,7 +31,7 @@ export default function FAQSection() {
       <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Questions You Might Ask ChatGPT About AI SEO
+            Questions People Ask AI Tools About Your Business
           </h2>
         </div>
 

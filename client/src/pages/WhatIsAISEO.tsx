@@ -27,7 +27,10 @@ export default function WhatIsAISEO() {
           
           <div className="prose prose-lg max-w-none text-muted-foreground space-y-6 mb-12">
             <p>
-              AI SEO is the practice of making your business clearly understandable to AI systems like ChatGPT, Perplexity, and Google's AI results so they can confidently recommend you when users ask questions.
+              AI SEO is the practice of making your business clearly understandable to AI systems like ChatGPT, Perplexity, and Google's AI results, so they can confidently recommend you when people ask for help.
+            </p>
+            <p>
+              At Found For AI, we call this AI visibility, we install an AI readability layer plus structured data so the machines and humans see the same truth.
             </p>
             <p>
               Unlike traditional SEO, which focused on ranking pages for keywords, AI SEO focuses on clarity, context, and trust. AI systems don't search the web the way humans do. They interpret information to decide which businesses are relevant, credible, and worth mentioning.
@@ -68,12 +71,27 @@ export default function WhatIsAISEO() {
               <p className="text-lg text-muted-foreground mb-6">
                 Get your free AI Readiness Scorecard and discover exactly what's holding you back from AI discovery.
               </p>
+
+              <div className="mb-8">
+                <h4 className="text-xl font-bold mb-3">Who this is for</h4>
+                <p className="text-muted-foreground">
+                  If you sell a real service in a real place, HVAC, dental, plumbing, med spa, legal, home services, and you rely on phone calls, bookings, or estimates, this matters now.
+                </p>
+              </div>
+
               <Link href="/audit">
                 <Button size="lg" className="font-semibold group" style={{ backgroundColor: '#0F5FDB', borderColor: '#0F5FDB' }} data-testid="button-get-audit-cta">
                   Get My Free Audit
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
+
+              <div className="mt-8">
+                <h4 className="text-xl font-bold mb-3">What you get in the free scorecard</h4>
+                <p className="text-muted-foreground">
+                  A snapshot of what AI can see about your business today, what it cannot, the top visibility gaps holding you back, and the fastest fixes to become recommendable.
+                </p>
+              </div>
             </CardContent>
           </Card>
         </div>
