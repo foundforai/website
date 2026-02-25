@@ -1,4 +1,5 @@
 import express, { type Request, Response, NextFunction } from "express";
+import path from "path";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 
@@ -46,7 +47,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use((req, res, next) => {
   const start = Date.now();
-  const path = req.path;
+  const pathName = req.path;
   let capturedJsonResponse: Record<string, any> | undefined = undefined;
 
   const originalResJson = res.json;
@@ -57,8 +58,8 @@ app.use((req, res, next) => {
 
   res.on("finish", () => {
     const duration = Date.now() - start;
-    if (path.startsWith("/api")) {
-      let logLine = `${req.method} ${path} ${res.statusCode} in ${duration}ms`;
+    if (pathName.startsWith("/api")) {
+      let logLine = `${req.method} ${pathName} ${res.statusCode} in ${duration}ms`;
       if (capturedJsonResponse) {
         logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
       }
@@ -76,6 +77,22 @@ app.use((req, res, next) => {
 
 (async () => {
   const server = await registerRoutes(app);
+
+  // Serve LLM and bot files from client/public in production
+  app.get("/llms.txt", (_req, res) => {
+    res.type("text/plain");
+    res.sendFile(path.join(process.cwd(), "client", "public", "llms.txt"));
+  });
+
+  app.get("/robots.txt", (_req, res) => {
+    res.type("text/plain");
+    res.sendFile(path.join(process.cwd(), "client", "public", "robots.txt"));
+  });
+
+  app.get("/sitemap.xml", (_req, res) => {
+    res.type("application/xml");
+    res.sendFile(path.join(process.cwd(), "client", "public", "sitemap.xml"));
+  });
 
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
