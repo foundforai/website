@@ -1,0 +1,68 @@
+You’re editing my Found For AI site. Update ONLY the structured data (schema) on the page at route /what-is-ai-seo.
+
+Goal: Add a single JSON-LD FAQPage schema block that matches the visible FAQ section on the page. Do NOT add schema for questions that aren’t visible on the page. Do NOT add multiple FAQ blocks. Do NOT add FAQ schema to other routes.
+
+Add this (or merge it into the existing JSON-LD if we already have schema on the page):
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why are AI queries different than Google searches?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AI queries are conversational and context-driven. Instead of scanning a list of links like Google, AI gives one or two answers it trusts. If your business isn't part of that trusted answer set, you're invisible to customers using AI tools like ChatGPT and Perplexity."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do I need to be found by AI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "More customers are now asking AI tools for recommendations instead of searching on Google. Being found by AI means your business information is structured so large language models can read, understand, and confidently recommend your brand."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will AI searches replace Google?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AI-driven discovery is already reshaping how people find information. Google is moving toward AI-first results, and platforms like ChatGPT and Perplexity are becoming new discovery channels. Traditional SEO still matters, but AI visibility is now essential."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will AI searches and queries help customers find my business?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It can, if your website is AI-readable. Structured data, FAQs, and contextual clarity make it easy for AI systems to understand what you do and include your business in relevant responses."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does it mean to be Found by AI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Being Found by AI means your website, services, and business details are optimized so AI tools can interpret them correctly and recommend you when users ask related questions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I know if my site is AI-ready?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can request a free AI Readiness Audit at FoundForAI.com/audit. We'll assess your visibility across AI tools and provide a personalized plan to increase your discoverability."
+      }
+    }
+  ]
+}
+</script>
+
+Constraints:
+- Place the JSON-LD in the appropriate location for this stack (usually head or layout slot where other structured data lives).
+- If the page already has JSON-LD for WebPage/Article/LocalBusiness/etc., keep it, but ensure there’s only one FAQPage block.
+- Keep the exact text consistent with the page copy.
+- After changes, confirm the page renders correctly and the schema validates in Google’s Rich Results Test.
