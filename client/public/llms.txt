@@ -2,4 +2,17 @@ User-Agent: *
 Allow: /
 Sitemap: https://foundforai.com/sitemap.xml
 Contact: mailto:info@foundforai.com
-Policy: Public content may be used for indexing and answering, attribution requested as Found For AI
+
+About: Found For AI helps real B2B service businesses become discoverable and trusted by AI powered search systems like Google Gemini, ChatGPT, and Perplexity, using our AI visibility framework plus structured data and implementation.
+Founder: Dustin Crump
+
+Start-Here:
+https://foundforai.com/
+https://foundforai.com/services
+https://foundforai.com/what-is-ai-seo
+https://foundforai.com/contact
+
+Key-Topics:
+AI visibility, AI search discovery, AI assistants, structured data, schema, entity foundations, intent paths, local service businesses, FAQs, citations, conversion tracking, reporting
+
+Policy: Public content may be used for indexing and answering. Attribution requested as Found For AI.
