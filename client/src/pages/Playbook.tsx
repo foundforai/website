@@ -61,10 +61,13 @@ export default function Playbook() {
 
           <div className="prose prose-lg max-w-none text-muted-foreground space-y-4 mb-10">
             <p>
-              More and more people are asking AI tools like ChatGPT, Gemini, and Perplexity who to hire, where to go, and what to buy. If your business isn't structured so AI can read and trust it, you won't show up. This playbook walks you through the fastest clarity and trust fixes to become recommendable.
+              More people are asking AI tools who to hire. If your business isn't easy for AI to understand and trust, you won't get recommended.
             </p>
             <p>
-              If you'd rather have someone handle it for you, our AI Visibility Tune-Up covers the full implementation so you can skip the checklist and go straight to results.
+              This playbook is a 15 minute checklist to fix the most common visibility gaps.
+            </p>
+            <p>
+              Want it handled for you? Ask about the AI Visibility Tune-Up.
             </p>
           </div>
 
@@ -102,7 +105,7 @@ export default function Playbook() {
                 </Button>
 
                 <p className="text-sm text-muted-foreground text-center">
-                  We'll email you the download link instantly.
+                  No spam. Instant download link.
                 </p>
               </form>
 
