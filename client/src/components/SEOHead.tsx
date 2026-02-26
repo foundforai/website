@@ -155,7 +155,12 @@ export default function SEOHead({ title, description, canonical, ogImage = '/fou
           "url": "https://foundforai.com",
           "name": "Found For AI",
           "publisher": { "@id": "https://foundforai.com/#org" },
-          "inLanguage": "en-US"
+          "inLanguage": "en-US",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://foundforai.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
         },
         {
           "@type": "LocalBusiness",
@@ -164,9 +169,11 @@ export default function SEOHead({ title, description, canonical, ogImage = '/fou
           "image": "https://foundforai.com/assets/office.jpg",
           "url": "https://foundforai.com",
           "telephone": "+18018982456",
+          "email": "info@foundforai.com",
           "priceRange": "$$",
           "address": {
             "@type": "PostalAddress",
+            "streetAddress": "6187 S Highland Dr",
             "addressLocality": "Cottonwood Heights",
             "addressRegion": "UT",
             "postalCode": "84121",
@@ -192,7 +199,29 @@ export default function SEOHead({ title, description, canonical, ogImage = '/fou
             }
           ],
           "parentOrganization": { "@id": "https://foundforai.com/#org" },
-          "hasMap": "https://www.google.com/maps/place/Cottonwood+Heights,+UT"
+          "hasMap": "https://www.google.com/maps/place/Cottonwood+Heights,+UT",
+          "potentialAction": [
+            {
+              "@type": "CommunicateAction",
+              "name": "Contact Found For AI",
+              "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://foundforai.com/contact"
+              }
+            },
+            {
+              "@type": "ScheduleAction",
+              "name": "Book a Consultation",
+              "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://foundforai.com/talk-to-a-human",
+                "actionPlatform": [
+                  "http://schema.org/DesktopWebPlatform",
+                  "http://schema.org/MobileWebPlatform"
+                ]
+              }
+            }
+          ]
         },
         {
           "@type": "Service",
@@ -202,7 +231,7 @@ export default function SEOHead({ title, description, canonical, ogImage = '/fou
           "areaServed": "United States",
           "offers": {
             "@type": "Offer",
-            "price": "299",
+            "price": "1595",
             "priceCurrency": "USD",
             "url": "https://foundforai.com/services"
           }
