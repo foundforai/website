@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation } from 'wouter';
 import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from '@/components/ui/card';
@@ -12,6 +12,61 @@ export default function Playbook() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [email, setEmail] = useState('');
+
+  useEffect(() => {
+    const schema = document.createElement('script');
+    schema.type = 'application/ld+json';
+    schema.id = 'playbook-page-schema';
+    schema.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "AI Readability Playbook",
+      "url": "https://foundforai.com/playbook",
+      "description": "A 15 minute checklist to help your business show up when people ask AI who to hire.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Found For AI",
+        "url": "https://foundforai.com/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Found For AI",
+        "url": "https://foundforai.com/"
+      },
+      "about": [
+        "AI visibility",
+        "AI search discovery",
+        "structured data",
+        "local service businesses"
+      ],
+      "mainEntity": {
+        "@type": "DigitalDocument",
+        "name": "Found For AI Readability Playbook",
+        "fileFormat": "application/pdf",
+        "url": "https://foundforai.com/found-for-ai-readability-playbook.pdf"
+      },
+      "potentialAction": [
+        {
+          "@type": "Action",
+          "name": "Download the playbook",
+          "target": "https://foundforai.com/playbook"
+        },
+        {
+          "@type": "ReserveAction",
+          "name": "Talk to a human",
+          "target": "https://foundforai.com/talk-to-a-human"
+        }
+      ]
+    });
+    document.head.appendChild(schema);
+
+    return () => {
+      const existing = document.getElementById('playbook-page-schema');
+      if (existing) {
+        document.head.removeChild(existing);
+      }
+    };
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
