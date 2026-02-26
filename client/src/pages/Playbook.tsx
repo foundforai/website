@@ -49,7 +49,7 @@ export default function Playbook() {
         {
           "@type": "Action",
           "name": "Download the playbook",
-          "target": "https://foundforai.com/playbook"
+          "target": "https://foundforai.com/found-for-ai-readability-playbook.pdf"
         },
         {
           "@type": "ReserveAction",
