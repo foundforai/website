@@ -50,26 +50,32 @@ export default function Playbook() {
       description="Download the AI Readability Playbook: the fastest fixes to help your business get discovered and recommended by AI search tools and assistants."
       canonical="https://foundforai.com/playbook"
     >
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-10 md:py-16 bg-background">
         <div className="max-w-2xl mx-auto px-4 md:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold mb-2">
             AI Readability Playbook
           </h1>
-          <p className="text-lg text-muted-foreground mb-8">
-            The fastest fixes to help your business get discovered and recommended by AI search and assistants, with a simple checklist you can use in 15 minutes.
+          <p className="text-lg text-muted-foreground mb-6">
+            A 15 minute checklist to help your business show up when people ask AI who to hire.
           </p>
 
-          <div className="prose prose-lg max-w-none text-muted-foreground space-y-4 mb-10">
-            <p>
-              More people are asking AI tools who to hire. If your business isn't easy for AI to understand and trust, you won't get recommended.
-            </p>
-            <p>
-              This playbook is a 15 minute checklist to fix the most common visibility gaps.
-            </p>
-            <p>
-              Want it handled for you? Ask about the AI Visibility Tune-Up.
-            </p>
+          <p className="text-muted-foreground mb-4">
+            Get the 10 fastest fixes that make AI tools understand what you do, where you work, and why you can be trusted.
+          </p>
+
+          <div className="mb-6">
+            <p className="font-semibold mb-2">What's inside</p>
+            <ul className="list-disc pl-5 text-muted-foreground space-y-1">
+              <li>Services and locations clarity</li>
+              <li>Trust signals AI looks for</li>
+              <li>The basic structured data your site needs</li>
+            </ul>
           </div>
+
+          <p className="text-sm text-muted-foreground mb-6">
+            Prefer done for you?{' '}
+            <a href="https://foundforai.com/talk-to-a-human" className="underline hover:text-foreground transition-colors" data-testid="link-playbook-dfy">Talk to a human</a>.
+          </p>
 
           <Card>
             <CardContent className="p-6 md:p-8">
