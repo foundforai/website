@@ -211,26 +211,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* IN PLAIN TERMS — SEO text content section */}
-      <section className="py-12 md:py-16 px-5 bg-background">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-slate-900 dark:text-slate-100" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-            In plain terms
-          </h2>
-          <div className="space-y-4 text-base text-muted-foreground leading-relaxed">
-            <p>
-              When someone asks ChatGPT, Google Gemini, or Perplexity for a recommendation, those systems do not browse the web the way a person does. They read structured signals, entity data, and content clarity to decide which businesses are trustworthy enough to mention by name. If your website does not provide that information in a format AI can parse, you will not be part of the answer.
-            </p>
-            <p>
-              Found For AI is a company that offers an AI visibility framework and implementation service that helps businesses get discovered and recommended by AI-powered search systems. We work with real service businesses, the kind that rely on phone calls, bookings, and local reputation, and install an AI readability layer so the machines see the same truth your customers already know.
-            </p>
-            <p>
-              That means cleaning up your entity data, adding the right structured markup, writing answers AI can quote, and making sure every important page on your site is readable by both humans and algorithms. No guesswork, no filler content, just the technical foundation that makes AI confident enough to recommend you.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* SECTION 2: CONTEXT & URGENCY */}
       <section className="py-16 md:py-24 px-5 bg-white dark:bg-slate-900">
         <div className="max-w-6xl mx-auto">
