@@ -1,117 +1,114 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Core pages - confirmed real content -->
   <url>
     <loc>https://foundforai.com/</loc>
     <lastmod>2025-01-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+
+  <!-- Primary conversion page - was missing, now added -->
   <url>
-    <loc>https://foundforai.com/what-is-ai-seo</loc>
-    <lastmod>2025-01-16</lastmod>
+    <loc>https://foundforai.com/fix-plan</loc>
+    <lastmod>2026-03-05</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>1.0</priority>
   </url>
-  <url>
-    <loc>https://foundforai.com/what-is-found-for-ai</loc>
-    <lastmod>2025-10-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://foundforai.com/aeo</loc>
-    <lastmod>2025-10-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+
   <url>
     <loc>https://foundforai.com/audit</loc>
     <lastmod>2025-01-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-  <url>
-    <loc>https://foundforai.com/readiness-report</loc>
-    <lastmod>2025-10-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://foundforai.com/services</loc>
-    <lastmod>2025-01-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+
   <url>
     <loc>https://foundforai.com/pricing</loc>
     <lastmod>2025-01-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+
   <url>
-    <loc>https://foundforai.com/book-call</loc>
+    <loc>https://foundforai.com/services</loc>
     <lastmod>2025-01-16</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
+
   <url>
-    <loc>https://foundforai.com/about</loc>
+    <loc>https://foundforai.com/what-is-found-for-ai</loc>
+    <lastmod>2025-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://foundforai.com/what-is-ai-seo</loc>
     <lastmod>2025-01-16</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://foundforai.com/contact</loc>
-    <lastmod>2025-01-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://foundforai.com/purchase-complete</loc>
-    <lastmod>2025-01-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://foundforai.com/thank-you</loc>
-    <lastmod>2025-01-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
+
   <url>
     <loc>https://foundforai.com/blog</loc>
     <lastmod>2025-01-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://foundforai.com/blog/mental-model-shift-ai-search</loc>
-    <lastmod>2025-01-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+
   <url>
     <loc>https://foundforai.com/blog/what-is-schema-markup</loc>
     <lastmod>2025-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+
+  <url>
+    <loc>https://foundforai.com/blog/mental-model-shift-ai-search</loc>
+    <lastmod>2025-01-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <url>
     <loc>https://foundforai.com/blog/how-to-make-website-ai-discoverable</loc>
     <lastmod>2025-01-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+
   <url>
-    <loc>https://foundforai.com/ai-search-visibility</loc>
-    <lastmod>2025-01-15</lastmod>
+    <loc>https://foundforai.com/about</loc>
+    <lastmod>2025-01-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+
   <url>
-    <loc>https://foundforai.com/insights</loc>
-    <lastmod>2025-01-26</lastmod>
+    <loc>https://foundforai.com/contact</loc>
+    <lastmod>2025-01-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+
+  <!--
+    PAGES TO VERIFY BEFORE ADDING:
+    These were in your original sitemap but returned no readable content.
+    Check each one in your Replit project. If they have real content, add them.
+    If they are empty, redirects, or unused routes, leave them out.
+
+    /aeo
+    /ai-search-visibility
+    /insights
+    /book-call
+
+    PAGES INTENTIONALLY REMOVED:
+    /readiness-report - redirect page, no real content
+    /purchase-complete - post-transaction confirmation, no real content
+    /thank-you - post-transaction confirmation, no real content
+  -->
+
 </urlset>
