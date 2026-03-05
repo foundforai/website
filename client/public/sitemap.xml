@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Core pages - confirmed real content -->
-  <url>
+<url>
     <loc>https://foundforai.com/</loc>
     <lastmod>2025-01-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- Primary conversion page - was missing, now added -->
-  <url>
+<url>
     <loc>https://foundforai.com/fix-plan</loc>
     <lastmod>2026-03-05</lastmod>
     <changefreq>monthly</changefreq>
@@ -94,21 +92,6 @@
     <priority>0.7</priority>
   </url>
 
-  <!--
-    PAGES TO VERIFY BEFORE ADDING:
-    These were in your original sitemap but returned no readable content.
-    Check each one in your Replit project. If they have real content, add them.
-    If they are empty, redirects, or unused routes, leave them out.
 
-    /aeo
-    /ai-search-visibility
-    /insights
-    /book-call
-
-    PAGES INTENTIONALLY REMOVED:
-    /readiness-report - redirect page, no real content
-    /purchase-complete - post-transaction confirmation, no real content
-    /thank-you - post-transaction confirmation, no real content
-  -->
 
 </urlset>
