@@ -2,7 +2,7 @@ import PageLayout from '@/components/PageLayout';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Link } from 'wouter';
-import { Check, Search, Wrench, TrendingUp, ArrowRight } from 'lucide-react';
+import { Check, Search, Wrench, TrendingUp, ArrowRight, CalendarCheck } from 'lucide-react';
 
 export default function Services() {
   const howItWorks = [
@@ -101,6 +101,63 @@ export default function Services() {
                       <span className="text-base">60-day fix-it-free guarantee</span>
                     </li>
                   </ul>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          {/* Recurring Events Subscription */}
+          <Card className="mb-16 border-2 shadow-xl">
+            <CardContent className="p-8 md:p-12">
+              <div className="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                  <h2 className="text-3xl md:text-4xl font-bold mb-4">Recurring Events Subscription</h2>
+                  <p className="text-lg font-medium text-muted-foreground mb-6">
+                    Keep your event inventory accurate, measurable, and improving every month.
+                  </p>
+                  <p className="text-base text-muted-foreground mb-6">
+                    Built for local businesses with recurring public classes, workshops, and events. We keep your schedule pages accurate, run monthly micro tests to improve booking clicks, and send you a simple report each month showing what changed and what moved.
+                  </p>
+                  <div className="space-y-2 mb-6">
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-2xl font-bold text-primary">$750</span>
+                      <span className="text-sm text-muted-foreground">one-time onboarding</span>
+                    </div>
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-2xl font-bold text-primary">$250</span>
+                      <span className="text-sm text-muted-foreground">per month</span>
+                    </div>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-8">Minimum term: 3 months, then month to month</p>
+                  <Link href="/contact">
+                    <Button size="lg" variant="outline" className="font-semibold text-lg px-8" data-testid="button-events-subscription">
+                      Schedule a Call
+                    </Button>
+                  </Link>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold mb-4">Includes:</h3>
+                  <ul className="space-y-4 mb-8">
+                    <li className="flex items-start gap-3">
+                      <Check className="h-6 w-6 text-accent shrink-0 mt-0.5" />
+                      <span className="text-base">Monthly accuracy audit and fixes — schedule, pages, links, times, instructors</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Check className="h-6 w-6 text-accent shrink-0 mt-0.5" />
+                      <span className="text-base">One micro test per month from a fixed menu</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Check className="h-6 w-6 text-accent shrink-0 mt-0.5" />
+                      <span className="text-base">Simple monthly report — booking clicks, top pages, what changed</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Check className="h-6 w-6 text-accent shrink-0 mt-0.5" />
+                      <span className="text-base">Tracking setup and baseline snapshot on onboarding</span>
+                    </li>
+                  </ul>
+                  <div className="border-t pt-4">
+                    <p className="text-sm font-semibold mb-1">Optional add-on: Distribution Pack — $100/month</p>
+                    <p className="text-sm text-muted-foreground">One GBP post, Facebook Event update, or Eventbrite update per month.</p>
+                  </div>
                 </div>
               </div>
             </CardContent>
