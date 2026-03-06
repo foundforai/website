@@ -182,9 +182,8 @@ export default function Pricing() {
               </div>
               <CardHeader className="text-center pb-8 pt-8">
                 <CardTitle className="text-2xl mb-2">Recurring Events Subscription</CardTitle>
-                <div className="text-4xl font-bold text-primary mb-2">
-                  $750 <span className="text-lg font-normal text-muted-foreground">onboarding</span> + $250<span className="text-lg font-normal text-muted-foreground">/month</span>
-                </div>
+                <div className="text-4xl font-bold text-primary mb-1">$250/month</div>
+                <p className="text-sm text-muted-foreground">+ $750 onboarding fee</p>
                 <p className="text-sm text-muted-foreground">3-month minimum, then month to month</p>
                 <CardDescription className="text-base mt-4">
                   For local businesses with recurring public classes, workshops, and events.
