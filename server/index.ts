@@ -78,33 +78,36 @@ app.use((req, res, next) => {
 (async () => {
   const server = await registerRoutes(app);
 
-  // Serve LLM and bot files from client/public in production
+  const isProduction = app.get("env") !== "development";
+  const publicDir = isProduction
+    ? path.resolve(import.meta.dirname, "public")
+    : path.join(process.cwd(), "client", "public");
+
   app.get("/llms.txt", (_req, res) => {
     res.type("text/plain");
-    res.sendFile(path.join(process.cwd(), "client", "public", "llms.txt"));
+    res.sendFile(path.join(publicDir, "llms.txt"));
   });
 
   app.get("/robots.txt", (_req, res) => {
     res.type("text/plain");
-    res.sendFile(path.join(process.cwd(), "client", "public", "robots.txt"));
+    res.sendFile(path.join(publicDir, "robots.txt"));
   });
 
   app.get("/sitemap.xml", (_req, res) => {
     res.type("application/xml");
-    res.sendFile(path.join(process.cwd(), "client", "public", "sitemap.xml"));
+    res.sendFile(path.join(publicDir, "sitemap.xml"));
   });
 
   app.get("/found-for-ai-readability-playbook.pdf", (_req, res) => {
     res.type("application/pdf");
-    res.sendFile(path.join(process.cwd(), "client", "public", "found-for-ai-readability-playbook.pdf"));
+    res.sendFile(path.join(publicDir, "found-for-ai-readability-playbook.pdf"));
   });
 
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
     const message = err.message || "Internal Server Error";
-
+    console.error("Server error:", err);
     res.status(status).json({ message });
-    throw err;
   });
 
   // importantly only setup vite in development and after

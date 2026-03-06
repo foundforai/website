@@ -1,12 +1,7 @@
 import express, { type Express } from "express";
 import fs from "fs";
 import path from "path";
-import { createServer as createViteServer, createLogger } from "vite";
 import { type Server } from "http";
-import viteConfig from "../vite.config";
-import { nanoid } from "nanoid";
-
-const viteLogger = createLogger();
 
 export function log(message: string, source = "express") {
   const formattedTime = new Date().toLocaleTimeString("en-US", {
@@ -20,23 +15,28 @@ export function log(message: string, source = "express") {
 }
 
 export async function setupVite(app: Express, server: Server) {
-  const serverOptions = {
-    middlewareMode: true,
-    hmr: { server },
-    allowedHosts: true as const,
-  };
+  const viteModule = await import("vite");
+  const createViteServer = viteModule.createServer;
+  const createLogger = viteModule.createLogger;
+  const nanoidModule = await import("nanoid");
+  const nanoid = nanoidModule.nanoid;
+
+  const viteLogger = createLogger();
 
   const vite = await createViteServer({
-    ...viteConfig,
-    configFile: false,
+    configFile: path.resolve(import.meta.dirname, "..", "vite.config.ts"),
     customLogger: {
       ...viteLogger,
-      error: (msg, options) => {
+      error: (msg: string, options?: any) => {
         viteLogger.error(msg, options);
         process.exit(1);
       },
     },
-    server: serverOptions,
+    server: {
+      middlewareMode: true,
+      hmr: { server },
+      allowedHosts: true as const,
+    },
     appType: "custom",
   });
 
@@ -80,15 +80,15 @@ export function serveStatic(app: Express) {
     );
   }
 
-  app.use(express.static(distPath));
+  app.use(express.static(distPath, { index: false }));
 
-  const ssrManifestPath = path.resolve(import.meta.dirname, "server", "entry-server.js");
+  const ssrModulePath = path.resolve(import.meta.dirname, "server", "entry-server.js");
   let renderFn: ((url: string) => string) | null = null;
 
   const loadRender = async () => {
     if (!renderFn) {
       try {
-        const mod = await import(ssrManifestPath);
+        const mod = await import(ssrModulePath);
         renderFn = mod.render;
       } catch (e) {
         console.error("SSR module not found, falling back to static serving", e);
