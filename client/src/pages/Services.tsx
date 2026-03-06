@@ -1,8 +1,8 @@
 import PageLayout from '@/components/PageLayout';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Link } from 'wouter';
-import { Check, Search, Wrench, TrendingUp, ArrowRight, CalendarCheck } from 'lucide-react';
+import { Check, Search, Wrench, TrendingUp } from 'lucide-react';
 
 export default function Services() {
   const howItWorks = [
@@ -44,7 +44,7 @@ export default function Services() {
             </p>
           </div>
 
-          {/* Primary Service - AI Visibility Starter Fix */}
+          {/* Primary Service - AI Visibility Fix */}
           <Card className="mb-16 border-primary border-2 shadow-xl bg-gradient-to-br from-primary/5 to-accent/5">
             <div className="absolute -top-4 left-1/2 -translate-x-1/2 hidden md:block">
               <span className="bg-primary text-primary-foreground px-6 py-2 rounded-full text-sm font-semibold">
@@ -57,7 +57,7 @@ export default function Services() {
                   <div className="inline-block bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold mb-4 md:hidden">
                     Start Here
                   </div>
-                  <h2 className="text-3xl md:text-4xl font-bold mb-4">AI Visibility Starter Fix</h2>
+                  <h2 className="text-3xl md:text-4xl font-bold mb-4">AI Visibility Fix</h2>
                   <div className="text-4xl font-bold text-primary mb-4">$1,595</div>
                   <p className="text-sm text-muted-foreground mb-6">one time</p>
                   <p className="text-lg text-muted-foreground mb-8">
@@ -192,112 +192,6 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Additional Services Section */}
-      <section className="py-16 md:py-24 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Additional Services (After the Fix)</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              For businesses that need ongoing optimization or larger-scale implementations
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Ongoing Optimization */}
-            <Card className="transition-all duration-300 hover:shadow-xl border-2">
-              <CardHeader className="text-center pb-6">
-                <CardTitle className="text-2xl mb-2">Ongoing AI Visibility Optimization</CardTitle>
-                <div className="text-3xl font-bold text-primary mb-2">Custom</div>
-                <CardDescription className="text-base">
-                  For businesses that want continued optimization, reporting, and growth after their AI Visibility Fix is complete.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-sm">Everything in AI Visibility Fix</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-sm">Monthly AI visibility monitoring</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-sm">Ongoing optimization updates</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-sm">Growth tracking & reporting</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-sm">Quarterly strategy reviews</span>
-                  </li>
-                </ul>
-                <Link href="/book-call">
-                  <Button size="lg" variant="outline" className="w-full font-semibold" data-testid="button-ongoing-optimization">
-                    Schedule a Call
-                  </Button>
-                </Link>
-                <p className="text-sm text-muted-foreground text-center">Available after completing the Starter Fix</p>
-              </CardContent>
-            </Card>
-
-            {/* Enterprise & Agency */}
-            <Card className="transition-all duration-300 hover:shadow-xl border-2">
-              <CardHeader className="text-center pb-6">
-                <CardTitle className="text-2xl mb-2">Enterprise & Agency Integration</CardTitle>
-                <div className="text-3xl font-bold text-primary mb-2">Custom</div>
-                <CardDescription className="text-base">
-                  For multi-site, agency, or large-scale AI visibility implementations.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-sm">Everything in Ongoing Optimization</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-sm">Multi-site management</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-sm">White-label options</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-sm">Dedicated account manager</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-sm">Custom SLA agreements</span>
-                  </li>
-                </ul>
-                <Link href="/book-call">
-                  <Button size="lg" variant="outline" className="w-full font-semibold" data-testid="button-enterprise-integration">
-                    Schedule a Call
-                  </Button>
-                </Link>
-                <p className="text-sm text-muted-foreground text-center">Custom scope, post-fix</p>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Final CTA */}
-          <div className="text-center mt-16">
-            <p className="text-lg text-muted-foreground mb-6">Ready to fix your AI visibility?</p>
-            <a href="https://foundforai.com/fix-plan" data-testid="button-final-cta">
-              <Button size="lg" className="font-semibold text-lg px-8 group">
-                Start My AI Visibility Fix
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </a>
-          </div>
-        </div>
-      </section>
     </PageLayout>
   );
 }
