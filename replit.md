@@ -15,8 +15,13 @@ Preferred communication style: Simple, everyday language.
 **Framework & Build System**
 - React 18 with TypeScript for type-safe component development
 - Vite as the build tool and development server, configured for fast refresh and optimized production builds
-- Wouter for lightweight client-side routing (no server-side rendering)
-- Single-page application architecture with client-side navigation
+- Wouter for lightweight client-side routing with SSR support (ssrPath prop)
+- Server-side rendering (SSR) for SEO: all pages pre-rendered on the server so crawlers receive full HTML
+- `client/src/entry-server.tsx` exports `render(url)` function used by Express to SSR each route
+- `client/src/main.tsx` detects SSR content and uses `hydrateRoot` (production) or `createRoot` (fallback)
+- `DeferredToaster` in App.tsx prevents Radix Toast hydration mismatch (renders only after useEffect)
+- Build: `build.sh` runs three steps: Vite client build, Vite SSR bundle (`dist/server/entry-server.js`), esbuild server bundle
+- Static HTML files in `client/public/` (readiness-report.html, etc.) bypass SSR pipeline via express.static
 
 **UI Component System**
 - shadcn/ui component library with Radix UI primitives for accessible, customizable components

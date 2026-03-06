@@ -1,8 +1,9 @@
-import { Switch, Route } from "wouter";
+import { Switch, Route, Router } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { useState, useEffect } from "react";
 import ScrollToTop from "@/components/ScrollToTop";
 import Redirect from "@/components/Redirect";
 import Home from "@/pages/Home";
@@ -25,7 +26,7 @@ import Playbook from "@/pages/Playbook";
 import PlaybookThanks from "@/pages/PlaybookThanks";
 import NotFound from "@/pages/NotFound";
 
-function Router() {
+function AppRouter() {
   return (
     <>
       <ScrollToTop />
@@ -54,14 +55,24 @@ function Router() {
   );
 }
 
-function App() {
+function DeferredToaster() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
+  return <Toaster />;
+}
+
+function App({ ssrPath }: { ssrPath?: string }) {
+  const routerProps = ssrPath ? { ssrPath } : {};
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Router />
-      </TooltipProvider>
-    </QueryClientProvider>
+    <Router {...routerProps}>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <DeferredToaster />
+          <AppRouter />
+        </TooltipProvider>
+      </QueryClientProvider>
+    </Router>
   );
 }
 
