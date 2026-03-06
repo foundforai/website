@@ -174,8 +174,13 @@ export default function Pricing() {
             </Card>
 
             {/* Card 2: Recurring Events Subscription */}
-            <Card className="relative transition-all duration-300 hover:shadow-xl border-2">
-              <CardHeader className="text-center pb-8">
+            <Card className="relative transition-all duration-300 hover:shadow-xl border-primary border-2 shadow-lg">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                <span className="bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold">
+                  For Studios & Event Businesses
+                </span>
+              </div>
+              <CardHeader className="text-center pb-8 pt-8">
                 <CardTitle className="text-2xl mb-2">Recurring Events Subscription</CardTitle>
                 <div className="space-y-1 mb-2">
                   <div>
@@ -216,7 +221,7 @@ export default function Pricing() {
                   </li>
                 </ul>
                 <Link href="/book-call">
-                  <Button size="lg" variant="outline" className="w-full font-semibold" data-testid="button-events-schedule">
+                  <Button size="lg" className="w-full font-semibold" data-testid="button-events-schedule">
                     Schedule a Call
                   </Button>
                 </Link>
