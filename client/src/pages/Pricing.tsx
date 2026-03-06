@@ -177,7 +177,7 @@ export default function Pricing() {
             <Card className="relative transition-all duration-300 hover:shadow-xl border-primary border-2 shadow-lg">
               <div className="absolute -top-4 left-1/2 -translate-x-1/2">
                 <span className="bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold">
-                  For Studios & Event Businesses
+                  Recurring
                 </span>
               </div>
               <CardHeader className="text-center pb-8 pt-8">
