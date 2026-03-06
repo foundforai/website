@@ -128,7 +128,7 @@ export default function Services() {
                     </div>
                   </div>
                   <p className="text-sm text-muted-foreground mb-8">Minimum term: 3 months, then month to month</p>
-                  <Link href="/contact">
+                  <Link href="/book-call">
                     <Button size="lg" variant="outline" className="font-semibold text-lg px-8" data-testid="button-events-subscription">
                       Schedule a Call
                     </Button>
