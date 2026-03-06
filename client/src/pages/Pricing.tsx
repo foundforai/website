@@ -184,10 +184,11 @@ export default function Pricing() {
                 <CardTitle className="text-2xl mb-2">Recurring Events Subscription</CardTitle>
                 <div className="space-y-1 mb-2">
                   <div>
+                    <p className="text-sm text-muted-foreground">Onboarding</p>
                     <span className="text-4xl font-bold text-primary">$750</span>
-                    <span className="text-sm text-muted-foreground ml-2">one time</span>
                   </div>
                   <div>
+                    <p className="text-sm text-muted-foreground">Monthly</p>
                     <span className="text-4xl font-bold text-primary">$250</span>
                     <span className="text-sm text-muted-foreground ml-2">/ month</span>
                   </div>
