@@ -114,9 +114,9 @@ export default function Pricing() {
           </div>
 
           {/* Pricing Cards */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16 max-w-4xl mx-auto items-start">
             {/* Card 1: AI Visibility Fix (Start Here) - Emphasized */}
-            <Card className="relative transition-all duration-300 hover:shadow-xl border-primary border-2 shadow-lg lg:scale-105 lg:-mt-4 lg:mb-4">
+            <Card className="relative transition-all duration-300 hover:shadow-xl border-primary border-2 shadow-lg">
               <div className="absolute -top-4 left-1/2 -translate-x-1/2">
                 <span className="bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold">
                   Start Here
@@ -173,94 +173,54 @@ export default function Pricing() {
               </CardContent>
             </Card>
 
-            {/* Card 2: Ongoing Optimization (After the Fix) */}
-            <Card className="relative transition-all duration-300 hover:shadow-xl hover:scale-[1.02] border-2">
+            {/* Card 2: Recurring Events Subscription */}
+            <Card className="relative transition-all duration-300 hover:shadow-xl border-2">
               <CardHeader className="text-center pb-8">
-                <CardTitle className="text-2xl mb-2">Ongoing Optimization</CardTitle>
-                <p className="text-sm text-muted-foreground mb-2">(After the Fix)</p>
-                <div className="text-4xl font-bold text-primary mb-2">Custom</div>
-                <CardDescription className="text-base">
-                  For businesses that want continuous AI visibility growth after their initial fix.
+                <CardTitle className="text-2xl mb-2">Recurring Events Subscription</CardTitle>
+                <div className="space-y-1 mb-2">
+                  <div>
+                    <span className="text-4xl font-bold text-primary">$750</span>
+                    <span className="text-sm text-muted-foreground ml-2">one time</span>
+                  </div>
+                  <div>
+                    <span className="text-4xl font-bold text-primary">$250</span>
+                    <span className="text-sm text-muted-foreground ml-2">/ month</span>
+                  </div>
+                </div>
+                <p className="text-sm text-muted-foreground">3-month minimum, then month to month</p>
+                <CardDescription className="text-base mt-4">
+                  For local businesses with recurring public classes, workshops, and events.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <ul className="space-y-3">
                   <li className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-sm">Everything in AI Visibility Fix</span>
+                    <span className="text-sm">Monthly accuracy audit and fixes</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-sm">Monthly AI visibility monitoring</span>
+                    <span className="text-sm">One micro test per month</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-sm">Ongoing optimization updates</span>
+                    <span className="text-sm">Simple monthly report</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-sm">Growth tracking & reporting</span>
+                    <span className="text-sm">Tracking setup on onboarding</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-sm">Priority support</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-sm">Quarterly strategy reviews</span>
+                    <span className="text-sm">Optional Distribution Pack — $100/month add-on</span>
                   </li>
                 </ul>
                 <Link href="/book-call">
-                  <Button size="lg" variant="outline" className="w-full font-semibold" data-testid="button-pro-schedule">
+                  <Button size="lg" variant="outline" className="w-full font-semibold" data-testid="button-events-schedule">
                     Schedule a Call
                   </Button>
                 </Link>
-                <p className="text-sm text-muted-foreground text-center">Available after completing the AI Visibility Fix</p>
-              </CardContent>
-            </Card>
-
-            {/* Card 3: Enterprise & Agency Expansion */}
-            <Card className="relative transition-all duration-300 hover:shadow-xl hover:scale-[1.02] border-2">
-              <CardHeader className="text-center pb-8">
-                <CardTitle className="text-2xl mb-2">Enterprise & Agency Expansion</CardTitle>
-                <div className="text-4xl font-bold text-primary mb-2">Custom</div>
-                <CardDescription className="text-base">
-                  For multi-site, agency, or large-scale implementations.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-sm">Everything in Ongoing Optimization</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-sm">Multi-site management</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-sm">White-label options</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-sm">Dedicated account manager</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-sm">Custom SLA agreements</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-sm">Volume pricing</span>
-                  </li>
-                </ul>
-                <Link href="/book-call">
-                  <Button size="lg" variant="outline" className="w-full font-semibold" data-testid="button-enterprise-schedule">
-                    Schedule a Call
-                  </Button>
-                </Link>
-                <p className="text-sm text-muted-foreground text-center">Custom scope, post-fix</p>
+                <p className="text-sm text-muted-foreground text-center">Card autopay required. Work starts after onboarding is paid and subscription is active.</p>
               </CardContent>
             </Card>
           </div>
