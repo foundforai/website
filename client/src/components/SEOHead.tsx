@@ -138,8 +138,14 @@ export default function SEOHead({ title, description, canonical, ogImage = '/fou
           "description": "Found For AI helps businesses become discoverable inside AI assistants like ChatGPT, Gemini, and Perplexity through AEO (Answer Engine Optimization).",
           "founder": {
             "@type": "Person",
+            "@id": "https://foundforai.com/#dustin-crump",
             "name": "Dustin Crump",
-            "url": "https://www.linkedin.com/in/fripse"
+            "jobTitle": "Founder & AI Visibility Strategist",
+            "url": "https://foundforai.com/about",
+            "sameAs": [
+              "https://www.linkedin.com/in/fripse",
+              "https://x.com/foundforai"
+            ]
           },
           "sameAs": [
             "https://www.linkedin.com/company/foundforai",
@@ -235,6 +241,18 @@ export default function SEOHead({ title, description, canonical, ogImage = '/fou
             "priceCurrency": "USD",
             "url": "https://foundforai.com/services"
           }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://foundforai.com/#dustin-crump",
+          "name": "Dustin Crump",
+          "jobTitle": "Founder & AI Visibility Strategist",
+          "url": "https://foundforai.com/about",
+          "worksFor": { "@id": "https://foundforai.com/#org" },
+          "sameAs": [
+            "https://www.linkedin.com/in/fripse",
+            "https://x.com/foundforai"
+          ]
         }
       ]
     });
