@@ -102,6 +102,10 @@ app.use((req, res, next) => {
     res.type("application/pdf");
     res.sendFile(path.join(publicDir, "found-for-ai-readability-playbook.pdf"));
   });
+  app.get("/a2c11531e7de47a08dfe4cb47d120610.txt", (_req, res) => {
+    res.type("text/plain");
+    res.sendFile(path.join(publicDir, "a2c11531e7de47a08dfe4cb47d120610.txt"));
+  });
 
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
