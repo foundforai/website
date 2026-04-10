@@ -1,6 +1,6 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
-import { readFileSync } from "fs";
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from "fs";
 import { join } from "path";
 import { storage } from "./storage";
 import { auditSubmissionSchema, contactSubmissionSchema, readinessReportSubmissionSchema } from "@shared/schema";
@@ -192,6 +192,36 @@ export async function registerRoutes(app: Express): Promise<Server> {
         message: error.message || 'Invalid submission data' 
       });
     }
+  });
+
+  app.post("/api/publish-report", (req, res) => {
+    const apiKey = req.get("X-API-Key");
+    if (!apiKey || apiKey !== process.env.REPORT_API_KEY) {
+      return res.status(401).json({ success: false, message: "Unauthorized" });
+    }
+
+    const { filename, html } = req.body;
+    if (!filename || typeof filename !== "string" || !html || typeof html !== "string") {
+      return res.status(400).json({ success: false, message: "Missing required fields: filename (string) and html (string)" });
+    }
+
+    let sanitized = filename.replace(/[\/\\\.]+/g, "").replace(/[^a-zA-Z0-9\-_]/g, "");
+    if (!sanitized) {
+      return res.status(400).json({ success: false, message: "Invalid filename" });
+    }
+    if (!sanitized.endsWith(".html")) {
+      sanitized = sanitized + ".html";
+    }
+
+    const reportsDir = join(process.cwd(), "client", "public", "reports");
+    if (!existsSync(reportsDir)) {
+      mkdirSync(reportsDir, { recursive: true });
+    }
+
+    writeFileSync(join(reportsDir, sanitized), html, "utf-8");
+
+    const slug = sanitized.replace(/\.html$/, "");
+    res.json({ success: true, url: `/reports/${slug}` });
   });
 
   const httpServer = createServer(app);
