@@ -107,6 +107,27 @@ app.use((req, res, next) => {
     res.sendFile(path.join(publicDir, "a2c11531e7de47a08dfe4cb47d120610.txt"));
   });
 
+  const reportsDir = path.join(publicDir, "reports");
+  app.get("/reports/:filename", (req, res, next) => {
+    const filename = req.params.filename;
+    if (!filename || filename.includes("..") || filename.includes("/")) {
+      return res.status(404).send("Not found");
+    }
+    const filePath = path.join(reportsDir, filename.endsWith(".html") ? filename : `${filename}.html`);
+    res.sendFile(filePath, (err) => {
+      if (err) {
+        next();
+      }
+    });
+  });
+
+  app.get("/reports", (_req, res) => {
+    res.redirect(301, "/");
+  });
+  app.get("/reports/", (_req, res) => {
+    res.redirect(301, "/");
+  });
+
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
     const message = err.message || "Internal Server Error";

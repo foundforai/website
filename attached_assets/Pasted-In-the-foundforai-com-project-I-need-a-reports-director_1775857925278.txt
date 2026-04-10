@@ -1,0 +1,13 @@
+In the foundforai.com project, I need a reports directory with the following behavior:                                                                                                              
+                                                                                                                                                                                                        
+  1. Create a /reports/ directory in the project to store HTML report files.                                                                                                                          
+  2. Serve individual reports by URL — each HTML file in /reports/ should be accessible at its direct URL (e.g., foundforai.com/reports/evansmiles-2026-04-10). A visitor with the link should see the  
+  rendered HTML report in their browser.                                                                                                                                                                
+  3. No directory listing — if someone visits foundforai.com/reports/ with no filename, they should get a 404 or redirect to the homepage. The contents of the directory should never be browseable.    
+  4. No index page — do not create an index.html inside /reports/. The directory should be invisible except to someone with a direct link to a specific file.                                           
+                                                                                                                                                                                                        
+  Implement this using whatever approach fits the existing server setup. If the project uses Express, disable serveIndex for this route. If it's a static site, configure the appropriate rewrite rules.
+                                                                                                                                                                                                        
+  After implementing, confirm how to add a new report — I want to be able to drop an HTML file into /reports/ and have it immediately accessible at its URL without any additional configuration.       
+                                                                                                                                                                                                      
+ 
