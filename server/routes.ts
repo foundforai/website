@@ -1,9 +1,11 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from "fs";
+import { readFileSync } from "fs";
 import { join } from "path";
+import { eq } from "drizzle-orm";
 import { storage } from "./storage";
-import { auditSubmissionSchema, contactSubmissionSchema, readinessReportSubmissionSchema } from "@shared/schema";
+import { db } from "./db";
+import { auditSubmissionSchema, contactSubmissionSchema, readinessReportSubmissionSchema, reports } from "@shared/schema";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Serve static readiness-report.html for SEO (200 OK with content)
@@ -194,34 +196,36 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.post("/api/publish-report", (req, res) => {
-    const apiKey = req.get("X-API-Key");
-    if (!apiKey || apiKey !== process.env.REPORT_API_KEY) {
-      return res.status(401).json({ success: false, message: "Unauthorized" });
-    }
+  app.post("/api/publish-report", async (req, res) => {
+    try {
+      const apiKey = req.get("X-API-Key");
+      if (!apiKey || apiKey !== process.env.REPORT_API_KEY) {
+        return res.status(401).json({ success: false, message: "Unauthorized" });
+      }
 
-    const { filename, html } = req.body;
-    if (!filename || typeof filename !== "string" || !html || typeof html !== "string") {
-      return res.status(400).json({ success: false, message: "Missing required fields: filename (string) and html (string)" });
-    }
+      const { filename, html } = req.body;
+      if (!filename || typeof filename !== "string" || !html || typeof html !== "string") {
+        return res.status(400).json({ success: false, message: "Missing required fields: filename (string) and html (string)" });
+      }
 
-    let sanitized = filename.replace(/[\/\\\.]+/g, "").replace(/[^a-zA-Z0-9\-_]/g, "");
-    if (!sanitized) {
-      return res.status(400).json({ success: false, message: "Invalid filename" });
-    }
-    if (!sanitized.endsWith(".html")) {
-      sanitized = sanitized + ".html";
-    }
+      let slug = filename.replace(/\.html$/i, "").replace(/[\/\\\.]+/g, "").replace(/[^a-zA-Z0-9\-_]/g, "");
+      if (!slug) {
+        return res.status(400).json({ success: false, message: "Invalid filename" });
+      }
 
-    const reportsDir = join(process.cwd(), "client", "public", "reports");
-    if (!existsSync(reportsDir)) {
-      mkdirSync(reportsDir, { recursive: true });
+      await db
+        .insert(reports)
+        .values({ slug, html })
+        .onConflictDoUpdate({
+          target: reports.slug,
+          set: { html, createdAt: new Date() },
+        });
+
+      res.json({ success: true, url: `/reports/${slug}` });
+    } catch (error: any) {
+      console.error("publish-report error:", error);
+      res.status(500).json({ success: false, message: error.message || "Internal server error" });
     }
-
-    writeFileSync(join(reportsDir, sanitized), html, "utf-8");
-
-    const slug = sanitized.replace(/\.html$/, "");
-    res.json({ success: true, url: `/reports/${slug}` });
   });
 
   const httpServer = createServer(app);

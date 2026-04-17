@@ -1,7 +1,10 @@
 import express, { type Request, Response, NextFunction } from "express";
 import path from "path";
+import { eq } from "drizzle-orm";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import { db } from "./db";
+import { reports } from "@shared/schema";
 
 const app = express();
 
@@ -107,18 +110,22 @@ app.use((req, res, next) => {
     res.sendFile(path.join(publicDir, "a2c11531e7de47a08dfe4cb47d120610.txt"));
   });
 
-  const reportsDir = path.join(publicDir, "reports");
-  app.get("/reports/:filename", (req, res, next) => {
-    const filename = req.params.filename;
-    if (!filename || filename.includes("..") || filename.includes("/")) {
-      return res.status(404).send("Not found");
-    }
-    const filePath = path.join(reportsDir, filename.endsWith(".html") ? filename : `${filename}.html`);
-    res.sendFile(filePath, (err) => {
-      if (err) {
-        next();
+  app.get("/reports/:slug", async (req, res) => {
+    try {
+      const rawSlug = req.params.slug.replace(/\.html$/i, "");
+      if (!rawSlug || !/^[a-zA-Z0-9\-_]+$/.test(rawSlug)) {
+        return res.status(404).send("Not found");
       }
-    });
+      const [row] = await db.select().from(reports).where(eq(reports.slug, rawSlug)).limit(1);
+      if (!row) {
+        return res.status(404).send("Not found");
+      }
+      res.setHeader("Content-Type", "text/html; charset=utf-8");
+      res.status(200).send(row.html);
+    } catch (error) {
+      console.error("Error serving report:", error);
+      res.status(500).send("Error loading report");
+    }
   });
 
   app.get("/reports", (_req, res) => {

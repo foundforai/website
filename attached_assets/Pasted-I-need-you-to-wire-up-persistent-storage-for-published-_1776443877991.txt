@@ -1,0 +1,26 @@
+I need you to wire up persistent storage for published reports. Here's exactly what to do:                                                                                       
+                                                                                                                                                                                   
+  1. Provision the Neon database                                                                                                                                                   
+  Create a Neon PostgreSQL database and add the connection string as a Replit secret named DATABASE_URL. The Drizzle ORM and Neon driver are already installed and the schema is in
+   shared/schema.ts.                                                                                                                                                               
+                                                                                                                                                                                   
+  2. Add a reports table to the schema                                                                                                                                             
+  In shared/schema.ts, add a table like this:
+  export const reports = pgTable("reports", {                                                                                                                                      
+    id: serial("id").primaryKey(),           
+    slug: text("slug").notNull().unique(),                                                                                                                                         
+    html: text("html").notNull(),          
+    createdAt: timestamp("created_at").defaultNow(),                                                                                                                               
+  });                                               
+  Then run the migration so the table actually exists in the database.                                                                                                             
+                                           
+  3. Update the publish-report API endpoint                                                                                                                                        
+  Instead of writing the HTML to a file on disk, save it to the reports table with the filename as the slug. It should upsert (insert or update if slug already exists).
+                                                                                                                                                                                   
+  4. Update the report-serving route                                                                                                                                               
+  The route that handles /reports/:slug should query the database for a row where slug matches, then return the stored HTML directly. If no row is found, return a 404.            
+                                                                                                                                                                                   
+  5. Remove the filesystem write           
+  Once the database is working, remove the code that writes HTML files to disk — that's what causes reports to vanish on restart.                                                  
+                                                                                                                                                                                   
+  The goal: a POST to /api/publish-report saves HTML to the database. A GET to /reports/:slug reads it back. Nothing touches the filesystem.   

@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { pgTable, text, varchar, timestamp } from "drizzle-orm/pg-core";
+import { pgTable, text, varchar, timestamp, serial } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -8,6 +8,15 @@ export const users = pgTable("users", {
   username: text("username").notNull().unique(),
   password: text("password").notNull(),
 });
+
+export const reports = pgTable("reports", {
+  id: serial("id").primaryKey(),
+  slug: text("slug").notNull().unique(),
+  html: text("html").notNull(),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export type Report = typeof reports.$inferSelect;
 
 export const insertUserSchema = createInsertSchema(users).pick({
   username: true,
