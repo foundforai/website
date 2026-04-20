@@ -35,6 +35,7 @@ export default function Navigation() {
     { href: '/pricing', label: 'Pricing & Plans' },
     { href: '/blog', label: 'Blog' },
     { href: '/about', label: 'About' },
+    { href: '/media', label: 'Media' },
     { href: '/contact', label: 'Contact' },
   ];
 

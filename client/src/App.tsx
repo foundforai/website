@@ -24,6 +24,8 @@ import AISearchVisibility from "@/pages/AISearchVisibility";
 import Insights from "@/pages/Insights";
 import Playbook from "@/pages/Playbook";
 import PlaybookThanks from "@/pages/PlaybookThanks";
+import Media from "@/pages/Media";
+import MediaEpisodeSmallLake from "@/pages/MediaEpisodeSmallLake";
 import NotFound from "@/pages/NotFound";
 
 function AppRouter() {
@@ -49,6 +51,8 @@ function AppRouter() {
         <Route path="/insights" component={Insights} />
         <Route path="/playbook/thanks" component={PlaybookThanks} />
         <Route path="/playbook" component={Playbook} />
+        <Route path="/media/small-lake-city-podcast" component={MediaEpisodeSmallLake} />
+        <Route path="/media" component={Media} />
         <Route component={NotFound} />
       </Switch>
     </>

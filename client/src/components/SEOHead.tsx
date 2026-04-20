@@ -144,7 +144,8 @@ export default function SEOHead({ title, description, canonical, ogImage = '/fou
             "url": "https://foundforai.com/about",
             "sameAs": [
               "https://www.linkedin.com/in/fripse",
-              "https://x.com/foundforai"
+              "https://x.com/foundforai",
+              "https://www.smalllakepod.com/episodes/dustin-crump-foundforai"
             ]
           },
           "sameAs": [
@@ -152,6 +153,19 @@ export default function SEOHead({ title, description, canonical, ogImage = '/fou
             "https://x.com/foundforai",
             "https://www.facebook.com/foundforai",
             "https://www.instagram.com/foundforai"
+          ],
+          "subjectOf": [
+            {
+              "@type": "PodcastEpisode",
+              "@id": "https://foundforai.com/media/small-lake-city-podcast#episode",
+              "name": "How to Slide Into the Consciousness of AI — with Dustin Crump",
+              "url": "https://foundforai.com/media/small-lake-city-podcast",
+              "partOfSeries": {
+                "@type": "PodcastSeries",
+                "name": "Small Lake City Podcast",
+                "url": "https://www.smalllakepod.com"
+              }
+            }
           ],
           "brand": { "@type": "Brand", "name": "Found For AI" }
         },
@@ -251,7 +265,21 @@ export default function SEOHead({ title, description, canonical, ogImage = '/fou
           "worksFor": { "@id": "https://foundforai.com/#org" },
           "sameAs": [
             "https://www.linkedin.com/in/fripse",
-            "https://x.com/foundforai"
+            "https://x.com/foundforai",
+            "https://www.smalllakepod.com/episodes/dustin-crump-foundforai"
+          ],
+          "subjectOf": [
+            {
+              "@type": "PodcastEpisode",
+              "@id": "https://foundforai.com/media/small-lake-city-podcast#episode",
+              "name": "How to Slide Into the Consciousness of AI — with Dustin Crump",
+              "url": "https://foundforai.com/media/small-lake-city-podcast",
+              "partOfSeries": {
+                "@type": "PodcastSeries",
+                "name": "Small Lake City Podcast",
+                "url": "https://www.smalllakepod.com"
+              }
+            }
           ]
         }
       ]

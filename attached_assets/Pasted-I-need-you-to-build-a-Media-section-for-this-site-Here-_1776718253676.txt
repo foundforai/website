@@ -1,0 +1,211 @@
+I need you to build a Media section for this site. Here is exactly what to create:
+
+## 1. Create two new page files
+
+### File 1: `client/src/pages/Media.tsx`
+A media index page at `/media` that:
+- Matches the existing site's visual style
+- Has a page hero with title "Media & Podcast Appearances" and subtitle "Conversations about AI visibility, Answer Engine Optimization, and helping businesses get found by AI"
+- Lists one appearance card for the Small Lake City Podcast with:
+  - Show name: "Small Lake City Podcast"
+  - Episode title: "How to Slide Into the Consciousness of AI — with Dustin Crump"
+  - Date: April 2025
+  - Description: "Dustin joins the Small Lake City Podcast to discuss how AI is replacing Google search, why businesses are invisible to AI assistants, and how the AI visibility layer works — including real client results from local Salt Lake businesses."
+  - Three link buttons: "Listen on Spotify" (https://open.spotify.com/episode/6hY9YVGJlwd8ifDMIuRGIj), "Watch on YouTube" (https://youtu.be/VqFTeqxGR9s), "Full Episode + Transcript" linking to internal route /media/small-lake-city-podcast
+- Uses SEOHead component with:
+  - title="Media & Podcast Appearances | Found For AI"
+  - description="Podcast appearances, interviews, and media features with Dustin Crump, Founder of Found For AI — covering AI visibility, AEO, and how businesses get found by AI assistants."
+  - canonical="https://foundforai.com/media"
+- Injects this JSON-LD schema via a useEffect (create a script tag, append to document.head, remove on cleanup — same pattern used in SEOHead.tsx):
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Media Appearances — Dustin Crump",
+  "description": "Podcast appearances and media features with Dustin Crump, Founder of Found For AI",
+  "url": "https://foundforai.com/media",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "PodcastEpisode",
+        "name": "How to Slide Into the Consciousness of AI — with Dustin Crump",
+        "url": "https://www.smalllakepod.com/episodes/dustin-crump-foundforai",
+        "sameAs": [
+          "https://open.spotify.com/episode/6hY9YVGJlwd8ifDMIuRGIj",
+          "https://youtu.be/VqFTeqxGR9s"
+        ],
+        "datePublished": "2025-04-01",
+        "description": "Dustin Crump of Found For AI discusses AI visibility, Answer Engine Optimization, and how local businesses can get found and recommended by AI assistants like ChatGPT, Claude, and Gemini.",
+        "partOfSeries": {
+          "@type": "PodcastSeries",
+          "name": "Small Lake City Podcast",
+          "url": "https://www.smalllakepod.com"
+        },
+        "author": {
+          "@type": "Person",
+          "@id": "https://foundforai.com/#dustin-crump",
+          "name": "Dustin Crump"
+        }
+      }
+    }
+  ]
+}
+
+---
+
+### File 2: `client/src/pages/MediaEpisodeSmallLake.tsx`
+A dedicated episode page at `/media/small-lake-city-podcast` that:
+- Matches the existing site's visual style
+- Has a breadcrumb at the top: Home > Media > Small Lake City Podcast
+- Page title: "How to Slide Into the Consciousness of AI"
+- Subheading: "Small Lake City Podcast — Episode with Dustin Crump, Founder of Found For AI"
+- An embedded YouTube iframe for https://youtu.be/VqFTeqxGR9s (use embed URL format: https://www.youtube.com/embed/VqFTeqxGR9s)
+- A row of three external link buttons all opening in new tab: "Listen on Spotify" (https://open.spotify.com/episode/6hY9YVGJlwd8ifDMIuRGIj), "Watch on YouTube" (https://youtu.be/VqFTeqxGR9s), "Visit Podcast Website" (https://www.smalllakepod.com/episodes/dustin-crump-foundforai)
+- An "About This Episode" section with this copy: "Dustin Crump, Founder of Found For AI, joined the Small Lake City Podcast to talk about why businesses are invisible to AI assistants — and what to do about it. The conversation covers how AI search is replacing Google for everyday queries, what the AI visibility layer actually is and why it matters, real results from local Salt Lake businesses after implementing AI visibility fixes, the future of AI agents and why your business needs to be readable by them now, and why it's never been a better time to be an entrepreneur."
+- A "Key Quotes from This Episode" section with these three pull quotes displayed as styled blockquotes:
+  1. "How do you slide into the consciousness of AI where it will recommend your business?"
+  2. "I look at your site and I'm like, wow, it's a really good site for humans. But what about the robots?"
+  3. "AI is hungry for your events. It wants to give you what you want."
+- A full transcript section with heading "Full Transcript" and this cleaned content:
+
+[TRANSCRIPT START]
+Dustin Crump joined the Small Lake City Podcast to discuss AI visibility, Answer Engine Optimization, and how businesses can get found and recommended by AI assistants.
+
+On how AI search is replacing Google:
+"I've replaced 70 to 90% of things I would usually go to Google for. User behavior is shifting rapidly — people aren't just typing 'accountant near me.' They're having a full conversation with AI. It's their therapist, their business advisor, everything."
+
+On what the AI visibility layer actually is:
+"There's this structured data, this schema markup — it's a layer of code on your site. It's not visual to you, but it's visible to the AI. I look at your site and I'm like, wow, it's a really good site for humans. But what about the robots? When we put this visibility layer on there, we tell it exactly: this is what you are, this is what you do, this is who you serve. So when AI combs your site, it knows exactly who you are."
+
+On real client results:
+"There's Loc See Hair — a hair extension place in Holiday, Utah. They didn't show up in any of the AIs. I put their visibility layer on and they're now number one right away. The owner said, 'I don't know what you did, it's blowing up.'"
+
+On the future of AI agents:
+"Do you think Oprah goes on Google and searches for restaurants? No — she has agents. In the very near future, we're all going to be Oprah. These AI agents are going to have access to your email, your calendar, your preferences. If your website doesn't have that visibility layer, the agent is going to pass you up."
+
+On events and local businesses:
+"AI is hungry for your events. If you have a yoga studio, a bar with trivia night, an ax throwing place — AI wants to tell people about it. People are going to be asking their AI: what can I do tonight? If that layer isn't on your site, you won't get served up."
+
+On embracing AI:
+"You have to use it. There's never been a better time to be an entrepreneur. It's kind of leveled the playing field for everybody."
+[TRANSCRIPT END]
+
+- An "About the Show" section: "Small Lake City Podcast covers entrepreneurship, business, and culture in Salt Lake City. Hosted locally and focused on the people building things in Utah."
+- Uses SEOHead component with:
+  - title="How to Slide Into the Consciousness of AI | Small Lake City Podcast | Found For AI"
+  - description="Dustin Crump of Found For AI on the Small Lake City Podcast — covering AI visibility, why businesses are invisible to AI search, and how the AI visibility layer works. Full episode and transcript."
+  - canonical="https://foundforai.com/media/small-lake-city-podcast"
+- Injects this JSON-LD schema via useEffect (same append/cleanup pattern):
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "PodcastEpisode",
+      "@id": "https://foundforai.com/media/small-lake-city-podcast#episode",
+      "name": "How to Slide Into the Consciousness of AI — with Dustin Crump",
+      "url": "https://foundforai.com/media/small-lake-city-podcast",
+      "sameAs": [
+        "https://www.smalllakepod.com/episodes/dustin-crump-foundforai",
+        "https://open.spotify.com/episode/6hY9YVGJlwd8ifDMIuRGIj",
+        "https://youtu.be/VqFTeqxGR9s"
+      ],
+      "datePublished": "2025-04-01",
+      "description": "Dustin Crump of Found For AI discusses AI visibility, Answer Engine Optimization, structured data, and how local businesses can get found and recommended by AI assistants like ChatGPT, Claude, and Gemini.",
+      "keywords": ["AI visibility", "Answer Engine Optimization", "AEO", "AI search", "schema markup", "structured data", "Found For AI", "Dustin Crump"],
+      "partOfSeries": {
+        "@type": "PodcastSeries",
+        "name": "Small Lake City Podcast",
+        "url": "https://www.smalllakepod.com"
+      },
+      "author": {
+        "@type": "Person",
+        "@id": "https://foundforai.com/#dustin-crump",
+        "name": "Dustin Crump",
+        "url": "https://foundforai.com/about"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Small Lake City Podcast",
+        "url": "https://www.smalllakepod.com"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://foundforai.com" },
+        { "@type": "ListItem", "position": 2, "name": "Media", "item": "https://foundforai.com/media" },
+        { "@type": "ListItem", "position": 3, "name": "Small Lake City Podcast", "item": "https://foundforai.com/media/small-lake-city-podcast" }
+      ]
+    }
+  ]
+}
+
+---
+
+## 2. Update `client/src/App.tsx`
+
+Add these two imports at the top with the other page imports:
+import Media from "@/pages/Media";
+import MediaEpisodeSmallLake from "@/pages/MediaEpisodeSmallLake";
+
+Add these two routes inside the Switch block, before the NotFound catch-all route:
+<Route path="/media" component={Media} />
+<Route path="/media/small-lake-city-podcast" component={MediaEpisodeSmallLake} />
+
+---
+
+## 3. Update the site navigation
+
+Find wherever the main site navigation links are defined (likely in a Header or Nav component) and add a "Media" link pointing to /media. Place it near the "About" link.
+
+---
+
+## 4. Update `client/src/components/SEOHead.tsx`
+
+This file contains a JSON-LD @graph with multiple schema nodes. Make the following three targeted updates:
+
+### Update 1: Person node
+Find the Person node with @id "https://foundforai.com/#dustin-crump" and make two changes:
+
+Add to the existing sameAs array:
+"https://www.smalllakepod.com/episodes/dustin-crump-foundforai"
+
+Add a new subjectOf property after sameAs:
+"subjectOf": [
+  {
+    "@type": "PodcastEpisode",
+    "@id": "https://foundforai.com/media/small-lake-city-podcast#episode",
+    "name": "How to Slide Into the Consciousness of AI — with Dustin Crump",
+    "url": "https://foundforai.com/media/small-lake-city-podcast",
+    "partOfSeries": {
+      "@type": "PodcastSeries",
+      "name": "Small Lake City Podcast",
+      "url": "https://www.smalllakepod.com"
+    }
+  }
+]
+
+### Update 2: Organization node
+Find the Organization node with @id "https://foundforai.com/#org" and add a new subjectOf property after the existing sameAs array:
+"subjectOf": [
+  {
+    "@type": "PodcastEpisode",
+    "@id": "https://foundforai.com/media/small-lake-city-podcast#episode",
+    "name": "How to Slide Into the Consciousness of AI — with Dustin Crump",
+    "url": "https://foundforai.com/media/small-lake-city-podcast",
+    "partOfSeries": {
+      "@type": "PodcastSeries",
+      "name": "Small Lake City Podcast",
+      "url": "https://www.smalllakepod.com"
+    }
+  }
+]
+
+### Update 3: founder reference inside Organization node
+Find the founder object nested inside the Organization node and add to its sameAs array:
+"https://www.smalllakepod.com/episodes/dustin-crump-foundforai"
+
+---
+
+Do not change any existing pages, routes, styles, or schema properties not listed above. Match the visual design of existing pages exactly.
