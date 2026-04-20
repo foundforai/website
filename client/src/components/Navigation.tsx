@@ -48,15 +48,15 @@ export default function Navigation() {
               <img 
                 src={theme === 'dark' ? '/found-for-ai-logo-dark.png' : '/found-for-ai-logo.png'} 
                 alt="Found For AI logo"
-                className="w-[90px] sm:w-[120px] md:w-[180px] h-auto" 
+                className="w-[90px] sm:w-[110px] md:w-[140px] h-auto" 
               />
             </div>
           </Link>
 
-          <div className="hidden md:flex items-center gap-10">
+          <div className="hidden md:flex items-center gap-4 lg:gap-6">
             {navLinks.map((link) => (
               <Link key={link.href} href={link.href} data-testid={`link-${link.label.toLowerCase().replace(/\s+/g, '-')}`}>
-                <span className={`text-lg font-semibold py-3 px-1 transition-colors hover:text-primary ${location === link.href ? 'text-primary' : 'text-muted-foreground'}`}>
+                <span className={`text-sm font-semibold py-3 px-1 whitespace-nowrap transition-colors hover:text-primary ${location === link.href ? 'text-primary' : 'text-muted-foreground'}`}>
                   {link.label}
                 </span>
               </Link>
