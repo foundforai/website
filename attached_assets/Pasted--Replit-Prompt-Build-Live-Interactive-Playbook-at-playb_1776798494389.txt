@@ -1,0 +1,501 @@
+# Replit Prompt — Build Live Interactive Playbook at /playbook
+
+Paste everything below this line into Replit. This replaces the 
+current /playbook page entirely.
+
+---
+
+I need you to build a new page at `/playbook` on my site 
+foundforai.com. This is an interactive scoring tool, not a static 
+page. Match the site's existing styling, color palette, typography, 
+header, and footer. Do not redesign.
+
+Tech stack: use whatever my site already uses (React/Next.js/etc.). 
+Match existing conventions.
+
+================================================================
+WHAT THIS PAGE IS
+================================================================
+
+The AI Visibility Playbook is a self-scoring checklist with 20 
+items across 5 sections. Users check off what applies to their 
+business, see a running score, get personalized results at the end, 
+and get routed to the right CTA based on their score.
+
+The page works WITHOUT requiring an email. Email capture is 
+optional at the end, for users who want a PDF copy of their 
+results.
+
+State is session-only. Each visit starts fresh. No localStorage, 
+no cookies for progress. If a user leaves and comes back, they 
+start over. This is intentional — simpler UX, and anyone who 
+completed it once and wants to retake will get a fresh experience.
+
+================================================================
+GLOBAL RULES (non-negotiable)
+================================================================
+
+Product names — use exactly these, no variants anywhere:
+- Free offer: "AI Visibility Playbook"
+- Paid offer: "AI Visibility Fix"
+- Guarantee: "We Fix It Free Guarantee" (60 days)
+- Delivery: "seven business days" (always spelled out)
+- "one time" is two words, no hyphen
+
+Voice: small business owner-operators. Plain, direct, non-technical. 
+No jargon without immediate translation.
+
+Links:
+- Book call: https://foundforai.com/talk-to-a-human#calendar
+- Services: https://foundforai.com/services
+
+================================================================
+PAGE METADATA
+================================================================
+
+Title: "AI Visibility Playbook — Score Your Business in 15 Minutes | Found For AI"
+Meta description: "Free interactive checklist. Find out why ChatGPT, Google AI, and Perplexity aren't recommending your business. 20 checks. No email required."
+Canonical: https://foundforai.com/playbook
+
+OG tags:
+- og:title: "AI Visibility Playbook — Score Your Business in 15 Minutes"
+- og:description: Same as meta description
+- og:url: https://foundforai.com/playbook
+- og:type: website
+
+Add HowTo schema (JSON-LD in <head>):
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Check If AI Can Recommend Your Business",
+  "description": "A free 15-minute self-assessment to find out why AI tools like ChatGPT and Perplexity aren't recommending your business.",
+  "totalTime": "PT15M",
+  "step": [
+    { "@type": "HowToStep", "name": "Check who you are", "text": "Verify your business identity is consistent across every platform AI pulls from." },
+    { "@type": "HowToStep", "name": "Check what AI reads", "text": "Confirm your website has the AI-readable layer AI systems need to understand your business." },
+    { "@type": "HowToStep", "name": "Check what's blocking AI", "text": "Identify anything keeping AI from reading your important pages." },
+    { "@type": "HowToStep", "name": "Check your trust signals", "text": "Confirm AI has reasons to recommend you over a competitor." },
+    { "@type": "HowToStep", "name": "Check your clarity", "text": "Verify AI could write a confident one-paragraph recommendation of your business." }
+  ]
+}
+```
+
+================================================================
+PAGE STRUCTURE (top to bottom)
+================================================================
+
+### HERO SECTION
+
+Headline (H1):
+"AI Visibility Playbook"
+
+Subhead:
+"A 15-minute checklist to find out why AI tools like ChatGPT and 
+Google AI aren't recommending your business — and what to fix first."
+
+Body paragraph:
+"When someone asks ChatGPT for a good HVAC company, yoga studio, 
+or dentist in your area, AI gives them one or two names. Not ten 
+blue links. One or two. If your business isn't one of them, it's 
+usually not because you're doing something wrong. It's because 
+your website was built for people to read — not for AI to 
+understand."
+
+Scroll button: "Start the checklist ↓"
+(Smooth-scrolls to the first checklist section)
+
+### PROGRESS BAR (sticky at top once user scrolls past hero)
+
+- Shows "X of 20 checked" on the left
+- Horizontal progress bar in Primary Blue
+- Section indicator on the right (e.g. "Section 2 of 5: What AI Reads")
+- Becomes sticky/fixed to top of viewport once user scrolls past hero
+- No reset link (state resets automatically on page reload)
+
+### THE CHECKLIST (5 sections, 4 items each = 20 total)
+
+For each item, render:
+- A large clickable row (entire row is the click target)
+- Custom checkbox on the left (unchecked = empty square with 
+  border; checked = Primary Blue filled with white checkmark)
+- Bold statement (the checkbox label)
+- Lighter explanation text below the statement
+- On check/uncheck, animate subtly (scale bounce, color fade)
+- Each check updates the progress bar in real-time
+- State lives in React component state only — no persistence
+
+Section intros (styled as section dividers with bold section title 
+and a paragraph of context):
+
+---
+
+**Section 1: Who You Are**
+
+*The first thing an AI system does when it considers your business 
+is try to figure out who you actually are. AI builds a picture of 
+your business by pulling from your website, Google, directories, 
+and social profiles. If those sources tell slightly different 
+stories, AI gets confused — and a confused AI recommends someone 
+else.*
+
+1.1 — **Your business name is spelled the exact same way everywhere**
+Check your website, Google Business Profile, Yelp, Facebook, and 
+any directories. "Smith Plumbing," "Smith Plumbing LLC," and "Smith 
+Plumbing & Heating" look like three different companies to AI — 
+even if they're all you.
+
+1.2 — **Your address and phone number are identical across every platform**
+Even "St." vs. "Street" or an old suite number on one site can 
+split you into two businesses in an AI's view. Pick the exact 
+version you want to be known by and make every platform match it.
+
+1.3 — **Your Google Business Profile is claimed, complete, and current**
+Hours, services, photos, description — all filled in. This is one 
+of the biggest single sources AI pulls from when someone asks for 
+a local recommendation. An empty or stale profile is one of the 
+fastest ways to get skipped.
+
+1.4 — **Your homepage makes it obvious who you are, what you do, and how to contact you — in the first screen**
+If an AI reads your homepage and can't answer those three questions 
+in the first few sentences, it can't confidently recommend you. 
+Quick test: ask a friend to look at your homepage for 5 seconds 
+and tell you what you do. If they can't, AI can't either.
+
+---
+
+**Section 2: What AI Actually Reads**
+
+*When AI looks at your website, it doesn't just read the text on 
+the page. It also looks for a hidden, machine-readable layer — the 
+AI-readable layer. Most small business sites don't have it. Here's 
+how to know.*
+
+2.1 — **Your site has basic "LocalBusiness" schema installed and it matches what's visible on your pages**
+Free way to check: go to search.google.com/test/rich-results, 
+paste in your homepage URL, and look at what comes back. If it 
+says "no items detected," you have no schema. If it shows data, 
+make sure it matches what's on the page.
+
+2.2 — **Each service you offer has its own schema markup**
+A generic "we're a business" tag isn't enough. AI needs to know 
+you specifically offer AC repair, or beginner yoga classes, or 
+emergency dental. Without this, you won't get matched to the 
+specific questions people ask AI.
+
+2.3 — **Your FAQ pages have FAQ schema**
+This is one of the fastest wins in AI visibility. When your FAQ 
+is properly marked up, AI can pull your answer directly into a 
+response. Without it, the AI pulls someone else's answer — even 
+if yours is better.
+
+2.4 — **Nothing on your site has broken or conflicting schema**
+Broken schema is worse than no schema. It tells AI your data can't 
+be trusted, and AI responds by quietly excluding you from 
+consideration. Most sites with broken schema have no idea it's 
+broken because nothing visibly breaks on the page.
+
+---
+
+**Section 3: What's Keeping You Invisible**
+
+*You can have a beautiful website and still be invisible to AI. 
+These are the technical blockers most small business owners don't 
+know they have.*
+
+3.1 — **Your important pages are not accidentally blocked from being read**
+Websites have files called robots.txt and meta tags that can tell 
+AI "don't look at this page." These are meant for login or staging 
+pages, but they often get left on live pages by mistake. If AI 
+can't read it, it doesn't exist.
+
+3.2 — **Your services, pricing, schedule, and contact pages are public — not hidden behind a login or booking tool**
+If customers have to click "book now" and go to a separate portal 
+to see what you offer, AI can't see any of it. Your core 
+information needs to be on regular public pages.
+
+3.3 — **Your homepage links clearly to your most important pages**
+AI uses internal links to figure out what you think is important. 
+If your best service page is buried three clicks deep with no 
+clear path from the homepage, AI assumes it's not a priority.
+
+3.4 — **You don't have duplicate versions of your pages floating around**
+Some sites accidentally have the same page at two URLs — with and 
+without "www," with and without a trailing slash, or a leftover 
+old version. This splits your trust signals and confuses AI about 
+which page is real.
+
+---
+
+**Section 4: Why AI Should Pick You**
+
+*Being readable isn't enough. AI also evaluates whether your 
+business is worth recommending. These are the trust signals that 
+tip the scale.*
+
+4.1 — **You have recent, specific, written reviews — not just a star rating**
+Recency matters more than total count. Ten detailed reviews from 
+the last six months beat 200 generic reviews from three years ago. 
+AI reads review content to understand what you're good at.
+
+4.2 — **Your website answers the questions your customers actually ask before hiring you**
+What does it cost? How long does it take? Do you service my area? 
+If your pages don't answer these, AI can't use them to help 
+someone decide — and will use a competitor who does.
+
+4.3 — **Other websites mention your business — directories, local news, partner sites, associations**
+AI cross-checks your business against other sources. If you only 
+exist on your own website, you look less established than a 
+competitor who shows up in the local chamber of commerce listing 
+and three directories.
+
+4.4 — **Your credentials, certifications, and years in business are stated clearly in plain text**
+Licensed, NASM-certified, 15 years in practice, insured and 
+bonded — if it's not written in readable text on your page, AI 
+doesn't know about it. Credentials buried in a logo image don't 
+count.
+
+---
+
+**Section 5: Can AI Explain You?**
+
+*The final test: if AI read your entire website right now, could 
+it write a short, confident paragraph recommending you to the 
+right customer? Most sites fail this test.*
+
+5.1 — **Your homepage says who you're for — not just what you do**
+"Yoga studio" is a category. "Beginner-friendly yoga studio in 
+downtown Boise with morning and lunchtime classes for working 
+professionals" is a recommendation. The second one gets cited.
+
+5.2 — **Each of your main pages has one clear job**
+A page that tries to explain your services AND your story AND your 
+pricing AND your philosophy gets cited for none of them. One page, 
+one purpose. AI rewards focus.
+
+5.3 — **The next step for a customer is obvious and easy on every page**
+Book, call, message, request a quote — whatever it is, it should 
+be the most obvious button on every important page.
+
+5.4 — **Your site explains why someone should pick you over the business next door**
+Same-day service. First session free. Family-owned since 1998. 
+Something specific. "We provide quality service" is what every 
+business says — so AI treats it as no differentiator at all.
+
+---
+
+### "SEE MY RESULTS" BUTTON
+
+At the bottom of section 5, render a large prominent button:
+"See my results →"
+
+Clicking it smooth-scrolls the user to the results section and 
+shows the results. The button should be clickable at any point — 
+the user doesn't need to have checked any specific number of items 
+to see their results.
+
+If the user has checked zero items, show the results anyway with 
+the appropriate 0-score messaging. Don't gate access to results.
+
+================================================================
+RESULTS SECTION (appears below the checklist, always present in 
+the DOM so it can be scrolled to)
+================================================================
+
+Layout:
+
+### 1. Score display (top of results section)
+
+Large number showing "X / 20" with a colored indicator:
+- 16-20: Green (#1DC98F) with label "Strong"
+- 10-15: Amber (#F59E0B) with label "Partial Visibility"
+- 0-9: Red (#DC2626) with label "Effectively Invisible"
+
+### 2. Section breakdown (below the score)
+
+For each of the 5 sections, show a mini progress bar with:
+- Section name
+- "X / 4" checked
+- Visual bar (Primary Blue fill, grey unfilled)
+
+This helps the user see WHERE their gaps are, not just the total.
+
+### 3. Personalized result copy based on score range
+
+IF score is 16-20:
+
+Heading: "You're in rare company."
+
+Body: "Most small businesses score under 10 their first time 
+through. You're clearly ahead. Your foundation is strong and AI 
+systems can both find and understand you. Your next move is going 
+deeper on content and trust signals — things that separate 
+'recommended' from 'recommended first.' If you'd like a second 
+set of eyes on what you could still improve, a 15-minute call is 
+the fastest way."
+
+CTA: "Book a 15-minute call" (primary button, links to booking URL)
+
+---
+
+IF score is 10-15:
+
+Heading: "You're halfway there."
+
+Body: "AI knows you exist but doesn't fully understand or trust 
+you yet. Based on your answers, your biggest gaps are in [INSERT 
+NAMES OF LOWEST-SCORING SECTIONS]. These are almost always where 
+real visibility gets unlocked or lost — and they're the kind of 
+thing that takes specialized work to fix correctly."
+
+CTAs (stacked):
+- Primary: "Book a 15-minute call — we'll tell you what to fix first" (links to booking)
+- Secondary: "Learn about the AI Visibility Fix →" (links to /services)
+
+---
+
+IF score is 0-9:
+
+Heading: "You're effectively invisible to AI right now."
+
+Body: "That sounds brutal, but here's the upside: so is almost 
+every one of your local competitors. The business that fixes this 
+first in your market gets the AI recommendation — AI systems tend 
+to reinforce their own confidence, so once they start recommending 
+someone, they keep recommending them. Based on your answers, your 
+biggest gaps are in [INSERT NAMES OF LOWEST-SCORING SECTIONS]. 
+The good news: most of what's on this list is fixable in a single 
+focused implementation. You don't need a year-long SEO contract. 
+You need someone to install the correct foundation once, correctly."
+
+CTAs (stacked):
+- Primary: "Book a 15-minute call" (links to booking URL)
+- Secondary: "See the AI Visibility Fix — $1,595, seven business days →" (links to /services)
+
+---
+
+### LOWEST-SCORING SECTIONS LOGIC
+
+Calculate which sections had the lowest completion ratio. In case 
+of tie, include all tied sections.
+
+Use these official section names in the inserted text:
+- "Who You Are"
+- "What AI Actually Reads"
+- "What's Keeping You Invisible"
+- "Why AI Should Pick You"
+- "Can AI Explain You"
+
+Format:
+- 1 section: "your biggest gap is in [section]"
+- 2 sections: "your biggest gaps are in [section] and [section]"
+- 3+ sections: "your biggest gaps span [section], [section], and [section]"
+
+Edge case: if all 5 sections are tied (e.g., user checked 0 or 20 
+items, or an even spread), use: "your gaps are spread across 
+every section" — and for a perfect score, skip the "biggest gaps" 
+sentence entirely.
+
+### 4. Optional email capture (below the CTAs, as a less-prominent card)
+
+Heading: "Want a PDF copy of your results?"
+
+Body: "We'll email you a copy of this checklist, plus occasional 
+notes on AI search. Unsubscribe anytime."
+
+Form:
+- Email input field (type="email", required)
+- Button: "Send me the PDF"
+- Below button, small text: "No spam. One email to deliver the 
+  PDF, and the occasional note on AI search. Unsubscribe anytime."
+
+On submit:
+- POST to the site's existing email capture endpoint (same 
+  endpoint the current /playbook page uses — reuse whatever is 
+  already wired up)
+- Show success state: "Sent. Check your inbox in the next few 
+  minutes."
+- Replace the form with the success message (don't keep the form 
+  visible after submission)
+
+### 5. Share link (small, at the very bottom of results)
+
+Single line: "Share this playbook" — copies 
+https://foundforai.com/playbook to clipboard, shows "Copied!" 
+confirmation briefly (2 seconds).
+
+================================================================
+ACCESSIBILITY REQUIREMENTS
+================================================================
+
+- All checkboxes must be keyboard navigable (Tab + Space to toggle)
+- Progress bar has aria-valuenow, aria-valuemin, aria-valuemax
+- Section headings use proper H2/H3 hierarchy
+- Color is not the only signal for score state (also text labels)
+- Sufficient color contrast on all text (WCAG AA minimum)
+- Focus states are visible
+- All interactive elements have accessible labels
+
+================================================================
+MOBILE BEHAVIOR
+================================================================
+
+- Checkbox rows are at least 44px tall (tap-friendly)
+- Progress bar stays sticky at top (compact on mobile — may hide 
+  section indicator on narrow screens if space is tight)
+- Section intros use less padding on mobile
+- Results section is single column on mobile
+- CTAs are full-width on mobile
+
+================================================================
+ANALYTICS / TRACKING
+================================================================
+
+If the site has analytics (Google Analytics, Plausible, etc.), 
+fire these events:
+- `playbook_started` — fires when first item is checked
+- `playbook_section_completed` — fires when all 4 in a section checked
+- `playbook_results_viewed` — fires when user clicks "See my results"
+- `playbook_score` — pass the score as metadata
+- `playbook_cta_booking_clicked` — when they click the booking CTA
+- `playbook_cta_services_clicked` — when they click the services CTA
+- `playbook_email_submitted` — when they submit the PDF email form
+
+================================================================
+DO NOT
+================================================================
+
+- Require email to use the tool
+- Use localStorage, cookies, or any form of state persistence 
+  across sessions — state is React-only
+- Change the site's existing color palette or typography
+- Use "7 business days" anywhere — it's always "seven business days"
+- Use "one-time" with a hyphen — always "one time"
+- Reference any retired product names (AI Readability Playbook, 
+  AI Search Fix, AI Visibility Tune-Up)
+- Invent content or CTAs not specified in this prompt
+- Show the results section unless the user has clicked "See my 
+  results" (the results section can exist in the DOM but should 
+  be hidden until triggered)
+
+================================================================
+POST-BUILD CHECKLIST
+================================================================
+
+After building, verify:
+1. All 20 items render with checkbox, bold statement, and explanation
+2. Checking/unchecking updates the progress bar in real-time
+3. Refreshing the page clears all state (no persistence)
+4. "See my results" button reveals the results section
+5. Results section shows correct score and section breakdown
+6. Lowest-section logic correctly identifies weakest areas (test 
+   with various check patterns: all checked in section 1 but none 
+   in section 2, etc.)
+7. All three score-range copy blocks render correctly when tested 
+   (try scores of 0, 5, 10, 15, and 20)
+8. Email form submits successfully to existing endpoint
+9. CTAs link to correct URLs
+10. HowTo schema validates at search.google.com/test/rich-results
+11. Page is mobile responsive (test at 375px width)
+12. Analytics events fire correctly (if analytics is installed)
