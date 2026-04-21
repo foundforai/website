@@ -1,0 +1,436 @@
+# Replit Prompt — Publish Blog Article with Schema Markup
+
+Paste everything below this line into Replit.
+
+---
+
+I need you to add a new blog post to my site foundforai.com at the URL 
+slug `/blog/5-things-ai-checks-local-business`.
+
+The existing blog index lives at `/blog`. Follow whatever pattern my 
+site already uses for blog posts (same layout, same components, same 
+header/footer, same styling conventions). Do not redesign anything. 
+Match what's already there.
+
+================================================================
+GLOBAL STYLE REQUIREMENTS (apply to everything on this page)
+================================================================
+
+- Product names are locked. Use exactly these, nowhere else any variant:
+  * Free offer: "AI Visibility Playbook"
+  * Paid offer: "AI Visibility Fix"
+  * Guarantee: "We Fix It Free Guarantee"
+  * Delivery promise: "seven business days" (always spelled out)
+- Use "one time" as two words, no hyphen
+- Audience is small business owner-operators. Plain, direct, 
+  non-technical voice. No jargon without immediate translation.
+- Links to use throughout:
+  * Playbook: https://foundforai.com/playbook
+  * Book a call: https://foundforai.com/talk-to-a-human#calendar
+  * Services: https://foundforai.com/services
+
+================================================================
+PAGE METADATA
+================================================================
+
+Page title (browser tab + og:title):
+"The 5 Things AI Checks Before Recommending a Local Business | Found For AI"
+
+Meta description (under 160 chars):
+"AI tools recommend one or two local businesses — not ten. Here are the 5 things ChatGPT, Google AI, and Perplexity check before picking yours."
+
+Open Graph tags (for social sharing previews):
+- og:title: "The 5 Things AI Checks Before Recommending a Local Business"
+- og:description: Same as meta description above
+- og:url: https://foundforai.com/blog/5-things-ai-checks-local-business
+- og:type: article
+- og:site_name: Found For AI
+- og:image: Use whatever default OG image the site uses for blog posts, 
+  or generate a 1200x630 image with the article title on brand background
+
+Twitter Card tags:
+- twitter:card: summary_large_image
+- twitter:title: "The 5 Things AI Checks Before Recommending a Local Business"
+- twitter:description: Same as meta description
+
+Canonical URL:
+<link rel="canonical" href="https://foundforai.com/blog/5-things-ai-checks-local-business" />
+
+================================================================
+SCHEMA MARKUP (CRITICAL — this article is about AI visibility, 
+so it needs to model what it teaches)
+================================================================
+
+Add TWO JSON-LD schema blocks inside the <head> of this page. Both 
+as <script type="application/ld+json"> tags.
+
+### Schema 1: BlogPosting
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "The 5 Things AI Checks Before Recommending a Local Business",
+  "description": "AI tools recommend one or two local businesses — not ten. Here are the 5 things ChatGPT, Google AI, and Perplexity check before picking yours.",
+  "url": "https://foundforai.com/blog/5-things-ai-checks-local-business",
+  "datePublished": "[INSERT TODAY'S DATE IN ISO 8601 FORMAT, e.g., 2026-04-21]",
+  "dateModified": "[INSERT TODAY'S DATE IN ISO 8601 FORMAT]",
+  "author": {
+    "@type": "Person",
+    "name": "Dustin Crump",
+    "url": "https://foundforai.com/about"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Found For AI",
+    "url": "https://foundforai.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://foundforai.com/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://foundforai.com/blog/5-things-ai-checks-local-business"
+  },
+  "articleSection": "AI Visibility",
+  "keywords": "AI visibility, ChatGPT local business, AI search, schema markup, small business AI, Google AI Overview",
+  "inLanguage": "en-US"
+}
+```
+
+### Schema 2: FAQPage
+
+Add an FAQ schema block covering the five things the article talks about. 
+This helps AI tools pull direct answers into their responses.
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why isn't ChatGPT recommending my business?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most small businesses are invisible to AI tools like ChatGPT because their websites lack the machine-readable layer AI systems use to understand a business. AI reads structured data and entity information — not just visible text. Without that layer, AI has to guess and usually recommends a competitor whose information is clear."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does AI check before recommending a local business?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AI systems check five main things: whether your business identity is consistent across platforms, whether your website has the AI-readable layer (structured data) that AI needs, whether anything is blocking AI from reading your site, whether you have trust signals like recent reviews and credentials, and whether your content is specific enough for AI to write a confident recommendation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I check if my website has schema markup?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Go to search.google.com/test/rich-results, paste in your homepage URL, and see what comes back. If it says 'no items detected,' your site has no schema markup. If data shows up, make sure it matches what's visible on your page — mismatched data is worse than no data."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to fix AI visibility?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The AI Visibility Fix from Found For AI is a one time implementation delivered in seven business days. It installs the correct structured data, fixes entity consistency across platforms, and cleans up anything keeping AI from understanding the business. It is backed by a 60-day We Fix It Free Guarantee."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is AI search replacing traditional SEO?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AI search is becoming a parallel discovery channel alongside traditional search. When customers ask ChatGPT, Perplexity, or Google's AI Overview for a recommendation, those tools return one or two businesses — not ten blue links. Businesses that are invisible to AI lose customers before they ever see a search result."
+      }
+    }
+  ]
+}
+```
+
+### Schema 3: BreadcrumbList
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://foundforai.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://foundforai.com/blog"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "The 5 Things AI Checks Before Recommending a Local Business",
+      "item": "https://foundforai.com/blog/5-things-ai-checks-local-business"
+    }
+  ]
+}
+```
+
+After adding, validate all three schemas using the 
+search.google.com/test/rich-results tool or schema.org validator.
+
+================================================================
+ARTICLE CONTENT
+================================================================
+
+Render the article below with my site's standard blog post styling. 
+Use proper heading hierarchy (H1 for title, H2 for major sections, 
+H3 where nested). Author byline should show "Dustin Crump" and 
+include publish date.
+
+---
+
+# The 5 Things AI Checks Before Recommending a Local Business
+
+*If ChatGPT, Google AI, or Perplexity isn't recommending your 
+business, one of these five things is almost always the reason.*
+
+Something shifted in how people find local businesses, and it 
+happened faster than most owners realized.
+
+A customer needing an HVAC company used to Google it, scroll 
+through ten results, and pick one. Now they ask ChatGPT. Or they 
+use Google's AI Overview at the top of the page. Or their phone's 
+built-in AI assistant. And those tools don't return ten options — 
+they return one or two.
+
+If your business isn't one of the names AI hands over, you didn't 
+lose to a better competitor. You never got in the room.
+
+The frustrating part: most small businesses are invisible to AI not 
+because they're bad businesses, but because of five specific, 
+fixable things. Here's what AI actually checks — and where almost 
+every local business falls short.
+
+## 1. Whether it can figure out who you actually are
+
+Before AI can recommend you, it has to know who you are. That 
+sounds obvious. In practice, it's where most businesses fall apart.
+
+AI builds a picture of your business by pulling information from 
+your website, Google Business Profile, Yelp, Facebook, directories, 
+and review sites. If those sources spell your business name 
+differently, list different addresses, or have an outdated phone 
+number, AI gets confused. And a confused AI defaults to recommending 
+the business it's sure about.
+
+A typical problem: your business is "Smith Plumbing" on your 
+website, "Smith Plumbing LLC" on Google, and "Smith Plumbing & 
+Heating Services" on Yelp. To AI, that can look like three 
+different companies. None of them look trustworthy because none of 
+them have complete, consistent information.
+
+**The fix:** pick one exact version of your business name, address, 
+and phone number — and make every platform match. Down to the 
+abbreviation. "Street" vs. "St." matters more than you'd think.
+
+## 2. Whether your website has the AI-readable layer it needs
+
+Here's the part most business owners have never been told.
+
+When AI looks at your website, it doesn't just read the text on the 
+page. It also looks for a hidden, machine-readable layer of 
+information — the **AI-readable layer**. It's code that sits behind 
+the scenes and literally spells out: *this is a business, here's 
+the exact name, here are the services, here's the address, here 
+are the hours.*
+
+Think of it as a form only AI can see. If the form is filled out, 
+AI can understand your business well enough to recommend it. If 
+it's blank — which is the case for most small business websites — 
+AI has to guess, and it usually defers to a competitor whose form 
+is filled out.
+
+**How to check yours in 30 seconds:** go to 
+search.google.com/test/rich-results, paste in your homepage URL, 
+and see what comes back. "No items detected" means you have no 
+AI-readable layer. If data shows up, make sure it matches what's 
+visible on your page. Mismatched data is worse than no data.
+
+## 3. Whether anything is keeping AI from reading your site
+
+This one catches a lot of businesses by surprise.
+
+Every website has files and tags that tell AI tools which pages 
+they're allowed to look at. These are meant for things like login 
+pages or staging sites. But they frequently get accidentally left 
+on live pages — by a developer, by a website template that shipped 
+with them preset, or by a plugin that doesn't know better.
+
+If AI can't read a page, the page doesn't exist as far as AI is 
+concerned. You can have the best service page in your city, and if 
+one line of code is telling AI to skip it, it gets skipped.
+
+The same goes for content hidden behind login walls or booking 
+tools. If a customer has to click "Book Now" and get sent to a 
+separate portal to see what you actually offer, AI can't see any 
+of it either. Your core information — services, pricing, hours, 
+location — needs to live on regular public pages.
+
+---
+
+### [MID-ARTICLE CTA BLOCK — style as a callout card, matching 
+existing blog callout styling on the site]
+
+**Wondering how your business actually scores?**
+
+We built a free, interactive playbook that walks through all 20 
+things AI systems check before recommending a business. It takes 
+about 15 minutes, no email required. You check what applies to 
+your business and get a score that tells you exactly where your 
+gaps are.
+
+Most small businesses score under 10 out of 20 their first time 
+through.
+
+**[→ Run the free AI Visibility Playbook](https://foundforai.com/playbook)**
+
+---
+
+## 4. Whether AI has reasons to trust you over a competitor
+
+Being readable is the foundation. Being *recommendable* is a 
+separate question.
+
+Once AI knows your business exists and understands what you do, 
+it still has to decide whether to recommend you over the other 
+businesses in your area. This is where trust signals come in:
+
+- **Recent reviews with actual text.** Ten detailed reviews from 
+  the last six months beat 200 generic five-star reviews from 
+  three years ago. AI reads review content to understand what 
+  you're actually good at.
+- **Third-party mentions.** If your business only shows up on 
+  your own website, you look less established than a competitor 
+  who appears in the local chamber of commerce listing, a news 
+  article, a partner site, and three directories.
+- **Clearly stated credentials.** Licensed, certified, insured, 
+  years in business — if it's not written in plain text on your 
+  page, AI doesn't know about it. Credentials buried inside a 
+  logo image don't count.
+- **Answers to real customer questions.** What does it cost? How 
+  long does it take? Do you service my area? If your pages don't 
+  answer these, AI can't use them to help someone decide — and 
+  will recommend a competitor who does.
+
+A competitor with a lower star rating but better trust signals 
+will often get the AI recommendation over a business with more 
+stars but less substance behind them.
+
+## 5. Whether AI could write a one-paragraph recommendation of you
+
+This is the final test, and it's the one most businesses fail 
+without realizing it.
+
+If an AI system read everything on your website right now, could 
+it write a short, confident paragraph recommending you to the 
+right customer?
+
+"Smith Plumbing provides plumbing services in Columbus" is not a 
+recommendation. It's a sentence a dictionary could write.
+
+"Smith Plumbing, a family-owned plumbing company serving the east 
+side of Columbus since 1998, specializing in same-day emergency 
+service and water heater replacement, licensed and insured" — 
+that's a recommendation. That's what AI needs to hand to a 
+customer.
+
+The difference isn't marketing polish. It's specificity: who 
+you're for, what you specifically do, what sets you apart, proof 
+you can be trusted. Most small business homepages are written to 
+sound professional, which ends up making them sound interchangeable 
+with every other business in the category. AI treats interchangeable 
+businesses the same way customers do: it moves on to the one that 
+stands out.
+
+## The good news about all of this
+
+Here's the part worth holding onto: almost every small business 
+has the same gaps. Your competitors are just as invisible to AI 
+as you are.
+
+That means the first business in your market to fix this wins the 
+AI recommendation — and AI systems tend to reinforce their own 
+confidence. Once they start recommending a business, they keep 
+recommending it. Being first matters more than being best.
+
+The fix isn't complicated once you know what it is. It's technical, 
+but it's not massive. It's a focused one time fix, not a year-long 
+SEO contract.
+
+## Ready to move on this?
+
+If you read this and thought *I don't want to learn what JSON-LD 
+is, I just want this fixed* — that's exactly what we do.
+
+The **AI Visibility Fix** is a one time, done-for-you 
+implementation. We install the correct AI-readable layer, correct 
+your entity foundation, and clean up anything keeping AI from 
+understanding your business. Delivered in seven business days. 
+Flat fee, no retainer, full walkthrough of every change we made.
+
+Backed by our 60-day **We Fix It Free Guarantee** — if anything 
+isn't working the way we promised, we fix it on us.
+
+The fastest way to find out if it's a fit is a 15-minute call. We 
+look at your site, tell you what we'd fix and what we wouldn't, 
+and you decide from there. No pitch.
+
+### [END-OF-ARTICLE CTA BLOCK — style as a prominent callout 
+matching the site's existing end-of-article CTA pattern]
+
+**[→ Book a 15-minute call](https://foundforai.com/talk-to-a-human#calendar)**
+
+---
+
+*Found For AI helps small businesses become recommendable to AI 
+systems like ChatGPT, Perplexity, Claude, and Google AI. We focus 
+on the technical foundation — the AI-readable layer, entity 
+consistency, and AI trust signals — that determines whether AI 
+can find you, understand you, and recommend you.*
+
+*— Dustin Crump, Found For AI*
+
+================================================================
+POST-PUBLISH TASKS
+================================================================
+
+1. Add this article to the /blog index page so it shows up in 
+   the blog list
+2. Make sure the article appears in the sitemap.xml
+3. If the site has an RSS feed, make sure the new post is included
+4. Internal linking: after publishing, edit the /playbook and 
+   /services pages to include a link to this article where 
+   contextually appropriate (e.g., "Not sure what AI checks for? 
+   Read this first.")
+5. After deployment, run the published URL through 
+   search.google.com/test/rich-results to confirm all three schema 
+   blocks validate with no errors
+
+================================================================
+DO NOT
+================================================================
+
+- Change the overall site design, navigation, or theme
+- Change any other blog posts
+- Invent content not provided in this prompt
+- Use product names other than "AI Visibility Playbook" and 
+  "AI Visibility Fix"
+- Substitute "7 business days" for "seven business days"
+- Use "one-time" (with hyphen) — always "one time"
