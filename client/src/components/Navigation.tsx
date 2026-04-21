@@ -67,7 +67,7 @@ export default function Navigation() {
             <ThemeToggle />
             <a href="/#ai-search-fix">
               <Button data-testid="button-get-audit-header" className="font-semibold" style={{ backgroundColor: '#0F5FDB', borderColor: '#0F5FDB' }}>
-                Get AI Search Fix
+                Get the AI Visibility Fix
               </Button>
             </a>
           </div>
@@ -102,7 +102,7 @@ export default function Navigation() {
             ))}
             <a href="/#ai-search-fix">
               <Button className="w-full font-semibold" style={{ backgroundColor: '#0F5FDB', borderColor: '#0F5FDB' }} data-testid="button-get-audit-mobile" onClick={() => setMobileMenuOpen(false)}>
-                Get AI Search Fix
+                Get the AI Visibility Fix
               </Button>
             </a>
           </div>

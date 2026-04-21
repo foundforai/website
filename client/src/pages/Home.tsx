@@ -44,7 +44,7 @@ export default function Home() {
           "name": "Is this a monthly subscription?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. This is a one time project. We install your AI readability layer, deliver your report, and stand behind the work with our sixty day fix it free guarantee."
+            "text": "No. This is a one time project. We install your AI visibility layer, deliver your report, and stand behind the work with our sixty day fix it free guarantee."
           }
         },
         {
@@ -60,7 +60,7 @@ export default function Home() {
           "name": "Can my current web person do this?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Most web teams are focused on design, content, and regular search. AI visibility is a different skill set. We only do AI search and AI readability work, which is why agencies often bring us in behind the scenes to handle this part."
+            "text": "Most web teams are focused on design, content, and regular search. AI visibility is a different skill set. We only do AI search and AI visibility work, which is why agencies often bring us in behind the scenes to handle this part."
           }
         },
         {
@@ -100,7 +100,7 @@ export default function Home() {
       body: "We scan your website the way modern AI tools do and show what is unreadable or missing. You get a simple before and after report."
     },
     {
-      title: "Step Two — AI Readability Layer Installation",
+      title: "Step Two — AI Visibility Layer Installation",
       body: "We install a clean data layer that includes your services, service area, hours, contact and booking info, common questions and answers, core business details, and trust signals."
     },
     {
@@ -110,7 +110,7 @@ export default function Home() {
   ];
 
   const pricingChecklist = [
-    "AI visibility audit and AI readability layer install",
+    "AI visibility audit and AI visibility layer install",
     "Before and after AI visibility report",
     "Seven business day turnaround plus sixty day fix it free guarantee"
   ];
@@ -121,8 +121,8 @@ export default function Home() {
     "AI has a reason to recommend you instead of a competitor."
   ];
 
-  const emailSubject = encodeURIComponent("Found For AI Search Fix");
-  const emailBody = encodeURIComponent("Check out this AI Search Fix service: https://foundforai.com");
+  const emailSubject = encodeURIComponent("Found For AI Visibility Fix");
+  const emailBody = encodeURIComponent("Check out this AI Visibility Fix service: https://foundforai.com");
   const mailtoLink = `mailto:sales@foundforai.com?subject=${emailSubject}&body=${emailBody}`;
 
   return (
@@ -375,7 +375,7 @@ export default function Home() {
           </h2>
           
           <p className="text-lg text-muted-foreground mb-12 text-center max-w-3xl mx-auto">
-            Our AI Search Fix adds a focused AI readability layer so tools like ChatGPT, Perplexity, and Google Gemini can finally understand, trust, and recommend your business.
+            Our AI Visibility Fix adds a focused AI visibility layer so tools like ChatGPT, Perplexity, and Google Gemini can finally understand, trust, and recommend your business.
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -403,7 +403,7 @@ export default function Home() {
           </h2>
           
           <p className="text-lg text-muted-foreground mb-8 text-center max-w-3xl mx-auto">
-            This is a fast, one time fix. Once you check out, our team starts your AI visibility audit and installs your full AI readability layer. Your upgraded AI visibility is live within seven business days.
+            This is a fast, one time fix. Once you check out, our team starts your AI visibility audit and installs your full AI visibility layer. Your upgraded AI visibility is live within seven business days.
           </p>
           
           <div className="text-center space-y-2 mb-10">
@@ -416,7 +416,7 @@ export default function Home() {
             <CardContent className="p-8 text-center">
               <h3 className="text-2xl font-bold mb-4">Our We Fix It Free Guarantee</h3>
               <p className="text-muted-foreground">
-                If anything inside your new AI readability layer is incorrect, missing, or breaks within sixty days, we fix it at no cost. This is not a subscription or a trial. It is a real upgrade to how AI understands and recommends your business.
+                If anything inside your new AI visibility layer is incorrect, missing, or breaks within sixty days, we fix it at no cost. This is not a subscription or a trial. It is a real upgrade to how AI understands and recommends your business.
               </p>
             </CardContent>
           </Card>
@@ -427,7 +427,7 @@ export default function Home() {
       <section id="ai-search-fix" className="py-16 md:py-24 bg-gradient-to-br from-primary/10 to-accent/10">
         <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            One Time AI Search Fix, Built For Local Businesses
+            One Time AI Visibility Fix, Built For Local Businesses
           </h2>
           
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
@@ -504,7 +504,7 @@ export default function Home() {
               Is this a monthly subscription?
             </summary>
             <p className="text-muted-foreground py-3 pl-4">
-              No. This is a one time project. We install your AI readability layer, deliver your report, and stand behind the work with our sixty day fix it free guarantee.
+              No. This is a one time project. We install your AI visibility layer, deliver your report, and stand behind the work with our sixty day fix it free guarantee.
             </p>
           </details>
           
@@ -522,7 +522,7 @@ export default function Home() {
               Can my current web person do this?
             </summary>
             <p className="text-muted-foreground py-3 pl-4">
-              Most web teams are focused on design, content, and regular search. AI visibility is a different skill set. We only do AI search and AI readability work, which is why agencies often bring us in behind the scenes to handle this part.
+              Most web teams are focused on design, content, and regular search. AI visibility is a different skill set. We only do AI search and AI visibility work, which is why agencies often bring us in behind the scenes to handle this part.
             </p>
           </details>
           

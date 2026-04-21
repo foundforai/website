@@ -1,0 +1,121 @@
+I'm updating two pages on my site foundforai.com. Do not change any 
+styling, layout, colors, fonts, or component structure — only update 
+the copy/text content on these two pages.
+
+NAMING LOCK (enforce everywhere):
+- The free download is called: "AI Visibility Playbook" 
+- The paid service is called: "AI Visibility Fix"
+- Remove every instance of "AI Readability Playbook", "AI Search Fix", 
+  "AI Visibility Tune-Up", or any other variant. These names are retired.
+- The top-nav button currently reads "Get AI Search Fix" — change it to 
+  "Get the AI Visibility Fix"
+
+AUDIENCE: Small business owner-operators (HVAC, yoga studios, dentists, 
+restaurants, contractors, salons). Non-technical. Short on time. 
+Curious about AI but don't want to learn schema markup themselves. 
+Write in plain, direct language. No jargon without immediate translation. 
+No marketing fluff. No "revolutionary" or "game-changing." Sound like 
+a straight-talking consultant, not a funnel.
+
+================================================================
+PAGE 1: /playbook (the landing page with the email form)
+================================================================
+
+Replace the current page copy with this:
+
+HEADLINE:
+AI Visibility Playbook
+
+SUBHEAD:
+A 15-minute checklist to find out why AI tools like ChatGPT and Google 
+AI aren't recommending your business — and what to fix first.
+
+BODY (above the form):
+When someone asks ChatGPT for a good HVAC company, yoga studio, or 
+dentist in your area, AI gives them one or two names. Not ten blue 
+links. One or two.
+
+If your business isn't one of them, it's usually not because you're 
+doing something wrong. It's because your website was built for people 
+to read — not for AI to understand.
+
+This playbook walks you through the 20 things AI systems check before 
+they'll recommend a business. Score yourself. Find your gaps. Fix what 
+you can on your own.
+
+WHAT'S INSIDE (keep the bullet list format):
+- The 5 areas AI evaluates before recommending you
+- A 20-point self-scoring checklist
+- Plain-language explanations (no developer-speak)
+- A scoring guide that tells you where you actually stand
+
+FORM SECTION:
+Keep the existing email form. 
+Button text: "Send me the playbook"
+Below the button: "No spam. One email to deliver the playbook, and 
+occasional notes on AI search. Unsubscribe anytime."
+
+REMOVE the "Prefer done for you? Talk to a human." link that currently 
+appears ABOVE the form. That link is pulling people out of the funnel 
+before they convert. Do not replace it above the form.
+
+BELOW THE FORM, add this small line:
+"Questions first? [Book a 15-minute call →]" (link to /contact or 
+your booking page — use the same URL as the nav Contact link)
+
+================================================================
+PAGE 2: /thank-you (or wherever the post-download page lives)
+================================================================
+
+Replace the entire current page copy with this:
+
+HEADLINE:
+Your playbook is ready.
+
+SUBHEAD:
+Click below to download. We also sent a copy to your inbox.
+
+PRIMARY BUTTON:
+"⬇ Download the playbook"
+
+(Add meaningful vertical whitespace below the button — let the download 
+be the clear first action.)
+
+THEN, as a separate section below:
+
+SECTION HEADING:
+Before you close this tab —
+
+SECTION BODY:
+The playbook is a diagnostic. When most small business owners score 
+themselves honestly, they can't confidently check off 8 to 12 of the 
+20 items. The gaps are almost always in the same three places: 
+structured data, entity consistency, and AI crawl configuration. 
+Technical stuff most websites were never built with.
+
+If that sounds like you and you don't want to learn how to fix it 
+yourself, we built the AI Visibility Fix for exactly that situation. 
+One flat fee. We do the work. Seven business days. Full audit report 
+and a walkthrough video of everything we changed.
+
+PRIMARY CTA BUTTON (this section):
+"Book a 15-minute call →" (link to /contact or booking page)
+
+SECONDARY LINK below the button:
+"Or see what's included in the AI Visibility Fix →" (link to /services)
+
+REMOVE entirely: the gray "Next step" line about the Tune-Up. Retire 
+that phrase from the entire site.
+
+REMOVE entirely: the "If the download doesn't start, refresh in a 
+minute" line — it reads as unprofessional. If there's a real download 
+reliability concern, handle it in the download mechanism, not in copy.
+
+================================================================
+GLOBAL CHECKS AFTER EDITING:
+================================================================
+1. Search the entire codebase for "Readability", "Tune-Up", "Search 
+   Fix" (as product names) and replace with the correct locked names.
+2. Make sure the nav button and any CTAs across the site that point 
+   to the paid offer all say "AI Visibility Fix" — no variants.
+3. Do not touch the PDF file itself. I'm replacing that separately.

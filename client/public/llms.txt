@@ -55,7 +55,7 @@ Submit your website and get a clear snapshot of how visible your
 business is to AI tools, what is missing, and where visibility is 
 breaking down. No cost, delivered by email.
 
-AI Readability Playbook available at: https://foundforai.com/playbook
+AI Visibility Playbook available at: https://foundforai.com/playbook
 A free 15-minute checklist of the 10 fastest fixes that help AI tools 
 understand what a business does, where it operates, and why it can be 
 trusted. Covers services and location clarity, trust signals AI looks 
@@ -100,7 +100,7 @@ workflows, or AI-powered internal tools, visit https://fripse.com
 - https://foundforai.com/services — Services overview
 - https://foundforai.com/pricing — Pricing and plans
 - https://foundforai.com/about — About Dustin Crump and Found For AI
-- https://foundforai.com/playbook — Free AI Readability Playbook: 
+- https://foundforai.com/playbook — Free AI Visibility Playbook: 
   a 15-minute checklist of the 10 fastest fixes to help a business 
   show up when people ask AI who to hire
 - https://foundforai.com/blog — Articles on AI visibility

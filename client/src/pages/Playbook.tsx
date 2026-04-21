@@ -20,9 +20,9 @@ export default function Playbook() {
     schema.text = JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebPage",
-      "name": "AI Readability Playbook",
+      "name": "AI Visibility Playbook",
       "url": "https://foundforai.com/playbook",
-      "description": "A 15 minute checklist to help your business show up when people ask AI who to hire.",
+      "description": "A 15-minute checklist to find out why AI tools like ChatGPT and Google AI aren't recommending your business — and what to fix first.",
       "isPartOf": {
         "@type": "WebSite",
         "name": "Found For AI",
@@ -41,7 +41,7 @@ export default function Playbook() {
       ],
       "mainEntity": {
         "@type": "DigitalDocument",
-        "name": "Found For AI Readability Playbook",
+        "name": "AI Visibility Playbook",
         "fileFormat": "application/pdf",
         "url": "https://foundforai.com/found-for-ai-readability-playbook.pdf"
       },
@@ -50,11 +50,6 @@ export default function Playbook() {
           "@type": "Action",
           "name": "Download the playbook",
           "target": "https://foundforai.com/found-for-ai-readability-playbook.pdf"
-        },
-        {
-          "@type": "ReserveAction",
-          "name": "Talk to a human",
-          "target": "https://foundforai.com/talk-to-a-human"
         }
       ]
     });
@@ -101,36 +96,40 @@ export default function Playbook() {
 
   return (
     <PageLayout
-      title="AI Readability Playbook - Free Download | Found For AI"
-      description="Download the AI Readability Playbook: the fastest fixes to help your business get discovered and recommended by AI search tools and assistants."
+      title="AI Visibility Playbook - Free Download | Found For AI"
+      description="A 15-minute checklist to find out why AI tools like ChatGPT and Google AI aren't recommending your business — and what to fix first."
       canonical="https://foundforai.com/playbook"
     >
       <section className="py-10 md:py-16 bg-background">
         <div className="max-w-2xl mx-auto px-4 md:px-6 lg:px-8">
           <h1 className="text-4xl md:text-5xl font-bold mb-2">
-            AI Readability Playbook
+            AI Visibility Playbook
           </h1>
           <p className="text-lg text-muted-foreground mb-6">
-            A 15 minute checklist to help your business show up when people ask AI who to hire.
+            A 15-minute checklist to find out why AI tools like ChatGPT and Google AI aren't recommending your business — and what to fix first.
           </p>
 
           <p className="text-muted-foreground mb-4">
-            Get the 10 fastest fixes that make AI tools understand what you do, where you work, and why you can be trusted.
+            When someone asks ChatGPT for a good HVAC company, yoga studio, or dentist in your area, AI gives them one or two names. Not ten blue links. One or two.
           </p>
 
-          <div className="mb-6">
+          <p className="text-muted-foreground mb-4">
+            If your business isn't one of them, it's usually not because you're doing something wrong. It's because your website was built for people to read — not for AI to understand.
+          </p>
+
+          <p className="text-muted-foreground mb-6">
+            This playbook walks you through the 20 things AI systems check before they'll recommend a business. Score yourself. Find your gaps. Fix what you can on your own.
+          </p>
+
+          <div className="mb-8">
             <p className="font-semibold mb-2">What's inside</p>
             <ul className="list-disc pl-5 text-muted-foreground space-y-1">
-              <li>Services and locations clarity</li>
-              <li>Trust signals AI looks for</li>
-              <li>The basic structured data your site needs</li>
+              <li>The 5 areas AI evaluates before recommending you</li>
+              <li>A 20-point self-scoring checklist</li>
+              <li>Plain-language explanations (no developer-speak)</li>
+              <li>A scoring guide that tells you where you actually stand</li>
             </ul>
           </div>
-
-          <p className="text-sm text-muted-foreground mb-6">
-            Prefer done for you?{' '}
-            <a href="https://foundforai.com/talk-to-a-human" className="underline hover:text-foreground transition-colors" data-testid="link-playbook-dfy">Talk to a human</a>.
-          </p>
 
           <Card>
             <CardContent className="p-6 md:p-8">
@@ -166,21 +165,22 @@ export default function Playbook() {
                 </Button>
 
                 <p className="text-sm text-muted-foreground text-center">
-                  No spam. Instant download link.
+                  No spam. One email to deliver the playbook, and occasional notes on AI search. Unsubscribe anytime.
                 </p>
               </form>
-
-              <div className="mt-6 pt-6 border-t text-center">
-                <a
-                  href="https://foundforai.com/talk-to-a-human"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  data-testid="link-playbook-talk"
-                >
-                  Prefer to talk it through? <span className="underline">Talk to a human</span>
-                </a>
-              </div>
             </CardContent>
           </Card>
+
+          <p className="text-sm text-muted-foreground text-center mt-6">
+            Questions first?{' '}
+            <a
+              href="/contact"
+              className="underline hover:text-foreground transition-colors"
+              data-testid="link-playbook-book-call"
+            >
+              Book a 15-minute call →
+            </a>
+          </p>
         </div>
       </section>
     </PageLayout>
