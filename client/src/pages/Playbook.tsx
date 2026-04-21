@@ -174,7 +174,7 @@ export default function Playbook() {
           <p className="text-sm text-muted-foreground text-center mt-6">
             Questions first?{' '}
             <a
-              href="/contact"
+              href="https://foundforai.com/talk-to-a-human#calendar"
               className="underline hover:text-foreground transition-colors"
               data-testid="link-playbook-book-call"
             >

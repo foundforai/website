@@ -50,7 +50,7 @@ export default function PlaybookThanks() {
               If that sounds like you and you don't want to learn how to fix it yourself, we built the AI Visibility Fix for exactly that situation. One flat fee. We do the work. Seven business days. Full audit report and a walkthrough video of everything we changed.
             </p>
 
-            <a href="/contact" data-testid="link-playbook-thanks-book-call">
+            <a href="https://foundforai.com/talk-to-a-human#calendar" data-testid="link-playbook-thanks-book-call">
               <Button
                 size="lg"
                 className="font-semibold group"
