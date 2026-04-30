@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -7,13 +6,33 @@ import { ArrowRight } from 'lucide-react';
 import FAQSection from '@/components/FAQSection';
 
 export default function WhatIsAISEO() {
-  useEffect(() => {
-    const faqSchema = document.createElement('script');
-    faqSchema.type = 'application/ld+json';
-    faqSchema.id = 'what-is-ai-seo-faq-schema';
-    faqSchema.text = JSON.stringify({
-      "@context": "https://schema.org",
+  const pageSchemas = [
+    {
+      "@type": "Article",
+      "@id": "https://foundforai.com/what-is-ai-seo#article",
+      "headline": "What Is AI SEO?",
+      "description": "Learn the difference between traditional SEO and AI SEO. Discover how to make your business clearly understandable to AI systems like ChatGPT and Perplexity.",
+      "url": "https://foundforai.com/what-is-ai-seo",
+      "mainEntityOfPage": "https://foundforai.com/what-is-ai-seo",
+      "author": { "@id": "https://foundforai.com/#dustin-crump" },
+      "publisher": { "@id": "https://foundforai.com/#org" },
+      "image": "https://foundforai.com/found-for-ai-logo-white.png",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://foundforai.com/what-is-ai-seo#definedterm",
+      "name": "AI SEO",
+      "description": "AI SEO is the practice of making your business clearly understandable to AI systems like ChatGPT, Perplexity, and Google's AI results, so they can confidently recommend you when people ask for help.",
+      "inDefinedTermSet": {
+        "@type": "DefinedTermSet",
+        "name": "Found For AI Glossary",
+        "url": "https://foundforai.com/what-is-ai-seo"
+      }
+    },
+    {
       "@type": "FAQPage",
+      "@id": "https://foundforai.com/what-is-ai-seo#faq",
       "mainEntity": [
         {
           "@type": "Question",
@@ -60,20 +79,13 @@ export default function WhatIsAISEO() {
           "name": "How do I know if my site is AI-ready?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "You can request a free AI Readiness Audit at FoundForAI.com/audit. We'll assess your visibility across AI tools and provide a personalized plan to increase your discoverability."
+            "text": "You can request a free AI Visibility Review at FoundForAI.com/audit. We'll assess your visibility across AI tools and provide a personalized plan to increase your discoverability."
           }
         }
       ]
-    });
-    document.head.appendChild(faqSchema);
+    }
+  ];
 
-    return () => {
-      const existing = document.getElementById('what-is-ai-seo-faq-schema');
-      if (existing) {
-        document.head.removeChild(existing);
-      }
-    };
-  }, []);
   const comparisonData = [
     { old: 'Keywords', new: 'Meaning and context' },
     { old: 'Backlinks', new: 'Verified business facts' },
@@ -86,6 +98,7 @@ export default function WhatIsAISEO() {
       title="What Is AI SEO - Understanding AI Search Optimization | Found For AI"
       description="Learn the difference between traditional SEO and AI SEO. Discover how to make your business clearly understandable to AI systems like ChatGPT and Perplexity."
       canonical="https://foundforai.com/what-is-ai-seo"
+      schemas={pageSchemas}
     >
       <section className="py-16 md:py-24 bg-background">
         <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8">

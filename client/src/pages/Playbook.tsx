@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useLocation } from 'wouter';
 import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from '@/components/ui/card';
@@ -7,61 +7,53 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { ArrowRight } from 'lucide-react';
 
+const playbookSchemas = [
+  {
+    "@type": "WebPage",
+    "@id": "https://foundforai.com/playbook#webpage",
+    "name": "AI Visibility Playbook",
+    "url": "https://foundforai.com/playbook",
+    "description": "A 15-minute checklist to find out why AI tools like ChatGPT and Google AI aren't recommending your business — and what to fix first.",
+    "isPartOf": { "@id": "https://foundforai.com/#website" },
+    "publisher": { "@id": "https://foundforai.com/#org" },
+    "about": [
+      "AI visibility",
+      "AI search discovery",
+      "structured data",
+      "local service businesses"
+    ],
+    "mainEntity": { "@id": "https://foundforai.com/playbook#document" },
+    "potentialAction": [
+      {
+        "@type": "Action",
+        "name": "Download the playbook",
+        "target": "https://foundforai.com/found-for-ai-readability-playbook.pdf"
+      }
+    ]
+  },
+  {
+    "@type": "DigitalDocument",
+    "@id": "https://foundforai.com/playbook#document",
+    "name": "AI Visibility Playbook",
+    "fileFormat": "application/pdf",
+    "url": "https://foundforai.com/found-for-ai-readability-playbook.pdf",
+    "publisher": { "@id": "https://foundforai.com/#org" },
+    "offers": {
+      "@type": "Offer",
+      "@id": "https://foundforai.com/playbook#offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "url": "https://foundforai.com/playbook"
+    }
+  }
+];
+
 export default function Playbook() {
   const [, setLocation] = useLocation();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [email, setEmail] = useState('');
-
-  useEffect(() => {
-    const schema = document.createElement('script');
-    schema.type = 'application/ld+json';
-    schema.id = 'playbook-page-schema';
-    schema.text = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "AI Visibility Playbook",
-      "url": "https://foundforai.com/playbook",
-      "description": "A 15-minute checklist to find out why AI tools like ChatGPT and Google AI aren't recommending your business — and what to fix first.",
-      "isPartOf": {
-        "@type": "WebSite",
-        "name": "Found For AI",
-        "url": "https://foundforai.com/"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Found For AI",
-        "url": "https://foundforai.com/"
-      },
-      "about": [
-        "AI visibility",
-        "AI search discovery",
-        "structured data",
-        "local service businesses"
-      ],
-      "mainEntity": {
-        "@type": "DigitalDocument",
-        "name": "AI Visibility Playbook",
-        "fileFormat": "application/pdf",
-        "url": "https://foundforai.com/found-for-ai-readability-playbook.pdf"
-      },
-      "potentialAction": [
-        {
-          "@type": "Action",
-          "name": "Download the playbook",
-          "target": "https://foundforai.com/found-for-ai-readability-playbook.pdf"
-        }
-      ]
-    });
-    document.head.appendChild(schema);
-
-    return () => {
-      const existing = document.getElementById('playbook-page-schema');
-      if (existing) {
-        document.head.removeChild(existing);
-      }
-    };
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -99,6 +91,7 @@ export default function Playbook() {
       title="AI Visibility Playbook - Free Download | Found For AI"
       description="A 15-minute checklist to find out why AI tools like ChatGPT and Google AI aren't recommending your business — and what to fix first."
       canonical="https://foundforai.com/playbook"
+      schemas={playbookSchemas}
     >
       <section className="py-10 md:py-16 bg-background">
         <div className="max-w-2xl mx-auto px-4 md:px-6 lg:px-8">

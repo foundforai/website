@@ -1,85 +1,61 @@
-import { useEffect } from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Link } from 'wouter';
 import { Check, ArrowRight } from 'lucide-react';
 
-export default function Pricing() {
-  useEffect(() => {
-    const serviceSchema = document.createElement('script');
-    serviceSchema.type = 'application/ld+json';
-    serviceSchema.id = 'service-schema';
-    serviceSchema.text = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Service",
-      "name": "AI Visibility Fix",
-      "description": "A one-time implementation that fixes how AI tools understand and recommend your business.",
-      "provider": {
-        "@type": "Organization",
-        "name": "FoundForAI",
-        "url": "https://foundforai.com"
-      },
-      "areaServed": {
-        "@type": "Place",
-        "name": "United States"
-      },
-      "offers": {
-        "@type": "Offer",
-        "priceCurrency": "USD",
-        "price": "1595.00",
-        "url": "https://foundforai.com/pricing",
-        "availability": "https://schema.org/InStock"
-      }
-    });
-    document.head.appendChild(serviceSchema);
-
-    const faqSchema = document.createElement('script');
-    faqSchema.type = 'application/ld+json';
-    faqSchema.id = 'pricing-faq-schema';
-    faqSchema.text = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What's the turnaround time?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The AI Visibility Fix is completed within 7 business days."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What exactly do I receive?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "You'll receive a complete implementation of AI visibility fixes, documentation of all changes made, and verification that AI tools can now read your site correctly."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do you offer refunds?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We offer a 60-day fix-it-free guarantee. If anything we implement is incorrect, missing, or breaks within sixty days, we fix it at no cost."
-          }
+const pricingSchemas = [
+  {
+    "@type": "Service",
+    "@id": "https://foundforai.com/pricing#service",
+    "name": "AI Visibility Fix",
+    "description": "A one-time implementation that fixes how AI tools understand and recommend your business.",
+    "provider": { "@id": "https://foundforai.com/#org" },
+    "areaServed": { "@type": "Place", "name": "United States" },
+    "offers": {
+      "@type": "Offer",
+      "@id": "https://foundforai.com/pricing#offer",
+      "priceCurrency": "USD",
+      "price": "1595.00",
+      "url": "https://foundforai.com/pricing",
+      "availability": "https://schema.org/InStock",
+      "category": "AI Visibility Implementation",
+      "seller": { "@id": "https://foundforai.com/#org" }
+    }
+  },
+  {
+    "@type": "FAQPage",
+    "@id": "https://foundforai.com/pricing#faq",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What's the turnaround time?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The AI Visibility Fix is completed within 7 business days."
         }
-      ]
-    });
-    document.head.appendChild(faqSchema);
+      },
+      {
+        "@type": "Question",
+        "name": "What exactly do I receive?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You'll receive a complete implementation of AI visibility fixes, documentation of all changes made, and verification that AI tools can now read your site correctly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you offer refunds?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We offer a 60-day fix-it-free guarantee. If anything we implement is incorrect, missing, or breaks within sixty days, we fix it at no cost."
+        }
+      }
+    ]
+  }
+];
 
-    return () => {
-      const existingServiceSchema = document.getElementById('service-schema');
-      const existingFaqSchema = document.getElementById('pricing-faq-schema');
-      if (existingServiceSchema) {
-        document.head.removeChild(existingServiceSchema);
-      }
-      if (existingFaqSchema) {
-        document.head.removeChild(existingFaqSchema);
-      }
-    };
-  }, []);
+export default function Pricing() {
   const faqs = [
     {
       question: "What's the turnaround time?",
@@ -100,6 +76,7 @@ export default function Pricing() {
       title="Pricing - AI Visibility Fix | Found For AI"
       description="Start with the AI Visibility Fix. One clear starting point for $1,595. Additional options only if you need them."
       canonical="https://foundforai.com/pricing"
+      schemas={pricingSchemas}
     >
       {/* Hero Section */}
       <section className="py-16 md:py-24 bg-gradient-to-br from-background via-primary/5 to-accent/5">

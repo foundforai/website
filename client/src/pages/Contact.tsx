@@ -8,6 +8,20 @@ import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { Mail, Phone, MapPin } from 'lucide-react';
 
+const contactSchemas = [
+  {
+    "@type": "ContactPage",
+    "@id": "https://foundforai.com/contact#contactpage",
+    "url": "https://foundforai.com/contact",
+    "name": "Contact Found For AI",
+    "description": "Contact Found For AI for AI SEO consulting. Located in Cottonwood Heights, Utah.",
+    "isPartOf": { "@id": "https://foundforai.com/#website" },
+    "about": { "@id": "https://foundforai.com/#org" },
+    "mainEntity": { "@id": "https://foundforai.com/#org" },
+    "publisher": { "@id": "https://foundforai.com/#org" }
+  }
+];
+
 export default function Contact() {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
@@ -69,6 +83,7 @@ export default function Contact() {
       title="Contact Found For AI - Get In Touch | Cottonwood Heights, Utah"
       description="Contact Found For AI for AI SEO consulting. Located in Cottonwood Heights, Utah. Call +1-801-898-2456 or email info@foundforai.com."
       canonical="https://foundforai.com/contact"
+      schemas={contactSchemas}
     >
       <section className="py-16 md:py-24 bg-background">
         <div className="max-w-6xl mx-auto px-4 md:px-6 lg:px-8">

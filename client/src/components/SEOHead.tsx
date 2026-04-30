@@ -1,295 +1,294 @@
 import { useEffect } from 'react';
+import { pushHead, escapeHtml, escapeJsonLd } from '@/lib/ssr-head';
 
 interface SEOHeadProps {
   title: string;
   description: string;
   canonical?: string;
   ogImage?: string;
+  schemas?: object[];
+  noindex?: boolean;
 }
 
-export default function SEOHead({ title, description, canonical, ogImage = '/found-for-ai-logo-white.png' }: SEOHeadProps) {
-  useEffect(() => {
-    document.title = title;
-    
-    const metaDescription = document.querySelector('meta[name="description"]') || document.createElement('meta');
-    metaDescription.setAttribute('name', 'description');
-    metaDescription.setAttribute('content', description);
-    if (!document.querySelector('meta[name="description"]')) {
-      document.head.appendChild(metaDescription);
-    }
+const SITE_ORIGIN = 'https://foundforai.com';
 
-    const ogTitle = document.querySelector('meta[property="og:title"]') || document.createElement('meta');
-    ogTitle.setAttribute('property', 'og:title');
-    ogTitle.setAttribute('content', title);
-    if (!document.querySelector('meta[property="og:title"]')) {
-      document.head.appendChild(ogTitle);
-    }
-
-    const ogDescription = document.querySelector('meta[property="og:description"]') || document.createElement('meta');
-    ogDescription.setAttribute('property', 'og:description');
-    ogDescription.setAttribute('content', description);
-    if (!document.querySelector('meta[property="og:description"]')) {
-      document.head.appendChild(ogDescription);
-    }
-
-    const ogImageMeta = document.querySelector('meta[property="og:image"]') || document.createElement('meta');
-    ogImageMeta.setAttribute('property', 'og:image');
-    ogImageMeta.setAttribute('content', `https://foundforai.com${ogImage}`);
-    if (!document.querySelector('meta[property="og:image"]')) {
-      document.head.appendChild(ogImageMeta);
-    }
-
-    const ogImageWidth = document.querySelector('meta[property="og:image:width"]') || document.createElement('meta');
-    ogImageWidth.setAttribute('property', 'og:image:width');
-    ogImageWidth.setAttribute('content', '1200');
-    if (!document.querySelector('meta[property="og:image:width"]')) {
-      document.head.appendChild(ogImageWidth);
-    }
-
-    const ogImageHeight = document.querySelector('meta[property="og:image:height"]') || document.createElement('meta');
-    ogImageHeight.setAttribute('property', 'og:image:height');
-    ogImageHeight.setAttribute('content', '630');
-    if (!document.querySelector('meta[property="og:image:height"]')) {
-      document.head.appendChild(ogImageHeight);
-    }
-
-    const ogType = document.querySelector('meta[property="og:type"]') || document.createElement('meta');
-    ogType.setAttribute('property', 'og:type');
-    ogType.setAttribute('content', 'website');
-    if (!document.querySelector('meta[property="og:type"]')) {
-      document.head.appendChild(ogType);
-    }
-
-    const ogUrl = document.querySelector('meta[property="og:url"]') || document.createElement('meta');
-    ogUrl.setAttribute('property', 'og:url');
-    const canonicalUrl = canonical ? canonical.replace(/\/$/, '') : 'https://foundforai.com';
-    ogUrl.setAttribute('content', canonicalUrl);
-    if (!document.querySelector('meta[property="og:url"]')) {
-      document.head.appendChild(ogUrl);
-    }
-
-    const ogSiteName = document.querySelector('meta[property="og:site_name"]') || document.createElement('meta');
-    ogSiteName.setAttribute('property', 'og:site_name');
-    ogSiteName.setAttribute('content', 'Found For AI');
-    if (!document.querySelector('meta[property="og:site_name"]')) {
-      document.head.appendChild(ogSiteName);
-    }
-
-    const ogLocale = document.querySelector('meta[property="og:locale"]') || document.createElement('meta');
-    ogLocale.setAttribute('property', 'og:locale');
-    ogLocale.setAttribute('content', 'en_US');
-    if (!document.querySelector('meta[property="og:locale"]')) {
-      document.head.appendChild(ogLocale);
-    }
-
-    const twitterCard = document.querySelector('meta[name="twitter:card"]') || document.createElement('meta');
-    twitterCard.setAttribute('name', 'twitter:card');
-    twitterCard.setAttribute('content', 'summary_large_image');
-    if (!document.querySelector('meta[name="twitter:card"]')) {
-      document.head.appendChild(twitterCard);
-    }
-
-    const twitterTitle = document.querySelector('meta[name="twitter:title"]') || document.createElement('meta');
-    twitterTitle.setAttribute('name', 'twitter:title');
-    twitterTitle.setAttribute('content', title);
-    if (!document.querySelector('meta[name="twitter:title"]')) {
-      document.head.appendChild(twitterTitle);
-    }
-
-    const twitterDescription = document.querySelector('meta[name="twitter:description"]') || document.createElement('meta');
-    twitterDescription.setAttribute('name', 'twitter:description');
-    twitterDescription.setAttribute('content', description);
-    if (!document.querySelector('meta[name="twitter:description"]')) {
-      document.head.appendChild(twitterDescription);
-    }
-
-    const twitterImage = document.querySelector('meta[name="twitter:image"]') || document.createElement('meta');
-    twitterImage.setAttribute('name', 'twitter:image');
-    twitterImage.setAttribute('content', `https://foundforai.com${ogImage}`);
-    if (!document.querySelector('meta[name="twitter:image"]')) {
-      document.head.appendChild(twitterImage);
-    }
-
-    if (canonical) {
-      const linkCanonical = document.querySelector('link[rel="canonical"]') || document.createElement('link');
-      linkCanonical.setAttribute('rel', 'canonical');
-      linkCanonical.setAttribute('href', canonical);
-      if (!document.querySelector('link[rel="canonical"]')) {
-        document.head.appendChild(linkCanonical);
+const GLOBAL_GRAPH: object[] = [
+  {
+    "@type": "Organization",
+    "@id": "https://foundforai.com/#org",
+    "name": "Found For AI",
+    "alternateName": ["FoundForAI", "Found for AI Consulting", "Found For AI SEO"],
+    "url": "https://foundforai.com",
+    "logo": "https://foundforai.com/found-for-ai-logo-white.png",
+    "image": [
+      "https://foundforai.com/found-for-ai-logo-white.png",
+      "https://foundforai.com/found-for-ai-logo-black.png"
+    ],
+    "description": "Found For AI helps businesses become discoverable inside AI assistants like ChatGPT, Gemini, and Perplexity through AEO (Answer Engine Optimization).",
+    "founder": {
+      "@type": "Person",
+      "@id": "https://foundforai.com/#dustin-crump",
+      "name": "Dustin Crump",
+      "jobTitle": "Founder & AI Visibility Strategist",
+      "url": "https://foundforai.com/about",
+      "sameAs": [
+        "https://www.linkedin.com/in/fripse",
+        "https://x.com/foundforai",
+        "https://www.smalllakepod.com/episodes/dustin-crump-foundforai"
+      ]
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/foundforai",
+      "https://x.com/foundforai",
+      "https://www.facebook.com/foundforai",
+      "https://www.instagram.com/foundforai"
+    ],
+    "subjectOf": [
+      {
+        "@type": "PodcastEpisode",
+        "@id": "https://foundforai.com/media/small-lake-city-podcast#episode",
+        "name": "How to Slide Into the Consciousness of AI — with Dustin Crump",
+        "url": "https://foundforai.com/media/small-lake-city-podcast",
+        "partOfSeries": {
+          "@type": "PodcastSeries",
+          "name": "Small Lake City Podcast",
+          "url": "https://www.smalllakepod.com"
+        }
       }
+    ],
+    "brand": { "@type": "Brand", "name": "Found For AI" }
+  },
+  {
+    "@type": "WebSite",
+    "@id": "https://foundforai.com/#website",
+    "url": "https://foundforai.com",
+    "name": "Found For AI",
+    "publisher": { "@id": "https://foundforai.com/#org" },
+    "inLanguage": "en-US",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://foundforai.com/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
     }
-
-    const jsonLd = document.createElement('script');
-    jsonLd.type = 'application/ld+json';
-    jsonLd.text = JSON.stringify({
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Organization",
-          "@id": "https://foundforai.com/#org",
-          "name": "Found For AI",
-          "alternateName": ["FoundForAI", "Found for AI Consulting", "Found For AI SEO"],
-          "url": "https://foundforai.com",
-          "logo": "https://foundforai.com/found-for-ai-logo-white.png",
-          "image": [
-            "https://foundforai.com/found-for-ai-logo-white.png",
-            "https://foundforai.com/found-for-ai-logo-black.png"
-          ],
-          "description": "Found For AI helps businesses become discoverable inside AI assistants like ChatGPT, Gemini, and Perplexity through AEO (Answer Engine Optimization).",
-          "founder": {
-            "@type": "Person",
-            "@id": "https://foundforai.com/#dustin-crump",
-            "name": "Dustin Crump",
-            "jobTitle": "Founder & AI Visibility Strategist",
-            "url": "https://foundforai.com/about",
-            "sameAs": [
-              "https://www.linkedin.com/in/fripse",
-              "https://x.com/foundforai",
-              "https://www.smalllakepod.com/episodes/dustin-crump-foundforai"
-            ]
-          },
-          "sameAs": [
-            "https://www.linkedin.com/company/foundforai",
-            "https://x.com/foundforai",
-            "https://www.facebook.com/foundforai",
-            "https://www.instagram.com/foundforai"
-          ],
-          "subjectOf": [
-            {
-              "@type": "PodcastEpisode",
-              "@id": "https://foundforai.com/media/small-lake-city-podcast#episode",
-              "name": "How to Slide Into the Consciousness of AI — with Dustin Crump",
-              "url": "https://foundforai.com/media/small-lake-city-podcast",
-              "partOfSeries": {
-                "@type": "PodcastSeries",
-                "name": "Small Lake City Podcast",
-                "url": "https://www.smalllakepod.com"
-              }
-            }
-          ],
-          "brand": { "@type": "Brand", "name": "Found For AI" }
-        },
-        {
-          "@type": "WebSite",
-          "@id": "https://foundforai.com/#website",
-          "url": "https://foundforai.com",
-          "name": "Found For AI",
-          "publisher": { "@id": "https://foundforai.com/#org" },
-          "inLanguage": "en-US",
-          "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://foundforai.com/search?q={search_term_string}",
-            "query-input": "required name=search_term_string"
-          }
-        },
-        {
-          "@type": "LocalBusiness",
-          "@id": "https://foundforai.com/#local",
-          "name": "Found For AI",
-          "image": "https://foundforai.com/assets/office.jpg",
-          "url": "https://foundforai.com",
-          "telephone": "+18018982456",
-          "email": "info@foundforai.com",
-          "priceRange": "$$",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "6187 S Highland Dr",
-            "addressLocality": "Cottonwood Heights",
-            "addressRegion": "UT",
-            "postalCode": "84121",
-            "addressCountry": "US"
-          },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 40.619,
-            "longitude": -111.810
-          },
-          "areaServed": [
-            { "@type": "City", "name": "Cottonwood Heights" },
-            { "@type": "City", "name": "Salt Lake City" },
-            { "@type": "City", "name": "Sandy" },
-            { "@type": "City", "name": "Draper" }
-          ],
-          "openingHoursSpecification": [
-            {
-              "@type": "OpeningHoursSpecification",
-              "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-              "opens": "09:00",
-              "closes": "17:00"
-            }
-          ],
-          "parentOrganization": { "@id": "https://foundforai.com/#org" },
-          "hasMap": "https://www.google.com/maps/place/Cottonwood+Heights,+UT",
-          "potentialAction": [
-            {
-              "@type": "CommunicateAction",
-              "name": "Contact Found For AI",
-              "target": {
-                "@type": "EntryPoint",
-                "urlTemplate": "https://foundforai.com/contact"
-              }
-            },
-            {
-              "@type": "ScheduleAction",
-              "name": "Book a Consultation",
-              "target": {
-                "@type": "EntryPoint",
-                "urlTemplate": "https://foundforai.com/talk-to-a-human",
-                "actionPlatform": [
-                  "http://schema.org/DesktopWebPlatform",
-                  "http://schema.org/MobileWebPlatform"
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "@type": "Service",
-          "@id": "https://foundforai.com/#service-ai-seo",
-          "serviceType": "AI SEO Readiness Audit and Optimization",
-          "provider": { "@id": "https://foundforai.com/#org" },
-          "areaServed": "United States",
-          "offers": {
-            "@type": "Offer",
-            "price": "1595",
-            "priceCurrency": "USD",
-            "url": "https://foundforai.com/services"
-          }
-        },
-        {
-          "@type": "Person",
-          "@id": "https://foundforai.com/#dustin-crump",
-          "name": "Dustin Crump",
-          "jobTitle": "Founder & AI Visibility Strategist",
-          "url": "https://foundforai.com/about",
-          "worksFor": { "@id": "https://foundforai.com/#org" },
-          "sameAs": [
-            "https://www.linkedin.com/in/fripse",
-            "https://x.com/foundforai",
-            "https://www.smalllakepod.com/episodes/dustin-crump-foundforai"
-          ],
-          "subjectOf": [
-            {
-              "@type": "PodcastEpisode",
-              "@id": "https://foundforai.com/media/small-lake-city-podcast#episode",
-              "name": "How to Slide Into the Consciousness of AI — with Dustin Crump",
-              "url": "https://foundforai.com/media/small-lake-city-podcast",
-              "partOfSeries": {
-                "@type": "PodcastSeries",
-                "name": "Small Lake City Podcast",
-                "url": "https://www.smalllakepod.com"
-              }
-            }
+  },
+  {
+    "@type": "LocalBusiness",
+    "@id": "https://foundforai.com/#local",
+    "name": "Found For AI",
+    "image": "https://foundforai.com/assets/office.jpg",
+    "url": "https://foundforai.com",
+    "telephone": "+18018982456",
+    "email": "info@foundforai.com",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "6187 S Highland Dr",
+      "addressLocality": "Cottonwood Heights",
+      "addressRegion": "UT",
+      "postalCode": "84121",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 40.619,
+      "longitude": -111.810
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Cottonwood Heights" },
+      { "@type": "City", "name": "Salt Lake City" },
+      { "@type": "City", "name": "Sandy" },
+      { "@type": "City", "name": "Draper" }
+    ],
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "17:00"
+      }
+    ],
+    "parentOrganization": { "@id": "https://foundforai.com/#org" },
+    "hasMap": "https://www.google.com/maps/place/Cottonwood+Heights,+UT",
+    "potentialAction": [
+      {
+        "@type": "CommunicateAction",
+        "name": "Contact Found For AI",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://foundforai.com/contact"
+        }
+      },
+      {
+        "@type": "ScheduleAction",
+        "name": "Book a Consultation",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://foundforai.com/talk-to-a-human",
+          "actionPlatform": [
+            "http://schema.org/DesktopWebPlatform",
+            "http://schema.org/MobileWebPlatform"
           ]
         }
-      ]
+      }
+    ]
+  },
+  {
+    "@type": "Service",
+    "@id": "https://foundforai.com/#service-ai-seo",
+    "serviceType": "AI SEO Readiness Audit and Optimization",
+    "provider": { "@id": "https://foundforai.com/#org" },
+    "areaServed": "United States",
+    "offers": {
+      "@type": "Offer",
+      "price": "1595",
+      "priceCurrency": "USD",
+      "url": "https://foundforai.com/services"
+    }
+  },
+  {
+    "@type": "Person",
+    "@id": "https://foundforai.com/#dustin-crump",
+    "name": "Dustin Crump",
+    "jobTitle": "Founder & AI Visibility Strategist",
+    "url": "https://foundforai.com/about",
+    "worksFor": { "@id": "https://foundforai.com/#org" },
+    "sameAs": [
+      "https://www.linkedin.com/in/fripse",
+      "https://x.com/foundforai",
+      "https://www.smalllakepod.com/episodes/dustin-crump-foundforai"
+    ],
+    "subjectOf": [
+      {
+        "@type": "PodcastEpisode",
+        "@id": "https://foundforai.com/media/small-lake-city-podcast#episode",
+        "name": "How to Slide Into the Consciousness of AI — with Dustin Crump",
+        "url": "https://foundforai.com/media/small-lake-city-podcast",
+        "partOfSeries": {
+          "@type": "PodcastSeries",
+          "name": "Small Lake City Podcast",
+          "url": "https://www.smalllakepod.com"
+        }
+      }
+    ]
+  }
+];
+
+function buildGraph(extras: object[] = []): string {
+  const graph = {
+    "@context": "https://schema.org",
+    "@graph": [...GLOBAL_GRAPH, ...extras]
+  };
+  return escapeJsonLd(JSON.stringify(graph));
+}
+
+function buildHeadHtml({
+  title,
+  description,
+  canonical,
+  ogImage,
+  schemas,
+  noindex
+}: SEOHeadProps): string {
+  const imagePath = ogImage || '/found-for-ai-logo-white.png';
+  const fullImage = imagePath.startsWith('http') ? imagePath : `${SITE_ORIGIN}${imagePath}`;
+  const canonicalUrl = canonical ? canonical.replace(/\/$/, '') : SITE_ORIGIN;
+  const tags: string[] = [];
+
+  tags.push(`<title>${escapeHtml(title)}</title>`);
+  tags.push(`<meta name="description" content="${escapeHtml(description)}" />`);
+  if (noindex) {
+    tags.push(`<meta name="robots" content="noindex, nofollow" />`);
+  }
+  tags.push(`<link rel="canonical" href="${escapeHtml(canonicalUrl)}" />`);
+  tags.push(`<meta property="og:title" content="${escapeHtml(title)}" />`);
+  tags.push(`<meta property="og:description" content="${escapeHtml(description)}" />`);
+  tags.push(`<meta property="og:type" content="website" />`);
+  tags.push(`<meta property="og:url" content="${escapeHtml(canonicalUrl)}" />`);
+  tags.push(`<meta property="og:image" content="${escapeHtml(fullImage)}" />`);
+  tags.push(`<meta property="og:image:width" content="1200" />`);
+  tags.push(`<meta property="og:image:height" content="630" />`);
+  tags.push(`<meta property="og:site_name" content="Found For AI" />`);
+  tags.push(`<meta property="og:locale" content="en_US" />`);
+  tags.push(`<meta name="twitter:card" content="summary_large_image" />`);
+  tags.push(`<meta name="twitter:title" content="${escapeHtml(title)}" />`);
+  tags.push(`<meta name="twitter:description" content="${escapeHtml(description)}" />`);
+  tags.push(`<meta name="twitter:image" content="${escapeHtml(fullImage)}" />`);
+  tags.push(`<script type="application/ld+json" data-seo-head="true">${buildGraph(schemas)}</script>`);
+
+  return tags.join('\n    ');
+}
+
+function setOrCreateMeta(selector: string, attr: 'name' | 'property', attrValue: string, content: string) {
+  let el = document.querySelector(selector) as HTMLMetaElement | null;
+  if (!el) {
+    el = document.createElement('meta');
+    el.setAttribute(attr, attrValue);
+    document.head.appendChild(el);
+  }
+  el.setAttribute('content', content);
+}
+
+function setOrCreateLink(rel: string, href: string) {
+  let el = document.querySelector(`link[rel="${rel}"]`) as HTMLLinkElement | null;
+  if (!el) {
+    el = document.createElement('link');
+    el.setAttribute('rel', rel);
+    document.head.appendChild(el);
+  }
+  el.setAttribute('href', href);
+}
+
+export default function SEOHead(props: SEOHeadProps) {
+  const { title, description, canonical, ogImage, schemas, noindex } = props;
+
+  if (typeof window === 'undefined') {
+    pushHead(buildHeadHtml(props));
+    return null;
+  }
+
+  useEffect(() => {
+    const imagePath = ogImage || '/found-for-ai-logo-white.png';
+    const fullImage = imagePath.startsWith('http') ? imagePath : `${SITE_ORIGIN}${imagePath}`;
+    const canonicalUrl = canonical ? canonical.replace(/\/$/, '') : SITE_ORIGIN;
+
+    document.title = title;
+    setOrCreateMeta('meta[name="description"]', 'name', 'description', description);
+    setOrCreateMeta('meta[property="og:title"]', 'property', 'og:title', title);
+    setOrCreateMeta('meta[property="og:description"]', 'property', 'og:description', description);
+    setOrCreateMeta('meta[property="og:type"]', 'property', 'og:type', 'website');
+    setOrCreateMeta('meta[property="og:url"]', 'property', 'og:url', canonicalUrl);
+    setOrCreateMeta('meta[property="og:image"]', 'property', 'og:image', fullImage);
+    setOrCreateMeta('meta[property="og:image:width"]', 'property', 'og:image:width', '1200');
+    setOrCreateMeta('meta[property="og:image:height"]', 'property', 'og:image:height', '630');
+    setOrCreateMeta('meta[property="og:site_name"]', 'property', 'og:site_name', 'Found For AI');
+    setOrCreateMeta('meta[property="og:locale"]', 'property', 'og:locale', 'en_US');
+    setOrCreateMeta('meta[name="twitter:card"]', 'name', 'twitter:card', 'summary_large_image');
+    setOrCreateMeta('meta[name="twitter:title"]', 'name', 'twitter:title', title);
+    setOrCreateMeta('meta[name="twitter:description"]', 'name', 'twitter:description', description);
+    setOrCreateMeta('meta[name="twitter:image"]', 'name', 'twitter:image', fullImage);
+    setOrCreateLink('canonical', canonicalUrl);
+
+    if (noindex) {
+      setOrCreateMeta('meta[name="robots"]', 'name', 'robots', 'noindex, nofollow');
+    } else {
+      const robotsEl = document.querySelector('meta[name="robots"]');
+      if (robotsEl) robotsEl.parentNode?.removeChild(robotsEl);
+    }
+
+    document.querySelectorAll('script[data-seo-head="true"]').forEach((el) => el.remove());
+    const jsonLd = document.createElement('script');
+    jsonLd.type = 'application/ld+json';
+    jsonLd.setAttribute('data-seo-head', 'true');
+    jsonLd.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [...GLOBAL_GRAPH, ...(schemas || [])]
     });
     document.head.appendChild(jsonLd);
 
     return () => {
-      document.head.removeChild(jsonLd);
+      jsonLd.remove();
     };
-  }, [title, description, canonical, ogImage]);
+  }, [title, description, canonical, ogImage, noindex, JSON.stringify(schemas)]);
 
   return null;
 }

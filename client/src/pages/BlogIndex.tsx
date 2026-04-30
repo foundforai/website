@@ -69,11 +69,33 @@ export default function BlogIndex() {
 
   const [featuredPost, ...regularPosts] = posts;
 
+  const blogIndexSchemas = [
+    {
+      "@type": "Blog",
+      "@id": "https://foundforai.com/blog#blog",
+      "url": "https://foundforai.com/blog",
+      "name": "Found For AI Blog",
+      "description": "Expert insights on AI SEO, schema markup implementation, GEO optimization, and making your website discoverable by AI search engines.",
+      "isPartOf": { "@id": "https://foundforai.com/#website" },
+      "publisher": { "@id": "https://foundforai.com/#org" },
+      "author": { "@id": "https://foundforai.com/#dustin-crump" },
+      "blogPost": posts.map(p => ({
+        "@type": "BlogPosting",
+        "@id": `https://foundforai.com/blog/${p.slug}#article`,
+        "headline": p.title,
+        "url": `https://foundforai.com/blog/${p.slug}`,
+        "datePublished": p.date,
+        "author": { "@id": "https://foundforai.com/#dustin-crump" }
+      }))
+    }
+  ];
+
   return (
     <PageLayout
       title="AI SEO Blog - Schema Markup, GEO, and AI Discoverability Guides | Found For AI"
       description="Expert insights on AI SEO, schema markup implementation, GEO optimization, and making your website discoverable by AI search engines like ChatGPT and Perplexity."
       canonical="https://foundforai.com/blog"
+      schemas={blogIndexSchemas}
     >
       <section className="py-12 md:py-16 bg-background">
         <div className="max-w-[1100px] mx-auto px-4 md:px-6 lg:px-8">

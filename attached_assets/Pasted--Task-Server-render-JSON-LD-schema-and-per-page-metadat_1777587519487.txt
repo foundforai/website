@@ -1,0 +1,137 @@
+# Task: Server-render JSON-LD schema and per-page metadata across foundforai.com
+
+## Context
+
+This is the foundforai.com codebase (likely Next.js, possibly App Router). The site sells AI visibility / AEO services, so it is critical that AI crawlers (GPTBot, ClaudeBot, PerplexityBot, OAI-SearchBot, Claude-SearchBot, Perplexity-User, ChatGPT-User) can read our structured data and per-page metadata.
+
+## The Problem
+
+We have well-formed JSON-LD schema (Organization, WebSite, LocalBusiness, Service, Person, FAQPage) and good per-page content, but **none of it appears in the server-rendered HTML response**. It is being injected client-side via JavaScript after page load.
+
+Verification of the current broken state:
+
+```bash
+curl -s https://foundforai.com/ | grep -c "application/ld+json"
+# Returns: 0
+
+curl -s https://foundforai.com/ | grep -c "schema.org"
+# Returns: 0
+
+curl -s https://foundforai.com/what-is-ai-seo | grep -o "<title>.*</title>"
+# Returns: <title>Found For AI | The New Way to Be Discovered</title>
+# (Wrong — should be a page-specific title)
+```
+
+Almost every page returns the SAME homepage `<title>` in raw HTML. Only `/fix-plan` currently has a unique server-rendered title. Schema is visible in the rendered DOM but not in the initial HTML response.
+
+This is invisible to AI crawlers because GPTBot, ClaudeBot, PerplexityBot, OAI-SearchBot, and most retrieval crawlers do NOT execute JavaScript. They only see the raw HTML response.
+
+## Goal
+
+Every page on foundforai.com must serve, in its initial server-rendered HTML response (no JS execution required):
+
+1. A unique, page-specific `<title>` tag
+2. A unique, page-specific `<meta name="description">` tag
+3. Page-specific Open Graph and Twitter card meta tags
+4. The full JSON-LD schema graph appropriate to that page
+5. A canonical link tag
+
+## Required Schema Per Page Type
+
+| Page | Schema types to ship |
+|---|---|
+| Root layout (every page) | Organization, WebSite, LocalBusiness, BreadcrumbList |
+| `/` (home) | + WebPage, Service, FAQPage (existing FAQ) |
+| `/about` | + AboutPage, Person (Dustin Crump) |
+| `/services` | + Service, Offer |
+| `/fix-plan` | + Product, Offer ($1,595 price, USD) |
+| `/pricing` | + Service, Offer |
+| `/audit` | + WebPage, FAQPage |
+| `/what-is-ai-seo` | + Article, FAQPage, DefinedTerm |
+| `/what-is-found-for-ai` | + AboutPage |
+| `/contact` | + ContactPage |
+| `/blog` | + Blog |
+| `/blog/[slug]` | + BlogPosting, Person (author), FAQPage if applicable |
+| `/playbook` | + WebPage, Offer (free) |
+| `/talk-to-a-human`, `/book-call` | + WebPage, ContactPoint |
+
+The Organization schema must include the existing details: name, founder (Dustin Crump), logo, sameAs (LinkedIn, X, Facebook, Instagram), address (Cottonwood Heights, UT), phone (+18018982456), email (info@foundforai.com), areaServed.
+
+Reuse `@id` references: `https://foundforai.com/#org`, `#website`, `#local`, `#dustin-crump`, etc., so the entity graph is properly linked across pages.
+
+## Implementation Requirements
+
+**If this is Next.js App Router (most likely):**
+
+1. Move the global Organization, WebSite, and LocalBusiness schema into `app/layout.tsx` as an inline `<script type="application/ld+json" dangerouslySetInnerHTML={...} />` rendered by the server component. Do NOT use `useEffect`. Do NOT use a `'use client'` component for this.
+
+2. For each route, add a `metadata` export (or `generateMetadata` async function) in its `page.tsx` with unique `title`, `description`, `openGraph`, `twitter`, and `alternates.canonical` fields.
+
+3. For page-specific schema (Article, FAQPage, Product, etc.), render the JSON-LD inline in the page's server component, alongside the page content. Use `dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}`.
+
+**If this is Next.js Pages Router:**
+
+1. Use `next/head` with inline `<script type="application/ld+json">` tags inside `getStaticProps` or `getServerSideProps`-backed pages.
+2. Set unique title/description per page via `<Head>` components.
+
+**If this is Astro/Remix/SvelteKit:** apply the equivalent server-rendered pattern for that framework.
+
+## Critical Rules
+
+- NO `useEffect` for schema injection
+- NO client component (`'use client'`) wrappers around schema
+- NO `next/script` with `strategy="lazyOnload"` or `"afterInteractive"` for schema (use `beforeInteractive` if you must, but inline server rendering is preferred)
+- The schema MUST be in the HTML response from the server, verifiable via `curl` with no JS execution
+- Reuse the existing schema content/values — don't rewrite the schema graph, just move where/how it ships
+- Preserve the existing `@graph` structure with proper `@id` cross-references
+
+## Definition of Done
+
+All of these must pass for at least these pages: `/`, `/about`, `/services`, `/fix-plan`, `/pricing`, `/audit`, `/what-is-ai-seo`, `/what-is-found-for-ai`, `/contact`, `/blog`, `/playbook`.
+
+Run these commands and confirm:
+
+```bash
+# 1. Schema present in raw HTML for every page
+for path in "" "about" "services" "fix-plan" "pricing" "audit" "what-is-ai-seo" "what-is-found-for-ai" "contact" "blog" "playbook"; do
+  count=$(curl -s "https://foundforai.com/$path" | grep -c "application/ld+json")
+  echo "$path: $count schema blocks"
+done
+# Every page should report 1 or more
+
+# 2. Unique title per page
+for path in "" "about" "services" "fix-plan" "what-is-ai-seo" "audit"; do
+  echo -n "$path: "
+  curl -s "https://foundforai.com/$path" | grep -o "<title>[^<]*</title>" | head -1
+done
+# Each line should show a different, page-specific title
+
+# 3. Schema validates as Googlebot
+curl -A "Mozilla/5.0 (compatible; Googlebot/2.1)" -s https://foundforai.com/ | grep -c "Organization"
+# Should return 1 or more
+
+# 4. Schema visible to AI crawlers (no JS)
+curl -A "Mozilla/5.0 (compatible; GPTBot/1.0)" -s https://foundforai.com/what-is-ai-seo | grep -c "ld+json"
+# Should return 1 or more
+```
+
+Also verify in browser:
+- View Source (Cmd+U) on every page — the JSON-LD must be visible in the source, not just DevTools' Elements panel
+- Test each page in Google Rich Results Test (https://search.google.com/test/rich-results) — must pass with the expected schema types detected
+- Test each page in Schema.org Validator (https://validator.schema.org) — must pass with no errors
+
+## Deliverables
+
+1. Code changes implementing server-rendered schema and metadata for the pages listed above
+2. A short summary in the PR description listing which schema types were added to which routes
+3. Output of the verification commands above showing pass results
+4. Confirmation that no client-side schema injection remains (search the codebase for `application/ld+json` and ensure none are inside `useEffect`, `'use client'` components, or `next/script` with deferred strategies)
+
+## Out of Scope
+
+- Don't change the visual design or copy of any page
+- Don't change the existing schema content/values — only how/where it's rendered
+- Don't change the routing or page structure
+- Don't touch llms.txt, robots.txt, ai.txt, or sitemap.xml — those are already correctly configured
+
+Start by inspecting the codebase to determine: (a) is this App Router or Pages Router, (b) where is the current schema being injected, (c) where are titles being set. Then make the minimal changes needed to ship everything server-side.

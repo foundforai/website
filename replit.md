@@ -26,6 +26,8 @@ Currently, in-memory storage (MemStorage class) handles user, audit, and contact
 
 The platform includes static `robots.txt` and `llms.txt`, extensive Schema.org markup (Organization, WebPage, FAQPage), and Open Graph/Twitter Card meta tags. It enforces canonical URLs via 301 redirects (WWW to apex domain, HTTP to HTTPS) and manages a `sitemap.xml`. Specific pages, like `/readiness-report`, are configured with `noindex, nofollow` to prevent indexing of temporary content.
 
+**Server-rendered head + JSON-LD**: Every page emits its `<title>`, meta description, canonical, OG/Twitter tags, and a single combined JSON-LD `<script>` (global @graph: Organization, WebSite, LocalBusiness, Service, Person + page-specific schemas) directly in the SSR HTML response so AI crawlers (GPTBot, ClaudeBot, PerplexityBot) see them without executing JavaScript. Mechanism: `client/src/lib/ssr-head.ts` provides a request-scoped head buffer; `SEOHead` is isomorphic — pushes to the buffer on the server (synchronous, safe with `renderToString`) and mutates `document.head` on the client; `entry-server.tsx` returns `{html, head}`; `server/vite.ts` (dev + prod) replaces `<!--ssr-head-->` in `client/index.html`. Pages pass page-specific schemas via the `PageLayout` `schemas` prop.
+
 ## External Dependencies
 
 ### Third-Party Services

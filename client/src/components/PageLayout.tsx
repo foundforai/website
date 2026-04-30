@@ -9,12 +9,14 @@ interface PageLayoutProps {
   description: string;
   canonical?: string;
   ogImage?: string;
+  schemas?: object[];
+  noindex?: boolean;
 }
 
-export default function PageLayout({ children, title, description, canonical, ogImage }: PageLayoutProps) {
+export default function PageLayout({ children, title, description, canonical, ogImage, schemas, noindex }: PageLayoutProps) {
   return (
     <div className="flex flex-col min-h-screen">
-      <SEOHead title={title} description={description} canonical={canonical} ogImage={ogImage} />
+      <SEOHead title={title} description={description} canonical={canonical} ogImage={ogImage} schemas={schemas} noindex={noindex} />
       <Navigation />
       <main className="flex-1">
         {children}

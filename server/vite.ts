@@ -60,8 +60,12 @@ export async function setupVite(app: Express, server: Server) {
       template = await vite.transformIndexHtml(url, template);
 
       const { render } = await vite.ssrLoadModule("/src/entry-server.tsx");
-      const appHtml = render(url);
-      const html = template.replace("<!--ssr-outlet-->", appHtml);
+      const rendered = render(url);
+      const appHtml = typeof rendered === "string" ? rendered : rendered.html;
+      const headHtml = typeof rendered === "string" ? "" : rendered.head;
+      const html = template
+        .replace("<!--ssr-head-->", headHtml)
+        .replace("<!--ssr-outlet-->", appHtml);
 
       res.status(200).set({ "Content-Type": "text/html" }).end(html);
     } catch (e) {
@@ -83,7 +87,8 @@ export function serveStatic(app: Express) {
   app.use(express.static(distPath, { index: false }));
 
   const ssrModulePath = path.resolve(import.meta.dirname, "server", "entry-server.js");
-  let renderFn: ((url: string) => string) | null = null;
+  type RenderResult = string | { html: string; head: string };
+  let renderFn: ((url: string) => RenderResult) | null = null;
 
   const loadRender = async () => {
     if (!renderFn) {
@@ -104,8 +109,12 @@ export function serveStatic(app: Express) {
     const render = await loadRender();
     if (render) {
       try {
-        const appHtml = render(_req.originalUrl);
-        const html = template.replace("<!--ssr-outlet-->", appHtml);
+        const rendered = render(_req.originalUrl);
+        const appHtml = typeof rendered === "string" ? rendered : rendered.html;
+        const headHtml = typeof rendered === "string" ? "" : rendered.head;
+        const html = template
+          .replace("<!--ssr-head-->", headHtml)
+          .replace("<!--ssr-outlet-->", appHtml);
         res.status(200).set({ "Content-Type": "text/html" }).end(html);
         return;
       } catch (e) {

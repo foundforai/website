@@ -1,63 +1,47 @@
-import { useEffect } from 'react';
 import { Link } from 'wouter';
 import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ChevronRight, ExternalLink, Youtube, Globe } from 'lucide-react';
 
-export default function MediaEpisodeSmallLake() {
-  useEffect(() => {
-    const jsonLd = document.createElement('script');
-    jsonLd.type = 'application/ld+json';
-    jsonLd.text = JSON.stringify({
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "PodcastEpisode",
-          "@id": "https://foundforai.com/media/small-lake-city-podcast#episode",
-          "name": "How to Slide Into the Consciousness of AI — with Dustin Crump",
-          "url": "https://foundforai.com/media/small-lake-city-podcast",
-          "sameAs": [
-            "https://www.smalllakepod.com/episodes/dustin-crump-foundforai",
-            "https://open.spotify.com/episode/6hY9YVGJlwd8ifDMIuRGIj",
-            "https://youtu.be/VqFTeqxGR9s"
-          ],
-          "datePublished": "2025-04-01",
-          "description": "Dustin Crump of Found For AI discusses AI visibility, Answer Engine Optimization, structured data, and how local businesses can get found and recommended by AI assistants like ChatGPT, Claude, and Gemini.",
-          "keywords": ["AI visibility", "Answer Engine Optimization", "AEO", "AI search", "schema markup", "structured data", "Found For AI", "Dustin Crump"],
-          "partOfSeries": {
-            "@type": "PodcastSeries",
-            "name": "Small Lake City Podcast",
-            "url": "https://www.smalllakepod.com"
-          },
-          "author": {
-            "@type": "Person",
-            "@id": "https://foundforai.com/#dustin-crump",
-            "name": "Dustin Crump",
-            "url": "https://foundforai.com/about"
-          },
-          "publisher": {
-            "@type": "Organization",
-            "name": "Small Lake City Podcast",
-            "url": "https://www.smalllakepod.com"
-          }
-        },
-        {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://foundforai.com" },
-            { "@type": "ListItem", "position": 2, "name": "Media", "item": "https://foundforai.com/media" },
-            { "@type": "ListItem", "position": 3, "name": "Small Lake City Podcast", "item": "https://foundforai.com/media/small-lake-city-podcast" }
-          ]
-        }
-      ]
-    });
-    document.head.appendChild(jsonLd);
-    return () => {
-      document.head.removeChild(jsonLd);
-    };
-  }, []);
+const smallLakeSchemas = [
+  {
+    "@type": "PodcastEpisode",
+    "@id": "https://foundforai.com/media/small-lake-city-podcast#episode",
+    "name": "How to Slide Into the Consciousness of AI — with Dustin Crump",
+    "url": "https://foundforai.com/media/small-lake-city-podcast",
+    "sameAs": [
+      "https://www.smalllakepod.com/episodes/dustin-crump-foundforai",
+      "https://open.spotify.com/episode/6hY9YVGJlwd8ifDMIuRGIj",
+      "https://youtu.be/VqFTeqxGR9s"
+    ],
+    "datePublished": "2025-04-01",
+    "description": "Dustin Crump of Found For AI discusses AI visibility, Answer Engine Optimization, structured data, and how local businesses can get found and recommended by AI assistants like ChatGPT, Claude, and Gemini.",
+    "keywords": ["AI visibility", "Answer Engine Optimization", "AEO", "AI search", "schema markup", "structured data", "Found For AI", "Dustin Crump"],
+    "partOfSeries": {
+      "@type": "PodcastSeries",
+      "name": "Small Lake City Podcast",
+      "url": "https://www.smalllakepod.com"
+    },
+    "author": { "@id": "https://foundforai.com/#dustin-crump" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Small Lake City Podcast",
+      "url": "https://www.smalllakepod.com"
+    }
+  },
+  {
+    "@type": "BreadcrumbList",
+    "@id": "https://foundforai.com/media/small-lake-city-podcast#breadcrumb",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://foundforai.com" },
+      { "@type": "ListItem", "position": 2, "name": "Media", "item": "https://foundforai.com/media" },
+      { "@type": "ListItem", "position": 3, "name": "Small Lake City Podcast", "item": "https://foundforai.com/media/small-lake-city-podcast" }
+    ]
+  }
+];
 
+export default function MediaEpisodeSmallLake() {
   const quotes = [
     "How do you slide into the consciousness of AI where it will recommend your business?",
     "I look at your site and I'm like, wow, it's a really good site for humans. But what about the robots?",
@@ -69,6 +53,7 @@ export default function MediaEpisodeSmallLake() {
       title="How to Slide Into the Consciousness of AI | Small Lake City Podcast | Found For AI"
       description="Dustin Crump of Found For AI on the Small Lake City Podcast — covering AI visibility, why businesses are invisible to AI search, and how the AI visibility layer works. Full episode and transcript."
       canonical="https://foundforai.com/media/small-lake-city-podcast"
+      schemas={smallLakeSchemas}
     >
       <section className="py-12 md:py-16 bg-background">
         <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8">

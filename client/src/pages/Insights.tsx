@@ -2,34 +2,25 @@ import PageLayout from '@/components/PageLayout';
 import { ExternalLink } from 'lucide-react';
 
 export default function Insights() {
-  const webPageSchema = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Insights - Found For AI",
-    "description": "Writing and perspectives on AI visibility, structured data, and how modern AI systems interpret businesses online.",
-    "url": "https://foundforai.com/insights",
-    "isPartOf": {
-      "@type": "WebSite",
-      "name": "Found For AI",
-      "url": "https://foundforai.com"
-    },
-    "author": {
-      "@type": "Person",
-      "name": "Dustin Crump"
+  const insightsSchemas = [
+    {
+      "@type": "WebPage",
+      "@id": "https://foundforai.com/insights#webpage",
+      "name": "Insights - Found For AI",
+      "description": "Writing and perspectives on AI visibility, structured data, and how modern AI systems interpret businesses online.",
+      "url": "https://foundforai.com/insights",
+      "isPartOf": { "@id": "https://foundforai.com/#website" },
+      "author": { "@id": "https://foundforai.com/#dustin-crump" }
     }
-  };
+  ];
 
   return (
     <PageLayout
       title="Insights - AI Visibility & Structured Data | Found For AI"
       description="Writing and perspectives on AI visibility, structured data, and how modern AI systems interpret businesses online. By Dustin Crump."
       canonical="https://foundforai.com/insights"
+      schemas={insightsSchemas}
     >
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
-      />
-
       <section className="py-16 md:py-24 bg-background">
         <div className="max-w-3xl mx-auto px-4 md:px-6 lg:px-8">
           <h1 

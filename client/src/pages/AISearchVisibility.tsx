@@ -1,152 +1,86 @@
-import { useEffect } from 'react';
 import PageLayout from '@/components/PageLayout';
 
-export default function AISearchVisibility() {
-  useEffect(() => {
-    const schema = document.createElement('script');
-    schema.type = 'application/ld+json';
-    schema.id = 'ai-search-visibility-schema';
-    schema.text = JSON.stringify({
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Organization",
-          "@id": "https://foundforai.com/#org",
-          "name": "Found For AI",
-          "url": "https://foundforai.com",
-          "logo": "https://foundforai.com/found-for-ai-logo-white.png",
-          "sameAs": [
-            "https://www.linkedin.com/company/foundforai",
-            "https://x.com/foundforai",
-            "https://www.instagram.com/foundforai"
-          ],
-          "founder": {
-            "@type": "Person",
-            "name": "Dustin Crump",
-            "url": "https://www.linkedin.com/in/fripse",
-            "knowsAbout": [
-              "AI search visibility",
-              "structured data",
-              "schema.org",
-              "AI assistants",
-              "answer engine optimization"
-            ]
-          },
-          "knowsAbout": [
-            "AI search visibility",
-            "AI readability",
-            "LLM discovery",
-            "schema optimization",
-            "AI assistants"
-          ]
-        },
-        {
-          "@type": "WebPage",
-          "@id": "https://foundforai.com/ai-search-visibility#page",
-          "url": "https://foundforai.com/ai-search-visibility",
-          "name": "AI Search Visibility for Businesses",
-          "isPartOf": {
-            "@id": "https://foundforai.com/#website"
-          },
-          "about": {
-            "@id": "https://foundforai.com/#service-ai-visibility"
-          }
-        },
-        {
-          "@type": "Service",
-          "@id": "https://foundforai.com/#service-ai-visibility",
-          "name": "AI Search Visibility Optimization",
-          "serviceType": "AI Search Visibility Optimization",
-          "description": "Optimization of websites and business data so AI assistants can understand, trust, and recommend a business in AI generated answers.",
-          "provider": {
-            "@id": "https://foundforai.com/#org"
-          },
-          "serviceAudience": {
-            "@type": "Audience",
-            "audienceType": [
-              "Local service businesses",
-              "Professional services",
-              "Agencies",
-              "Online businesses"
-            ]
-          },
-          "availableChannel": {
-            "@type": "ServiceChannel",
-            "serviceLocation": {
-              "@type": "VirtualLocation",
-              "url": "https://foundforai.com"
-            }
-          },
-          "areaServed": {
-            "@type": "Country",
-            "name": "United States"
-          },
-          "offers": {
-            "@type": "Offer",
-            "price": "1595",
-            "priceCurrency": "USD",
-            "url": "https://foundforai.com/services",
-            "availability": "https://schema.org/InStock"
-          }
-        },
-        {
-          "@type": "FAQPage",
-          "@id": "https://foundforai.com/ai-search-visibility#faq",
-          "isPartOf": {
-            "@id": "https://foundforai.com/ai-search-visibility#page"
-          },
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "How long does it take for AI systems to use this information?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "AI platforms update on their own timelines. Most changes are reflected within two to eight weeks after implementation."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Does this replace SEO?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "No. AI search visibility complements traditional SEO by addressing how AI assistants interpret and recommend businesses."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Do you need to rebuild my website?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Usually no. Found For AI works with your existing site and adds an AI focused data layer."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Is this a monthly service?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "No. This is typically a one time implementation, with optional future expansions."
-              }
-            }
-          ]
+const aiSearchVisibilitySchemas = [
+  {
+    "@type": "WebPage",
+    "@id": "https://foundforai.com/ai-search-visibility#page",
+    "url": "https://foundforai.com/ai-search-visibility",
+    "name": "AI Search Visibility for Businesses",
+    "isPartOf": { "@id": "https://foundforai.com/#website" },
+    "about": { "@id": "https://foundforai.com/#service-ai-visibility" }
+  },
+  {
+    "@type": "Service",
+    "@id": "https://foundforai.com/#service-ai-visibility",
+    "name": "AI Search Visibility Optimization",
+    "serviceType": "AI Search Visibility Optimization",
+    "description": "Optimization of websites and business data so AI assistants can understand, trust, and recommend a business in AI generated answers.",
+    "provider": { "@id": "https://foundforai.com/#org" },
+    "serviceAudience": {
+      "@type": "Audience",
+      "audienceType": ["Local service businesses", "Professional services", "Agencies", "Online businesses"]
+    },
+    "availableChannel": {
+      "@type": "ServiceChannel",
+      "serviceLocation": { "@type": "VirtualLocation", "url": "https://foundforai.com" }
+    },
+    "areaServed": { "@type": "Country", "name": "United States" },
+    "offers": {
+      "@type": "Offer",
+      "price": "1595",
+      "priceCurrency": "USD",
+      "url": "https://foundforai.com/services",
+      "availability": "https://schema.org/InStock"
+    }
+  },
+  {
+    "@type": "FAQPage",
+    "@id": "https://foundforai.com/ai-search-visibility#faq",
+    "isPartOf": { "@id": "https://foundforai.com/ai-search-visibility#page" },
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How long does it take for AI systems to use this information?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AI platforms update on their own timelines. Most changes are reflected within two to eight weeks after implementation."
         }
-      ]
-    });
-    document.head.appendChild(schema);
-
-    return () => {
-      const existingSchema = document.getElementById('ai-search-visibility-schema');
-      if (existingSchema) {
-        document.head.removeChild(existingSchema);
+      },
+      {
+        "@type": "Question",
+        "name": "Does this replace SEO?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. AI search visibility complements traditional SEO by addressing how AI assistants interpret and recommend businesses."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you need to rebuild my website?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Usually no. Found For AI works with your existing site and adds an AI focused data layer."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this a monthly service?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. This is typically a one time implementation, with optional future expansions."
+        }
       }
-    };
-  }, []);
+    ]
+  }
+];
 
+export default function AISearchVisibility() {
   return (
     <PageLayout
       title="AI Search Visibility for Businesses | Found For AI"
       description="Found For AI helps businesses become visible to AI assistants like ChatGPT, Google Gemini, and Perplexity through AI readable data layers."
       canonical="https://foundforai.com/ai-search-visibility"
+      schemas={aiSearchVisibilitySchemas}
     >
       <article className="py-16 md:py-24 bg-background">
         <div className="max-w-3xl mx-auto px-4 md:px-6 lg:px-8">

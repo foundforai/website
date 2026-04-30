@@ -1,85 +1,24 @@
-import { useEffect } from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Link } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 
-export default function WhatIsFoundForAI() {
-  useEffect(() => {
-    // Organization Schema
-    const orgSchema = document.createElement('script');
-    orgSchema.type = 'application/ld+json';
-    orgSchema.id = 'org-schema-what-is';
-    orgSchema.text = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Found For AI",
-      "alternateName": ["FoundForAI", "Found for AI Consulting", "Found For AI SEO"],
-      "url": "https://foundforai.com",
-      "logo": "https://foundforai.com/found-for-ai-logo-white.png",
-      "image": [
-        "https://foundforai.com/found-for-ai-logo-white.png",
-        "https://foundforai.com/found-for-ai-logo-black.png"
-      ],
-      "foundingDate": "2024",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Salt Lake City",
-        "addressRegion": "UT",
-        "addressCountry": "US"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "Customer Support",
-        "email": "support@foundforai.com"
-      },
-      "founder": {
-        "@type": "Person",
-        "name": "Dustin Crump",
-        "url": "https://www.linkedin.com/in/fripse"
-      },
-      "sameAs": [
-        "https://x.com/foundforai",
-        "https://www.linkedin.com/company/foundforai",
-        "https://www.facebook.com/foundforai",
-        "https://www.instagram.com/foundforai"
-      ],
-      "brand": { "@type": "Brand", "name": "Found For AI" },
-      "description": "Found For AI makes businesses discoverable in AI search engines (ChatGPT, Gemini, Perplexity) with AI-first SEO, schema, and technical setup."
-    });
-    document.head.appendChild(orgSchema);
-
-    // WebPage Schema
-    const webPageSchema = document.createElement('script');
-    webPageSchema.type = 'application/ld+json';
-    webPageSchema.id = 'webpage-schema-what-is';
-    webPageSchema.text = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "What is Found For AI",
-      "description": "Found For AI is a framework and implementation approach that helps businesses become discoverable and recommendable by AI systems like Google Gemini, ChatGPT, and Perplexity.",
-      "url": "https://foundforai.com/what-is-found-for-ai",
-      "about": ["Found For AI", "AI visibility", "AI search recommendations"],
-      "publisher": {
-        "@type": "Organization",
-        "name": "Found For AI",
-        "url": "https://foundforai.com"
-      },
-      "mainEntity": {
-        "@type": "Organization",
-        "name": "Found For AI"
-      }
-    });
-    document.head.appendChild(webPageSchema);
-
-    // FAQPage Schema
-    const faqSchema = document.createElement('script');
-    faqSchema.type = 'application/ld+json';
-    faqSchema.id = 'faq-schema-what-is';
-    faqSchema.text = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
+const whatIsSchemas = [
+  {
+    "@type": "AboutPage",
+    "@id": "https://foundforai.com/what-is-found-for-ai#aboutpage",
+    "name": "What is Found For AI",
+    "description": "Found For AI is a framework and implementation approach that helps businesses become discoverable and recommendable by AI systems like Google Gemini, ChatGPT, and Perplexity.",
+    "url": "https://foundforai.com/what-is-found-for-ai",
+    "about": { "@id": "https://foundforai.com/#org" },
+    "isPartOf": { "@id": "https://foundforai.com/#website" },
+    "publisher": { "@id": "https://foundforai.com/#org" },
+    "mainEntity": { "@id": "https://foundforai.com/#org" }
+  },
+  {
+    "@type": "FAQPage",
+    "@id": "https://foundforai.com/what-is-found-for-ai#faq",
+    "mainEntity": [
         {
           "@type": "Question",
           "name": "What is AI visibility",
@@ -113,26 +52,17 @@ export default function WhatIsFoundForAI() {
           }
         }
       ]
-    });
-    document.head.appendChild(faqSchema);
+  }
+];
 
-    return () => {
-      const existingOrgSchema = document.getElementById('org-schema-what-is');
-      const existingWebPageSchema = document.getElementById('webpage-schema-what-is');
-      const existingFaqSchema = document.getElementById('faq-schema-what-is');
-      
-      if (existingOrgSchema) document.head.removeChild(existingOrgSchema);
-      if (existingWebPageSchema) document.head.removeChild(existingWebPageSchema);
-      if (existingFaqSchema) document.head.removeChild(existingFaqSchema);
-    };
-  }, []);
-
+export default function WhatIsFoundForAI() {
   return (
     <PageLayout
       title="What is Found For AI | AI Visibility Framework"
       description="Found For AI is a framework and implementation approach that helps businesses become discoverable and recommendable by AI systems like Google Gemini, ChatGPT, and Perplexity."
       canonical="https://foundforai.com/what-is-found-for-ai"
       ogImage="/found-for-ai-logo-white.png"
+      schemas={whatIsSchemas}
     >
       <section className="py-16 md:py-24 bg-background">
         <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8">

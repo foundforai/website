@@ -8,6 +8,53 @@ import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
 
+const auditSchemas = [
+  {
+    "@type": "WebPage",
+    "@id": "https://foundforai.com/audit#webpage",
+    "url": "https://foundforai.com/audit",
+    "name": "Free AI Visibility Review",
+    "description": "Request a free AI Visibility Review. Get a clear snapshot of how visible your business is to AI tools like ChatGPT and Perplexity.",
+    "isPartOf": { "@id": "https://foundforai.com/#website" },
+    "publisher": { "@id": "https://foundforai.com/#org" },
+    "potentialAction": {
+      "@type": "Action",
+      "name": "Request AI Visibility Review",
+      "target": "https://foundforai.com/audit"
+    }
+  },
+  {
+    "@type": "FAQPage",
+    "@id": "https://foundforai.com/audit#faq",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is an AI Visibility Review?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An AI Visibility Review is a free snapshot of how AI tools like ChatGPT, Perplexity, and Google AI currently understand and describe your business, and what's missing for them to recommend you."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does the review take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Submit the form in under two minutes. We send your review back within a few business days."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is the review really free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The AI Visibility Review is free with no obligation. If you want help fixing what we find, the AI Visibility Fix is a separate paid engagement."
+        }
+      }
+    ]
+  }
+];
+
 export default function Audit() {
   const [, setLocation] = useLocation();
   const { toast } = useToast();
@@ -83,6 +130,7 @@ export default function Audit() {
       title="Free AI Visibility Review - See How AI Tools Understand Your Business | Found For AI"
       description="Request a free AI Visibility Review. Get a clear snapshot of how visible your business is to AI tools like ChatGPT and Perplexity."
       canonical="https://foundforai.com/audit"
+      schemas={auditSchemas}
     >
       <section className="py-16 md:py-24 bg-gradient-to-br from-background via-primary/5 to-accent/5">
         <div className="max-w-2xl mx-auto px-4 md:px-6 lg:px-8">

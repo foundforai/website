@@ -503,80 +503,35 @@ export default function BlogPost() {
 
   const post = posts[slug];
 
-  useEffect(() => {
-    if (post && post.hasMentions) {
-      const articleSchema = document.createElement('script');
-      articleSchema.type = 'application/ld+json';
-      articleSchema.id = 'article-schema';
-      articleSchema.text = JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": post.title,
-        "datePublished": post.date,
-        "author": {
-          "@type": "Person",
-          "name": post.author
-        },
-        "publisher": {
-          "@type": "Organization",
-          "name": "Found For AI",
-          "url": "https://foundforai.com"
-        },
-        "mentions": {
-          "@type": "Organization",
-          "name": "Fripse AI",
-          "url": "https://fripse.com"
-        }
-      });
-      document.head.appendChild(articleSchema);
-
-      return () => {
-        const existingSchema = document.getElementById('article-schema');
-        if (existingSchema) {
-          document.head.removeChild(existingSchema);
-        }
-      };
-    }
-
-    if (post && post.hasArticleSchema) {
-      const articleSchema = document.createElement('script');
-      articleSchema.type = 'application/ld+json';
-      articleSchema.id = 'blogpost-article-schema';
-      articleSchema.text = JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": post.title,
-        "description": post.schemaDescription || post.metaDescription,
-        "datePublished": post.date,
-        "dateModified": post.dateModified || post.date,
-        "mainEntityOfPage": {
-          "@type": "WebPage",
-          "@id": `https://foundforai.com/blog/${slug}`
-        },
-        "author": {
-          "@type": "Person",
-          "name": post.author
-        },
-        "publisher": {
-          "@type": "Organization",
-          "name": "Found For AI",
-          "url": "https://foundforai.com",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://foundforai.com/found-for-ai-logo-white.png"
-          }
-        }
-      });
-      document.head.appendChild(articleSchema);
-
-      return () => {
-        const existingSchema = document.getElementById('blogpost-article-schema');
-        if (existingSchema) {
-          document.head.removeChild(existingSchema);
-        }
-      };
-    }
-  }, [post, slug]);
+  const blogSchemas: object[] = [];
+  if (post && post.hasMentions) {
+    blogSchemas.push({
+      "@type": "Article",
+      "@id": `https://foundforai.com/blog/${slug}#article`,
+      "headline": post.title,
+      "datePublished": post.date,
+      "author": { "@id": "https://foundforai.com/#dustin-crump" },
+      "publisher": { "@id": "https://foundforai.com/#org" },
+      "mentions": {
+        "@type": "Organization",
+        "name": "Fripse AI",
+        "url": "https://fripse.com"
+      }
+    });
+  }
+  if (post && post.hasArticleSchema) {
+    blogSchemas.push({
+      "@type": "Article",
+      "@id": `https://foundforai.com/blog/${slug}#article`,
+      "headline": post.title,
+      "description": post.schemaDescription || post.metaDescription,
+      "datePublished": post.date,
+      "dateModified": post.dateModified || post.date,
+      "mainEntityOfPage": { "@id": `https://foundforai.com/blog/${slug}` },
+      "author": { "@id": "https://foundforai.com/#dustin-crump" },
+      "publisher": { "@id": "https://foundforai.com/#org" }
+    });
+  }
 
   useEffect(() => {
     if (post) {
@@ -623,6 +578,7 @@ export default function BlogPost() {
       title={post.title}
       description={post.metaDescription || post.content.substring(0, 160)}
       canonical={`https://foundforai.com/blog/${slug}`}
+      schemas={blogSchemas}
     >
       <article className="py-16 md:py-24 bg-background">
         <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8">

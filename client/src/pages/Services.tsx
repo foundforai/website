@@ -4,6 +4,27 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'wouter';
 import { Check, Search, Wrench, TrendingUp } from 'lucide-react';
 
+const servicesSchemas = [
+  {
+    "@type": "Service",
+    "@id": "https://foundforai.com/services#service",
+    "name": "AI Visibility Fix",
+    "description": "A one-time implementation that fixes how AI tools like ChatGPT, Google AI, and Perplexity understand and recommend your business.",
+    "provider": { "@id": "https://foundforai.com/#org" },
+    "serviceType": "AI Visibility Implementation",
+    "areaServed": { "@type": "Country", "name": "United States" },
+    "offers": {
+      "@type": "Offer",
+      "@id": "https://foundforai.com/services#offer",
+      "price": "1595",
+      "priceCurrency": "USD",
+      "url": "https://foundforai.com/services",
+      "availability": "https://schema.org/InStock",
+      "seller": { "@id": "https://foundforai.com/#org" }
+    }
+  }
+];
+
 export default function Services() {
   const howItWorks = [
     {
@@ -31,6 +52,7 @@ export default function Services() {
       title="Our Core Service: AI Visibility Fix | Found For AI"
       description="A one-time implementation that fixes how AI tools understand and recommend your business."
       canonical="https://foundforai.com/services"
+      schemas={servicesSchemas}
     >
       {/* Hero Section */}
       <section className="py-16 md:py-24 bg-gradient-to-br from-background via-primary/5 to-accent/5">

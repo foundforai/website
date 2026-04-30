@@ -2,6 +2,20 @@ import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from '@/components/ui/card';
 import { Check, ExternalLink } from 'lucide-react';
 
+const aboutSchemas = [
+  {
+    "@type": "AboutPage",
+    "@id": "https://foundforai.com/about#aboutpage",
+    "url": "https://foundforai.com/about",
+    "name": "About Found For AI",
+    "description": "Found For AI helps small businesses stay visible in the AI search era with transparent, practical, results-focused optimization. Founded by Dustin Crump.",
+    "isPartOf": { "@id": "https://foundforai.com/#website" },
+    "about": { "@id": "https://foundforai.com/#org" },
+    "mainEntity": { "@id": "https://foundforai.com/#dustin-crump" },
+    "publisher": { "@id": "https://foundforai.com/#org" }
+  }
+];
+
 export default function About() {
   const values = [
     'Transparent - No hidden costs or confusing jargon',
@@ -14,6 +28,7 @@ export default function About() {
       title="About Found For AI - AI SEO Consulting Experts | Dustin Crump"
       description="Meet Dustin Crump and learn how Found For AI helps small businesses stay visible in the AI search era with transparent, practical, results-focused optimization."
       canonical="https://foundforai.com/about"
+      schemas={aboutSchemas}
     >
       <section className="py-16 md:py-24 bg-background">
         <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8">

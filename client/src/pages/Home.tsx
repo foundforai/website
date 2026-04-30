@@ -31,13 +31,26 @@ export default function Home() {
       }
     }, 800);
 
-    // FAQPage Schema for homepage
-    const faqSchema = document.createElement('script');
-    faqSchema.type = 'application/ld+json';
-    faqSchema.id = 'home-faq-schema';
-    faqSchema.text = JSON.stringify({
-      "@context": "https://schema.org",
+    return () => {
+      window.removeEventListener("message", handleMessage);
+      clearInterval(intervalId);
+    };
+  }, []);
+
+  const homeSchemas = [
+    {
+      "@type": "WebPage",
+      "@id": "https://foundforai.com/#webpage",
+      "url": "https://foundforai.com/",
+      "name": "Found For AI | Be the Business AI Recommends First",
+      "isPartOf": { "@id": "https://foundforai.com/#website" },
+      "about": { "@id": "https://foundforai.com/#org" },
+      "primaryImageOfPage": "https://foundforai.com/found-for-ai-logo-white.png",
+      "description": "Found For AI is an AI visibility framework and implementation service that helps businesses get discovered and recommended by AI-powered search systems like ChatGPT, Google Gemini, and Perplexity."
+    },
+    {
       "@type": "FAQPage",
+      "@id": "https://foundforai.com/#faq",
       "mainEntity": [
         {
           "@type": "Question",
@@ -72,18 +85,8 @@ export default function Home() {
           }
         }
       ]
-    });
-    document.head.appendChild(faqSchema);
-
-    return () => {
-      window.removeEventListener("message", handleMessage);
-      clearInterval(intervalId);
-      const existingFaq = document.getElementById('home-faq-schema');
-      if (existingFaq) {
-        document.head.removeChild(existingFaq);
-      }
-    };
-  }, []);
+    }
+  ];
 
   const whyNotShowingUp = [
     "AI cannot identify what services you actually offer",
@@ -131,6 +134,7 @@ export default function Home() {
       description="Found For AI is an AI visibility framework and implementation service that helps businesses get discovered and recommended by AI-powered search systems like ChatGPT, Google Gemini, and Perplexity."
       canonical="https://foundforai.com"
       ogImage="/found-for-ai-logo-white.png"
+      schemas={homeSchemas}
     >
       {/* SECTION 1: HERO - Two Column Layout */}
       <section 
