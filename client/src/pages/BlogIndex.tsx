@@ -11,16 +11,6 @@ export default function BlogIndex() {
   //TODO: remove mock functionality - replace with actual blog post data
   const posts = [
     {
-      slug: '5-things-ai-checks-local-business',
-      title: 'The 5 Things AI Checks Before Recommending a Local Business',
-      date: '2026-04-21',
-      author: 'Dustin Crump',
-      excerpt: 'AI tools recommend one or two local businesses — not ten. Here are the 5 things ChatGPT, Google AI, and Perplexity check before picking yours.',
-      readTime: '8 min read',
-      image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0',
-      featured: true,
-    },
-    {
       slug: 'mental-model-shift-ai-search',
       title: 'The Mental Model Shift Businesses Are Missing About AI Search',
       date: '2025-01-12',
@@ -28,6 +18,7 @@ export default function BlogIndex() {
       excerpt: 'Most business websites are still written for keyword matching and human browsing. AI systems don\'t browse — they interpret.',
       readTime: '6 min read',
       image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2565&auto=format&fit=crop&ixlib=rb-4.1.0',
+      featured: true,
     },
     {
       slug: '7-things-smart-business-owners-do-to-get-recommended-by-ai',
