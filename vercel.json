@@ -8,7 +8,7 @@
     { "source": "/purchase-complete", "destination": "/", "statusCode": 301 }
   ],
   "rewrites": [
-    { "source": "/fix-plan/request", "destination": "/fix-plan-request.html" },
-    { "source": "/fix-plan/thanks", "destination": "/fix-plan-thanks.html" }
+    { "source": "/fix-plan/request", "destination": "/fix-plan-request" },
+    { "source": "/fix-plan/thanks", "destination": "/fix-plan-thanks" }
   ]
 }
