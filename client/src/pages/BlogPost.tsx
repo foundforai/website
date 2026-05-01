@@ -6,6 +6,13 @@ import aiAutomationImg from '@assets/stock_images/ai_automation_workfl_1fb79544.
 import aiSearchImg from '@assets/stock_images/artificial_intellige_8c98905d.jpg';
 import schemaMarkupImg from '@assets/stock_images/schema_markup_struct_0763f9a1.jpg';
 import websiteOptimizationImg from '@assets/stock_images/website_optimization_b4ff5bda.jpg';
+import { breadcrumbList } from '@/lib/breadcrumb';
+
+function toIsoDate(date: string): string {
+  if (!date) return date;
+  if (date.includes('T')) return date;
+  return `${date}T00:00:00-07:00`;
+}
 
 export default function BlogPost() {
   const [, params] = useRoute('/blog/:slug');
@@ -504,12 +511,22 @@ export default function BlogPost() {
   const post = posts[slug];
 
   const blogSchemas: object[] = [];
+  if (post) {
+    blogSchemas.push(
+      breadcrumbList([
+        { name: 'Home', url: 'https://foundforai.com/' },
+        { name: 'Blog', url: 'https://foundforai.com/blog' },
+        { name: post.title, url: `https://foundforai.com/blog/${slug}` }
+      ])
+    );
+  }
   if (post && post.hasMentions) {
     blogSchemas.push({
       "@type": "Article",
       "@id": `https://foundforai.com/blog/${slug}#article`,
       "headline": post.title,
-      "datePublished": post.date,
+      "datePublished": toIsoDate(post.date),
+      "dateModified": toIsoDate(post.dateModified || post.date),
       "author": { "@id": "https://foundforai.com/#dustin-crump" },
       "publisher": { "@id": "https://foundforai.com/#org" },
       "mentions": {
@@ -525,8 +542,8 @@ export default function BlogPost() {
       "@id": `https://foundforai.com/blog/${slug}#article`,
       "headline": post.title,
       "description": post.schemaDescription || post.metaDescription,
-      "datePublished": post.date,
-      "dateModified": post.dateModified || post.date,
+      "datePublished": toIsoDate(post.date),
+      "dateModified": toIsoDate(post.dateModified || post.date),
       "mainEntityOfPage": { "@id": `https://foundforai.com/blog/${slug}` },
       "author": { "@id": "https://foundforai.com/#dustin-crump" },
       "publisher": { "@id": "https://foundforai.com/#org" }

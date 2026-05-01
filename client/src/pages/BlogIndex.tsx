@@ -6,6 +6,13 @@ import aiAutomationImg from '@assets/stock_images/ai_automation_workfl_1fb79544.
 import aiSearchImg from '@assets/stock_images/artificial_intellige_8c98905d.jpg';
 import schemaMarkupImg from '@assets/stock_images/schema_markup_struct_0763f9a1.jpg';
 import websiteOptimizationImg from '@assets/stock_images/website_optimization_b4ff5bda.jpg';
+import { breadcrumbList } from '@/lib/breadcrumb';
+
+function toIsoDate(date: string): string {
+  if (!date) return date;
+  if (date.includes('T')) return date;
+  return `${date}T00:00:00-07:00`;
+}
 
 export default function BlogIndex() {
   //TODO: remove mock functionality - replace with actual blog post data
@@ -70,6 +77,10 @@ export default function BlogIndex() {
   const [featuredPost, ...regularPosts] = posts;
 
   const blogIndexSchemas = [
+    breadcrumbList([
+      { name: 'Home', url: 'https://foundforai.com/' },
+      { name: 'Blog', url: 'https://foundforai.com/blog' }
+    ]),
     {
       "@type": "Blog",
       "@id": "https://foundforai.com/blog#blog",
@@ -84,7 +95,8 @@ export default function BlogIndex() {
         "@id": `https://foundforai.com/blog/${p.slug}#article`,
         "headline": p.title,
         "url": `https://foundforai.com/blog/${p.slug}`,
-        "datePublished": p.date,
+        "datePublished": toIsoDate(p.date),
+        "dateModified": toIsoDate(p.date),
         "author": { "@id": "https://foundforai.com/#dustin-crump" }
       }))
     }

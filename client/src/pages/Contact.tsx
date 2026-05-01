@@ -7,8 +7,13 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { Mail, Phone, MapPin } from 'lucide-react';
+import { breadcrumbList } from '@/lib/breadcrumb';
 
 const contactSchemas = [
+  breadcrumbList([
+    { name: 'Home', url: 'https://foundforai.com/' },
+    { name: 'Contact', url: 'https://foundforai.com/contact' }
+  ]),
   {
     "@type": "ContactPage",
     "@id": "https://foundforai.com/contact#contactpage",

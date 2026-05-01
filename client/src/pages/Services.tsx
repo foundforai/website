@@ -3,8 +3,13 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Link } from 'wouter';
 import { Check, Search, Wrench, TrendingUp } from 'lucide-react';
+import { breadcrumbList } from '@/lib/breadcrumb';
 
 const servicesSchemas = [
+  breadcrumbList([
+    { name: 'Home', url: 'https://foundforai.com/' },
+    { name: 'Services', url: 'https://foundforai.com/services' }
+  ]),
   {
     "@type": "Service",
     "@id": "https://foundforai.com/services#service",

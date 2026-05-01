@@ -6,8 +6,13 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { ArrowRight } from 'lucide-react';
+import { breadcrumbList } from '@/lib/breadcrumb';
 
 const playbookSchemas = [
+  breadcrumbList([
+    { name: 'Home', url: 'https://foundforai.com/' },
+    { name: 'Playbook', url: 'https://foundforai.com/playbook' }
+  ]),
   {
     "@type": "WebPage",
     "@id": "https://foundforai.com/playbook#webpage",

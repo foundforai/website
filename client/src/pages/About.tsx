@@ -1,8 +1,13 @@
 import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from '@/components/ui/card';
 import { Check, ExternalLink } from 'lucide-react';
+import { breadcrumbList } from '@/lib/breadcrumb';
 
 const aboutSchemas = [
+  breadcrumbList([
+    { name: 'Home', url: 'https://foundforai.com/' },
+    { name: 'About', url: 'https://foundforai.com/about' }
+  ]),
   {
     "@type": "AboutPage",
     "@id": "https://foundforai.com/about#aboutpage",

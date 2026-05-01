@@ -2,8 +2,13 @@ import PageLayout from '@/components/PageLayout';
 import { Link } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import { breadcrumbList } from '@/lib/breadcrumb';
 
 const whatIsSchemas = [
+  breadcrumbList([
+    { name: 'Home', url: 'https://foundforai.com/' },
+    { name: 'What Is Found For AI', url: 'https://foundforai.com/what-is-found-for-ai' }
+  ]),
   {
     "@type": "AboutPage",
     "@id": "https://foundforai.com/what-is-found-for-ai#aboutpage",

@@ -7,8 +7,13 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
+import { breadcrumbList } from '@/lib/breadcrumb';
 
 const auditSchemas = [
+  breadcrumbList([
+    { name: 'Home', url: 'https://foundforai.com/' },
+    { name: 'Free AI Visibility Review', url: 'https://foundforai.com/audit' }
+  ]),
   {
     "@type": "WebPage",
     "@id": "https://foundforai.com/audit#webpage",

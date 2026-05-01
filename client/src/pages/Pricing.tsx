@@ -3,8 +3,13 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Button } from '@/components/ui/button';
 import { Link } from 'wouter';
 import { Check, ArrowRight } from 'lucide-react';
+import { breadcrumbList } from '@/lib/breadcrumb';
 
 const pricingSchemas = [
+  breadcrumbList([
+    { name: 'Home', url: 'https://foundforai.com/' },
+    { name: 'Pricing', url: 'https://foundforai.com/pricing' }
+  ]),
   {
     "@type": "Service",
     "@id": "https://foundforai.com/pricing#service",

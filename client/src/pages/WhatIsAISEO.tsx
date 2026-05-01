@@ -4,9 +4,14 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'wouter';
 import { ArrowRight } from 'lucide-react';
 import FAQSection from '@/components/FAQSection';
+import { breadcrumbList } from '@/lib/breadcrumb';
 
 export default function WhatIsAISEO() {
   const pageSchemas = [
+    breadcrumbList([
+      { name: 'Home', url: 'https://foundforai.com/' },
+      { name: 'What Is AI SEO', url: 'https://foundforai.com/what-is-ai-seo' }
+    ]),
     {
       "@type": "Article",
       "@id": "https://foundforai.com/what-is-ai-seo#article",
@@ -17,6 +22,8 @@ export default function WhatIsAISEO() {
       "author": { "@id": "https://foundforai.com/#dustin-crump" },
       "publisher": { "@id": "https://foundforai.com/#org" },
       "image": "https://foundforai.com/found-for-ai-logo-white.png",
+      "datePublished": "2025-01-21T00:00:00-07:00",
+      "dateModified": "2025-01-21T00:00:00-07:00",
       "inLanguage": "en-US"
     },
     {
