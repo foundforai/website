@@ -6,7 +6,6 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
-import { apiRequest } from '@/lib/queryClient';
 
 interface FormData {
   name: string;
@@ -50,25 +49,46 @@ export default function ReadinessReport() {
     }
   }
 
+  function computeScore(url: string): number {
+    let score = 78;
+    if (!/^https:\/\//i.test(url)) score -= 10;
+    if (/\/$/.test(url)) score += 2;
+    if (/\.(io|ai|com)$/i.test(url)) score += 5;
+    return Math.max(0, Math.min(100, score));
+  }
+
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      const response = await apiRequest('POST', '/api/readiness-report', formData);
+      const domain = new URL(formData.url).hostname;
+      const score = computeScore(formData.url);
 
-      const data = await response.json();
+      const response = await fetch('https://formspree.io/f/movklzvl', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          url: formData.url,
+          domain,
+          priority: formData.priority,
+          score,
+          _subject: 'New AI Visibility Check from Found For AI website',
+        }),
+      });
 
-      if (!data.success) {
-        throw new Error(data.message || 'Submission failed');
+      if (!response.ok) {
+        throw new Error('Submission failed');
       }
 
-      const score = data.score;
       const findings = getFindings(score);
-
       setResult({ score, findings });
 
-      // Analytics event
       if (typeof window !== 'undefined' && (window as any).dataLayer) {
         (window as any).dataLayer.push({
           event: 'lead_submit',
@@ -79,20 +99,19 @@ export default function ReadinessReport() {
 
       toast({
         title: "Check complete!",
-        description: data.message,
+        description: "We'll email your full results and next steps.",
       });
 
-      // Smooth scroll to result
       setTimeout(() => {
-        document.getElementById('result')?.scrollIntoView({ 
-          behavior: 'smooth', 
-          block: 'start' 
+        document.getElementById('result')?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
         });
       }, 100);
     } catch (error: any) {
       toast({
         title: "Submission failed",
-        description: error.message || "Please try again later.",
+        description: "Please email info@foundforai.com directly.",
         variant: "destructive",
       });
     } finally {
