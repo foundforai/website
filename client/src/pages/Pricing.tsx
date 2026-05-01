@@ -230,12 +230,6 @@ export default function Pricing() {
                 Back to Home
               </Button>
             </Link>
-            <Link href="/purchase-complete">
-              <Button size="lg" className="font-semibold group" data-testid="button-view-confirmation">
-                Already Purchased? View Confirmation
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </Link>
           </div>
         </div>
       </section>

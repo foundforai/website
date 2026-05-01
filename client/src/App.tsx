@@ -17,7 +17,6 @@ import BookCall from "@/pages/BookCall";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
 import ThankYou from "@/pages/ThankYou";
-import PurchaseConfirmation from "@/pages/PurchaseConfirmation";
 import BlogIndex from "@/pages/BlogIndex";
 import BlogPost from "@/pages/BlogPost";
 import AISearchVisibility from "@/pages/AISearchVisibility";
@@ -44,7 +43,6 @@ function AppRouter() {
         <Route path="/about" component={About} />
         <Route path="/contact" component={Contact} />
         <Route path="/thank-you" component={ThankYou} />
-        <Route path="/purchase-complete" component={PurchaseConfirmation} />
         <Route path="/blog" component={BlogIndex} />
         <Route path="/blog/:slug" component={BlogPost} />
         <Route path="/ai-search-visibility" component={AISearchVisibility} />

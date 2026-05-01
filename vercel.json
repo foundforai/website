@@ -2,10 +2,11 @@
   "redirects": [
     { "source": "/search", "destination": "/", "statusCode": 301 },
     { "source": "/reports/:path*", "destination": "/", "statusCode": 301 },
-    { "source": "/reports", "destination": "/", "statusCode": 301 }
+    { "source": "/reports", "destination": "/", "statusCode": 301 },
+    { "source": "/readiness-report", "destination": "/", "statusCode": 301 },
+    { "source": "/purchase-complete", "destination": "/", "statusCode": 301 }
   ],
   "rewrites": [
-    { "source": "/readiness-report", "destination": "/readiness-report.html" },
     { "source": "/ai-visibility", "destination": "/ai-visibility.html" },
     { "source": "/talk-to-a-human", "destination": "/talk-to-a-human.html" },
     { "source": "/fix-plan", "destination": "/fix-plan.html" },

@@ -148,17 +148,12 @@ export default function AEO() {
               <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
                 Run your free AI Visibility Check to see how AI systems currently interpret your business — or grab the Starter Fix to install your AI Data Layer and become AI-ready quickly.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex justify-center">
                 <Link href="/audit">
                   <Button size="lg" className="font-semibold group" data-testid="button-cta-check">
                     Run Free AI Visibility Check →
                   </Button>
                 </Link>
-                <a href="https://square.link/u/o25cVCY4" target="_blank" rel="noopener">
-                  <Button variant="outline" size="lg" className="font-semibold" data-testid="button-cta-buy">
-                    Buy Starter Fix – $1,595 →
-                  </Button>
-                </a>
               </div>
             </CardContent>
           </Card>
