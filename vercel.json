@@ -1,4 +1,5 @@
 {
+  "cleanUrls": true,
   "redirects": [
     { "source": "/search", "destination": "/", "statusCode": 301 },
     { "source": "/reports/:path*", "destination": "/", "statusCode": 301 },
@@ -7,11 +8,7 @@
     { "source": "/purchase-complete", "destination": "/", "statusCode": 301 }
   ],
   "rewrites": [
-    { "source": "/ai-visibility", "destination": "/ai-visibility.html" },
-    { "source": "/talk-to-a-human", "destination": "/talk-to-a-human.html" },
-    { "source": "/fix-plan", "destination": "/fix-plan.html" },
     { "source": "/fix-plan/request", "destination": "/fix-plan-request.html" },
-    { "source": "/fix-plan/thanks", "destination": "/fix-plan-thanks.html" },
-    { "source": "/((?!.*\\.).*)", "destination": "/index.html" }
+    { "source": "/fix-plan/thanks", "destination": "/fix-plan-thanks.html" }
   ]
 }

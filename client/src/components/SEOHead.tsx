@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { pushHead, escapeHtml, escapeJsonLd } from '@/lib/ssr-head';
 
 interface SEOHeadProps {
   title: string;
@@ -172,6 +173,51 @@ const GLOBAL_GRAPH: object[] = [
   }
 ];
 
+function buildGraph(extras: object[] = []): string {
+  const graph = {
+    "@context": "https://schema.org",
+    "@graph": [...GLOBAL_GRAPH, ...extras]
+  };
+  return escapeJsonLd(JSON.stringify(graph));
+}
+
+function buildHeadHtml({
+  title,
+  description,
+  canonical,
+  ogImage,
+  schemas,
+  noindex
+}: SEOHeadProps): string {
+  const imagePath = ogImage || '/found-for-ai-logo-white.png';
+  const fullImage = imagePath.startsWith('http') ? imagePath : `${SITE_ORIGIN}${imagePath}`;
+  const canonicalUrl = canonical ? canonical.replace(/\/$/, '') : SITE_ORIGIN;
+  const tags: string[] = [];
+
+  tags.push(`<title>${escapeHtml(title)}</title>`);
+  tags.push(`<meta name="description" content="${escapeHtml(description)}" />`);
+  if (noindex) {
+    tags.push(`<meta name="robots" content="noindex, nofollow" />`);
+  }
+  tags.push(`<link rel="canonical" href="${escapeHtml(canonicalUrl)}" />`);
+  tags.push(`<meta property="og:title" content="${escapeHtml(title)}" />`);
+  tags.push(`<meta property="og:description" content="${escapeHtml(description)}" />`);
+  tags.push(`<meta property="og:type" content="website" />`);
+  tags.push(`<meta property="og:url" content="${escapeHtml(canonicalUrl)}" />`);
+  tags.push(`<meta property="og:image" content="${escapeHtml(fullImage)}" />`);
+  tags.push(`<meta property="og:image:width" content="1200" />`);
+  tags.push(`<meta property="og:image:height" content="630" />`);
+  tags.push(`<meta property="og:site_name" content="Found For AI" />`);
+  tags.push(`<meta property="og:locale" content="en_US" />`);
+  tags.push(`<meta name="twitter:card" content="summary_large_image" />`);
+  tags.push(`<meta name="twitter:title" content="${escapeHtml(title)}" />`);
+  tags.push(`<meta name="twitter:description" content="${escapeHtml(description)}" />`);
+  tags.push(`<meta name="twitter:image" content="${escapeHtml(fullImage)}" />`);
+  tags.push(`<script type="application/ld+json" data-seo-head="true">${buildGraph(schemas)}</script>`);
+
+  return tags.join('\n    ');
+}
+
 function setOrCreateMeta(selector: string, attr: 'name' | 'property', attrValue: string, content: string) {
   let el = document.querySelector(selector) as HTMLMetaElement | null;
   if (!el) {
@@ -194,6 +240,11 @@ function setOrCreateLink(rel: string, href: string) {
 
 export default function SEOHead(props: SEOHeadProps) {
   const { title, description, canonical, ogImage, schemas, noindex } = props;
+
+  if (typeof window === 'undefined') {
+    pushHead(buildHeadHtml(props));
+    return null;
+  }
 
   useEffect(() => {
     const imagePath = ogImage || '/found-for-ai-logo-white.png';
