@@ -28,6 +28,7 @@ const routes = [
   '/media',
   '/media/small-lake-city-podcast',
   '/blog/mental-model-shift-ai-search',
+  '/blog/7-things-smart-business-owners-do-to-get-recommended-by-ai',
   '/blog/what-is-found-for-ai',
   '/blog/missing-half-of-ai-seo-automation',
   '/blog/are-you-ready-to-be-found-by-ai',
