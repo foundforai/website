@@ -71,16 +71,65 @@ const GTM_BODY_NOSCRIPT = `<!-- Google Tag Manager (noscript) -->
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->`;
 
+// Inline AI-source classifier for standalone HTML pages (the React app uses
+// AiSourceTracker.tsx). Mirrors classifyAiSource in client/src/lib/ai-source.ts —
+// keep the rule list in sync.
+const AI_SOURCE_SCRIPT = `<script>
+(function(){
+  var STORAGE_KEY='ai_source';
+  var rules=[
+    {p:'bing.com/chat', s:'copilot'},
+    {p:'chatgpt.com', s:'chatgpt'},
+    {p:'chat.openai.com', s:'chatgpt'},
+    {p:'openai.com', s:'chatgpt'},
+    {p:'claude.ai', s:'claude'},
+    {p:'anthropic.com', s:'claude'},
+    {p:'perplexity.ai', s:'perplexity'},
+    {p:'gemini.google.com', s:'gemini'},
+    {p:'bard.google.com', s:'gemini'},
+    {p:'copilot.microsoft.com', s:'copilot'},
+    {p:'meta.ai', s:'meta_ai'},
+    {p:'you.com', s:'you_com'},
+    {p:'phind.com', s:'phind'}
+  ];
+  function classify(ref){
+    if(!ref) return 'not_ai';
+    try{
+      var u=new URL(ref);
+      var t=(u.hostname+u.pathname).toLowerCase();
+      for(var i=0;i<rules.length;i++){ if(t.indexOf(rules[i].p)!==-1) return rules[i].s; }
+    }catch(e){}
+    return 'not_ai';
+  }
+  var ref=document.referrer||'';
+  var src=classify(ref);
+  var stored=null;
+  try{ var raw=sessionStorage.getItem(STORAGE_KEY); if(raw) stored=JSON.parse(raw); }catch(e){}
+  if(!stored || src!=='not_ai'){
+    var rec={ai_source:src, ai_landing_path:location.pathname, ai_landing_ts:new Date().toISOString()};
+    try{ sessionStorage.setItem(STORAGE_KEY, JSON.stringify(rec)); }catch(e){}
+    window.dataLayer=window.dataLayer||[];
+    window.dataLayer.push({event:'ai_source_set', ai_source:rec.ai_source, ai_landing_path:rec.ai_landing_path});
+    if(typeof window.gtag==='function'){ window.gtag('set','user_properties',{ai_source:rec.ai_source}); }
+  }
+})();
+</script>`;
+
 const LEAD_INTENT_SCRIPT = `<script>
 (function(){
+  function aiSrc(){
+    try{ var r=sessionStorage.getItem('ai_source'); if(!r) return null; var p=JSON.parse(r); return p&&p.ai_source||null; }catch(e){ return null; }
+  }
   document.addEventListener('click', function(e){
     var a = e.target && e.target.closest && e.target.closest('a[href]');
     if(!a) return;
     var href = a.getAttribute('href') || '';
     var type = href.indexOf('mailto:')===0 ? 'email' : (href.indexOf('tel:')===0 ? 'phone' : null);
     if(!type) return;
+    var payload={event:'lead_intent', link_type:type, link_url:href};
+    var s=aiSrc(); if(s) payload.ai_source=s;
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({event:'lead_intent', link_type:type, link_url:href});
+    window.dataLayer.push(payload);
   });
 })();
 </script>`;
@@ -96,11 +145,13 @@ for (const filename of topLevelHtml) {
     console.warn(`  skipped ${filename}: missing standard head/body markers`);
     continue;
   }
-  html = html.replace('<head>', `<head>\n  ${GTM_HEAD}\n`);
+  // Order matters: GTM head first so dataLayer exists, then ai_source script
+  // (also in head) so the source is set before any later events fire.
+  html = html.replace('<head>', `<head>\n  ${GTM_HEAD}\n  ${AI_SOURCE_SCRIPT}\n`);
   html = html.replace('<body>', `<body>\n  ${GTM_BODY_NOSCRIPT}`);
   html = html.replace('</body>', `  ${LEAD_INTENT_SCRIPT}\n</body>`);
   await writeFile(filePath, html);
-  console.log(`  injected GTM + lead_intent into ${filename}`);
+  console.log(`  injected GTM + ai_source + lead_intent into ${filename}`);
   injected++;
 }
 console.log(`✓ Injected GTM into ${injected} standalone HTML file${injected === 1 ? '' : 's'}`);

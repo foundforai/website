@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { useState, useEffect } from "react";
 import ScrollToTop from "@/components/ScrollToTop";
 import Redirect from "@/components/Redirect";
+import AiSourceTracker from "@/components/AiSourceTracker";
 import { trackEvent } from "@/lib/analytics";
 import Home from "@/pages/Home";
 import WhatIsAISEO from "@/pages/WhatIsAISEO";
@@ -92,6 +93,7 @@ function App({ ssrPath }: { ssrPath?: string }) {
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
           <DeferredToaster />
+          <AiSourceTracker />
           <LeadIntentTracker />
           <AppRouter />
         </TooltipProvider>
