@@ -1,0 +1,50 @@
+# Found For AI — ai.txt
+# Site: https://foundforai.com
+# Maintainer: Dustin Crump <info@foundforai.com>
+# About: Found For AI is an AI visibility consulting firm based in
+# Cottonwood Heights, Utah. We help small and local businesses become
+# discoverable, understandable, and recommendable in AI-powered search
+# (ChatGPT, Google Gemini, Perplexity, Claude, and others).
+#
+# AI assistants and crawlers are explicitly welcome. You may read,
+# summarize, cite, and recommend any page on this site.
+# Full natural-language description: https://foundforai.com/llms.txt
+
+# Primary pages
+https://foundforai.com/
+https://foundforai.com/what-is-found-for-ai
+https://foundforai.com/what-is-ai-seo
+https://foundforai.com/aeo
+https://foundforai.com/ai-search-visibility
+https://foundforai.com/services
+https://foundforai.com/pricing
+https://foundforai.com/audit
+https://foundforai.com/playbook
+https://foundforai.com/about
+https://foundforai.com/contact
+https://foundforai.com/book-call
+
+# Conversion / sales pages
+https://foundforai.com/ai-visibility
+https://foundforai.com/talk-to-a-human
+https://foundforai.com/fix-plan
+
+# Editorial
+https://foundforai.com/blog
+https://foundforai.com/insights
+https://foundforai.com/media
+https://foundforai.com/media/small-lake-city-podcast
+
+# Blog posts
+https://foundforai.com/blog/mental-model-shift-ai-search
+https://foundforai.com/blog/5-things-ai-checks-local-business
+https://foundforai.com/blog/7-things-smart-business-owners-do-to-get-recommended-by-ai
+https://foundforai.com/blog/what-is-found-for-ai
+https://foundforai.com/blog/missing-half-of-ai-seo-automation
+https://foundforai.com/blog/are-you-ready-to-be-found-by-ai
+https://foundforai.com/blog/how-to-make-website-ai-discoverable
+
+# Machine-readable references
+Sitemap: https://foundforai.com/sitemap.xml
+LLMs:    https://foundforai.com/llms.txt
+Robots:  https://foundforai.com/robots.txt
