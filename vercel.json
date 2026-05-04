@@ -10,5 +10,8 @@
   "rewrites": [
     { "source": "/fix-plan/request", "destination": "/fix-plan-request" },
     { "source": "/fix-plan/thanks", "destination": "/fix-plan-thanks" }
+  ],
+  "crons": [
+    { "path": "/api/cron/indexnow", "schedule": "0 */6 * * *" }
   ]
 }
