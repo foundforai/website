@@ -25,8 +25,9 @@ export interface BlogPost {
   ogDescription?: string;
   twitterDescription?: string;
   schemaDescription?: string;
+  keywords?: string;
+  articleSection?: string;
   hasMentions?: boolean;
-  hasArticleSchema?: boolean;
   customCta?: BlogPostCustomCta;
   content: string;
 }
@@ -46,7 +47,6 @@ export const blogPosts: BlogPost[] = [
     ogDescription: 'AI systems don\'t browse websites — they interpret them. Here\'s why that changes how businesses get recommended.',
     twitterDescription: 'Why AI search works differently than Google — and why most businesses haven\'t adapted yet.',
     schemaDescription: 'AI search doesn\'t rank pages the way Google does. It interprets meaning, context, and clarity to decide what to recommend.',
-    hasArticleSchema: true,
     customCta: {
       headline: 'Want to know how visible your business actually is to AI?',
       copy: 'We\'ve already seen how often AI tools fail to understand otherwise great businesses. A quick visibility scan shows what AI can and can\'t interpret about your site — and whether it\'s likely to recommend you.',
@@ -221,7 +221,6 @@ export const blogPosts: BlogPost[] = [
     metaDescription: 'AI tools recommend one or two local businesses — not ten. Here are the 5 things ChatGPT, Google AI, and Perplexity check before picking yours.',
     ogDescription: 'AI tools recommend one or two local businesses — not ten. Here are the 5 things ChatGPT, Google AI, and Perplexity check before picking yours.',
     twitterDescription: 'AI tools recommend one or two local businesses — not ten. Here are the 5 things ChatGPT, Google AI, and Perplexity check before picking yours.',
-    hasArticleSchema: true,
     customCta: {
       headline: 'Ready to be the business AI recommends?',
       copy: 'Book a 15-minute call. We look at your site, tell you what we\'d fix and what we wouldn\'t, and you decide from there. No pitch.',
@@ -333,7 +332,6 @@ export const blogPosts: BlogPost[] = [
     readTime: '2 min read',
     image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2534&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     metaDescription: 'AI tools recommend only a few businesses. See the patterns smart owners follow to get recommended and find out how your site looks to AI.',
-    hasArticleSchema: true,
     content: `
         <p>More customers are asking AI tools questions like "Who should I call?" or "What's the best option near me?"</p>
 

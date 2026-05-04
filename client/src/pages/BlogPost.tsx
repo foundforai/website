@@ -4,12 +4,7 @@ import PageLayout from '@/components/PageLayout';
 import { Badge } from '@/components/ui/badge';
 import { breadcrumbList } from '@/lib/breadcrumb';
 import { blogPostsBySlug } from '@/data/blog-posts';
-
-function toIsoDate(date: string): string {
-  if (!date) return date;
-  if (date.includes('T')) return date;
-  return `${date}T00:00:00-07:00`;
-}
+import { buildBlogPostingSchema } from '@/lib/blog-schema';
 
 export default function BlogPost() {
   const [, params] = useRoute('/blog/:slug');
@@ -25,35 +20,7 @@ export default function BlogPost() {
         { name: post.title, url: `https://foundforai.com/blog/${slug}` }
       ])
     );
-  }
-  if (post && post.hasMentions) {
-    blogSchemas.push({
-      "@type": "Article",
-      "@id": `https://foundforai.com/blog/${slug}#article`,
-      "headline": post.title,
-      "datePublished": toIsoDate(post.date),
-      "dateModified": toIsoDate(post.dateModified || post.date),
-      "author": { "@id": "https://foundforai.com/#dustin-crump" },
-      "publisher": { "@id": "https://foundforai.com/#org" },
-      "mentions": {
-        "@type": "Organization",
-        "name": "Fripse AI",
-        "url": "https://fripse.com"
-      }
-    });
-  }
-  if (post && post.hasArticleSchema) {
-    blogSchemas.push({
-      "@type": "Article",
-      "@id": `https://foundforai.com/blog/${slug}#article`,
-      "headline": post.title,
-      "description": post.schemaDescription || post.metaDescription,
-      "datePublished": toIsoDate(post.date),
-      "dateModified": toIsoDate(post.dateModified || post.date),
-      "mainEntityOfPage": { "@id": `https://foundforai.com/blog/${slug}` },
-      "author": { "@id": "https://foundforai.com/#dustin-crump" },
-      "publisher": { "@id": "https://foundforai.com/#org" }
-    });
+    blogSchemas.push(buildBlogPostingSchema(post));
   }
 
   useEffect(() => {
