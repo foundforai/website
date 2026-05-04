@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
+import { trackEvent } from '@/lib/analytics';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { breadcrumbList } from '@/lib/breadcrumb';
 
@@ -60,6 +61,11 @@ export default function Contact() {
       });
 
       if (response.ok) {
+        trackEvent('contact_form_submit', {
+          form_location: '/contact',
+          form_name: 'contact',
+        });
+
         toast({
           title: 'Thanks - we will be in touch soon.',
           description: 'Your message has been sent successfully.',

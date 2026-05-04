@@ -8,6 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
 import { breadcrumbList } from '@/lib/breadcrumb';
+import { trackEvent } from '@/lib/analytics';
 
 const auditSchemas = [
   breadcrumbList([
@@ -96,14 +97,10 @@ export default function Audit() {
       });
 
       if (response.ok) {
-        // Track analytics if available
-        if (typeof window !== 'undefined' && (window as any).analytics) {
-          (window as any).analytics.push({
-            event: 'audit-form-submitted',
-            email: formData.email,
-            domain: new URL(formData.websiteUrl).hostname,
-          });
-        }
+        trackEvent('submit_audit_request', {
+          form_location: '/audit',
+          form_name: 'audit_request',
+        });
 
         toast({
           title: 'Thanks - we will be in touch soon.',

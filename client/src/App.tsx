@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { useState, useEffect } from "react";
 import ScrollToTop from "@/components/ScrollToTop";
 import Redirect from "@/components/Redirect";
+import { trackEvent } from "@/lib/analytics";
 import Home from "@/pages/Home";
 import WhatIsAISEO from "@/pages/WhatIsAISEO";
 import WhatIsFoundForAI from "@/pages/WhatIsFoundForAI";
@@ -64,6 +65,26 @@ function DeferredToaster() {
   return <Toaster />;
 }
 
+function LeadIntentTracker() {
+  useEffect(() => {
+    function onClick(e: MouseEvent) {
+      const target = e.target as Element | null;
+      if (!target) return;
+      const anchor = target.closest('a[href]') as HTMLAnchorElement | null;
+      if (!anchor) return;
+      const href = anchor.getAttribute('href') || '';
+      let linkType: 'email' | 'phone' | null = null;
+      if (href.startsWith('mailto:')) linkType = 'email';
+      else if (href.startsWith('tel:')) linkType = 'phone';
+      if (!linkType) return;
+      trackEvent('lead_intent', { link_type: linkType, link_url: href });
+    }
+    document.addEventListener('click', onClick);
+    return () => document.removeEventListener('click', onClick);
+  }, []);
+  return null;
+}
+
 function App({ ssrPath }: { ssrPath?: string }) {
   const routerProps = ssrPath ? { ssrPath } : {};
   return (
@@ -71,6 +92,7 @@ function App({ ssrPath }: { ssrPath?: string }) {
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
           <DeferredToaster />
+          <LeadIntentTracker />
           <AppRouter />
         </TooltipProvider>
       </QueryClientProvider>

@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { ArrowRight } from 'lucide-react';
 import { breadcrumbList } from '@/lib/breadcrumb';
+import { trackEvent } from '@/lib/analytics';
 
 const playbookSchemas = [
   breadcrumbList([
@@ -80,6 +81,10 @@ export default function Playbook() {
       });
 
       if (response.ok) {
+        trackEvent('download_playbook', {
+          file_name: 'found-for-ai-readability-playbook.pdf',
+          form_location: '/playbook',
+        });
         setLocation('/playbook/thanks');
       } else {
         setError('Something went wrong. Please try again.');

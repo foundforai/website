@@ -1,10 +1,18 @@
+import { useEffect } from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Link } from 'wouter';
 import { ArrowLeft } from 'lucide-react';
+import { trackEvent } from '@/lib/analytics';
 
 export default function BookCall() {
+  useEffect(() => {
+    trackEvent('book_call', {
+      form_location: '/book-call',
+    });
+  }, []);
+
   return (
     <PageLayout
       title="Schedule Your Strategy Call | Found For AI"
@@ -20,7 +28,7 @@ export default function BookCall() {
                 Back to Pricing
               </Button>
             </Link>
-            
+
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
               Schedule Your Strategy Call
             </h1>
@@ -31,7 +39,7 @@ export default function BookCall() {
 
           <Card className="overflow-hidden">
             <CardContent className="p-0">
-              <iframe 
+              <iframe
                 src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0TBty7FQKU14y-JAsDvBsSOg6gBFfKUFgL2bMbTtGRStp_ieewrvmOy_tc28RXE-0tXgRIMDI1?gv=true"
                 title="Schedule a Call with Found For AI"
                 className="w-full border-0"
