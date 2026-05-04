@@ -326,7 +326,7 @@ export const blogPosts: BlogPost[] = [
     slug: '7-things-smart-business-owners-do-to-get-recommended-by-ai',
     title: '7 Things Smart Business Owners Do to Get Recommended by AI',
     subtitle: 'AI tools don\'t browse websites like humans or rank them like Google. They recommend businesses they understand and trust. Here\'s what those businesses do differently.',
-    date: new Date().toISOString().split('T')[0],
+    date: '2026-01-14',
     author: 'Dustin Crump',
     excerpt: 'AI tools don\'t browse websites like humans or rank them like Google. They recommend businesses they understand and trust. Here\'s what those businesses do differently.',
     readTime: '2 min read',
