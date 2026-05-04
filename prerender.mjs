@@ -6,38 +6,12 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const distDir = resolve(__dirname, 'dist');
 const ssrDistDir = resolve(__dirname, 'dist-ssr');
 
-const { render } = await import(pathToFileURL(join(ssrDistDir, 'entry-server.js')).href);
-
-const routes = [
-  '/',
-  '/what-is-ai-seo',
-  '/what-is-found-for-ai',
-  '/aeo',
-  '/audit',
-  '/services',
-  '/pricing',
-  '/book-call',
-  '/about',
-  '/contact',
-  '/thank-you',
-  '/blog',
-  '/ai-search-visibility',
-  '/insights',
-  '/playbook',
-  '/playbook/thanks',
-  '/media',
-  '/media/small-lake-city-podcast',
-  '/blog/mental-model-shift-ai-search',
-  '/blog/7-things-smart-business-owners-do-to-get-recommended-by-ai',
-  '/blog/what-is-found-for-ai',
-  '/blog/missing-half-of-ai-seo-automation',
-  '/blog/are-you-ready-to-be-found-by-ai',
-  '/blog/how-to-make-website-ai-discoverable',
-];
+const ssr = await import(pathToFileURL(join(ssrDistDir, 'entry-server.js')).href);
+const { render, prerenderPaths, sitemapEntries } = ssr;
 
 const template = await readFile(join(distDir, 'index.html'), 'utf-8');
 
-for (const route of routes) {
+for (const route of prerenderPaths) {
   const { html, head } = render(route);
   const final = template
     .replace('<!--ssr-head-->', head)
@@ -51,4 +25,28 @@ for (const route of routes) {
   console.log(`  prerendered ${route}`);
 }
 
-console.log(`\n✓ Pre-rendered ${routes.length} routes`);
+console.log(`\n✓ Pre-rendered ${prerenderPaths.length} routes`);
+
+const SITE_ORIGIN = 'https://foundforai.com';
+
+function escapeXml(s) {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
+const xmlBody = sitemapEntries.map((r) => {
+  const loc = `${SITE_ORIGIN}${r.path === '/' ? '/' : r.path}`;
+  const parts = [`    <loc>${escapeXml(loc)}</loc>`];
+  if (r.lastmod) parts.push(`    <lastmod>${escapeXml(r.lastmod)}</lastmod>`);
+  if (r.changefreq) parts.push(`    <changefreq>${r.changefreq}</changefreq>`);
+  if (typeof r.priority === 'number') parts.push(`    <priority>${r.priority.toFixed(1)}</priority>`);
+  return `  <url>\n${parts.join('\n')}\n  </url>`;
+}).join('\n');
+
+const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${xmlBody}
+</urlset>
+`;
+
+await writeFile(join(distDir, 'sitemap.xml'), sitemapXml);
+console.log(`✓ Wrote sitemap.xml with ${sitemapEntries.length} entries`);

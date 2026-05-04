@@ -2,11 +2,8 @@ import { Link } from 'wouter';
 import PageLayout from '@/components/PageLayout';
 import { Badge } from '@/components/ui/badge';
 import { ArrowRight } from 'lucide-react';
-import aiAutomationImg from '@assets/stock_images/ai_automation_workfl_1fb79544.jpg';
-import aiSearchImg from '@assets/stock_images/artificial_intellige_8c98905d.jpg';
-import schemaMarkupImg from '@assets/stock_images/schema_markup_struct_0763f9a1.jpg';
-import websiteOptimizationImg from '@assets/stock_images/website_optimization_b4ff5bda.jpg';
 import { breadcrumbList } from '@/lib/breadcrumb';
+import { blogPosts } from '@/data/blog-posts';
 
 function toIsoDate(date: string): string {
   if (!date) return date;
@@ -15,66 +12,8 @@ function toIsoDate(date: string): string {
 }
 
 export default function BlogIndex() {
-  //TODO: remove mock functionality - replace with actual blog post data
-  const posts = [
-    {
-      slug: 'mental-model-shift-ai-search',
-      title: 'The Mental Model Shift Businesses Are Missing About AI Search',
-      date: '2025-01-12',
-      author: 'Dustin Crump',
-      excerpt: 'Most business websites are still written for keyword matching and human browsing. AI systems don\'t browse — they interpret.',
-      readTime: '6 min read',
-      image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2565&auto=format&fit=crop&ixlib=rb-4.1.0',
-      featured: true,
-    },
-    {
-      slug: '7-things-smart-business-owners-do-to-get-recommended-by-ai',
-      title: '7 Things Smart Business Owners Do to Get Recommended by AI',
-      date: new Date().toISOString().split('T')[0],
-      author: 'Dustin Crump',
-      excerpt: 'AI tools don\'t browse websites like humans or rank them like Google. They recommend businesses they understand and trust. Here\'s what those businesses do differently.',
-      readTime: '2 min read',
-      image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2534&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    },
-    {
-      slug: 'what-is-found-for-ai',
-      title: 'What Is Found For AI?',
-      date: '2025-01-03',
-      author: 'Dustin Crump',
-      excerpt: 'Found For AI is a consulting firm that helps real businesses become visible, understandable, and recommendable in AI-powered search.',
-      readTime: '5 min read',
-      image: 'https://images.unsplash.com/photo-1516382799247-87df95d790b7?q=80&w=2674&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    },
-    {
-      slug: 'missing-half-of-ai-seo-automation',
-      title: 'The Missing Half of AI SEO: Automating What Happens After You\'re Found',
-      date: '2025-01-25',
-      author: 'Dustin Crump',
-      excerpt: 'Getting found by AI is only half the game. The other half is what happens after—the follow-up, the workflow, the automation. That\'s where Fripse AI comes in.',
-      readTime: '5 min read',
-      image: aiAutomationImg,
-    },
-    {
-      slug: 'are-you-ready-to-be-found-by-ai',
-      title: 'Are You Ready to Be Found by AI? Why Traditional SEO Is About to Change Forever',
-      date: '2025-01-20',
-      author: 'Dustin Crump',
-      excerpt: 'The way people find businesses is changing. AI assistants are replacing search engines, and if your business isn\'t visible to AI, it doesn\'t exist in that conversation.',
-      readTime: '4 min read',
-      image: aiSearchImg,
-    },
-    {
-      slug: 'how-to-make-website-ai-discoverable',
-      title: 'How To Make Your Website AI Discoverable',
-      date: '2025-01-10',
-      author: 'Dustin Crump',
-      excerpt: 'A step-by-step guide to optimizing your website for AI search engines. Implement schema, structure content, and ensure your business shows up in AI-powered answers.',
-      readTime: '7 min read',
-      image: websiteOptimizationImg,
-    },
-  ];
-
-  const [featuredPost, ...regularPosts] = posts;
+  const featuredPost = blogPosts.find((p) => p.featured) ?? blogPosts[0];
+  const regularPosts = blogPosts.filter((p) => p.slug !== featuredPost.slug);
 
   const blogIndexSchemas = [
     breadcrumbList([
@@ -90,13 +29,13 @@ export default function BlogIndex() {
       "isPartOf": { "@id": "https://foundforai.com/#website" },
       "publisher": { "@id": "https://foundforai.com/#org" },
       "author": { "@id": "https://foundforai.com/#dustin-crump" },
-      "blogPost": posts.map(p => ({
+      "blogPost": blogPosts.map(p => ({
         "@type": "BlogPosting",
         "@id": `https://foundforai.com/blog/${p.slug}#article`,
         "headline": p.title,
         "url": `https://foundforai.com/blog/${p.slug}`,
         "datePublished": toIsoDate(p.date),
-        "dateModified": toIsoDate(p.date),
+        "dateModified": toIsoDate(p.dateModified || p.date),
         "author": { "@id": "https://foundforai.com/#dustin-crump" }
       }))
     }
@@ -124,25 +63,25 @@ export default function BlogIndex() {
 
           {/* Featured Post */}
           <Link href={`/blog/${featuredPost.slug}`} data-testid={`link-featured-${featuredPost.slug}`}>
-            <article 
+            <article
               className="group mb-12 bg-card rounded-xl border border-border overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
             >
               <div className="grid md:grid-cols-2 gap-0">
                 {/* Image */}
                 <div className="relative aspect-[16/9] md:aspect-auto overflow-hidden">
-                  <img 
-                    src={featuredPost.image} 
+                  <img
+                    src={featuredPost.image}
                     alt={featuredPost.title}
                     className="w-full h-full object-cover"
                   />
-                  <Badge 
+                  <Badge
                     className="absolute top-4 left-4 bg-[#0F5FDB] text-white hover:bg-[#0D4FC4] border-0"
                     data-testid="badge-featured"
                   >
                     Featured
                   </Badge>
                 </div>
-                
+
                 {/* Content */}
                 <div className="p-8 md:p-10 flex flex-col justify-center">
                   <div className="flex items-center gap-3 mb-4 text-sm text-muted-foreground">
@@ -154,18 +93,18 @@ export default function BlogIndex() {
                     <span>•</span>
                     <span data-testid="text-featured-readtime">{featuredPost.readTime}</span>
                   </div>
-                  
-                  <h2 
+
+                  <h2
                     className="text-[1.75rem] font-bold mb-4 transition-colors group-hover:text-[#0F5FDB]"
                     data-testid="text-featured-title"
                   >
                     {featuredPost.title}
                   </h2>
-                  
+
                   <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6" data-testid="text-featured-excerpt">
                     {featuredPost.excerpt}
                   </p>
-                  
+
                   <div className="flex items-center text-[#0F5FDB] font-semibold group-hover:gap-3 gap-2 transition-all">
                     <span data-testid="link-featured-read-more">Read More</span>
                     <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -179,18 +118,18 @@ export default function BlogIndex() {
           <div className="grid md:grid-cols-2 gap-8">
             {regularPosts.map((post) => (
               <Link key={post.slug} href={`/blog/${post.slug}`} data-testid={`link-post-${post.slug}`}>
-                <article 
+                <article
                   className="group bg-card rounded-xl border border-border overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-lg hover:-translate-y-1 h-full"
                 >
                   {/* Image */}
                   <div className="relative aspect-[16/9] overflow-hidden">
-                    <img 
-                      src={post.image} 
+                    <img
+                      src={post.image}
                       alt={post.title}
                       className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                   </div>
-                  
+
                   {/* Content */}
                   <div className="p-6">
                     <div className="flex items-center gap-3 mb-3 text-sm text-muted-foreground">
@@ -202,18 +141,18 @@ export default function BlogIndex() {
                       <span>•</span>
                       <span data-testid={`text-post-readtime-${post.slug}`}>{post.readTime}</span>
                     </div>
-                    
-                    <h2 
+
+                    <h2
                       className="text-xl md:text-2xl font-bold mb-3 transition-colors group-hover:text-[#0F5FDB] leading-tight"
                       data-testid={`text-post-title-${post.slug}`}
                     >
                       {post.title}
                     </h2>
-                    
+
                     <p className="text-base text-muted-foreground leading-relaxed mb-4" data-testid={`text-post-excerpt-${post.slug}`}>
                       {post.excerpt}
                     </p>
-                    
+
                     <div className="flex items-center text-[#0F5FDB] font-semibold group-hover:gap-3 gap-2 transition-all">
                       <span data-testid={`link-post-read-more-${post.slug}`}>Read More</span>
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
