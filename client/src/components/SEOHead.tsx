@@ -41,7 +41,8 @@ const GLOBAL_GRAPH: object[] = [
       "https://www.linkedin.com/company/foundforai",
       "https://x.com/foundforai",
       "https://www.facebook.com/foundforai",
-      "https://www.instagram.com/foundforai"
+      "https://www.instagram.com/foundforai",
+      "https://www.google.com/search?kgmid=/g/11ypjwtt92"
     ],
     "subjectOf": [
       {
@@ -108,6 +109,9 @@ const GLOBAL_GRAPH: object[] = [
       }
     ],
     "parentOrganization": { "@id": "https://foundforai.com/#org" },
+    "sameAs": [
+      "https://www.google.com/search?kgmid=/g/11ypjwtt92"
+    ],
     "hasMap": "https://www.google.com/maps/place/Cottonwood+Heights,+UT",
     "potentialAction": [
       {
