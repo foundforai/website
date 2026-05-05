@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { Link } from 'wouter';
 import PageLayout from '@/components/PageLayout';
 import { Button } from '@/components/ui/button';
@@ -9,35 +8,6 @@ import { breadcrumbList } from '@/lib/breadcrumb';
 const heroImage = "https://images.unsplash.com/photo-1758518730136-1bf4fa26ccbf?q=80&w=3731&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
 export default function Home() {
-  useEffect(() => {
-    const updateIframeHeight = (height: number) => {
-      const frame = document.getElementById("ai-scanner-frame") as HTMLIFrameElement;
-      if (!frame) return;
-      const newHeight = Math.max(height, 700);
-      frame.style.height = newHeight + "px";
-    };
-
-    const handleMessage = (event: MessageEvent) => {
-      if (event.data && event.data.type === "resize-iframe") {
-        updateIframeHeight(event.data.height);
-      }
-    };
-
-    window.addEventListener("message", handleMessage);
-
-    const intervalId = setInterval(() => {
-      const frame = document.getElementById("ai-scanner-frame") as HTMLIFrameElement;
-      if (frame && frame.contentWindow) {
-        frame.contentWindow.postMessage({ type: "request-height" }, "*");
-      }
-    }, 800);
-
-    return () => {
-      window.removeEventListener("message", handleMessage);
-      clearInterval(intervalId);
-    };
-  }, []);
-
   const homeSchemas = [
     breadcrumbList([
       { name: 'Home', url: 'https://foundforai.com/' }
@@ -181,20 +151,16 @@ export default function Home() {
               </p>
               
               <div className="flex flex-col sm:flex-row items-center md:items-start gap-4">
-                <Button 
-                  size="lg" 
-                  className="text-base px-6 py-3 font-semibold"
-                  style={{ backgroundColor: '#0F5FDB', color: '#ffffff', border: 'none' }}
-                  onClick={() => {
-                    const scannerSection = document.getElementById('scanner-section');
-                    if (scannerSection) {
-                      scannerSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
-                  data-testid="button-hero-cta"
-                >
-                  See How AI Sees Your Business
-                </Button>
+                <Link href="/audit">
+                  <Button
+                    size="lg"
+                    className="text-base px-6 py-3 font-semibold"
+                    style={{ backgroundColor: '#0F5FDB', color: '#ffffff', border: 'none' }}
+                    data-testid="button-hero-cta"
+                  >
+                    See How AI Sees Your Business
+                  </Button>
+                </Link>
                 <Link 
                   href="/what-is-ai-seo"
                   className="inline-flex items-center gap-1 text-sm font-medium py-3 transition-colors"
@@ -324,28 +290,6 @@ export default function Home() {
           <p className="text-center text-sm mt-12 max-w-2xl mx-auto text-slate-500 dark:text-slate-400">
             AI-powered tools like Google Gemini, ChatGPT, and Perplexity are rapidly becoming the default way people discover businesses.
           </p>
-        </div>
-      </section>
-
-      {/* SECTION 3: SCANNER APP */}
-      <section 
-        id="scanner-section" 
-        className="scanner-embed-section pt-8 md:pt-10 pb-16 md:pb-20 px-5 text-center bg-white dark:bg-slate-900"
-      >
-        <div className="max-w-[950px] mx-auto">
-          <iframe 
-            id="ai-scanner-frame"
-            src="https://foundforaivisibilityaudit.replit.app" 
-            className="w-full max-w-[900px] border-none mx-auto block rounded-xl overflow-hidden"
-            style={{ 
-              height: '600px',
-              marginTop: '40px',
-              transition: 'height 0.25s ease'
-            }}
-            loading="lazy"
-            title="AI Visibility Audit Scanner"
-            data-testid="iframe-scanner-embed"
-          />
         </div>
       </section>
 
