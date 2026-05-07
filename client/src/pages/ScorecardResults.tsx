@@ -1,10 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'wouter';
 import PageLayout from '@/components/PageLayout';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Check, X } from 'lucide-react';
+import { Check, X, Download } from 'lucide-react';
 import { SCORECARD_RESULT_STORAGE_KEY } from '@/components/ScorecardHero';
 
 interface ScorecardCheck {
@@ -29,12 +26,17 @@ interface ScorecardRecommendation {
   text: string;
 }
 
+interface ScorecardMeta {
+  schemasFound?: string[];
+}
+
 interface ScorecardApiResult {
   url?: string;
   overallScore: number;
   grade: string;
   sections: ScorecardSection[];
   recommendations?: ScorecardRecommendation[];
+  meta?: ScorecardMeta;
 }
 
 interface StoredPayload {
@@ -43,23 +45,84 @@ interface StoredPayload {
   receivedAt: string;
 }
 
-function whatThisMeans(score: number): string {
-  if (score >= 80) {
-    return "AI tools have a strong baseline to work with. The AI Visibility Fix can push you from 'present' to 'preferred' — making sure ChatGPT, Gemini, and Perplexity reach for you by name when someone in your market asks.";
-  }
-  if (score >= 60) {
-    return 'Your foundation is there but uneven — AI can find some of what you do but is missing key signals. The Fix tightens schema, entity links, and AI-crawler configuration so AI tools confidently recommend you.';
-  }
-  if (score >= 40) {
-    return 'Major gaps. Today AI is reading a fragmented version of your business — wrong, incomplete, or just absent. The Fix installs the visibility layer AI needs to recommend you with confidence.';
-  }
-  return 'AI cannot reliably understand or recommend your business right now. The Fix installs a complete AI visibility layer and usually delivers within seven business days.';
+function gradeColor(grade: string): { ring: string; text: string; pillBg: string; pillText: string } {
+  const g = (grade || '').toUpperCase().charAt(0);
+  if (g === 'A') return { ring: '#16a34a', text: '#16a34a', pillBg: '#dcfce7', pillText: '#15803d' };
+  if (g === 'B') return { ring: '#22c55e', text: '#22c55e', pillBg: '#dcfce7', pillText: '#15803d' };
+  if (g === 'C') return { ring: '#f59e0b', text: '#d97706', pillBg: '#fef3c7', pillText: '#b45309' };
+  if (g === 'D') return { ring: '#f97316', text: '#ea580c', pillBg: '#ffedd5', pillText: '#c2410c' };
+  return { ring: '#ef4444', text: '#dc2626', pillBg: '#fee2e2', pillText: '#b91c1c' };
 }
 
-function priorityClass(priority: ScorecardRecommendation['priority']): string {
+function progressBarColor(score: number, max: number): string {
+  if (max <= 0) return '#cbd5e1';
+  const pct = score / max;
+  if (pct >= 0.85) return '#16a34a';
+  if (pct >= 0.6) return '#22c55e';
+  if (pct >= 0.35) return '#f59e0b';
+  return '#ef4444';
+}
+
+function priorityPillClasses(priority: ScorecardRecommendation['priority']): string {
   if (priority === 'high') return 'bg-red-50 text-red-700 border-red-200';
   if (priority === 'medium') return 'bg-amber-50 text-amber-700 border-amber-200';
-  return 'bg-slate-50 text-slate-600 border-slate-200';
+  return 'bg-blue-50 text-blue-700 border-blue-200';
+}
+
+function ScoreRing({ score, color }: { score: number; color: string }) {
+  const size = 140;
+  const stroke = 10;
+  const radius = (size - stroke) / 2;
+  const circumference = 2 * Math.PI * radius;
+  const clamped = Math.max(0, Math.min(100, Math.round(score)));
+  const offset = circumference * (1 - clamped / 100);
+
+  return (
+    <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} aria-hidden="true">
+      <circle
+        cx={size / 2}
+        cy={size / 2}
+        r={radius}
+        fill="none"
+        stroke="#e5e7eb"
+        strokeWidth={stroke}
+      />
+      <circle
+        cx={size / 2}
+        cy={size / 2}
+        r={radius}
+        fill="none"
+        stroke={color}
+        strokeWidth={stroke}
+        strokeDasharray={circumference}
+        strokeDashoffset={offset}
+        strokeLinecap="round"
+        transform={`rotate(-90 ${size / 2} ${size / 2})`}
+      />
+      <text
+        x="50%"
+        y="50%"
+        textAnchor="middle"
+        dominantBaseline="central"
+        style={{ fontFamily: "'Montserrat', sans-serif" }}
+        fontSize={36}
+        fontWeight={800}
+        fill={color}
+      >
+        {clamped}
+      </text>
+      <text
+        x="50%"
+        y="68%"
+        textAnchor="middle"
+        dominantBaseline="central"
+        fontSize={11}
+        fill="#94a3b8"
+      >
+        / 100
+      </text>
+    </svg>
+  );
 }
 
 export default function ScorecardResults() {
@@ -88,8 +151,8 @@ export default function ScorecardResults() {
       canonical="https://foundforai.com/scorecard/results"
       noindex
     >
-      <section className="bg-white dark:bg-slate-900">
-        <div className="max-w-4xl mx-auto px-5 sm:px-8 pt-16 md:pt-20 pb-16 md:pb-24">
+      <section className="bg-slate-50 dark:bg-slate-900 min-h-screen">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
           {!hydrated ? (
             <div className="text-center py-20 text-slate-500">Loading…</div>
           ) : !payload ? (
@@ -117,14 +180,13 @@ function EmptyState() {
         currently see your business.
       </p>
       <Link href="/scorecard">
-        <Button
-          size="lg"
-          className="text-base font-semibold"
-          style={{ backgroundColor: '#0F5FDB', borderColor: '#0F5FDB' }}
+        <button
+          className="text-white font-semibold px-6 py-3 rounded-xl text-sm transition hover:opacity-90"
+          style={{ backgroundColor: '#0F5FDB' }}
           data-testid="results-empty-cta"
         >
           Run my scorecard
-        </Button>
+        </button>
       </Link>
     </div>
   );
@@ -133,177 +195,301 @@ function EmptyState() {
 function ResultsView({ payload }: { payload: StoredPayload }) {
   const { result, submitted } = payload;
   const score = Math.max(0, Math.min(100, Math.round(result.overallScore || 0)));
+  const grade = (result.grade || '—').toUpperCase();
+  const colors = gradeColor(grade);
+  const url = submitted.url || result.url || '';
+  const schemas = result.meta?.schemasFound || [];
+
+  const headlineStats = useMemo(() => {
+    const byId = new Map(result.sections.map((s) => [s.id, s]));
+    const pct = (id: string) => {
+      const s = byId.get(id);
+      if (!s || s.max <= 0) return null;
+      return Math.round((s.score / s.max) * 100);
+    };
+    return [
+      { label: 'Schema.org', value: pct('schema') },
+      { label: 'AI Crawlers', value: pct('crawlers') },
+      { label: 'Technical SEO', value: pct('technical') },
+    ];
+  }, [result.sections]);
+
+  const handlePrint = () => {
+    if (typeof window !== 'undefined') window.print();
+  };
+
+  const quoteMailto = `mailto:support@foundforai.com?subject=${encodeURIComponent(
+    'Done-For-You Quote — AI Visibility Scorecard'
+  )}&body=${encodeURIComponent(
+    `Hi — I just ran the AI Visibility Scorecard on ${url} and would like a done-for-you quote.\n\nMy score: ${score}/100 (Grade ${grade})`
+  )}`;
 
   return (
     <>
-      <header className="text-center mb-12">
-        <p className="text-xs font-semibold tracking-[0.2em] text-slate-400 uppercase mb-3">
-          AI Visibility Scorecard
-        </p>
-        <h1
-          className="text-3xl md:text-5xl font-black tracking-tight text-slate-900 dark:text-slate-100 mb-3"
-          style={{ fontFamily: "'Montserrat', sans-serif", letterSpacing: '-0.02em' }}
-          data-testid="results-h1"
-        >
-          {submitted.url || result.url || 'Your site'}
-        </h1>
-        <p className="text-base text-slate-500 dark:text-slate-400">
-          Reviewed against the published AI visibility standards from Google,
-          Microsoft, OpenAI, Anthropic, and schema.org.
-        </p>
-      </header>
+      {/* Download PDF button — print-only style */}
+      <button
+        type="button"
+        onClick={handlePrint}
+        className="no-print w-full flex items-center justify-center gap-2 bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-2xl px-4 py-4 text-sm font-medium text-slate-700 dark:text-slate-200 shadow-sm hover:shadow-md transition mb-6"
+        data-testid="results-download-pdf"
+      >
+        <Download className="h-4 w-4" />
+        Download PDF
+      </button>
 
-      <div className="grid md:grid-cols-[auto,1fr] gap-8 md:gap-12 items-center mb-12 bg-gradient-to-br from-blue-50/60 to-white dark:from-slate-800 dark:to-slate-900 rounded-2xl border border-blue-100 dark:border-slate-700 p-8 md:p-10">
-        <div className="text-center">
-          <div
-            className="text-7xl md:text-8xl font-black leading-none"
-            style={{ color: '#0F5FDB', fontFamily: "'Montserrat', sans-serif" }}
-            data-testid="results-grade"
-          >
-            {result.grade || '—'}
+      {/* Top header card: title + URL + ring + grade + 3-stat row */}
+      <div className="bg-white dark:bg-slate-800 rounded-2xl border border-gray-100 dark:border-slate-700 shadow-sm p-6 sm:p-8 mb-6">
+        <div className="grid grid-cols-1 sm:grid-cols-[1fr,auto] gap-6 items-center">
+          <div>
+            <h1
+              className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-slate-100 mb-1"
+              style={{ fontFamily: "'Montserrat', sans-serif" }}
+              data-testid="results-h1"
+            >
+              Full AI Visibility Report
+            </h1>
+            <p className="text-sm text-slate-500 dark:text-slate-400 break-all">
+              {url}
+            </p>
           </div>
-          <div className="mt-2 text-2xl font-bold text-slate-900 dark:text-slate-100">
-            {score}
-            <span className="text-base font-medium text-slate-400">/100</span>
+
+          <div className="flex flex-col items-center justify-self-start sm:justify-self-end">
+            <ScoreRing score={score} color={colors.ring} />
+            <span
+              className="mt-3 inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold"
+              style={{ backgroundColor: colors.pillBg, color: colors.pillText }}
+              data-testid="results-grade-pill"
+            >
+              Grade {grade}
+            </span>
           </div>
         </div>
-        <div>
-          <h2
-            className="text-xl md:text-2xl font-bold text-slate-900 dark:text-slate-100 mb-3"
-            style={{ fontFamily: "'Montserrat', sans-serif" }}
-          >
-            What this means
-          </h2>
-          <p className="text-base md:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-            {whatThisMeans(score)}
-          </p>
+
+        <div className="border-t border-gray-100 dark:border-slate-700 mt-6 pt-6">
+          <div className="grid grid-cols-3 gap-4 text-center">
+            {headlineStats.map((stat) => (
+              <div key={stat.label}>
+                <div
+                  className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-slate-100"
+                  style={{ fontFamily: "'Montserrat', sans-serif" }}
+                >
+                  {stat.value === null ? '—' : `${stat.value}%`}
+                </div>
+                <div className="text-sm text-slate-500 dark:text-slate-400 mt-1">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
-      <h2
-        className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-slate-100 mb-6"
-        style={{ fontFamily: "'Montserrat', sans-serif" }}
-      >
-        Section breakdown
-      </h2>
+      {/* Detected Schema Types */}
+      {schemas.length > 0 ? (
+        <div className="bg-blue-50 dark:bg-slate-800 border border-blue-100 dark:border-slate-700 rounded-2xl p-5 sm:p-6 mb-6">
+          <p className="text-xs font-semibold tracking-[0.2em] text-blue-700 dark:text-blue-400 uppercase mb-3">
+            Detected Schema Types
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {schemas.map((schemaName) => (
+              <span
+                key={schemaName}
+                className="inline-flex items-center bg-white dark:bg-slate-900 text-blue-700 dark:text-blue-300 text-sm font-medium px-3 py-1.5 rounded-full border border-blue-100 dark:border-slate-700"
+                data-testid="results-schema-chip"
+              >
+                {schemaName}
+              </span>
+            ))}
+          </div>
+        </div>
+      ) : null}
 
-      <div className="space-y-4 mb-12">
+      {/* Sections */}
+      <div className="space-y-6 mb-6">
         {result.sections.map((section) => (
-          <Card key={section.id} data-testid={`results-section-${section.id}`}>
-            <CardHeader>
-              <CardTitle className="flex items-center justify-between gap-4">
-                <span className="flex items-center gap-3 text-lg md:text-xl">
-                  {section.icon ? (
-                    <span aria-hidden="true">{section.icon}</span>
-                  ) : null}
-                  {section.title}
-                </span>
-                <Badge variant="outline" className="text-base font-bold">
-                  {section.score}/{section.max}
-                </Badge>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              {section.description ? (
-                <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">
-                  {section.description}
-                </p>
-              ) : null}
-              <ul className="space-y-2">
-                {section.checks.map((check, i) => (
-                  <li
-                    key={i}
-                    className="flex items-start gap-3 text-sm text-slate-700 dark:text-slate-200"
-                  >
-                    {check.passed ? (
-                      <Check className="h-4 w-4 mt-0.5 shrink-0 text-green-600" />
-                    ) : (
-                      <X className="h-4 w-4 mt-0.5 shrink-0 text-red-500" />
-                    )}
-                    <span>
-                      <span className={check.passed ? '' : 'font-medium'}>
-                        {check.label}
-                      </span>
-                      {check.detail ? (
-                        <span className="block text-slate-500 dark:text-slate-400 text-xs mt-0.5">
-                          {check.detail}
-                        </span>
-                      ) : null}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-              {section.recommendation ? (
-                <p className="mt-4 text-sm text-slate-600 dark:text-slate-300 border-l-2 border-blue-200 pl-3">
-                  {section.recommendation}
-                </p>
-              ) : null}
-            </CardContent>
-          </Card>
+          <SectionCard key={section.id} section={section} />
         ))}
       </div>
 
+      {/* Action Plan */}
       {result.recommendations && result.recommendations.length > 0 ? (
-        <>
+        <div className="bg-white dark:bg-slate-800 border border-gray-100 dark:border-slate-700 rounded-2xl p-6 sm:p-8 mb-6">
           <h2
-            className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-slate-100 mb-6"
+            className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-100"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
-            Prioritized fixes
+            Action Plan
           </h2>
-          <ul className="space-y-2 mb-12">
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-1 mb-5">
+            Prioritized steps to improve your AI visibility score
+          </p>
+          <ul className="space-y-3 border-t border-gray-100 dark:border-slate-700 pt-5">
             {result.recommendations.map((rec, i) => (
               <li
                 key={i}
-                className={`flex items-start gap-3 text-sm md:text-base p-3 rounded-lg border ${priorityClass(rec.priority)}`}
+                className="flex items-start gap-4 text-sm md:text-base text-slate-700 dark:text-slate-200"
+                data-testid={`results-rec-${rec.priority}`}
               >
-                <span className="text-xs font-bold uppercase tracking-wide shrink-0 mt-0.5">
+                <span
+                  className={`shrink-0 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold uppercase border ${priorityPillClasses(rec.priority)}`}
+                >
                   {rec.priority}
                 </span>
-                <span>{rec.text}</span>
+                <span className="pt-0.5">{rec.text}</span>
               </li>
             ))}
           </ul>
-        </>
+        </div>
       ) : null}
 
-      <Card
-        className="bg-gradient-to-br from-primary/10 to-accent/10"
-        data-testid="results-cta"
-      >
-        <CardContent className="p-8 md:p-10 text-center">
-          <h2
-            className="text-2xl md:text-3xl font-bold mb-4"
-            style={{ fontFamily: "'Montserrat', sans-serif" }}
+      {/* Bottom CTA */}
+      <div className="no-print bg-blue-50 dark:bg-slate-800 border border-blue-100 dark:border-slate-700 rounded-2xl p-6 sm:p-10 mb-6">
+        <h2
+          className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-slate-100 mb-3"
+          style={{ fontFamily: "'Montserrat', sans-serif", letterSpacing: '-0.01em' }}
+        >
+          You've got your roadmap. Want us to handle the fixes?
+        </h2>
+        <p className="text-base text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
+          We'll walk you through your report live and give you a custom 30-day
+          plan to get cited by ChatGPT, Gemini, Perplexity, and Claude.
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-3 mb-5">
+          <a
+            href="/book-call"
+            className="flex-1 text-center text-white font-semibold px-5 py-4 rounded-xl text-sm sm:text-base transition hover:opacity-90"
+            style={{ backgroundColor: '#0F5FDB' }}
+            data-testid="results-cta-book"
           >
-            Want us to fix all of this?
-          </h2>
-          <p className="text-base md:text-lg text-slate-600 dark:text-slate-300 mb-6 max-w-xl mx-auto">
-            The AI Visibility Fix installs the entire AI visibility layer for you
-            in seven business days. One-time, $1,595, with our sixty-day fix-it-free
-            guarantee.
-          </p>
-          <a href="https://foundforai.com/fix-plan" data-testid="results-cta-fix">
-            <Button
-              size="lg"
-              className="text-base md:text-lg px-8 py-6 font-semibold"
-              style={{ backgroundColor: '#0F5FDB', borderColor: '#0F5FDB' }}
-            >
-              Get my AI Visibility Fix
-            </Button>
+            Walk Me Through My Report — Book Free 15-Min Review
           </a>
-          <p className="text-xs text-slate-500 mt-4">
-            Or email{' '}
-            <a
-              href="mailto:support@foundforai.com"
-              className="underline hover:text-slate-700"
-            >
-              support@foundforai.com
-            </a>{' '}
-            with questions.
-          </p>
-        </CardContent>
-      </Card>
+          <a
+            href={quoteMailto}
+            className="flex-1 text-center bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 font-semibold px-5 py-4 rounded-xl text-sm sm:text-base transition hover:bg-slate-50 dark:hover:bg-slate-800"
+            data-testid="results-cta-quote"
+          >
+            Email Me a Done-For-You Quote
+          </a>
+        </div>
+
+        <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-slate-600 dark:text-slate-300">
+          <span className="inline-flex items-center gap-2">
+            <Check className="h-4 w-4 text-green-600" />
+            No pitch — we review your report live
+          </span>
+          <span className="inline-flex items-center gap-2">
+            <Check className="h-4 w-4 text-green-600" />
+            Custom 30-day fix roadmap
+          </span>
+          <span className="inline-flex items-center gap-2">
+            <Check className="h-4 w-4 text-green-600" />
+            15 minutes, free, no credit card
+          </span>
+        </div>
+      </div>
+
+      <p className="text-center text-xs text-slate-500 dark:text-slate-400 pb-4">
+        Report generated by{' '}
+        <Link href="/" className="font-semibold hover:underline" style={{ color: '#0F5FDB' }}>
+          FoundForAI
+        </Link>{' '}
+        · Standards sourced from Google, Bing, OpenAI, Anthropic, schema.org,
+        and llms.txt.
+      </p>
     </>
+  );
+}
+
+function SectionCard({ section }: { section: ScorecardSection }) {
+  const pct =
+    section.max > 0
+      ? Math.max(0, Math.min(100, (section.score / section.max) * 100))
+      : 0;
+  const barColor = progressBarColor(section.score, section.max);
+
+  return (
+    <div
+      className="bg-white dark:bg-slate-800 border border-gray-100 dark:border-slate-700 rounded-2xl p-5 sm:p-6"
+      data-testid={`results-section-${section.id}`}
+    >
+      <div className="flex items-center gap-3 mb-2">
+        {section.icon ? (
+          <span className="text-xl" aria-hidden="true">
+            {section.icon}
+          </span>
+        ) : null}
+        <h3
+          className="text-lg sm:text-xl font-bold text-slate-900 dark:text-slate-100"
+          style={{ fontFamily: "'Montserrat', sans-serif" }}
+        >
+          {section.title}
+        </h3>
+      </div>
+
+      {section.description ? (
+        <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-4">
+          {section.description}
+        </p>
+      ) : null}
+
+      <div className="flex items-center gap-3 pb-4 border-b border-gray-100 dark:border-slate-700">
+        <div className="flex-1 h-2 rounded-full bg-gray-100 dark:bg-slate-700 overflow-hidden">
+          <div
+            className="h-full rounded-full transition-all duration-500"
+            style={{ width: `${pct}%`, backgroundColor: barColor }}
+          />
+        </div>
+        <div className="text-sm font-bold text-slate-900 dark:text-slate-100 shrink-0">
+          {section.score}/{section.max}
+        </div>
+      </div>
+
+      <ul className="divide-y divide-gray-100 dark:divide-slate-700">
+        {section.checks.map((check, i) => (
+          <li
+            key={i}
+            className="flex items-start gap-3 py-3 text-sm text-slate-700 dark:text-slate-200"
+          >
+            <span
+              className={`shrink-0 mt-0.5 flex items-center justify-center w-6 h-6 rounded-full ${
+                check.passed
+                  ? 'bg-green-50 dark:bg-green-900/20'
+                  : 'bg-red-50 dark:bg-red-900/20'
+              }`}
+            >
+              {check.passed ? (
+                <Check className="h-3.5 w-3.5 text-green-600" />
+              ) : (
+                <X className="h-3.5 w-3.5 text-red-500" />
+              )}
+            </span>
+            <div className="flex-1">
+              <div
+                className={`font-semibold text-slate-900 dark:text-slate-100 ${
+                  check.passed ? '' : ''
+                }`}
+              >
+                {check.label}
+              </div>
+              {check.detail ? (
+                <div className="text-slate-500 dark:text-slate-400 text-xs mt-0.5">
+                  {check.detail}
+                </div>
+              ) : null}
+            </div>
+          </li>
+        ))}
+      </ul>
+
+      {section.recommendation ? (
+        <div className="mt-4 bg-slate-50 dark:bg-slate-900/40 rounded-lg p-4 text-sm text-slate-600 dark:text-slate-300">
+          <span className="font-bold text-slate-900 dark:text-slate-100">
+            Recommendation:
+          </span>{' '}
+          {section.recommendation}
+        </div>
+      ) : null}
+    </div>
   );
 }

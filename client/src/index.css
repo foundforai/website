@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Hide non-essential UI when the user prints / saves the scorecard
+   results page as a PDF. Applied via the .no-print class plus the
+   global nav/footer (which never make sense in a printed report). */
+@media print {
+  .no-print,
+  nav,
+  footer {
+    display: none !important;
+  }
+  body {
+    background: #ffffff !important;
+  }
+}
+
 /* Highlight class for subtle word emphasis - editorial background style */
 .highlight {
   color: inherit;
