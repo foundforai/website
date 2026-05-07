@@ -1,6 +1,5 @@
 import PageLayout from '@/components/PageLayout';
 import ScorecardHero from '@/components/ScorecardHero';
-import WhatWeCheckGrid from '@/components/WhatWeCheckGrid';
 import { breadcrumbList } from '@/lib/breadcrumb';
 
 const scorecardSchemas = [
@@ -35,8 +34,7 @@ export default function Scorecard() {
       ogImage="/found-for-ai-logo-white.png"
       schemas={scorecardSchemas}
     >
-      <ScorecardHero />
-      <WhatWeCheckGrid />
+      <ScorecardHero showWhatWeCheck />
     </PageLayout>
   );
 }

@@ -17,6 +17,15 @@ const PLATFORM_BADGES: Array<{
   { abbr: 'CLD', name: 'Claude', bg: '#fdba74', fg: '#7c2d12' },
 ];
 
+const CHECKS: Array<{ icon: string; label: string }> = [
+  { icon: '🗂', label: 'Schema.org Data' },
+  { icon: '🤖', label: 'AI Crawler Access' },
+  { icon: '📄', label: 'llms.txt' },
+  { icon: '🗺', label: 'XML Sitemap' },
+  { icon: '⚙️', label: 'Technical SEO' },
+  { icon: '🏆', label: 'E-E-A-T Signals' },
+];
+
 function normalizeUrl(input: string): string {
   const trimmed = input.trim();
   if (!trimmed) return '';
@@ -24,7 +33,16 @@ function normalizeUrl(input: string): string {
   return `https://${trimmed}`;
 }
 
-export default function ScorecardHero() {
+interface ScorecardHeroProps {
+  /** Render the 6-card "What We Check" grid below the form + badges.
+   *  True on the standalone /scorecard page, false on the homepage where
+   *  the rest of the marketing body owns the page below the hero. */
+  showWhatWeCheck?: boolean;
+}
+
+export default function ScorecardHero({
+  showWhatWeCheck = false,
+}: ScorecardHeroProps) {
   const [, setLocation] = useLocation();
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
@@ -106,23 +124,22 @@ export default function ScorecardHero() {
   };
 
   return (
-    <section className="bg-white dark:bg-slate-900">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 pt-20 md:pt-28 pb-16 md:pb-24">
+    <section className="bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-900">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-12 sm:pt-20 pb-16 sm:pb-24">
         <div className="text-center">
           <div
-            className="inline-flex items-center bg-blue-50 text-blue-600 text-sm font-semibold px-4 py-1.5 rounded-full border border-blue-100"
+            className="inline-flex items-center bg-blue-50 text-blue-700 text-sm font-medium px-4 py-1.5 rounded-full border border-blue-100"
             data-testid="scorecard-eyebrow"
           >
             The New Way to Be Discovered
           </div>
 
           <h1
-            className="mt-8 md:mt-10 font-black tracking-tight text-slate-900 dark:text-slate-100 mx-auto"
+            className="mt-8 font-extrabold tracking-tight text-slate-900 dark:text-slate-100 mx-auto"
             style={{
               fontFamily: "'Montserrat', sans-serif",
               fontSize: 'clamp(44px, 8vw, 120px)',
-              fontWeight: 900,
-              lineHeight: 1.02,
+              lineHeight: 1.05,
               letterSpacing: '-0.02em',
             }}
             data-testid="scorecard-h1"
@@ -130,14 +147,14 @@ export default function ScorecardHero() {
             Is AI Recommending<br />Your Business?
           </h1>
 
-          <p className="mt-8 md:mt-10 text-lg sm:text-xl md:text-2xl text-slate-500 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+          <p className="mt-6 text-lg sm:text-xl text-slate-500 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
             See exactly how ChatGPT, Gemini, Perplexity, and Claude describe — or
             ignore — your business. Free report, no credit card.
           </p>
 
           <form
             onSubmit={handleSubmit}
-            className="mt-14 md:mt-16 max-w-5xl mx-auto"
+            className="mt-10 max-w-5xl mx-auto"
             data-testid="scorecard-form"
             noValidate
           >
@@ -197,7 +214,7 @@ export default function ScorecardHero() {
               </span>
             </div>
 
-            <p className="mt-6 text-sm text-center text-slate-500 dark:text-slate-400">
+            <p className="mt-6 text-xs sm:text-sm text-center text-slate-500 dark:text-slate-400">
               Already know you need it?{' '}
               <Link
                 href="/fix-plan"
@@ -234,6 +251,36 @@ export default function ScorecardHero() {
               ))}
             </div>
           </div>
+
+          {showWhatWeCheck ? (
+            <div className="mt-16 sm:mt-20 max-w-2xl mx-auto">
+              <p className="text-center text-xs font-semibold tracking-widest text-slate-400 uppercase mb-6">
+                What We Check
+              </p>
+
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                {CHECKS.map((check) => (
+                  <div
+                    key={check.label}
+                    className="bg-white dark:bg-slate-800 rounded-xl border border-gray-100 dark:border-slate-700 shadow-sm px-4 py-3.5 flex items-center gap-3"
+                    data-testid={`what-we-check-${check.label.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+                  >
+                    <span className="text-xl" aria-hidden="true">
+                      {check.icon}
+                    </span>
+                    <span className="text-xs font-medium text-slate-700 dark:text-slate-200">
+                      {check.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              <p className="text-center text-xs text-slate-400 mt-6">
+                Standards sourced directly from Google, Microsoft, OpenAI,
+                Anthropic, schema.org, and llms.txt.
+              </p>
+            </div>
+          ) : null}
         </div>
       </div>
     </section>
