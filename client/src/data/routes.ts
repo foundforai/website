@@ -26,6 +26,7 @@ const STATIC_DEFAULT_LASTMOD = '2026-05-04';
 const STATIC_ROUTES: RouteEntry[] = [
   { path: '/', prerender: true, sitemap: true, priority: 1.0, changefreq: 'weekly', lastmod: STATIC_DEFAULT_LASTMOD },
   { path: '/audit', prerender: true, sitemap: true, priority: 0.9, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
+  { path: '/scorecard', prerender: true, sitemap: true, priority: 0.9, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
   { path: '/pricing', prerender: true, sitemap: true, priority: 0.9, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
   { path: '/services', prerender: true, sitemap: true, priority: 0.8, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
   { path: '/playbook', prerender: true, sitemap: true, priority: 0.9, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },

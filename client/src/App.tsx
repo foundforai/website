@@ -9,6 +9,7 @@ import Redirect from "@/components/Redirect";
 import AiSourceTracker from "@/components/AiSourceTracker";
 import { trackEvent } from "@/lib/analytics";
 import Home from "@/pages/Home";
+import Scorecard from "@/pages/Scorecard";
 import WhatIsAISEO from "@/pages/WhatIsAISEO";
 import WhatIsFoundForAI from "@/pages/WhatIsFoundForAI";
 import AEO from "@/pages/AEO";
@@ -35,6 +36,7 @@ function AppRouter() {
       <ScrollToTop />
       <Switch>
         <Route path="/" component={Home} />
+        <Route path="/scorecard" component={Scorecard} />
         <Route path="/what-is-ai-seo" component={WhatIsAISEO} />
         <Route path="/what-is-found-for-ai" component={WhatIsFoundForAI} />
         <Route path="/aeo" component={AEO} />
