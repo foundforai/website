@@ -5,6 +5,36 @@ import { trackEvent } from '@/lib/analytics';
 
 export const SCORECARD_RESULT_STORAGE_KEY = 'scorecard:lastResult';
 
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mpqwvlnz';
+
+function captureLead(lead: { url: string; email: string; keyword: string }): void {
+  // Fire-and-forget. keepalive lets the request finish even if the page
+  // navigates away (we redirect to /scorecard/results immediately on
+  // success). We never await this — the scoring call is the blocking
+  // path, this is just lead capture.
+  try {
+    void fetch(FORMSPREE_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      keepalive: true,
+      body: JSON.stringify({
+        email: lead.email,
+        websiteUrl: lead.url,
+        keyword: lead.keyword,
+        _subject: 'New AI Visibility Scorecard request',
+        _language: 'en',
+      }),
+    }).catch(() => {
+      // Swallow — Formspree being down should not break the flow.
+    });
+  } catch {
+    // Same — never let lead capture break the form submit.
+  }
+}
+
 const PLATFORM_BADGES: Array<{
   abbr: string;
   name: string;
@@ -65,6 +95,12 @@ export default function ScorecardHero({
     }
 
     setLoading(true);
+
+    captureLead({
+      url: normalizedUrl,
+      email: email.trim(),
+      keyword: keyword.trim(),
+    });
 
     try {
       const response = await fetch('/api/analyze', {
