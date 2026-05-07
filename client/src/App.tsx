@@ -26,6 +26,7 @@ import BlogPost from "@/pages/BlogPost";
 import AISearchVisibility from "@/pages/AISearchVisibility";
 import Insights from "@/pages/Insights";
 import Playbook from "@/pages/Playbook";
+import PlaybookAccess from "@/pages/PlaybookAccess";
 import PlaybookThanks from "@/pages/PlaybookThanks";
 import Media from "@/pages/Media";
 import MediaEpisodeSmallLake from "@/pages/MediaEpisodeSmallLake";
@@ -53,6 +54,7 @@ function AppRouter() {
         <Route path="/blog/:slug" component={BlogPost} />
         <Route path="/ai-search-visibility" component={AISearchVisibility} />
         <Route path="/insights" component={Insights} />
+        <Route path="/playbook/access" component={PlaybookAccess} />
         <Route path="/playbook/thanks" component={PlaybookThanks} />
         <Route path="/playbook" component={Playbook} />
         <Route path="/media/small-lake-city-podcast" component={MediaEpisodeSmallLake} />

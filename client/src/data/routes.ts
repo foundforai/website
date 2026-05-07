@@ -31,6 +31,7 @@ const STATIC_ROUTES: RouteEntry[] = [
   { path: '/pricing', prerender: true, sitemap: true, priority: 0.9, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
   { path: '/services', prerender: true, sitemap: true, priority: 0.8, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
   { path: '/playbook', prerender: true, sitemap: true, priority: 0.9, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
+  { path: '/playbook/access', prerender: true, sitemap: false },
   { path: '/playbook/thanks', prerender: true, sitemap: false },
   { path: '/aeo', prerender: true, sitemap: true, priority: 0.8, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
   { path: '/what-is-ai-seo', prerender: true, sitemap: true, priority: 0.8, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
