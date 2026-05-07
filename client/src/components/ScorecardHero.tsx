@@ -135,13 +135,8 @@ export default function ScorecardHero({
           </div>
 
           <h1
-            className="mt-8 font-extrabold tracking-tight text-slate-900 dark:text-slate-100 mx-auto"
-            style={{
-              fontFamily: "'Montserrat', sans-serif",
-              fontSize: 'clamp(44px, 8vw, 120px)',
-              lineHeight: 1.05,
-              letterSpacing: '-0.02em',
-            }}
+            className="mt-8 text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.05] text-slate-900 dark:text-slate-100"
+            style={{ fontFamily: "'Montserrat', sans-serif" }}
             data-testid="scorecard-h1"
           >
             Is AI Recommending<br />Your Business?
