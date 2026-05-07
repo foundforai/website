@@ -9,7 +9,8 @@
   ],
   "rewrites": [
     { "source": "/fix-plan/request", "destination": "/fix-plan-request" },
-    { "source": "/fix-plan/thanks", "destination": "/fix-plan-thanks" }
+    { "source": "/fix-plan/thanks", "destination": "/fix-plan-thanks" },
+    { "source": "/api/analyze", "destination": "https://scorecard.foundforai.com/api/analyze" }
   ],
   "crons": [
     { "path": "/api/cron/indexnow", "schedule": "0 */6 * * *" }
