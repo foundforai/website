@@ -118,6 +118,15 @@ export default function Footer() {
           <p>
             Powered by <a href="https://fripse.com" target="_blank" rel="noopener" className="hover:text-primary transition-colors" data-testid="link-fripse">Fripse AI</a> — automation systems for small businesses.
           </p>
+          <nav className="flex justify-center gap-4 text-xs">
+            <Link href="/privacy" data-testid="link-footer-privacy">
+              <span className="hover:text-primary transition-colors">Privacy Policy</span>
+            </Link>
+            <span aria-hidden="true">·</span>
+            <Link href="/terms" data-testid="link-footer-terms">
+              <span className="hover:text-primary transition-colors">Terms of Service</span>
+            </Link>
+          </nav>
           <p>&copy; {currentYear} Found For AI. All rights reserved.</p>
         </div>
       </div>

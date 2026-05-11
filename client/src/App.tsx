@@ -30,6 +30,8 @@ import PlaybookAccess from "@/pages/PlaybookAccess";
 import PlaybookThanks from "@/pages/PlaybookThanks";
 import Media from "@/pages/Media";
 import MediaEpisodeSmallLake from "@/pages/MediaEpisodeSmallLake";
+import Privacy from "@/pages/Privacy";
+import Terms from "@/pages/Terms";
 import NotFound from "@/pages/NotFound";
 
 function AppRouter() {
@@ -59,6 +61,8 @@ function AppRouter() {
         <Route path="/playbook" component={Playbook} />
         <Route path="/media/small-lake-city-podcast" component={MediaEpisodeSmallLake} />
         <Route path="/media" component={Media} />
+        <Route path="/privacy" component={Privacy} />
+        <Route path="/terms" component={Terms} />
         <Route component={NotFound} />
       </Switch>
     </>
