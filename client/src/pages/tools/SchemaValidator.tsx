@@ -183,6 +183,30 @@ export default function SchemaValidator() {
       publisher: { '@id': `${SITE}/#org` },
       isAccessibleForFree: true,
     },
+    {
+      '@type': 'HowTo',
+      '@id': `${SITE}/tools/schema-validator#howto`,
+      name: 'How to validate your site\'s JSON-LD schema',
+      description:
+        'Use the Schema Validator to check your site\'s structured data and get an AI-readability score that shows how likely AI assistants are to find and recommend you.',
+      step: [
+        {
+          '@type': 'HowToStep',
+          position: 1,
+          name: 'Enter your site\'s URL into the validator',
+        },
+        {
+          '@type': 'HowToStep',
+          position: 2,
+          name: 'Click "Validate schema" to scan the page\'s JSON-LD blocks',
+        },
+        {
+          '@type': 'HowToStep',
+          position: 3,
+          name: 'Review the AI-readability score and per-entity validation checks to find missing fields',
+        },
+      ],
+    },
   ];
 
   return (
