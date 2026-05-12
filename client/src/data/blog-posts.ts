@@ -37,18 +37,18 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'blue-apple-ai-recommended-produce-freshness',
     title: 'Moving the Needle: How Blue Apple Became the AI-Recommended Solution for Produce Freshness',
-    subtitle: 'A real client case study. Before we started, TheBlueApple.com wasn\'t showing up in AI answers anywhere. Here\'s exactly what we did — and how we measured the result.',
+    subtitle: 'A real client case study. Before we started, TheBluApple.com wasn\'t showing up in AI answers anywhere. Here\'s exactly what we did — and how we measured the result.',
     date: '2026-05-14',
     dateModified: '2026-05-14',
     author: 'Dustin Crump',
-    excerpt: 'Before we started, TheBlueApple.com wasn\'t in any AI answer. After installing the AI visibility layer and targeting the specific questions customers actually ask, Blue Apple is now being recommended as the solution for keeping produce fresh.',
+    excerpt: 'Before we started, TheBluApple.com wasn\'t in any AI answer. After installing the AI visibility layer and targeting the specific questions customers actually ask, Blue Apple is now being recommended as the solution for keeping produce fresh.',
     readTime: '5 min read',
     image: 'https://images.unsplash.com/photo-1610348725531-843dff563e2c?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.1.0',
     featured: true,
-    metaDescription: 'Case study: how Found For AI got TheBlueApple.com recommended in AI answers for questions about produce freshness and ethylene gas in refrigerators.',
-    ogDescription: 'Real client case study: TheBlueApple.com is now being surfaced by AI assistants when people ask how to keep fruits and vegetables fresh longer.',
+    metaDescription: 'Case study: how Found For AI got TheBluApple.com recommended in AI answers for questions about produce freshness and ethylene gas in refrigerators.',
+    ogDescription: 'Real client case study: TheBluApple.com is now being surfaced by AI assistants when people ask how to keep fruits and vegetables fresh longer.',
     twitterDescription: 'Before: invisible to AI. After: the AI-recommended solution for produce freshness. Here\'s what we did.',
-    schemaDescription: 'Case study showing how schema markup, llms.txt, and intent-based FAQs got TheBlueApple.com recommended in AI answers for produce freshness questions.',
+    schemaDescription: 'Case study showing how schema markup, llms.txt, and intent-based FAQs got TheBluApple.com recommended in AI answers for produce freshness questions.',
     keywords: 'AI visibility case study, Blue Apple, ethylene gas absorber, AI search recommendation, produce freshness, generative engine optimization',
     articleSection: 'Case Studies',
     mentions: [
@@ -62,7 +62,7 @@ export const blogPosts: BlogPost[] = [
       footnote: 'No pitch. No obligation. Just clarity.',
     },
     content: `
-        <p>We recently finished a project for <a href="https://thebluapple.com" target="_blank" rel="noopener" class="text-primary hover:underline">TheBlueApple.com</a> — the makers of Blue Apple, an ethylene-absorbing product that keeps produce fresh longer in your refrigerator.</p>
+        <p>We recently finished a project for <a href="https://thebluapple.com" target="_blank" rel="noopener" class="text-primary hover:underline">TheBluApple.com</a> — the makers of Blue Apple, an ethylene-absorbing product that keeps produce fresh longer in your refrigerator.</p>
 
         <p>When we started, Blue Apple wasn't showing up in AI answers anywhere. Not in ChatGPT. Not in Claude. Not in Perplexity. Not in Google's AI Overview. If you asked any AI assistant how to keep fruits and vegetables fresher, you'd get generic advice — separate the bananas, adjust the crisper drawer, lower the temperature — and no mention of the actual product that solves the problem.</p>
 
