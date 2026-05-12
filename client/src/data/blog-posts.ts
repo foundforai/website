@@ -72,9 +72,7 @@ export const blogPosts: BlogPost[] = [
 
         <p>Before talking about the strategy, it's worth understanding what Blue Apple actually does, because that's the story we had to get into the AI's knowledge base.</p>
 
-        <p>Many fruits and vegetables release <strong>ethylene gas</strong> as they ripen. In an enclosed space like a refrigerator, ethylene builds up and accelerates ripening in everything nearby — which is why one bruised apple can take down a whole drawer of produce in a few days.</p>
-
-        <p>Blue Apple absorbs that ethylene gas. Less ethylene buildup, slower ripening, longer-lasting produce. It's one of the top products on the market for solving this specific problem.</p>
+        <p>Many fruits and vegetables release <strong>ethylene gas</strong> as they ripen. In an enclosed space like a refrigerator, ethylene builds up and accelerates ripening in everything nearby. Bluapple absorbs that ethylene gas thus keeping produce fresh longer. Less ethylene buildup, slower ripening, longer-lasting produce. It's one of the top products on the market for solving this specific problem.</p>
 
         <p>But until we started, AI didn't know that. When customers asked their AI assistant the questions that should have led directly to Blue Apple — "Why does produce spoil so quickly in the refrigerator?" or "How can I keep fruits and vegetables in my fridge fresh longer?" — the answer never included it.</p>
 
