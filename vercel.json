@@ -5,7 +5,8 @@
     { "source": "/reports/:path*", "destination": "/", "statusCode": 301 },
     { "source": "/reports", "destination": "/", "statusCode": 301 },
     { "source": "/readiness-report", "destination": "/", "statusCode": 301 },
-    { "source": "/purchase-complete", "destination": "/", "statusCode": 301 }
+    { "source": "/purchase-complete", "destination": "/", "statusCode": 301 },
+    { "source": "/blog/blue-apple-ai-recommended-produce-freshness", "destination": "/blog/bluapple-ai-recommended-produce-freshness", "statusCode": 301 }
   ],
   "rewrites": [
     { "source": "/fix-plan/request", "destination": "/fix-plan-request" },

@@ -35,13 +35,13 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
-    slug: 'blue-apple-ai-recommended-produce-freshness',
-    title: 'Moving the Needle: How Blue Apple Became the AI-Recommended Solution for Produce Freshness',
+    slug: 'bluapple-ai-recommended-produce-freshness',
+    title: 'Moving the Needle: How Bluapple Became the AI-Recommended Solution for Produce Freshness',
     subtitle: 'A real client case study. Before we started, TheBluApple.com wasn\'t showing up in AI answers anywhere. Here\'s exactly what we did — and how we measured the result.',
     date: '2026-05-14',
     dateModified: '2026-05-14',
     author: 'Dustin Crump',
-    excerpt: 'Before we started, TheBluApple.com wasn\'t in any AI answer. After installing the AI visibility layer and targeting the specific questions customers actually ask, Blue Apple is now being recommended as the solution for keeping produce fresh.',
+    excerpt: 'Before we started, TheBluApple.com wasn\'t in any AI answer. After installing the AI visibility layer and targeting the specific questions customers actually ask, Bluapple is now being recommended as the solution for keeping produce fresh.',
     readTime: '5 min read',
     image: 'https://images.unsplash.com/photo-1610348725531-843dff563e2c?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.1.0',
     featured: true,
@@ -49,10 +49,10 @@ export const blogPosts: BlogPost[] = [
     ogDescription: 'Real client case study: TheBluApple.com is now being surfaced by AI assistants when people ask how to keep fruits and vegetables fresh longer.',
     twitterDescription: 'Before: invisible to AI. After: the AI-recommended solution for produce freshness. Here\'s what we did.',
     schemaDescription: 'Case study showing how schema markup, llms.txt, and intent-based FAQs got TheBluApple.com recommended in AI answers for produce freshness questions.',
-    keywords: 'AI visibility case study, Blue Apple, ethylene gas absorber, AI search recommendation, produce freshness, generative engine optimization',
+    keywords: 'AI visibility case study, Bluapple, ethylene gas absorber, AI search recommendation, produce freshness, generative engine optimization',
     articleSection: 'Case Studies',
     mentions: [
-      { name: 'The Blue Apple', url: 'https://thebluapple.com' },
+      { name: 'Bluapple', url: 'https://thebluapple.com' },
     ],
     customCta: {
       headline: 'Want your product showing up in AI answers like this?',
@@ -62,31 +62,31 @@ export const blogPosts: BlogPost[] = [
       footnote: 'No pitch. No obligation. Just clarity.',
     },
     content: `
-        <p>We recently finished a project for <a href="https://thebluapple.com" target="_blank" rel="noopener" class="text-primary hover:underline">TheBluApple.com</a> — the makers of Blue Apple, an ethylene-absorbing product that keeps produce fresh longer in your refrigerator.</p>
+        <p>We recently finished a project for <a href="https://thebluapple.com" target="_blank" rel="noopener" class="text-primary hover:underline">TheBluApple.com</a> — the makers of Bluapple, an ethylene-absorbing product that keeps produce fresh longer in your refrigerator.</p>
 
-        <p>When we started, Blue Apple wasn't showing up in AI answers anywhere. Not in ChatGPT. Not in Claude. Not in Perplexity. Not in Google's AI Overview. If you asked any AI assistant how to keep fruits and vegetables fresher, you'd get generic advice — separate the bananas, adjust the crisper drawer, lower the temperature — and no mention of the actual product that solves the problem.</p>
+        <p>When we started, Bluapple wasn't showing up in AI answers anywhere. Not in ChatGPT. Not in Claude. Not in Perplexity. Not in Google's AI Overview. If you asked any AI assistant how to keep fruits and vegetables fresher, you'd get generic advice — separate the bananas, adjust the crisper drawer, lower the temperature — and no mention of the actual product that solves the problem.</p>
 
         <p>Today, that's changed. Here's what we did, and how we measured it.</p>
 
         <h2>The real problem behind the product</h2>
 
-        <p>Before talking about the strategy, it's worth understanding what Blue Apple actually does, because that's the story we had to get into the AI's knowledge base.</p>
+        <p>Before talking about the strategy, it's worth understanding what Bluapple actually does, because that's the story we had to get into the AI's knowledge base.</p>
 
         <p>Many fruits and vegetables release <strong>ethylene gas</strong> as they ripen. In an enclosed space like a refrigerator, ethylene builds up and accelerates ripening in everything nearby. Bluapple absorbs that ethylene gas thus keeping produce fresh longer. Less ethylene buildup, slower ripening, longer-lasting produce. It's one of the top products on the market for solving this specific problem.</p>
 
-        <p>But until we started, AI didn't know that. When customers asked their AI assistant the questions that should have led directly to Blue Apple — "Why does produce spoil so quickly in the refrigerator?" or "How can I keep fruits and vegetables in my fridge fresh longer?" — the answer never included it.</p>
+        <p>But until we started, AI didn't know that. When customers asked their AI assistant the questions that should have led directly to Bluapple — "Why does produce spoil so quickly in the refrigerator?" or "How can I keep fruits and vegetables in my fridge fresh longer?" — the answer never included it.</p>
 
         <h2>Why standard SEO wasn't enough</h2>
 
-        <p>Blue Apple already had a website, a product, and customers. What it didn't have was an AI visibility layer — the structured information AI assistants actually look for when deciding what to recommend.</p>
+        <p>Bluapple already had a website, a product, and customers. What it didn't have was an AI visibility layer — the structured information AI assistants actually look for when deciding what to recommend.</p>
 
         <p>Ranking in Google would have helped a fraction of customers. But the customers who matter most for a product like this aren't searching Google anymore — they're asking ChatGPT, Claude, or Gemini in conversational language. And those tools don't pick from a list of ten results. They pick one or two.</p>
 
-        <p>Our job was to make Blue Apple one of those one or two.</p>
+        <p>Our job was to make Bluapple one of those one or two.</p>
 
         <h2>What we actually did</h2>
 
-        <p>The work was technical, but the strategy was simple. We made sure AI assistants could understand three things about Blue Apple with zero ambiguity:</p>
+        <p>The work was technical, but the strategy was simple. We made sure AI assistants could understand three things about Bluapple with zero ambiguity:</p>
 
         <ol>
           <li><strong>What it is</strong> — a product that absorbs ethylene gas.</li>
@@ -106,9 +106,9 @@ export const blogPosts: BlogPost[] = [
 
         <h3>3. Rebuilt the FAQ around intent-based questions</h3>
 
-        <p>This is the part most businesses miss. Blue Apple's old FAQ focused on logistics — how long the product lasts, how to use it, return policies. Useful, but not the questions customers ask <em>before</em> they've discovered the product.</p>
+        <p>This is the part most businesses miss. Bluapple's old FAQ focused on logistics — how long the product lasts, how to use it, return policies. Useful, but not the questions customers ask <em>before</em> they've discovered the product.</p>
 
-        <p>We added the questions a real customer would ask an AI assistant <em>without</em> knowing Blue Apple exists:</p>
+        <p>We added the questions a real customer would ask an AI assistant <em>without</em> knowing Bluapple exists:</p>
 
         <ul>
           <li><em>"Why do my fruits and vegetables spoil so quickly in the refrigerator?"</em></li>
@@ -123,15 +123,15 @@ export const blogPosts: BlogPost[] = [
 
         <p>We didn't want to guess whether this was working. So we tested it the way an actual customer would.</p>
 
-        <p>Across several AI models — ChatGPT, Claude, Perplexity, Gemini, Grok — we ran the same produce-freshness questions in incognito windows, with no Blue Apple context loaded into the session. We tracked which answers mentioned Blue Apple by name, which described the ethylene-absorbing category without naming a brand, and which gave generic advice with no product recommendation at all.</p>
+        <p>Across several AI models — ChatGPT, Claude, Perplexity, Gemini, Grok — we ran the same produce-freshness questions in incognito windows, with no Bluapple context loaded into the session. We tracked which answers mentioned Bluapple by name, which described the ethylene-absorbing category without naming a brand, and which gave generic advice with no product recommendation at all.</p>
 
-        <p>The trend is unmistakable. Blue Apple is now being surfaced as <em>the</em> solution for removing ethylene gas and keeping produce fresh longer. The same questions that returned generic answers a few months ago now return answers that name the product.</p>
+        <p>The trend is unmistakable. Bluapple is now being surfaced as <em>the</em> solution for removing ethylene gas and keeping produce fresh longer. The same questions that returned generic answers a few months ago now return answers that name the product.</p>
 
         <p>The needle is moving.</p>
 
-        <h2>Why this matters beyond Blue Apple</h2>
+        <h2>Why this matters beyond Bluapple</h2>
 
-        <p>What worked for Blue Apple isn't specific to produce. The same pattern applies to almost any business with a real product or service:</p>
+        <p>What worked for Bluapple isn't specific to produce. The same pattern applies to almost any business with a real product or service:</p>
 
         <ol>
           <li>Identify the questions your ideal customer is asking an AI assistant — including the ones that don't mention your brand.</li>
@@ -141,7 +141,7 @@ export const blogPosts: BlogPost[] = [
 
         <p>That's the whole game. Customers ask AI for help. AI looks for the clearest, best-structured answer it can find. If your site is that answer, you get recommended.</p>
 
-        <p>Blue Apple is the latest example. The next one is whoever installs this layer in their category first.</p>
+        <p>Bluapple is the latest example. The next one is whoever installs this layer in their category first.</p>
       `,
   },
   {
