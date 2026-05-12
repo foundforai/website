@@ -34,6 +34,142 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'get-found-in-ai-answers-ai-phone-book',
+    title: 'Get Found in AI Answers: The New "AI Phone Book"',
+    subtitle: 'Schema markup is the new business listing. If your site doesn\'t have it, AI agents pass you over — no matter how good your SEO is.',
+    date: '2026-05-12',
+    dateModified: '2026-05-12',
+    author: 'Dustin Crump',
+    excerpt: 'Schema markup is the new phone book listing. Without it, AI agents skip your business when customers ask for recommendations — even if you rank in Google.',
+    readTime: '6 min read',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.1.0',
+    featured: true,
+    metaDescription: 'Schema markup is the new phone book listing for AI search. Learn why your business needs an AI visibility layer to get recommended in ChatGPT, Gemini, and Perplexity answers.',
+    ogDescription: 'AI agents recommend businesses they can clearly understand. Schema markup, llms.txt, and intent-based FAQs are the new "AI phone book" listing.',
+    twitterDescription: 'Good SEO gets you in Google. Schema markup gets you in AI answers. Here\'s the difference.',
+    schemaDescription: 'How schema markup, llms.txt, and intent-based FAQs combine to form the AI visibility layer that determines whether AI assistants recommend a business.',
+    keywords: 'AI visibility, schema markup, AI answers, llms.txt, AEO, generative engine optimization, AI phone book, FAQ schema',
+    articleSection: 'AI Visibility',
+    customCta: {
+      headline: 'Is your business in the AI phone book?',
+      copy: 'Most small business sites are still missing the AI visibility layer entirely. A free 15-minute call shows you exactly what schema, llms.txt, and FAQ structure your site needs to get recommended in AI answers.',
+      buttonText: '→ Book a 15-minute call',
+      buttonLink: 'https://foundforai.com/talk-to-a-human#calendar',
+      footnote: 'No pitch. No obligation. Just clarity.',
+    },
+    content: `
+        <p>There was a time when being in the phone book was enough.</p>
+
+        <p>Then it became being in Google. Then it became ranking on Google. Then it became having a Google Business Profile. Each shift left businesses behind — the ones who didn't update fast enough quietly stopped getting calls.</p>
+
+        <p>The shift happening right now is bigger than any of those. And most businesses haven't seen it yet.</p>
+
+        <h2>From phone book to search engine to AI answer</h2>
+
+        <p>Customers don't search the way they used to. Instead of typing keywords into Google and scrolling through ten blue links, they're asking ChatGPT, Claude, Perplexity, or their phone's built-in AI:</p>
+
+        <ul>
+          <li><em>"Who's the best plumber near me?"</em></li>
+          <li><em>"I need an HVAC company that handles emergency repairs."</em></li>
+          <li><em>"What's something adventurous to do in southern Utah?"</em></li>
+        </ul>
+
+        <p>The AI doesn't return ten options. It returns one or two. If your business isn't one of them, you didn't lose to a better competitor. You weren't in the room.</p>
+
+        <p>Good SEO might get you into Google Gemini answers. It won't automatically get you into ChatGPT, Claude, or Perplexity. Each one has its own way of deciding who to recommend — and they all check for the same underlying thing: <strong>can I confidently understand what this business is?</strong></p>
+
+        <h2>The AI phone book is real — and it's made of schema</h2>
+
+        <p>Here's what almost no business owner has been told.</p>
+
+        <p>When an AI agent crawls your website, it isn't reading your homepage the way a human does. It's looking for a specific machine-readable layer of information — structured data, written in a format called <strong>JSON-LD schema markup</strong> — that tells it, in unambiguous terms:</p>
+
+        <ul>
+          <li>What kind of business this is (plumbing, HVAC, rental, professional service)</li>
+          <li>Areas served</li>
+          <li>Hours of operation</li>
+          <li>Pricing (free estimates? on-site fee? average ticket size?)</li>
+          <li>Phone number, address, exact business name</li>
+          <li>What questions you answer for customers</li>
+        </ul>
+
+        <p>If that layer exists and is filled out, AI can place you in the "phone book" it builds for itself. If it doesn't exist — and on most small business sites it doesn't — the AI has to guess. And a guessing AI defers to a competitor whose information is clearly laid out.</p>
+
+        <p>This is what we mean by the <strong>AI visibility layer</strong>. It's not about keywords or backlinks. It's about whether the AI can read your business at all.</p>
+
+        <h2>llms.txt: the table of contents for AI</h2>
+
+        <p>Schema is one piece. The other piece most businesses are missing is <code>llms.txt</code> (and <code>llms-full.txt</code>) — a simple text file at the root of your domain that tells AI agents what your business is about, in plain language, with links to the pages they should pay attention to.</p>
+
+        <p>Think of it as a table of contents written specifically for AI. The format is closer to Markdown than HTML — instruction-heavy, easy to parse, no styling noise. When ChatGPT or Claude crawls your site, hitting <code>foundforai.com/llms.txt</code> gives it an immediate, structured picture of who you are without having to interpret your design system.</p>
+
+        <p>Most businesses don't have this file. The ones who do are the ones AI tends to recommend first.</p>
+
+        <h2>FAQs: the part where most businesses leave money on the table</h2>
+
+        <p>If you have an FAQ on your site, you're already halfway there. But there's a catch most businesses miss.</p>
+
+        <p>Standard FAQs answer post-sale logistics:</p>
+
+        <ul>
+          <li>"What's your return policy?"</li>
+          <li>"How do I cancel?"</li>
+          <li>"How do I replace the battery on my e-bike?"</li>
+        </ul>
+
+        <p>Those are useful. But they're not the questions customers are asking AI <em>before</em> they've decided to buy from anyone. That's where you need to expand your thinking.</p>
+
+        <h3>The intent-based FAQ</h3>
+
+        <p>Picture an adventure rental company in southern Utah. The owner has e-bikes, canoes, maybe some guided trips. Their FAQ is full of "what if my bike breaks down on the trail" type questions.</p>
+
+        <p>Helpful. But the customer hasn't found them yet.</p>
+
+        <p>The questions that get them found in AI answers are the ones a vacationer would actually ask their AI:</p>
+
+        <ul>
+          <li><em>"I want to do something adventurous on my vacation in southern Utah. What are my options?"</em></li>
+          <li><em>"What's a fun outdoor activity for a couple in their 40s near Zion?"</em></li>
+          <li><em>"Where can I rent an e-bike in St. George?"</em></li>
+        </ul>
+
+        <p>When the company adds these to its FAQ — and wraps them in <code>FAQPage</code> schema — the AI now has a direct match. Customer asks the question. AI surfaces the answer. The answer mentions the business by name.</p>
+
+        <p>That's how you show up in answers you weren't even searching for.</p>
+
+        <h2>Why this is the most important shift in years</h2>
+
+        <p>Google Ads aren't dying overnight. But the return is dropping for almost everyone we talk to, and the reason is simple: fewer people are starting their searches in Google. They're starting them in an AI assistant.</p>
+
+        <p>That conversation doesn't show your ad. It shows one or two recommendations the AI is confident about. And confidence comes from the visibility layer — schema, llms.txt, intent-based FAQs — not from ad spend.</p>
+
+        <p>Three things are true at the same time right now:</p>
+
+        <ol>
+          <li>Most small businesses are missing the AI visibility layer entirely.</li>
+          <li>AI tools are getting more confident week over week about who to recommend.</li>
+          <li>Once AI starts recommending a business, it tends to keep recommending it.</li>
+        </ol>
+
+        <p>That means the first business in any local market to install this layer wins the recommendation lane — and tends to keep it. Being first matters more than being best.</p>
+
+        <h2>What to actually do</h2>
+
+        <p>If you take nothing else from this:</p>
+
+        <ul>
+          <li><strong>Audit what's on your site now.</strong> Paste your homepage into <a href="https://search.google.com/test/rich-results" target="_blank" rel="noopener" class="text-primary hover:underline">Google's Rich Results Test</a>. If it says "no items detected," you have no AI visibility layer.</li>
+          <li><strong>Add the schema.</strong> At minimum: <code>LocalBusiness</code>, <code>Service</code>, and <code>FAQPage</code> for your most-asked questions.</li>
+          <li><strong>Publish an llms.txt.</strong> Plain-language summary of your business, links to your most important pages.</li>
+          <li><strong>Rewrite your FAQ.</strong> Half logistics, half intent-based questions a customer would actually ask AI before choosing anyone.</li>
+        </ul>
+
+        <p>None of this is glamorous. It's the kind of work that doesn't show up on your homepage. But it's the work that decides whether AI hands a customer your name — or someone else's.</p>
+
+        <p>The AI phone book is being built right now. The businesses listed in it will get the calls. The ones who aren't will keep wondering where their leads went.</p>
+      `,
+  },
+  {
     slug: 'mental-model-shift-ai-search',
     title: 'The Mental Model Shift Businesses Are Missing About AI Search',
     subtitle: 'Most business websites are still written for keyword matching and human browsing. AI systems don\'t browse — they interpret.',
