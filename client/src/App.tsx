@@ -32,6 +32,8 @@ import Media from "@/pages/Media";
 import MediaEpisodeSmallLake from "@/pages/MediaEpisodeSmallLake";
 import Privacy from "@/pages/Privacy";
 import Terms from "@/pages/Terms";
+import ToolsIndex from "@/pages/ToolsIndex";
+import LlmsTxtGenerator from "@/pages/tools/LlmsTxtGenerator";
 import NotFound from "@/pages/NotFound";
 
 function AppRouter() {
@@ -63,6 +65,8 @@ function AppRouter() {
         <Route path="/media" component={Media} />
         <Route path="/privacy" component={Privacy} />
         <Route path="/terms" component={Terms} />
+        <Route path="/tools" component={ToolsIndex} />
+        <Route path="/tools/llms-txt-generator" component={LlmsTxtGenerator} />
         <Route component={NotFound} />
       </Switch>
     </>

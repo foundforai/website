@@ -34,6 +34,7 @@ export default function Navigation() {
     { href: '/services', label: 'Services' },
     { href: '/pricing', label: 'Pricing & Plans' },
     { href: '/blog', label: 'Blog' },
+    { href: '/tools', label: 'Tools' },
     { href: '/about', label: 'About' },
     { href: '/media', label: 'Media' },
     { href: '/contact', label: 'Contact' },
