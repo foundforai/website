@@ -11,6 +11,8 @@
 // - 12s timeout, ~3 MB response cap
 // - Identifies itself in the User-Agent so site owners can see the source
 
+export const config = { runtime: 'edge' };
+
 const MAX_BYTES = 3 * 1024 * 1024;
 const TIMEOUT_MS = 12_000;
 const USER_AGENT =
