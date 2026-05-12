@@ -2,7 +2,7 @@ import { Link } from 'wouter';
 import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { FileText, ArrowRight } from 'lucide-react';
+import { FileText, ShieldCheck, ArrowRight } from 'lucide-react';
 import { breadcrumbList } from '@/lib/breadcrumb';
 import { tools } from '@/data/tools';
 
@@ -10,6 +10,7 @@ const SITE = 'https://foundforai.com';
 
 const iconMap = {
   FileText,
+  ShieldCheck,
 };
 
 export default function ToolsIndex() {

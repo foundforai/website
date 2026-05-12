@@ -19,6 +19,16 @@ export const tools: ToolEntry[] = [
     icon: 'FileText',
     status: 'live',
   },
+  {
+    slug: 'schema-validator',
+    path: '/tools/schema-validator',
+    name: 'Schema Validator',
+    tagline: 'See exactly what JSON-LD AI assistants find on any page — and what is missing.',
+    description:
+      'A free schema validator. Paste any URL to inspect its JSON-LD entity graph and surface the required and recommended fields each type is missing.',
+    icon: 'ShieldCheck',
+    status: 'live',
+  },
 ];
 
 export const toolsBySlug: Record<string, ToolEntry> = Object.fromEntries(

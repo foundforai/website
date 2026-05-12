@@ -34,6 +34,7 @@ import Privacy from "@/pages/Privacy";
 import Terms from "@/pages/Terms";
 import ToolsIndex from "@/pages/ToolsIndex";
 import LlmsTxtGenerator from "@/pages/tools/LlmsTxtGenerator";
+import SchemaValidator from "@/pages/tools/SchemaValidator";
 import NotFound from "@/pages/NotFound";
 
 function AppRouter() {
@@ -67,6 +68,7 @@ function AppRouter() {
         <Route path="/terms" component={Terms} />
         <Route path="/tools" component={ToolsIndex} />
         <Route path="/tools/llms-txt-generator" component={LlmsTxtGenerator} />
+        <Route path="/tools/schema-validator" component={SchemaValidator} />
         <Route component={NotFound} />
       </Switch>
     </>

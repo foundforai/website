@@ -45,6 +45,7 @@ const STATIC_ROUTES: RouteEntry[] = [
   { path: '/blog', prerender: true, sitemap: true, priority: 0.8, changefreq: 'weekly', lastmod: STATIC_DEFAULT_LASTMOD },
   { path: '/tools', prerender: true, sitemap: true, priority: 0.8, changefreq: 'monthly', lastmod: '2026-05-12' },
   { path: '/tools/llms-txt-generator', prerender: true, sitemap: true, priority: 0.8, changefreq: 'monthly', lastmod: '2026-05-12' },
+  { path: '/tools/schema-validator', prerender: true, sitemap: true, priority: 0.8, changefreq: 'monthly', lastmod: '2026-05-12' },
   { path: '/media', prerender: true, sitemap: true, priority: 0.6, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
   { path: '/media/small-lake-city-podcast', prerender: true, sitemap: true, priority: 0.6, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
   { path: '/privacy', prerender: true, sitemap: true, priority: 0.3, changefreq: 'yearly', lastmod: '2026-05-11' },
