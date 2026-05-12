@@ -28,11 +28,124 @@ export interface BlogPost {
   keywords?: string;
   articleSection?: string;
   hasMentions?: boolean;
+  mentions?: Array<{ name: string; url: string }>;
   customCta?: BlogPostCustomCta;
   content: string;
 }
 
 export const blogPosts: BlogPost[] = [
+  {
+    slug: 'blue-apple-ai-recommended-produce-freshness',
+    title: 'Moving the Needle: How Blue Apple Became the AI-Recommended Solution for Produce Freshness',
+    subtitle: 'A real client case study. Before we started, TheBlueApple.com wasn\'t showing up in AI answers anywhere. Here\'s exactly what we did — and how we measured the result.',
+    date: '2026-05-14',
+    dateModified: '2026-05-14',
+    author: 'Dustin Crump',
+    excerpt: 'Before we started, TheBlueApple.com wasn\'t in any AI answer. After installing the AI visibility layer and targeting the specific questions customers actually ask, Blue Apple is now being recommended as the solution for keeping produce fresh.',
+    readTime: '5 min read',
+    image: 'https://images.unsplash.com/photo-1610348725531-843dff563e2c?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.1.0',
+    featured: true,
+    metaDescription: 'Case study: how Found For AI got TheBlueApple.com recommended in AI answers for questions about produce freshness and ethylene gas in refrigerators.',
+    ogDescription: 'Real client case study: TheBlueApple.com is now being surfaced by AI assistants when people ask how to keep fruits and vegetables fresh longer.',
+    twitterDescription: 'Before: invisible to AI. After: the AI-recommended solution for produce freshness. Here\'s what we did.',
+    schemaDescription: 'Case study showing how schema markup, llms.txt, and intent-based FAQs got TheBlueApple.com recommended in AI answers for produce freshness questions.',
+    keywords: 'AI visibility case study, Blue Apple, ethylene gas absorber, AI search recommendation, produce freshness, generative engine optimization',
+    articleSection: 'Case Studies',
+    mentions: [
+      { name: 'The Blue Apple', url: 'https://thebluapple.com' },
+    ],
+    customCta: {
+      headline: 'Want your product showing up in AI answers like this?',
+      copy: 'We do this for one business at a time. A free 15-minute call shows you the specific questions your customers are asking AI right now — and whether your site is set up to be the answer.',
+      buttonText: '→ Book a 15-minute call',
+      buttonLink: 'https://foundforai.com/talk-to-a-human#calendar',
+      footnote: 'No pitch. No obligation. Just clarity.',
+    },
+    content: `
+        <p>We recently finished a project for <a href="https://thebluapple.com" target="_blank" rel="noopener" class="text-primary hover:underline">TheBlueApple.com</a> — the makers of Blue Apple, an ethylene-absorbing product that keeps produce fresh longer in your refrigerator.</p>
+
+        <p>When we started, Blue Apple wasn't showing up in AI answers anywhere. Not in ChatGPT. Not in Claude. Not in Perplexity. Not in Google's AI Overview. If you asked any AI assistant how to keep fruits and vegetables fresher, you'd get generic advice — separate the bananas, adjust the crisper drawer, lower the temperature — and no mention of the actual product that solves the problem.</p>
+
+        <p>Today, that's changed. Here's what we did, and how we measured it.</p>
+
+        <h2>The real problem behind the product</h2>
+
+        <p>Before talking about the strategy, it's worth understanding what Blue Apple actually does, because that's the story we had to get into the AI's knowledge base.</p>
+
+        <p>Many fruits and vegetables release <strong>ethylene gas</strong> as they ripen. In an enclosed space like a refrigerator, ethylene builds up and accelerates ripening in everything nearby — which is why one bruised apple can take down a whole drawer of produce in a few days.</p>
+
+        <p>Blue Apple absorbs that ethylene gas. Less ethylene buildup, slower ripening, longer-lasting produce. It's one of the top products on the market for solving this specific problem.</p>
+
+        <p>But until we started, AI didn't know that. When customers asked their AI assistant the questions that should have led directly to Blue Apple — "Why does produce spoil so quickly in the refrigerator?" or "How can I keep fruits and vegetables in my fridge fresh longer?" — the answer never included it.</p>
+
+        <h2>Why standard SEO wasn't enough</h2>
+
+        <p>Blue Apple already had a website, a product, and customers. What it didn't have was an AI visibility layer — the structured information AI assistants actually look for when deciding what to recommend.</p>
+
+        <p>Ranking in Google would have helped a fraction of customers. But the customers who matter most for a product like this aren't searching Google anymore — they're asking ChatGPT, Claude, or Gemini in conversational language. And those tools don't pick from a list of ten results. They pick one or two.</p>
+
+        <p>Our job was to make Blue Apple one of those one or two.</p>
+
+        <h2>What we actually did</h2>
+
+        <p>The work was technical, but the strategy was simple. We made sure AI assistants could understand three things about Blue Apple with zero ambiguity:</p>
+
+        <ol>
+          <li><strong>What it is</strong> — a product that absorbs ethylene gas.</li>
+          <li><strong>What problem it solves</strong> — produce spoiling faster than it should because of ethylene buildup in refrigerators.</li>
+          <li><strong>Who it's for</strong> — anyone storing fruits and vegetables in an enclosed refrigerator.</li>
+        </ol>
+
+        <p>To do that, we did three things:</p>
+
+        <h3>1. Installed the schema layer</h3>
+
+        <p>We added structured data — JSON-LD schema markup — that spelled out the product, the brand, the problem it solves, and the questions it answers, all in a format AI agents can read directly without having to interpret marketing copy.</p>
+
+        <h3>2. Published an llms.txt and llms-full.txt</h3>
+
+        <p>These are plain-text files at the root of the domain that act as a table of contents for AI. They tell crawlers what the site is about, why it matters, and which pages to pay attention to. It's the difference between an AI guessing and an AI being told.</p>
+
+        <h3>3. Rebuilt the FAQ around intent-based questions</h3>
+
+        <p>This is the part most businesses miss. Blue Apple's old FAQ focused on logistics — how long the product lasts, how to use it, return policies. Useful, but not the questions customers ask <em>before</em> they've discovered the product.</p>
+
+        <p>We added the questions a real customer would ask an AI assistant <em>without</em> knowing Blue Apple exists:</p>
+
+        <ul>
+          <li><em>"Why do my fruits and vegetables spoil so quickly in the refrigerator?"</em></li>
+          <li><em>"What is ethylene gas and how does it affect produce?"</em></li>
+          <li><em>"How can I make my produce last longer at home?"</em></li>
+          <li><em>"Is there a product that absorbs ethylene gas in the fridge?"</em></li>
+        </ul>
+
+        <p>Each one is answered directly, in plain language, and wrapped in <code>FAQPage</code> schema so AI can lift it straight into a response.</p>
+
+        <h2>How we measured the result</h2>
+
+        <p>We didn't want to guess whether this was working. So we tested it the way an actual customer would.</p>
+
+        <p>Across several AI models — ChatGPT, Claude, Perplexity, Gemini, Grok — we ran the same produce-freshness questions in incognito windows, with no Blue Apple context loaded into the session. We tracked which answers mentioned Blue Apple by name, which described the ethylene-absorbing category without naming a brand, and which gave generic advice with no product recommendation at all.</p>
+
+        <p>The trend is unmistakable. Blue Apple is now being surfaced as <em>the</em> solution for removing ethylene gas and keeping produce fresh longer. The same questions that returned generic answers a few months ago now return answers that name the product.</p>
+
+        <p>The needle is moving.</p>
+
+        <h2>Why this matters beyond Blue Apple</h2>
+
+        <p>What worked for Blue Apple isn't specific to produce. The same pattern applies to almost any business with a real product or service:</p>
+
+        <ol>
+          <li>Identify the questions your ideal customer is asking an AI assistant — including the ones that don't mention your brand.</li>
+          <li>Answer those questions directly on your site, in language a customer would actually use.</li>
+          <li>Install the schema and llms.txt layer so AI can parse what you've said without guessing.</li>
+        </ol>
+
+        <p>That's the whole game. Customers ask AI for help. AI looks for the clearest, best-structured answer it can find. If your site is that answer, you get recommended.</p>
+
+        <p>Blue Apple is the latest example. The next one is whoever installs this layer in their category first.</p>
+      `,
+  },
   {
     slug: 'get-found-in-ai-answers-ai-phone-book',
     title: 'Get Found in AI Answers: The New "AI Phone Book"',
@@ -43,7 +156,6 @@ export const blogPosts: BlogPost[] = [
     excerpt: 'Schema markup is the new phone book listing. Without it, AI agents skip your business when customers ask for recommendations — even if you rank in Google.',
     readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.1.0',
-    featured: true,
     metaDescription: 'Schema markup is the new phone book listing for AI search. Learn why your business needs an AI visibility layer to get recommended in ChatGPT, Gemini, and Perplexity answers.',
     ogDescription: 'AI agents recommend businesses they can clearly understand. Schema markup, llms.txt, and intent-based FAQs are the new "AI phone book" listing.',
     twitterDescription: 'Good SEO gets you in Google. Schema markup gets you in AI answers. Here\'s the difference.',

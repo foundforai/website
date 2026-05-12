@@ -40,7 +40,13 @@ export function buildBlogPostingSchema(post: BlogPost): Record<string, unknown> 
   if (post.keywords) schema.keywords = post.keywords;
   if (post.articleSection) schema.articleSection = post.articleSection;
 
-  if (post.hasMentions) {
+  if (post.mentions && post.mentions.length > 0) {
+    schema.mentions = post.mentions.map((m) => ({
+      "@type": "Organization",
+      "name": m.name,
+      "url": m.url,
+    }));
+  } else if (post.hasMentions) {
     schema.mentions = {
       "@type": "Organization",
       "name": "Fripse AI",
