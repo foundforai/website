@@ -42,8 +42,7 @@ export default function Contact() {
     setLoading(true);
 
     try {
-      // TODO: Replace with your actual Formspree endpoint
-      const FORMSPREE_ENDPOINT = 'https://formspree.io/f/movklzvl';
+      const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mpqwvlnz';
       
       const response = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',

@@ -94,7 +94,7 @@ export default function Playbook() {
     setError('');
 
     try {
-      const response = await fetch('https://formspree.io/f/movklzvl', {
+      const response = await fetch('https://formspree.io/f/mpqwvlnz', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
