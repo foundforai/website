@@ -1,6 +1,7 @@
 import aiAutomationImg from '@assets/stock_images/ai_automation_workfl_1fb79544.jpg';
 import aiSearchImg from '@assets/stock_images/artificial_intellige_8c98905d.jpg';
 import websiteOptimizationImg from '@assets/stock_images/website_optimization_b4ff5bda.jpg';
+import phoneBookImg from '@assets/get found in ai phone book.png';
 
 export interface BlogPostCustomCta {
   headline: string;
@@ -153,7 +154,7 @@ export const blogPosts: BlogPost[] = [
     author: 'Dustin Crump',
     excerpt: 'Schema markup is the new phone book listing. Without it, AI agents skip your business when customers ask for recommendations — even if you rank in Google.',
     readTime: '6 min read',
-    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.1.0',
+    image: phoneBookImg,
     metaDescription: 'Schema markup is the new phone book listing for AI search. Learn why your business needs an AI visibility layer to get recommended in ChatGPT, Gemini, and Perplexity answers.',
     ogDescription: 'AI agents recommend businesses they can clearly understand. Schema markup, llms.txt, and intent-based FAQs are the new "AI phone book" listing.',
     twitterDescription: 'Good SEO gets you in Google. Schema markup gets you in AI answers. Here\'s the difference.',
