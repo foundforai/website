@@ -472,6 +472,16 @@ export default function Home() {
               That's fine. AI systems need a place to read your services, location, and booking information. If you don't have a website, we create a simple AI-ready site as part of making your business AI-eligible.
             </p>
           </details>
+
+          <div className="mt-10 text-center">
+            <a
+              href="/faq/personas/delegating-owner-operator"
+              className="inline-flex items-center gap-1 text-primary hover:underline font-semibold"
+              data-testid="link-home-faq-personas"
+            >
+              See more questions answered for owner-operators →
+            </a>
+          </div>
         </div>
       </section>
 

@@ -55,6 +55,9 @@ export default function Footer() {
               <Link href="/contact" data-testid="link-footer-contact">
                 <span className="hover:text-primary transition-colors">Contact</span>
               </Link>
+              <Link href="/faq/personas/delegating-owner-operator" data-testid="link-footer-faq-personas">
+                <span className="hover:text-primary transition-colors">FAQ for Owner-Operators</span>
+              </Link>
               <Link href="/pricing" data-testid="link-footer-pricing">
                 <span className="hover:text-primary transition-colors inline-flex items-center gap-1">
                   View Pricing
