@@ -48,6 +48,7 @@ const STATIC_ROUTES: RouteEntry[] = [
   { path: '/tools/schema-validator', prerender: true, sitemap: true, priority: 0.8, changefreq: 'monthly', lastmod: '2026-05-12' },
   { path: '/media', prerender: true, sitemap: true, priority: 0.6, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
   { path: '/media/small-lake-city-podcast', prerender: true, sitemap: true, priority: 0.6, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
+  { path: '/press', prerender: true, sitemap: true, priority: 0.7, changefreq: 'monthly', lastmod: '2026-05-15' },
   { path: '/privacy', prerender: true, sitemap: true, priority: 0.3, changefreq: 'yearly', lastmod: '2026-05-11' },
   { path: '/terms', prerender: true, sitemap: true, priority: 0.3, changefreq: 'yearly', lastmod: '2026-05-11' },
   // Standalone HTML pages (already static — not prerendered, but included in sitemap where appropriate)
