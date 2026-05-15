@@ -139,15 +139,49 @@ const GLOBAL_GRAPH: object[] = [
   {
     "@type": "Service",
     "@id": "https://foundforai.com/#service-ai-seo",
-    "serviceType": "AI SEO Readiness Audit and Optimization",
+    "name": "AI Operator Subscription",
+    "serviceType": "AI Visibility Management",
+    "description": "Done-for-you AI visibility implementation and ongoing management for small local businesses. One-time onboarding plus monthly optimization.",
     "provider": { "@id": "https://foundforai.com/#org" },
     "areaServed": "United States",
-    "offers": {
-      "@type": "Offer",
-      "price": "1595",
-      "priceCurrency": "USD",
-      "url": "https://foundforai.com/services"
-    }
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Onboarding",
+        "price": "997",
+        "priceCurrency": "USD",
+        "url": "https://foundforai.com/pricing#onboarding",
+        "availability": "https://schema.org/InStock"
+      },
+      {
+        "@type": "Offer",
+        "name": "Starter Plan",
+        "price": "299",
+        "priceCurrency": "USD",
+        "url": "https://foundforai.com/pricing#starter",
+        "availability": "https://schema.org/InStock",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "299",
+          "priceCurrency": "USD",
+          "billingDuration": "P1M"
+        }
+      },
+      {
+        "@type": "Offer",
+        "name": "Growth Plan",
+        "price": "599",
+        "priceCurrency": "USD",
+        "url": "https://foundforai.com/pricing#growth",
+        "availability": "https://schema.org/InStock",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "599",
+          "priceCurrency": "USD",
+          "billingDuration": "P1M"
+        }
+      }
+    ]
   },
   {
     "@type": "Person",
