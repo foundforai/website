@@ -29,7 +29,7 @@ export default function Home() {
           "name": "Is this a monthly subscription?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. This is a one time project. We install your AI visibility layer, deliver your report, and stand behind the work with our sixty day fix it free guarantee."
+            "text": "It is a hybrid. You start with a one-time $997 onboarding, which installs your AI Data Layer and ships your initial fixes in 7 business days. Then you choose a monthly plan — Starter ($299/mo) or Growth ($599/mo) — so we keep your visibility tuned as AI models and your business change. Monthly plans are month-to-month with no long-term contracts."
           }
         },
         {
@@ -85,9 +85,26 @@ export default function Home() {
   ];
 
   const pricingChecklist = [
-    "AI visibility audit and AI visibility layer install",
-    "Before and after AI visibility report",
-    "Seven business day turnaround plus sixty day fix it free guarantee"
+    "Full AI Visibility Audit + AI Data Layer installation",
+    "Initial optimizations done for you in 7 business days",
+    "60-day We Fix It Free guarantee on everything we install"
+  ];
+
+  const monthlyTiers = [
+    {
+      name: "Starter",
+      price: "$299",
+      cadence: "/mo",
+      summary: "Ongoing monitoring, monthly audit, and up to 2 optimizations per month. Priority support.",
+      tag: "Most Popular"
+    },
+    {
+      name: "Growth",
+      price: "$599",
+      cadence: "/mo",
+      summary: "Everything in Starter, plus custom automation workflows and AI agent setup so operations scale with visibility.",
+      tag: "Scale Up"
+    }
   ];
 
   const proofBlurbs = [
@@ -280,68 +297,110 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center">
             Delivered In Seven Business Days, Guaranteed
           </h2>
-          
+
           <p className="text-lg text-muted-foreground mb-8 text-center max-w-3xl mx-auto">
-            This is a fast, one time fix. Once you check out, our team starts your AI visibility audit and installs your full AI visibility layer. Your upgraded AI visibility is live within seven business days.
+            Onboarding is fast. Once you start, our team runs your AI Visibility Audit, installs your AI Data Layer, and ships your initial optimizations within seven business days. After that, your monthly plan keeps everything tuned as AI models and your business change.
           </p>
-          
+
           <div className="text-center space-y-2 mb-10">
-            <p className="text-base font-medium">No long projects</p>
+            <p className="text-base font-medium">No DIY checklists</p>
             <p className="text-base font-medium">No confusing back and forth</p>
-            <p className="text-base font-medium">No agency retainers</p>
+            <p className="text-base font-medium">No long-term contracts on monthly plans</p>
           </div>
-          
+
           <Card className="bg-primary/5 border-primary/20" data-testid="card-guarantee">
             <CardContent className="p-8 text-center">
               <h3 className="text-2xl font-bold mb-4">Our We Fix It Free Guarantee</h3>
               <p className="text-muted-foreground">
-                If anything inside your new AI visibility layer is incorrect, missing, or breaks within sixty days, we fix it at no cost. This is not a subscription or a trial. It is a real upgrade to how AI understands and recommends your business.
+                If anything we install during onboarding is incorrect, missing, or breaks within sixty days, we fix it at no cost. Most AI visibility tools just show you the gaps — we fix them and keep them fixed.
               </p>
             </CardContent>
           </Card>
         </div>
       </section>
 
-      {/* PRICING / MAIN OFFER */}
+      {/* PRICING / MAIN OFFER — AI Operator Subscription */}
       <section id="ai-search-fix" className="py-16 md:py-24 bg-gradient-to-br from-primary/10 to-accent/10">
-        <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            One Time AI Visibility Fix, Built For Local Businesses
-          </h2>
-          
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Stop wasting budget sending traffic to a site AI cannot read. Upgrade your AI visibility once and start getting recommended.
-          </p>
-          
-          <div className="mb-8">
-            <span className="text-5xl md:text-6xl font-bold text-primary">$1,595</span>
-            <p className="text-lg text-muted-foreground mt-2">one time</p>
+        <div className="max-w-5xl mx-auto px-4 md:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <span className="inline-block bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
+              AI Operator Subscription
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              We fix your AI visibility — then keep it fixed.
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Built for busy owner-operators. Start with a one-time onboarding, then pick a monthly plan so your visibility stays tuned as AI models keep changing.
+            </p>
           </div>
-          
-          <ul className="space-y-3 mb-8 max-w-md mx-auto text-left">
-            {pricingChecklist.map((item, index) => (
-              <li key={index} className="flex items-start gap-3">
-                <Check className="h-6 w-6 text-accent shrink-0 mt-0.5" />
-                <span className="text-base">{item}</span>
-              </li>
+
+          {/* Onboarding Card */}
+          <Card className="border-primary border-2 shadow-lg mb-6" data-testid="card-onboarding">
+            <CardContent className="p-8 md:p-10">
+              <div className="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                  <span className="inline-block bg-accent/15 text-accent px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide mb-3">
+                    Step 1 · Required Starting Point
+                  </span>
+                  <h3 className="text-2xl md:text-3xl font-bold mb-3">Onboarding</h3>
+                  <div className="flex items-baseline gap-2 mb-4">
+                    <span className="text-5xl font-bold text-primary">$997</span>
+                    <span className="text-muted-foreground">one-time</span>
+                  </div>
+                  <p className="text-muted-foreground">
+                    Full AI Visibility Audit, AI Data Layer installation, and initial optimizations — implemented for you in 7 business days.
+                  </p>
+                </div>
+                <ul className="space-y-3">
+                  {pricingChecklist.map((item, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <Check className="h-6 w-6 text-accent shrink-0 mt-0.5" />
+                      <span className="text-base">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Monthly Tiers */}
+          <div className="text-center mb-6">
+            <p className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+              Step 2 · Choose Your Ongoing Plan
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+            {monthlyTiers.map((tier, index) => (
+              <Card key={index} className="relative border-2" data-testid={`card-tier-${tier.name.toLowerCase()}`}>
+                <CardContent className="p-6 md:p-8">
+                  <div className="flex items-center justify-between mb-3">
+                    <h4 className="text-xl font-bold">{tier.name}</h4>
+                    <span className="text-xs font-semibold uppercase tracking-wide text-accent bg-accent/10 px-2.5 py-1 rounded-full">
+                      {tier.tag}
+                    </span>
+                  </div>
+                  <div className="flex items-baseline gap-1 mb-3">
+                    <span className="text-3xl md:text-4xl font-bold text-primary">{tier.price}</span>
+                    <span className="text-muted-foreground">{tier.cadence}</span>
+                  </div>
+                  <p className="text-muted-foreground text-sm">{tier.summary}</p>
+                </CardContent>
+              </Card>
             ))}
-          </ul>
-          
-          <div className="space-y-4">
-            <a
-              href="https://foundforai.com/fix-plan"
-              data-testid="button-pricing-cta"
-            >
+          </div>
+
+          <div className="text-center space-y-4">
+            <a href="/pricing" data-testid="button-pricing-cta">
               <Button size="lg" className="text-lg px-8 py-6 font-semibold" style={{ backgroundColor: '#0F5FDB', borderColor: '#0F5FDB' }}>
-                Get My AI Visibility Fix
+                See Full Pricing
               </Button>
             </a>
             <p className="text-sm text-muted-foreground">
-              Takes less than two minutes to get started
+              $997 onboarding · $299/mo or $599/mo · 60-day guarantee · No long contracts
             </p>
           </div>
-          
-          <div className="mt-6">
+
+          <div className="mt-6 text-center">
             <a
               href={mailtoLink}
               className="inline-flex items-center gap-2 text-primary hover:underline font-medium"
@@ -383,7 +442,7 @@ export default function Home() {
               Is this a monthly subscription?
             </summary>
             <p className="text-muted-foreground py-3 pl-4">
-              No. This is a one time project. We install your AI visibility layer, deliver your report, and stand behind the work with our sixty day fix it free guarantee.
+              It's a hybrid. You start with a one-time $997 onboarding — we install your AI Data Layer and ship the initial fixes in 7 business days. Then you choose a monthly plan (Starter $299/mo or Growth $599/mo) so we keep your visibility tuned as AI models and your business change. Monthly plans are month-to-month with no long-term contracts.
             </p>
           </details>
           
