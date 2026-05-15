@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import Cal, { getCalApi } from '@calcom/embed-react';
 import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -13,10 +14,24 @@ export default function BookCall() {
     });
   }, []);
 
+  useEffect(() => {
+    (async function () {
+      const cal = await getCalApi({ namespace: 'ai-visibility-strategy-call' });
+      cal('ui', {
+        cssVarsPerTheme: {
+          light: { 'cal-brand': '#0F5FDB' },
+          dark: { 'cal-brand': '#fafafa' },
+        },
+        hideEventTypeDetails: false,
+        layout: 'month_view',
+      });
+    })();
+  }, []);
+
   return (
     <PageLayout
-      title="Schedule Your Strategy Call | Found For AI"
-      description="Book your AI visibility strategy call. Let's discuss your Pro Visibility Plan or Enterprise needs."
+      title="Schedule Your AI Visibility Strategy Call | Found For AI"
+      description="Book your AI Visibility Strategy Call with Found For AI to walk through onboarding and your monthly plan."
       canonical="https://foundforai.com/book-call"
     >
       <section className="py-16 md:py-24 bg-background">
@@ -33,25 +48,26 @@ export default function BookCall() {
               Schedule Your Strategy Call
             </h1>
             <p className="text-lg text-muted-foreground">
-              Choose a time that works best for you to discuss your AI visibility needs.
+              Pick a time that works for you. We'll walk through your current AI visibility, confirm onboarding fits, and get you scheduled to start.
             </p>
           </div>
 
           <Card className="overflow-hidden">
             <CardContent className="p-0">
-              <iframe
-                src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0TBty7FQKU14y-JAsDvBsSOg6gBFfKUFgL2bMbTtGRStp_ieewrvmOy_tc28RXE-0tXgRIMDI1?gv=true"
-                title="Schedule a Call with Found For AI"
-                className="w-full border-0"
-                style={{ height: '600px' }}
-                data-testid="iframe-calendar"
-              />
+              <div style={{ width: '100%', height: '750px' }} data-testid="cal-embed-container">
+                <Cal
+                  namespace="ai-visibility-strategy-call"
+                  calLink="foundforai/ai-visibility-strategy-call"
+                  style={{ width: '100%', height: '100%', overflow: 'scroll' }}
+                  config={{ layout: 'month_view', useSlotsViewOnSmallScreen: 'true' }}
+                />
+              </div>
             </CardContent>
           </Card>
 
           <div className="mt-8 text-center">
             <p className="text-sm text-muted-foreground">
-              Need help? Email us at <a href="mailto:info@foundforai.com" className="text-primary hover:underline">info@foundforai.com</a>
+              Need help? Email <a href="mailto:support@foundforai.com" className="text-primary hover:underline">support@foundforai.com</a>
             </p>
           </div>
         </div>
