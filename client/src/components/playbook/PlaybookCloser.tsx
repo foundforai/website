@@ -105,7 +105,7 @@ export default function PlaybookCloser() {
             </div>
           </div>
           <a
-            href="/talk-to-a-human#calendar"
+            href="/book-call"
             className="shrink-0 inline-flex items-center justify-center gap-2 text-white font-semibold px-5 py-3.5 rounded-xl text-sm sm:text-base transition hover:opacity-90 whitespace-nowrap"
             style={{ backgroundColor: '#0F5FDB' }}
             data-testid="playbook-closer-cta"

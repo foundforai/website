@@ -54,7 +54,6 @@ const STATIC_ROUTES: RouteEntry[] = [
   { path: '/terms', prerender: true, sitemap: true, priority: 0.3, changefreq: 'yearly', lastmod: '2026-05-11' },
   // Standalone HTML pages (already static — not prerendered, but included in sitemap where appropriate)
   { path: '/ai-visibility', prerender: false, sitemap: true, priority: 0.8, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
-  { path: '/talk-to-a-human', prerender: false, sitemap: true, priority: 0.6, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
   { path: '/fix-plan', prerender: false, sitemap: true, priority: 1.0, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
   { path: '/fix-plan/request', prerender: false, sitemap: false },
   { path: '/fix-plan/thanks', prerender: false, sitemap: false },

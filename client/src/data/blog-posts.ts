@@ -59,7 +59,7 @@ export const blogPosts: BlogPost[] = [
       headline: 'Want your product showing up in AI answers like this?',
       copy: 'We do this for one business at a time. A free 15-minute call shows you the specific questions your customers are asking AI right now — and whether your site is set up to be the answer.',
       buttonText: '→ Book a 15-minute call',
-      buttonLink: 'https://foundforai.com/talk-to-a-human#calendar',
+      buttonLink: 'https://foundforai.com/book-call',
       footnote: 'No pitch. No obligation. Just clarity.',
     },
     content: `
@@ -165,7 +165,7 @@ export const blogPosts: BlogPost[] = [
       headline: 'Is your business in the AI phone book?',
       copy: 'Most small business sites are still missing the AI visibility layer entirely. A free 15-minute call shows you exactly what schema, llms.txt, and FAQ structure your site needs to get recommended in AI answers.',
       buttonText: '→ Book a 15-minute call',
-      buttonLink: 'https://foundforai.com/talk-to-a-human#calendar',
+      buttonLink: 'https://foundforai.com/book-call',
       footnote: 'No pitch. No obligation. Just clarity.',
     },
     content: `
@@ -472,7 +472,7 @@ export const blogPosts: BlogPost[] = [
       headline: 'Ready to be the business AI recommends?',
       copy: 'Book a 15-minute call. We look at your site, tell you what we\'d fix and what we wouldn\'t, and you decide from there. No pitch.',
       buttonText: '→ Book a 15-minute call',
-      buttonLink: 'https://foundforai.com/talk-to-a-human#calendar',
+      buttonLink: 'https://foundforai.com/book-call',
       footnote: 'Found For AI helps small businesses become recommendable to AI systems like ChatGPT, Perplexity, Claude, and Google AI. — Dustin Crump, Found For AI',
     },
     content: `

@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'wouter';
 import PageLayout from '@/components/PageLayout';
-import { Check, X, Download, ChevronDown, ArrowRight } from 'lucide-react';
+import { Check, X, Download, ChevronDown, ArrowRight, BarChart3 } from 'lucide-react';
 import * as AccordionPrimitive from '@radix-ui/react-accordion';
 import { SCORECARD_RESULT_STORAGE_KEY } from '@/components/ScorecardHero';
+import { STRIPE_LINKS } from '@/lib/stripe-links';
 
 interface ScorecardCheck {
   label: string;
@@ -379,6 +380,60 @@ function ResultsView({ payload }: { payload: StoredPayload }) {
           <span className="inline-flex items-center gap-2">
             <Check className="h-4 w-4 text-green-600" />
             15 minutes, free, no credit card
+          </span>
+        </div>
+      </div>
+
+      {/* DIY Self-Serve CTA — for owner-operators who'd rather track impact themselves */}
+      <div className="no-print bg-gradient-to-br from-emerald-50 to-blue-50 dark:from-slate-800 dark:to-slate-800/80 border border-emerald-100 dark:border-slate-700 rounded-2xl p-6 sm:p-10 mb-6">
+        <div className="flex items-center gap-2 mb-3">
+          <span className="inline-block bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide">
+            Self-serve · DIY
+          </span>
+          <BarChart3 className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
+        </div>
+        <h2
+          className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-slate-100 mb-3"
+          style={{ fontFamily: "'Montserrat', sans-serif", letterSpacing: '-0.01em' }}
+        >
+          Want to track the impact yourself?
+        </h2>
+        <p className="text-base text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
+          Get managed analytics access + a monthly DIY AEO report so you can
+          see the needle actually move as you implement the fixes above. No
+          setup call, no onboarding fee — start in minutes.
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-3 mb-5 items-stretch sm:items-center">
+          <a
+            href={STRIPE_LINKS.diy.monthly}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1 inline-flex items-center justify-center gap-2 text-center text-white font-semibold px-5 py-4 rounded-xl text-sm sm:text-base transition hover:opacity-90"
+            style={{ backgroundColor: '#0F5FDB' }}
+            data-testid="results-cta-diy-start"
+          >
+            Start Tracking — 7-Day Free Trial
+            <ArrowRight className="h-4 w-4" />
+          </a>
+          <div className="text-sm text-slate-600 dark:text-slate-300 sm:text-right">
+            <div className="font-bold text-slate-900 dark:text-slate-100 text-base">$49/mo</div>
+            <div className="text-xs">No setup call · Cancel anytime</div>
+          </div>
+        </div>
+
+        <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-slate-600 dark:text-slate-300">
+          <span className="inline-flex items-center gap-2">
+            <Check className="h-4 w-4 text-green-600" />
+            Privacy-friendly analytics dashboard
+          </span>
+          <span className="inline-flex items-center gap-2">
+            <Check className="h-4 w-4 text-green-600" />
+            Monthly DIY AEO report
+          </span>
+          <span className="inline-flex items-center gap-2">
+            <Check className="h-4 w-4 text-green-600" />
+            Implement at your own pace
           </span>
         </div>
       </div>

@@ -127,7 +127,7 @@ const GLOBAL_GRAPH: object[] = [
         "name": "Book a Consultation",
         "target": {
           "@type": "EntryPoint",
-          "urlTemplate": "https://foundforai.com/talk-to-a-human",
+          "urlTemplate": "https://foundforai.com/book-call",
           "actionPlatform": [
             "http://schema.org/DesktopWebPlatform",
             "http://schema.org/MobileWebPlatform"

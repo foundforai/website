@@ -119,7 +119,7 @@ export default function ToolsIndex() {
               The tools here give you the building blocks. Our AI Visibility Fix installs the entire visibility layer — schema, llms.txt, intent-based FAQs, and entity cleanup — in one go, in seven business days.
             </p>
             <a
-              href="https://foundforai.com/talk-to-a-human#calendar"
+              href="https://foundforai.com/book-call"
               className="inline-block px-8 py-4 font-semibold rounded-lg text-white hover:opacity-90 transition-opacity"
               style={{ backgroundColor: '#0F5FDB' }}
               data-testid="link-tools-cta"

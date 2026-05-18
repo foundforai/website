@@ -421,7 +421,7 @@ export default function SchemaValidator() {
               all together — in seven business days, flat fee.
             </p>
             <a
-              href="https://foundforai.com/talk-to-a-human#calendar"
+              href="https://foundforai.com/book-call"
               className="inline-block px-8 py-4 font-semibold rounded-lg text-white hover:opacity-90 transition-opacity"
               style={{ backgroundColor: '#0F5FDB' }}
               data-testid="link-validator-cta"

@@ -236,7 +236,7 @@ export default function Playbook() {
           <p className="text-sm text-muted-foreground text-center mt-6">
             Questions first?{' '}
             <a
-              href="/talk-to-a-human#calendar"
+              href="/book-call"
               className="underline hover:text-foreground transition-colors"
               data-testid="link-playbook-book-call"
             >
