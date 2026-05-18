@@ -1,9 +1,13 @@
+import { useState } from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Link } from 'wouter';
-import { Check, ShieldCheck, Clock, RefreshCw } from 'lucide-react';
+import { Check, ShieldCheck, Clock, RefreshCw, BarChart3 } from 'lucide-react';
 import { breadcrumbList } from '@/lib/breadcrumb';
+
+const DIY_MONTHLY_URL = 'https://buy.stripe.com/8x2eV78Ws36B0yA0WZ3Nm00';
+const DIY_ANNUAL_URL = 'https://buy.stripe.com/fZueV76Ok6iN956fRT3Nm01';
 
 const pricingSchemas = [
   breadcrumbList([
@@ -13,8 +17,8 @@ const pricingSchemas = [
   {
     "@type": "Service",
     "@id": "https://foundforai.com/pricing#service",
-    "name": "AI Operator Subscription",
-    "description": "Done-for-you AI visibility implementation and ongoing management for small local businesses. We install the AI Data Layer, fix what AI assistants need to recommend you, and keep it tuned every month.",
+    "name": "Found For AI",
+    "description": "AI visibility for small local businesses. Self-serve analytics ($49/mo) or done-for-you AI Operator Subscription ($997 onboarding plus monthly plan).",
     "serviceType": "AI Visibility Management",
     "provider": { "@id": "https://foundforai.com/#org" },
     "areaServed": { "@type": "Country", "name": "United States" },
@@ -23,6 +27,52 @@ const pricingSchemas = [
       "audienceType": "Small local businesses and owner-operators"
     },
     "offers": [
+      {
+        "@type": "Offer",
+        "@id": "https://foundforai.com/pricing#offer-diy-monthly",
+        "name": "DIY Monthly",
+        "description": "Self-serve, privacy-friendly analytics dashboard plus a monthly DIY AEO report you implement yourself. 7-day free trial.",
+        "priceCurrency": "USD",
+        "price": "49.00",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "49.00",
+          "priceCurrency": "USD",
+          "billingDuration": "P1M",
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": "1",
+            "unitCode": "MON"
+          }
+        },
+        "url": "https://foundforai.com/pricing#diy",
+        "availability": "https://schema.org/InStock",
+        "category": "AI Visibility Subscription",
+        "seller": { "@id": "https://foundforai.com/#org" }
+      },
+      {
+        "@type": "Offer",
+        "@id": "https://foundforai.com/pricing#offer-diy-annual",
+        "name": "DIY Annual",
+        "description": "Self-serve, privacy-friendly analytics dashboard plus a monthly DIY AEO report. Annual billing with 2 months free. 30-day free trial.",
+        "priceCurrency": "USD",
+        "price": "490.00",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "490.00",
+          "priceCurrency": "USD",
+          "billingDuration": "P1Y",
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": "1",
+            "unitCode": "ANN"
+          }
+        },
+        "url": "https://foundforai.com/pricing#diy",
+        "availability": "https://schema.org/InStock",
+        "category": "AI Visibility Subscription",
+        "seller": { "@id": "https://foundforai.com/#org" }
+      },
       {
         "@type": "Offer",
         "@id": "https://foundforai.com/pricing#offer-onboarding",
@@ -89,6 +139,30 @@ const pricingSchemas = [
     "mainEntity": [
       {
         "@type": "Question",
+        "name": "What is the difference between DIY and the AI Operator Subscription (Starter/Growth)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "DIY ($49/mo) is self-serve. You get a privacy-friendly analytics dashboard and a monthly AEO report, and you implement the optimizations yourself. The AI Operator Subscription is done-for-you. You pay a one-time $997 onboarding and a monthly plan, and we do the implementation and ongoing optimizations. Most owner-operators eventually move from DIY to Starter once they see what needs to be fixed and prefer not to do it themselves."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does DIY require the $997 onboarding?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. DIY is fully self-serve and skips the onboarding entirely. The $997 onboarding only applies to the done-for-you Starter and Growth plans."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I upgrade from DIY to Starter later?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. You can upgrade to Starter or Growth anytime. We use what we already know about your business from the DIY analytics to make the onboarding faster."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "Why is there a one-time onboarding fee plus a monthly plan?",
         "acceptedAnswer": {
           "@type": "Answer",
@@ -116,7 +190,7 @@ const pricingSchemas = [
         "name": "Can I cancel anytime?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. The monthly plans are month-to-month with no long-term contracts. Cancel any time."
+          "text": "Yes. All plans are month-to-month with no long-term contracts. Cancel any time."
         }
       },
       {
@@ -124,15 +198,7 @@ const pricingSchemas = [
         "name": "How is this different from AI visibility audit tools?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Most AI visibility tools show you a list of gaps and leave you to fix them. We fix them for you, then keep them fixed every month. You are a busy owner-operator, not a schema markup specialist."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do I have to write the content?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. The optimizations included each month are done for you — schema, entity signals, content clarity adjustments — based on what AI assistants need to confidently recommend your business."
+          "text": "Most AI visibility tools show you a list of gaps and leave you to fix them. With our done-for-you plans, we fix them for you and keep them fixed every month. If you prefer to do the work yourself, DIY gives you the same visibility data and a monthly report you implement on your own."
         }
       },
       {
@@ -148,41 +214,69 @@ const pricingSchemas = [
 ];
 
 export default function Pricing() {
+  const [billing, setBilling] = useState<'monthly' | 'annual'>('monthly');
+
+  const diyPricing = {
+    monthly: {
+      label: '$49',
+      suffix: '/month',
+      trialDays: 7,
+      url: DIY_MONTHLY_URL,
+    },
+    annual: {
+      label: '$490',
+      suffix: '/year',
+      trialDays: 30,
+      url: DIY_ANNUAL_URL,
+      savingNote: '2 months free vs monthly',
+    },
+  } as const;
+
+  const currentDiy = diyPricing[billing];
+
   const faqs = [
     {
+      question: "What's the difference between DIY and the AI Operator Subscription (Starter/Growth)?",
+      answer: "DIY ($49/mo) is self-serve. You get a privacy-friendly analytics dashboard and a monthly AEO report, and you implement the optimizations yourself. The AI Operator Subscription is done-for-you — you pay a one-time $997 onboarding and a monthly plan, and we do the implementation and ongoing optimizations. Most owner-operators eventually move from DIY to Starter once they see what needs to be fixed and prefer not to do it themselves.",
+    },
+    {
+      question: "Does DIY require the $997 onboarding?",
+      answer: "No. DIY is fully self-serve and skips the onboarding entirely. The $997 onboarding only applies to the done-for-you Starter and Growth plans.",
+    },
+    {
+      question: "Can I upgrade from DIY to Starter later?",
+      answer: "Yes. You can upgrade anytime. We use what we already know about your business from the DIY analytics to make the onboarding faster.",
+    },
+    {
       question: "Why is there a one-time onboarding fee plus a monthly plan?",
-      answer: "Onboarding installs the AI Data Layer and fixes the foundation AI assistants need to understand and recommend your business. The monthly plan keeps it accurate as your business, your industry, and the AI models themselves change. You can't keep something tuned that was never set up correctly to begin with."
+      answer: "Onboarding installs the AI Data Layer and fixes the foundation AI assistants need to understand and recommend your business. The monthly plan keeps it accurate as your business, your industry, and the AI models themselves change. You can't keep something tuned that was never set up correctly to begin with.",
     },
     {
       question: "What's included in the $997 onboarding?",
-      answer: "A full AI Visibility Audit, AI Data Layer installation, and initial optimizations to the signals AI assistants read about your business. Delivered in 7 business days and backed by a 60-day We Fix It Free guarantee."
+      answer: "A full AI Visibility Audit, AI Data Layer installation, and initial optimizations to the signals AI assistants read about your business. Delivered in 7 business days and backed by a 60-day We Fix It Free guarantee.",
     },
     {
       question: "What's the difference between Starter and Growth?",
-      answer: "Starter ($299/mo) is ongoing monitoring, a monthly audit, and up to 2 optimizations per month. Growth ($599/mo) adds custom automation workflows and AI agent setup — for owner-operators who want operations to keep up as visibility increases."
+      answer: "Starter ($299/mo) is ongoing monitoring, a monthly audit, and up to 2 optimizations per month. Growth ($599/mo) adds custom automation workflows and AI agent setup — for owner-operators who want operations to keep up as visibility increases.",
     },
     {
       question: "Can I cancel anytime?",
-      answer: "Yes. The monthly plans are month-to-month with no long-term contracts. Cancel anytime."
+      answer: "Yes. All plans are month-to-month with no long-term contracts. Cancel anytime.",
     },
     {
       question: "How is this different from AI visibility audit tools?",
-      answer: "Most AI visibility tools show you the gaps. We fix them and keep them fixed. You're a busy owner-operator, not a schema markup specialist."
-    },
-    {
-      question: "Do I have to write the content?",
-      answer: "No. The optimizations included each month are done-for-you — schema, entity signals, content clarity adjustments — based on what AI assistants need to confidently recommend your business."
+      answer: "Most AI visibility tools show you the gaps and leave you to fix them. With our done-for-you plans, we fix them and keep them fixed. If you'd rather DIY, our DIY plan gives you the same visibility data plus a monthly report you implement yourself.",
     },
     {
       question: "What does the 60-day We Fix It Free guarantee cover?",
-      answer: "If anything we install or change during onboarding is incorrect, missing, or breaks within 60 days, we fix it at no additional cost."
-    }
+      answer: "If anything we install or change during onboarding is incorrect, missing, or breaks within 60 days, we fix it at no additional cost.",
+    },
   ];
 
   return (
     <PageLayout
-      title="AI Operator Subscription Pricing | Found For AI"
-      description="Done-for-you AI visibility for small local businesses. $997 onboarding, then $299/mo Starter or $599/mo Growth. We make sure AI recommends you — and keeps recommending you."
+      title="Pricing | Found For AI"
+      description="Two ways to get AI to recommend your business. DIY analytics from $49/mo, or done-for-you AI Operator Subscription starting with a $997 onboarding plus $299/mo Starter or $599/mo Growth. 60-day guarantee."
       canonical="https://foundforai.com/pricing"
       schemas={pricingSchemas}
     >
@@ -191,18 +285,137 @@ export default function Pricing() {
         <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <span className="inline-block bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
-              AI Operator Subscription
+              Two ways to get recommended by AI
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              We make sure AI recommends you — and keeps recommending you.
+              DIY the analytics, or have us do the work.
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-4">
-              Done-for-you AI visibility implementation and ongoing management built for busy owner-operators.
+              Start self-serve with privacy-friendly analytics and a monthly DIY AEO report, or skip ahead to our done-for-you AI Operator Subscription.
             </p>
             <p className="text-base md:text-lg font-medium text-foreground">
-              Most AI visibility tools show you the gaps. We fix them and keep them fixed.
+              Most AI visibility tools show you the gaps. We either show them clearly — or fix them for you.
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* DIY / Self-Serve Section */}
+      <section id="diy" className="py-12 md:py-16 bg-background">
+        <div className="max-w-5xl mx-auto px-4 md:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <span className="inline-block bg-accent/15 text-accent px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide mb-3">
+              Self-Serve · Start today
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mb-3">Found For AI Analytics</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              See exactly how AI assistants describe your business, and get a monthly DIY AEO report you can act on yourself. No onboarding required.
+            </p>
+          </div>
+
+          {/* Billing toggle */}
+          <div className="flex justify-center mb-8">
+            <div className="inline-flex bg-muted rounded-full p-1">
+              <button
+                type="button"
+                onClick={() => setBilling('monthly')}
+                className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
+                  billing === 'monthly'
+                    ? 'bg-background text-foreground shadow-sm'
+                    : 'text-muted-foreground hover:text-foreground'
+                }`}
+                data-testid="toggle-billing-monthly"
+              >
+                Monthly
+              </button>
+              <button
+                type="button"
+                onClick={() => setBilling('annual')}
+                className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
+                  billing === 'annual'
+                    ? 'bg-background text-foreground shadow-sm'
+                    : 'text-muted-foreground hover:text-foreground'
+                }`}
+                data-testid="toggle-billing-annual"
+              >
+                Annual <span className="text-accent text-xs ml-1">Save 17%</span>
+              </button>
+            </div>
+          </div>
+
+          <Card className="max-w-2xl mx-auto border-accent border-2 shadow-lg">
+            <CardHeader className="text-center pb-6 pt-8">
+              <div className="inline-flex items-center justify-center gap-2 mb-3">
+                <BarChart3 className="h-6 w-6 text-accent" />
+                <CardTitle className="text-2xl">DIY</CardTitle>
+              </div>
+              <div className="flex items-baseline justify-center gap-2 mb-2">
+                <span className="text-5xl font-bold text-primary" data-testid="text-diy-price">
+                  {currentDiy.label}
+                </span>
+                <span className="text-muted-foreground">{currentDiy.suffix}</span>
+              </div>
+              {billing === 'annual' && (
+                <p className="text-sm text-accent font-medium" data-testid="text-diy-saving">
+                  {diyPricing.annual.savingNote}
+                </p>
+              )}
+              <CardDescription className="text-base mt-3 max-w-md mx-auto">
+                Privacy-friendly analytics + a monthly DIY AEO report. {currentDiy.trialDays}-day free trial.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <ul className="grid md:grid-cols-2 gap-3 max-w-2xl mx-auto">
+                <li className="flex items-start gap-2">
+                  <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
+                  <span className="text-sm">Privacy-friendly analytics dashboard</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
+                  <span className="text-sm">Cookie-free, GDPR-friendly tracking</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
+                  <span className="text-sm">Monthly DIY AEO report</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
+                  <span className="text-sm">No onboarding fee, no setup call</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
+                  <span className="text-sm">Upgrade to Starter anytime</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
+                  <span className="text-sm">Cancel anytime</span>
+                </li>
+              </ul>
+              <a href={currentDiy.url} target="_blank" rel="noopener noreferrer">
+                <Button size="lg" className="w-full font-semibold" data-testid="button-diy-cta">
+                  Start {currentDiy.trialDays}-day free trial →
+                </Button>
+              </a>
+              <p className="text-xs text-muted-foreground text-center">
+                Credit card required to start trial. No charge until day {currentDiy.trialDays + 1}.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Divider into Done-For-You */}
+      <section className="py-10 bg-muted/30 border-y border-border">
+        <div className="text-center max-w-3xl mx-auto px-4">
+          <span className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide mb-3">
+            Done-For-You · AI Operator Subscription
+          </span>
+          <h2 className="text-2xl md:text-3xl font-bold mb-3">
+            Or skip ahead — we'll do the work for you.
+          </h2>
+          <p className="text-muted-foreground">
+            One-time $997 onboarding installs the AI Data Layer. Then choose Starter or Growth to keep your AI visibility tuned every month.
+          </p>
         </div>
       </section>
 
@@ -215,7 +428,7 @@ export default function Pricing() {
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mb-3">Onboarding</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Every engagement starts here. We install the AI Data Layer and fix the foundation AI assistants need to confidently recommend your business.
+              Every done-for-you engagement starts here. We install the AI Data Layer and fix the foundation AI assistants need to confidently recommend your business.
             </p>
           </div>
 
@@ -398,40 +611,66 @@ export default function Pricing() {
       <section className="py-16 md:py-20 bg-background">
         <div className="max-w-5xl mx-auto px-4 md:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-3">How It Works</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-3">Two paths, your call</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              A clear path from invisible to recommended — without you doing the work.
+              Start self-serve with the analytics, or hand the work to us. Either way you get a clear picture of how AI talks about your business.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary text-primary-foreground font-bold text-lg mb-4">
-                1
-              </div>
-              <h3 className="font-semibold text-lg mb-2">Onboard ($997)</h3>
-              <p className="text-sm text-muted-foreground">
-                We audit your AI visibility, install the AI Data Layer, and ship the initial fixes. 7 business days.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary text-primary-foreground font-bold text-lg mb-4">
-                2
-              </div>
-              <h3 className="font-semibold text-lg mb-2">Choose Your Plan</h3>
-              <p className="text-sm text-muted-foreground">
-                Starter to stay tuned. Growth if you want AI agents and automation built around it.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary text-primary-foreground font-bold text-lg mb-4">
-                3
-              </div>
-              <h3 className="font-semibold text-lg mb-2">We Maintain It</h3>
-              <p className="text-sm text-muted-foreground">
-                Every month we monitor, audit, and optimize. You stay recommended as AI models keep changing.
-              </p>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* DIY path */}
+            <Card className="border-accent border-2">
+              <CardHeader>
+                <div className="inline-flex items-center gap-2 mb-2">
+                  <BarChart3 className="h-5 w-5 text-accent" />
+                  <CardTitle className="text-xl">DIY Path</CardTitle>
+                </div>
+                <CardDescription>For owner-operators who like to roll their sleeves up.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ol className="space-y-3">
+                  <li className="flex items-start gap-3">
+                    <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-accent text-accent-foreground text-xs font-bold shrink-0 mt-0.5">1</span>
+                    <span className="text-sm">Start your 7- or 30-day trial of DIY ($49/mo or $490/yr).</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-accent text-accent-foreground text-xs font-bold shrink-0 mt-0.5">2</span>
+                    <span className="text-sm">Install the tracking snippet on your site (one line of HTML).</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-accent text-accent-foreground text-xs font-bold shrink-0 mt-0.5">3</span>
+                    <span className="text-sm">Get a monthly DIY AEO report. Implement what you can.</span>
+                  </li>
+                </ol>
+              </CardContent>
+            </Card>
+
+            {/* Done-for-you path */}
+            <Card className="border-primary border-2">
+              <CardHeader>
+                <div className="inline-flex items-center gap-2 mb-2">
+                  <ShieldCheck className="h-5 w-5 text-primary" />
+                  <CardTitle className="text-xl">Done-For-You Path</CardTitle>
+                </div>
+                <CardDescription>For owner-operators who'd rather not be a schema markup specialist.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ol className="space-y-3">
+                  <li className="flex items-start gap-3">
+                    <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs font-bold shrink-0 mt-0.5">1</span>
+                    <span className="text-sm">$997 onboarding — we audit, install the AI Data Layer, ship initial fixes in 7 business days.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs font-bold shrink-0 mt-0.5">2</span>
+                    <span className="text-sm">Choose Starter ($299/mo) or Growth ($599/mo) to keep it tuned.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs font-bold shrink-0 mt-0.5">3</span>
+                    <span className="text-sm">Every month: we monitor, audit, optimize. You stay recommended.</span>
+                  </li>
+                </ol>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -444,7 +683,7 @@ export default function Pricing() {
               <ShieldCheck className="h-8 w-8 text-accent" />
               <div className="font-semibold">60-Day Guarantee</div>
               <p className="text-sm text-muted-foreground">
-                If anything we install is wrong or breaks, we fix it free.
+                On the $997 onboarding. If anything we install is wrong or breaks, we fix it free.
               </p>
             </div>
             <div className="flex flex-col items-center gap-2">
@@ -458,7 +697,7 @@ export default function Pricing() {
               <RefreshCw className="h-8 w-8 text-accent" />
               <div className="font-semibold">No Long Contracts</div>
               <p className="text-sm text-muted-foreground">
-                Monthly plans are month-to-month. Cancel anytime.
+                All plans are month-to-month or annual. Cancel anytime.
               </p>
             </div>
           </div>
@@ -472,7 +711,7 @@ export default function Pricing() {
             Frequently Asked Questions
           </h2>
           <p className="text-center text-muted-foreground mb-12">
-            Clear answers about how the AI Operator Subscription works.
+            DIY vs done-for-you, onboarding, plans, and how to upgrade.
           </p>
           <div className="space-y-4 mb-12">
             {faqs.map((faq, index) => (
@@ -494,22 +733,22 @@ export default function Pricing() {
             Ready to be the business AI recommends?
           </h2>
           <p className="text-lg text-muted-foreground mb-8">
-            Book a short call. We'll walk through your current AI visibility, confirm onboarding fits, and get you scheduled to start.
+            Start your free trial of DIY in minutes, or book a strategy call to scope a done-for-you engagement.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link href="/book-call">
-              <Button size="lg" className="font-semibold" data-testid="button-final-cta">
-                Book Your Onboarding Call
+            <a href={currentDiy.url} target="_blank" rel="noopener noreferrer">
+              <Button size="lg" className="font-semibold" data-testid="button-final-diy">
+                Start DIY Free Trial
               </Button>
-            </Link>
-            <Link href="/contact">
-              <Button size="lg" variant="outline" className="font-semibold" data-testid="button-final-contact">
-                Ask a Question First
+            </a>
+            <Link href="/book-call">
+              <Button size="lg" variant="outline" className="font-semibold" data-testid="button-final-cta">
+                Book Your Onboarding Call
               </Button>
             </Link>
           </div>
           <p className="text-sm text-muted-foreground mt-6">
-            $997 one-time onboarding · $299/mo or $599/mo · 60-day guarantee · No long contracts
+            DIY from $49/mo · $997 one-time onboarding · $299/mo or $599/mo · 60-day guarantee
           </p>
         </div>
       </section>
