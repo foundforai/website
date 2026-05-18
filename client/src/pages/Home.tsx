@@ -1,9 +1,10 @@
 import PageLayout from '@/components/PageLayout';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Check, Mail } from 'lucide-react';
+import { Check, Mail, BarChart3, ArrowRight } from 'lucide-react';
 import { breadcrumbList } from '@/lib/breadcrumb';
 import ScorecardHero from '@/components/ScorecardHero';
+import { STRIPE_LINKS } from '@/lib/stripe-links';
 
 export default function Home() {
   const homeSchemas = [
@@ -319,15 +320,88 @@ export default function Home() {
         </div>
       </section>
 
+      {/* SELF-SERVE / DIY — Lightweight entry point */}
+      <section id="diy" className="py-16 md:py-20 bg-background">
+        <div className="max-w-5xl mx-auto px-4 md:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-10">
+            <span className="inline-block bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
+              Self-Serve · DIY
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Want to start tracking yourself?
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Skip the onboarding and grab the analytics + a monthly DIY AEO report you implement on your own time. Roll your sleeves up at $49/mo.
+            </p>
+          </div>
+
+          <Card className="border-emerald-200 dark:border-emerald-900/50 border-2 shadow-lg max-w-3xl mx-auto" data-testid="card-diy-home">
+            <CardContent className="p-8 md:p-10">
+              <div className="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <BarChart3 className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
+                    <h3 className="text-2xl md:text-3xl font-bold">DIY</h3>
+                  </div>
+                  <div className="flex items-baseline gap-2 mb-2">
+                    <span className="text-5xl font-bold text-primary">$49</span>
+                    <span className="text-muted-foreground">/month</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    7-day free trial · No setup call · Cancel anytime
+                  </p>
+                  <p className="text-muted-foreground mb-6">
+                    Privacy-friendly analytics dashboard + a monthly DIY AEO report so you can see the needle move as you implement the fixes.
+                  </p>
+                  <a
+                    href={STRIPE_LINKS.diy.monthly}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-testid="button-diy-cta-home"
+                  >
+                    <Button size="lg" className="font-semibold gap-2" style={{ backgroundColor: '#0F5FDB', borderColor: '#0F5FDB' }}>
+                      Start 7-Day Free Trial
+                      <ArrowRight className="h-4 w-4" />
+                    </Button>
+                  </a>
+                </div>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-2">
+                    <Check className="h-5 w-5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+                    <span className="text-sm">Privacy-friendly analytics dashboard</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="h-5 w-5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+                    <span className="text-sm">Cookie-free, GDPR-friendly tracking</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="h-5 w-5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+                    <span className="text-sm">Monthly DIY AEO report</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="h-5 w-5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+                    <span className="text-sm">No onboarding fee, no setup call</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="h-5 w-5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+                    <span className="text-sm">Upgrade to Starter anytime</span>
+                  </li>
+                </ul>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
       {/* PRICING / MAIN OFFER — AI Operator Subscription */}
       <section id="ai-search-fix" className="py-16 md:py-24 bg-gradient-to-br from-primary/10 to-accent/10">
         <div className="max-w-5xl mx-auto px-4 md:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <span className="inline-block bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
-              AI Operator Subscription
+              Done-For-You · AI Operator Subscription
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              We fix your AI visibility — then keep it fixed.
+              Or skip the work — we'll fix it, then keep it fixed.
             </h2>
             <p className="text-lg text-muted-foreground">
               Built for busy owner-operators. Start with a one-time onboarding, then pick a monthly plan so your visibility stays tuned as AI models keep changing.
@@ -396,7 +470,7 @@ export default function Home() {
               </Button>
             </a>
             <p className="text-sm text-muted-foreground">
-              $997 onboarding · $299/mo or $599/mo · 60-day guarantee · No long contracts
+              DIY from $49/mo · $997 onboarding · $299/mo or $599/mo · 60-day guarantee
             </p>
           </div>
 
