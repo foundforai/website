@@ -5,9 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'wouter';
 import { Check, ShieldCheck, Clock, RefreshCw, BarChart3 } from 'lucide-react';
 import { breadcrumbList } from '@/lib/breadcrumb';
-
-const DIY_MONTHLY_URL = 'https://buy.stripe.com/8x2eV78Ws36B0yA0WZ3Nm00';
-const DIY_ANNUAL_URL = 'https://buy.stripe.com/fZueV76Ok6iN956fRT3Nm01';
+import { STRIPE_LINKS } from '@/lib/stripe-links';
 
 const pricingSchemas = [
   breadcrumbList([
@@ -221,13 +219,13 @@ export default function Pricing() {
       label: '$49',
       suffix: '/month',
       trialDays: 7,
-      url: DIY_MONTHLY_URL,
+      url: STRIPE_LINKS.diy.monthly,
     },
     annual: {
       label: '$490',
       suffix: '/year',
       trialDays: 30,
-      url: DIY_ANNUAL_URL,
+      url: STRIPE_LINKS.diy.annual,
       savingNote: '2 months free vs monthly',
     },
   } as const;
