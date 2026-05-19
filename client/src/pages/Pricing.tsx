@@ -396,6 +396,10 @@ export default function Pricing() {
               </a>
               <p className="text-xs text-muted-foreground text-center">
                 Credit card required to start trial. No charge until day {currentDiy.trialDays + 1}.
+                {' '}
+                <Link href="/refund-policy" className="underline hover:no-underline">
+                  30-day money-back guarantee
+                </Link>.
               </p>
             </CardContent>
           </Card>
@@ -548,7 +552,12 @@ export default function Pricing() {
                     Start with Starter
                   </Button>
                 </Link>
-                <p className="text-xs text-muted-foreground text-center">Requires $997 onboarding</p>
+                <p className="text-xs text-muted-foreground text-center">
+                  Requires $997 onboarding ·{' '}
+                  <Link href="/refund-policy" className="underline hover:no-underline">
+                    30-day money-back guarantee
+                  </Link>
+                </p>
               </CardContent>
             </Card>
 
@@ -598,7 +607,12 @@ export default function Pricing() {
                     Start with Growth
                   </Button>
                 </Link>
-                <p className="text-xs text-muted-foreground text-center">Requires $997 onboarding</p>
+                <p className="text-xs text-muted-foreground text-center">
+                  Requires $997 onboarding ·{' '}
+                  <Link href="/refund-policy" className="underline hover:no-underline">
+                    30-day money-back guarantee
+                  </Link>
+                </p>
               </CardContent>
             </Card>
           </div>

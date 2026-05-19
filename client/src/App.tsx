@@ -33,6 +33,7 @@ import MediaEpisodeSmallLake from "@/pages/MediaEpisodeSmallLake";
 import Press from "@/pages/Press";
 import Privacy from "@/pages/Privacy";
 import Terms from "@/pages/Terms";
+import Refund from "@/pages/Refund";
 import ToolsIndex from "@/pages/ToolsIndex";
 import LlmsTxtGenerator from "@/pages/tools/LlmsTxtGenerator";
 import SchemaValidator from "@/pages/tools/SchemaValidator";
@@ -69,6 +70,7 @@ function AppRouter() {
         <Route path="/press" component={Press} />
         <Route path="/privacy" component={Privacy} />
         <Route path="/terms" component={Terms} />
+        <Route path="/refund-policy" component={Refund} />
         <Route path="/tools" component={ToolsIndex} />
         <Route path="/tools/llms-txt-generator" component={LlmsTxtGenerator} />
         <Route path="/tools/schema-validator" component={SchemaValidator} />
