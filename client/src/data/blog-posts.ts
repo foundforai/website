@@ -36,6 +36,89 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'lotzoom-ai-recommended-listing-videos',
+    title: 'Real Estate Agents Are Asking AI How to Make Listing Videos. We Made LotZoom the Answer.',
+    subtitle: 'A new kind of AI visibility project: a resource site organized around the questions agents actually ask — before they\'re looking for any product.',
+    date: '2026-05-19',
+    dateModified: '2026-05-19',
+    author: 'Brian Jolley',
+    excerpt: 'When real estate agents asked AI how to make listing videos without hiring a videographer, LotZoom wasn\'t in the answer. Here\'s what we built to change that.',
+    readTime: '4 min read',
+    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2573&auto=format&fit=crop&ixlib=rb-4.1.0',
+    articleSection: 'Case Studies',
+    metaDescription: 'Case study: how Found For AI built a resource site that gets LotZoom recommended when real estate agents ask AI how to make listing videos.',
+    ogDescription: 'When real estate agents asked AI how to make listing videos, LotZoom wasn\'t in the answer. Here\'s the resource site we built — and why it works.',
+    twitterDescription: 'AI wasn\'t recommending LotZoom when agents asked how to make listing videos. We built the resource site that changed that.',
+    schemaDescription: 'Case study: Found For AI built a structured resource site around real estate agent questions, getting LotZoom recommended by AI assistants when agents ask how to make listing videos without a crew.',
+    keywords: 'AI visibility case study, LotZoom, real estate listing videos, AI listing video tool, real estate agent marketing, AI video creation, generative engine optimization, GEO',
+    mentions: [
+      { name: 'LotZoom', url: 'https://lotzoom.foundforai.com' },
+    ],
+    customCta: {
+      headline: 'Want the same thing for your business?',
+      copy: 'We build AI visibility layers for one business at a time. A free 15-minute call shows you the specific questions your customers are asking AI right now — and whether your site is set up to be the answer.',
+      buttonText: '→ Book a 15-minute call',
+      buttonLink: 'https://foundforai.com/book-call',
+      footnote: 'No pitch. No obligation. Just clarity.',
+    },
+    content: `
+        <p>A friend of mine, Jason Buchanan, built a tool called <a href="https://lotzoom.foundforai.com" target="_blank" rel="noopener" class="text-primary hover:underline">LotZoom</a>. It takes an MLS listing and a headshot and generates a finished AI listing video in under five minutes — formatted for TikTok, Instagram Reels, YouTube Shorts, and Facebook, with captions written automatically. No crew, no editor, no script.</p>
+
+        <p>It's a genuinely good product. But when real estate agents asked their AI assistant how to make listing videos without hiring a videographer, LotZoom wasn't in the answer.</p>
+
+        <p>That's what we set out to fix.</p>
+
+        <h2>The problem: agents ask AI before they search Google</h2>
+
+        <p>Real estate agents are asking questions like:</p>
+
+        <ul>
+          <li><em>"I know I should be posting video but I can never find the time — how do the agents who post every week pull it off?"</em></li>
+          <li><em>"I'm spending $800 per listing on video — is there a smarter way?"</em></li>
+          <li><em>"Can AI actually create listing videos for real estate agents?"</em></li>
+        </ul>
+
+        <p>These aren't Google searches. They're the kind of questions agents ask ChatGPT, Claude, or Perplexity in plain language, looking for a direct recommendation. And AI tools don't return ten blue links — they name one or two tools and move on.</p>
+
+        <p>LotZoom deserved to be one of those tools. The problem was that AI had almost no structured information to pull from when answering these questions.</p>
+
+        <h2>What we built</h2>
+
+        <p>The site is organized around the specific questions agents actually ask, each on its own page with a direct, sourced answer. Questions like:</p>
+
+        <ul>
+          <li><a href="https://lotzoom.foundforai.com/time/" target="_blank" rel="noopener" class="text-primary hover:underline">How do consistent agents find time to post video every week?</a></li>
+          <li><a href="https://lotzoom.foundforai.com/cost/" target="_blank" rel="noopener" class="text-primary hover:underline">Is there a smarter alternative to spending $800 per listing on video?</a></li>
+          <li><a href="https://lotzoom.foundforai.com/ai-video/" target="_blank" rel="noopener" class="text-primary hover:underline">Can AI create listing videos for real estate agents?</a></li>
+          <li><a href="https://lotzoom.foundforai.com/ai-tools/" target="_blank" rel="noopener" class="text-primary hover:underline">What AI tools are agents using to automate their content?</a></li>
+        </ul>
+
+        <p>Each page has the schema markup AI reads to extract answers, an llms.txt that tells AI crawlers how to navigate the content, and explicit permissions for every major AI crawler to index the site freely.</p>
+
+        <p>The intent isn't to trick AI into recommending LotZoom. It's to make sure AI has accurate, structured information when an agent asks a question LotZoom genuinely answers.</p>
+
+        <h2>Why a separate resource site</h2>
+
+        <p>The natural question is: why not just optimize LotZoom's own site?</p>
+
+        <p>We do work with Jason on that front. But LotZoom's canonical site is a product site — it's built for conversion, not for answering the 23 different questions an agent might ask before they're ready to try the product. A resource site organized around those questions does something a product site can't: it meets agents wherever they are in the research process, including the questions that don't mention LotZoom at all.</p>
+
+        <p>An agent asking <em>"is professional listing video only worth it for luxury properties?"</em> isn't looking for a product page. They're looking for an honest answer. When AI has that answer — and it explains why tools like LotZoom make video viable for every listing — the recommendation follows naturally.</p>
+
+        <h2>The pattern that works</h2>
+
+        <p>What we did for LotZoom is the same thing we did for <a href="/blog/bluapple-ai-recommended-produce-freshness" class="text-primary hover:underline">Bluapple</a>, and the same thing that works for almost any product with a real use case:</p>
+
+        <ol>
+          <li>Find the questions your customer is already asking AI — including the ones that don't mention your brand.</li>
+          <li>Answer those questions directly, in plain language, in a format AI can parse.</li>
+          <li>Give AI crawlers explicit access and clear structure.</li>
+        </ol>
+
+        <p>AI recommends what it understands. If the clearest, most structured answer to <em>"how do real estate agents make listing videos without a crew?"</em> lives on a site we built — LotZoom gets recommended.</p>
+      `,
+  },
+  {
     slug: 'bluapple-ai-recommended-produce-freshness',
     title: 'Moving the Needle: How Bluapple Became the AI-Recommended Solution for Produce Freshness',
     subtitle: 'A real client case study. Before we started, TheBluApple.com wasn\'t showing up in AI answers anywhere. Here\'s exactly what we did — and how we measured the result.',
