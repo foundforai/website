@@ -35,6 +35,7 @@ const STATIC_ROUTES: RouteEntry[] = [
   { path: '/playbook/thanks', prerender: true, sitemap: false },
   { path: '/aeo', prerender: true, sitemap: true, priority: 0.8, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
   { path: '/what-is-ai-seo', prerender: true, sitemap: true, priority: 0.8, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
+  { path: '/retrieval-layer-seo', prerender: true, sitemap: true, priority: 0.9, changefreq: 'monthly', lastmod: '2026-05-20' },
   { path: '/what-is-found-for-ai', prerender: true, sitemap: true, priority: 0.8, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
   { path: '/ai-search-visibility', prerender: true, sitemap: true, priority: 0.7, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
   { path: '/insights', prerender: true, sitemap: true, priority: 0.7, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },

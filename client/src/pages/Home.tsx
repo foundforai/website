@@ -264,6 +264,57 @@ export default function Home() {
         </div>
       </section>
 
+      {/* HOW AI ACTUALLY DECIDES WHO TO RECOMMEND */}
+      <section className="py-16 md:py-24 bg-background">
+        <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center">
+            How AI Actually Decides Who to Recommend
+          </h2>
+
+          <p className="text-lg text-muted-foreground mb-12 text-center max-w-3xl mx-auto">
+            Modern AI assistants don't search the web in real time. They retrieve pre-indexed chunks of content and use them to generate answers. This is called Retrieval-Augmented Generation, or RAG. Three things determine whether your business shows up in that retrieved set.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            <Card className="h-full" data-testid="card-rag-readable">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold mb-3">Your site has to be readable</h3>
+                <p className="text-muted-foreground">
+                  AI systems rely on structured data, clear entity signals, and machine-readable files like llms.txt to understand what your business is, where it operates, and what it offers.
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="h-full" data-testid="card-rag-chunkable">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold mb-3">Your content has to be chunkable</h3>
+                <p className="text-muted-foreground">
+                  Each section of your site needs to make sense on its own. A 200-to-400-word passage answering a specific customer question is far more retrievable than a long page that buries the answer.
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="h-full" data-testid="card-rag-trusted">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold mb-3">Your business has to be trusted</h3>
+                <p className="text-muted-foreground">
+                  AI weighs entity authority, consistent identity across the web, verified business details, and citation patterns when deciding which businesses to recommend.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+
+          <p className="text-center">
+            We install all three.{' '}
+            <a
+              href="/retrieval-layer-seo"
+              className="inline-flex items-center gap-1 text-primary hover:underline font-semibold"
+              data-testid="link-home-retrieval-layer-seo"
+            >
+              Learn how Retrieval-Layer SEO works →
+            </a>
+          </p>
+        </div>
+      </section>
+
       {/* WHAT WE INSTALL */}
       <section id="what-we-install" className="py-16 md:py-24 bg-background">
         <div className="max-w-6xl mx-auto px-4 md:px-6 lg:px-8">

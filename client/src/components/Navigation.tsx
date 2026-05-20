@@ -31,6 +31,7 @@ export default function Navigation() {
   const navLinks = [
     { href: '/', label: 'Home' },
     { href: '/what-is-ai-seo', label: 'What Is AI SEO' },
+    { href: '/retrieval-layer-seo', label: 'Retrieval-Layer SEO' },
     { href: '/services', label: 'Services' },
     { href: '/pricing', label: 'Pricing & Plans' },
     { href: '/blog', label: 'Blog' },

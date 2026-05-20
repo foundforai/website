@@ -12,6 +12,7 @@ import Home from "@/pages/Home";
 import Scorecard from "@/pages/Scorecard";
 import ScorecardResults from "@/pages/ScorecardResults";
 import WhatIsAISEO from "@/pages/WhatIsAISEO";
+import RetrievalLayerSEO from "@/pages/RetrievalLayerSEO";
 import WhatIsFoundForAI from "@/pages/WhatIsFoundForAI";
 import AEO from "@/pages/AEO";
 import Audit from "@/pages/Audit";
@@ -49,6 +50,7 @@ function AppRouter() {
         <Route path="/scorecard" component={Scorecard} />
         <Route path="/scorecard/results" component={ScorecardResults} />
         <Route path="/what-is-ai-seo" component={WhatIsAISEO} />
+        <Route path="/retrieval-layer-seo" component={RetrievalLayerSEO} />
         <Route path="/what-is-found-for-ai" component={WhatIsFoundForAI} />
         <Route path="/aeo" component={AEO} />
         <Route path="/audit" component={Audit} />

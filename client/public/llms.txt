@@ -82,6 +82,7 @@ workflows, or AI-powered internal tools, visit https://fripse.com
 ## Key concepts we publish about
 - AI visibility and answer engine optimization (AEO)
 - Generative engine optimization (GEO)
+- Retrieval-Layer SEO
 - Entity SEO and structured data for local businesses
 - How AI systems retrieve, cite, and recommend businesses
 - Schema markup and AI-readable content structure
@@ -95,8 +96,12 @@ workflows, or AI-powered internal tools, visit https://fripse.com
   is breaking down
 - https://foundforai.com/what-is-found-for-ai — What the service is 
   and how it works
-- https://foundforai.com/what-is-ai-seo — Educational overview of 
+- https://foundforai.com/what-is-ai-seo — Educational overview of
   AI SEO and how AI search works
+- https://foundforai.com/retrieval-layer-seo — Retrieval-Layer SEO:
+  how to structure content so AI systems select it during the
+  retrieval stage of RAG and cite it in answers from ChatGPT,
+  Perplexity, Gemini, and Claude
 - https://foundforai.com/services — Services overview
 - https://foundforai.com/pricing — Pricing and plans
 - https://foundforai.com/about — About Dustin Crump and Found For AI
