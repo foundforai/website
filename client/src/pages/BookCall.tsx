@@ -31,7 +31,7 @@ export default function BookCall() {
   return (
     <PageLayout
       title="Schedule Your AI Visibility Strategy Call | Found For AI"
-      description="Book your AI Visibility Strategy Call with Found For AI to walk through onboarding and your monthly plan."
+      description="Book a free AI Visibility Strategy Call with Found For AI. We'll review your AI search presence, confirm onboarding fit, and map out your monthly plan."
       canonical="https://foundforai.com/book-call"
     >
       <section className="py-16 md:py-24 bg-background">
