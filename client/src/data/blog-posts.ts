@@ -2,6 +2,7 @@ import aiAutomationImg from '@assets/stock_images/ai_automation_workfl_1fb79544.
 import aiSearchImg from '@assets/stock_images/artificial_intellige_8c98905d.jpg';
 import websiteOptimizationImg from '@assets/stock_images/website_optimization_b4ff5bda.jpg';
 import phoneBookImg from '@assets/get found in ai phone book.png';
+import detourImg from '@assets/stock_images/detour_cookie_popup.png';
 
 export interface BlogPostCustomCta {
   headline: string;
@@ -35,6 +36,58 @@ export interface BlogPost {
 }
 
 export const blogPosts: BlogPost[] = [
+  {
+    slug: 'when-cookies-bite-back',
+    title: 'When Cookies Bite Back',
+    subtitle: 'Three things happen when an AI agent hits your pop-up. None of them are good.',
+    date: '2026-05-22',
+    author: 'Brian Jolley',
+    excerpt: 'Cookie banners are irritating for every visitor. What you probably have not thought about is what happens when an AI agent hits that pop-up instead of a human.',
+    readTime: '2 min read',
+    image: detourImg,
+    articleSection: 'AI Visibility',
+    metaDescription: 'Cookie banners and coupon pop-ups are bad for visitors. For AI agents, they are a dead end. Three scenarios, none of them good for your business.',
+    ogDescription: 'Cookie banners are irritating for humans. For AI agents visiting your site, they create three failure scenarios. None of them help your business.',
+    twitterDescription: 'An AI agent hits your cookie banner. Here are the three things that can happen next. None of them are good.',
+    schemaDescription: 'Cookie consent banners and email pop-ups create three failure scenarios for AI agents: stripped content, session abandonment, or illegal consent. Pop-up barriers actively hurt AI visibility and recommendations.',
+    keywords: 'AI agents, cookie banner, GDPR, AI visibility, pop-up, AI recommendations, coupon popup, website barriers',
+    customCta: {
+      headline: 'Want to know what else might be blocking AI from your site?',
+      copy: 'A free 15-minute call shows you exactly what AI can and cannot see on your site right now. No pitch. Just clarity.',
+      buttonText: '→ Book a 15-minute call',
+      buttonLink: 'https://foundforai.com/book-call',
+      footnote: 'No pitch. No obligation. Just clarity.',
+    },
+    content: `
+        <p>This will sound familiar: a friend sends you an article you are genuinely excited to read. You click the link and instead of reading the content, you have to manage the settings of the website's cookie policy. It is an irritating start for every visitor.</p>
+
+        <p>What you probably have not thought about is what happens when someone sends an AI agent to get information on your site. If you have a pop-up on your website asking visitors to manage cookies, you probably never thought about what an AI agent does at that point.</p>
+
+        <p>What actually happens? There are three likely scenarios.</p>
+
+        <h2>1. The agent rejects all cookies.</h2>
+
+        <p>It will only see a stripped-down version of your site, not the full experience you designed for real customers. Whatever it reports back to the person who sent it is incomplete.</p>
+
+        <h2>2. The agent gets stuck.</h2>
+
+        <p>An agent that hits a pop-up it cannot navigate will just leave. The session ends. Your site never gets evaluated. The person who sent the agent gets nothing. Or worse, the agent gives the person answers it got from your competitor.</p>
+
+        <h2>3. The agent accepts all cookies.</h2>
+
+        <p>Legally speaking, no human actually consented to be tracked. Under GDPR, that is problematic.</p>
+
+        <p>None of those are good outcomes. And you probably did not set up your cookie banner with any of this in mind.</p>
+
+        <h2>Then there is the coupon pop-up.</h2>
+
+        <p>You know the one. "Save 20% today!" The moment someone lands on your homepage, before they have even seen what you sell, before they have any idea if they want it, you are asking for their email address.</p>
+
+        <p>A human visitor closes it immediately and automatically without even reading it, and keeps browsing. But an AI agent does not work that way. And even if it could dismiss it, the offer makes no sense at that stage. The agent has not seen your product yet. It is not going to go back and tell the human there is a discount. Best case it ignores the coupon. Worst case it confuses the coupon for the whole site and gives up.</p>
+
+        <p>These barriers are not just annoying. They are actively getting in the way of AI systems trying to understand and recommend your business.</p>
+      `,
+  },
   {
     slug: 'lotzoom-ai-recommended-listing-videos',
     title: 'Real Estate Agents Are Asking AI How to Make Listing Videos. We Made LotZoom the Answer.',
