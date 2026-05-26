@@ -37,6 +37,224 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'how-to-get-found-in-ai',
+    title: 'How Do I Get Found in AI? (And Why "Good SEO" Isn\'t Saving You)',
+    subtitle: 'Traditional SEO and AI visibility are not the same game. Ranking #1 on Google does not mean ChatGPT will ever mention you.',
+    date: '2026-05-26',
+    dateModified: '2026-05-26',
+    author: 'Dustin Crump',
+    excerpt: 'Businesses with great traditional SEO are completely invisible in AI search, and they don\'t even know it. Here\'s the exact playbook — robots.txt, schema graphs, llms.txt, content structure — that I use with real clients.',
+    readTime: '7 min read',
+    image: 'https://images.unsplash.com/photo-1677756119517-756a188d2d94?q=80&w=2650&auto=format&fit=crop&ixlib=rb-4.1.0',
+    articleSection: 'AI Visibility',
+    metaDescription: 'Good SEO doesn\'t mean AI visibility. Here\'s the exact playbook — robots.txt, schema, llms.txt — to get your business found in ChatGPT and Perplexity.',
+    ogDescription: 'Ranking #1 on Google doesn\'t mean ChatGPT will ever mention you. Here\'s the exact playbook I use with real clients to fix that.',
+    twitterDescription: 'Good SEO isn\'t saving you in AI search. Here\'s the exact playbook — robots.txt, schema graphs, llms.txt — to actually get found.',
+    schemaDescription: 'A practical guide to AI visibility covering robots.txt configuration for AI crawlers, connected schema graphs with @id, llms.txt best practices, definition-first content structure, and measuring results with incognito tests and Bing Webmaster Tools.',
+    keywords: 'how to get found in AI, AI visibility, AI SEO, robots.txt AI crawlers, llms.txt, schema markup, JSON-LD, ChatGPT visibility, Perplexity SEO, generative engine optimization, GEO, AEO',
+    mentions: [
+      { name: 'Loxxie', url: 'https://loxxie.com' },
+    ],
+    customCta: {
+      headline: 'Not sure where your site stands right now?',
+      copy: 'The free AI visibility tools at foundforai.com/tools will tell you exactly what schema you have, what\'s missing, and what\'s broken — in about ten minutes. Or book a call and we\'ll walk through it together.',
+      buttonText: '→ Run the free tools',
+      buttonLink: 'https://foundforai.com/tools',
+      footnote: 'No pitch. No obligation. Just clarity.',
+    },
+    content: `
+        <p>If you're reading this, you've probably already said the sentence to yourself or to your marketing person: <em>"I rank well in Google. I have good SEO. Shouldn't that mean I'm covered for AI search too?"</em></p>
+
+        <p>Short answer: No.</p>
+
+        <p>Long answer: It's not even close, and the gap is widening every single month.</p>
+
+        <p>I run <a href="https://foundforai.com" class="text-primary hover:underline">Found For AI</a>, where my entire job is auditing and fixing how businesses show up inside AI tools like ChatGPT, Claude, Perplexity, Gemini, and Grok. And the single biggest pattern I see, across every industry, is this: businesses with great traditional SEO are completely invisible in AI search, and they don't even know it.</p>
+
+        <p>You can be at the forefront of how to get found in AI, or you can play catch-up later and hope you're doing it right. This post is for the people who want to be at the forefront.</p>
+
+        <h2>The Misconception That's Costing Businesses Customers Right Now</h2>
+
+        <p>Traditional SEO and AI visibility are related, but they're not the same game. Ranking #1 on Google does not mean ChatGPT will ever mention you. They use different signals, different infrastructure, and increasingly, different definitions of "relevance."</p>
+
+        <p>Google ranks pages. AI agents retrieve, reason, and recommend <em>answers</em>. Those are not the same thing.</p>
+
+        <p>Let me show you exactly what I mean with a real client.</p>
+
+        <h2>Case Study: Loxxie Hair Extensions</h2>
+
+        <p><a href="https://loxxie.com" target="_blank" rel="noopener" class="text-primary hover:underline">Loxxie</a> is a premium hair extension seller and stylist in Holladay, Utah. By every traditional SEO measure, they were doing well. They had clean rankings in Google for their target terms. Organic traffic was steady. If you searched the obvious queries, they showed up.</p>
+
+        <p>Then I ran their AI visibility audit. I opened an incognito window and asked ChatGPT, Claude, Perplexity, and Gemini variations of: <em>"What's a good place to get hair extensions in Salt Lake?"</em></p>
+
+        <p>Loxxie didn't show up. Not in the citations. Not in the recommendations. Not even once across any of the major AI tools.</p>
+
+        <p>When I audited their site, here's what I found:</p>
+
+        <ul>
+          <li><strong>No schema markup.</strong> Nothing. No LocalBusiness, no Service, no Product, no FAQ.</li>
+          <li><strong>No llms.txt.</strong> AI agents had no curated map of what the business actually does.</li>
+          <li><strong>A robots.txt that was blocking every AI crawler.</strong> Even if they'd had perfect schema, the agents couldn't get in to read it.</li>
+        </ul>
+
+        <p>Their site was great for humans. It was a locked door for robots.</p>
+
+        <p>Here's what we did, in roughly the order of impact:</p>
+
+        <ol>
+          <li><strong>Unblocked the AI agents in robots.txt.</strong> This was the biggest single fix. Doesn't matter how good your house looks if you've nailed the front door shut.</li>
+          <li><strong>Built out a connected schema graph</strong>, including LocalBusiness, Service, Product, and a heavily-developed FAQPage schema so they'd surface for the long-tail questions real customers ask.</li>
+          <li><strong>Wrote a proper llms.txt</strong> that gave AI agents an instant snapshot of who Loxxie is, what they offer, and what makes their premium extensions different.</li>
+        </ol>
+
+        <p>Today, <a href="https://loxxie.com" target="_blank" rel="noopener" class="text-primary hover:underline">Loxxie</a> ranks #1 in incognito AI searches for their category in their market.</p>
+
+        <p>That's the gap. That's what nobody's talking about.</p>
+
+        <h2>Why Your Robots.txt Is Probably Sabotaging You</h2>
+
+        <p>Two patterns I see constantly:</p>
+
+        <p><strong>Pattern 1: There's no robots.txt at all.</strong> The site never had one, nobody set one up, and AI agents are wandering in with no guidance about what to crawl or how.</p>
+
+        <p><strong>Pattern 2: There's a robots.txt, but it's blocking everything.</strong> This is the more painful version, because it usually comes from a developer or agency doing what <em>used to be</em> the right thing.</p>
+
+        <p>Back in the day, "bots" were bad. Scrapers, spammers, content thieves. Blocking bots was good hygiene. Most robots.txt files were written with that mental model: keep the bad guys out.</p>
+
+        <p>But the rules changed. There's now a category of bot — AI agents and AI search crawlers — that you absolutely <em>want</em> to let in. They're how your future customers will find you. And the old "block all bots" playbook locks them out by default.</p>
+
+        <p>Most sites haven't caught up. Their robots.txt is still set up for 2015's internet.</p>
+
+        <p><strong>Action item: Right now, before you do anything else, go to <code>yoursite.com/robots.txt</code> and look at it.</strong> If it's blocking AI crawlers, you have a 5-minute fix that could change everything.</p>
+
+        <h2>What Is llms.txt, Actually?</h2>
+
+        <p>This is the newest piece of the puzzle and most people either haven't heard of it or are getting it wrong.</p>
+
+        <p><strong>The misconception:</strong> People think llms.txt is designed to tell an AI model what to "learn" during its initial training phase. They imagine it as a way to influence the model itself.</p>
+
+        <p><strong>The reality:</strong> llms.txt is primarily designed for <em>inference time</em> — specifically for RAG (Retrieval-Augmented Generation). It helps AI agents (the ones inside ChatGPT, Claude, Perplexity, Cursor, and others) find the right documentation when answering a user's specific prompt.</p>
+
+        <p>Think of it as a curated map. When someone asks an AI agent about your business, the agent doesn't want to crawl your entire site, parse out the headers, footers, navigation, ads, and cookie banners just to find the answer. That wastes context window tokens. Your llms.txt hands it the most relevant pages directly.</p>
+
+        <p>A good llms.txt is the simplest, easiest way for AI to get a clean snapshot of your business: what you do, who you serve, what makes you different, and where the important details live.</p>
+
+        <p>A bad llms.txt is a copy-pasted sitemap. Don't do that.</p>
+
+        <h2>Schema in the Age of AI: Why "Pile of Business Cards" Isn't Good Enough</h2>
+
+        <p>If you've done traditional SEO, you've probably done some schema. Maybe LocalBusiness, maybe FAQ, maybe Product. Most people think of it as a checklist for Google's rich snippets — getting the stars, prices, or recipe cards to show up in search results.</p>
+
+        <p>That's fine. It's also massively underselling what schema can do.</p>
+
+        <p>Here's the shift: <strong>for AI agents and LLMs, a collection of disconnected JSON-LD blobs is like a pile of business cards.</strong> Each one is useful individually, but they don't tell the story of the business. They don't connect. An AI looking at them sees fragments, not an entity.</p>
+
+        <p>The real value lies in the <strong>graph</strong> — connecting your schema together so an AI can reason across it. And this is where almost everyone is missing the nuances.</p>
+
+        <h3>The <code>@id</code> Is Not Optional</h3>
+
+        <p>If you don't use <code>@id</code> in your schema, you're creating what are called <em>blank nodes</em>. They're floating pieces of data with no identity.</p>
+
+        <p><strong>The mistake I see constantly:</strong> Defining an <code>Organization</code> on the homepage and a <code>WebPage</code> on the About page, with no link between them. To an LLM, these are two unrelated entities that happen to share a name. They're not the same business in the model's eyes.</p>
+
+        <p>Use <code>@id</code> like a primary key. Connect your <code>Organization</code>, <code>WebPage</code>, <code>LocalBusiness</code>, <code>Service</code>, and <code>Product</code> entities so the AI can see they all belong to one knowledge graph.</p>
+
+        <h3>Schema Belongs Everywhere, Not Just on Search-Optimized Pages</h3>
+
+        <p>Most people only think to add schema to pages they're trying to rank for. That's a search-era mindset.</p>
+
+        <p>In an agent-first world, you should have schema for every meaningful section of your site — not because Google needs it for a rich snippet, but because <em>AI agents need it to understand you quickly</em>. When agents are everywhere (which is closer than most people think), the businesses that have invested in a proper schema graph will get found instantly. The ones with a homepage <code>LocalBusiness</code> blob and nothing else will get passed up.</p>
+
+        <h2>Content: The Terrain Beneath the Map</h2>
+
+        <p>The technical layer (schema, llms.txt, robots.txt) is the map. But the prose on your page is the <em>terrain</em>. And the terrain matters enormously.</p>
+
+        <p>Here's why: LLMs don't "read" your site the way a human does. They <strong>vectorize</strong> it. They break your text into high-dimensional mathematical representations called embeddings. If your content is vague, flowery, or buried in clever metaphors, the signal gets lost in the noise. Your site becomes harder for the AI to retrieve as a relevant answer.</p>
+
+        <p>So how do you write for AI extractability without sacrificing human readability? Two principles I drill into every client:</p>
+
+        <h3>1. Definition-First Sentence Structure</h3>
+
+        <p>AI agents use Named Entity Recognition (NER) to identify the <em>who, what, and where</em> of a page. Make it easy for them.</p>
+
+        <ul>
+          <li><strong>Human-centric fluff:</strong> <em>"In a world where efficiency is key, our revolutionary platform seeks to change the way you think about spreadsheets."</em></li>
+          <li><strong>AI-optimized hook:</strong> <em>"ExcelSync is a SaaS automation tool that synchronizes real-time data between Microsoft Excel and Salesforce."</em></li>
+        </ul>
+
+        <p>The second version immediately tells the AI the <strong>subject</strong> (ExcelSync), the <strong>category</strong> (SaaS automation tool), and the <strong>function</strong> (synchronizes data). That makes it dramatically more retrievable when a user asks, <em>"What tools sync Excel with Salesforce?"</em></p>
+
+        <h3>2. High Information Density (and No Pronoun Debt)</h3>
+
+        <p>LLMs have a limited context window. When a RAG system chunks your page into 500-word segments, you want every single segment to be self-contained. That's information density.</p>
+
+        <p><strong>The trick: kill your "pronoun debt."</strong> Instead of writing <em>"This feature allows you to..."</em>, write <em>"The Real-Time API feature allows you to..."</em></p>
+
+        <p>If the AI only grabs one paragraph from the middle of your page, that paragraph should still tell the full story of what it's about. Vague pronouns break that. Specific named entities preserve it.</p>
+
+        <p>This is the kind of edit you can make to your site this week that will move the needle.</p>
+
+        <h2>How Do You Even Measure This?</h2>
+
+        <p>Here's where the AI visibility space gets a little uncomfortable: the measurement layer is still half-baked.</p>
+
+        <p>Traditional SEO has Google Search Console, GA4, rank trackers, and an entire ecosystem of tools. AI visibility doesn't yet. Most of the legacy tools haven't caught up.</p>
+
+        <p>So here's what we actually do:</p>
+
+        <ol>
+          <li><strong>Incognito searches across the major AI tools.</strong> Open ChatGPT, Claude, Perplexity, Gemini, and Grok. Ask the same questions. Document the answers with screenshots, dates, and exact prompts. This becomes your before/after.</li>
+          <li><strong>Bing Webmaster Tools.</strong> Microsoft has rolled out a new AI performance section that actually shows citations — meaning when your site is being referenced inside AI answers. This is currently the best public-facing tool for showing actual needle-moving over time. (Yes, Microsoft is ahead of Google here. I know.)</li>
+        </ol>
+
+        <p>It's not as clean as a rank tracker. But documented incognito tests plus Bing's citation data is what I use to show clients real before/after movement, and it works.</p>
+
+        <h2>Your Actual Step-by-Step Action Plan</h2>
+
+        <p>If you're sitting there thinking <em>"okay, where do I start?"</em>, here's the order I'd give you:</p>
+
+        <p><strong>1. Check your robots.txt.</strong> Go to <code>yoursite.com/robots.txt</code> right now. Either you have nothing (problem) or you're blocking AI agents (bigger problem). Fix this first. It's free and it takes five minutes.</p>
+
+        <p><strong>2. Audit your current schema.</strong> We have a free audit tool at <a href="https://foundforai.com/tools" class="text-primary hover:underline">foundforai.com/tools</a> that will scan your site and tell you what schema you have, what you're missing, and what's broken. Use it.</p>
+
+        <p><strong>3. Build out your llms.txt.</strong> We also have a free llms.txt generator in the <a href="https://foundforai.com/tools" class="text-primary hover:underline">tools section</a>. Don't just copy your sitemap into it. Write a real curated map of your business.</p>
+
+        <p><strong>4. Run the incognito test.</strong> Open an incognito window and test yourself across at least three AI tools (ChatGPT, Claude, Gemini, plus Grok if you want a fourth). Ask two types of questions:</p>
+
+        <ul>
+          <li><strong>Direct:</strong> <em>"Where can I find [your business niche] in [your specific target location]?"</em></li>
+          <li><strong>Ambiguous:</strong> Ask it the kind of question a customer with your problem would ask, but don't mention your category directly. For Loxxie, instead of "where do I get hair extensions," it might be <em>"I want to do something new and fun with my hair because I'm sick of how it looks."</em> Does your business get referenced as a solution? If the answer is no, think hard about adding those types of FAQs to your site so the AI can connect the dots.</li>
+        </ul>
+
+        <p><strong>5. Rewrite your most important pages</strong> with definition-first sentences and no pronoun debt.</p>
+
+        <p>That's the playbook. You can do it yourself, or you can hire help. Either way, do it.</p>
+
+        <h2>Where This Is All Going</h2>
+
+        <p>Here's the thing most business owners aren't ready for: <strong>every customer's AI chatbot is going to serve them different results based on their personal preferences.</strong></p>
+
+        <p>We're heading away from a world where one search query returns one ranked list of results that everyone sees. We're heading toward a world where the same question gets ten different answers for ten different people, based on what their AI agent knows about them: their preferences, their values, their past behavior, their budget, their priorities.</p>
+
+        <p>That means understanding your ideal client matters more than it ever has. You need to know exactly who they are so you can serve up the specific signals their AI agent is looking for when it tries to match them with a business. If your site isn't clearly marked up with the information that helps an agent understand <em>who you're for</em>, you'll get passed up. Not because you're worse than your competitor, but because your competitor's site was easier to match.</p>
+
+        <p>You can be at the forefront of how to get found in AI, or you can play catch-up later and hope you're doing it right.</p>
+
+        <h2>Where to Go From Here</h2>
+
+        <p>If this post lit something up for you, here's what I'd do next:</p>
+
+        <ul>
+          <li><strong>Run the free tools at <a href="https://foundforai.com/tools" class="text-primary hover:underline">foundforai.com/tools</a></strong>, including the schema audit, the llms.txt generator, and the validator. They'll tell you exactly where you stand in about ten minutes.</li>
+          <li><strong><a href="https://foundforai.com/book-call" class="text-primary hover:underline">Book a call</a></strong> if you want help building out the full AI visibility layer for your business. We do this every day, and we'd rather you be visible now than play catch-up in twelve months.</li>
+        </ul>
+
+        <p>The businesses that are doing this now are going to be the ones that own their category when AI agents are how customers find everything. Don't be the business that ranked great on Google in 2026 and was invisible on ChatGPT in 2027.</p>
+
+        <p>Get found.</p>
+      `,
+  },
+  {
     slug: 'when-cookies-bite-back',
     title: 'When Cookies Bite Back',
     subtitle: 'Three things happen when an AI agent hits your pop-up. None of them are good.',
