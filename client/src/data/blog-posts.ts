@@ -3,6 +3,7 @@ import aiSearchImg from '@assets/stock_images/artificial_intellige_8c98905d.jpg'
 import websiteOptimizationImg from '@assets/stock_images/website_optimization_b4ff5bda.jpg';
 import phoneBookImg from '@assets/get found in ai phone book.png';
 import detourImg from '@assets/stock_images/detour_cookie_popup.png';
+import bouncerImg from '@assets/stock_images/bouncer_velvet_rope.png';
 
 export interface BlogPostCustomCta {
   headline: string;
@@ -304,6 +305,44 @@ export const blogPosts: BlogPost[] = [
         <p>A human visitor closes it immediately and automatically without even reading it, and keeps browsing. But an AI agent does not work that way. And even if it could dismiss it, the offer makes no sense at that stage. The agent has not seen your product yet. It is not going to go back and tell the human there is a discount. Best case it ignores the coupon. Worst case it confuses the coupon for the whole site and gives up.</p>
 
         <p>These barriers are not just annoying. They are actively getting in the way of AI systems trying to understand and recommend your business.</p>
+      `,
+  },
+  {
+    slug: 'we-dont-serve-your-kind-here',
+    title: 'We Don\'t Serve Your Kind Here.',
+    subtitle: 'Your robots.txt file is already deciding which AI systems can learn about your business. Have you looked at it lately?',
+    date: '2026-05-26',
+    author: 'Brian Jolley',
+    excerpt: 'There\'s a tiny file on your website that does a big job and most people have not heard of it. It\'s your robots.txt file, and it\'s telling AI systems either "Welcome" or "We don\'t serve your kind here."',
+    readTime: '2 min read',
+    image: bouncerImg,
+    articleSection: 'AI Visibility',
+    metaDescription: 'Your robots.txt file is a bouncer at the front door of your website. It\'s already deciding which AI systems can learn about your business — and you probably never set it up intentionally.',
+    ogDescription: 'There\'s a tiny file on your website telling AI systems either "Welcome" or "We don\'t serve your kind here." Most businesses never set it up on purpose.',
+    twitterDescription: 'Your robots.txt file is a bouncer deciding which AI systems can learn about your business. Most businesses never deliberately set those rules.',
+    schemaDescription: 'robots.txt acts as a gatekeeper for AI systems visiting a website. Most businesses rely on platform defaults that may block ChatGPT, Perplexity, Claude, and other AI agents from accessing their site.',
+    keywords: 'robots.txt, AI agents, AI visibility, AI blocking, ChatGPT, Perplexity, Claude, AI search, website AI access',
+    customCta: {
+      headline: 'Want to know if your robots.txt is blocking AI?',
+      copy: 'A free 15-minute call shows you exactly what AI can and cannot see on your site right now — including what your robots.txt is doing.',
+      buttonText: '→ Book a 15-minute call',
+      buttonLink: 'https://foundforai.com/book-call',
+      footnote: 'No pitch. No obligation. Just clarity.',
+    },
+    content: `
+        <p>There's a tiny file on your website that does a big job and most people have not heard of it. It's named "robots.txt" and it's on your site. Open your website URL and add "/robots.txt" to see it — for example, yourcompany.com/robots.txt.</p>
+
+        <p>robots.txt contains a short list of rules that defines what bots and AI agents are welcome on your site. It is basically a bouncer at the front door of your website. Make sure to let that sink in. That one file tells these AI systems either "Welcome," or "We don't serve your kind here."</p>
+
+        <p>Most businesses have not deliberately set the rules that robots.txt is using. It's almost certainly set to the defaults. The defaults came from your website platform or your hosting provider, and they might be blocking AI systems from visiting your site entirely without you knowing it. All humans who use AI to learn about your products and services are potentially being told "go away" by your robots.txt file.</p>
+
+        <p>That matters more now than it ever has. When someone uses ChatGPT or Perplexity or Claude to search for a business like yours, those platforms send out their own agents to gather information. If your robots.txt is blocking those agents, the AI comes back empty, and your business never gets mentioned. But your competitors will if they set up their robots.txt and other key AI-readable information correctly.</p>
+
+        <p>Your site might be invisible to AI systems because a file on your own server is telling them to stay out.</p>
+
+        <p>Go look at your robots.txt file. See what systems are "allowed" or "disallowed." If there's just a blanket rule that blocks everything, you are potentially turning real customers away.</p>
+
+        <p>If you'd like to understand what to do about this and other ways to make your site ready for the AI web, visit <a href="https://foundforai.com" class="text-primary hover:underline">foundforai.com</a>.</p>
       `,
   },
   {
