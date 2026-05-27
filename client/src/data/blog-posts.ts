@@ -4,6 +4,7 @@ import websiteOptimizationImg from '@assets/stock_images/website_optimization_b4
 import phoneBookImg from '@assets/get found in ai phone book.png';
 import detourImg from '@assets/stock_images/detour_cookie_popup.png';
 import bouncerImg from '@assets/stock_images/bouncer_velvet_rope.png';
+import botVsAgentImg from '@assets/stock_images/bot_vs_agent_robots.jpg';
 
 export interface BlogPostCustomCta {
   headline: string;
@@ -343,6 +344,46 @@ export const blogPosts: BlogPost[] = [
         <p>Go look at your robots.txt file. See what systems are "allowed" or "disallowed." If there's just a blanket rule that blocks everything, you are potentially turning real customers away.</p>
 
         <p>If you'd like to understand what to do about this and other ways to make your site ready for the AI web, visit <a href="https://foundforai.com" class="text-primary hover:underline">foundforai.com</a>.</p>
+      `,
+  },
+  {
+    slug: 'bots-and-agents-whats-the-difference',
+    title: 'Bots and Agents - What\'s the Difference?',
+    subtitle: 'If your website treats all AI visitors the same, you might be turning away warm leads without knowing it.',
+    date: '2026-05-28',
+    author: 'Brian Jolley',
+    excerpt: 'As we adjust to the inevitability of AI in our everyday lives, you hear the terms AI "bot" and AI "agent" thrown around. Are they the same thing? In a word, no.',
+    readTime: '3 min read',
+    image: botVsAgentImg,
+    articleSection: 'AI Visibility',
+    metaDescription: 'AI bots and AI agents are not the same thing — and your website can treat them differently. Here\'s what the distinction means for your business and how customers find you.',
+    ogDescription: 'AI bots vacuum up information. AI agents are sent by a real person with a real question. Your website can treat them differently — and most businesses have no idea.',
+    twitterDescription: 'AI bots build an index. AI agents represent a specific person who might actually want what you sell. Not the same thing. Here\'s why it matters.',
+    schemaDescription: 'AI bots are automated crawlers that gather information for large language models. AI agents are dispatched on behalf of a specific person with a specific question. Businesses can configure robots.txt to treat these two types of visitors differently.',
+    keywords: 'AI bots vs agents, AI crawlers, AI agents, robots.txt, GPTBot, ClaudeBot, AI visibility, AI search, how AI finds businesses',
+    customCta: {
+      headline: 'Not sure how your site is handling AI visitors?',
+      copy: 'A free 15-minute call shows you exactly what your robots.txt is doing — and how to make sure you\'re welcoming the right traffic.',
+      buttonText: '→ Book a 15-minute call',
+      buttonLink: 'https://foundforai.com/book-call',
+      footnote: 'No pitch. No obligation. Just clarity.',
+    },
+    content: `
+        <p>As we adjust to the inevitability of AI in our everyday lives, you hear the terms AI "bot" and AI "agent" thrown around. Are they the same thing? In a word, no.</p>
+
+        <p>Who cares? Well, if you have a website and you want your products or services to be findable by customers, you need to manage how your site handles different kinds of visitors in the age of AI.</p>
+
+        <p>So what's the difference between a bot and an agent?</p>
+
+        <p>The big AI systems, like Claude, ChatGPT, Gemini, and Perplexity are powered by Large Language Models (LLMs). And the automation around those models has many functions. Some of the automation gathers up all the info it can find on the open internet and reports what it finds back to home base. Also called crawlers, these bots are not managed directly by humans. They're more like Roomba vacuums for the Internet.</p>
+
+        <p>The big LLMs like ChatGPT, Claude, etc., send bots out to visit websites and read the content. Those bots are building a picture of the world. They are not shopping, nor are they looking for your business, specifically. They are just collecting information so the LLMs can see what is out there.</p>
+
+        <p>An agent is different. An agent is sent to your website on behalf of a specific person with a specific question. Let's say "Dustin" opened his Claude app and said, "Find me a climbing gym in Denver with late hours." The app dispatches a virtual agent to do online research as Dustin's specific representative. That is not a bot. Not a crawler. That is closer to a CEO's executive assistant showing up at your door.</p>
+
+        <p>You may be surprised to learn that your site has some control over the different kinds of visitors. You could, for example, allow agents but block bots, or allow bots but block agents. Your robots.txt file, the one we talked about in <a href="https://foundforai.com/blog/we-dont-serve-your-kind-here" class="text-primary hover:underline">an earlier post</a>, can treat these two types of visitors differently. Most businesses are not being deliberate about this at all.</p>
+
+        <p>Here is the thing. A bot visiting your site is building an index. Useful, but impersonal. An agent visiting your site means a real person sent it there because they might actually want what you sell. That is a warm lead. That is someone in the middle of making a decision. Make sure you know what your website is telling the bots and the agents that stop by, and how to configure your system to welcome the traffic you do want, and ward off the traffic you don't.</p>
       `,
   },
   {
