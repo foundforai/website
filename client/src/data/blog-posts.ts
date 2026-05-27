@@ -330,7 +330,7 @@ export const blogPosts: BlogPost[] = [
       footnote: 'No pitch. No obligation. Just clarity.',
     },
     content: `
-        <p>There's a tiny file on your website that does a big job and most people have not heard of it. It's named "robots.txt" and it's on your site. Open your website URL and add "/robots.txt" to see it — for example, yourcompany.com/robots.txt.</p>
+        <p>There's a tiny file on your website that does a big job and most people have not heard of it. It's named "robots.txt" and it's on your site. Open your website URL and add "/robots.txt" to see it (for example, yourcompany.com/robots.txt).</p>
 
         <p>robots.txt contains a short list of rules that defines what bots and AI agents are welcome on your site. It is basically a bouncer at the front door of your website. Make sure to let that sink in. That one file tells these AI systems either "Welcome," or "We don't serve your kind here."</p>
 
