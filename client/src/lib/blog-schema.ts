@@ -3,7 +3,14 @@ import type { BlogPost } from '@/data/blog-posts';
 const SITE_ORIGIN = 'https://foundforai.com';
 const DEFAULT_IMAGE = `${SITE_ORIGIN}/og-image.jpg`;
 const ORG_ID = `${SITE_ORIGIN}/#org`;
-const AUTHOR_ID = `${SITE_ORIGIN}/#dustin-crump`;
+
+const KNOWN_AUTHORS: Record<string, Record<string, unknown>> = {
+  'Dustin Crump': { "@id": `${SITE_ORIGIN}/#dustin-crump` },
+};
+
+function resolveAuthor(name: string): Record<string, unknown> {
+  return KNOWN_AUTHORS[name] ?? { "@type": "Person", "name": name };
+}
 
 function toIsoDate(date: string): string {
   if (!date) return date;
@@ -31,7 +38,7 @@ export function buildBlogPostingSchema(post: BlogPost): Record<string, unknown> 
     "image": absoluteImage(post.image),
     "datePublished": toIsoDate(post.date),
     "dateModified": toIsoDate(post.dateModified || post.date),
-    "author": { "@id": AUTHOR_ID },
+    "author": resolveAuthor(post.author),
     "publisher": { "@id": ORG_ID },
     "mainEntityOfPage": { "@type": "WebPage", "@id": url },
     "inLanguage": "en-US",
