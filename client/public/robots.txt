@@ -40,6 +40,10 @@ User-agent: Applebot
 User-agent: Applebot-Extended
 Allow: /
 
+# Brave
+User-agent: Bravebot
+Allow: /
+
 # DuckDuckGo
 User-agent: DuckAssistBot
 Allow: /
