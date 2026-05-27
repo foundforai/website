@@ -311,7 +311,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'we-dont-serve-your-kind-here',
     title: 'We Don\'t Serve Your Kind Here.',
     subtitle: 'Your robots.txt file is already deciding which AI systems can learn about your business. Have you looked at it lately?',
-    date: '2026-05-26',
+    date: '2026-05-27',
     author: 'Brian Jolley',
     excerpt: 'There\'s a tiny file on your website that does a big job and most people have not heard of it. It\'s your robots.txt file, and it\'s telling AI systems either "Welcome" or "We don\'t serve your kind here."',
     readTime: '2 min read',

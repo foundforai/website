@@ -75,7 +75,7 @@ export default function BlogPost() {
           <header className="mb-12">
             <div className="flex items-center gap-3 mb-4">
               <Badge variant="outline">
-                {new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                {new Date(post.date.length === 10 ? post.date + 'T12:00:00' : post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
               </Badge>
               <span className="text-sm text-muted-foreground">by {post.author}</span>
             </div>

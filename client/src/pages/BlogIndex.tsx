@@ -134,7 +134,7 @@ export default function BlogIndex() {
                   <div className="p-6">
                     <div className="flex items-center gap-3 mb-3 text-sm text-muted-foreground">
                       <span data-testid={`text-post-date-${post.slug}`}>
-                        {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                        {new Date(post.date.length === 10 ? post.date + 'T12:00:00' : post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                       </span>
                       <span>•</span>
                       <span data-testid={`text-post-author-${post.slug}`}>by {post.author}</span>
