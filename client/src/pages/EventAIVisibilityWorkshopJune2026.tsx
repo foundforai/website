@@ -46,9 +46,9 @@ const SPEAKERS = [
   },
   {
     name: 'Brian Jolley',
-    role: 'Co-host, Found For AI Workshops',
+    role: 'COO, Found For AI',
     bio:
-      "Brian partners with Found For AI on workshop programming and brings a practitioner's lens to AI search: what's actually working for local businesses today, and what's still hype.",
+      "Brian Jolley is COO of Found For AI, where he leads operations and the day-to-day work of installing AI visibility for local businesses. He works directly with operators on the changes that move the needle on AI recommendability.",
     photo: '/events/brian-jolley.jpg',
   },
 ];
