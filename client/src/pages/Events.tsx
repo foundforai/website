@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'wouter';
 import { ArrowRight, Calendar, MapPin } from 'lucide-react';
 import { breadcrumbList } from '@/lib/breadcrumb';
-import { EVENTS, upcomingEvents, pastEvents, type EventCard } from '@/data/events';
+import { EVENTS, upcomingEvents, pastEvents, buildEventSchema, type EventCard } from '@/data/events';
 
 const PAGE_URL = 'https://foundforai.com/events';
 
@@ -16,13 +16,7 @@ const eventSeriesSchema = {
     'Ongoing free workshops on AI visibility — helping businesses get recommended by ChatGPT, Gemini, Perplexity, and Claude.',
   url: PAGE_URL,
   organizer: { '@id': 'https://foundforai.com/#org' },
-  subEvent: EVENTS.map((e) => ({
-    '@type': 'Event',
-    name: e.title,
-    startDate: e.startISO,
-    endDate: e.endISO,
-    url: `https://foundforai.com/events/${e.slug}`,
-  })),
+  subEvent: EVENTS.map(buildEventSchema),
 };
 
 const collectionPageSchema = {
