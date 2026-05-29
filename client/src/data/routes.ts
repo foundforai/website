@@ -48,6 +48,8 @@ const STATIC_ROUTES: RouteEntry[] = [
   { path: '/tools/llms-txt-generator', prerender: true, sitemap: true, priority: 0.8, changefreq: 'monthly', lastmod: '2026-05-12' },
   { path: '/tools/schema-validator', prerender: true, sitemap: true, priority: 0.8, changefreq: 'monthly', lastmod: '2026-05-12' },
   { path: '/faq/personas/delegating-owner-operator', prerender: true, sitemap: true, priority: 0.7, changefreq: 'monthly', lastmod: '2026-05-15' },
+  { path: '/events', prerender: true, sitemap: true, priority: 0.8, changefreq: 'monthly', lastmod: '2026-05-29' },
+  { path: '/events/ai-visibility-workshop-june-2026', prerender: true, sitemap: true, priority: 0.9, changefreq: 'weekly', lastmod: '2026-05-29' },
   { path: '/media', prerender: true, sitemap: true, priority: 0.6, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
   { path: '/media/small-lake-city-podcast', prerender: true, sitemap: true, priority: 0.6, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
   { path: '/press', prerender: true, sitemap: true, priority: 0.7, changefreq: 'monthly', lastmod: '2026-05-15' },
