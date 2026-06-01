@@ -1,0 +1,6 @@
+{
+  "resource": "https://foundforai.com/",
+  "authorization_servers": ["https://foundforai.com/"],
+  "scopes_supported": ["public", "api.analyze", "api.fetch"],
+  "bearer_methods_supported": ["header"]
+}
