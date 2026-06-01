@@ -6,11 +6,20 @@
       "headers": [
         {
           "key": "Link",
-          "value": "</llms.txt>; rel=\"describedby\", </llms-full.txt>; rel=\"describedby\", </sitemap.xml>; rel=\"sitemap\", </robots.txt>; rel=\"robots\""
+          "value": "</llms.txt>; rel=\"describedby\", </llms-full.txt>; rel=\"describedby\", </sitemap.xml>; rel=\"sitemap\", </robots.txt>; rel=\"robots\", </.well-known/api-catalog>; rel=\"api-catalog\""
         },
         {
           "key": "Vary",
           "value": "Accept"
+        }
+      ]
+    },
+    {
+      "source": "/.well-known/api-catalog",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/linkset+json"
         }
       ]
     },

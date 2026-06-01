@@ -1,0 +1,34 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://foundforai.com/api/analyze",
+      "service-doc": [
+        {
+          "href": "https://foundforai.com/",
+          "type": "text/html"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://foundforai.com/api/status",
+          "type": "application/json"
+        }
+      ]
+    },
+    {
+      "anchor": "https://foundforai.com/api/fetch-page",
+      "service-doc": [
+        {
+          "href": "https://foundforai.com/",
+          "type": "text/html"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://foundforai.com/api/status",
+          "type": "application/json"
+        }
+      ]
+    }
+  ]
+}
