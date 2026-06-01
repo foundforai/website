@@ -7,6 +7,19 @@
         {
           "key": "Link",
           "value": "</llms.txt>; rel=\"describedby\", </llms-full.txt>; rel=\"describedby\", </sitemap.xml>; rel=\"sitemap\", </robots.txt>; rel=\"robots\""
+        },
+        {
+          "key": "Vary",
+          "value": "Accept"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Vary",
+          "value": "Accept"
         }
       ]
     }
