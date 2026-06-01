@@ -1,0 +1,14 @@
+{
+  "serverInfo": {
+    "name": "Found For AI",
+    "version": "1.0.0"
+  },
+  "description": "AI visibility tools for businesses. Analyze a site's discoverability by AI assistants like ChatGPT, Gemini, and Perplexity. Check structured data, llms.txt, robots.txt, schema markup, and entity signals.",
+  "url": "https://foundforai.com/mcp",
+  "transport": {
+    "type": "streamable-http"
+  },
+  "capabilities": {
+    "tools": true
+  }
+}
