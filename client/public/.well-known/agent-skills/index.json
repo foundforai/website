@@ -1,0 +1,26 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "skills": [
+    {
+      "name": "ai-visibility-audit",
+      "type": "skill-md",
+      "description": "Audit a website's discoverability by AI assistants — checks structured data, llms.txt, robots.txt, entity clarity, and content signals.",
+      "url": "https://foundforai.com/.well-known/agent-skills/ai-visibility-audit/SKILL.md",
+      "digest": "sha256:806acdb45756a4cff59c7033d5be972cfdbfb43c20625e70c6b9f85903a94f73"
+    },
+    {
+      "name": "llms-txt",
+      "type": "skill-md",
+      "description": "Create or improve a site's llms.txt file so AI assistants can accurately understand and recommend the business.",
+      "url": "https://foundforai.com/.well-known/agent-skills/llms-txt/SKILL.md",
+      "digest": "sha256:ca138c18d835226782166e5084c64840872cb236d5057f0ee45bfdef4b5a2eeb"
+    },
+    {
+      "name": "schema-for-ai",
+      "type": "skill-md",
+      "description": "Implement JSON-LD structured data that helps AI assistants identify, trust, and recommend a business.",
+      "url": "https://foundforai.com/.well-known/agent-skills/schema-for-ai/SKILL.md",
+      "digest": "sha256:3c8001af2ab724c7c4e2232e57699e9a5f31e4440805279e0987023d62e01ea3"
+    }
+  ]
+}
