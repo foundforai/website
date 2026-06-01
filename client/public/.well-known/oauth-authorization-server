@@ -3,10 +3,10 @@
   "agent_auth": {
     "skill": "https://foundforai.com/auth.md",
     "register_uri": "https://foundforai.com/api/agent/register",
+    "claim_uri": "https://foundforai.com/api/agent/claim",
     "identity_types_supported": ["anonymous"],
     "anonymous": {
-      "credential_types_supported": ["api_key"],
-      "claim_uri": "https://foundforai.com/api/agent/claim"
+      "credential_types_supported": ["api_key"]
     }
   }
 }
