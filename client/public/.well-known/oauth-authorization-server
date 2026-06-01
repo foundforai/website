@@ -5,7 +5,8 @@
     "register_uri": "https://foundforai.com/api/agent/register",
     "identity_types_supported": ["anonymous"],
     "anonymous": {
-      "credential_types_supported": ["api_key"]
+      "credential_types_supported": ["api_key"],
+      "claim_uri": "https://foundforai.com/api/agent/claim"
     }
   }
 }
