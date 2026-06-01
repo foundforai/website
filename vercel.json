@@ -1,5 +1,16 @@
 {
   "cleanUrls": true,
+  "headers": [
+    {
+      "source": "/",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "</llms.txt>; rel=\"describedby\", </llms-full.txt>; rel=\"describedby\", </sitemap.xml>; rel=\"sitemap\", </robots.txt>; rel=\"robots\""
+        }
+      ]
+    }
+  ],
   "redirects": [
     { "source": "/search", "destination": "/", "statusCode": 301 },
     { "source": "/reports/:path*", "destination": "/", "statusCode": 301 },
