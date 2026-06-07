@@ -256,6 +256,18 @@ export default function ScorecardHero({
                 Get the AI Visibility Fix →
               </Link>
             </p>
+
+            <p className="mt-2 text-xs sm:text-sm text-center text-slate-500 dark:text-slate-400">
+              Larger organization or agency?{' '}
+              <Link
+                href="/contact"
+                className="font-medium hover:underline"
+                style={{ color: '#0F5FDB' }}
+                data-testid="scorecard-enterprise-link"
+              >
+                Let's talk about custom scoping →
+              </Link>
+            </p>
           </form>
 
           <div className="mt-16 sm:mt-20">

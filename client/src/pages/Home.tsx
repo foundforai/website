@@ -1,10 +1,9 @@
 import PageLayout from '@/components/PageLayout';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Check, Mail, BarChart3, ArrowRight } from 'lucide-react';
+import { Check, Mail, Building2, ArrowRight } from 'lucide-react';
 import { breadcrumbList } from '@/lib/breadcrumb';
 import ScorecardHero from '@/components/ScorecardHero';
-import { STRIPE_LINKS } from '@/lib/stripe-links';
 
 export default function Home() {
   const homeSchemas = [
@@ -55,6 +54,14 @@ export default function Home() {
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "That's fine. AI systems need a place to read your services, location, and booking information. If you don't have a website, we create a simple AI-ready site as part of making your business AI-eligible."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you work with larger organizations or agencies?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We design custom AI visibility programs for mid-market companies, retail chains, multi-location brands, and agencies. These engagements are scoped individually — covering multi-location rollouts, white-label delivery for agencies, and custom reporting. Contact us to discuss your specific needs."
           }
         }
       ]
@@ -258,9 +265,20 @@ export default function Home() {
             ))}
           </ul>
           
-          <p className="text-lg md:text-xl font-bold text-center">
+          <p className="text-lg md:text-xl font-bold text-center mb-10">
             If AI cannot understand your business, it cannot recommend you to your next customer.
           </p>
+
+          <Card className="bg-background/60 border-border max-w-3xl mx-auto" data-testid="card-grocery-example">
+            <CardContent className="p-6 md:p-8">
+              <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-3">
+                A real-world example
+              </p>
+              <p className="text-base md:text-lg">
+                Ask an AI assistant what's on sale this week at a regional grocery chain, and it usually can't answer — the weekly ad is locked inside images and PDFs that AI can't read. The promotions exist, the chain spent money producing them, and AI still recommends a competitor. The same blind spot affects service pages, menus, inventory, and booking details across every industry.
+              </p>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
@@ -371,79 +389,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SELF-SERVE / DIY — Lightweight entry point */}
-      <section id="diy" className="py-16 md:py-20 bg-background">
-        <div className="max-w-5xl mx-auto px-4 md:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-10">
-            <span className="inline-block bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
-              Self-Serve · DIY
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Want to start tracking yourself?
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Skip the onboarding and grab the analytics + a monthly DIY AEO report you implement on your own time. Roll your sleeves up at $49/mo.
-            </p>
-          </div>
-
-          <Card className="border-emerald-200 dark:border-emerald-900/50 border-2 shadow-lg max-w-3xl mx-auto" data-testid="card-diy-home">
-            <CardContent className="p-8 md:p-10">
-              <div className="grid md:grid-cols-2 gap-8 items-center">
-                <div>
-                  <div className="flex items-center gap-2 mb-3">
-                    <BarChart3 className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
-                    <h3 className="text-2xl md:text-3xl font-bold">DIY</h3>
-                  </div>
-                  <div className="flex items-baseline gap-2 mb-2">
-                    <span className="text-5xl font-bold text-primary">$49</span>
-                    <span className="text-muted-foreground">/month</span>
-                  </div>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    7-day free trial · No setup call · Cancel anytime
-                  </p>
-                  <p className="text-muted-foreground mb-6">
-                    Privacy-friendly analytics dashboard + a monthly DIY AEO report so you can see the needle move as you implement the fixes.
-                  </p>
-                  <a
-                    href={STRIPE_LINKS.diy.monthly}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-testid="button-diy-cta-home"
-                  >
-                    <Button size="lg" className="font-semibold gap-2" style={{ backgroundColor: '#0F5FDB', borderColor: '#0F5FDB' }}>
-                      Start 7-Day Free Trial
-                      <ArrowRight className="h-4 w-4" />
-                    </Button>
-                  </a>
-                </div>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
-                    <span className="text-sm">Privacy-friendly analytics dashboard</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
-                    <span className="text-sm">Cookie-free, GDPR-friendly tracking</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
-                    <span className="text-sm">Monthly DIY AEO report</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
-                    <span className="text-sm">No onboarding fee, no setup call</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
-                    <span className="text-sm">Upgrade to Starter anytime</span>
-                  </li>
-                </ul>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
       {/* PRICING / MAIN OFFER — AI Operator Subscription */}
       <section id="ai-search-fix" className="py-16 md:py-24 bg-gradient-to-br from-primary/10 to-accent/10">
         <div className="max-w-5xl mx-auto px-4 md:px-6 lg:px-8">
@@ -452,10 +397,10 @@ export default function Home() {
               Done-For-You · AI Operator Subscription
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Or skip the work — we'll fix it, then keep it fixed.
+              We fix it — then keep it fixed.
             </h2>
             <p className="text-lg text-muted-foreground">
-              Built for busy owner-operators. Start with a one-time onboarding, then pick a monthly plan so your visibility stays tuned as AI models keep changing.
+              Our core engagement, trusted by growing businesses and the agencies that serve them. Start with a one-time onboarding that installs your AI Data Layer, then choose a monthly plan so your visibility stays tuned as AI models keep changing.
             </p>
           </div>
 
@@ -521,7 +466,7 @@ export default function Home() {
               </Button>
             </a>
             <p className="text-sm text-muted-foreground">
-              DIY from $49/mo · $997 onboarding · $299/mo or $599/mo · 60-day guarantee
+              $997 onboarding · $299/mo or $599/mo · 60-day guarantee · Custom scoping available for larger organizations
             </p>
           </div>
 
@@ -534,6 +479,58 @@ export default function Home() {
               <Mail className="h-4 w-4" />
               Need to talk to a partner? Email this page to them.
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ENTERPRISE & AGENCY */}
+      <section id="enterprise" className="py-16 md:py-20 bg-slate-900 dark:bg-slate-950 text-white">
+        <div className="max-w-5xl mx-auto px-4 md:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto">
+            <span className="inline-flex items-center gap-2 bg-white/10 text-white px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
+              <Building2 className="h-4 w-4" />
+              Enterprise &amp; Agency Scoping
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Custom AI Visibility programs for larger organizations
+            </h2>
+            <p className="text-lg text-slate-300 mb-10 max-w-2xl mx-auto">
+              Mid-market companies, retail chains, multi-location brands, and agencies have needs that don't fit a standard plan. We scope these engagements individually. Let's discuss your specific needs.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 text-left">
+              <div className="bg-white/5 border border-white/10 rounded-xl p-6" data-testid="card-enterprise-multilocation">
+                <h3 className="font-bold mb-2">Multi-location &amp; multi-brand</h3>
+                <p className="text-sm text-slate-300">
+                  AI Data Layer rollouts across dozens or hundreds of locations, with per-location entity signals and centralized governance.
+                </p>
+              </div>
+              <div className="bg-white/5 border border-white/10 rounded-xl p-6" data-testid="card-enterprise-agency">
+                <h3 className="font-bold mb-2">Agency partnerships</h3>
+                <p className="text-sm text-slate-300">
+                  White-label AI visibility delivery for agencies. We handle the AI search layer behind the scenes while you own the client relationship.
+                </p>
+              </div>
+              <div className="bg-white/5 border border-white/10 rounded-xl p-6" data-testid="card-enterprise-reporting">
+                <h3 className="font-bold mb-2">Custom programs &amp; reporting</h3>
+                <p className="text-sm text-slate-300">
+                  Bespoke scoping, measurement, and reporting aligned to your stakeholders — from AI visibility baselines to month-over-month tracking.
+                </p>
+              </div>
+            </div>
+
+            <a href="/contact" data-testid="button-enterprise-cta">
+              <Button
+                size="lg"
+                className="text-lg px-8 py-6 font-semibold bg-white text-slate-900 hover:bg-slate-100"
+              >
+                Talk to us about custom scoping
+                <ArrowRight className="h-5 w-5 ml-2" />
+              </Button>
+            </a>
+            <p className="text-sm text-slate-400 mt-4">
+              No forms gauntlet — a direct conversation about your organization's AI visibility.
+            </p>
           </div>
         </div>
       </section>
@@ -598,13 +595,22 @@ export default function Home() {
             </p>
           </details>
 
+          <details className="mb-4" data-testid="faq-enterprise">
+            <summary className="cursor-pointer text-lg font-semibold py-3" data-testid="faq-summary-enterprise">
+              Do you work with larger organizations or agencies?
+            </summary>
+            <p className="text-muted-foreground py-3 pl-4">
+              Yes. We design custom AI visibility programs for mid-market companies, retail chains, multi-location brands, and agencies. These engagements are scoped individually — covering multi-location rollouts, white-label delivery for agencies, and custom reporting. <a href="/contact" className="text-primary hover:underline font-medium">Contact us</a> to discuss your specific needs.
+            </p>
+          </details>
+
           <div className="mt-10 text-center">
             <a
               href="/faq/personas/delegating-owner-operator"
               className="inline-flex items-center gap-1 text-primary hover:underline font-semibold"
               data-testid="link-home-faq-personas"
             >
-              See more questions answered for owner-operators →
+              See more common questions answered →
             </a>
           </div>
         </div>
