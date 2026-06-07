@@ -214,7 +214,7 @@ export default function RetrievalLayerSEO() {
           </h2>
           <div className="prose prose-lg max-w-none text-muted-foreground space-y-6 mb-8">
             <p>
-              Retrieval-Layer SEO is one of the core pillars of our <Link href="/fix-plan"><span className="text-primary hover:underline font-medium">AI Visibility Fix</span></Link>. We audit existing pages for chunk quality, refactor content into self-contained passages, install JSON-LD schema for entities and FAQs, publish llms.txt for machine-readable signals, and build entity authority across the web. The goal is simple: when your customer asks an AI assistant for a recommendation in your category, your business is the answer.
+              Retrieval-Layer SEO is one of the core pillars of our <a href="/fix-plan" className="text-primary hover:underline font-medium">AI Visibility Fix</a>. We audit existing pages for chunk quality, refactor content into self-contained passages, install JSON-LD schema for entities and FAQs, publish llms.txt for machine-readable signals, and build entity authority across the web. The goal is simple: when your customer asks an AI assistant for a recommendation in your category, your business is the answer.
             </p>
           </div>
 
