@@ -4,7 +4,7 @@ import PageLayout from '@/components/PageLayout';
 import { Badge } from '@/components/ui/badge';
 import { breadcrumbList } from '@/lib/breadcrumb';
 import { blogPostsBySlug } from '@/data/blog-posts';
-import { buildBlogPostingSchema } from '@/lib/blog-schema';
+import { buildBlogPostingSchema, buildFaqPageSchema } from '@/lib/blog-schema';
 
 export default function BlogPost() {
   const [, params] = useRoute('/blog/:slug');
@@ -21,6 +21,8 @@ export default function BlogPost() {
       ])
     );
     blogSchemas.push(buildBlogPostingSchema(post));
+    const faqSchema = buildFaqPageSchema(post);
+    if (faqSchema) blogSchemas.push(faqSchema);
   }
 
   useEffect(() => {
@@ -101,6 +103,20 @@ export default function BlogPost() {
             className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:text-foreground prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-4 prose-p:text-muted-foreground prose-p:leading-relaxed prose-ul:text-muted-foreground prose-ol:text-muted-foreground prose-li:my-1 prose-strong:text-foreground prose-a:text-primary prose-a:no-underline hover:prose-a:underline"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
+
+          {post.faqs && post.faqs.length > 0 && (
+            <section className="mt-16 pt-8 border-t" aria-labelledby="faq-heading" data-testid="section-faq">
+              <h2 id="faq-heading" className="text-3xl font-bold mb-8">Frequently Asked Questions</h2>
+              <div className="space-y-8">
+                {post.faqs.map((faq, i) => (
+                  <div key={i} data-testid={`faq-item-${i}`}>
+                    <h3 className="text-xl font-semibold text-foreground mb-2">{faq.question}</h3>
+                    <p className="text-muted-foreground leading-relaxed">{faq.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
 
           {post.customCta ? (
             <div className="mt-16 p-8 md:p-10 bg-muted/50 border rounded-xl text-center">

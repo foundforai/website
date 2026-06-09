@@ -33,6 +33,7 @@ export interface BlogPost {
   articleSection?: string;
   hasMentions?: boolean;
   mentions?: Array<{ name: string; url: string }>;
+  faqs?: Array<{ question: string; answer: string }>;
   customCta?: BlogPostCustomCta;
   content: string;
 }
@@ -47,7 +48,7 @@ export const blogPosts: BlogPost[] = [
     author: 'Dustin Crump',
     excerpt: 'Being recommended by AI is table stakes. Being bookable is the next moat. A new layer of standards — A2A, AID, DNS-AID, MCP — just made it real, and almost nobody is ready. Here is what changed and a live client that already is.',
     readTime: '7 min read',
-    image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2672&auto=format&fit=crop&ixlib=rb-4.1.0',
+    image: 'https://images.unsplash.com/photo-1689848693914-7ba25d9f3334?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0',
     articleSection: 'AI Visibility',
     metaDescription: 'AI agents can now discover and book businesses directly through A2A, AID, and DNS-AID. Here\'s what changed this spring — and a live flooring client already wired for it.',
     ogDescription: 'AI is moving from recommending you to booking you. A new layer of standards just made it real. Here\'s what changed, and a live client that\'s already agent-ready.',
@@ -56,6 +57,28 @@ export const blogPosts: BlogPost[] = [
     keywords: 'agent-ready, AI agents booking, A2A, Agent2Agent, AID, Agent Identity and Discovery, DNS-AID, MCP, Model Context Protocol, agentic web, AI discovery, bookable by AI, agent card, AI visibility',
     mentions: [
       { name: 'New Jersey Flooring Consultant', url: 'https://newjerseyflooringconsultant.com' },
+    ],
+    faqs: [
+      {
+        question: 'What does it mean for a business to be "agent-ready"?',
+        answer: 'An agent-ready business is one an AI agent can discover, understand, and book on a customer’s behalf without a human touching the website. It requires four things in order: a clear, accurate entity (structured data so an agent knows what you do, where, and for whom), a discovery signpost (an AID or DNS-AID record, or an A2A agent card, so agents can find you), an intake or booking endpoint you control so the action is tracked and attributed, and a real handoff to your calendar, CRM, or phone so the booking lands where you run your business.',
+      },
+      {
+        question: 'What is A2A (Agent2Agent)?',
+        answer: 'A2A, or Agent2Agent, is a standard from Google in which a business publishes a small "agent card" — a file at a fixed, predictable spot on its domain — that tells any visiting AI agent what the business does and how to interact with it. Think of it as a business card written for software.',
+      },
+      {
+        question: 'What are AID and DNS-AID?',
+        answer: 'AID (Agent Identity and Discovery) is the minimal way to make a business discoverable to AI agents: a single line added to your domain’s DNS that points an agent to your endpoint and tells it which protocol to use. DNS-AID is the heavier, more official sibling — now under the Linux Foundation — that adds cryptographic verification on top of your existing DNS records, so a visiting agent can confirm the door it found is genuinely yours and not an impostor’s. That trust layer matters once money and bookings are involved.',
+      },
+      {
+        question: 'What is MCP (Model Context Protocol)?',
+        answer: 'MCP, the Model Context Protocol from Anthropic, is the common language an AI agent speaks to actually use a tool or service once it is connected. Discovery standards like A2A and AID tell an agent where to go and which protocol to speak; MCP is often that protocol — the language used to carry out the booking or transaction.',
+      },
+      {
+        question: 'Can AI agents really book a business today, or is this still theoretical?',
+        answer: 'It works today. We built newjerseyflooringconsultant.com, a live service that captures human leads through a normal form and phone number while also exposing a discovery signpost, an agent card, and a single intake endpoint. A simulated agent can discover the card, read how to make a booking, and drop a real estimate request into the same inbox a human form fill would hit. The standards are still converging, but the rails are live and businesses can be bookable by software right now.',
+      },
     ],
     customCta: {
       headline: 'Want to see whether your business is agent-ready?',

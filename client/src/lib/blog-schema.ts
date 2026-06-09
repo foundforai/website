@@ -63,3 +63,22 @@ export function buildBlogPostingSchema(post: BlogPost): Record<string, unknown> 
 
   return schema;
 }
+
+export function buildFaqPageSchema(post: BlogPost): Record<string, unknown> | null {
+  if (!post.faqs || post.faqs.length === 0) return null;
+
+  const url = `${SITE_ORIGIN}/blog/${post.slug}`;
+
+  return {
+    "@type": "FAQPage",
+    "@id": `${url}#faq`,
+    "mainEntity": post.faqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer,
+      },
+    })),
+  };
+}
