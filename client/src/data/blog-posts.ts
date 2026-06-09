@@ -39,6 +39,109 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'agent-ready-booking-a2a-dns-aid',
+    title: 'Your Customer\'s AI Is About to Book You. Most Businesses Aren\'t Ready.',
+    subtitle: 'A new layer of internet standards went live this spring that lets AI agents discover and book a business directly. Here is what changed, and a real flooring client that is already wired for it.',
+    date: '2026-06-09',
+    dateModified: '2026-06-09',
+    author: 'Dustin Crump',
+    excerpt: 'Being recommended by AI is table stakes. Being bookable is the next moat. A new layer of standards — A2A, AID, DNS-AID, MCP — just made it real, and almost nobody is ready. Here is what changed and a live client that already is.',
+    readTime: '7 min read',
+    image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2672&auto=format&fit=crop&ixlib=rb-4.1.0',
+    articleSection: 'AI Visibility',
+    metaDescription: 'AI agents can now discover and book businesses directly through A2A, AID, and DNS-AID. Here\'s what changed this spring — and a live flooring client already wired for it.',
+    ogDescription: 'AI is moving from recommending you to booking you. A new layer of standards just made it real. Here\'s what changed, and a live client that\'s already agent-ready.',
+    twitterDescription: 'Being recommended by AI is table stakes. Being bookable is the next moat. The rails just went live — here\'s what changed and who\'s already ready.',
+    schemaDescription: 'An explainer on the emerging agent-readiness layer — A2A agent cards, AID and DNS-AID discovery records, and MCP — that lets AI agents discover, understand, and book a business directly, with a live New Jersey flooring client as a working example.',
+    keywords: 'agent-ready, AI agents booking, A2A, Agent2Agent, AID, Agent Identity and Discovery, DNS-AID, MCP, Model Context Protocol, agentic web, AI discovery, bookable by AI, agent card, AI visibility',
+    mentions: [
+      { name: 'New Jersey Flooring Consultant', url: 'https://newjerseyflooringconsultant.com' },
+    ],
+    customCta: {
+      headline: 'Want to see whether your business is agent-ready?',
+      copy: 'Our audit shows you exactly what an AI sees when it looks at you today — and where the leaks are. We will show you what it would take to get you wired for the agent layer before your competitors are.',
+      buttonText: '→ Get your agent-readiness audit',
+      buttonLink: 'https://foundforai.com',
+      footnote: 'No pitch. No obligation. Just clarity.',
+    },
+    content: `
+        <p>Picture a homeowner in New Jersey halfway through planning a kitchen remodel. She tells the AI assistant on her phone, "Find me a flooring company near me and set up an estimate." She does not open ten tabs. She does not fill out four forms and wait for callbacks. Her assistant goes out, finds a business that handles her job and her area, confirms it, and books the estimate. She gets a confirmation a minute later and goes back to her evening.</p>
+
+        <p>That scene used to be a slide in a keynote. As of this spring, the plumbing that makes it real is actually in the ground. Most business owners have no idea it happened, and that gap is the opportunity.</p>
+
+        <h2>Search was about being found. Agents are about being acted on.</h2>
+
+        <p>For the last two years, the conversation we have been having with clients at Found For AI has been about visibility: when someone asks ChatGPT, Claude, Perplexity, or Gemini for a recommendation, does your business get named? That is still the foundation, and most businesses still fail at it.</p>
+
+        <p>But a second shift is now underway, and it is bigger. AI is moving from answering questions to taking actions. The assistant is no longer just recommending you. It is trying to hire you, book you, and transact with you, on its owner's behalf, without a human ever touching your website.</p>
+
+        <p>Being recommended is table stakes. Being bookable is the next moat. And almost nobody is ready for it.</p>
+
+        <h2>What actually changed (in plain language)</h2>
+
+        <p>Here is the core problem. Your website is built for human eyes. A person reads it, finds your number, fills out your form. An AI agent trying to do business with you automatically needs two things your site does not currently offer: a door it can knock on, and a language to speak once the door opens. Without those, the agent either clumsily guesses, or skips you entirely and books a competitor who made it easy.</p>
+
+        <p>This spring, the standards that provide that door and that language reached real momentum. You do not need to be technical to understand them. They are signposts and handshakes:</p>
+
+        <p><strong>A2A (Agent2Agent), from Google.</strong> A business publishes a small "agent card," a file at a fixed, predictable spot on its domain, that tells any visiting agent what the business does and how to interact with it. Think of it as a business card written for software.</p>
+
+        <p><strong>AID (Agent Identity and Discovery).</strong> The minimal version. A single line added to your domain's DNS, the internet's address book, that points an agent to your endpoint and tells it which protocol to use. It is the fastest possible way to put up the signpost.</p>
+
+        <p><strong>DNS-AID.</strong> The heavier, more official sibling, which just moved under the Linux Foundation, a neutral standards body that tends to back eventual winners. It uses your existing DNS records plus cryptographic verification, so a visiting agent can confirm the door it found is really yours and not an impostor's. That trust layer matters a great deal once money and bookings are involved.</p>
+
+        <p><strong>MCP (Model Context Protocol), from Anthropic.</strong> The common language an agent speaks to actually use a tool or service once it is connected. The signposts above tell an agent where to go and which language to speak. MCP is often that language.</p>
+
+        <p>Now the honest part, because honesty is the whole point of being a credible guide here. This space is early and a little messy. There are more than ten competing drafts and they do not all work together yet. The standards are converging, not converged. But the rails are live, the big players are committing, and history is clear on what happens next: the businesses that wire up early, while it is cheap and uncrowded, are the ones that get acted on first. This is SEO in 1999. It is the agent layer in 2026.</p>
+
+        <h2>A real example you can look at right now</h2>
+
+        <p>To make this concrete, we built one. <a href="https://newjerseyflooringconsultant.com/" target="_blank" rel="noopener" class="text-primary hover:underline">newjerseyflooringconsultant.com</a> is a live service that matches New Jersey homeowners with vetted local flooring contractors and gets them free quotes.</p>
+
+        <p>On the surface it looks like a clean local-service site, and for a human visitor it works exactly as you would expect: clear offer, a tracked phone number, and a quote form. That is the human path, and it captures leads today.</p>
+
+        <p>Underneath, it is also wired for the agent path. The business has a discovery signpost so an AI agent can find it, an agent card describing what it does, and a single intake endpoint that both the web form and any visiting agent flow through. That last detail is the important one. When an agent books on a customer's behalf, the request runs through a channel the business controls, which means the lead is tracked, attributed, and never quietly handed off to someone else.</p>
+
+        <p>We can demonstrate this working today. A simulated agent discovers the card, reads how to make a booking, and drops a real estimate request into the same inbox a human form fill would hit. That is not a someday demo. That is a business that is bookable by software right now, ahead of the homeowners who will start asking their assistants to do exactly this.</p>
+
+        <h2>Why this should matter to you this quarter</h2>
+
+        <p>Run the audit on your own business honestly. If a customer's AI went looking for what you sell tomorrow, would it find you? If it found you, would it understand what you actually do? And if it understood you, could it take the next step and book you, or would it hit a dead end and move on to a competitor?</p>
+
+        <p>For almost every local business today, the answer to all three is no. They are invisible, or unintelligible, or unbookable. Each one is a leak, and the leaks compound as more people let their assistants handle the boring parts of life: finding a contractor, booking a cleaning, scheduling a consult.</p>
+
+        <p>Getting ready is not expensive yet. Being late will be.</p>
+
+        <h2>What "agent-ready" actually means</h2>
+
+        <p>It comes down to four pieces, in order:</p>
+
+        <ol>
+          <li><strong>A clear, accurate entity.</strong> Structured data and a plain-language summary so an agent understands exactly what you do, where, and for whom.</li>
+          <li><strong>A discovery signpost.</strong> An AID or DNS-AID record, or an A2A agent card, so agents can find your door at all.</li>
+          <li><strong>An intake or booking endpoint you control.</strong> So the action flows through you, tracked and attributed, instead of leaking to a third party.</li>
+          <li><strong>A real handoff.</strong> A connection to your calendar, CRM, or phone so the booking lands somewhere that actually runs your business.</li>
+        </ol>
+
+        <p>That is the whole stack. It is not science fiction and it is not a six-figure software project. It is a setup, done right, by someone who understands the layer.</p>
+
+        <h2>Where this is going next</h2>
+
+        <p>Flooring estimates are the warm-up. The bigger wave is scheduling. The first thing agents will do for people at scale is book appointments, and that touches every business that runs on a calendar: dentists, orthodontists, salons, clinics, law offices, repair services, trades. When a patient tells their assistant "book me a cleaning next Tuesday afternoon," the practice that is agent-ready gets the appointment, and the one that is not never knew the patient was looking.</p>
+
+        <p>The flooring example proves the pattern. The calendar version is the same pattern with a booking on the other end. Both are buildable today.</p>
+
+        <h2>Get ahead of this while it is still early</h2>
+
+        <p>This is what Found For AI does. We make your business discoverable, understandable, and now bookable by AI, so you are the business the agent finds and acts on instead of the one it skips.</p>
+
+        <p>If you want to see whether your business is agent-ready, and where the leaks are, that is exactly what our audit surfaces. We will show you what an AI sees when it looks at you today, and what it would take to get you wired for the agent layer before your competitors are.</p>
+
+        <p>The homeowner in that opening scene is not five years away. She is a software update away. The businesses she can book are the ones that got ready first.</p>
+
+        <p><strong>Ready to be one of them? Get your AI visibility and agent-readiness audit at <a href="https://foundforai.com" class="text-primary hover:underline">foundforai.com</a>.</strong></p>
+      `,
+  },
+  {
     slug: 'how-to-get-found-in-ai',
     title: 'How Do I Get Found in AI? (And Why "Good SEO" Isn\'t Saving You)',
     subtitle: 'Traditional SEO and AI visibility are not the same game. Ranking #1 on Google does not mean ChatGPT will ever mention you.',
