@@ -5,6 +5,7 @@ import phoneBookImg from '@assets/get found in ai phone book.png';
 import detourImg from '@assets/stock_images/detour_cookie_popup.png';
 import bouncerImg from '@assets/stock_images/bouncer_velvet_rope.png';
 import botVsAgentImg from '@assets/stock_images/bot_vs_agent_robots.jpg';
+import cardCatalogImg from '@assets/card-catalog-library.png';
 
 export interface BlogPostCustomCta {
   headline: string;
@@ -40,6 +41,61 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'ai-can-recommend-your-business',
+    title: 'AI Can Recommend Your Business. But Only If You Set It Up Right.',
+    subtitle: 'Having a website is not enough anymore. Here\'s the catalog entry most businesses are missing.',
+    date: '2026-06-10',
+    dateModified: '2026-06-10',
+    author: 'Brian Jolley',
+    excerpt: 'Your website exists. But if AI systems can\'t access and understand it, they will never recommend your services. Here\'s the allegory that explains exactly what\'s missing.',
+    readTime: '3 min read',
+    image: cardCatalogImg,
+    articleSection: 'AI Visibility',
+    metaDescription: 'AI can recommend your business — but only if your site is set up correctly. Most businesses are missing the catalog entry that makes them discoverable to AI systems like ChatGPT, Gemini, and Claude.',
+    ogDescription: 'Your website is like a book on a shelf with no catalog entry. AI systems can\'t find it — and won\'t recommend it. Here\'s what most businesses are missing.',
+    twitterDescription: 'AI visitors convert at 5x Google\'s rate. But only if they can find you. Most websites are invisible to AI — here\'s the allegory that explains why.',
+    schemaDescription: 'An allegory explaining why having a website is not enough for AI visibility. Businesses must structure their sites so AI systems like ChatGPT, Gemini, and Claude can access, understand, and recommend them.',
+    keywords: 'AI visibility, AI recommendations, AI search, ChatGPT recommendations, AI catalog, structured data, business AI discoverability, found for AI',
+    customCta: {
+      headline: 'Is your business already in the catalog?',
+      copy: 'Find out in minutes. The free AI visibility check at foundforai.com analyzes your site and shows you exactly what AI can and can\'t see.',
+      buttonText: '→ Check your AI visibility for free',
+      buttonLink: 'https://foundforai.com',
+      footnote: 'No pitch. No obligation. Just clarity.',
+    },
+    content: `
+        <p>I want to tell you why the long-term survival of your business depends on getting your website ready for AI. And it starts with an allegory about how librarians organize books.</p>
+
+        <h2>Remember libraries?</h2>
+
+        <p>Before the Internet, if you wanted to know about a topic you'd show up at the library and ask the librarian if they had any books on that topic. The librarian would check the official catalog of library books — called a card catalog — to find available books related to your topic of interest. Being in the official catalog was how book discovery was managed. A book could not be in search results without being in the catalog first.</p>
+
+        <h2>How did books get into the official library catalog in the first place?</h2>
+
+        <p>An author would write a book. A publisher would print it. Someone would donate a copy to the local library. The library would accept it, add it to the official catalog of library books, put the book on a shelf, and voila! The book became available to the public. (We'll get back to AI shortly. Stick with me.) It had a catalog entry that included a description of the book and a category designation — philosophy, religion, social science, languages, etc — so it would be grouped with related books.</p>
+
+        <p>If the author were to simply sneak into the library and put the book on a shelf and bypass the process of adding it to the catalog, then there is no way for anyone to ever find the book again. The book might never be removed from the shelf because it was left unnoticed. Undiscoverable. Completely invisible. The shelf exists. The book exists. But nobody will ever find it. The book is effectively non-existent.</p>
+
+        <h2>Having a website is like having a book.</h2>
+
+        <p>But for AI systems to see your site it needs to have the information readily available for the official catalogs — ChatGPT, Gemini, Claude, etc — to consume, or your website is essentially a lost book. Yes, it exists. But it is not discoverable. Unless the AI systems can access and understand the content of your website, they cannot — will not, ever — recommend your services.</p>
+
+        <p>Having a website is not enough anymore.<br />
+        Site ranking on Google is not enough anymore.<br />
+        SEO is not enough anymore.</p>
+
+        <p>Customers are using AI agents to find services every day, and that number is only growing. Search is giving way to asking AI for answers.</p>
+
+        <h2>The numbers behind the shift</h2>
+
+        <p>Someone who finds you through AI is approximately 5x more likely to buy. AI visitors convert at 14.2% vs. Google's 2.8% (Exposure Ninja / WebFX, 2025–2026). 1 billion+ people now use AI regularly for free (Mollick, Aug 2025). This isn't early adopters asking about tech products — it's regular people asking for plumbers, dentists, and dog trainers. AI referral traffic grew 778% year-over-year in 2025.</p>
+
+        <p>Every single day customers who already decided to act ask their AI for recommendations. Your competitors are already cementing their presence in the LLMs by having structure in place for AI visitors. Those are the services AI will recommend because that's what's in their official catalogs. How many customers would need to find you to justify investing in preparing your website for AI visibility? How much do you already spend on SEO, keyword buys, email campaigns, billboards or mailers? More customers are asking AI for answers, and that trend is unlikely to ever turn around.</p>
+
+        <p>The first step is simple: find out if your business is already in the catalog — or sitting on a shelf nobody can find. <a href="https://foundforai.com" class="text-primary hover:underline">An easy way to check is at foundforai.com</a> where it will analyze your site for free.</p>
+      `,
+  },
+  {
     slug: 'agent-ready-booking-a2a-dns-aid',
     title: 'Your Customer\'s AI Is About to Book You. Most Businesses Aren\'t Ready.',
     subtitle: 'A new layer of internet standards went live this spring that lets AI agents discover and book a business directly. Here is what changed, and a real flooring client that is already wired for it.',
@@ -57,28 +113,6 @@ export const blogPosts: BlogPost[] = [
     keywords: 'agent-ready, AI agents booking, A2A, Agent2Agent, AID, Agent Identity and Discovery, DNS-AID, MCP, Model Context Protocol, agentic web, AI discovery, bookable by AI, agent card, AI visibility',
     mentions: [
       { name: 'New Jersey Flooring Consultant', url: 'https://newjerseyflooringconsultant.com' },
-    ],
-    faqs: [
-      {
-        question: 'What does it mean for a business to be "agent-ready"?',
-        answer: 'An agent-ready business is one an AI agent can discover, understand, and book on a customer’s behalf without a human touching the website. It requires four things in order: a clear, accurate entity (structured data so an agent knows what you do, where, and for whom), a discovery signpost (an AID or DNS-AID record, or an A2A agent card, so agents can find you), an intake or booking endpoint you control so the action is tracked and attributed, and a real handoff to your calendar, CRM, or phone so the booking lands where you run your business.',
-      },
-      {
-        question: 'What is A2A (Agent2Agent)?',
-        answer: 'A2A, or Agent2Agent, is a standard from Google in which a business publishes a small "agent card" — a file at a fixed, predictable spot on its domain — that tells any visiting AI agent what the business does and how to interact with it. Think of it as a business card written for software.',
-      },
-      {
-        question: 'What are AID and DNS-AID?',
-        answer: 'AID (Agent Identity and Discovery) is the minimal way to make a business discoverable to AI agents: a single line added to your domain’s DNS that points an agent to your endpoint and tells it which protocol to use. DNS-AID is the heavier, more official sibling — now under the Linux Foundation — that adds cryptographic verification on top of your existing DNS records, so a visiting agent can confirm the door it found is genuinely yours and not an impostor’s. That trust layer matters once money and bookings are involved.',
-      },
-      {
-        question: 'What is MCP (Model Context Protocol)?',
-        answer: 'MCP, the Model Context Protocol from Anthropic, is the common language an AI agent speaks to actually use a tool or service once it is connected. Discovery standards like A2A and AID tell an agent where to go and which protocol to speak; MCP is often that protocol — the language used to carry out the booking or transaction.',
-      },
-      {
-        question: 'Can AI agents really book a business today, or is this still theoretical?',
-        answer: 'It works today. We built newjerseyflooringconsultant.com, a live service that captures human leads through a normal form and phone number while also exposing a discovery signpost, an agent card, and a single intake endpoint. A simulated agent can discover the card, read how to make a booking, and drop a real estimate request into the same inbox a human form fill would hit. The standards are still converging, but the rails are live and businesses can be bookable by software right now.',
-      },
     ],
     customCta: {
       headline: 'Want to see whether your business is agent-ready?',
