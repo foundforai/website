@@ -247,17 +247,14 @@ export default function ScorecardHero({
 
             <p className="mt-6 text-xs sm:text-sm text-center text-slate-500 dark:text-slate-400">
               Already know you need it?{' '}
-              {/* /fix-plan is a standalone HTML page outside the SPA router —
-                  must be a plain <a> (full navigation), not a wouter <Link>,
-                  or the client-side router renders the 404 page. */}
-              <a
-                href="/fix-plan"
+              <Link
+                href="/services"
                 className="font-medium hover:underline"
                 style={{ color: '#0F5FDB' }}
-                data-testid="scorecard-fix-plan-link"
+                data-testid="scorecard-services-link"
               >
-                Get the AI Visibility Fix →
-              </a>
+                See how we work →
+              </Link>
             </p>
 
             <p className="mt-2 text-xs sm:text-sm text-center text-slate-500 dark:text-slate-400">

@@ -58,11 +58,14 @@
     { "source": "/readiness-report", "destination": "/", "statusCode": 301 },
     { "source": "/purchase-complete", "destination": "/", "statusCode": 301 },
     { "source": "/blog/blue-apple-ai-recommended-produce-freshness", "destination": "/blog/bluapple-ai-recommended-produce-freshness", "statusCode": 301 },
-    { "source": "/talk-to-a-human", "destination": "/book-call", "statusCode": 301 }
+    { "source": "/talk-to-a-human", "destination": "/book-call", "statusCode": 301 },
+    { "source": "/pricing", "destination": "/services", "statusCode": 301 },
+    { "source": "/fix-plan", "destination": "/services", "statusCode": 301 },
+    { "source": "/fix-plan/request", "destination": "/services", "statusCode": 301 },
+    { "source": "/fix-plan/thanks", "destination": "/services", "statusCode": 301 },
+    { "source": "/press", "destination": "/media", "statusCode": 301 }
   ],
   "rewrites": [
-    { "source": "/fix-plan/request", "destination": "/fix-plan-request" },
-    { "source": "/fix-plan/thanks", "destination": "/fix-plan-thanks" },
     { "source": "/api/analyze", "destination": "https://scorecard.foundforai.com/api/analyze" }
   ],
   "crons": [

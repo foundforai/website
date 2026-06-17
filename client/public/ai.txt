@@ -17,7 +17,6 @@ https://foundforai.com/what-is-ai-seo
 https://foundforai.com/aeo
 https://foundforai.com/ai-search-visibility
 https://foundforai.com/services
-https://foundforai.com/pricing
 https://foundforai.com/audit
 https://foundforai.com/playbook
 https://foundforai.com/about
@@ -27,7 +26,7 @@ https://foundforai.com/book-call
 # Conversion / sales pages
 https://foundforai.com/ai-visibility
 https://foundforai.com/book-call
-https://foundforai.com/fix-plan
+https://foundforai.com/contact
 
 # Editorial
 https://foundforai.com/blog

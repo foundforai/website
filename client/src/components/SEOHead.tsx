@@ -139,49 +139,12 @@ const GLOBAL_GRAPH: object[] = [
   {
     "@type": "Service",
     "@id": "https://foundforai.com/#service-ai-seo",
-    "name": "AI Operator Subscription",
+    "name": "AI Visibility & AI-First Marketing",
     "serviceType": "AI Visibility Management",
-    "description": "Done-for-you AI visibility implementation and ongoing management for small local businesses. One-time onboarding plus monthly optimization.",
+    "description": "Custom AI visibility and AI-first marketing engagements that help businesses get discovered and recommended by AI assistants like ChatGPT, Gemini, Perplexity, and Claude. Every engagement is scoped to the business.",
     "provider": { "@id": "https://foundforai.com/#org" },
     "areaServed": "United States",
-    "offers": [
-      {
-        "@type": "Offer",
-        "name": "Onboarding",
-        "price": "997",
-        "priceCurrency": "USD",
-        "url": "https://foundforai.com/pricing#onboarding",
-        "availability": "https://schema.org/InStock"
-      },
-      {
-        "@type": "Offer",
-        "name": "Starter Plan",
-        "price": "299",
-        "priceCurrency": "USD",
-        "url": "https://foundforai.com/pricing#starter",
-        "availability": "https://schema.org/InStock",
-        "priceSpecification": {
-          "@type": "UnitPriceSpecification",
-          "price": "299",
-          "priceCurrency": "USD",
-          "billingDuration": "P1M"
-        }
-      },
-      {
-        "@type": "Offer",
-        "name": "Growth Plan",
-        "price": "599",
-        "priceCurrency": "USD",
-        "url": "https://foundforai.com/pricing#growth",
-        "availability": "https://schema.org/InStock",
-        "priceSpecification": {
-          "@type": "UnitPriceSpecification",
-          "price": "599",
-          "priceCurrency": "USD",
-          "billingDuration": "P1M"
-        }
-      }
-    ]
+    "url": "https://foundforai.com/services"
   },
   {
     "@type": "Person",

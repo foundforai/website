@@ -1,7 +1,7 @@
 import PageLayout from '@/components/PageLayout';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Check, Mail, Building2, ArrowRight } from 'lucide-react';
+import { Mail, Building2, ArrowRight } from 'lucide-react';
 import { breadcrumbList } from '@/lib/breadcrumb';
 import ScorecardHero from '@/components/ScorecardHero';
 
@@ -26,10 +26,10 @@ export default function Home() {
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Is this a monthly subscription?",
+          "name": "How does pricing work?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "It is a hybrid. You start with a one-time $997 onboarding, which installs your AI Data Layer and ships your initial fixes in 7 business days. Then you choose a monthly plan — Starter ($299/mo) or Growth ($599/mo) — so we keep your visibility tuned as AI models and your business change. Monthly plans are month-to-month with no long-term contracts."
+            "text": "Every engagement is scoped to your business, so we quote custom rather than list set packages. We start with an audit and install your AI Data Layer, then keep your visibility tuned with ongoing optimization. Book a call and we'll put together a proposal that fits your goals, footprint, and budget."
           }
         },
         {
@@ -92,27 +92,19 @@ export default function Home() {
     }
   ];
 
-  const pricingChecklist = [
-    "Full AI Visibility Audit + AI Data Layer installation",
-    "Initial optimizations done for you in 7 business days",
-    "60-day We Fix It Free guarantee on everything we install"
-  ];
-
-  const monthlyTiers = [
+  const capabilities = [
     {
-      name: "Starter",
-      price: "$299",
-      cadence: "/mo",
-      summary: "Ongoing monitoring, monthly audit, and up to 2 optimizations per month. Priority support.",
-      tag: "Most Popular"
+      name: "AI Visibility & AEO",
+      summary: "Get read, trusted, and recommended by ChatGPT, Gemini, Perplexity, and Claude — through structured data, entity clarity, and AI-readable content.",
     },
     {
-      name: "Growth",
-      price: "$599",
-      cadence: "/mo",
-      summary: "Everything in Starter, plus custom automation workflows and AI agent setup so operations scale with visibility.",
-      tag: "Scale Up"
-    }
+      name: "AI-First Marketing",
+      summary: "AI-ready marketing for businesses, brands, and sports organizations — built so AI surfaces you first when buyers and fans go looking.",
+    },
+    {
+      name: "Ongoing Optimization & Reporting",
+      summary: "We keep your visibility tuned as the models change, and show you exactly what AI says about your business over time.",
+    },
   ];
 
   const proofBlurbs = [
@@ -369,13 +361,13 @@ export default function Home() {
           </h2>
 
           <p className="text-lg text-muted-foreground mb-8 text-center max-w-3xl mx-auto">
-            Onboarding is fast. Once you start, our team runs your AI Visibility Audit, installs your AI Data Layer, and ships your initial optimizations within seven business days. After that, your monthly plan keeps everything tuned as AI models and your business change.
+            Engagements move fast. Once we start, our team runs your AI Visibility Audit, installs your AI Data Layer, and ships your initial optimizations within seven business days. After that, ongoing optimization keeps everything tuned as AI models and your business change.
           </p>
 
           <div className="text-center space-y-2 mb-10">
             <p className="text-base font-medium">No DIY checklists</p>
             <p className="text-base font-medium">No confusing back and forth</p>
-            <p className="text-base font-medium">No long-term contracts on monthly plans</p>
+            <p className="text-base font-medium">No off-the-shelf packages — every engagement is scoped to you</p>
           </div>
 
           <Card className="bg-primary/5 border-primary/20" data-testid="card-guarantee">
@@ -389,86 +381,48 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PRICING / MAIN OFFER — AI Operator Subscription */}
+      {/* MAIN OFFER — Custom Engagements */}
       <section id="ai-search-fix" className="py-16 md:py-24 bg-gradient-to-br from-primary/10 to-accent/10">
         <div className="max-w-5xl mx-auto px-4 md:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <span className="inline-block bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
-              Done-For-You · AI Operator Subscription
+              Custom Engagements
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              We fix it — then keep it fixed.
+              We scope the work to your business.
             </h2>
             <p className="text-lg text-muted-foreground">
-              Our core engagement, trusted by growing businesses and the agencies that serve them. Start with a one-time onboarding that installs your AI Data Layer, then choose a monthly plan so your visibility stays tuned as AI models keep changing.
+              No two businesses show up in AI the same way — so we don't sell packages off a shelf. We start by learning where you stand, then build a custom engagement: install the AI Data Layer, fix what's blocking recommendations, and keep it tuned as the models change.
             </p>
           </div>
 
-          {/* Onboarding Card */}
-          <Card className="border-primary border-2 shadow-lg mb-6" data-testid="card-onboarding">
-            <CardContent className="p-8 md:p-10">
-              <div className="grid md:grid-cols-2 gap-8 items-center">
-                <div>
-                  <span className="inline-block bg-accent/15 text-accent px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide mb-3">
-                    Step 1 · Required Starting Point
-                  </span>
-                  <h3 className="text-2xl md:text-3xl font-bold mb-3">Onboarding</h3>
-                  <div className="flex items-baseline gap-2 mb-4">
-                    <span className="text-5xl font-bold text-primary">$997</span>
-                    <span className="text-muted-foreground">one-time</span>
-                  </div>
-                  <p className="text-muted-foreground">
-                    Full AI Visibility Audit, AI Data Layer installation, and initial optimizations — implemented for you in 7 business days.
-                  </p>
-                </div>
-                <ul className="space-y-3">
-                  {pricingChecklist.map((item, index) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <Check className="h-6 w-6 text-accent shrink-0 mt-0.5" />
-                      <span className="text-base">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Monthly Tiers */}
-          <div className="text-center mb-6">
-            <p className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-              Step 2 · Choose Your Ongoing Plan
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-            {monthlyTiers.map((tier, index) => (
-              <Card key={index} className="relative border-2" data-testid={`card-tier-${tier.name.toLowerCase()}`}>
+          {/* Capability Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            {capabilities.map((cap, index) => (
+              <Card key={index} className="h-full border-2" data-testid={`card-capability-${index + 1}`}>
                 <CardContent className="p-6 md:p-8">
-                  <div className="flex items-center justify-between mb-3">
-                    <h4 className="text-xl font-bold">{tier.name}</h4>
-                    <span className="text-xs font-semibold uppercase tracking-wide text-accent bg-accent/10 px-2.5 py-1 rounded-full">
-                      {tier.tag}
-                    </span>
-                  </div>
-                  <div className="flex items-baseline gap-1 mb-3">
-                    <span className="text-3xl md:text-4xl font-bold text-primary">{tier.price}</span>
-                    <span className="text-muted-foreground">{tier.cadence}</span>
-                  </div>
-                  <p className="text-muted-foreground text-sm">{tier.summary}</p>
+                  <h3 className="text-xl font-bold mb-3">{cap.name}</h3>
+                  <p className="text-muted-foreground text-sm">{cap.summary}</p>
                 </CardContent>
               </Card>
             ))}
           </div>
 
-          <div className="text-center space-y-4">
-            <a href="/pricing" data-testid="button-pricing-cta">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a href="/book-call" data-testid="button-book-call-cta">
               <Button size="lg" className="text-lg px-8 py-6 font-semibold" style={{ backgroundColor: '#0F5FDB', borderColor: '#0F5FDB' }}>
-                See Full Pricing
+                Book a Strategy Call
               </Button>
             </a>
-            <p className="text-sm text-muted-foreground">
-              $997 onboarding · $299/mo or $599/mo · 60-day guarantee · Custom scoping available for larger organizations
-            </p>
+            <a href="/scorecard" data-testid="button-report-cta">
+              <Button size="lg" variant="outline" className="text-lg px-8 py-6 font-semibold border-2">
+                Get a Free Visibility Report
+              </Button>
+            </a>
           </div>
+          <p className="text-sm text-muted-foreground text-center mt-6">
+            Custom engagements · Scoped to your business · No off-the-shelf packages
+          </p>
 
           <div className="mt-6 text-center">
             <a
@@ -559,12 +513,12 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center">Common Questions</h2>
           
-          <details className="mb-4" data-testid="faq-subscription">
-            <summary className="cursor-pointer text-lg font-semibold py-3" data-testid="faq-summary-subscription">
-              Is this a monthly subscription?
+          <details className="mb-4" data-testid="faq-pricing">
+            <summary className="cursor-pointer text-lg font-semibold py-3" data-testid="faq-summary-pricing">
+              How does pricing work?
             </summary>
             <p className="text-muted-foreground py-3 pl-4">
-              It's a hybrid. You start with a one-time $997 onboarding — we install your AI Data Layer and ship the initial fixes in 7 business days. Then you choose a monthly plan (Starter $299/mo or Growth $599/mo) so we keep your visibility tuned as AI models and your business change. Monthly plans are month-to-month with no long-term contracts.
+              Every engagement is scoped to your business, so we quote custom rather than list set packages. We start with an audit and install your AI Data Layer, then keep your visibility tuned with ongoing optimization. Book a call and we'll put together a proposal that fits your goals, footprint, and budget.
             </p>
           </details>
           

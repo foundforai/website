@@ -58,9 +58,9 @@ export default function Footer() {
               <Link href="/faq/personas/delegating-owner-operator" data-testid="link-footer-faq-personas">
                 <span className="hover:text-primary transition-colors">FAQ for Owner-Operators</span>
               </Link>
-              <Link href="/pricing" data-testid="link-footer-pricing">
-                <span className="hover:text-primary transition-colors inline-flex items-center gap-1">
-                  View Pricing
+              <Link href="/book-call" data-testid="link-footer-book-call">
+                <span className="hover:text-primary transition-colors inline-flex items-center gap-1 font-semibold">
+                  Book a Strategy Call <ArrowRight className="h-3 w-3" />
                 </span>
               </Link>
             </nav>

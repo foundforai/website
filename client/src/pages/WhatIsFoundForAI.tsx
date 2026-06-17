@@ -181,9 +181,9 @@ export default function WhatIsFoundForAI() {
           {/* Primary CTA */}
           <div className="mb-16 py-8 border-t border-border">
             <p className="text-sm text-muted-foreground mb-4">If you want help implementing this, start here.</p>
-            <Link href="/pricing" data-testid="link-cta-pricing">
+            <Link href="/book-call" data-testid="link-cta-book-call">
               <Button size="lg" className="text-lg" style={{ backgroundColor: '#0F5FDB', borderColor: '#0F5FDB' }}>
-                Get My AI Visibility Audit
+                Book a Strategy Call
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
@@ -226,9 +226,9 @@ export default function WhatIsFoundForAI() {
                 See All Services
               </Button>
             </Link>
-            <Link href="/pricing" data-testid="link-pricing">
+            <Link href="/book-call" data-testid="link-book-call">
               <Button variant="outline" size="lg">
-                View Pricing
+                Book a Strategy Call
               </Button>
             </Link>
           </div>

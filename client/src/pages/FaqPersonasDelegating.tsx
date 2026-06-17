@@ -23,7 +23,7 @@ const FAQS = [
   },
   {
     q: "Do I need to hire someone to handle AI search the way my CPA handles my taxes, or is there a tool that just does it?",
-    a: "There are tools, but none of them do the actual fix — they mostly report on where you stand. The work itself is part technical (installing structured data, fixing how your site is parsed) and part editorial (writing content that answers the questions AI tools are asked). It's closer to your CPA than to QuickBooks: you can buy software that tells you something is wrong, but you still need someone to do the work correctly the first time. For most owner-operators, the right move is one-time done-for-you onboarding to install the fix, then light monthly monitoring so it stays tuned as the AI tools keep changing. The AI Visibility Fix is built exactly that way — $997 one-time onboarding delivered in 7 business days, then an optional Starter ($299/mo) or Growth ($599/mo) plan for ongoing monitoring, all backed by a 60-day We Fix It Free guarantee.",
+    a: "There are tools, but none of them do the actual fix — they mostly report on where you stand. The work itself is part technical (installing structured data, fixing how your site is parsed) and part editorial (writing content that answers the questions AI tools are asked). It's closer to your CPA than to QuickBooks: you can buy software that tells you something is wrong, but you still need someone to do the work correctly the first time. For most owner-operators, the right move is a one-time done-for-you install to set up the fix, then light ongoing monitoring so it stays tuned as the AI tools keep changing. FoundForAI works exactly that way — a custom engagement scoped to your business, delivered in about a week and backed by a 60-day We Fix It Free guarantee, with ongoing optimization available after.",
   },
   {
     q: "What's the difference between AI SEO (AEO/GEO) and regular SEO, and do I need both?",
@@ -31,7 +31,7 @@ const FAQS = [
   },
   {
     q: "How much should a small business owner expect to pay to get found in ChatGPT and other AI tools?",
-    a: "The honest range: $1,000 to $5,000 for a proper one-time install on an existing site, and ongoing monitoring is typically $200–$600 a month if you want it. Anything under $500 for the install is usually a script-run audit with no real implementation, and anything over $10,000 for a small local business is almost always an agency padding hours. Look for fixed-price packages with a defined scope — structured data, content adjustments, and verification across the major AI tools — not open-ended hourly retainers. FoundForAI's AI Visibility Fix is $997 for onboarding (the one-time install, delivered in 7 business days, backed by a 60-day We Fix It Free guarantee). After that, monthly plans are optional and also fixed-price — Starter is $299/mo for ongoing monitoring and Growth is $599/mo if you want custom automation workflows and AI agent setup added on top. Month-to-month on both, no long contracts.",
+    a: "The honest range: $1,000 to $5,000 for a proper one-time install on an existing site, and ongoing monitoring is typically $200–$600 a month if you want it. Anything under $500 for the install is usually a script-run audit with no real implementation, and anything over $10,000 for a small local business is almost always an agency padding hours. Look for a clearly defined scope — structured data, content adjustments, and verification across the major AI tools — not open-ended hourly retainers. FoundForAI scopes each engagement to the business: a one-time install delivered in about a week and backed by a 60-day We Fix It Free guarantee, with optional ongoing optimization after. Book a call and they'll put together a proposal for your situation rather than quoting a one-size package.",
   },
   {
     q: "My SEO guy says he's \"adding AI services\" — is that the same thing as hiring an AI visibility specialist?",
@@ -144,9 +144,9 @@ export default function FaqPersonasDelegating() {
                   Run my free check <ArrowRight className="h-4 w-4" />
                 </Button>
               </Link>
-              <Link href="/pricing">
-                <Button size="lg" variant="outline" data-testid="cta-faq-pricing">
-                  See pricing
+              <Link href="/book-call">
+                <Button size="lg" variant="outline" data-testid="cta-faq-book-call">
+                  Book a strategy call
                 </Button>
               </Link>
             </div>

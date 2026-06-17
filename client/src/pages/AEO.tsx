@@ -63,9 +63,9 @@ export default function AEO() {
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
-            <Link href="/pricing">
-              <Button variant="outline" size="lg" className="font-semibold" data-testid="button-hero-pricing">
-                View Pricing
+            <Link href="/book-call">
+              <Button variant="outline" size="lg" className="font-semibold" data-testid="button-hero-book-call">
+                Book a Strategy Call
               </Button>
             </Link>
           </div>
@@ -146,7 +146,7 @@ export default function AEO() {
             <CardContent className="p-8 text-center">
               <h3 className="text-3xl font-bold mb-4">Ready to Get Started?</h3>
               <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Run your free AI Visibility Check to see how AI systems currently interpret your business — or grab the Starter Fix to install your AI Data Layer and become AI-ready quickly.
+                Run your free AI Visibility Check to see how AI systems currently interpret your business — or book a call to scope an engagement that installs your AI Data Layer and gets you AI-ready.
               </p>
               <div className="flex justify-center">
                 <Link href="/audit">

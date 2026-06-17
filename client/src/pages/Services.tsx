@@ -26,22 +26,17 @@ const servicesSchemas = [
   {
     '@type': 'Service',
     '@id': 'https://foundforai.com/services#service',
-    name: 'AI Visibility Fix + AI Operator Subscription',
+    name: 'AI Visibility & AI-First Marketing',
     description:
-      "A done-for-you AI visibility service for local businesses. One-time onboarding installs the AI Data Layer and initial optimizations; optional monthly plans keep visibility tuned and add automation as AI assistants change.",
+      "A custom AI visibility agency engagement. We audit how AI assistants understand your business, install the AI Data Layer, fix what blocks recommendations, and keep visibility tuned as AI assistants change. Every engagement is scoped to the business.",
     serviceType: 'AI Visibility Management',
     provider: { '@id': 'https://foundforai.com/#org' },
     areaServed: { '@type': 'Country', 'name': 'United States' },
     audience: {
       '@type': 'BusinessAudience',
-      audienceType: 'Small local businesses and owner-operators',
+      audienceType: 'Businesses, brands, sports organizations, multi-location companies, and agencies',
     },
     url: 'https://foundforai.com/services',
-    hasOfferCatalog: {
-      '@type': 'OfferCatalog',
-      name: 'AI Operator Subscription Plans',
-      url: 'https://foundforai.com/pricing',
-    },
   },
 ];
 
@@ -106,9 +101,9 @@ const howItWorks: Step[] = [
   },
   {
     number: '2',
-    title: 'Choose Your Plan',
+    title: 'Scope Your Engagement',
     description:
-      'Pick a monthly plan that fits — Starter for ongoing tuning, or Growth to add custom automation workflows and AI agent setup.',
+      'We build a custom plan around your goals, footprint, and budget — then keep your visibility tuned with ongoing optimization.',
     icon: Repeat,
   },
   {
@@ -144,8 +139,8 @@ const audience: AudienceItem[] = [
 export default function Services() {
   return (
     <PageLayout
-      title="AI Visibility Fix + Onboarding | Services | Found For AI"
-      description="Done-for-you AI visibility for small local businesses. One-time onboarding installs the AI Data Layer; monthly plans keep you recommended by ChatGPT, Gemini, Perplexity, and Claude."
+      title="Services — AI Visibility & AI-First Marketing | Found For AI"
+      description="A custom AI visibility agency. We audit, install your AI Data Layer, and keep your business recommended by ChatGPT, Gemini, Perplexity, and Claude. Every engagement scoped to you."
       canonical="https://foundforai.com/services"
       schemas={servicesSchemas}
     >
@@ -153,21 +148,21 @@ export default function Services() {
       <section className="py-16 md:py-24 bg-gradient-to-br from-background via-primary/5 to-accent/5">
         <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8 text-center">
           <span className="inline-block bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
-            Our Service
+            What We Do
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            AI Visibility Fix + Onboarding
+            AI Visibility, Done For You
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mb-4 max-w-2xl mx-auto">
-            We make sure AI assistants understand, trust, and recommend your business — then keep it that way every month.
+            We make sure AI assistants understand, trust, and recommend your business — then keep it that way.
           </p>
           <p className="text-base md:text-lg font-medium text-foreground max-w-2xl mx-auto">
             Most AI visibility tools show you the gaps. We fix them and keep them fixed.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center mt-10">
-            <Link href="/pricing">
-              <Button size="lg" className="font-semibold gap-2" data-testid="button-hero-pricing">
-                See Full Pricing &amp; Plans
+            <Link href="/book-call">
+              <Button size="lg" className="font-semibold gap-2" data-testid="button-hero-book-call">
+                Book a Strategy Call
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </Link>
@@ -226,11 +221,11 @@ export default function Services() {
         <div className="max-w-5xl mx-auto px-4 md:px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="inline-block bg-accent/15 text-accent px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide mb-3">
-              Step 1 · Required Starting Point
+              Where every engagement starts
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold mb-3">What's in the AI Visibility Fix</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-3">What an AI-visibility engagement includes</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Onboarding is where every engagement starts. Here's exactly what gets installed.
+              Every engagement starts with the foundation. Here's exactly what we install.
             </p>
           </div>
 
@@ -268,9 +263,9 @@ export default function Services() {
       <section className="py-16 md:py-20 bg-background">
         <div className="max-w-5xl mx-auto px-4 md:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-3">A Hybrid Model Built for Owner-Operators</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-3">How an Engagement Works</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              You start with onboarding. After that, a monthly plan keeps your visibility tuned so you stay recommended as AI models evolve.
+              You start with the audit and install. After that, ongoing optimization keeps your visibility tuned so you stay recommended as AI models evolve.
             </p>
           </div>
 
@@ -278,15 +273,15 @@ export default function Services() {
             <Card className="border-primary border-2 shadow-md">
               <CardContent className="p-8">
                 <Layers className="h-10 w-10 text-primary mb-4" />
-                <h3 className="text-2xl font-bold mb-2">One-Time Onboarding</h3>
-                <p className="text-sm font-medium text-accent uppercase tracking-wide mb-4">Required Starting Point</p>
+                <h3 className="text-2xl font-bold mb-2">Audit &amp; Install</h3>
+                <p className="text-sm font-medium text-accent uppercase tracking-wide mb-4">Where every engagement starts</p>
                 <p className="text-muted-foreground mb-4">
                   Audit, AI Data Layer installation, and initial optimizations — done for you in seven business days.
                 </p>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex items-start gap-2">
                     <Check className="h-4 w-4 text-accent shrink-0 mt-1" />
-                    <span>Foundation AI assistants need to recommend you</span>
+                    <span>The foundation AI assistants need to recommend you</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-4 w-4 text-accent shrink-0 mt-1" />
@@ -299,23 +294,19 @@ export default function Services() {
             <Card className="border-2 border-border shadow-md">
               <CardContent className="p-8">
                 <Repeat className="h-10 w-10 text-primary mb-4" />
-                <h3 className="text-2xl font-bold mb-2">Optional Monthly Plan</h3>
+                <h3 className="text-2xl font-bold mb-2">Ongoing Optimization</h3>
                 <p className="text-sm font-medium text-accent uppercase tracking-wide mb-4">Keep It Tuned</p>
                 <p className="text-muted-foreground mb-4">
-                  Pick a monthly plan after onboarding ships. Month-to-month — cancel anytime.
+                  AI assistants change constantly — and so does your business. We keep your visibility accurate and current, scoped to how much support you want.
                 </p>
                 <ul className="space-y-3 text-sm text-muted-foreground">
                   <li className="flex items-start gap-2">
                     <Check className="h-4 w-4 text-accent shrink-0 mt-1" />
-                    <span>
-                      <strong className="text-foreground">Starter:</strong> ongoing monitoring, monthly audits, and optimizations.
-                    </span>
+                    <span>Ongoing monitoring and monthly audits across the major AI assistants</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Bot className="h-4 w-4 text-accent shrink-0 mt-1" />
-                    <span>
-                      <strong className="text-foreground">Growth:</strong> everything in Starter, plus custom automation workflows and AI agent setup so operations scale with visibility.
-                    </span>
+                    <LineChart className="h-4 w-4 text-accent shrink-0 mt-1" />
+                    <span>Regular optimizations and reporting on what AI says about your business</span>
                   </li>
                 </ul>
               </CardContent>
@@ -323,9 +314,9 @@ export default function Services() {
           </div>
 
           <div className="text-center mt-10">
-            <Link href="/pricing">
-              <Button size="lg" className="font-semibold gap-2" data-testid="button-hybrid-pricing">
-                See Full Pricing &amp; Plans
+            <Link href="/book-call">
+              <Button size="lg" className="font-semibold gap-2" data-testid="button-hybrid-book-call">
+                Book a Strategy Call
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </Link>
@@ -393,16 +384,11 @@ export default function Services() {
             Ready to be the business AI recommends?
           </h2>
           <p className="text-lg text-muted-foreground mb-8">
-            Three ways to start — pick whichever fits where you are.
+            Two ways to start — pick whichever fits where you are.
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
-            <Link href="/pricing">
-              <Button size="lg" className="w-full font-semibold" data-testid="button-final-pricing">
-                See Full Pricing
-              </Button>
-            </Link>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto">
             <Link href="/book-call">
-              <Button size="lg" variant="outline" className="w-full font-semibold border-2" data-testid="button-final-book-call">
+              <Button size="lg" className="w-full font-semibold" data-testid="button-final-book-call">
                 Book a Strategy Call
               </Button>
             </Link>
@@ -413,7 +399,7 @@ export default function Services() {
             </Link>
           </div>
           <p className="text-sm text-muted-foreground mt-6">
-            One-time onboarding · Optional monthly plan · 60-day guarantee · No long contracts
+            Custom engagements · Scoped to your business · 60-day guarantee · No off-the-shelf packages
           </p>
         </div>
       </section>

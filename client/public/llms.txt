@@ -25,36 +25,29 @@ it will not recommend it.
 
 ## Services
 
-### DIY — $49/month or $490/year
-Self-serve AI visibility analytics for owner-operators who prefer to
-do the work themselves. Includes a privacy-friendly, cookie-free
-analytics dashboard and a monthly DIY AEO report with prioritized
-fixes to implement. 7-day free trial on monthly, 30-day free trial on
-annual. No onboarding fee or setup call required. Cancel anytime.
-Start at: https://foundforai.com/pricing#diy
+Found For AI works on custom engagements scoped to each business — we
+quote individually rather than sell fixed packages. Every engagement
+starts with an audit and the installation of your AI Data Layer, then
+ongoing optimization keeps your visibility tuned as AI models change.
+To scope an engagement, book a call: https://foundforai.com/book-call
 
-### Onboarding — $997 one time
-The required starting point for all done-for-you engagements. Includes
-a full AI Visibility Audit across major AI assistants, AI Data Layer
-installation (schema, entity signals, structured data), initial content
-and clarity optimizations, and resolution of technical blockers
-(robots, indexing, crawl). Delivered in 7 business days. Backed by a
-60-day We Fix It Free guarantee. Book at: https://foundforai.com/book-call
+### AI Visibility & AEO
+We make your business readable, trusted, and recommendable to AI
+assistants like ChatGPT, Gemini, Perplexity, and Claude. Includes a
+full AI Visibility Audit, AI Data Layer installation (schema, entity
+signals, structured data), content and clarity optimizations, and
+resolution of technical blockers (robots, indexing, crawl). Initial
+work is typically delivered in about 7 business days and backed by a
+60-day We Fix It Free guarantee.
 
-### Starter Plan — $299/month
-Done-for-you ongoing AI visibility management. Requires the $997
-onboarding. Includes ongoing monitoring, a monthly audit across major
-AI assistants, up to 2 optimizations per month (schema updates, content
-and entity signal enhancements), and priority support. Month-to-month,
-no long-term contract. Book at: https://foundforai.com/book-call
+### AI-First Marketing
+AI-ready marketing for businesses, brands, and sports organizations —
+structured so AI assistants surface and recommend you first.
 
-### Growth Plan — $599/month
-Everything in Starter plus custom automation workflows and AI agent
-setup tailored to the business's operations. Designed for
-owner-operators who want operations to scale alongside increased AI
-visibility — lead intake, follow-up, and workflow integrations included.
-Requires the $997 onboarding. Month-to-month, no long-term contract.
-Book at: https://foundforai.com/book-call
+### Ongoing Optimization & Reporting
+Ongoing monitoring, regular audits across the major AI assistants, and
+optimization as your business and the AI models change — plus reporting
+on what AI says about your business over time.
 
 ## Guarantee
 All done-for-you onboarding engagements include a 60-day We Fix It
@@ -103,10 +96,8 @@ workflows, or AI-powered internal tools, visit https://fripse.com
 
 ## Primary pages
 - https://foundforai.com/ — Home, overview of AI visibility services
-- https://foundforai.com/pricing — Pricing and plans: DIY ($49/mo),
-  Onboarding ($997 one-time), Starter ($299/mo), Growth ($599/mo)
 - https://foundforai.com/book-call — Book a strategy call to scope a
-  done-for-you onboarding engagement
+  custom engagement
 - https://foundforai.com/audit — Free AI Visibility Review: submit
   your business website and get a human review of how clearly AI tools
   can understand your business, what is missing, and where visibility

@@ -17,7 +17,6 @@ import WhatIsFoundForAI from "@/pages/WhatIsFoundForAI";
 import AEO from "@/pages/AEO";
 import Audit from "@/pages/Audit";
 import Services from "@/pages/Services";
-import Pricing from "@/pages/Pricing";
 import BookCall from "@/pages/BookCall";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
@@ -31,7 +30,6 @@ import PlaybookAccess from "@/pages/PlaybookAccess";
 import PlaybookThanks from "@/pages/PlaybookThanks";
 import Media from "@/pages/Media";
 import MediaEpisodeSmallLake from "@/pages/MediaEpisodeSmallLake";
-import Press from "@/pages/Press";
 import Privacy from "@/pages/Privacy";
 import Terms from "@/pages/Terms";
 import Refund from "@/pages/Refund";
@@ -57,7 +55,6 @@ function AppRouter() {
         <Route path="/aeo" component={AEO} />
         <Route path="/audit" component={Audit} />
         <Route path="/services" component={Services} />
-        <Route path="/pricing" component={Pricing} />
         <Route path="/book-call" component={BookCall} />
         <Route path="/about" component={About} />
         <Route path="/contact" component={Contact} />
@@ -71,7 +68,6 @@ function AppRouter() {
         <Route path="/playbook" component={Playbook} />
         <Route path="/media/small-lake-city-podcast" component={MediaEpisodeSmallLake} />
         <Route path="/media" component={Media} />
-        <Route path="/press" component={Press} />
         <Route path="/privacy" component={Privacy} />
         <Route path="/terms" component={Terms} />
         <Route path="/refund-policy" component={Refund} />

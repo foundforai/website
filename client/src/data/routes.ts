@@ -28,7 +28,6 @@ const STATIC_ROUTES: RouteEntry[] = [
   { path: '/audit', prerender: true, sitemap: true, priority: 0.9, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
   { path: '/scorecard', prerender: true, sitemap: true, priority: 0.9, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
   { path: '/scorecard/results', prerender: true, sitemap: false },
-  { path: '/pricing', prerender: true, sitemap: true, priority: 0.9, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
   { path: '/services', prerender: true, sitemap: true, priority: 0.8, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
   { path: '/playbook', prerender: true, sitemap: true, priority: 0.9, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
   { path: '/playbook/access', prerender: true, sitemap: false },
@@ -52,13 +51,12 @@ const STATIC_ROUTES: RouteEntry[] = [
   { path: '/events/ai-visibility-workshop-june-2026', prerender: true, sitemap: true, priority: 0.9, changefreq: 'weekly', lastmod: '2026-05-29' },
   { path: '/media', prerender: true, sitemap: true, priority: 0.6, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
   { path: '/media/small-lake-city-podcast', prerender: true, sitemap: true, priority: 0.6, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
-  { path: '/press', prerender: true, sitemap: true, priority: 0.7, changefreq: 'monthly', lastmod: '2026-05-15' },
   { path: '/privacy', prerender: true, sitemap: true, priority: 0.3, changefreq: 'yearly', lastmod: '2026-05-11' },
   { path: '/terms', prerender: true, sitemap: true, priority: 0.3, changefreq: 'yearly', lastmod: '2026-05-11' },
   { path: '/refund-policy', prerender: true, sitemap: true, priority: 0.3, changefreq: 'yearly', lastmod: '2026-05-19' },
   // Standalone HTML pages (already static — not prerendered, but included in sitemap where appropriate)
   { path: '/ai-visibility', prerender: false, sitemap: true, priority: 0.8, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
-  { path: '/fix-plan', prerender: false, sitemap: true, priority: 1.0, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
+  { path: '/fix-plan', prerender: false, sitemap: false },
   { path: '/fix-plan/request', prerender: false, sitemap: false },
   { path: '/fix-plan/thanks', prerender: false, sitemap: false },
 ];

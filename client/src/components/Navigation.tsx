@@ -33,7 +33,6 @@ export default function Navigation() {
     { href: '/what-is-ai-seo', label: 'What Is AI SEO' },
     { href: '/retrieval-layer-seo', label: 'Retrieval-Layer SEO' },
     { href: '/services', label: 'Services' },
-    { href: '/pricing', label: 'Pricing & Plans' },
     { href: '/blog', label: 'Blog' },
     { href: '/tools', label: 'Tools' },
     { href: '/about', label: 'About' },
@@ -67,11 +66,11 @@ export default function Navigation() {
 
           <div className="hidden md:flex items-center gap-2">
             <ThemeToggle />
-            <a href="/#ai-search-fix">
-              <Button data-testid="button-get-audit-header" className="font-semibold" style={{ backgroundColor: '#0F5FDB', borderColor: '#0F5FDB' }}>
-                Get the AI Visibility Fix
+            <Link href="/book-call">
+              <Button data-testid="button-book-call-header" className="font-semibold" style={{ backgroundColor: '#0F5FDB', borderColor: '#0F5FDB' }}>
+                Book a Call
               </Button>
-            </a>
+            </Link>
           </div>
 
           <div className="flex md:hidden items-center gap-2">
@@ -102,11 +101,11 @@ export default function Navigation() {
                 </div>
               </Link>
             ))}
-            <a href="/#ai-search-fix">
-              <Button className="w-full font-semibold" style={{ backgroundColor: '#0F5FDB', borderColor: '#0F5FDB' }} data-testid="button-get-audit-mobile" onClick={() => setMobileMenuOpen(false)}>
-                Get the AI Visibility Fix
+            <Link href="/book-call">
+              <Button className="w-full font-semibold" style={{ backgroundColor: '#0F5FDB', borderColor: '#0F5FDB' }} data-testid="button-book-call-mobile" onClick={() => setMobileMenuOpen(false)}>
+                Book a Call
               </Button>
-            </a>
+            </Link>
           </div>
         </div>
       )}
