@@ -65,9 +65,6 @@
     { "source": "/fix-plan/thanks", "destination": "/services", "statusCode": 301 },
     { "source": "/press", "destination": "/media", "statusCode": 301 }
   ],
-  "rewrites": [
-    { "source": "/api/analyze", "destination": "https://scorecard.foundforai.com/api/analyze" }
-  ],
   "crons": [
     { "path": "/api/cron/indexnow", "schedule": "0 */6 * * *" }
   ]

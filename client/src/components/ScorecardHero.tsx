@@ -4,6 +4,10 @@ import { useToast } from '@/hooks/use-toast';
 import { trackEvent } from '@/lib/analytics';
 
 export const SCORECARD_RESULT_STORAGE_KEY = 'scorecard:lastResult';
+// Full (paid) report, written only after Stripe payment is verified on the
+// results page. Cleared whenever a new free scan runs so a fresh teaser never
+// shows a previous site's unlocked audit.
+export const SCORECARD_FULL_STORAGE_KEY = 'scorecard:fullResult';
 
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mpqwvlnz';
 
@@ -137,6 +141,8 @@ export default function ScorecardHero({
           SCORECARD_RESULT_STORAGE_KEY,
           JSON.stringify(payload)
         );
+        // New scan invalidates any previously-unlocked full report.
+        window.sessionStorage.removeItem(SCORECARD_FULL_STORAGE_KEY);
       } catch {
         // sessionStorage can throw in private mode; fail soft and let the
         // results page show its empty state.
@@ -179,8 +185,8 @@ export default function ScorecardHero({
           </h1>
 
           <p className="mt-6 text-lg sm:text-xl text-slate-500 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
-            See exactly how ChatGPT, Gemini, Perplexity, and Claude describe — or
-            ignore — your business. Free report, no credit card.
+            Get your free AI Visibility Score and see how ChatGPT, Gemini,
+            Perplexity, and Claude rate your business — in seconds, no credit card.
           </p>
 
           <form
@@ -229,16 +235,16 @@ export default function ScorecardHero({
                 style={{ backgroundColor: '#0F5FDB' }}
                 data-testid="scorecard-submit"
               >
-                {loading ? 'Analyzing…' : 'Get my free report'}
+                {loading ? 'Analyzing…' : 'Get my free score'}
               </button>
             </div>
 
             <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 mt-5 text-sm text-slate-500 dark:text-slate-400">
               <span className="inline-flex items-center gap-2">
-                <span className="text-slate-400">✓</span> Instant on-page report
+                <span className="text-slate-400">✓</span> Instant score
               </span>
               <span className="inline-flex items-center gap-2">
-                <span className="text-slate-400">✓</span> Save as PDF
+                <span className="text-slate-400">✓</span> Category breakdown
               </span>
               <span className="inline-flex items-center gap-2">
                 <span className="text-slate-400">✓</span> No credit card
