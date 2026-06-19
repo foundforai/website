@@ -22,8 +22,11 @@ function json(data: unknown, status = 200): Response {
 }
 
 interface StripeSession {
+  id?: string;
   payment_status?: string;
   status?: string;
+  amount_total?: number;
+  currency?: string;
   metadata?: { url?: string; keyword?: string; email?: string };
   error?: { message?: string };
 }
@@ -75,7 +78,16 @@ export default async function handler(request: Request): Promise<Response> {
       email: session.metadata?.email || undefined,
       keyword: session.metadata?.keyword || undefined,
     });
-    return json({ ...full, paid: true });
+    return json({
+      ...full,
+      paid: true,
+      payment: {
+        sessionId: session.id || sessionId,
+        // Stripe amounts are in the smallest currency unit (cents).
+        amountTotal: typeof session.amount_total === 'number' ? session.amount_total : null,
+        currency: (session.currency || 'usd').toUpperCase(),
+      },
+    });
   } catch {
     return json(
       {

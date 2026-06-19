@@ -4,7 +4,7 @@ import PageLayout from '@/components/PageLayout';
 import { Check, X, Download, ChevronDown, ArrowRight, Lock } from 'lucide-react';
 import * as AccordionPrimitive from '@radix-ui/react-accordion';
 import { useToast } from '@/hooks/use-toast';
-import { trackEvent } from '@/lib/analytics';
+import { trackEvent, trackPurchase } from '@/lib/analytics';
 import {
   SCORECARD_RESULT_STORAGE_KEY,
   SCORECARD_FULL_STORAGE_KEY,
@@ -160,7 +160,10 @@ export default function ScorecardResults() {
       setHydrated(true);
       fetch(`/api/audit?session_id=${encodeURIComponent(sessionId)}`)
         .then(async (res) => {
-          const data = (await res.json()) as ScorecardApiResult & { error?: string };
+          const data = (await res.json()) as ScorecardApiResult & {
+            error?: string;
+            payment?: { sessionId?: string; amountTotal?: number | null; currency?: string };
+          };
           if (!res.ok || !data.sections) {
             throw new Error(data?.error || 'We could not verify your payment.');
           }
@@ -171,7 +174,31 @@ export default function ScorecardResults() {
           } catch {
             // ignore storage failures
           }
-          trackEvent('unlock_full_audit', { form_location: '/scorecard/results' });
+          // Fire the GA4 purchase conversion once per Stripe session. GA4 also
+          // dedupes by transaction_id, but this guard avoids a duplicate push
+          // if the effect re-runs before the URL is cleaned.
+          const txnId = data.payment?.sessionId || sessionId;
+          const guardKey = `scorecard:tracked:${txnId}`;
+          let alreadyTracked = false;
+          try {
+            alreadyTracked = window.sessionStorage.getItem(guardKey) === '1';
+          } catch {
+            // ignore
+          }
+          if (!alreadyTracked) {
+            const cents = data.payment?.amountTotal;
+            const value = typeof cents === 'number' ? cents / 100 : 99;
+            trackPurchase({
+              transactionId: txnId,
+              value,
+              currency: data.payment?.currency || 'USD',
+            });
+            try {
+              window.sessionStorage.setItem(guardKey, '1');
+            } catch {
+              // ignore
+            }
+          }
           // Drop session_id from the URL so a refresh doesn't re-verify.
           window.history.replaceState({}, '', '/scorecard/results');
         })

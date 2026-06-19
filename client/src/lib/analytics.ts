@@ -27,3 +27,44 @@ export function trackEvent(event: string, params: AnalyticsParams = {}): void {
   const finalParams = aiSource ? { ai_source: aiSource, ...params } : params;
   window.dataLayer.push({ event, ...finalParams });
 }
+
+/**
+ * GA4 ecommerce "purchase" event — the conversion ad platforms optimize toward.
+ *
+ * Pushes the standard GA4 ecommerce structure (cleared first per Google's
+ * guidance so values don't merge across events). `transactionId` should be the
+ * Stripe Checkout session id: GA4 dedupes purchases by transaction_id, so this
+ * counts a single conversion even if the event fires more than once.
+ */
+export function trackPurchase(opts: {
+  transactionId: string;
+  value: number;
+  currency?: string;
+  itemId?: string;
+  itemName?: string;
+}): void {
+  if (typeof window === 'undefined') return;
+  if (!Array.isArray(window.dataLayer)) {
+    window.dataLayer = [];
+  }
+  const aiSource = readAiSource();
+  // Clear any previous ecommerce payload before pushing the new one.
+  window.dataLayer.push({ ecommerce: null });
+  window.dataLayer.push({
+    event: 'purchase',
+    ...(aiSource ? { ai_source: aiSource } : {}),
+    ecommerce: {
+      transaction_id: opts.transactionId,
+      value: opts.value,
+      currency: opts.currency || 'USD',
+      items: [
+        {
+          item_id: opts.itemId || 'ai-visibility-audit',
+          item_name: opts.itemName || 'Full AI Visibility Audit',
+          price: opts.value,
+          quantity: 1,
+        },
+      ],
+    },
+  });
+}
