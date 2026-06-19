@@ -482,11 +482,32 @@ function TeaserView({ payload }: { payload: StoredPayload }) {
         </div>
       ) : null}
 
-      {/* Locked category cards — show the score, lock the findings */}
-      <div className="space-y-4 mb-6">
-        {result.sections.map((section) => (
-          <LockedSectionCard key={section.id} section={section} />
-        ))}
+      {/* Locked category breakdown — blurred behind a paywall overlay so it
+          reads as "real content, gated" without anything being legible. The
+          findings themselves are never in the DOM; this is purely visual. */}
+      <div className="relative mb-6">
+        <div className="space-y-4 blur-[6px] select-none pointer-events-none" aria-hidden="true">
+          {result.sections.map((section) => (
+            <LockedSectionCard key={section.id} section={section} />
+          ))}
+        </div>
+        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-slate-50/20 via-slate-50/70 to-slate-50 dark:from-slate-900/20 dark:via-slate-900/70 dark:to-slate-900">
+          <div className="text-center bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-2xl shadow-lg px-6 py-7 max-w-sm mx-4">
+            <span className="mx-auto mb-3 flex items-center justify-center w-12 h-12 rounded-full bg-blue-50 dark:bg-blue-900/30">
+              <Lock className="h-5 w-5" style={{ color: '#0F5FDB' }} />
+            </span>
+            <p
+              className="text-lg font-bold text-slate-900 dark:text-slate-100"
+              style={{ fontFamily: "'Montserrat', sans-serif" }}
+            >
+              Your full category breakdown is locked
+            </p>
+            <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
+              Unlock the audit below to see exactly what passed, what failed, and how to
+              fix every issue.
+            </p>
+          </div>
+        </div>
       </div>
 
       {/* Paywall */}
@@ -590,13 +611,9 @@ function LockedSectionCard({ section }: { section: ScorecardSection }) {
           {section.score}/{section.max}
         </div>
       </div>
-      <div className="h-2 rounded-full bg-gray-100 dark:bg-slate-700 overflow-hidden mb-3">
+      <div className="h-2 rounded-full bg-gray-100 dark:bg-slate-700 overflow-hidden">
         <div className="h-full rounded-full transition-all duration-500" style={{ width: `${pct}%`, backgroundColor: barColor }} />
       </div>
-      <p className="flex items-center gap-1.5 text-xs text-slate-400 dark:text-slate-500">
-        <Lock className="h-3.5 w-3.5" />
-        What passed, what failed &amp; how to fix it — in the full audit
-      </p>
     </div>
   );
 }
