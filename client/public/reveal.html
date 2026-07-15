@@ -217,19 +217,35 @@ function mockupHTML(){
     '<div class="h-rate">★★★★★ '+esc(state.rating)+'</div></div>'+
     '<div class="h-blob"></div><div class="h-tube"></div>';
 }
+let renderSeq=0;
+function showImg(h,src){
+  const img=new Image(); img.className="shot"; img.alt="";
+  img.onload=()=>{ h.innerHTML=""; h.appendChild(img); };
+  img.onerror=()=>{ h.innerHTML=mockupHTML(); };
+  img.src=src;
+}
 function renderHuman(){
   const h=document.getElementById("human"); h.className="human";
   const manual=state.imgUrl && state.imgUrl.trim();
-  const src = manual ? state.imgUrl.trim() : ((state.autoShot && state.url) ? shotUrl(state.url,"thum") : null);
-  if(!src){ h.innerHTML=mockupHTML(); return; }
+  if(manual){                                    // uploaded (our Blob) or pasted URL — load directly
+    h.innerHTML='<div class="shot-load">Loading screenshot …</div>';
+    showImg(h,manual);
+    return;
+  }
+  if(!(state.autoShot && state.url)){ h.innerHTML=mockupHTML(); return; }
+  // Best-effort auto capture. Free screenshot services often hand back a tiny
+  // blank placeholder for real business sites, so fetch it and fall back to the
+  // mockup when it's too small to be a genuine screenshot.
+  const seq=++renderSeq;
   h.innerHTML='<div class="shot-load">Capturing '+esc((state.url||"").replace(/^https?:\/\//i,""))+' …</div>';
-  const img=new Image(); img.className="shot"; img.alt=""; let stage=0;
-  img.onload=()=>{ h.innerHTML=""; h.appendChild(img); };
-  img.onerror=()=>{
-    if(!manual && stage===0){ stage=1; img.src=shotUrl(state.url,"mshots"); }   // fallback: WordPress mShots
-    else { h.innerHTML=mockupHTML(); }                                          // last resort: mockup
-  };
-  img.src=src;
+  fetch(shotUrl(state.url,"thum"),{mode:"cors"})
+    .then(r=>r.ok?r.blob():Promise.reject(new Error("http "+r.status)))
+    .then(b=>{
+      if(seq!==renderSeq) return;                // superseded by a newer render
+      if(b.size<12000){ h.innerHTML=mockupHTML(); return; }   // blank placeholder
+      showImg(h,URL.createObjectURL(b));
+    })
+    .catch(()=>{ if(seq===renderSeq) h.innerHTML=mockupHTML(); });
 }
 
 // drag
@@ -262,11 +278,37 @@ function setImg(url){
   syncDropPreview(); render();
 }
 function showDropErr(m){ dropText.innerHTML='<span id="dropErr">'+esc(m)+'</span>'; }
+// Downscale + re-encode in the browser so uploads stay well under Vercel's
+// ~4.5 MB request-body limit (raw retina/full-page screenshots blow past it).
+function compressImage(file,maxW,quality){
+  return new Promise((resolve,reject)=>{
+    const url=URL.createObjectURL(file);
+    const img=new Image();
+    img.onload=()=>{
+      URL.revokeObjectURL(url);
+      let w=img.naturalWidth||img.width, hgt=img.naturalHeight||img.height;
+      if(!w||!hgt){ reject(new Error("bad image")); return; }
+      if(w>maxW){ hgt=Math.round(hgt*maxW/w); w=maxW; }
+      const c=document.createElement("canvas"); c.width=w; c.height=hgt;
+      const ctx=c.getContext("2d"); if(!ctx){ reject(new Error("no canvas")); return; }
+      ctx.fillStyle="#fff"; ctx.fillRect(0,0,w,hgt);   // flatten transparency for JPEG
+      ctx.drawImage(img,0,0,w,hgt);
+      c.toBlob(b=>{ b?resolve(b):reject(new Error("encode failed")); },"image/jpeg",quality);
+    };
+    img.onerror=()=>{ URL.revokeObjectURL(url); reject(new Error("could not read image")); };
+    img.src=url;
+  });
+}
 async function uploadFile(file){
   if(!file||!/^image\//.test(file.type)){ showDropErr("That’s not an image file."); return; }
-  dz.classList.add("busy"); dropText.textContent="Uploading "+file.name+" …";
+  dz.classList.add("busy"); dropText.textContent="Processing "+file.name+" …";
   try{
-    const res=await fetch(UPLOAD_ENDPOINT,{method:"POST",headers:{"content-type":file.type},body:file});
+    let blob;
+    try{ blob=await compressImage(file,1600,0.82); }catch(_){ blob=file; }
+    if(blob.size>4000000){ try{ blob=await compressImage(file,1200,0.7); }catch(_){} }
+    dropText.textContent="Uploading …";
+    const type=blob.type||"image/jpeg";
+    const res=await fetch(UPLOAD_ENDPOINT,{method:"POST",headers:{"content-type":type},body:blob});
     const data=await res.json().catch(()=>({}));
     if(!res.ok || !data.url) throw new Error(data.error || ("HTTP "+res.status));
     setImg(data.url);
