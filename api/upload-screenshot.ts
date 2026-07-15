@@ -18,7 +18,10 @@
 
 import { put } from '@vercel/blob';
 
-export const config = { runtime: 'edge' };
+// Node.js (Fluid Compute) runtime, NOT edge: @vercel/blob depends on undici /
+// node:stream, which the Edge runtime cannot bundle. The Web-standard
+// Request/Response handler below works unchanged on the Node runtime.
+export const config = { runtime: 'nodejs' };
 
 const MAX_BYTES = 8 * 1024 * 1024;
 const ALLOWED = /^image\/(png|jpe?g|webp|gif|avif)$/i;
