@@ -1,75 +1,87 @@
 // Upload endpoint for the /reveal sales tool.
 //
 // The reveal page lets an operator drag/drop a screenshot of a lead's site.
-// The browser POSTs the raw image bytes here; this function stores it in
-// Vercel Blob and returns a short public URL. That URL is then baked into the
+// The browser POSTs the raw image bytes here; this function stores them in
+// Vercel Blob and returns a short public URL. That URL is baked into the
 // per-lead share link (the `img` query param), so the recipient sees the
 // screenshot without the operator having to host it anywhere.
 //
-// Requires the BLOB_READ_WRITE_TOKEN env var, which Vercel provisions
-// automatically when a Blob store is connected to the project. Until a store
-// is connected, this returns a 500 and the reveal page falls back to the
-// "paste an image URL" field.
+// Runtime notes:
+// - Node.js (Fluid Compute), NOT Edge: @vercel/blob depends on undici /
+//   node:stream, which the Edge runtime cannot bundle.
+// - Uses the classic Node (req, res) signature — the Web Request/Response
+//   signature only works on Edge for bare /api functions.
+// - bodyParser disabled so we read the raw image straight off the request
+//   stream: no JSON-parser 1 MB cap and no base64 bloat.
 //
-// Safety:
-// - POST only, image/* content-types only
-// - ~8 MB cap
-// - random suffix so uploads never collide or overwrite
+// Requires the BLOB_READ_WRITE_TOKEN env var, which Vercel provisions
+// automatically when a Blob store is connected to the project. Until then this
+// returns a clean 500 and the reveal page falls back to its "paste a URL" field.
 
+import type { IncomingMessage, ServerResponse } from 'node:http';
 import { put } from '@vercel/blob';
 
-// Node.js (Fluid Compute) runtime, NOT edge: @vercel/blob depends on undici /
-// node:stream, which the Edge runtime cannot bundle. The Web-standard
-// Request/Response handler below works unchanged on the Node runtime.
-export const config = { runtime: 'nodejs' };
+export const config = { runtime: 'nodejs', api: { bodyParser: false } };
 
 const MAX_BYTES = 8 * 1024 * 1024;
 const ALLOWED = /^image\/(png|jpe?g|webp|gif|avif)$/i;
 
-function json(data: unknown, status = 200): Response {
-  return new Response(JSON.stringify(data), {
-    status,
-    headers: {
-      'content-type': 'application/json',
-      'access-control-allow-origin': '*',
-      'cache-control': 'no-store',
-    },
-  });
+function send(res: ServerResponse, status: number, data: unknown): void {
+  res.statusCode = status;
+  res.setHeader('content-type', 'application/json');
+  res.setHeader('access-control-allow-origin', '*');
+  res.setHeader('cache-control', 'no-store');
+  res.end(JSON.stringify(data));
 }
 
-export default async function handler(request: Request): Promise<Response> {
-  if (request.method === 'OPTIONS') {
-    return new Response(null, {
-      status: 204,
-      headers: {
-        'access-control-allow-origin': '*',
-        'access-control-allow-methods': 'POST, OPTIONS',
-        'access-control-allow-headers': 'content-type',
-      },
-    });
-  }
-  if (request.method !== 'POST') return json({ error: 'method not allowed' }, 405);
+async function readBody(req: IncomingMessage): Promise<Buffer> {
+  // If a body parser ran despite the config, use what it buffered.
+  const pre = (req as IncomingMessage & { body?: unknown }).body;
+  if (Buffer.isBuffer(pre)) return pre;
 
-  const contentType = (request.headers.get('content-type') || '').split(';')[0].trim();
+  const chunks: Buffer[] = [];
+  let total = 0;
+  for await (const chunk of req) {
+    const buf = typeof chunk === 'string' ? Buffer.from(chunk) : (chunk as Buffer);
+    total += buf.length;
+    if (total > MAX_BYTES) throw new Error('too_large');
+    chunks.push(buf);
+  }
+  return Buffer.concat(chunks);
+}
+
+export default async function handler(
+  req: IncomingMessage,
+  res: ServerResponse,
+): Promise<void> {
+  if (req.method === 'OPTIONS') {
+    res.statusCode = 204;
+    res.setHeader('access-control-allow-origin', '*');
+    res.setHeader('access-control-allow-methods', 'POST, OPTIONS');
+    res.setHeader('access-control-allow-headers', 'content-type');
+    res.end();
+    return;
+  }
+  if (req.method !== 'POST') return send(res, 405, { error: 'method not allowed' });
+
+  const contentType = (req.headers['content-type'] || '').split(';')[0].trim().toLowerCase();
   if (!ALLOWED.test(contentType)) {
-    return json({ error: 'expected an image file (png, jpg, webp, gif, avif)' }, 415);
+    return send(res, 415, { error: 'expected an image file (png, jpg, webp, gif, avif)' });
   }
-
   if (!process.env.BLOB_READ_WRITE_TOKEN) {
-    return json(
-      { error: 'screenshot storage is not configured yet (no Blob store)' },
-      500,
-    );
+    return send(res, 500, { error: 'screenshot storage is not configured yet (no Blob store)' });
   }
 
-  let bytes: ArrayBuffer;
+  let bytes: Buffer;
   try {
-    bytes = await request.arrayBuffer();
-  } catch {
-    return json({ error: 'could not read upload body' }, 400);
+    bytes = await readBody(req);
+  } catch (e) {
+    if ((e as Error).message === 'too_large') {
+      return send(res, 413, { error: 'image too large (8 MB max)' });
+    }
+    return send(res, 400, { error: 'could not read upload body' });
   }
-  if (bytes.byteLength === 0) return json({ error: 'empty upload' }, 400);
-  if (bytes.byteLength > MAX_BYTES) return json({ error: 'image too large (8 MB max)' }, 413);
+  if (bytes.byteLength === 0) return send(res, 400, { error: 'empty upload' });
 
   const ext = contentType.split('/')[1].replace('jpeg', 'jpg');
   try {
@@ -78,8 +90,8 @@ export default async function handler(request: Request): Promise<Response> {
       addRandomSuffix: true,
       contentType,
     });
-    return json({ url: blob.url });
+    return send(res, 200, { url: blob.url });
   } catch (err) {
-    return json({ error: 'upload failed', detail: String(err) }, 500);
+    return send(res, 500, { error: 'upload failed', detail: String(err) });
   }
 }
