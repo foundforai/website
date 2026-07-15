@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>What AI sees | Found For AI</title>
+<style>
+  :root{
+    --ink:#0B0E14; --ink2:#131824; --wire:#1F2733;
+    --data:#38BDF8; --blue:#2563EB; --amber:#F59E0B;
+    --muted:#5B6472; --text:#C9D1D9; --mono:ui-monospace,SFMono-Regular,"JetBrains Mono",Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  body{font-family:Inter,system-ui,-apple-system,sans-serif;color:#0B0E14;margin:0;background:#F4F5F7;padding:16px}
+  .wrap{max-width:900px;margin:0 auto}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:2px;color:var(--muted);text-transform:uppercase}
+  h1{font-size:26px;font-weight:800;margin:4px 0 2px;line-height:1.1}
+  .sub{margin:0;color:#4B5563;font-size:14px}
+
+  #stage{position:relative;width:100%;height:420px;border-radius:14px;overflow:hidden;user-select:none;
+         box-shadow:0 10px 40px rgba(0,0,0,.18);cursor:ew-resize;margin-top:14px}
+  .layer{position:absolute;inset:0}
+  #humanClip{clip-path:inset(0 48% 0 0)}
+
+  /* human */
+  .human{width:100%;height:100%;background:linear-gradient(150deg,#FDE7EE 0%,#F9C9D9 55%,#EBB2D0 100%);position:relative;overflow:hidden}
+  .h-nav{display:flex;justify-content:space-between;align-items:center;padding:18px 24px}
+  .h-name{font-family:Georgia,serif;font-size:20px;font-weight:700;color:#7A2E52;letter-spacing:1px}
+  .h-links{font-size:12px;color:#9B4A6E;letter-spacing:1px}
+  .h-body{padding:30px 24px 0;max-width:340px}
+  .h-kick{font-size:11px;letter-spacing:3px;color:#B05C7E;margin-bottom:10px}
+  .h-head{font-family:Georgia,serif;font-size:32px;line-height:1.05;color:#5A2340;margin:0 0 12px}
+  .h-btn{background:#7A2E52;color:#fff;border:0;padding:11px 22px;border-radius:30px;font-size:13px;font-weight:600}
+  .h-rate{margin-top:14px;color:#8A3A61;font-size:13px}
+  .h-blob{position:absolute;right:-40px;bottom:-40px;width:240px;height:240px;border-radius:50%;
+          background:radial-gradient(circle at 35% 30%,#fff,#E48BB0 70%);box-shadow:0 20px 60px rgba(122,46,82,.35)}
+  .h-tube{position:absolute;right:60px;bottom:40px;width:46px;height:120px;border-radius:10px;
+          background:linear-gradient(#8A3A61,#5A2340);box-shadow:0 10px 24px rgba(0,0,0,.25)}
+  .human img{width:100%;height:100%;object-fit:cover}
+  .shot{width:100%;height:100%;object-fit:cover;object-position:top center}
+  .shot-load{width:100%;height:100%;display:grid;place-items:center;background:#EEF0F3;color:#8A93A0;
+             font-family:var(--mono);font-size:12px;letter-spacing:1px;text-align:center;padding:0 20px;
+             animation:pulse 1.4s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:.55}50%{opacity:1}}
+
+  /* ai */
+  .ai{width:100%;height:100%;background:linear-gradient(var(--ink),var(--ink2));font-family:var(--mono);
+      color:var(--text);padding:22px;overflow:hidden}
+  .ai-head{font-size:11px;color:var(--muted);margin-bottom:14px}
+  .row{display:flex;gap:10px;font-size:13px;align-items:baseline;margin-bottom:10px}
+  .row .k{color:var(--muted);min-width:76px}
+  .row .v{color:#E8EEF5}
+  .row .empty{color:#3A4250;font-style:italic}
+  .ok{margin-top:8px;font-size:12px;color:var(--data);border-top:1px solid var(--wire);padding-top:10px}
+  .warn{margin-top:10px;background:rgba(245,158,11,.12);border:1px solid var(--amber);border-radius:8px;
+        padding:10px 12px;font-size:12px;color:var(--amber)}
+
+  .tag{position:absolute;top:12px;font-family:var(--mono);font-size:10px;letter-spacing:1.5px;padding:5px 9px;
+       border-radius:6px;background:rgba(255,255,255,.85);color:#5A2340;border:1px solid rgba(0,0,0,.06)}
+  .tag.left{left:12px}
+  .tag.right{right:12px;background:var(--ink);color:var(--data);border-color:var(--wire)}
+
+  #divider{position:absolute;top:0;bottom:0;left:48%;width:2px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.25)}
+  #handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:40px;height:40px;border-radius:50%;
+          background:#fff;display:grid;place-items:center;box-shadow:0 4px 14px rgba(0,0,0,.3);cursor:ew-resize;font-size:16px;color:#111}
+
+  .cta{margin-top:14px;background:var(--ink);border-radius:12px;padding:16px 18px;display:flex;align-items:center;
+       justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .cta .msg{color:var(--text);font-size:14px;max-width:480px}
+  .cta .msg strong{color:#fff}
+  .cta a{background:var(--blue);color:#fff;font-weight:700;font-size:14px;padding:12px 20px;border-radius:9px;
+         text-decoration:none;white-space:nowrap}
+
+  details{margin-top:16px;background:#F7F8FA;border:1px solid #E6E9EE;border-radius:12px;padding:12px 16px}
+  summary{cursor:pointer;font-weight:700;font-size:13px;color:#374151}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:14px}
+  label.f{display:block;font-size:12px}
+  label.f span{color:#6B7280;font-weight:600}
+  label.f input{width:100%;margin-top:4px;padding:8px 10px;border:1px solid #D6DBE2;border-radius:8px;font-size:13px;font-family:inherit}
+  .togrow{display:flex;gap:16px;align-items:center;margin:14px 0 4px;flex-wrap:wrap}
+  .togrow label{display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-size:13px;font-weight:600}
+  .hint{font-size:12px;color:var(--muted)}
+  .dropzone{margin:14px 0 4px;border:2px dashed #C3CAD4;border-radius:10px;background:#fff;padding:18px;text-align:center;
+            font-size:13px;color:#6B7280;cursor:pointer;transition:border-color .15s,background .15s}
+  .dropzone.drag{border-color:var(--blue);background:#EEF3FF;color:#2563EB}
+  .dropzone.busy{opacity:.7;pointer-events:none}
+  #dropPreview{margin-top:10px}
+  #dropPreview img{max-height:90px;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+  #dropErr{color:#DC2626;font-weight:600}
+  .linkbar{margin-top:14px;display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap}
+  .linkbar button{background:#111;color:#fff;border:0;padding:9px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;height:36px}
+  #copied{font-size:12px;color:#059669;font-weight:600}
+  @media(max-width:520px){#stage{height:360px}.h-head{font-size:26px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Found For AI · Live reveal</div>
+  <h1>Drag to see what AI actually reads</h1>
+  <p class="sub">Left: what a person sees. Right: what an AI can lift and recommend.</p>
+
+  <div id="stage">
+    <div class="layer"><div class="ai" id="ai"></div></div>
+    <div class="layer" id="humanClip"><div class="human" id="human"></div></div>
+    <span class="tag left">WHAT HUMANS SEE</span>
+    <span class="tag right">WHAT AI SEES</span>
+    <div id="divider"><div id="handle">⇆</div></div>
+  </div>
+
+  <div class="cta">
+    <div class="msg" id="ctaMsg"><strong>AI can’t recommend what it can’t read.</strong> Right now it sees almost nothing.</div>
+    <a id="ctaLink" href="#" target="_blank" rel="noreferrer">Fix this → Book a call</a>
+  </div>
+
+  <details>
+    <summary>Set up this lead ▾</summary>
+    <div class="togrow">
+      <label><input type="checkbox" id="autoShot" checked /> Use a live screenshot of their site</label>
+      <span class="hint">Reads the “Website” field below. Off = demo mockup.</span>
+    </div>
+    <div class="togrow">
+      <label><input type="checkbox" id="fixed" /> Show “after fix” (rich card)</label>
+      <span class="hint">Off = the void (your default pitch). On = the outcome you’re selling.</span>
+    </div>
+
+    <div id="dropzone" class="dropzone">
+      <input type="file" id="fileInput" accept="image/*" hidden />
+      <span id="dropText">Drag a screenshot of their site here, or click to choose. Uploads and locks it into this lead’s link. (Optional — you can also paste a URL below.)</span>
+      <div id="dropPreview"></div>
+    </div>
+
+    <div class="grid" id="fields"></div>
+
+    <div class="linkbar">
+      <label class="f" style="flex:1;min-width:260px"><span>Where this page is hosted</span>
+        <input id="baseUrl" value="https://foundforai.com/reveal" /></label>
+      <button id="copyBtn">Copy link for this lead</button>
+      <span id="copied"></span>
+    </div>
+    <p class="hint" style="margin:8px 0 0">
+      Fill the fields, hit copy, paste the link into your email. The recipient opens it and sees their own reveal.
+    </p>
+  </details>
+</div>
+
+<script>
+const F=["name","category","tagline","hours","products","rating","url","imgUrl","calUrl"];
+const KEY={name:"name",category:"cat",tagline:"tag",hours:"hours",products:"prod",rating:"rating",url:"url",imgUrl:"img",calUrl:"cal"};
+const LABEL={name:"Business name",category:"Category",tagline:"Tagline",hours:"Hours",products:"Top products / services",rating:"Rating",url:"Website (screenshot + shown to AI)",imgUrl:"Site screenshot URL (or drag/drop above)",calUrl:"Your Cal / booking link"};
+const DEF={name:"LUMÉ Beauty",category:"Makeup & Cosmetics Retailer",tagline:"Clean, high-pigment makeup made in small batches",hours:"Mon–Sat 10–7, Sun 11–5",products:"Silk Foundation, Velvet Lip, Halo Highlighter",rating:"4.8 (2,140 reviews)",url:"lumebeauty.com",imgUrl:"",calUrl:"https://foundforai.com/book-call"};
+
+const state=Object.assign({},DEF,{fixed:false,autoShot:true});
+let pos=48;
+
+// read URL params for per-lead prefill
+const q=new URLSearchParams(location.search);
+F.forEach(f=>{const v=q.get(KEY[f]); if(v!==null) state[f]=v;});
+if(q.get("fixed")==="1") state.fixed=true;
+if(q.get("shot")==="0") state.autoShot=false;
+
+// build fields panel
+const fieldsEl=document.getElementById("fields");
+F.forEach(f=>{
+  const l=document.createElement("label"); l.className="f";
+  l.innerHTML='<span>'+LABEL[f]+'</span>';
+  const i=document.createElement("input"); i.value=state[f];
+  i.placeholder = f==="imgUrl" ? "Leave blank for the demo mockup" : (f==="calUrl" ? "https://foundforai.com/book-call" : "");
+  i.oninput=()=>{state[f]=i.value; if(f==="imgUrl") syncDropPreview(); render();};
+  l.appendChild(i); fieldsEl.appendChild(l);
+});
+const fixedEl=document.getElementById("fixed");
+fixedEl.checked=state.fixed;
+fixedEl.onchange=()=>{state.fixed=fixedEl.checked; render();};
+const autoEl=document.getElementById("autoShot");
+autoEl.checked=state.autoShot;
+autoEl.onchange=()=>{state.autoShot=autoEl.checked; render();};
+
+function esc(s){return (s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+
+function render(){
+  // human
+  renderHuman();
+  // ai
+  const ai=document.getElementById("ai");
+  const head='<div class="ai-head"><span style="color:'+(state.fixed?"var(--data)":"var(--amber)")+'">●</span> ai_extract('+esc(state.url||"yoursite.com")+')</div>';
+  let rows;
+  if(state.fixed){
+    rows=
+      row("business",state.name)+row("type",state.category)+row("summary",state.tagline)+
+      row("hours",state.hours)+row("offers",state.products)+row("rating",state.rating)+
+      '<div class="ok">✓ Machine-readable · eligible for AI recommendation</div>';
+  }else{
+    rows=
+      row("business","null",1)+row("type","unknown",1)+row("summary","null",1)+
+      row("hours","null",1)+row("offers","[ ]",1)+row("rating","null",1)+
+      '<div class="warn">⚠ No structured data detected. AI cannot identify or recommend this business.</div>';
+  }
+  ai.innerHTML=head+rows;
+  // cta
+  document.getElementById("ctaMsg").innerHTML = state.fixed
+    ? "This is what AI recommends once the structured data is fixed."
+    : "<strong>AI can’t recommend what it can’t read.</strong> Right now it sees almost nothing.";
+  document.getElementById("ctaLink").href = state.calUrl || "#";
+}
+function row(k,v,empty){return '<div class="row"><span class="k">'+k+':</span><span class="v'+(empty?" empty":"")+'">'+esc(v)+'</span></div>';}
+
+function shotUrl(u,provider){
+  const clean=(u||"").replace(/^https?:\/\//i,"").replace(/\/$/,"");
+  if(provider==="mshots") return "https://s0.wp.com/mshots/v1/"+encodeURIComponent("https://"+clean)+"?w=1200";
+  return "https://image.thum.io/get/width/1200/https://"+clean; // thum.io (keyless, embeds as img)
+}
+function mockupHTML(){
+  return '<div class="h-nav"><span class="h-name">'+esc(state.name)+'</span><span class="h-links">SHOP · ABOUT · JOURNAL</span></div>'+
+    '<div class="h-body"><div class="h-kick">NEW SEASON</div>'+
+    '<h2 class="h-head">'+esc(state.tagline)+'</h2>'+
+    '<button class="h-btn">Shop the collection</button>'+
+    '<div class="h-rate">★★★★★ '+esc(state.rating)+'</div></div>'+
+    '<div class="h-blob"></div><div class="h-tube"></div>';
+}
+function renderHuman(){
+  const h=document.getElementById("human"); h.className="human";
+  const manual=state.imgUrl && state.imgUrl.trim();
+  const src = manual ? state.imgUrl.trim() : ((state.autoShot && state.url) ? shotUrl(state.url,"thum") : null);
+  if(!src){ h.innerHTML=mockupHTML(); return; }
+  h.innerHTML='<div class="shot-load">Capturing '+esc((state.url||"").replace(/^https?:\/\//i,""))+' …</div>';
+  const img=new Image(); img.className="shot"; img.alt=""; let stage=0;
+  img.onload=()=>{ h.innerHTML=""; h.appendChild(img); };
+  img.onerror=()=>{
+    if(!manual && stage===0){ stage=1; img.src=shotUrl(state.url,"mshots"); }   // fallback: WordPress mShots
+    else { h.innerHTML=mockupHTML(); }                                          // last resort: mockup
+  };
+  img.src=src;
+}
+
+// drag
+const stage=document.getElementById("stage"), clip=document.getElementById("humanClip"),
+      divider=document.getElementById("divider"), handle=document.getElementById("handle");
+let drag=false;
+function setPos(x){const r=stage.getBoundingClientRect();let p=((x-r.left)/r.width)*100;p=Math.max(2,Math.min(98,p));pos=p;
+  clip.style.clipPath="inset(0 "+(100-p)+"% 0 0)";divider.style.left=p+"%";}
+handle.addEventListener("mousedown",()=>drag=true);
+handle.addEventListener("touchstart",()=>drag=true,{passive:true});
+window.addEventListener("mousemove",e=>drag&&setPos(e.clientX));
+window.addEventListener("touchmove",e=>{if(drag&&e.touches[0])setPos(e.touches[0].clientX);},{passive:true});
+window.addEventListener("mouseup",()=>drag=false);
+window.addEventListener("touchend",()=>drag=false);
+stage.addEventListener("click",e=>{if(e.target===stage||e.target===clip||e.target.closest(".layer"))setPos(e.clientX);});
+
+// drag/drop screenshot upload -> Vercel Blob -> bake URL into the per-lead link
+const UPLOAD_ENDPOINT="/api/upload-screenshot";
+const dz=document.getElementById("dropzone"), fileInput=document.getElementById("fileInput"),
+      dropText=document.getElementById("dropText"), dropPreview=document.getElementById("dropPreview");
+const DROP_DEFAULT=dropText.textContent;
+function imgInput(){ return fieldsEl.querySelectorAll("input")[F.indexOf("imgUrl")]; }
+function syncDropPreview(){
+  const u=(state.imgUrl||"").trim();
+  dropPreview.innerHTML = u ? '<img src="'+esc(u)+'" alt="" />' : "";
+}
+function setImg(url){
+  state.imgUrl=url;
+  const inp=imgInput(); if(inp) inp.value=url;
+  syncDropPreview(); render();
+}
+function showDropErr(m){ dropText.innerHTML='<span id="dropErr">'+esc(m)+'</span>'; }
+async function uploadFile(file){
+  if(!file||!/^image\//.test(file.type)){ showDropErr("That’s not an image file."); return; }
+  dz.classList.add("busy"); dropText.textContent="Uploading "+file.name+" …";
+  try{
+    const res=await fetch(UPLOAD_ENDPOINT,{method:"POST",headers:{"content-type":file.type},body:file});
+    const data=await res.json().catch(()=>({}));
+    if(!res.ok || !data.url) throw new Error(data.error || ("HTTP "+res.status));
+    setImg(data.url);
+    dropText.textContent="Uploaded ✓ — drop another to replace.";
+  }catch(e){
+    showDropErr("Upload failed: "+e.message+". Paste an image URL in the field below instead.");
+  }finally{ dz.classList.remove("busy"); }
+}
+dz.addEventListener("click",()=>fileInput.click());
+fileInput.addEventListener("change",()=>{ if(fileInput.files[0]) uploadFile(fileInput.files[0]); });
+["dragenter","dragover"].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();dz.classList.add("drag");}));
+["dragleave","drop"].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();dz.classList.remove("drag");}));
+dz.addEventListener("drop",e=>{ const f=e.dataTransfer&&e.dataTransfer.files[0]; if(f) uploadFile(f); });
+syncDropPreview(); // show preview if a link already carries an uploaded screenshot
+
+// copy per-lead link
+document.getElementById("copyBtn").onclick=()=>{
+  const base=(document.getElementById("baseUrl").value||"").trim();
+  const p=new URLSearchParams();
+  F.forEach(f=>{if(state[f]&&state[f]!==DEF[f]||["name","url"].includes(f)) if(state[f]) p.set(KEY[f],state[f]);});
+  if(state.fixed) p.set("fixed","1");
+  if(!state.autoShot) p.set("shot","0");
+  const url=base+"?"+p.toString();
+  navigator.clipboard.writeText(url).then(()=>{
+    const c=document.getElementById("copied");c.textContent="Copied ✓";setTimeout(()=>c.textContent="",2500);
+  }).catch(()=>{prompt("Copy this link:",url);});
+};
+
+render(); setPos(stage.getBoundingClientRect().left + stage.getBoundingClientRect().width*0.48);
+</script>
+</body>
+</html>
