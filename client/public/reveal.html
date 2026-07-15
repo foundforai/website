@@ -112,7 +112,7 @@
     <a id="ctaLink" href="#" target="_blank" rel="noreferrer">Fix this → Book a call</a>
   </div>
 
-  <details>
+  <details id="setup">
     <summary>Set up this lead ▾</summary>
     <div class="togrow">
       <label><input type="checkbox" id="autoShot" checked /> Use a live screenshot of their site</label>
@@ -157,6 +157,11 @@ const q=new URLSearchParams(location.search);
 F.forEach(f=>{const v=q.get(KEY[f]); if(v!==null) state[f]=v;});
 if(q.get("fixed")==="1") state.fixed=true;
 if(q.get("shot")==="0") state.autoShot=false;
+
+// Recipient view: if the link carries lead data, hide the operator setup panel
+// entirely so the customer only sees their reveal. Operator override: add ?edit=1.
+const isLeadView = (F.some(f=>q.get(KEY[f])!==null) || q.has("fixed") || q.has("shot")) && q.get("edit")!=="1";
+if(isLeadView){ const s=document.getElementById("setup"); if(s) s.style.display="none"; }
 
 // build fields panel
 const fieldsEl=document.getElementById("fields");
