@@ -63,6 +63,12 @@ interface StoredPayload {
 
 const AUDIT_PRICE = '$99';
 
+// The paid $99 self-serve unlock is dormant: the funnel now gives the full
+// report away free on a booked call. The Stripe plumbing (api/checkout.ts +
+// the session_id path in api/audit.ts) is left intact — flip this to `true`
+// to bring the paywall UI back with no other changes.
+const SHOW_PAID_UNLOCK = false;
+
 function gradeColor(grade: string): { ring: string; text: string; pillBg: string; pillText: string } {
   const g = (grade || '').toUpperCase().charAt(0);
   if (g === 'A') return { ring: '#16a34a', text: '#16a34a', pillBg: '#dcfce7', pillText: '#15803d' };
@@ -137,6 +143,7 @@ export default function ScorecardResults() {
   const [mode, setMode] = useState<Mode>('teaser');
   const [errorMsg, setErrorMsg] = useState('');
   const [hydrated, setHydrated] = useState(false);
+  const [adminMode, setAdminMode] = useState(false);
 
   useEffect(() => {
     // Load the free teaser (for the site URL + submitted context).
@@ -152,7 +159,42 @@ export default function ScorecardResults() {
     }
     setPayload(stored);
 
-    const sessionId = new URLSearchParams(window.location.search).get('session_id');
+    const params = new URLSearchParams(window.location.search);
+    const sessionId = params.get('session_id');
+    const adminKey = params.get('key');
+    const adminUrl = params.get('url');
+
+    if (adminKey) {
+      // Internal operator link: generate the full report for any URL with no
+      // payment. Gated server-side by SCORECARD_ADMIN_KEY.
+      setMode('verifying');
+      setAdminMode(true);
+      setHydrated(true);
+      const q = new URLSearchParams({ admin_key: adminKey, url: adminUrl || '' });
+      fetch(`/api/audit?${q.toString()}`)
+        .then(async (res) => {
+          const data = (await res.json()) as ScorecardApiResult & { error?: string };
+          if (!res.ok || !data.sections) {
+            throw new Error(data?.error || 'Could not generate the report.');
+          }
+          setFullResult(data);
+          if (data.url) {
+            setPayload({
+              result: data,
+              submitted: { url: data.url, email: '', keyword: '' },
+              receivedAt: new Date().toISOString(),
+            });
+          }
+          setMode('full');
+          // Strip the admin key from the URL bar / history.
+          window.history.replaceState({}, '', '/scorecard/results');
+        })
+        .catch((err: unknown) => {
+          setErrorMsg(err instanceof Error ? err.message : 'Could not generate the report.');
+          setMode('error');
+        });
+      return;
+    }
 
     if (sessionId) {
       // Returning from Stripe — verify payment server-side, then unlock.
@@ -238,7 +280,7 @@ export default function ScorecardResults() {
           {!hydrated ? (
             <div className="text-center py-20 text-slate-500">Loading…</div>
           ) : mode === 'verifying' ? (
-            <VerifyingState />
+            <VerifyingState admin={adminMode} />
           ) : mode === 'error' ? (
             <ErrorState message={errorMsg} hasTeaser={!!payload} />
           ) : mode === 'full' && fullResult ? (
@@ -254,7 +296,7 @@ export default function ScorecardResults() {
   );
 }
 
-function VerifyingState() {
+function VerifyingState({ admin = false }: { admin?: boolean }) {
   return (
     <div className="text-center max-w-xl mx-auto py-24">
       <div
@@ -265,10 +307,12 @@ function VerifyingState() {
         className="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-slate-100 mb-3"
         style={{ fontFamily: "'Montserrat', sans-serif" }}
       >
-        Unlocking your full audit…
+        {admin ? 'Generating the full report…' : 'Unlocking your full audit…'}
       </h1>
       <p className="text-base text-slate-500 dark:text-slate-400">
-        Confirming your payment and generating your complete report. This takes a few seconds.
+        {admin
+          ? 'Running the complete AI visibility scan on this site. This takes a few seconds.'
+          : 'Confirming your payment and generating your complete report. This takes a few seconds.'}
       </p>
     </div>
   );
@@ -367,21 +411,23 @@ function ScoreHeader({
           </span>
         </div>
       </div>
-      <div className="border-t border-gray-100 dark:border-slate-700 mt-6 pt-6">
-        <div className="grid grid-cols-3 gap-4 text-center">
-          {headlineStats.map((stat) => (
-            <div key={stat.label}>
-              <div
-                className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-slate-100"
-                style={{ fontFamily: "'Montserrat', sans-serif" }}
-              >
-                {stat.value === null ? '—' : `${stat.value}%`}
+      {headlineStats.length > 0 ? (
+        <div className="border-t border-gray-100 dark:border-slate-700 mt-6 pt-6">
+          <div className="grid grid-cols-3 gap-4 text-center">
+            {headlineStats.map((stat) => (
+              <div key={stat.label}>
+                <div
+                  className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-slate-100"
+                  style={{ fontFamily: "'Montserrat', sans-serif" }}
+                >
+                  {stat.value === null ? '—' : `${stat.value}%`}
+                </div>
+                <div className="text-sm text-slate-500 dark:text-slate-400 mt-1">{stat.label}</div>
               </div>
-              <div className="text-sm text-slate-500 dark:text-slate-400 mt-1">{stat.label}</div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+      ) : null}
     </div>
   );
 }
@@ -436,9 +482,7 @@ function TeaserView({ payload }: { payload: StoredPayload }) {
   const score = Math.max(0, Math.min(100, Math.round(result.overallScore || 0)));
   const grade = (result.grade || '—').toUpperCase();
   const url = submitted.url || result.url || '';
-  const schemas = result.meta?.schemasFound || [];
   const issueCount = Math.max(0, result.issueCount ?? 0);
-  const headlineStats = useHeadlineStats(result.sections);
 
   const handleUnlock = async () => {
     if (loading) return;
@@ -483,127 +527,128 @@ function TeaserView({ payload }: { payload: StoredPayload }) {
         url={url}
         score={score}
         grade={grade}
-        headlineStats={headlineStats}
+        headlineStats={[]}
       />
 
-      <SchemaChips schemas={schemas} />
-
-      {/* Issues-found lock banner — the hook */}
-      {issueCount > 0 ? (
-        <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/50 rounded-2xl p-5 sm:p-6 mb-6 flex items-start gap-4">
-          <span className="shrink-0 mt-0.5 flex items-center justify-center w-9 h-9 rounded-full bg-amber-100 dark:bg-amber-900/40">
-            <Lock className="h-4 w-4 text-amber-700 dark:text-amber-300" />
+      {/* The hook: give the number, keep the specifics ambiguous. */}
+      <div className="bg-white dark:bg-slate-800 rounded-2xl border border-gray-100 dark:border-slate-700 shadow-sm p-6 sm:p-8 mb-6">
+        <div className="flex items-start gap-4">
+          <span className="shrink-0 mt-0.5 flex items-center justify-center w-10 h-10 rounded-full bg-amber-100 dark:bg-amber-900/40">
+            <Lock className="h-5 w-5 text-amber-700 dark:text-amber-300" />
           </span>
           <div>
-            <p
-              className="text-lg font-bold text-slate-900 dark:text-slate-100"
+            <h2
+              className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-slate-100"
               style={{ fontFamily: "'Montserrat', sans-serif" }}
               data-testid="results-issue-count"
             >
-              We found {issueCount} {issueCount === 1 ? 'issue' : 'issues'} blocking AI from recommending you
+              {issueCount > 0
+                ? `We found ${issueCount} ${issueCount === 1 ? 'issue' : 'issues'} limiting how AI sees you`
+                : 'Here’s what’s shaping your score'}
+            </h2>
+            <p className="text-base text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+              Your score reflects how well ChatGPT, Gemini, Perplexity, and Claude can find,
+              understand, and trust your business right now. Some of what we found is working
+              in your favor — and some of it is quietly holding you back.
             </p>
-            <p className="text-sm text-slate-600 dark:text-slate-300 mt-1">
-              Your full audit shows exactly what each one is — and the step-by-step fix to clear it.
+            <p className="text-base text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">
+              The full breakdown — exactly what’s working, what isn’t, and how to fix each
+              item — is{' '}
+              <span className="font-semibold text-slate-900 dark:text-slate-100">yours free</span>.
+              We’ll walk you through it live so nothing gets lost in translation.
             </p>
           </div>
+        </div>
+      </div>
+
+      {/* Primary CTA: book the call to get the full report free. */}
+      <div
+        className="rounded-2xl p-6 sm:p-10 mb-6 text-center shadow-sm"
+        style={{ backgroundColor: '#0F5FDB' }}
+      >
+        <h2
+          className="text-2xl sm:text-3xl font-extrabold text-white mb-3"
+          style={{ fontFamily: "'Montserrat', sans-serif", letterSpacing: '-0.01em' }}
+        >
+          See your full report — free
+        </h2>
+        <p className="text-base text-blue-50 mb-7 max-w-xl mx-auto leading-relaxed">
+          Book a free 15-minute call and we’ll walk you through your complete AI Visibility
+          Report — every issue, in plain English, with the exact fixes. No pitch, no credit card.
+        </p>
+        <a
+          href="/book-call"
+          className="inline-flex items-center justify-center gap-2 bg-white text-[#0F5FDB] font-bold px-8 py-4 rounded-xl text-base transition hover:bg-blue-50"
+          data-testid="results-book-call"
+        >
+          Get my full report → Book a free call
+          <ArrowRight className="h-4 w-4" />
+        </a>
+      </div>
+
+      {/* Dormant $99 self-serve unlock — controlled by SHOW_PAID_UNLOCK. */}
+      {SHOW_PAID_UNLOCK ? (
+        <div className="bg-white dark:bg-slate-800 border-2 border-[#0F5FDB]/30 rounded-2xl p-6 sm:p-10 mb-6 shadow-sm">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-6">
+            <div>
+              <span className="inline-flex items-center gap-1.5 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs font-semibold uppercase tracking-wide px-3 py-1 rounded-full mb-3">
+                <Lock className="h-3.5 w-3.5" /> Full Audit
+              </span>
+              <h2
+                className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-slate-100"
+                style={{ fontFamily: "'Montserrat', sans-serif", letterSpacing: '-0.01em' }}
+              >
+                Unlock your full AI Visibility Audit
+              </h2>
+            </div>
+            <div className="text-left sm:text-right">
+              <div
+                className="text-4xl font-extrabold text-slate-900 dark:text-slate-100"
+                style={{ fontFamily: "'Montserrat', sans-serif" }}
+              >
+                {AUDIT_PRICE}
+              </div>
+              <div className="text-sm text-slate-500 dark:text-slate-400">one-time</div>
+            </div>
+          </div>
+
+          <ul className="grid sm:grid-cols-2 gap-3 mb-8">
+            {[
+              'Every issue we found, explained in plain English',
+              'A prioritized, step-by-step action plan',
+              'Exactly what passed and failed in each category',
+              'Downloadable PDF report to keep or share',
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-200">
+                <Check className="h-4 w-4 text-green-600 shrink-0 mt-0.5" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          <button
+            type="button"
+            onClick={handleUnlock}
+            disabled={loading}
+            className="w-full text-center text-white font-semibold px-6 py-4 rounded-xl text-base transition hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed"
+            style={{ backgroundColor: '#0F5FDB' }}
+            data-testid="results-unlock-cta"
+          >
+            {loading ? 'Starting secure checkout…' : `Unlock full audit — ${AUDIT_PRICE}`}
+          </button>
+
+          <p className="text-center text-xs text-slate-500 dark:text-slate-400 mt-4">
+            Secure checkout via Stripe · Instant access · No subscription
+          </p>
         </div>
       ) : null}
 
-      {/* Locked category breakdown — blurred behind a paywall overlay so it
-          reads as "real content, gated" without anything being legible. The
-          findings themselves are never in the DOM; this is purely visual. */}
-      <div className="relative mb-6">
-        <div className="space-y-4 blur-[6px] select-none pointer-events-none" aria-hidden="true">
-          {result.sections.map((section) => (
-            <LockedSectionCard key={section.id} section={section} />
-          ))}
-        </div>
-        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-slate-50/20 via-slate-50/70 to-slate-50 dark:from-slate-900/20 dark:via-slate-900/70 dark:to-slate-900">
-          <div className="text-center bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-2xl shadow-lg px-6 py-7 max-w-sm mx-4">
-            <span className="mx-auto mb-3 flex items-center justify-center w-12 h-12 rounded-full bg-blue-50 dark:bg-blue-900/30">
-              <Lock className="h-5 w-5" style={{ color: '#0F5FDB' }} />
-            </span>
-            <p
-              className="text-lg font-bold text-slate-900 dark:text-slate-100"
-              style={{ fontFamily: "'Montserrat', sans-serif" }}
-            >
-              Your full category breakdown is locked
-            </p>
-            <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
-              Unlock the audit below to see exactly what passed, what failed, and how to
-              fix every issue.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Paywall */}
-      <div className="bg-white dark:bg-slate-800 border-2 border-[#0F5FDB]/30 rounded-2xl p-6 sm:p-10 mb-6 shadow-sm">
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-6">
-          <div>
-            <span className="inline-flex items-center gap-1.5 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs font-semibold uppercase tracking-wide px-3 py-1 rounded-full mb-3">
-              <Lock className="h-3.5 w-3.5" /> Full Audit
-            </span>
-            <h2
-              className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-slate-100"
-              style={{ fontFamily: "'Montserrat', sans-serif", letterSpacing: '-0.01em' }}
-            >
-              Unlock your full AI Visibility Audit
-            </h2>
-          </div>
-          <div className="text-left sm:text-right">
-            <div
-              className="text-4xl font-extrabold text-slate-900 dark:text-slate-100"
-              style={{ fontFamily: "'Montserrat', sans-serif" }}
-            >
-              {AUDIT_PRICE}
-            </div>
-            <div className="text-sm text-slate-500 dark:text-slate-400">one-time</div>
-          </div>
-        </div>
-
-        <ul className="grid sm:grid-cols-2 gap-3 mb-8">
-          {[
-            'Every issue we found, explained in plain English',
-            'A prioritized, step-by-step action plan',
-            'Exactly what passed and failed in each category',
-            'Downloadable PDF report to keep or share',
-          ].map((item) => (
-            <li key={item} className="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-200">
-              <Check className="h-4 w-4 text-green-600 shrink-0 mt-0.5" />
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-
-        <button
-          type="button"
-          onClick={handleUnlock}
-          disabled={loading}
-          className="w-full text-center text-white font-semibold px-6 py-4 rounded-xl text-base transition hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed"
-          style={{ backgroundColor: '#0F5FDB' }}
-          data-testid="results-unlock-cta"
-        >
-          {loading ? 'Starting secure checkout…' : `Unlock full audit — ${AUDIT_PRICE}`}
-        </button>
-
-        <p className="text-center text-xs text-slate-500 dark:text-slate-400 mt-4">
-          Secure checkout via Stripe · Instant access · No subscription
-        </p>
-      </div>
-
-      {/* Book-a-call fallback */}
+      {/* Enterprise / agency */}
       <div className="bg-blue-50 dark:bg-slate-800 border border-blue-100 dark:border-slate-700 rounded-2xl p-6 sm:p-8 mb-6 text-center">
-        <p className="text-base text-slate-600 dark:text-slate-300">
-          Prefer to talk it through first?{' '}
-          <a href="/book-call" className="font-semibold hover:underline" style={{ color: '#0F5FDB' }} data-testid="results-book-call">
-            Book a free 15-minute call →
-          </a>
-        </p>
-        <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">
+        <p className="text-sm text-slate-500 dark:text-slate-400">
           Reviewing this for a larger organization or agency?{' '}
           <Link href="/contact" className="font-semibold hover:underline" style={{ color: '#0F5FDB' }}>
-            Let's talk about custom scoping →
+            Let’s talk about custom scoping →
           </Link>
         </p>
       </div>
@@ -613,40 +658,8 @@ function TeaserView({ payload }: { payload: StoredPayload }) {
   );
 }
 
-function LockedSectionCard({ section }: { section: ScorecardSection }) {
-  const pct = section.max > 0 ? Math.max(0, Math.min(100, (section.score / section.max) * 100)) : 0;
-  const barColor = progressBarColor(section.score, section.max);
-
-  return (
-    <div
-      className="bg-white dark:bg-slate-800 border border-gray-100 dark:border-slate-700 rounded-2xl p-5 sm:p-6"
-      data-testid={`results-locked-${section.id}`}
-    >
-      <div className="flex items-center gap-3 mb-3">
-        {section.icon ? (
-          <span className="text-xl" aria-hidden="true">
-            {section.icon}
-          </span>
-        ) : null}
-        <h3
-          className="flex-1 text-lg sm:text-xl font-bold text-slate-900 dark:text-slate-100"
-          style={{ fontFamily: "'Montserrat', sans-serif" }}
-        >
-          {section.title}
-        </h3>
-        <div className="text-sm font-bold text-slate-900 dark:text-slate-100 shrink-0">
-          {section.score}/{section.max}
-        </div>
-      </div>
-      <div className="h-2 rounded-full bg-gray-100 dark:bg-slate-700 overflow-hidden">
-        <div className="h-full rounded-full transition-all duration-500" style={{ width: `${pct}%`, backgroundColor: barColor }} />
-      </div>
-    </div>
-  );
-}
-
 /* ------------------------------------------------------------------ */
-/* FULL VIEW — unlocked after payment: every check + the action plan.  */
+/* FULL VIEW — unlocked after payment OR via the internal admin key.   */
 /* ------------------------------------------------------------------ */
 
 function FullView({ result, submitted }: { result: ScorecardApiResult; submitted?: Submitted }) {

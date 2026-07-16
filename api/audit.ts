@@ -36,12 +36,35 @@ export default async function handler(request: Request): Promise<Response> {
     return json({ error: 'method not allowed' }, 405);
   }
 
+  const params = new URL(request.url).searchParams;
+
+  // Internal operator bypass. With the admin key, generate the FULL report for
+  // any URL without a Stripe payment — used to build reports for leads / sales
+  // calls. The public UI never sends admin_key; this path is invisible to it.
+  const providedKey = params.get('admin_key');
+  if (providedKey) {
+    const adminKey = process.env.SCORECARD_ADMIN_KEY;
+    if (!adminKey || providedKey !== adminKey) {
+      return json({ error: 'unauthorized' }, 401);
+    }
+    const adminUrl = (params.get('url') || '').trim();
+    if (!adminUrl) {
+      return json({ error: 'missing url' }, 400);
+    }
+    try {
+      const full = await runScorer({ url: adminUrl });
+      return json({ ...full, paid: true, admin: true });
+    } catch {
+      return json({ error: 'could not generate the report' }, 502);
+    }
+  }
+
   const key = process.env.STRIPE_SECRET_KEY;
   if (!key) {
     return json({ error: 'payments are not configured' }, 503);
   }
 
-  const sessionId = new URL(request.url).searchParams.get('session_id');
+  const sessionId = params.get('session_id');
   if (!sessionId || !sessionId.startsWith('cs_')) {
     return json({ error: 'missing or invalid session_id' }, 400);
   }
