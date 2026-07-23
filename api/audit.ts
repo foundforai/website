@@ -11,6 +11,7 @@
 // buyer only ever gets the audit for the site they paid for.
 
 import { runScorer } from './analyze';
+import { reportOpenAiOrder } from './_openai';
 
 export const config = { runtime: 'edge' };
 
@@ -95,6 +96,22 @@ export default async function handler(request: Request): Promise<Response> {
     return json({ error: 'paid session is missing the website url' }, 422);
   }
 
+  const amountCents = typeof session.amount_total === 'number' ? session.amount_total : 9900;
+  const currency = (session.currency || 'usd').toUpperCase();
+
+  // Report the purchase to the OpenAI (ChatGPT Ads) Conversions API. Uses the
+  // Stripe session id as the event id so OpenAI dedupes this against the browser
+  // pixel's order_created. Best-effort and time-capped — never blocks or breaks
+  // the audit response. (Not fired on the admin-key path above: no real payment.)
+  await reportOpenAiOrder({
+    eventId: session.id || sessionId,
+    amountCents,
+    currency,
+    email: session.metadata?.email || undefined,
+    sourceUrl: request.url,
+    request,
+  });
+
   try {
     const full = await runScorer({
       url,
@@ -108,7 +125,7 @@ export default async function handler(request: Request): Promise<Response> {
         sessionId: session.id || sessionId,
         // Stripe amounts are in the smallest currency unit (cents).
         amountTotal: typeof session.amount_total === 'number' ? session.amount_total : null,
-        currency: (session.currency || 'usd').toUpperCase(),
+        currency,
       },
     });
   } catch {
