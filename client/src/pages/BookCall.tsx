@@ -5,7 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Link } from 'wouter';
 import { ArrowLeft } from 'lucide-react';
-import { trackEvent } from '@/lib/analytics';
+import { trackEvent, trackOpenAiAppointment } from '@/lib/analytics';
 
 export default function BookCall() {
   useEffect(() => {
@@ -24,6 +24,16 @@ export default function BookCall() {
         },
         hideEventTypeDetails: false,
         layout: 'month_view',
+      });
+
+      // Fire the OpenAI (ChatGPT Ads) conversion only on a completed booking,
+      // plus a GA4 event, rather than on page view.
+      cal('on', {
+        action: 'bookingSuccessful',
+        callback: () => {
+          trackOpenAiAppointment();
+          trackEvent('appointment_scheduled', { form_location: '/book-call' });
+        },
       });
     })();
   }, []);
