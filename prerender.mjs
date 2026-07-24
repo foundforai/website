@@ -1,15 +1,93 @@
 import { writeFile, readFile, mkdir, readdir } from 'node:fs/promises';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, resolve, join } from 'node:path';
+import TurndownService from 'turndown';
+import { gfm } from 'turndown-plugin-gfm';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const distDir = resolve(__dirname, 'dist');
 const ssrDistDir = resolve(__dirname, 'dist-ssr');
 
 const ssr = await import(pathToFileURL(join(ssrDistDir, 'entry-server.js')).href);
-const { render, prerenderPaths, sitemapEntries } = ssr;
+const { render, prerenderPaths, sitemapEntries, allRoutes } = ssr;
 
 const template = await readFile(join(distDir, 'index.html'), 'utf-8');
+
+const SITE_ORIGIN = 'https://foundforai.com';
+
+// ---------------------------------------------------------------------------
+// Markdown mirror: every indexable content page is also emitted as /<path>.md
+// (home -> /index.md) so AI agents can read clean Markdown instead of parsing
+// the React DOM. Content is extracted from the page's <main> landmark (every
+// page uses PageLayout, so nav/footer are excluded), converted with turndown,
+// internal links are rewritten to their .md counterparts, and each file links
+// back to /llms.txt + /llms-full.txt. The generated list is injected into
+// llms.txt at the <!--MD_INDEX--> marker. Legal/funnel pages are excluded.
+// ---------------------------------------------------------------------------
+const MD_EXCLUDE = new Set(['/privacy', '/terms', '/refund-policy']);
+const mdRoutes = allRoutes.filter((r) => r.prerender && r.sitemap && !MD_EXCLUDE.has(r.path));
+const mdSet = new Set(mdRoutes.map((r) => r.path));
+
+const turndown = new TurndownService({
+  headingStyle: 'atx',
+  codeBlockStyle: 'fenced',
+  bulletListMarker: '-',
+  hr: '---',
+  emDelimiter: '_',
+});
+turndown.use(gfm);
+turndown.remove(['script', 'style', 'noscript']);
+
+function decodeEntities(s) {
+  return s
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&mdash;/g, '—')
+    .replace(/&ndash;/g, '–')
+    .replace(/&nbsp;/g, ' ');
+}
+
+function cleanTitle(head, route) {
+  const m = head.match(/<title>([\s\S]*?)<\/title>/i);
+  const raw = m ? decodeEntities(m[1]).trim() : route;
+  return raw.replace(/\s*[|\-–—]\s*Found For AI\s*$/i, '').trim() || raw;
+}
+
+function mdPathFor(route) {
+  return route === '/' ? '/index.md' : `${route}.md`;
+}
+
+// Rewrite Markdown links to internal pages so they point at the .md mirror
+// (only when that page actually has a mirror). Preserves ?query and #hash.
+function rewriteInternalLinks(md) {
+  return md.replace(/\]\((\/[^)\s]*)\)/g, (full, url) => {
+    const parts = url.match(/^(\/[^?#]*)([?#].*)?$/);
+    if (!parts) return full;
+    const p = parts[1].replace(/\/+$/, '') || '/';
+    const rest = parts[2] || '';
+    if (p === '/' && mdSet.has('/')) return `](/index.md${rest})`;
+    if (mdSet.has(p)) return `](${p}.md${rest})`;
+    return full;
+  });
+}
+
+function buildMarkdown(route, title, bodyMd) {
+  const canonical = `${SITE_ORIGIN}${route === '/' ? '/' : route}`;
+  const header =
+    `> **${title}**\n` +
+    `> Markdown mirror of ${canonical} — part of the Found For AI knowledge base.\n` +
+    `> Index: ${SITE_ORIGIN}/llms.txt · Full knowledge file: ${SITE_ORIGIN}/llms-full.txt`;
+  const footer =
+    `---\n\n` +
+    `_Canonical page: ${canonical} · Found For AI — AI-visibility knowledge base: ` +
+    `${SITE_ORIGIN}/llms.txt · ${SITE_ORIGIN}/llms-full.txt_`;
+  return `${header}\n\n${bodyMd.trim()}\n\n${footer}\n`;
+}
+
+const mdIndex = [];
 
 for (const route of prerenderPaths) {
   const { html, head } = render(route);
@@ -23,11 +101,42 @@ for (const route of prerenderPaths) {
   await mkdir(dirname(outPath), { recursive: true });
   await writeFile(outPath, final);
   console.log(`  prerendered ${route}`);
+
+  if (mdSet.has(route)) {
+    const mainMatch = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i);
+    const contentHtml = mainMatch ? mainMatch[1] : html;
+    const title = cleanTitle(head, route);
+    const bodyMd = rewriteInternalLinks(turndown.turndown(contentHtml));
+    const outMd = route === '/'
+      ? join(distDir, 'index.md')
+      : join(distDir, `${route.replace(/^\//, '')}.md`);
+    await mkdir(dirname(outMd), { recursive: true });
+    await writeFile(outMd, buildMarkdown(route, title, bodyMd));
+    mdIndex.push({ route, title });
+    console.log(`  markdown    ${mdPathFor(route)}`);
+  }
 }
 
 console.log(`\n✓ Pre-rendered ${prerenderPaths.length} routes`);
+console.log(`✓ Wrote ${mdIndex.length} Markdown mirror files`);
 
-const SITE_ORIGIN = 'https://foundforai.com';
+// Inject the generated Markdown index into dist/llms.txt at the marker.
+try {
+  const llmsPath = join(distDir, 'llms.txt');
+  let llms = await readFile(llmsPath, 'utf-8');
+  if (llms.includes('<!--MD_INDEX-->')) {
+    const list = mdIndex
+      .map(({ route, title }) => `- ${SITE_ORIGIN}${mdPathFor(route)} — ${title}`)
+      .join('\n');
+    llms = llms.replace('<!--MD_INDEX-->', list);
+    await writeFile(llmsPath, llms);
+    console.log(`✓ Injected ${mdIndex.length} Markdown links into llms.txt`);
+  } else {
+    console.warn('  llms.txt: <!--MD_INDEX--> marker not found; skipped md index injection');
+  }
+} catch (err) {
+  console.warn('  could not inject md index into llms.txt:', err.message);
+}
 
 function escapeXml(s) {
   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
