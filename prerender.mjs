@@ -74,6 +74,12 @@ function rewriteInternalLinks(md) {
   });
 }
 
+// Adjacent CTA buttons render as back-to-back links with no separator
+// (`](/a.md)[Label](/b.md)`). Insert a space so each link parses cleanly.
+function spaceAdjacentLinks(md) {
+  return md.replace(/(\]\([^)]*\))(\[)/g, '$1 $2');
+}
+
 function buildMarkdown(route, title, bodyMd) {
   const canonical = `${SITE_ORIGIN}${route === '/' ? '/' : route}`;
   const header =
@@ -106,7 +112,7 @@ for (const route of prerenderPaths) {
     const mainMatch = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i);
     const contentHtml = mainMatch ? mainMatch[1] : html;
     const title = cleanTitle(head, route);
-    const bodyMd = rewriteInternalLinks(turndown.turndown(contentHtml));
+    const bodyMd = spaceAdjacentLinks(rewriteInternalLinks(turndown.turndown(contentHtml)));
     const outMd = route === '/'
       ? join(distDir, 'index.md')
       : join(distDir, `${route.replace(/^\//, '')}.md`);

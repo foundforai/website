@@ -322,6 +322,13 @@ discovery.
 - https://foundforai.com/llms.txt — Short AI summary file
 - https://foundforai.com/llms-full.txt — This file
 
+Every indexable page is also available as clean Markdown for AI agents:
+append `.md` to any page URL (for example, https://foundforai.com/services.md,
+or https://foundforai.com/index.md for the home page). Each Markdown file
+mirrors the page content and cross-links to the other pages' Markdown
+versions. The complete list is maintained under "Markdown versions" in
+https://foundforai.com/llms.txt
+
 ---
 
 ## 14. Social Profiles
