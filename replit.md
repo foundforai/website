@@ -28,6 +28,8 @@ The platform includes static `robots.txt` and `llms.txt`, extensive Schema.org m
 
 **Server-rendered head + JSON-LD**: Every page emits its `<title>`, meta description, canonical, OG/Twitter tags, and a single combined JSON-LD `<script>` (global @graph: Organization, WebSite, LocalBusiness, Service, Person + page-specific schemas) directly in the SSR HTML response so AI crawlers (GPTBot, ClaudeBot, PerplexityBot) see them without executing JavaScript. Mechanism: `client/src/lib/ssr-head.ts` provides a request-scoped head buffer; `SEOHead` is isomorphic — pushes to the buffer on the server (synchronous, safe with `renderToString`) and mutates `document.head` on the client; `entry-server.tsx` returns `{html, head}`; `server/vite.ts` (dev + prod) replaces `<!--ssr-head-->` in `client/index.html`. Pages pass page-specific schemas via the `PageLayout` `schemas` prop.
 
+**Markdown mirror (`/page.md`)**: Every indexable content page is also published as clean Markdown (`/services` → `/services.md`, home → `/index.md`), generated at build time from the same React render (one source, two outputs). The Markdown is `noindex` so the HTML stays canonical, and the full list is discoverable via `/llms.txt`. See **`docs/MARKDOWN-MIRROR.md`** for the full architecture.
+
 ## External Dependencies
 
 ### Third-Party Services
