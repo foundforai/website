@@ -7,9 +7,11 @@ This document describes the custom events the site pushes into the
 ## Stack
 
 - **Container**: GTM-PC6434DW (installed in `client/index.html` head + body
-  noscript fallback). This is the only analytics layer on the site —
-  there is no direct `gtag.js` and no GA4 Measurement ID hardcoded
-  anywhere; that's configured inside GTM.
+  noscript fallback). This is the GA4 analytics layer — there is no direct
+  `gtag.js` and no GA4 Measurement ID hardcoded anywhere; that's configured
+  inside GTM. A separate **OpenAI (ChatGPT Ads) pixel + Conversions API**
+  layer reports ad conversions off the same user actions; it is documented
+  in `docs/OPENAI-ADS.md`.
 - **Helper**: `client/src/lib/analytics.ts` exports `trackEvent(name, params)`
   which `dataLayer.push({event: name, ...params})`. Every event below
   flows through that one function — keep it that way.
