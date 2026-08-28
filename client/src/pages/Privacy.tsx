@@ -1,7 +1,7 @@
 import PageLayout from '@/components/PageLayout';
 import { breadcrumbList } from '@/lib/breadcrumb';
 
-const EFFECTIVE_DATE = 'May 11, 2026';
+const EFFECTIVE_DATE = 'August 27, 2026';
 
 const privacySchemas = [
   breadcrumbList([
@@ -17,7 +17,7 @@ const privacySchemas = [
     "isPartOf": { "@id": "https://foundforai.com/#website" },
     "about": { "@id": "https://foundforai.com/#org" },
     "publisher": { "@id": "https://foundforai.com/#org" },
-    "dateModified": "2026-05-11",
+    "dateModified": "2026-08-27",
   },
 ];
 
@@ -69,6 +69,10 @@ export default function Privacy() {
                   research, we may access publicly available information from platforms such as X (Twitter),
                   LinkedIn, and others through their official APIs, in accordance with each platform's terms.
                 </li>
+                <li>
+                  <strong className="text-foreground">Mobile numbers</strong> — mobile numbers provided when someone
+                  opts in to informational SMS.
+                </li>
               </ul>
             </section>
 
@@ -80,6 +84,7 @@ export default function Privacy() {
                 <li>Deliver audits, scorecards, playbooks, and consulting deliverables;</li>
                 <li>Conduct AI visibility research and analyze publicly available data;</li>
                 <li>Send transactional emails (e.g., confirming a request or delivering a report);</li>
+                <li>Send and receive informational SMS they opted into;</li>
                 <li>Improve our website, content, and service offerings;</li>
                 <li>Detect, prevent, and address fraud, abuse, or security issues;</li>
                 <li>Comply with legal obligations.</li>
@@ -106,6 +111,7 @@ export default function Privacy() {
                 <li><strong className="text-foreground">Google Analytics & Google Tag Manager</strong> — traffic analytics.</li>
                 <li><strong className="text-foreground">Formspree</strong> — contact and lead form delivery.</li>
                 <li><strong className="text-foreground">Email and scheduling tools</strong> — to communicate with you and book calls.</li>
+                <li><strong className="text-foreground">Twilio</strong> — SMS provider that processes mobile numbers on our behalf.</li>
                 <li><strong className="text-foreground">X (Twitter) Developer Platform</strong> — used for AI visibility research via public API endpoints. We do not store private X account data, and we comply with X's Developer Agreement and Policy.</li>
               </ul>
               <p className="text-muted-foreground mt-3">
@@ -178,7 +184,23 @@ export default function Privacy() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold mb-3">11. Changes to This Policy</h2>
+              <h2 className="text-2xl font-bold mb-3">11. SMS and mobile numbers</h2>
+              <p className="text-muted-foreground mb-3">
+                Dustin Crump / Found For AI sends informational texts from +1 385-993-4305. To opt in, text START to +1 385-993-4305. Message frequency varies. Message and data rates may apply. Reply STOP to cancel, HELP for help.
+              </p>
+              <p className="text-muted-foreground mb-3">
+                We do not share mobile numbers with third parties or affiliates for marketing or promotional purposes. Mobile numbers are used only to send and receive those opted-in informational messages.
+              </p>
+              <p className="text-muted-foreground">
+                Terms:{' '}
+                <a href="https://foundforai.com/terms" className="text-primary hover:underline">https://foundforai.com/terms</a>.
+                Questions:{' '}
+                <a href="mailto:support@foundforai.com" className="text-primary hover:underline">support@foundforai.com</a>.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-bold mb-3">12. Changes to This Policy</h2>
               <p className="text-muted-foreground">
                 We may update this Privacy Policy from time to time. We will post the revised policy on
                 this page and update the "Effective" date above. Material changes will be communicated
@@ -187,7 +209,7 @@ export default function Privacy() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold mb-3">12. Contact Us</h2>
+              <h2 className="text-2xl font-bold mb-3">13. Contact Us</h2>
               <p className="text-muted-foreground">
                 If you have questions about this Privacy Policy or our data practices, contact us:
               </p>
