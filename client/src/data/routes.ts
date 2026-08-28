@@ -53,6 +53,7 @@ const STATIC_ROUTES: RouteEntry[] = [
   { path: '/media/small-lake-city-podcast', prerender: true, sitemap: true, priority: 0.6, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
   { path: '/privacy', prerender: true, sitemap: true, priority: 0.3, changefreq: 'yearly', lastmod: '2026-05-11' },
   { path: '/terms', prerender: true, sitemap: true, priority: 0.3, changefreq: 'yearly', lastmod: '2026-05-11' },
+  { path: '/sms', prerender: true, sitemap: true, priority: 0.3, changefreq: 'yearly', lastmod: '2026-08-28' },
   { path: '/refund-policy', prerender: true, sitemap: true, priority: 0.3, changefreq: 'yearly', lastmod: '2026-05-19' },
   // Standalone HTML pages (already static — not prerendered, but included in sitemap where appropriate)
   { path: '/ai-visibility', prerender: false, sitemap: true, priority: 0.8, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
