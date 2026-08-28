@@ -1,7 +1,7 @@
 import PageLayout from '@/components/PageLayout';
 import { breadcrumbList } from '@/lib/breadcrumb';
 
-const EFFECTIVE_DATE = 'May 11, 2026';
+const EFFECTIVE_DATE = 'August 27, 2026';
 
 const termsSchemas = [
   breadcrumbList([
@@ -17,7 +17,7 @@ const termsSchemas = [
     "isPartOf": { "@id": "https://foundforai.com/#website" },
     "about": { "@id": "https://foundforai.com/#org" },
     "publisher": { "@id": "https://foundforai.com/#org" },
-    "dateModified": "2026-05-11",
+    "dateModified": "2026-08-27",
   },
 ];
 
@@ -172,7 +172,15 @@ export default function Terms() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold mb-3">13. Changes to These Terms</h2>
+              <h2 className="text-2xl font-bold mb-3">13. SMS Program</h2>
+              <p className="text-muted-foreground">
+                Dustin Crump / Found For AI sends informational texts from +1 385-993-4305. To opt in, text START to +1 385-993-4305. Reply STOP to cancel, HELP for help. Message frequency varies. Message and data rates may apply. Our privacy policy is at{' '}
+                <a href="https://foundforai.com/privacy" className="text-primary hover:underline">https://foundforai.com/privacy</a>.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-bold mb-3">14. Changes to These Terms</h2>
               <p className="text-muted-foreground">
                 We may update these Terms from time to time. The revised Terms will be posted on this
                 page with an updated "Effective" date. Your continued use of the site after the changes
@@ -181,7 +189,7 @@ export default function Terms() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold mb-3">14. Contact</h2>
+              <h2 className="text-2xl font-bold mb-3">15. Contact</h2>
               <p className="text-muted-foreground">
                 Questions about these Terms can be sent to:
               </p>
