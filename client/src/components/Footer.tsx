@@ -129,6 +129,10 @@ export default function Footer() {
             <Link href="/terms" data-testid="link-footer-terms">
               <span className="hover:text-primary transition-colors">Terms of Service</span>
             </Link>
+            <span aria-hidden="true">·</span>
+            <Link href="/sms" data-testid="link-footer-sms">
+              <span className="hover:text-primary transition-colors">SMS</span>
+            </Link>
           </nav>
           <p>&copy; {currentYear} Found For AI. All rights reserved.</p>
         </div>
