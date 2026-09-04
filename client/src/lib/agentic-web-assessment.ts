@@ -241,7 +241,7 @@ export const PACKAGES: Record<PackageId, PackageDefinition> = {
     name: 'Agentic Operations',
     timeline: '5–8 weeks',
     explanation:
-      'You selected several actions, or more complex tools such as quotes, status lookups, or payment handoff. This package maps the journey and systems first, then phases MCP / WebMCP tools behind permission boundaries, approval gates, and observability.',
+      'You selected a more complex action — quotes, status lookups, or payment — or several actions at once. This package maps the journey and systems first, then phases MCP / WebMCP tools behind permission boundaries, approval gates, and observability.',
     scope: [
       'Customer-journey and system-architecture map for the selected actions',
       'Trusted answer layer with permission boundaries',

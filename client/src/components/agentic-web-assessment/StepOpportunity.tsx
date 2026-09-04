@@ -12,13 +12,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import {
   ACTIONS,
   BUSINESS_TYPES,
   type ActionId,
@@ -71,6 +64,8 @@ export default function StepOpportunity({
           type="url"
           inputMode="url"
           autoComplete="url"
+          required
+          aria-required="true"
           placeholder="https://yourbusiness.com"
           value={website}
           onChange={(e) => onWebsiteChange(e.target.value)}
@@ -90,23 +85,24 @@ export default function StepOpportunity({
 
       <div className="space-y-2">
         <Label htmlFor="awa-business-type">Business type</Label>
-        <Select value={businessType || undefined} onValueChange={onBusinessTypeChange}>
-          <SelectTrigger
-            id="awa-business-type"
-            aria-invalid={errors.businessType ? true : undefined}
-            aria-describedby={errors.businessType ? 'awa-type-error' : undefined}
-            data-testid="select-business-type"
-          >
-            <SelectValue placeholder="Select the closest fit" />
-          </SelectTrigger>
-          <SelectContent>
-            {BUSINESS_TYPES.map((t) => (
-              <SelectItem key={t.value} value={t.value} data-testid={`option-type-${t.value}`}>
-                {t.label}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+        <select
+          id="awa-business-type"
+          value={businessType}
+          onChange={(e) => onBusinessTypeChange(e.target.value)}
+          required
+          aria-required="true"
+          aria-invalid={errors.businessType ? true : undefined}
+          aria-describedby={errors.businessType ? 'awa-type-error' : undefined}
+          data-testid="select-business-type"
+          className="flex h-11 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+        >
+          <option value="">Select the closest fit</option>
+          {BUSINESS_TYPES.map((t) => (
+            <option key={t.value} value={t.value} data-testid={`option-type-${t.value}`}>
+              {t.label}
+            </option>
+          ))}
+        </select>
         {errors.businessType ? (
           <p id="awa-type-error" className="text-sm text-destructive" role="alert">
             {errors.businessType}
