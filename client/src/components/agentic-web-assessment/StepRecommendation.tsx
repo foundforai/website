@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'wouter';
-import { Check, Copy, RotateCcw } from 'lucide-react';
+import { Check, Copy, Download, RotateCcw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { BOOK_CALL_URL, type AssessmentResult } from '@/lib/agentic-web-assessment';
@@ -20,12 +20,24 @@ export default function StepRecommendation({
 
   async function handleCopy() {
     try {
-      await navigator.clipboard.writeText(result.summary);
+      await navigator.clipboard.writeText(result.actionPlan);
       setCopied(true);
       window.setTimeout(() => setCopied(false), 1800);
     } catch {
       // The plain-text block below stays selectable if clipboard is blocked.
     }
+  }
+
+  function handleDownload() {
+    const blob = new Blob([result.actionPlan], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'agentic-web-action-plan.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
   }
 
   return (
@@ -151,31 +163,49 @@ export default function StepRecommendation({
       </section>
 
       <section>
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-3">
-          <h3 className="text-lg font-bold">Copyable sales summary</h3>
-          <Button
-            type="button"
-            variant="outline"
-            size="sm"
-            onClick={handleCopy}
-            data-testid="button-copy-summary"
-          >
-            {copied ? (
-              <>
-                <Check className="h-4 w-4 mr-1.5" /> Copied
-              </>
-            ) : (
-              <>
-                <Copy className="h-4 w-4 mr-1.5" /> Copy summary
-              </>
-            )}
-          </Button>
+        <div className="flex flex-col gap-3 mb-3 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h3 className="text-lg font-bold">Agentic Web Action Plan</h3>
+            <p className="text-sm text-muted-foreground mt-1">
+              Copy or download this plan to share with your team. It stays on this device.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={handleCopy}
+              aria-label="Copy my assessment"
+              data-testid="button-copy-assessment"
+            >
+              {copied ? (
+                <>
+                  <Check className="h-4 w-4 mr-1.5" /> Copied
+                </>
+              ) : (
+                <>
+                  <Copy className="h-4 w-4 mr-1.5" /> Copy my assessment
+                </>
+              )}
+            </Button>
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={handleDownload}
+              aria-label="Save my action plan"
+              data-testid="button-save-action-plan"
+            >
+              <Download className="h-4 w-4 mr-1.5" /> Save my action plan
+            </Button>
+          </div>
         </div>
         <pre
           className="text-xs md:text-sm bg-muted p-4 rounded-md overflow-x-auto whitespace-pre-wrap font-mono leading-relaxed border max-h-[420px] overflow-y-auto"
-          data-testid="sales-summary"
+          data-testid="action-plan"
         >
-          {result.summary}
+          {result.actionPlan}
         </pre>
       </section>
 

@@ -1,5 +1,5 @@
 /**
- * Agentic Web Assessment — scoring, package selection, and sales-summary
+ * Agentic Web Assessment — scoring, package selection, and action-plan
  * helpers. Pure client-side logic; nothing here talks to a network.
  *
  * This file recommends an MCP / WebMCP *implementation package*.
@@ -76,13 +76,14 @@ export interface AssessmentResult {
   opportunityPoints: number;
   score: number;
   label: ReadinessLabel;
+  scoreExplanation: string;
   packageId: PackageId;
   package: PackageDefinition;
   websiteDisplay: string;
   businessTypeLabel: string;
   actionLabels: string[];
   discovery: DiscoveryItem[];
-  summary: string;
+  actionPlan: string;
 }
 
 export const BOOK_CALL_URL = 'https://foundforai.com/book-call';
@@ -367,6 +368,28 @@ export function scoreLabel(score: number): ReadinessLabel {
   return 'Foundation first';
 }
 
+export function scoreExplanation(
+  score: number,
+  readinessPts: number,
+  opportunityPts: number,
+  actionCount: number
+): string {
+  const actionBit =
+    actionCount === 1
+      ? `The one action you selected adds ${opportunityPts} opportunity ${opportunityPts === 1 ? 'point' : 'points'}.`
+      : `The ${actionCount} actions you selected add ${opportunityPts} opportunity points.`;
+  const breakdown = `Your readiness answers contribute ${readinessPts} of 80 possible points. ${actionBit} Combined score: ${score} of 100.`;
+
+  const meaning =
+    score >= 82
+      ? 'This range usually means the basics are in place, so a focused first release can start once a few details are confirmed.'
+      : score >= 62
+        ? 'This range is enough to start scoping. A short mapping pass will lock down systems, owners, and the first workflow.'
+        : 'This range suggests starting with knowledge, owners, and access. That foundation work makes the first release safer and clearer.';
+
+  return `${breakdown} ${meaning}`;
+}
+
 export function discoveryItems(
   readiness: Record<ReadinessId, ReadinessValue>
 ): DiscoveryItem[] {
@@ -406,44 +429,56 @@ function displayWebsite(input: string): string {
   }
 }
 
-export function buildSalesSummary(result: Omit<AssessmentResult, 'summary'>): string {
+export function buildActionPlan(result: Omit<AssessmentResult, 'actionPlan'>): string {
   const discoveryBlock =
     result.discovery.length === 0
-      ? 'None flagged — readiness answers were all “Yes.” We will still confirm details on a kickoff call.'
+      ? 'None flagged — every readiness answer was Yes. Still worth a quick confirmation before anything customer-facing goes live.'
       : result.discovery
           .map((d) => {
-            const flag = d.answer === 'not_sure' ? 'Not sure' : 'Needs work';
+            const flag = d.answer === 'not_sure' ? 'Not sure yet' : 'Needs attention';
             return `- ${d.prompt} (${flag}): ${d.guidance}`;
           })
           .join('\n');
 
-  const steps = result.package.steps
+  const nextSteps = result.package.steps
     .map((step, i) => `${i + 1}. ${step}`)
     .join('\n');
 
   const scope = result.package.scope.map((item) => `- ${item}`).join('\n');
+  const actions = result.actionLabels.map((label) => `- ${label}`).join('\n');
 
   return [
-    'Found For AI — Agentic Web Assessment summary',
+    'Agentic Web Action Plan',
     '',
-    `Website: ${result.websiteDisplay}`,
+    `Business website: ${result.websiteDisplay}`,
     `Business type: ${result.businessTypeLabel}`,
-    `Readiness score: ${result.score} — ${result.label}`,
-    `Selected AI actions: ${result.actionLabels.join('; ')}`,
     '',
-    `Recommended package: ${result.package.name}`,
-    `Expected first-release timeline: ${result.package.timeline}`,
+    'Selected AI actions',
+    actions,
     '',
-    'Recommended scope:',
+    'Readiness score',
+    `${result.score} of 100 — ${result.label}`,
+    result.scoreExplanation,
+    '',
+    'Recommended implementation package',
+    result.package.name,
+    result.package.explanation,
+    '',
+    `Expected timeline: ${result.package.timeline}`,
+    '',
+    'Proposed first-release scope',
     scope,
     '',
-    'Implementation path:',
-    steps,
-    '',
-    'Discovery focus:',
+    'Discovery items',
     discoveryBlock,
     '',
-    `This assessment was completed in the browser and was not submitted. To talk through the recommendation, book a call: ${BOOK_CALL_URL}`,
+    'Recommended next steps',
+    nextSteps,
+    '',
+    '—',
+    'Prepared from the Agentic Web Assessment on foundforai.com. This plan stays on your device unless you choose to share it.',
+    '',
+    `Optional: Discuss this plan with Found For AI — ${BOOK_CALL_URL}`,
   ].join('\n');
 }
 
@@ -456,11 +491,13 @@ export function evaluateAssessment(input: AssessmentInput): AssessmentResult {
   const pkg = PACKAGES[packageId];
   const actionLabels = actions.map((id) => actionById(id).label);
 
-  const withoutSummary = {
+  const label = scoreLabel(score);
+  const withoutPlan = {
     readinessPoints: readyPts,
     opportunityPoints: oppPts,
     score,
-    label: scoreLabel(score),
+    label,
+    scoreExplanation: scoreExplanation(score, readyPts, oppPts, actions.length),
     packageId,
     package: pkg,
     websiteDisplay: displayWebsite(input.website),
@@ -470,8 +507,8 @@ export function evaluateAssessment(input: AssessmentInput): AssessmentResult {
   };
 
   return {
-    ...withoutSummary,
-    summary: buildSalesSummary(withoutSummary),
+    ...withoutPlan,
+    actionPlan: buildActionPlan(withoutPlan),
   };
 }
 

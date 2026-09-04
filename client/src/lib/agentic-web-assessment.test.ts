@@ -122,15 +122,30 @@ const tests: Array<[string, () => void]> = [
       'guidance should be encouraging'
     );
   }],
-  ['sales summary includes website, package, steps, book-call CTA', () => {
+  ['action plan is written for the prospect and includes the required sections', () => {
     const result = evaluateAssessment(makeInput({ actions: ['answers', 'book'], readiness: { ...allYes() } }));
-    assert(result.summary.includes('https://acmeplumbing.com'), 'website');
-    assert(result.summary.includes('Home services & trades'), 'type');
-    assert(result.summary.includes('Agentic Conversion'), 'package');
-    assert(result.summary.includes('3–5 weeks'), 'timeline');
-    assert(result.summary.includes('1. '), 'steps');
-    assert(result.summary.includes(BOOK_CALL_URL), 'cta');
-    assert(result.summary.includes('was not submitted'), 'privacy');
+    const plan = result.actionPlan;
+    assert(plan.startsWith('Agentic Web Action Plan'), 'title');
+    assert(plan.includes('https://acmeplumbing.com'), 'website');
+    assert(plan.includes('Home services & trades'), 'type');
+    assert(plan.includes('Selected AI actions'), 'actions heading');
+    assert(plan.includes('Answer customer questions'), 'action');
+    assert(plan.includes('Book appointments'), 'action 2');
+    assert(plan.includes('Readiness score'), 'score heading');
+    assert(plan.includes('88 of 100'), 'score');
+    assert(plan.includes('Strong starting point'), 'label');
+    assert(plan.includes(result.scoreExplanation), 'score explanation');
+    assert(plan.includes('Recommended implementation package'), 'package heading');
+    assert(plan.includes('Agentic Conversion'), 'package');
+    assert(plan.includes('Expected timeline: 3–5 weeks'), 'timeline');
+    assert(plan.includes('Proposed first-release scope'), 'scope');
+    assert(plan.includes('Discovery items'), 'discovery');
+    assert(plan.includes('Recommended next steps'), 'next steps');
+    assert(plan.includes('1. '), 'numbered steps');
+    assert(plan.includes('foundforai.com'), 'attribution');
+    assert(plan.includes(`Discuss this plan with Found For AI — ${BOOK_CALL_URL}`), 'optional cta');
+    assert(!/sales summary/i.test(plan), 'must not say sales summary');
+    assert(!/was not submitted/i.test(plan), 'old privacy line should be gone');
   }],
   ['URL validation accepts bare domains and rejects junk', () => {
     assert(isValidWebsite('foundforai.com') === true, 'bare domain');
