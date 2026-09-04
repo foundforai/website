@@ -27,6 +27,7 @@ const STATIC_ROUTES: RouteEntry[] = [
   { path: '/', prerender: true, sitemap: true, priority: 1.0, changefreq: 'weekly', lastmod: STATIC_DEFAULT_LASTMOD },
   { path: '/audit', prerender: true, sitemap: true, priority: 0.9, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
   { path: '/scorecard', prerender: true, sitemap: true, priority: 0.9, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
+  { path: '/agentic-web-assessment', prerender: true, sitemap: true, priority: 0.8, changefreq: 'monthly', lastmod: '2026-09-04' },
   { path: '/scorecard/results', prerender: true, sitemap: false },
   { path: '/services', prerender: true, sitemap: true, priority: 0.8, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
   { path: '/playbook', prerender: true, sitemap: true, priority: 0.9, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
