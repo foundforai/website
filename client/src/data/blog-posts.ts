@@ -41,6 +41,74 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'agentic-web-assessment',
+    title: 'What Could AI Do on Your Website?',
+    subtitle: 'A three-minute plan for answers, booking, and the actions worth wiring first.',
+    date: '2026-09-08',
+    dateModified: '2026-09-08',
+    author: 'Dustin Crump',
+    excerpt: 'AI is moving from answering questions about a business to taking actions on its site. A short assessment shows which first release fits: answers, booking, or the more complex tools.',
+    readTime: '4 min read',
+    image: websiteOptimizationImg,
+    featured: false,
+    articleSection: 'AI Visibility',
+    metaDescription: 'See what AI could answer, book, and capture on your website. A three-minute agentic web assessment recommends a first-release plan. Nothing is submitted.',
+    ogDescription: 'Most sites are readable by people and blurry to AI agents. A three-minute plan shows which actions are worth wiring first, and what has to be true before an agent can act.',
+    twitterDescription: 'What could AI do on your website? Answer, book, capture a lead, quote, check status, or start a payment handoff. Get a three-minute first-release plan.',
+    schemaDescription: 'A prospect-facing explainer of the Agentic Web Assessment: how AI is moving from answers to on-site actions, why most websites are blurry to agents, and how a three-minute configurator recommends a first-release package without submitting data.',
+    keywords: 'agentic web, MCP, WebMCP, AI agents, website actions, AI booking, lead capture, approved knowledge, Found For AI',
+    customCta: {
+      headline: 'Get your agentic web action plan',
+      copy: 'Enter your site, pick the actions that matter, and get a first-release recommendation. It stays on your device until you choose to book.',
+      buttonText: 'Get my agentic web plan',
+      buttonLink: '/agentic-web-assessment',
+      footnote: 'Nothing is submitted from the assessment.',
+    },
+    content: `
+        <p>For a while, AI was a research tool. A customer asked a question, got a paragraph, and then did the work themselves. That is changing. Assistants are starting to act on a business's site: answer from approved knowledge, book an appointment, capture a lead, create an estimate, check a status, or start a payment handoff.</p>
+
+        <p>If those actions are not wired, the assistant either guesses or moves on. The customer never sees your form. They just get a different recommendation.</p>
+
+        <h2>Most sites are readable to people and blurry to agents</h2>
+
+        <p>A person can scan a page, find a phone number, and figure out what you do. An AI agent needs something more specific. It needs approved knowledge it is allowed to use, clear boundaries for what it should not do, and a human handoff when a question or action is out of scope.</p>
+
+        <p>Without those, your site is still useful to humans and hard for agents to trust. The pages exist. The offer exists. The agent still cannot tell what it is allowed to say or do on your behalf.</p>
+
+        <p>That gap is not a design problem. It is a knowledge, permission, and handoff problem. MCP and WebMCP are how assistants discover those tools on a website. The business still has to decide which actions come first, and what has to be true before an agent is allowed to run them.</p>
+
+        <h2>What the assessment does</h2>
+
+        <p>The Agentic Web Assessment is a three-minute configurator. You enter your website, pick the closest business type, and choose the actions you want AI to handle. Then you answer five short readiness questions about content, owners, tools, access, and handoff.</p>
+
+        <p>You get a package and a first-release timeline:</p>
+
+        <ul>
+          <li><strong>Agentic Answers Foundation</strong> when the first job is trusted answers from approved business knowledge.</li>
+          <li><strong>Agentic Conversion</strong> when you also want a booking or lead-capture workflow.</li>
+          <li><strong>Agentic Operations</strong> when the work includes quotes, status checks, payments, or several actions at once.</li>
+        </ul>
+
+        <p>The result is a plan you can share with your team: recommended scope, discovery items, and next steps. <a href="/agentic-web-assessment" class="text-primary hover:underline">Get your agentic web action plan</a>.</p>
+
+        <h2>What it does not do</h2>
+
+        <p>The assessment does not submit your answers. Nothing is sent to Found For AI unless you later choose a contact action. It does not connect a CRM. It does not install anything on your site. It is a plan, not a build.</p>
+
+        <p>That is the point. You can walk the recommendation past a partner, a developer, or an owner before anyone touches production. If you want to go through the plan with us, you can <a href="/book-call" class="text-primary hover:underline">book an appointment</a>. About 30 minutes. Optional.</p>
+
+        <h2>Start with the first release, not every action</h2>
+
+        <p>The temptation is to wire everything at once: answers, booking, quotes, status, and payments. Most businesses do not need that on day one. They need a first release that matches how they actually work, plus a short list of discovery items that are planning work, not failures.</p>
+
+        <p>If your knowledge is not approved, the agent should not answer yet. If nobody owns the workflow, booking should wait. If there is no human handoff, a stuck customer has nowhere to go. The assessment surfaces those items so you can resolve them before tools go live.</p>
+
+        <p>AI is moving from talking about your business to acting on it. The businesses that get there first will not be the ones that published the most pages. They will be the ones that decided which actions an agent is allowed to take, and made those actions safe to run.</p>
+
+        <p>Start with the three-minute plan. Then decide what is worth wiring.</p>
+      `,
+  },
+  {
     slug: 'ai-can-recommend-your-business',
     title: 'AI Can Recommend Your Business. But Only If You Set It Up Right.',
     subtitle: 'Having a website is not enough anymore. Here\'s the catalog entry most businesses are missing.',
