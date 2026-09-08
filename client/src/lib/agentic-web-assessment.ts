@@ -35,6 +35,8 @@ export interface BusinessTypeOption {
 export interface ActionOption {
   id: ActionId;
   label: string;
+  /** Shorter tile title used in the step-1 grid. */
+  tileLabel: string;
   description: string;
   /** Conversion-style actions (booking, lead capture). */
   kind: 'foundation' | 'conversion' | 'complex';
@@ -105,39 +107,43 @@ export const ACTIONS: ActionOption[] = [
   {
     id: 'answers',
     label: 'Answer customer questions',
-    description:
-      'Give AI a trusted source for hours, services, policies, and FAQs.',
+    tileLabel: 'Answer questions',
+    description: 'Services, policies, pricing, hours',
     kind: 'foundation',
   },
   {
     id: 'book',
     label: 'Book appointments',
-    description:
-      'Let agents check availability and request or confirm a visit.',
+    tileLabel: 'Book appointments',
+    description: 'Availability, scheduling, intake',
     kind: 'conversion',
   },
   {
     id: 'leads',
     label: 'Capture and qualify leads',
-    description: 'Collect the right details and route serious inquiries.',
+    tileLabel: 'Capture leads',
+    description: 'Qualify and route inquiries',
     kind: 'conversion',
   },
   {
     id: 'quotes',
     label: 'Create estimates or quotes',
-    description: 'Use approved pricing rules to draft an estimate.',
+    tileLabel: 'Create estimates',
+    description: 'Collect details, draft a quote',
     kind: 'complex',
   },
   {
     id: 'status',
     label: 'Check order or request status',
-    description: 'Look up a job, order, or ticket without the phone tag.',
+    tileLabel: 'Check status',
+    description: 'Orders, cases, service requests',
     kind: 'complex',
   },
   {
     id: 'payment',
     label: 'Start a secure payment or checkout handoff',
-    description: 'Begin checkout or send a payment link with guardrails.',
+    tileLabel: 'Start payments',
+    description: 'Deposits and checkout handoff',
     kind: 'complex',
   },
 ];
@@ -168,7 +174,7 @@ export const READINESS_QUESTIONS: ReadinessQuestion[] = [
     discoveryNotSure:
       'We will map the tools you already use and note any gaps before we design agent workflows.',
     discoveryNo:
-      'We will scope a workable first action using the systems you do have — or a simple intake path — rather than forcing a full stack rewrite.',
+      'We will scope a workable first action using the systems you do have, or a simple intake path, rather than forcing a full stack rewrite.',
   },
   {
     id: 'systemAccess',
@@ -186,7 +192,7 @@ export const READINESS_QUESTIONS: ReadinessQuestion[] = [
     discoveryNotSure:
       'We will design a simple escalation path so uncertain or high-stakes requests reach a person.',
     discoveryNo:
-      'We will define a human handoff as part of the first release — agents should never dead-end a customer.',
+      'We will define a human handoff as part of the first release. Agents should never dead-end a customer.',
   },
 ];
 
@@ -202,9 +208,9 @@ export const PACKAGES: Record<PackageId, PackageDefinition> = {
   foundation: {
     id: 'foundation',
     name: 'Agentic Answers Foundation',
-    timeline: '2–3 weeks',
+    timeline: '2-3 weeks',
     explanation:
-      'You want AI to answer from approved business knowledge — without booking, quoting, or taking payments yet. This package stands up a trusted MCP / WebMCP discovery layer with clear answer boundaries and a human escalation path.',
+      'You want AI to answer from approved business knowledge, without booking, quoting, or taking payments yet. This package stands up a trusted MCP / WebMCP discovery layer with clear answer boundaries and a human escalation path.',
     scope: [
       'Structured, approved business knowledge the agent is allowed to use',
       'MCP / WebMCP discovery endpoint so assistants can find and query that knowledge',
@@ -221,9 +227,9 @@ export const PACKAGES: Record<PackageId, PackageDefinition> = {
   conversion: {
     id: 'conversion',
     name: 'Agentic Conversion',
-    timeline: '3–5 weeks',
+    timeline: '3-5 weeks',
     explanation:
-      'You want answers plus one or two focused conversion actions — typically booking or lead capture. This package adds a guarded MCP / WebMCP tool for that workflow, with validation, handoff, and outcome measurement.',
+      'You want answers plus one or two focused conversion actions, typically booking or lead capture. This package adds a guarded MCP / WebMCP tool for that workflow, with validation, handoff, and outcome measurement.',
     scope: [
       'Approved knowledge and a trusted answer layer',
       'One primary customer-action workflow (booking or lead capture)',
@@ -240,9 +246,9 @@ export const PACKAGES: Record<PackageId, PackageDefinition> = {
   operations: {
     id: 'operations',
     name: 'Agentic Operations',
-    timeline: '5–8 weeks',
+    timeline: '5-8 weeks',
     explanation:
-      'You selected a more complex action — quotes, status lookups, or payment — or several actions at once. This package maps the journey and systems first, then phases MCP / WebMCP tools behind permission boundaries, approval gates, and observability.',
+      'You selected a more complex action such as quotes, status lookups, or payment, or several actions at once. This package maps the journey and systems first, then phases MCP / WebMCP tools behind permission boundaries, approval gates, and observability.',
     scope: [
       'Customer-journey and system-architecture map for the selected actions',
       'Trusted answer layer with permission boundaries',
@@ -270,11 +276,14 @@ const MAX_SCORE = 100;
 const COMPLEX_ACTIONS = new Set<ActionId>(['quotes', 'status', 'payment']);
 const CONVERSION_ACTIONS = new Set<ActionId>(['book', 'leads']);
 
+export function stripWebsiteProtocol(input: string): string {
+  return input.trim().replace(/^https?:\/\//i, '');
+}
+
 export function normalizeWebsite(input: string): string {
-  const trimmed = input.trim();
-  if (!trimmed) return '';
-  if (/^https?:\/\//i.test(trimmed)) return trimmed;
-  return `https://${trimmed}`;
+  const host = stripWebsiteProtocol(input);
+  if (!host) return '';
+  return `https://${host}`;
 }
 
 export function isValidWebsite(input: string): boolean {
@@ -432,7 +441,7 @@ function displayWebsite(input: string): string {
 export function buildActionPlan(result: Omit<AssessmentResult, 'actionPlan'>): string {
   const discoveryBlock =
     result.discovery.length === 0
-      ? 'None flagged — every readiness answer was Yes. Still worth a quick confirmation before anything customer-facing goes live.'
+      ? 'None flagged. Every readiness answer was Yes. Still worth a quick confirmation before anything customer-facing goes live.'
       : result.discovery
           .map((d) => {
             const flag = d.answer === 'not_sure' ? 'Not sure yet' : 'Needs attention';
@@ -457,7 +466,7 @@ export function buildActionPlan(result: Omit<AssessmentResult, 'actionPlan'>): s
     actions,
     '',
     'Readiness score',
-    `${result.score} of 100 — ${result.label}`,
+    `${result.score} of 100. ${result.label}`,
     result.scoreExplanation,
     '',
     'Recommended implementation package',
@@ -475,10 +484,10 @@ export function buildActionPlan(result: Omit<AssessmentResult, 'actionPlan'>): s
     'Recommended next steps',
     nextSteps,
     '',
-    '—',
+    '---',
     'Prepared from the Agentic Web Assessment on foundforai.com. This plan stays on your device unless you choose to share it.',
     '',
-    `Optional: Discuss this plan with Found For AI — ${BOOK_CALL_URL}`,
+    `Optional: Discuss this plan with Found For AI. ${BOOK_CALL_URL}`,
   ].join('\n');
 }
 

@@ -32,31 +32,29 @@ export default function StepReadiness({
         e.preventDefault();
         onContinue();
       }}
-      className="space-y-6"
+      className="space-y-5"
     >
       <p className="text-sm text-muted-foreground leading-relaxed">
-        Each question defaults to <strong>Not sure</strong>. Uncertainty becomes a
-        discovery item — not an automatic blocker — when we recommend a package.
+        A best estimate is fine. <strong>Not sure</strong> becomes a discovery item, not a blocker.
       </p>
 
-      <ol className="space-y-4">
-        {READINESS_QUESTIONS.map((q, index) => (
-          <li
-            key={q.id}
-            className="rounded-xl border border-card-border bg-card p-4 sm:p-5"
-          >
-            <fieldset>
-              <legend className="font-semibold leading-snug mb-1">
-                <span className="text-primary mr-2 tabular-nums">{index + 1}.</span>
-                {q.prompt}
-              </legend>
-              <p id={`${q.id}-hint`} className="text-sm text-muted-foreground mb-4 leading-relaxed">
-                {q.hint}
-              </p>
+      <ol className="divide-y divide-border rounded-xl border border-card-border bg-card">
+        {READINESS_QUESTIONS.map((q) => (
+          <li key={q.id} className="p-4 sm:p-5">
+            <fieldset className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_auto] gap-3 lg:gap-6 lg:items-center">
+              <legend className="sr-only">{q.prompt}</legend>
+              <div>
+                <p className="font-semibold text-sm leading-snug" aria-hidden="true">
+                  {q.prompt}
+                </p>
+                <p id={`${q.id}-hint`} className="text-xs text-muted-foreground mt-1 leading-relaxed">
+                  {q.hint}
+                </p>
+              </div>
               <RadioGroup
                 value={readiness[q.id]}
                 onValueChange={(v) => onChange(q.id, v as ReadinessValue)}
-                className="grid grid-cols-1 sm:grid-cols-3 gap-2"
+                className="grid grid-cols-3 gap-1.5 min-w-0 sm:min-w-[280px]"
                 aria-describedby={`${q.id}-hint`}
                 data-testid={`readiness-${q.id}`}
               >
@@ -72,7 +70,7 @@ export default function StepReadiness({
                       />
                       <Label
                         htmlFor={itemId}
-                        className={`flex items-center justify-center min-h-11 px-3 rounded-lg border text-sm font-semibold cursor-pointer transition-colors motion-reduce:transition-none focus-visible:outline-none peer-focus-visible:ring-2 peer-focus-visible:ring-ring peer-focus-visible:ring-offset-2 ${
+                        className={`flex items-center justify-center min-h-9 px-2 rounded-md border text-xs font-semibold cursor-pointer transition-colors motion-reduce:transition-none focus-visible:outline-none peer-focus-visible:ring-2 peer-focus-visible:ring-ring peer-focus-visible:ring-offset-2 ${
                           selected
                             ? 'border-primary bg-primary/5 text-foreground'
                             : 'border-input bg-background text-muted-foreground hover:border-primary/40'
@@ -107,7 +105,7 @@ export default function StepReadiness({
           style={{ backgroundColor: '#0F5FDB', borderColor: '#0F5FDB' }}
           data-testid="button-see-recommendation"
         >
-          See recommendation
+          Build my recommendation
         </Button>
       </div>
     </form>

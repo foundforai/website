@@ -137,14 +137,15 @@ const tests: Array<[string, () => void]> = [
     assert(plan.includes(result.scoreExplanation), 'score explanation');
     assert(plan.includes('Recommended implementation package'), 'package heading');
     assert(plan.includes('Agentic Conversion'), 'package');
-    assert(plan.includes('Expected timeline: 3–5 weeks'), 'timeline');
+    assert(plan.includes('Expected timeline: 3-5 weeks'), 'timeline');
     assert(plan.includes('Proposed first-release scope'), 'scope');
     assert(plan.includes('Discovery items'), 'discovery');
     assert(plan.includes('Recommended next steps'), 'next steps');
     assert(plan.includes('1. '), 'numbered steps');
     assert(plan.includes('foundforai.com'), 'attribution');
-    assert(plan.includes(`Discuss this plan with Found For AI — ${BOOK_CALL_URL}`), 'optional cta');
+    assert(plan.includes(`Discuss this plan with Found For AI. ${BOOK_CALL_URL}`), 'optional cta');
     assert(!/sales summary/i.test(plan), 'must not say sales summary');
+    assert(!/\u2014/.test(plan), 'action plan must not contain an em dash');
     assert(!/was not submitted/i.test(plan), 'old privacy line should be gone');
   }],
   ['URL validation accepts bare domains and rejects junk', () => {

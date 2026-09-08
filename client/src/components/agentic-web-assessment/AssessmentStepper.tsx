@@ -1,93 +1,110 @@
-import { Check } from 'lucide-react';
+import type { ReactNode } from 'react';
 
-const STEPS = [
-  { n: 1, label: 'Business opportunity' },
-  { n: 2, label: 'Readiness' },
-  { n: 3, label: 'Recommendation' },
-] as const;
+const STEP_META = [
+  { n: 1 as const, code: '01', title: 'Your opportunity', hint: 'Start with the business' },
+  { n: 2 as const, code: '02', title: 'Readiness', hint: 'Quick readiness check' },
+  { n: 3 as const, code: '03', title: 'Recommendation', hint: '' },
+];
 
-interface AssessmentStepperProps {
+interface AssessmentProgressProps {
   step: 1 | 2 | 3;
-  onGoTo?: (step: 1 | 2) => void;
-  canGoToStep2: boolean;
 }
 
-export default function AssessmentStepper({
-  step,
-  onGoTo,
-  canGoToStep2,
-}: AssessmentStepperProps) {
+export function AssessmentProgress({ step }: AssessmentProgressProps) {
+  const current = STEP_META[step - 1];
   return (
-    <ol className="grid grid-cols-3 gap-2 sm:gap-4" aria-label="Assessment progress">
-      {STEPS.map((s) => {
-        const complete = step > s.n;
-        const current = step === s.n;
-        const goable =
-          (s.n === 1 && step > 1) || (s.n === 2 && canGoToStep2 && step === 3);
-
-        const inner = (
-          <>
-            <StepMark n={s.n} complete={complete} current={current} />
-            <span
-              className={`text-xs sm:text-sm font-semibold leading-tight ${
-                current || complete ? 'text-foreground' : 'text-muted-foreground'
-              }`}
-            >
-              <span className="sr-only">
-                {current ? 'Current step: ' : complete ? 'Completed: ' : 'Upcoming: '}
-              </span>
-              {s.label}
-            </span>
-          </>
-        );
-
-        return (
-          <li key={s.n} className="min-w-0">
-            {goable && onGoTo && (s.n === 1 || s.n === 2) ? (
-              <button
-                type="button"
-                onClick={() => onGoTo(s.n)}
-                aria-current={current ? 'step' : undefined}
-                className="flex flex-col sm:flex-row items-center sm:items-start gap-2 w-full text-center sm:text-left rounded-lg p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-              >
-                {inner}
-              </button>
-            ) : (
-              <div
-                className="flex flex-col sm:flex-row items-center sm:items-start gap-2 p-1"
-                aria-current={current ? 'step' : undefined}
-              >
-                {inner}
-              </div>
-            )}
-          </li>
-        );
-      })}
-    </ol>
+    <div className="flex items-center gap-3 text-xs font-semibold tracking-[0.14em] uppercase text-primary">
+      <span className="hidden sm:inline-block w-8 h-px bg-primary" aria-hidden="true" />
+      <p>
+        <span>Agentic web readiness</span>
+        <span className="sr-only">, step </span>
+        <span className="ml-3 text-muted-foreground font-medium tracking-[0.12em]">
+          {current.code}-03
+        </span>
+      </p>
+    </div>
   );
 }
 
-function StepMark({
-  n,
-  complete,
-  current,
-}: {
-  n: number;
+interface StepCardHeaderProps {
+  n: 1 | 2 | 3;
+  active: boolean;
   complete: boolean;
-  current: boolean;
-}) {
+  onSelect?: () => void;
+}
+
+export function StepCardHeader({ n, active, complete, onSelect }: StepCardHeaderProps) {
+  const meta = STEP_META[n - 1];
+  const label = meta.hint ? `${meta.title}: ${meta.hint}` : meta.title;
+  const className = `w-full flex items-center gap-3 text-left rounded-lg p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
+    onSelect ? 'cursor-pointer' : 'cursor-default'
+  }`;
+
+  const inner = (
+    <>
+      <span
+        className={`shrink-0 inline-flex items-center justify-center w-10 h-10 rounded-lg border text-xs font-bold tabular-nums ${
+          active || complete
+            ? 'border-primary/40 text-primary bg-primary/5'
+            : 'border-border text-muted-foreground bg-muted'
+        }`}
+        aria-hidden="true"
+      >
+        {meta.code}
+      </span>
+      <span className="min-w-0">
+        <span className="sr-only">
+          {active ? 'Current step: ' : complete ? 'Completed: ' : 'Upcoming: '}
+        </span>
+        <span className={`block text-sm font-bold ${active || complete ? 'text-foreground' : 'text-muted-foreground'}`}>
+          {label}
+        </span>
+      </span>
+    </>
+  );
+
+  if (onSelect) {
+    return (
+      <button type="button" onClick={onSelect} className={className} aria-current={active ? 'step' : undefined}>
+        {inner}
+      </button>
+    );
+  }
+
   return (
-    <span
-      className={`shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-full text-sm font-bold border-2 ${
-        complete
-          ? 'bg-primary text-primary-foreground border-primary'
-          : current
-            ? 'bg-primary/10 text-primary border-primary'
-            : 'bg-muted text-muted-foreground border-transparent'
+    <div className={className} aria-current={active ? 'step' : undefined}>
+      {inner}
+    </div>
+  );
+}
+
+interface StepCardProps {
+  n: 1 | 2 | 3;
+  step: 1 | 2 | 3;
+  onGoTo?: (step: 1 | 2) => void;
+  children?: ReactNode;
+}
+
+export function StepCard({ n, step, onGoTo, children }: StepCardProps) {
+  const active = step === n;
+  const complete = step > n;
+  const goable = complete && (n === 1 || n === 2) && onGoTo;
+
+  return (
+    <section
+      className={`rounded-xl border ${
+        active ? 'border-card-border bg-card shadow-sm' : 'border-transparent bg-muted/40'
       }`}
-      aria-hidden="true"
     >
-      {complete ? <Check className="h-4 w-4" /> : n}
-    </span>
+      <div className={active ? 'p-4 sm:p-5 pb-0' : 'p-4 sm:p-5'}>
+        <StepCardHeader
+          n={n}
+          active={active}
+          complete={complete}
+          onSelect={goable ? () => onGoTo?.(n as 1 | 2) : undefined}
+        />
+      </div>
+      {active ? <div className="p-4 sm:p-6 pt-4">{children}</div> : null}
+    </section>
   );
 }

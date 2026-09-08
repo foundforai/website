@@ -1,8 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { Check } from 'lucide-react';
 import PageLayout from '@/components/PageLayout';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Badge } from '@/components/ui/badge';
-import AssessmentStepper from '@/components/agentic-web-assessment/AssessmentStepper';
+import { AssessmentProgress, StepCard } from '@/components/agentic-web-assessment/AssessmentStepper';
 import StepOpportunity from '@/components/agentic-web-assessment/StepOpportunity';
 import StepReadiness from '@/components/agentic-web-assessment/StepReadiness';
 import StepRecommendation from '@/components/agentic-web-assessment/StepRecommendation';
@@ -20,6 +19,8 @@ import {
 
 const SITE = 'https://foundforai.com';
 const PATH = '/agentic-web-assessment';
+
+const CHIPS = ['No technical prep', 'Tailored recommendation', 'No data submitted'] as const;
 
 const schemas: object[] = [
   breadcrumbList([
@@ -86,109 +87,123 @@ export default function AgenticWebAssessment() {
     setStep(1);
   }
 
+  const progressPct = (step / 3) * 100;
   const stepTitle =
-    step === 1
-      ? 'Business opportunity'
-      : step === 2
-        ? 'Readiness assessment'
-        : 'Your recommendation';
+    step === 1 ? 'Your opportunity' : step === 2 ? 'Readiness' : 'Recommendation';
 
   return (
     <PageLayout
-      title="Agentic Web Assessment — MCP / WebMCP Recommendation | Found For AI"
+      title="Agentic Web Assessment | MCP / WebMCP Recommendation | Found For AI"
       description="A three-step configurator that recommends an MCP / WebMCP implementation package for your website. Answers stay in your browser until you choose a contact action."
       canonical={`${SITE}${PATH}`}
       schemas={schemas}
     >
-      <section className="py-12 md:py-20 bg-gradient-to-br from-background via-primary/5 to-accent/5">
-        <div className="max-w-3xl mx-auto px-4 md:px-6 lg:px-8">
-          <Badge variant="outline" className="mb-4">
-            Agentic web
-          </Badge>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
-            Agentic Web Assessment
-          </h1>
-          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-6">
-            Find the MCP / WebMCP implementation that fits your website — answers,
-            booking, leads, quotes, status, or a payment handoff. Three short steps.
-            This page recommends the service; it is not itself an MCP server.
-          </p>
-          <Alert className="bg-card">
-            <AlertDescription>
-              This assessment is <strong>not submitted</strong>. Your website, selections,
-              and scores stay in this browser. Nothing is sent to Found For AI unless
-              you later choose a contact action such as booking a call.
-            </AlertDescription>
-          </Alert>
-        </div>
-      </section>
+      <section className="py-10 md:py-16 bg-background">
+        <div className="max-w-5xl mx-auto px-4 md:px-6 lg:px-8">
+          <AssessmentProgress step={step} />
 
-      <section className="py-10 md:py-14 bg-background">
-        <div className="max-w-3xl mx-auto px-4 md:px-6 lg:px-8">
-          <div className="mb-8">
-            <AssessmentStepper
-              step={step}
-              canGoToStep2={Object.keys(validateStep1(draft)).length === 0}
-              onGoTo={(s) => setStep(s)}
-            />
+          <header className="mt-6 mb-10">
+            <h1
+              ref={headingRef}
+              tabIndex={-1}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-[1.05] outline-none"
+            >
+              Turn your website into an action layer.
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl mb-6">
+              See what AI could safely answer, book, and capture for your business, and get a
+              practical implementation plan in about three minutes.
+            </p>
+            <ul className="flex flex-wrap gap-2" aria-label="Assessment benefits">
+              {CHIPS.map((chip) => (
+                <li
+                  key={chip}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-card-border bg-card px-3 py-1.5 text-xs font-semibold text-foreground"
+                >
+                  <Check className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
+                  {chip}
+                </li>
+              ))}
+            </ul>
+            <p className="text-sm text-muted-foreground mt-4 leading-relaxed max-w-3xl">
+              This assessment is <strong>not submitted</strong>. Your website, selections, and
+              scores stay in this browser. Nothing is sent to Found For AI unless you later
+              choose a contact action such as booking a call.
+            </p>
+          </header>
+
+          <div className="rounded-xl border border-card-border bg-card/80 overflow-hidden">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 px-5 sm:px-6 py-4 border-b border-border">
+              <div>
+                <p className="text-xs font-semibold tracking-[0.12em] uppercase text-primary">
+                  Step {step} of 3
+                </p>
+                <p className="font-bold">{stepTitle}</p>
+              </div>
+              <div
+                className="w-full sm:w-48 h-1.5 rounded-full bg-muted overflow-hidden"
+                role="progressbar"
+                aria-valuemin={1}
+                aria-valuemax={3}
+                aria-valuenow={step}
+                aria-label={`Step ${step} of 3`}
+              >
+                <span
+                  className="block h-full bg-primary motion-reduce:transition-none transition-[width] duration-300"
+                  style={{ width: `${progressPct}%` }}
+                />
+              </div>
+            </div>
+
+            <div className="p-4 sm:p-6 space-y-3">
+              <StepCard n={1} step={step} onGoTo={(s) => setStep(s)}>
+                <StepOpportunity
+                  website={draft.website}
+                  businessType={draft.businessType}
+                  actions={draft.actions}
+                  errors={errors}
+                  onWebsiteChange={(website) => {
+                    setDraft((prev) => ({ ...prev, website }));
+                    setErrors((prev) => ({ ...prev, website: undefined }));
+                  }}
+                  onBusinessTypeChange={(businessType) => {
+                    setDraft((prev) => ({ ...prev, businessType }));
+                    setErrors((prev) => ({ ...prev, businessType: undefined }));
+                  }}
+                  onToggleAction={toggleAction}
+                  onContinue={goToStep2}
+                />
+              </StepCard>
+
+              <StepCard
+                n={2}
+                step={step}
+                onGoTo={Object.keys(validateStep1(draft)).length === 0 ? (s) => setStep(s) : undefined}
+              >
+                <StepReadiness
+                  readiness={draft.readiness}
+                  onChange={(id: ReadinessId, value: ReadinessValue) =>
+                    setDraft((prev) => ({
+                      ...prev,
+                      readiness: { ...prev.readiness, [id]: value },
+                    }))
+                  }
+                  onBack={() => setStep(1)}
+                  onContinue={() => setStep(3)}
+                />
+              </StepCard>
+
+              <StepCard n={3} step={step}>
+                {result ? (
+                  <StepRecommendation
+                    result={result}
+                    onBack={() => setStep(2)}
+                    onRestart={restart}
+                  />
+                ) : null}
+              </StepCard>
+            </div>
           </div>
-
-          <h2
-            ref={headingRef}
-            tabIndex={-1}
-            className="text-2xl md:text-3xl font-bold mb-2 outline-none"
-          >
-            {stepTitle}
-          </h2>
-          <p className="text-muted-foreground mb-8 leading-relaxed">
-            {step === 1 &&
-              'Tell us about the business and what you want AI agents to do.'}
-            {step === 2 &&
-              'A few readiness questions. If you are not sure, that is fine — we treat uncertainty as discovery, not a stop sign.'}
-            {step === 3 &&
-              'A package recommendation based only on what you entered on this page.'}
-          </p>
-
-          {step === 1 && (
-            <StepOpportunity
-              website={draft.website}
-              businessType={draft.businessType}
-              actions={draft.actions}
-              errors={errors}
-              onWebsiteChange={(website) => {
-                setDraft((prev) => ({ ...prev, website }));
-                setErrors((prev) => ({ ...prev, website: undefined }));
-              }}
-              onBusinessTypeChange={(businessType) => {
-                setDraft((prev) => ({ ...prev, businessType }));
-                setErrors((prev) => ({ ...prev, businessType: undefined }));
-              }}
-              onToggleAction={toggleAction}
-              onContinue={goToStep2}
-            />
-          )}
-
-          {step === 2 && (
-            <StepReadiness
-              readiness={draft.readiness}
-              onChange={(id: ReadinessId, value: ReadinessValue) =>
-                setDraft((prev) => ({
-                  ...prev,
-                  readiness: { ...prev.readiness, [id]: value },
-                }))
-              }
-              onBack={() => setStep(1)}
-              onContinue={() => setStep(3)}
-            />
-          )}
-
-          {step === 3 && result && (
-            <StepRecommendation
-              result={result}
-              onBack={() => setStep(2)}
-              onRestart={restart}
-            />
-          )}
         </div>
       </section>
     </PageLayout>
