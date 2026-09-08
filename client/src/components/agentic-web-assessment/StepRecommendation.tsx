@@ -1,7 +1,17 @@
 import { useState } from 'react';
-import { Check, Copy, Download, RotateCcw } from 'lucide-react';
+import { Link } from 'wouter';
+import { Check, ChevronDown, Copy, Download, RotateCcw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { BOOK_CALL_URL, type AssessmentResult } from '@/lib/agentic-web-assessment';
+import { type AssessmentResult, type PackageId } from '@/lib/agentic-web-assessment';
+
+const FIRST_RELEASE_TEASER: Record<PackageId, string> = {
+  foundation:
+    'The first release stands up a trusted answer layer from approved business knowledge, with clear boundaries and a human handoff.',
+  conversion:
+    'The first release pairs approved answers with one primary booking or lead-capture workflow.',
+  operations:
+    'The first release maps the customer journey and phases in the more complex tools you selected.',
+};
 
 const CLOSING_PATH = [
   { code: '01', title: 'Discover', detail: 'Map the customer journey and tools' },
@@ -147,14 +157,36 @@ export default function StepRecommendation({
         )}
       </section>
 
-      <section>
-        <div className="flex flex-col gap-3 mb-3 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <h3 className="text-lg font-bold">Agentic Web Action Plan</h3>
-            <p className="text-sm text-muted-foreground mt-1">
-              Copy or download this plan to share with your team. It stays on this device.
-            </p>
-          </div>
+      <section className="rounded-xl border border-card-border bg-card p-6 sm:p-8">
+        <p className="text-xs font-semibold tracking-[0.12em] uppercase text-primary mb-2">
+          First release
+        </p>
+        <p className="text-xl font-bold mb-2" data-testid="teaser-timeline">
+          {result.package.timeline}
+        </p>
+        <p className="text-base leading-relaxed mb-3" data-testid="teaser-sentence">
+          {FIRST_RELEASE_TEASER[result.packageId]}
+        </p>
+        <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+          Scope, discovery items, and next steps are ready to walk through on a call.
+        </p>
+
+        <Link href="/book-call">
+          <Button
+            size="lg"
+            className="w-full sm:w-auto font-semibold min-h-12 px-8 text-base"
+            style={{ backgroundColor: '#0F5FDB', borderColor: '#0F5FDB' }}
+            data-testid="link-book-call"
+          >
+            Book an appointment
+          </Button>
+        </Link>
+        <p className="text-sm text-muted-foreground mt-3 leading-relaxed max-w-xl">
+          Walk through this plan with Found For AI. About 30 minutes. Nothing is
+          submitted from this assessment.
+        </p>
+
+        <div className="mt-6 pt-5 border-t border-border space-y-4">
           <div className="flex flex-wrap gap-2">
             <Button
               type="button"
@@ -185,13 +217,23 @@ export default function StepRecommendation({
               <Download className="h-4 w-4 mr-1.5" /> Save my action plan
             </Button>
           </div>
+
+          <details className="group rounded-lg border border-border bg-muted/40">
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-lg [&::-webkit-details-marker]:hidden">
+              <span>View full action plan</span>
+              <ChevronDown
+                className="h-4 w-4 shrink-0 text-muted-foreground motion-reduce:transition-none transition-transform group-open:rotate-180"
+                aria-hidden="true"
+              />
+            </summary>
+            <pre
+              className="text-xs md:text-sm p-4 pt-0 overflow-x-auto whitespace-pre-wrap font-mono leading-relaxed max-h-[420px] overflow-y-auto"
+              data-testid="action-plan"
+            >
+              {result.actionPlan}
+            </pre>
+          </details>
         </div>
-        <pre
-          className="text-xs md:text-sm bg-muted p-4 rounded-md overflow-x-auto whitespace-pre-wrap font-mono leading-relaxed border max-h-[420px] overflow-y-auto"
-          data-testid="action-plan"
-        >
-          {result.actionPlan}
-        </pre>
       </section>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3" aria-label="How the service works">
@@ -202,24 +244,6 @@ export default function StepRecommendation({
             <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{item.detail}</p>
           </div>
         ))}
-      </div>
-
-      <div className="p-5 sm:p-6 bg-muted/50 border rounded-xl">
-        <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
-          This recommendation stays in your browser. Nothing is submitted unless you
-          later choose a contact action.
-        </p>
-        <a
-          href={BOOK_CALL_URL}
-          className="inline-flex items-center justify-center min-h-10 px-6 font-semibold rounded-md text-white hover:opacity-90 transition-opacity motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-          style={{ backgroundColor: '#0F5FDB' }}
-          data-testid="link-book-call"
-        >
-          Discuss this plan with Found For AI
-        </a>
-        <p className="text-xs text-muted-foreground mt-4">
-          Prepared with Found For AI. This page recommends the service. It is not an MCP server.
-        </p>
       </div>
 
       <div className="flex flex-col-reverse sm:flex-row sm:justify-between gap-3">
