@@ -420,6 +420,16 @@ export default function Home() {
               </Button>
             </a>
           </div>
+          <div className="mt-4 text-center">
+            <a href="/agentic-web-assessment" data-testid="button-agentic-web-plan">
+              <Button size="lg" variant="outline" className="text-lg px-8 py-6 font-semibold border-2">
+                Get my agentic web plan
+              </Button>
+            </a>
+            <p className="text-sm text-muted-foreground mt-3 max-w-xl mx-auto">
+              See what AI could answer, book, and capture on your site. About three minutes. Nothing is submitted.
+            </p>
+          </div>
           <p className="text-sm text-muted-foreground text-center mt-6">
             Custom engagements · Scoped to your business · No off-the-shelf packages
           </p>

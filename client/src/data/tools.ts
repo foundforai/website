@@ -10,6 +10,17 @@ export interface ToolEntry {
 
 export const tools: ToolEntry[] = [
   {
+    slug: 'agentic-web-assessment',
+    path: '/agentic-web-assessment',
+    name: 'Agentic Web Assessment',
+    tagline:
+      'See what AI could answer, book, and capture on your site. About three minutes. Nothing is submitted.',
+    description:
+      'A free three-minute plan for the first AI actions worth wiring on your website. Enter your site, pick the actions that matter, and get a first-release recommendation. Answers stay on your device until you choose to book.',
+    icon: 'ClipboardList',
+    status: 'live',
+  },
+  {
     slug: 'llms-txt-generator',
     path: '/tools/llms-txt-generator',
     name: 'llms.txt Generator',
