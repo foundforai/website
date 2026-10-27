@@ -18,7 +18,7 @@ export default function Navigation() {
     <header className="site-header">
       <div className="site-header-inner">
         <Link href="/" data-testid="link-home" aria-label="Found For AI home">
-          <img src="/found-for-ai-logo.png" alt="Found For AI" className="site-logo" />
+          <img src="/found-for-ai-wordmark.png" alt="Found For AI" className="site-logo" width="462" height="197" />
         </Link>
 
         <nav className="site-nav" aria-label="Primary">
