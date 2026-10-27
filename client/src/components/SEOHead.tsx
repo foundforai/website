@@ -78,7 +78,6 @@ const GLOBAL_GRAPH: object[] = [
     "name": "Found For AI",
     "image": "https://foundforai.com/assets/office.jpg",
     "url": "https://foundforai.com",
-    "telephone": "+18018982456",
     "email": "info@foundforai.com",
     "priceRange": "$$",
     "address": {

@@ -217,7 +217,7 @@ export default function Privacy() {
                 <div><strong className="text-foreground">Found For AI</strong></div>
                 <div>Cottonwood Heights, Utah, USA</div>
                 <div>Email: <a href="mailto:support@foundforai.com" className="text-primary hover:underline">support@foundforai.com</a></div>
-                <div>Phone: <a href="tel:+18018982456" className="text-primary hover:underline">+1 (801) 898-2456</a></div>
+                <div>Email: <a href="mailto:info@foundforai.com" className="text-primary hover:underline">info@foundforai.com</a></div>
               </address>
             </section>
           </div>
