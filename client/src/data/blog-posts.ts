@@ -41,6 +41,90 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'goldsberry-orthodontics-ai-actions',
+    title: 'Goldsberry Orthodontics Is One of the First Practices Using AI Actions',
+    date: '2026-10-27',
+    dateModified: '2026-10-27',
+    author: 'Dustin Crump',
+    excerpt: 'An AI assistant found Goldsberry Orthodontics\' website, gathered a patient\'s details, asked them to confirm, and sent a real consult request. Here\'s what that means for your practice.',
+    readTime: '4 min read',
+    image: aiAutomationImg,
+    featured: false,
+    articleSection: 'AI Visibility',
+    metaDescription: 'An AI assistant found Goldsberry Orthodontics\' website, gathered a patient\'s details, asked them to confirm, and sent a real consult request. Here\'s what that means for your practice.',
+    ogDescription: 'An AI assistant found Goldsberry Orthodontics\' website, gathered a patient\'s details, asked them to confirm, and sent a real consult request. Here\'s what that means for your practice.',
+    twitterDescription: 'An AI assistant found Goldsberry Orthodontics\' website, gathered a patient\'s details, asked them to confirm, and sent a real consult request. Here\'s what that means for your practice.',
+    schemaDescription: 'An AI assistant found Goldsberry Orthodontics\' website, gathered a patient\'s details, asked them to confirm, and sent a real consult request. Here\'s what that means for your practice.',
+    keywords: 'AI Actions, WebMCP, Goldsberry Orthodontics, AI assistants, orthodontist consult request, Found For AI',
+    mentions: [
+      { name: 'Goldsberry Orthodontics', url: 'https://goldsberryortho.com' },
+    ],
+    customCta: {
+      headline: 'Is your site ready?',
+      copy: 'Our free AI Actions audit sends real AI assistants through your website to do the thing that matters most, like requesting a consult, and shows you where they get stuck. You\'ll get a short report with what worked, what broke, and what to fix first.',
+      buttonText: 'Get your free AI Actions audit',
+      buttonLink: '/audit',
+    },
+    content: `
+        <p>More of your future patients are starting their search the same way. They open an AI assistant and type something like, "Find me an orthodontist near Salt Lake that does free consults, and set one up for my daughter."</p>
+
+        <p>For a while, the best a practice could hope for was to get mentioned in the answer. The assistant would name a few offices, maybe share a phone number, and the patient would still have to call or fill out a form on their own. A lot of them never did.</p>
+
+        <p>That is starting to change. On October 27, 2026, an AI assistant went one step further for Goldsberry Orthodontics, Dr. Bart Goldsberry's practice in the Salt Lake area. It found goldsberryortho.com, collected the patient's details, asked the patient to confirm them, and sent a real consultation request to the practice.</p>
+
+        <p>We call this AI Actions, and Goldsberry Orthodontics is one of the first practices using it.</p>
+
+        <h2>What actually happened</h2>
+
+        <p>Here is the plain version of the test, step by step:</p>
+
+        <ol>
+          <li>A person asked ChatGPT to help them request a consultation with Goldsberry Orthodontics.</li>
+          <li>The assistant visited the practice's website and saw that it could do more than read the page. The site offered a short list of things an assistant is allowed to do, like look up office locations, check what a consult includes, and send a consultation request.</li>
+          <li>The assistant asked for the basics: name, how to reach them, and what they were interested in.</li>
+          <li>Before anything was sent, the assistant showed the details back and asked the person to confirm.</li>
+          <li>Once they confirmed, the request was sent and routed to the practice, with a request ID to show it went through.</li>
+        </ol>
+
+        <p>No phone tag. No guessing which form to fill out. The patient stayed in control the whole time.</p>
+
+        <h2>Why this matters for practice owners</h2>
+
+        <p>Your website was built for people clicking around. AI assistants read it differently. When an assistant lands on a typical dental site, it often hits a booking widget it can't use or a form it can't make sense of. At that point it usually gives up and suggests the next office on the list.</p>
+
+        <p>AI Actions fixes that by giving assistants a clear, safe way to do the one thing you care about most: send you a new patient consult request with the right details. Instead of hoping the patient follows through after the chat ends, the request can be finished right there.</p>
+
+        <p>It also helps your front desk. Requests arrive with the information your team needs, so there's less back and forth before the first visit.</p>
+
+        <h2>What it does and doesn't do (yet)</h2>
+
+        <p>We want to be straight about where this is today, because it's early.</p>
+
+        <ul>
+          <li><strong>The patient confirms every request.</strong> Nothing is sent until the person reviews the details and says yes.</li>
+          <li><strong>It doesn't book appointments live.</strong> The assistant sends a consult request. Your team schedules it the way you already do.</li>
+          <li><strong>It doesn't collect sensitive information.</strong> No birth dates, insurance details, or clinical history. Just what's needed to get in touch.</li>
+          <li><strong>Assistants are still catching up.</strong> Not every AI assistant supports this yet, and the ones that do are changing quickly. During our own test, the assistant's approval prompt flashed on screen and disappeared before it could be clicked, and it took a second try. That's exactly the kind of rough edge we look for and help smooth out.</li>
+        </ul>
+
+        <p>And to be clear, no one can guarantee that an AI assistant will recommend a specific practice. What AI Actions does is make sure that when an assistant does find you, it can actually reach you.</p>
+
+        <h2>How it works under the hood (briefly)</h2>
+
+        <p>For the technically curious: the practice website publishes a small set of actions that AI assistants can see and use, with rules about what each one can do. This is based on a new web standard called WebMCP, which lets a website tell an assistant, in a structured way, "here's what you can help a visitor do here." The assistant still has to ask the visitor before it takes any action that sends information.</p>
+
+        <p>You don't need to know any of that to benefit from it. Your patients won't either. They'll just notice that their assistant got the job done.</p>
+
+        <h2>Is your site ready?</h2>
+
+        <p>Most practice websites aren't, and that's fine. It's new. The first step is finding out what happens today when an AI assistant tries to reach you.</p>
+
+        <p>Our free AI Actions audit sends real AI assistants through your website to do the thing that matters most, like requesting a consult, and shows you where they get stuck. You'll get a short report with what worked, what broke, and what to fix first.</p>
+
+        <p><a href="/audit" class="text-primary hover:underline">Get your free AI Actions audit</a></p>
+      `,
+  },
+  {
     slug: 'agentic-web-assessment',
     title: 'What Could AI Do on Your Website?',
     subtitle: 'A three-minute plan for answers, booking, and the actions worth wiring first.',

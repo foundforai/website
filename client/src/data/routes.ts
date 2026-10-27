@@ -48,7 +48,7 @@ const STATIC_ROUTES: RouteEntry[] = [
   { path: '/contact', prerender: true, sitemap: true, priority: 0.7, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
   { path: '/book-call', prerender: true, sitemap: true, priority: 0.7, changefreq: 'monthly', lastmod: REVAMP_LASTMOD },
   { path: '/thank-you', prerender: true, sitemap: false },
-  { path: '/blog', prerender: true, sitemap: true, priority: 0.8, changefreq: 'weekly', lastmod: STATIC_DEFAULT_LASTMOD },
+  { path: '/blog', prerender: true, sitemap: true, priority: 0.8, changefreq: 'weekly', lastmod: '2026-10-27' },
   { path: '/tools', prerender: true, sitemap: true, priority: 0.8, changefreq: 'monthly', lastmod: '2026-05-12' },
   { path: '/tools/llms-txt-generator', prerender: true, sitemap: true, priority: 0.8, changefreq: 'monthly', lastmod: '2026-05-12' },
   { path: '/tools/schema-validator', prerender: true, sitemap: true, priority: 0.8, changefreq: 'monthly', lastmod: '2026-05-12' },
