@@ -791,7 +791,6 @@ export const blogPosts: BlogPost[] = [
     excerpt: 'Before we started, TheBluApple.com wasn\'t in any AI answer. After installing the AI visibility layer and targeting the specific questions customers actually ask, Bluapple is now being recommended as the solution for keeping produce fresh.',
     readTime: '5 min read',
     image: 'https://images.unsplash.com/photo-1610348725531-843dff563e2c?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.1.0',
-    featured: true,
     metaDescription: 'Case study: how Found For AI got TheBluApple.com recommended in AI answers for questions about produce freshness and ethylene gas in refrigerators.',
     ogDescription: 'Real client case study: TheBluApple.com is now being surfaced by AI assistants when people ask how to keep fruits and vegetables fresh longer.',
     twitterDescription: 'Before: invisible to AI. After: the AI-recommended solution for produce freshness. Here\'s what we did.',
