@@ -48,7 +48,7 @@ const GLOBAL_GRAPH: object[] = [
       {
         "@type": "PodcastEpisode",
         "@id": "https://foundforai.com/media/small-lake-city-podcast#episode",
-        "name": "How to Slide Into the Consciousness of AI — with Dustin Crump",
+        "name": "How to Slide Into the Consciousness of AI - with Dustin Crump",
         "url": "https://foundforai.com/media/small-lake-city-podcast",
         "partOfSeries": {
           "@type": "PodcastSeries",
@@ -157,7 +157,7 @@ const GLOBAL_GRAPH: object[] = [
       {
         "@type": "PodcastEpisode",
         "@id": "https://foundforai.com/media/small-lake-city-podcast#episode",
-        "name": "How to Slide Into the Consciousness of AI — with Dustin Crump",
+        "name": "How to Slide Into the Consciousness of AI - with Dustin Crump",
         "url": "https://foundforai.com/media/small-lake-city-podcast",
         "partOfSeries": {
           "@type": "PodcastSeries",
