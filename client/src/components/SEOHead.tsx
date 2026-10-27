@@ -78,7 +78,6 @@ const GLOBAL_GRAPH: object[] = [
     "name": "Found For AI",
     "image": "https://foundforai.com/assets/office.jpg",
     "url": "https://foundforai.com",
-    "telephone": "+18018982456",
     "email": "info@foundforai.com",
     "priceRange": "$$",
     "address": {
@@ -123,15 +122,11 @@ const GLOBAL_GRAPH: object[] = [
         }
       },
       {
-        "@type": "ScheduleAction",
-        "name": "Book a Consultation",
+        "@type": "CommunicateAction",
+        "name": "Request a consult",
         "target": {
           "@type": "EntryPoint",
-          "urlTemplate": "https://foundforai.com/book-call",
-          "actionPlatform": [
-            "http://schema.org/DesktopWebPlatform",
-            "http://schema.org/MobileWebPlatform"
-          ]
+          "urlTemplate": "https://foundforai.com/book-call"
         }
       }
     ]

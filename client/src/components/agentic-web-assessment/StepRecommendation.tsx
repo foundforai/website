@@ -103,7 +103,7 @@ export default function StepRecommendation({
           {FIRST_RELEASE_TEASER[result.packageId]}
         </p>
         <p className="text-sm text-muted-foreground leading-relaxed mb-6">
-          Scope, discovery items, and next steps are ready to walk through on a call.
+          Scope, discovery items, and next steps are in this plan. Request a consult if you want help putting it in place.
         </p>
 
         <Link href="/book-call">
@@ -113,13 +113,13 @@ export default function StepRecommendation({
             style={{ backgroundColor: '#0F5FDB', borderColor: '#0F5FDB' }}
             data-testid="link-book-call"
           >
-            Book an appointment
+            Request a consult
             <ArrowRight className="h-5 w-5" />
           </Button>
         </Link>
         <p className="text-sm text-muted-foreground mt-3 leading-relaxed max-w-xl">
-          Walk through this plan with Found For AI. About 30 minutes. Nothing is
-          submitted from this assessment.
+          We'll reply by email. This doesn't book anything. Nothing is submitted
+          from this assessment.
         </p>
 
         <div className="mt-6 pt-5 border-t border-primary/15 space-y-4">

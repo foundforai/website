@@ -1,4 +1,5 @@
 import PageLayout from '@/components/PageLayout';
+import { NextStepAiActions } from '@/components/marketing/RevampBlocks';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Link } from 'wouter';
@@ -65,7 +66,7 @@ export default function AEO() {
             </Link>
             <Link href="/book-call">
               <Button variant="outline" size="lg" className="font-semibold" data-testid="button-hero-book-call">
-                Book a Strategy Call
+                Request a consult
               </Button>
             </Link>
           </div>
@@ -157,6 +158,11 @@ export default function AEO() {
               </div>
             </CardContent>
           </Card>
+        </div>
+      </section>
+      <section className="pb-16 px-4">
+        <div className="max-w-4xl mx-auto">
+          <NextStepAiActions />
         </div>
       </section>
     </PageLayout>

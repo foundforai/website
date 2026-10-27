@@ -240,7 +240,7 @@ export default function Playbook() {
               className="underline hover:text-foreground transition-colors"
               data-testid="link-playbook-book-call"
             >
-              Book a 15-minute call →
+              Request a consult →
             </a>
           </p>
         </div>

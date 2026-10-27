@@ -22,7 +22,7 @@ export default function FAQSection() {
     },
     {
       question: 'How do I know if my site is AI-ready?',
-      answer: 'You can request a free AI Readiness Audit at FoundForAI.com/audit. We\'ll assess your visibility across AI tools and provide a personalized plan to increase your discoverability.',
+      answer: 'You can request a free AI Actions Audit at foundforai.com/audit. We send assistants through one key journey and email a plain report on what worked, what broke, and what to fix first.',
     },
   ];
 

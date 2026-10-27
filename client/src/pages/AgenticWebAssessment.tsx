@@ -25,15 +25,15 @@ const CHIPS = ['No technical prep', 'Tailored recommendation', 'No data submitte
 const schemas: object[] = [
   breadcrumbList([
     { name: 'Home', url: `${SITE}/` },
-    { name: 'Agentic Web Assessment', url: `${SITE}${PATH}` },
+    { name: '3-minute self check', url: `${SITE}${PATH}` },
   ]),
   {
     '@type': 'WebPage',
     '@id': `${SITE}${PATH}#webpage`,
     url: `${SITE}${PATH}`,
-    name: 'Agentic Web Assessment',
+    name: '3-minute self check',
     description:
-      'Configure an MCP / WebMCP implementation for your website. Three short steps produce a tailored package recommendation. Answers stay in your browser until you choose a contact action.',
+      'A three-minute self check for what an assistant could safely do on your website. Answers stay in your browser. Nothing is submitted.',
     isPartOf: { '@id': `${SITE}/#website` },
     publisher: { '@id': `${SITE}/#org` },
     about: ['MCP', 'WebMCP', 'agentic web', 'AI agents'],
@@ -93,8 +93,8 @@ export default function AgenticWebAssessment() {
 
   return (
     <PageLayout
-      title="Agentic Web Assessment | MCP / WebMCP Recommendation | Found For AI"
-      description="A three-step configurator that recommends an MCP / WebMCP implementation package for your website. Answers stay in your browser until you choose a contact action."
+      title="3-minute self check | Found For AI"
+      description="A three-minute self check for what an assistant could safely do on your website. Answers stay in your browser. Nothing is submitted."
       canonical={`${SITE}${PATH}`}
       schemas={schemas}
     >
@@ -103,6 +103,9 @@ export default function AgenticWebAssessment() {
           <AssessmentProgress step={step} />
 
           <header className="mt-6 mb-10">
+            <p className="text-sm font-semibold tracking-[0.08em] uppercase text-primary mb-3">
+              3-minute self check
+            </p>
             <h1
               ref={headingRef}
               tabIndex={-1}
@@ -128,7 +131,7 @@ export default function AgenticWebAssessment() {
             <p className="text-sm text-muted-foreground mt-4 leading-relaxed max-w-3xl">
               This assessment is <strong>not submitted</strong>. Your website, selections, and
               scores stay in this browser. Nothing is sent to Found For AI unless you later
-              choose a contact action such as booking a call.
+              choose a contact action such as requesting a consult.
             </p>
           </header>
 

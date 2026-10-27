@@ -1,4 +1,5 @@
 import PageLayout from '@/components/PageLayout';
+import { NextStepAiActions } from '@/components/marketing/RevampBlocks';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Link } from 'wouter';
@@ -295,16 +296,21 @@ export default function RetrievalLayerSEO() {
                   </CardContent>
                 </Card>
               </Link>
-              <Link href="/ai-search-visibility">
-                <Card className="h-full hover:border-primary transition-colors" data-testid="link-related-ai-search-visibility">
+              <Link href="/visibility">
+                <Card className="h-full hover:border-primary transition-colors" data-testid="link-related-visibility">
                   <CardContent className="p-5">
-                    <h3 className="font-semibold mb-2">AI Search Visibility</h3>
-                    <p className="text-sm text-muted-foreground">The full framework for showing up across ChatGPT, Perplexity, Gemini, and Claude.</p>
+                    <h3 className="font-semibold mb-2">AI visibility</h3>
+                    <p className="text-sm text-muted-foreground">How assistants find you, and how that connects to AI Actions.</p>
                   </CardContent>
                 </Card>
               </Link>
             </div>
           </div>
+        </div>
+      </section>
+      <section className="pb-16 px-4">
+        <div className="max-w-4xl mx-auto">
+          <NextStepAiActions />
         </div>
       </section>
     </PageLayout>

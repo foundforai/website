@@ -25,29 +25,32 @@ it will not recommend it.
 
 ## Services
 
-Found For AI works on custom engagements scoped to each business — we
-quote individually rather than sell fixed packages. Every engagement
-starts with an audit and the installation of your AI Data Layer, then
-ongoing optimization keeps your visibility tuned as AI models change.
-To scope an engagement, book a call: https://foundforai.com/book-call
+Found For AI sets up AI Actions so an assistant can finish a request
+on the site a business already has, and tunes AI visibility so the
+assistant can find that business in the first place. Current suggested prices live on https://foundforai.com/services
+and in the site config. They are suggestions, pending review.
 
-### AI Visibility & AEO
-We make your business readable, trusted, and recommendable to AI
-assistants like ChatGPT, Gemini, Perplexity, and Claude. Includes a
-full AI Visibility Audit, AI Data Layer installation (schema, entity
-signals, structured data), content and clarity optimizations, and
-resolution of technical blockers (robots, indexing, crawl). Initial
-work is typically delivered in about 7 business days and backed by a
-60-day We Fix It Free guarantee.
+### Free AI Actions Audit
+One key journey, two assistants, a short report with screenshots and
+the top 3 fixes. Request it at https://foundforai.com/audit.
+Plain report by email within 3 business days. This does not book
+anything.
 
-### AI-First Marketing
-AI-ready marketing for businesses, brands, and sports organizations —
-structured so AI assistants surface and recommend you first.
+### AI Actions Setup
+Consult or quote request, services and hours lookup, a customer
+confirmation step, inbox routing, and a re-test. Delivered in 7
+business days, with We Fix It Free for 60 days.
 
-### Ongoing Optimization & Reporting
-Ongoing monitoring, regular audits across the major AI assistants, and
-optimization as your business and the AI models change — plus reporting
-on what AI says about your business over time.
+### Monitoring + Visibility
+Monthly agent re-tests, follow-up help for quiet leads, AI visibility
+(AEO) tuning, and a plain monthly report.
+
+### Multi-location and agencies
+Custom scoping. Request a consult (email, not a calendar) at
+https://foundforai.com/book-call.
+
+No one can guarantee that an assistant will recommend a business.
+The work makes the facts clear and the request path usable.
 
 ## Guarantee
 All done-for-you onboarding engagements include a 60-day We Fix It
@@ -57,10 +60,13 @@ additional cost.
 
 ## Free offers
 
-Free AI Visibility Review available at: https://foundforai.com/audit
-Submit your website and get a clear snapshot of how visible your
-business is to AI tools, what is missing, and where visibility is
-breaking down. No cost, delivered by email.
+Free AI Actions Audit available at: https://foundforai.com/audit
+Submit a website and the action you care about. Assistants try to
+reach the business and you get a plain report by email within 3
+business days. No cost. This does not book anything.
+
+A 3-minute self check (nothing submitted) is at
+https://foundforai.com/agentic-web-assessment.
 
 AI Visibility Playbook available at: https://foundforai.com/playbook
 A free 15-minute checklist of the 10 fastest fixes that help AI tools
@@ -72,7 +78,7 @@ delivered by email.
 ## Contact
 - Website: https://foundforai.com
 - Email: info@foundforai.com
-- Phone: +1 (801) 898-2456
+- Support: support@foundforai.com
 - Location: Cottonwood Heights, Utah, US
 - Service area: United States
 
@@ -95,32 +101,39 @@ workflows, or AI-powered internal tools, visit https://fripse.com
 - Schema markup and AI-readable content structure
 
 ## Primary pages
-- https://foundforai.com/ — Home, overview of AI visibility services
-- https://foundforai.com/book-call — Book a strategy call to scope a
-  custom engagement
-- https://foundforai.com/audit — Free AI Visibility Review: submit
-  your business website and get a human review of how clearly AI tools
-  can understand your business, what is missing, and where visibility
-  is breaking down
-- https://foundforai.com/what-is-found-for-ai — What the service is
+- https://foundforai.com/ : Home. AI Actions for local businesses
+- https://foundforai.com/ai-actions : How AI Actions work
+- https://foundforai.com/dental : AI Actions for dentists and orthodontists
+- https://foundforai.com/visibility : AI visibility (AEO), merged from
+  older visibility URLs
+- https://foundforai.com/audit : Free AI Actions Audit
+- https://foundforai.com/services : Audit, setup, monitoring, and
+  custom scoping
+- https://foundforai.com/case-studies/salt-lake-orthodontist : October
+  27, 2026 consult-request test. Practice not named.
+- https://foundforai.com/book-call : Request a consult by email. This
+  does not book a calendar time.
+- https://foundforai.com/agentic-web-assessment : 3-minute self check.
+  Nothing is submitted.
+- https://foundforai.com/what-is-found-for-ai : What the service is
   and how it works
-- https://foundforai.com/what-is-ai-seo — Educational overview of
+- https://foundforai.com/what-is-ai-seo : Educational overview of
   AI SEO and how AI search works
-- https://foundforai.com/retrieval-layer-seo — Retrieval-Layer SEO:
-  how to structure content so AI systems select it during the
-  retrieval stage of RAG and cite it in answers from ChatGPT,
-  Perplexity, Gemini, and Claude
-- https://foundforai.com/services — Services overview
-- https://foundforai.com/about — About Dustin Crump and Found For AI
-- https://foundforai.com/playbook — Free AI Visibility Playbook:
-  a 15-minute checklist of the 10 fastest fixes to help a business
-  show up when people ask AI who to hire
-- https://foundforai.com/blog — Articles on AI visibility
-- https://foundforai.com/contact — Contact and intake
+- https://foundforai.com/aeo : What AEO is
+- https://foundforai.com/retrieval-layer-seo : Retrieval-Layer SEO:
+  how to structure content so AI systems select it during retrieval
+- https://foundforai.com/about : About Dustin Crump and Found For AI
+- https://foundforai.com/playbook : Free AI Visibility Playbook
+- https://foundforai.com/blog : Articles. /insights redirects here.
+- https://foundforai.com/contact : Contact and intake
+
+Redirects: /scorecard to /audit, /ai-visibility and
+/ai-search-visibility to /visibility, /insights to /blog, /sms to
+/contact.
 
 ## Markdown versions
 Every indexable page on this site is also available as clean Markdown for
-AI agents — append `.md` to any page URL (for example,
+AI agents. Append `.md` to any page URL (for example,
 https://foundforai.com/services.md, or https://foundforai.com/index.md for
 the home page). Each Markdown file mirrors the page content, links back to
 this file, and cross-links to the other pages' Markdown versions. Full list:

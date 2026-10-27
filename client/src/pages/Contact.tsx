@@ -7,7 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { trackEvent } from '@/lib/analytics';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, MapPin } from 'lucide-react';
 import { breadcrumbList } from '@/lib/breadcrumb';
 
 const contactSchemas = [
@@ -91,7 +91,7 @@ export default function Contact() {
   return (
     <PageLayout
       title="Contact Found For AI - Get In Touch | Cottonwood Heights, Utah"
-      description="Contact Found For AI for AI SEO consulting. Located in Cottonwood Heights, Utah. Call +1-801-898-2456 or email info@foundforai.com."
+      description="Contact Found For AI for AI SEO consulting. Located in Cottonwood Heights, Utah. Email info@foundforai.com."
       canonical="https://foundforai.com/contact"
       schemas={contactSchemas}
     >
@@ -173,18 +173,6 @@ export default function Contact() {
             <div className="space-y-6">
               <Card>
                 <CardContent className="p-6 space-y-4">
-                  <div className="flex items-start gap-4">
-                    <div className="h-10 w-10 rounded-lg bg-primary text-primary-foreground flex items-center justify-center shrink-0">
-                      <Phone className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold mb-1">Phone</h3>
-                      <a href="tel:+18018982456" className="text-muted-foreground hover:text-primary transition-colors" data-testid="link-contact-phone">
-                        +1 (801) 898-2456
-                      </a>
-                    </div>
-                  </div>
-
                   <div className="flex items-start gap-4">
                     <div className="h-10 w-10 rounded-lg bg-primary text-primary-foreground flex items-center justify-center shrink-0">
                       <Mail className="h-5 w-5" />
