@@ -70,6 +70,7 @@ export default function BlogPost() {
       title={post.title}
       description={post.metaDescription || post.content.substring(0, 160)}
       canonical={`https://foundforai.com/blog/${slug}`}
+      ogImage={post.ogImage}
       schemas={blogSchemas}
     >
       <article className="py-16 md:py-24 bg-background">
