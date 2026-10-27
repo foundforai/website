@@ -12,10 +12,11 @@ function toIsoDate(date: string): string {
 }
 
 export default function BlogIndex() {
-  const featuredPost = blogPosts.find((p) => p.featured) ?? blogPosts[0];
-  const regularPosts = blogPosts
-    .filter((p) => p.slug !== featuredPost.slug)
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  const sortedPosts = [...blogPosts].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+  const featuredPost = sortedPosts[0];
+  const regularPosts = sortedPosts.slice(1);
 
   const blogIndexSchemas = [
     breadcrumbList([
@@ -80,7 +81,7 @@ export default function BlogIndex() {
                     className="absolute top-4 left-4 bg-[#0F5FDB] text-white hover:bg-[#0D4FC4] border-0"
                     data-testid="badge-featured"
                   >
-                    Featured
+                    Latest
                   </Badge>
                 </div>
 
