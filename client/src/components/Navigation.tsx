@@ -1,114 +1,88 @@
 import { Link, useLocation } from 'wouter';
-import { Button } from '@/components/ui/button';
-import { Menu, X } from 'lucide-react';
-import { useState, useEffect } from 'react';
-import ThemeToggle from './ThemeToggle';
+import { useState } from 'react';
+import { RESOURCE_LINKS } from '@/data/revamp-copy';
+
+const LINKS = [
+  { href: '/ai-actions', label: 'AI Actions' },
+  { href: '/dental', label: 'Dental' },
+  { href: '/visibility', label: 'Visibility' },
+  { href: '/about', label: 'About' },
+];
 
 export default function Navigation() {
   const [location] = useLocation();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
-    setTheme(initialTheme);
-
-    const observer = new MutationObserver(() => {
-      const isDark = document.documentElement.classList.contains('dark');
-      setTheme(isDark ? 'dark' : 'light');
-    });
-
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['class'],
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  const navLinks = [
-    { href: '/', label: 'Home' },
-    { href: '/what-is-ai-seo', label: 'What Is AI SEO' },
-    { href: '/retrieval-layer-seo', label: 'Retrieval-Layer SEO' },
-    { href: '/services', label: 'Services' },
-    { href: '/blog', label: 'Blog' },
-    { href: '/tools', label: 'Tools' },
-    { href: '/about', label: 'About' },
-    { href: '/media', label: 'Media' },
-    { href: '/contact', label: 'Contact' },
-  ];
+  const [open, setOpen] = useState(false);
+  const resourcesActive = RESOURCE_LINKS.some((link) => location === link.href || location.startsWith(`${link.href}/`));
 
   return (
-    <nav className="sticky top-0 z-50 backdrop-blur-md bg-background/90 border-b">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-24">
-          <Link href="/" data-testid="link-home">
-            <div className="rounded-lg px-2 py-1">
-              <img 
-                src={theme === 'dark' ? '/found-for-ai-logo-dark.png' : '/found-for-ai-logo.png'} 
-                alt="Found For AI logo"
-                className="w-[90px] sm:w-[110px] md:w-[140px] h-auto" 
-              />
-            </div>
-          </Link>
+    <header className="site-header">
+      <div className="site-header-inner">
+        <Link href="/" data-testid="link-home" aria-label="Found For AI home">
+          <img src="/found-for-ai-logo.png" alt="Found For AI" className="site-logo" />
+        </Link>
 
-          <div className="hidden md:flex items-center gap-4 lg:gap-6">
-            {navLinks.map((link) => (
-              <Link key={link.href} href={link.href} data-testid={`link-${link.label.toLowerCase().replace(/\s+/g, '-')}`}>
-                <span className={`text-sm font-semibold py-3 px-1 whitespace-nowrap transition-colors hover:text-primary ${location === link.href ? 'text-primary' : 'text-muted-foreground'}`}>
-                  {link.label}
-                </span>
-              </Link>
-            ))}
-          </div>
-
-          <div className="hidden md:flex items-center gap-2">
-            <ThemeToggle />
-            <Link href="/book-call">
-              <Button data-testid="button-book-call-header" className="font-semibold" style={{ backgroundColor: '#0F5FDB', borderColor: '#0F5FDB' }}>
-                Book a Call
-              </Button>
-            </Link>
-          </div>
-
-          <div className="flex md:hidden items-center gap-2">
-            <ThemeToggle />
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              data-testid="button-mobile-menu"
-              aria-label="Toggle menu"
+        <nav className="site-nav" aria-label="Primary">
+          {LINKS.slice(0, 3).map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={location === link.href ? 'active' : undefined}
+              data-testid={`link-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
             >
-              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </Button>
-          </div>
+              {link.label}
+            </Link>
+          ))}
+          <details className="site-resources">
+            <summary className={resourcesActive ? 'active' : undefined}>Resources</summary>
+            <div className="site-resources-menu">
+              {RESOURCE_LINKS.map((link) => (
+                <Link key={link.href} href={link.href}>
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </details>
+          <Link
+            href="/about"
+            className={location === '/about' ? 'active' : undefined}
+            data-testid="link-about"
+          >
+            About
+          </Link>
+          <Link href="/audit" className="revamp-btn sm" data-testid="button-get-audit-header">
+            Get my free audit
+          </Link>
+        </nav>
+
+        <div className="site-header-actions">
+          <button
+            type="button"
+            className="site-menu-btn"
+            aria-label="Toggle menu"
+            aria-expanded={open}
+            onClick={() => setOpen((value) => !value)}
+            data-testid="button-mobile-menu"
+          >
+            {open ? '✕' : '☰'}
+          </button>
+          <Link href="/audit" className="revamp-btn sm site-header-audit" data-testid="button-get-audit-mobile">
+            Get my free audit
+          </Link>
         </div>
       </div>
 
-      {mobileMenuOpen && (
-        <div className="md:hidden border-t bg-background">
-          <div className="px-4 py-4 space-y-3">
-            {navLinks.map((link) => (
-              <Link key={link.href} href={link.href} data-testid={`link-mobile-${link.label.toLowerCase().replace(/\s+/g, '-')}`}>
-                <div
-                  className={`block px-3 py-2 rounded-lg text-base font-medium ${location === link.href ? 'bg-primary text-primary-foreground' : 'hover-elevate'}`}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {link.label}
-                </div>
-              </Link>
-            ))}
-            <Link href="/book-call">
-              <Button className="w-full font-semibold" style={{ backgroundColor: '#0F5FDB', borderColor: '#0F5FDB' }} data-testid="button-book-call-mobile" onClick={() => setMobileMenuOpen(false)}>
-                Book a Call
-              </Button>
-            </Link>
-          </div>
-        </div>
-      )}
-    </nav>
+      <div className={open ? 'site-drawer open' : 'site-drawer'}>
+        {LINKS.map((link) => (
+          <Link key={link.href} href={link.href} onClick={() => setOpen(false)}>
+            {link.label}
+          </Link>
+        ))}
+        {RESOURCE_LINKS.map((link) => (
+          <Link key={link.href} href={link.href} onClick={() => setOpen(false)}>
+            {link.label}
+          </Link>
+        ))}
+      </div>
+    </header>
   );
 }

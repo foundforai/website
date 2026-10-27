@@ -469,7 +469,7 @@ export default function LlmsTxtGenerator() {
               style={{ backgroundColor: '#0F5FDB' }}
               data-testid="link-tool-cta"
             >
-              → Book a 15-minute call
+              → Request a consult
             </a>
             <p className="text-sm text-muted-foreground mt-4">
               No pitch. No obligation. Just clarity.

@@ -125,7 +125,7 @@ export default function ToolsIndex() {
               style={{ backgroundColor: '#0F5FDB' }}
               data-testid="link-tools-cta"
             >
-              → Book a 15-minute call
+              → Request a consult
             </a>
           </div>
         </div>

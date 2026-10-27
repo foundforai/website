@@ -123,15 +123,11 @@ const GLOBAL_GRAPH: object[] = [
         }
       },
       {
-        "@type": "ScheduleAction",
-        "name": "Book a Consultation",
+        "@type": "CommunicateAction",
+        "name": "Request a consult",
         "target": {
           "@type": "EntryPoint",
-          "urlTemplate": "https://foundforai.com/book-call",
-          "actionPlatform": [
-            "http://schema.org/DesktopWebPlatform",
-            "http://schema.org/MobileWebPlatform"
-          ]
+          "urlTemplate": "https://foundforai.com/book-call"
         }
       }
     ]

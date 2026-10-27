@@ -56,7 +56,7 @@ export default function PlaybookThanks() {
                 className="font-semibold group"
                 style={{ backgroundColor: '#0F5FDB', borderColor: '#0F5FDB' }}
               >
-                Book a 15-minute call
+                Request a consult
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </a>

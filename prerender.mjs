@@ -84,11 +84,11 @@ function buildMarkdown(route, title, bodyMd) {
   const canonical = `${SITE_ORIGIN}${route === '/' ? '/' : route}`;
   const header =
     `> **${title}**\n` +
-    `> Markdown mirror of ${canonical} — part of the Found For AI knowledge base.\n` +
+    `> Markdown mirror of ${canonical}, part of the Found For AI knowledge base.\n` +
     `> Index: ${SITE_ORIGIN}/llms.txt · Full knowledge file: ${SITE_ORIGIN}/llms-full.txt`;
   const footer =
     `---\n\n` +
-    `_Canonical page: ${canonical} · Found For AI — AI-visibility knowledge base: ` +
+    `_Canonical page: ${canonical} · Found For AI, AI visibility knowledge base: ` +
     `${SITE_ORIGIN}/llms.txt · ${SITE_ORIGIN}/llms-full.txt_`;
   return `${header}\n\n${bodyMd.trim()}\n\n${footer}\n`;
 }
@@ -132,7 +132,7 @@ try {
   let llms = await readFile(llmsPath, 'utf-8');
   if (llms.includes('<!--MD_INDEX-->')) {
     const list = mdIndex
-      .map(({ route, title }) => `- ${SITE_ORIGIN}${mdPathFor(route)} — ${title}`)
+      .map(({ route, title }) => `- ${SITE_ORIGIN}${mdPathFor(route)}: ${title}`)
       .join('\n');
     llms = llms.replace('<!--MD_INDEX-->', list);
     await writeFile(llmsPath, llms);

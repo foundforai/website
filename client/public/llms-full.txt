@@ -22,7 +22,6 @@ systems including Google Gemini, ChatGPT, Perplexity, and Claude.
 - Website: https://foundforai.com
 - Email: info@foundforai.com
 - Support email: support@foundforai.com (24-hour response)
-- Phone: +1 (801) 898-2456
 - Parent ecosystem: Fripse AI (https://fripse.com)
 
 Our work focuses on entity clarity, structured data, AI-readable site structure,
@@ -130,43 +129,38 @@ What Found For AI is not:
 
 ## 7. Services
 
-Found For AI works on custom engagements scoped to each business. We quote
-individually rather than sell fixed packages. Every engagement starts with an
-audit and the installation of your AI Data Layer, then ongoing optimization
-keeps your visibility tuned as AI models change. To scope an engagement, book a
-call at https://foundforai.com/book-call.
+Found For AI sets up AI Actions so an assistant can finish a consult or
+quote request on the site a business already has, and tunes AI visibility
+so the assistant can find that business first. Suggested prices are on
+https://foundforai.com/services. They are suggestions, pending review.
+No one can guarantee that an assistant will recommend a business.
 
-### 7.1 AI Visibility & AEO
+### 7.1 Free AI Actions Audit
 
-We make a business readable, trusted, and recommendable to AI assistants like
-ChatGPT, Gemini, Perplexity, and Claude.
+https://foundforai.com/audit
 
-What is included:
-- Full AI Visibility Audit across major AI assistants (ChatGPT, Gemini,
-  Perplexity, Claude).
-- AI Data Layer installation: schema markup, entity signals, structured data,
-  services, location, hours, contact and booking info, FAQs, trust signals.
-- Content and clarity optimizations.
-- Technical blockers resolved (robots.txt, indexing, crawl issues).
-- Documentation of every change made (before and after).
-- Initial work typically delivered in about 7 business days from kickoff.
-- Backed by a 60-day We Fix It Free guarantee.
+Assistants try one key journey, such as requesting a consult. The report
+shows whether the business was found, whether the request could be sent,
+where it got stuck, and the top 3 fixes. Emailed within 3 business days.
+This does not book anything.
 
-Book at: https://foundforai.com/book-call
+### 7.2 AI Actions Setup
 
-### 7.2 AI-First Marketing
+A consult or quote request, a services and hours lookup, a confirmation
+step the customer sees first, inbox routing, and a re-test. Delivered in
+7 business days. We Fix It Free for 60 days.
 
-AI-ready marketing for businesses, brands, and sports organizations —
-structured so AI assistants surface and recommend them first.
+### 7.3 Monitoring + Visibility
 
-### 7.3 Ongoing Optimization & Reporting
+Monthly agent re-tests, follow-up help for quiet leads, AI visibility
+(AEO) tuning, and a plain monthly report.
 
-Ongoing monitoring, regular audits across the major AI assistants, and
-optimization as the business and the AI models change. Includes reporting on
-what AI says about the business over time. Scoped to how much support the
-business wants.
+### 7.4 Multi-location and agencies
 
-### 7.4 Implementation Capabilities
+Custom scoping. Request a consult by email at
+https://foundforai.com/book-call. There is no calendar booking on that page.
+
+### 7.5 Implementation capabilities
 
 When working with Found For AI, the following can be implemented:
 - AI visibility audit and action plan.
@@ -188,12 +182,15 @@ delivery, we fix it at no additional cost.
 
 ## 9. Free Offers
 
-### 9.1 Free AI Visibility Review
+### 9.1 Free AI Actions Audit
 URL: https://foundforai.com/audit
 
-Submit a website and get a clear snapshot of how visible the business is to AI
-tools, what is missing, and where visibility is breaking down. Human review,
-delivered by email at no cost.
+Submit a website and the action to test. Assistants try to reach the business.
+A plain report arrives by email within 3 business days. No cost. This does not
+book anything.
+
+A 3-minute self check that submits nothing is at
+https://foundforai.com/agentic-web-assessment.
 
 ### 9.2 AI Visibility Playbook (free)
 URL: https://foundforai.com/playbook
@@ -306,19 +303,23 @@ discovery.
 
 ## 13. Primary Pages
 
-- https://foundforai.com/ — Home, overview of AI visibility services
-- https://foundforai.com/book-call — Book a strategy call to scope a
-  custom engagement
-- https://foundforai.com/audit — Free AI Visibility Review intake
-- https://foundforai.com/what-is-found-for-ai — What the service is and how it works
-- https://foundforai.com/what-is-ai-seo — Educational overview of AI SEO and how AI search works
-- https://foundforai.com/retrieval-layer-seo — Retrieval-Layer SEO: how to
-  structure content so AI systems select it during the retrieval stage of RAG
-- https://foundforai.com/services — Services overview
-- https://foundforai.com/about — About Dustin Crump and Found For AI
-- https://foundforai.com/playbook — Free AI Visibility Playbook
-- https://foundforai.com/blog — Articles on AI visibility
-- https://foundforai.com/contact — Contact and intake
+- https://foundforai.com/ : Home. AI Actions for local businesses
+- https://foundforai.com/ai-actions : How AI Actions work
+- https://foundforai.com/dental : Dentists and orthodontists
+- https://foundforai.com/visibility : AI visibility (AEO)
+- https://foundforai.com/audit : Free AI Actions Audit
+- https://foundforai.com/services : Suggested prices and tiers
+- https://foundforai.com/case-studies/salt-lake-orthodontist : Oct 27, 2026 test
+- https://foundforai.com/book-call : Request a consult by email. No calendar.
+- https://foundforai.com/agentic-web-assessment : 3-minute self check
+- https://foundforai.com/what-is-found-for-ai : What the service is and how it works
+- https://foundforai.com/what-is-ai-seo : Educational overview of AI SEO
+- https://foundforai.com/aeo : What AEO is
+- https://foundforai.com/retrieval-layer-seo : Retrieval-Layer SEO
+- https://foundforai.com/about : About Dustin Crump and Found For AI
+- https://foundforai.com/playbook : Free AI Visibility Playbook
+- https://foundforai.com/blog : Articles. /insights redirects here.
+- https://foundforai.com/contact : Contact and intake
 - https://foundforai.com/llms.txt — Short AI summary file
 - https://foundforai.com/llms-full.txt — This file
 

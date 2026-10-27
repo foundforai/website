@@ -1,87 +1,155 @@
-import { useEffect } from 'react';
-import Cal, { getCalApi } from '@calcom/embed-react';
+import { useState } from 'react';
 import PageLayout from '@/components/PageLayout';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Link } from 'wouter';
-import { ArrowLeft } from 'lucide-react';
-import { trackEvent, trackOpenAiAppointment } from '@/lib/analytics';
+import { trackEvent } from '@/lib/analytics';
+import { breadcrumbList } from '@/lib/breadcrumb';
+import { submitLead } from '@/lib/leads';
+
+const PAGE = 'https://foundforai.com/book-call';
+
+const schemas = [
+  breadcrumbList([
+    { name: 'Home', url: 'https://foundforai.com/' },
+    { name: 'Request a consult', url: PAGE },
+  ]),
+];
 
 export default function BookCall() {
-  useEffect(() => {
-    trackEvent('book_call', {
-      form_location: '/book-call',
-    });
-  }, []);
+  const [loading, setLoading] = useState(false);
+  const [done, setDone] = useState(false);
+  const [error, setError] = useState('');
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    website: '',
+    note: '',
+    consent: false,
+    gotcha: '',
+  });
 
-  useEffect(() => {
-    (async function () {
-      const cal = await getCalApi({ namespace: 'ai-visibility-strategy-call' });
-      cal('ui', {
-        cssVarsPerTheme: {
-          light: { 'cal-brand': '#0F5FDB' },
-          dark: { 'cal-brand': '#fafafa' },
-        },
-        hideEventTypeDetails: false,
-        layout: 'month_view',
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setError('');
+    if (!form.consent) {
+      setError('Please agree that we can email you about this request.');
+      return;
+    }
+    if (form.gotcha) return;
+    setLoading(true);
+    try {
+      const ok = await submitLead({
+        name: form.name,
+        email: form.email,
+        website: form.website,
+        note: form.note,
+        consent: 'Yes',
+        _gotcha: form.gotcha,
+        _subject: `Consult request: ${form.website || form.email}`,
       });
-
-      // Fire the OpenAI (ChatGPT Ads) conversion only on a completed booking,
-      // plus a GA4 event, rather than on page view.
-      cal('on', {
-        action: 'bookingSuccessful',
-        callback: () => {
-          trackOpenAiAppointment();
-          trackEvent('appointment_scheduled', { form_location: '/book-call' });
-        },
+      if (!ok) {
+        setError('Submission failed. Please email info@foundforai.com directly.');
+        return;
+      }
+      trackEvent('contact_form_submit', {
+        form_location: '/book-call',
+        form_name: 'consult_request',
       });
-    })();
-  }, []);
+      setDone(true);
+    } catch {
+      setError('Submission failed. Please email info@foundforai.com.');
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
     <PageLayout
-      title="Schedule Your AI Visibility Strategy Call | Found For AI"
-      description="Book a free AI Visibility Strategy Call with Found For AI. We'll review your AI search presence and scope a custom engagement that fits your business."
-      canonical="https://foundforai.com/book-call"
+      title="Request a consult | Found For AI"
+      description="Request a consult with Found For AI. We'll reply by email. This doesn't book a time."
+      canonical={PAGE}
+      schemas={schemas}
     >
-      <section className="py-16 md:py-24 bg-background">
-        <div className="max-w-5xl mx-auto px-4 md:px-6 lg:px-8">
-          <div className="mb-8">
-            <Link href="/services">
-              <Button variant="ghost" className="gap-2 mb-4" data-testid="button-back-services">
-                <ArrowLeft className="h-4 w-4" />
-                Back to Services
-              </Button>
-            </Link>
-
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Schedule Your Strategy Call
-            </h1>
-            <p className="text-lg text-muted-foreground">
-              Pick a time that works for you. We'll walk through your current AI visibility, scope what your business needs, and map out next steps.
-            </p>
-          </div>
-
-          <Card className="overflow-hidden">
-            <CardContent className="p-0">
-              <div style={{ width: '100%', height: '750px' }} data-testid="cal-embed-container">
-                <Cal
-                  namespace="ai-visibility-strategy-call"
-                  calLink="foundforai/ai-visibility-strategy-call"
-                  style={{ width: '100%', height: '100%', overflow: 'scroll' }}
-                  config={{ layout: 'month_view', useSlotsViewOnSmallScreen: 'true' }}
-                />
+      <div className="revamp">
+        <section className="revamp-hero">
+          <div className="revamp-wrap revamp-hero-grid">
+            <div>
+              <span className="revamp-eyebrow">Consult</span>
+              <h1>Request a consult</h1>
+              <p className="revamp-lead">
+                Tell us about the business and the action you care about. We'll reply by email. This doesn't book a time on a calendar.
+              </p>
+            </div>
+            {done ? (
+              <div className="revamp-form" data-testid="consult-success">
+                <h2>Request received</h2>
+                <p className="revamp-muted" style={{ marginTop: 12 }}>
+                  We'll reply by email. This doesn't book anything.
+                </p>
               </div>
-            </CardContent>
-          </Card>
-
-          <div className="mt-8 text-center">
-            <p className="text-sm text-muted-foreground">
-              Need help? Email <a href="mailto:support@foundforai.com" className="text-primary hover:underline">support@foundforai.com</a>
-            </p>
+            ) : (
+              <form className="revamp-form" onSubmit={handleSubmit} data-testid="form-consult">
+                <h2>Send a request</h2>
+                <label htmlFor="consult-name">Name</label>
+                <input
+                  id="consult-name"
+                  required
+                  value={form.name}
+                  onChange={(e) => setForm({ ...form, name: e.target.value })}
+                />
+                <label htmlFor="consult-email">Email</label>
+                <input
+                  id="consult-email"
+                  type="email"
+                  required
+                  value={form.email}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                />
+                <label htmlFor="consult-website">Business website</label>
+                <input
+                  id="consult-website"
+                  type="url"
+                  required
+                  placeholder="https://yourpractice.com"
+                  value={form.website}
+                  onChange={(e) => setForm({ ...form, website: e.target.value })}
+                />
+                <label htmlFor="consult-note">
+                  Note <small>(optional)</small>
+                </label>
+                <textarea
+                  id="consult-note"
+                  rows={4}
+                  placeholder="Please don't include patient or payment details"
+                  value={form.note}
+                  onChange={(e) => setForm({ ...form, note: e.target.value })}
+                />
+                <label className="revamp-check">
+                  <input
+                    type="checkbox"
+                    required
+                    checked={form.consent}
+                    onChange={(e) => setForm({ ...form, consent: e.target.checked })}
+                  />
+                  <span>I agree Found For AI can email me about this request.</span>
+                </label>
+                <label className="revamp-hp" aria-hidden="true">
+                  Company website
+                  <input
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={form.gotcha}
+                    onChange={(e) => setForm({ ...form, gotcha: e.target.value })}
+                  />
+                </label>
+                <button className="revamp-btn block" type="submit" disabled={loading}>
+                  {loading ? 'Sending...' : 'Request a consult'}
+                </button>
+                <p className="revamp-note">We'll reply by email. This doesn't book anything.</p>
+                {error ? <p className="revamp-error">{error}</p> : null}
+              </form>
+            )}
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </PageLayout>
   );
 }

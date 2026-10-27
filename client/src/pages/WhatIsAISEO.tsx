@@ -1,4 +1,5 @@
 import PageLayout from '@/components/PageLayout';
+import { NextStepAiActions } from '@/components/marketing/RevampBlocks';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Link } from 'wouter';
@@ -186,6 +187,11 @@ export default function WhatIsAISEO() {
       </section>
 
       <FAQSection />
+      <section className="pb-16 px-4">
+        <div className="max-w-4xl mx-auto">
+          <NextStepAiActions />
+        </div>
+      </section>
     </PageLayout>
   );
 }

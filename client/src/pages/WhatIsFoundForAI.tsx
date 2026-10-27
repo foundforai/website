@@ -1,4 +1,5 @@
 import PageLayout from '@/components/PageLayout';
+import { NextStepAiActions } from '@/components/marketing/RevampBlocks';
 import { Link } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
@@ -183,7 +184,7 @@ export default function WhatIsFoundForAI() {
             <p className="text-sm text-muted-foreground mb-4">If you want help implementing this, start here.</p>
             <Link href="/book-call" data-testid="link-cta-book-call">
               <Button size="lg" className="text-lg" style={{ backgroundColor: '#0F5FDB', borderColor: '#0F5FDB' }}>
-                Book a Strategy Call
+                Request a consult
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
@@ -228,7 +229,7 @@ export default function WhatIsFoundForAI() {
             </Link>
             <Link href="/book-call" data-testid="link-book-call">
               <Button variant="outline" size="lg">
-                Book a Strategy Call
+                Request a consult
               </Button>
             </Link>
           </div>
@@ -281,6 +282,8 @@ export default function WhatIsFoundForAI() {
               </Link>
             </p>
           </div>
+
+          <NextStepAiActions />
 
         </div>
       </section>

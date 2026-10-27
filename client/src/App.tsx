@@ -9,22 +9,22 @@ import Redirect from "@/components/Redirect";
 import AiSourceTracker from "@/components/AiSourceTracker";
 import { trackEvent } from "@/lib/analytics";
 import Home from "@/pages/Home";
-import Scorecard from "@/pages/Scorecard";
-import ScorecardResults from "@/pages/ScorecardResults";
 import WhatIsAISEO from "@/pages/WhatIsAISEO";
 import RetrievalLayerSEO from "@/pages/RetrievalLayerSEO";
 import WhatIsFoundForAI from "@/pages/WhatIsFoundForAI";
 import AEO from "@/pages/AEO";
 import Audit from "@/pages/Audit";
 import Services from "@/pages/Services";
+import AiActions from "@/pages/AiActions";
+import Dental from "@/pages/Dental";
+import Visibility from "@/pages/Visibility";
+import SaltLakeCaseStudy from "@/pages/SaltLakeCaseStudy";
 import BookCall from "@/pages/BookCall";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
 import ThankYou from "@/pages/ThankYou";
 import BlogIndex from "@/pages/BlogIndex";
 import BlogPost from "@/pages/BlogPost";
-import AISearchVisibility from "@/pages/AISearchVisibility";
-import Insights from "@/pages/Insights";
 import Playbook from "@/pages/Playbook";
 import PlaybookAccess from "@/pages/PlaybookAccess";
 import PlaybookThanks from "@/pages/PlaybookThanks";
@@ -43,14 +43,27 @@ import EventAIVisibilityWorkshopJune2026 from "@/pages/EventAIVisibilityWorkshop
 import AgenticWebAssessment from "@/pages/AgenticWebAssessment";
 import NotFound from "@/pages/NotFound";
 
+function ForceLightMode() {
+  useEffect(() => {
+    document.documentElement.classList.remove("dark");
+  }, []);
+  return null;
+}
+
 function AppRouter() {
   return (
     <>
       <ScrollToTop />
       <Switch>
         <Route path="/" component={Home} />
-        <Route path="/scorecard" component={Scorecard} />
-        <Route path="/scorecard/results" component={ScorecardResults} />
+        <Route path="/ai-actions" component={AiActions} />
+        <Route path="/dental" component={Dental} />
+        <Route path="/visibility" component={Visibility} />
+        <Route path="/case-studies/salt-lake-orthodontist" component={SaltLakeCaseStudy} />
+        <Route path="/scorecard/results">{() => <Redirect to="/audit" />}</Route>
+        <Route path="/scorecard">{() => <Redirect to="/audit" />}</Route>
+        <Route path="/ai-search-visibility">{() => <Redirect to="/visibility" />}</Route>
+        <Route path="/insights">{() => <Redirect to="/blog" />}</Route>
         <Route path="/what-is-ai-seo" component={WhatIsAISEO} />
         <Route path="/retrieval-layer-seo" component={RetrievalLayerSEO} />
         <Route path="/what-is-found-for-ai" component={WhatIsFoundForAI} />
@@ -63,8 +76,6 @@ function AppRouter() {
         <Route path="/thank-you" component={ThankYou} />
         <Route path="/blog" component={BlogIndex} />
         <Route path="/blog/:slug" component={BlogPost} />
-        <Route path="/ai-search-visibility" component={AISearchVisibility} />
-        <Route path="/insights" component={Insights} />
         <Route path="/playbook/access" component={PlaybookAccess} />
         <Route path="/playbook/thanks" component={PlaybookThanks} />
         <Route path="/playbook" component={Playbook} />
@@ -120,6 +131,7 @@ function App({ ssrPath }: { ssrPath?: string }) {
     <Router {...routerProps}>
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
+          <ForceLightMode />
           <DeferredToaster />
           <AiSourceTracker />
           <LeadIntentTracker />

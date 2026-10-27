@@ -1,4 +1,5 @@
 import PageLayout from '@/components/PageLayout';
+import { pricing } from '@/data/pricing';
 import { Button } from '@/components/ui/button';
 import { Link } from 'wouter';
 import { ArrowRight } from 'lucide-react';
@@ -11,15 +12,15 @@ const FAQS = [
   },
   {
     q: "How do I get my business to show up in ChatGPT, Gemini, and Perplexity?",
-    a: "Most small business sites fail on all three things you need to show up. First: your site has to be machine-readable — structured data describing your business, services, and service areas in a format AI parsers expect. Second: you need consistent off-site corroboration — directory listings, citations, and mentions so the AI can cross-check and trust what your site claims. Third: your content has to answer the specific questions people actually ask AI tools, not the keywords they used to type into Google. The AI Visibility Fix installs the structured layer, audits trust signals, and verifies that ChatGPT, Gemini, Perplexity, and Claude actually recommend you when asked.",
+    a: "Most small business sites fail on all three things you need to show up. First: your site has to be machine-readable — structured data describing your business, services, and service areas in a format AI parsers expect. Second: you need consistent off-site corroboration — directory listings, citations, and mentions so the AI can cross-check and trust what your site claims. Third: your content has to answer the specific questions people actually ask AI tools, not the keywords they used to type into Google. The work installs the structured layer, audits trust signals, and checks whether ChatGPT, Gemini, Perplexity, and Claude can find and describe the business when asked. That is not a promise they will recommend you.",
   },
   {
     q: "Is AI search a real thing or just hype I should ignore?",
-    a: "It's real, and the scale is significant. ChatGPT hit 400 million weekly active users in early 2025 — and a large share of those queries are the kind of research questions people used to type into Google: \"best HVAC company near me,\" \"who should I hire to train my dog,\" \"good CPA for a contractor.\" Google AI Overviews now answer directly across a broad share of searches instead of just listing links. The shift isn't that Google dies; it's that a chunk of high-intent research now happens inside an AI tool that names only a handful of businesses. If you're not one of the names it gives, you never get the shot. So no, not hype — but you don't need to panic either. You need a clear diagnosis and a fix, which is what FoundForAI's AI Visibility Fix delivers.",
+    a: "It's real. A large share of the questions people used to type into Google now get asked inside an assistant: \"best HVAC company near me,\" \"who should I hire to train my dog,\" \"good CPA for a contractor.\" Google AI Overviews now answer directly across a broad share of searches instead of just listing links. The shift isn't that Google dies. It's that a chunk of high-intent research now happens inside an AI tool that names only a handful of businesses. If you're not one of the names it gives, you never get the shot. You don't need to panic either. You need a clear diagnosis and a fix.",
   },
   {
     q: "How do I know if my AI visibility work is actually working — like, what do I look at?",
-    a: "You want a scoreboard, so here it is. The core measurement is direct: ask ChatGPT, Gemini, Perplexity, and Claude the questions your customers would ask (\"best [service] in [city],\" \"who does [specific service] for [specific situation]\"), and track whether your business gets named, how it gets described, and whether the details are accurate. A well-optimized local business in a competitive service category should appear in at least 40–60% of those queries — if you're below that after the work is done, there's still a gap to close. Run those checks before the work starts, then again after, then monthly. Secondary signals include referral traffic tagged as coming from AI tools and direct inbound that mentions ChatGPT or Perplexity by name. The AI Visibility Fix includes that before/after verification across all four major AI tools as part of the engagement.",
+    a: "Ask ChatGPT, Gemini, Perplexity, and Claude the questions your customers would ask, and track whether your business gets named, how it gets described, and whether the details are accurate. Nobody can honestly promise a recommendation rate. Run those checks before the work starts, then again after, then monthly. Secondary signals include referral traffic tagged as coming from AI tools and direct inbound that mentions an assistant by name.",
   },
   {
     q: "Do I need to hire someone to handle AI search the way my CPA handles my taxes, or is there a tool that just does it?",
@@ -31,7 +32,7 @@ const FAQS = [
   },
   {
     q: "How much should a small business owner expect to pay to get found in ChatGPT and other AI tools?",
-    a: "The honest range: $1,000 to $5,000 for a proper one-time install on an existing site, and ongoing monitoring is typically $200–$600 a month if you want it. Anything under $500 for the install is usually a script-run audit with no real implementation, and anything over $10,000 for a small local business is almost always an agency padding hours. Look for a clearly defined scope — structured data, content adjustments, and verification across the major AI tools — not open-ended hourly retainers. FoundForAI scopes each engagement to the business: a one-time install delivered in about a week and backed by a 60-day We Fix It Free guarantee, with optional ongoing optimization after. Book a call and they'll put together a proposal for your situation rather than quoting a one-size package.",
+    a: `Suggested prices, pending a look at the site: the AI Actions Audit is ${pricing.audit.priceLabel}. AI Actions Setup is ${pricing.setup.priceLabel} ${pricing.setup.cadenceLabel}. Monitoring + Visibility is ${pricing.monitoring.priceLabel} ${pricing.monitoring.cadenceLabel}. Setup is delivered in ${pricing.deliveryBusinessDays} business days and includes We Fix It Free for ${pricing.fixItFreeDays} days. Multi-location and agency work is scoped separately. Request a consult and we'll confirm what fits. These are suggestions, not a quote.`,
   },
   {
     q: "My SEO guy says he's \"adding AI services\" — is that the same thing as hiring an AI visibility specialist?",
@@ -146,7 +147,7 @@ export default function FaqPersonasDelegating() {
               </Link>
               <Link href="/book-call">
                 <Button size="lg" variant="outline" data-testid="cta-faq-book-call">
-                  Book a strategy call
+                  Request a consult
                 </Button>
               </Link>
             </div>
