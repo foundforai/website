@@ -89,7 +89,7 @@ export default function BlogIndex() {
                 <div className="p-8 md:p-10 flex flex-col justify-center">
                   <div className="flex items-center gap-3 mb-4 text-sm text-muted-foreground">
                     <span data-testid="text-featured-date">
-                      {new Date(featuredPost.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                      {new Date(featuredPost.date.length === 10 ? featuredPost.date + 'T12:00:00' : featuredPost.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                     </span>
                     <span>•</span>
                     <span data-testid="text-featured-author">by {featuredPost.author}</span>
