@@ -836,8 +836,26 @@ html {
 }
 
 @media (max-width: 400px) {
-  .site-logo {
-    height: 38px;
-    max-height: 38px;
+  .site-header-inner {
+    padding: 0 16px;
+    gap: 10px;
   }
+
+  .site-logo {
+    height: 36px;
+    max-height: 36px;
+  }
+
+  .site-header-actions .revamp-btn {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}
+
+.site-header-actions .revamp-btn {
+  white-space: nowrap;
+}
+
+.site-header-inner > a {
+  flex-shrink: 0;
 }
