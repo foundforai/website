@@ -16,7 +16,6 @@ export default function Footer() {
           </a>
           <Link href="/privacy" data-testid="link-footer-privacy">Privacy</Link>
           <Link href="/terms" data-testid="link-footer-terms">Terms</Link>
-          <Link href="/sms" data-testid="link-footer-sms">SMS</Link>
           <Link href="/refund-policy" data-testid="link-footer-refund">Refunds</Link>
           <Link href="/contact" data-testid="link-footer-contact">Contact</Link>
           <Link href="/events" data-testid="link-footer-events">Events</Link>

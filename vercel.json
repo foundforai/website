@@ -81,7 +81,9 @@
     { "source": "/scorecard/:path*", "destination": "/audit", "statusCode": 301 },
     { "source": "/ai-visibility", "destination": "/visibility", "statusCode": 301 },
     { "source": "/ai-search-visibility", "destination": "/visibility", "statusCode": 301 },
-    { "source": "/insights", "destination": "/blog", "statusCode": 301 }
+    { "source": "/insights", "destination": "/blog", "statusCode": 301 },
+    { "source": "/sms", "destination": "/contact", "statusCode": 301 },
+    { "source": "/sms/:path*", "destination": "/contact", "statusCode": 301 }
   ],
   "crons": [
     { "path": "/api/cron/indexnow", "schedule": "0 */6 * * *" }

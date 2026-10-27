@@ -319,7 +319,7 @@ discovery.
 - https://foundforai.com/about : About Dustin Crump and Found For AI
 - https://foundforai.com/playbook : Free AI Visibility Playbook
 - https://foundforai.com/blog : Articles. /insights redirects here.
-- https://foundforai.com/contact : Contact and intake
+- https://foundforai.com/contact : Contact and intake. /sms redirects here.
 - https://foundforai.com/llms.txt — Short AI summary file
 - https://foundforai.com/llms-full.txt — This file
 

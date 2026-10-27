@@ -128,7 +128,8 @@ workflows, or AI-powered internal tools, visit https://fripse.com
 - https://foundforai.com/contact : Contact and intake
 
 Redirects: /scorecard to /audit, /ai-visibility and
-/ai-search-visibility to /visibility, /insights to /blog.
+/ai-search-visibility to /visibility, /insights to /blog, /sms to
+/contact.
 
 ## Markdown versions
 Every indexable page on this site is also available as clean Markdown for

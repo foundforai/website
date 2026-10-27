@@ -32,7 +32,6 @@ import Media from "@/pages/Media";
 import MediaEpisodeSmallLake from "@/pages/MediaEpisodeSmallLake";
 import Privacy from "@/pages/Privacy";
 import Terms from "@/pages/Terms";
-import Sms from "@/pages/Sms";
 import Refund from "@/pages/Refund";
 import ToolsIndex from "@/pages/ToolsIndex";
 import LlmsTxtGenerator from "@/pages/tools/LlmsTxtGenerator";
@@ -64,6 +63,7 @@ function AppRouter() {
         <Route path="/scorecard">{() => <Redirect to="/audit" />}</Route>
         <Route path="/ai-search-visibility">{() => <Redirect to="/visibility" />}</Route>
         <Route path="/insights">{() => <Redirect to="/blog" />}</Route>
+        <Route path="/sms">{() => <Redirect to="/contact" />}</Route>
         <Route path="/what-is-ai-seo" component={WhatIsAISEO} />
         <Route path="/retrieval-layer-seo" component={RetrievalLayerSEO} />
         <Route path="/what-is-found-for-ai" component={WhatIsFoundForAI} />
@@ -83,7 +83,6 @@ function AppRouter() {
         <Route path="/media" component={Media} />
         <Route path="/privacy" component={Privacy} />
         <Route path="/terms" component={Terms} />
-        <Route path="/sms" component={Sms} />
         <Route path="/refund-policy" component={Refund} />
         <Route path="/tools" component={ToolsIndex} />
         <Route path="/tools/llms-txt-generator" component={LlmsTxtGenerator} />
