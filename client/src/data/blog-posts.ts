@@ -25,6 +25,7 @@ export interface BlogPost {
   excerpt: string;
   readTime: string;
   image: string;
+  ogImage?: string;
   featured?: boolean;
   metaDescription?: string;
   ogDescription?: string;
@@ -48,7 +49,8 @@ export const blogPosts: BlogPost[] = [
     author: 'Dustin Crump',
     excerpt: 'An AI assistant found Goldsberry Orthodontics\' website, gathered a patient\'s details, asked them to confirm, and sent a real consult request. Here\'s what that means for your practice.',
     readTime: '4 min read',
-    image: aiAutomationImg,
+    image: '/images/blog/goldsberry-ai-actions-hero.jpg',
+    ogImage: '/images/blog/goldsberry-ai-actions-og.jpg',
     featured: false,
     articleSection: 'AI Visibility',
     metaDescription: 'An AI assistant found Goldsberry Orthodontics\' website, gathered a patient\'s details, asked them to confirm, and sent a real consult request. Here\'s what that means for your practice.',
