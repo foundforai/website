@@ -142,7 +142,7 @@ export const pastEvents = (): EventCard[] =>
  */
 export const buildEventSchema = (event: EventCard, now: Date = new Date()): Record<string, unknown> => {
   const schema: Record<string, unknown> = {
-    "@type": "Event",
+    "@type": "EducationEvent",
     "@id": `https://foundforai.com/events/${event.slug}#event`,
     name: event.title,
     description: event.description,

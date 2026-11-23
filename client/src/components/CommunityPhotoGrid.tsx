@@ -4,7 +4,14 @@ import type { CommunityPhoto } from '@/data/community';
  * Renders approved community photos with intrinsic dimensions.
  * Returns nothing when the list is empty.
  */
-export default function CommunityPhotoGrid({ photos }: { photos: CommunityPhoto[] }) {
+export default function CommunityPhotoGrid({
+  photos,
+  eager = false,
+}: {
+  photos: CommunityPhoto[];
+  /** Load immediately. The June workshop photos use this so a portrait frame is not an empty box before scroll. */
+  eager?: boolean;
+}) {
   if (photos.length === 0) return null;
 
   const ordered = [...photos].sort((a, b) => a.order - b.order);
@@ -19,9 +26,10 @@ export default function CommunityPhotoGrid({ photos }: { photos: CommunityPhoto[
               alt={photo.alt}
               width={photo.width}
               height={photo.height}
-              loading="lazy"
+              loading={eager ? 'eager' : 'lazy'}
               decoding="async"
-              className="h-auto w-full rounded-lg border bg-muted"
+              style={{ aspectRatio: `${photo.width} / ${photo.height}` }}
+              className="block h-auto w-full rounded-lg border"
             />
             {photo.caption ? (
               <figcaption className="mt-2 text-sm leading-relaxed text-muted-foreground">

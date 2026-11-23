@@ -2,7 +2,6 @@ import { Link } from 'wouter';
 import PageLayout from '@/components/PageLayout';
 import CommunityPhotoGrid from '@/components/CommunityPhotoGrid';
 import { buttonVariants } from '@/components/ui/button';
-import { breadcrumbList } from '@/lib/breadcrumb';
 import { cn } from '@/lib/utils';
 import { EVENTS } from '@/data/events';
 import {
@@ -10,11 +9,18 @@ import {
   EARLIER_MEETUP_PHOTOS,
   JUNE_2026_WORKSHOP_PHOTOS,
 } from '@/data/community';
+import {
+  COMMUNITY_DESCRIPTION,
+  COMMUNITY_FAQS,
+  COMMUNITY_OG_IMAGE,
+  COMMUNITY_PAGE_URL,
+  COMMUNITY_TITLE,
+  buildCommunitySchemas,
+} from '@/data/community-schema';
 
-const PAGE_URL = 'https://foundforai.com/community';
-const TITLE = 'Community & Practical AI Workshops | Found For AI';
-const DESCRIPTION =
-  'Explore Dustin Crump’s past ChatGPT meetups, practical small-business AI projects, and ideas for future Found For AI community workshops.';
+const PAGE_URL = COMMUNITY_PAGE_URL;
+const TITLE = COMMUNITY_TITLE;
+const DESCRIPTION = COMMUNITY_DESCRIPTION;
 
 const juneWorkshop = EVENTS.find((event) => event.slug === 'ai-visibility-workshop-june-2026');
 
@@ -31,23 +37,7 @@ const secondaryAction = cn(
   'font-semibold whitespace-normal h-auto text-center',
 );
 
-const pageSchemas = [
-  breadcrumbList([
-    { name: 'Home', url: 'https://foundforai.com/' },
-    { name: 'Community', url: PAGE_URL },
-  ]),
-  {
-    '@type': 'WebPage',
-    '@id': `${PAGE_URL}#webpage`,
-    url: PAGE_URL,
-    name: TITLE,
-    description: DESCRIPTION,
-    isPartOf: { '@id': 'https://foundforai.com/#website' },
-    about: { '@id': 'https://foundforai.com/#dustin-crump' },
-    publisher: { '@id': 'https://foundforai.com/#org' },
-    inLanguage: 'en-US',
-  },
-];
+const pageSchemas = buildCommunitySchemas();
 
 const GROGAN_METRICS = [
   '48 vending machines',
@@ -68,6 +58,7 @@ export default function Community() {
       title={TITLE}
       description={DESCRIPTION}
       canonical={PAGE_URL}
+      ogImage={COMMUNITY_OG_IMAGE}
       schemas={pageSchemas}
     >
       <section className="border-b">
@@ -129,7 +120,7 @@ export default function Community() {
                 Perplexity, and Claude read on a business website, and what to change so they can
                 recommend the business.
               </p>
-              <CommunityPhotoGrid photos={JUNE_2026_WORKSHOP_PHOTOS} />
+              <CommunityPhotoGrid photos={JUNE_2026_WORKSHOP_PHOTOS} eager />
               <p className="mt-6">
                 <Link href={`/events/${juneWorkshop.slug}`} className={linkClass}>
                   View the workshop page
@@ -201,8 +192,8 @@ export default function Community() {
             ))}
           </ul>
           <p className="mt-6 text-base md:text-lg text-muted-foreground leading-relaxed">
-            Interested in attending or hosting a session? Get in touch and tell me what would be
-            useful for your business.
+            No upcoming workshop dates are currently announced. Interested in attending or hosting a
+            session? Get in touch and tell me what would be useful for your business.
           </p>
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
             <Link
@@ -215,6 +206,22 @@ export default function Community() {
             <Link href="/events" className={linkClass}>
               View events and workshop updates
             </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-20 border-t bg-muted/30" aria-labelledby="community-faq-heading">
+        <div className="max-w-3xl mx-auto px-4 md:px-6 lg:px-8">
+          <h2 id="community-faq-heading" className="text-3xl md:text-4xl font-bold tracking-tight">
+            Common questions
+          </h2>
+          <div className="mt-8 space-y-8">
+            {COMMUNITY_FAQS.map((item) => (
+              <div key={item.q}>
+                <h3 className="text-xl font-semibold">{item.q}</h3>
+                <p className="mt-2 text-base text-muted-foreground leading-relaxed">{item.a}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
