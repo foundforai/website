@@ -1,3 +1,4 @@
+import { Link } from 'wouter';
 import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from '@/components/ui/card';
 import { Check, ExternalLink } from 'lucide-react';
@@ -99,6 +100,23 @@ export default function About() {
               </div>
             </CardContent>
           </Card>
+
+          <div className="mt-12">
+            <h2 className="text-2xl font-bold mb-4">Practical AI, shared locally</h2>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              Dustin has hosted local meetups helping small-business owners use ChatGPT more
+              effectively. His hands-on work also includes business AI solutions and integrations.
+              Explore past teaching experience, practical project examples, and ideas for future
+              workshops.
+            </p>
+            <Link
+              href="/community"
+              className="text-primary font-semibold hover:underline rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              data-testid="link-about-community"
+            >
+              Explore community work
+            </Link>
+          </div>
 
           <div className="mt-12">
             <h2 className="text-2xl font-bold mb-4">Our Partner</h2>

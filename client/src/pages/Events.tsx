@@ -13,10 +13,10 @@ const eventSeriesSchema = {
   '@id': 'https://foundforai.com/events#series',
   name: 'Found For AI Workshops',
   description:
-    'Ongoing free workshops on AI visibility — helping businesses get recommended by ChatGPT, Gemini, Perplexity, and Claude.',
+    'Workshops from Found For AI on AI visibility for local businesses.',
   url: PAGE_URL,
   organizer: { '@id': 'https://foundforai.com/#org' },
-  subEvent: EVENTS.map(buildEventSchema),
+  subEvent: EVENTS.map((event) => buildEventSchema(event)),
 };
 
 const collectionPageSchema = {
@@ -25,7 +25,7 @@ const collectionPageSchema = {
   url: PAGE_URL,
   name: 'AI Visibility Workshops & Events | Found For AI',
   description:
-    'Free monthly workshops on AI visibility — learn how ChatGPT, Gemini, Perplexity, and Claude decide what businesses to recommend.',
+    'Workshops from Found For AI on AI visibility. See past sessions, including the June 18, 2026 workshop in Holladay, and ask about a future session.',
   isPartOf: { '@id': 'https://foundforai.com/#website' },
   about: { '@id': 'https://foundforai.com/#org' },
   publisher: { '@id': 'https://foundforai.com/#org' },
@@ -49,7 +49,7 @@ export default function Events() {
   return (
     <PageLayout
       title="AI Visibility Workshops & Events | Found For AI"
-      description="Free monthly workshops on AI visibility — learn how ChatGPT, Gemini, Perplexity, and Claude decide what businesses to recommend, and what to fix on your site."
+      description="Workshops from Found For AI on AI visibility. See past sessions, including the June 18, 2026 workshop in Holladay, and ask about a future session."
       canonical={PAGE_URL}
       schemas={pageSchemas}
     >
@@ -63,7 +63,7 @@ export default function Events() {
             Found For AI Events &amp; Workshops
           </h1>
           <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            Free, practical workshops on AI visibility — learn what ChatGPT, Gemini, Perplexity,
+            Free, practical workshops on AI visibility. Learn what ChatGPT, Gemini, Perplexity,
             and Claude actually read on your site and what you need to fix to get recommended.
           </p>
         </div>
@@ -83,13 +83,16 @@ export default function Events() {
             <FeaturedEventCard event={featured} />
           ) : (
             <Card>
-              <CardContent className="py-10 text-center text-muted-foreground">
-                <p className="text-base">
-                  The next workshop is being scheduled. Check back soon — or{' '}
-                  <Link href="/audit" className="text-primary font-semibold hover:underline">
-                    run a free AI visibility audit
-                  </Link>{' '}
-                  in the meantime.
+              <CardContent className="py-10 text-center">
+                <p className="text-base text-foreground">
+                  No upcoming workshop dates are currently announced. Interested in a future session?{' '}
+                  <Link
+                    href="/contact"
+                    className="text-primary font-semibold hover:underline rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  >
+                    Get in touch
+                  </Link>
+                  .
                 </p>
               </CardContent>
             </Card>
@@ -127,13 +130,36 @@ export default function Events() {
             <Card>
               <CardContent className="py-8 text-muted-foreground">
                 <p className="text-base">
-                  The first Found For AI workshop is{' '}
-                  <strong className="text-foreground">June 18, 2026</strong>. Recaps, slides, and
-                  recordings from past events will live here as the series continues.
+                  Explore past community teaching and practical AI projects on our{' '}
+                  <Link
+                    href="/community"
+                    className="text-primary font-semibold hover:underline rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  >
+                    community page
+                  </Link>
+                  .
                 </p>
               </CardContent>
             </Card>
           )}
+
+          <div className="mt-10 max-w-3xl">
+            <h3 className="text-2xl font-bold tracking-tight">
+              Community learning and practical projects
+            </h3>
+            <p className="mt-3 text-base text-muted-foreground leading-relaxed">
+              See Dustin’s earlier ChatGPT meetup experience, examples of business AI work, and ideas
+              for future community workshops.
+            </p>
+            <p className="mt-4">
+              <Link
+                href="/community"
+                className="text-primary font-semibold hover:underline rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              >
+                Explore our community page
+              </Link>
+            </p>
+          </div>
         </div>
       </section>
 
@@ -144,7 +170,7 @@ export default function Events() {
             Want to know how AI sees your business right now?
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Run the free AI visibility audit — it shows you what ChatGPT, Gemini, Perplexity, and
+            Run the free AI visibility audit. It shows you what ChatGPT, Gemini, Perplexity, and
             Claude currently say about you, and what to fix.
           </p>
           <Link href="/audit">
@@ -237,7 +263,11 @@ function EventCardCompact({ event, muted = false }: { event: EventCard; muted?: 
               <Calendar className="h-3 w-3" />
               {event.dateLabel}
             </span>
-            {!muted && (
+            {muted ? (
+              <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-muted text-muted-foreground text-xs font-semibold">
+                Past workshop
+              </span>
+            ) : (
               <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-semibold">
                 {event.cost}
               </span>
@@ -246,7 +276,7 @@ function EventCardCompact({ event, muted = false }: { event: EventCard; muted?: 
           <h3 className="mt-3 text-lg font-bold leading-snug">{event.title}</h3>
           <p className="mt-2 text-sm text-muted-foreground">{event.blurb}</p>
           <div className="mt-4 text-sm text-primary font-semibold">
-            {muted ? 'View recap →' : 'View details →'}
+            {muted ? 'View event details' : 'View details'}
           </div>
         </CardContent>
       </Card>

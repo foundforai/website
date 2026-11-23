@@ -123,6 +123,8 @@ workflows, or AI-powered internal tools, visit https://fripse.com
 - https://foundforai.com/retrieval-layer-seo : Retrieval-Layer SEO:
   how to structure content so AI systems select it during retrieval
 - https://foundforai.com/about : About Dustin Crump and Found For AI
+- https://foundforai.com/community : Past ChatGPT meetups, practical project examples, and ideas for future workshops
+- https://foundforai.com/events : Workshop listings, including the June 18, 2026 Holladay session
 - https://foundforai.com/playbook : Free AI Visibility Playbook
 - https://foundforai.com/blog : Articles. /insights redirects here.
 - https://foundforai.com/contact : Contact and intake
