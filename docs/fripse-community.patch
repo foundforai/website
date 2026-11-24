@@ -1,0 +1,523 @@
+From 40191891bc47336caa30edf0e08b6278d584bf8d Mon Sep 17 00:00:00 2001
+From: Cursor Agent <cursoragent@cursor.com>
+Date: Tue, 24 Nov 2026 22:12:57 +0000
+Subject: [PATCH] Add a Fripse community page for practical Utah workshops.
+
+Link everyday AI training to the shared Found For AI event list, and point assessments at the existing booking flow.
+---
+ client/public/llms.txt           |   1 +
+ client/public/sitemap.xml        |   1 +
+ client/src/App.tsx               |   2 +
+ client/src/components/Footer.tsx |   3 +
+ client/src/components/Navbar.tsx |  13 +
+ client/src/entry-server.tsx      |   1 +
+ client/src/pages/Community.tsx   | 397 +++++++++++++++++++++++++++++++
+ 7 files changed, 418 insertions(+)
+ create mode 100644 client/src/pages/Community.tsx
+
+diff --git a/client/public/llms.txt b/client/public/llms.txt
+index 5ceb103..07f1106 100644
+--- a/client/public/llms.txt
++++ b/client/public/llms.txt
+@@ -27,6 +27,7 @@ Fripse AI was founded by Dustin Crump.
+ - AI Business Assessment: https://fripseai.com/assessment/
+ - AI readiness quiz: https://fripseai.com/quiz/
+ - About Fripse AI: https://fripseai.com/about/
++- Community workshops: https://fripseai.com/community/
+ - Email: info@fripse.com
+ 
+ ## Important notes
+diff --git a/client/public/sitemap.xml b/client/public/sitemap.xml
+index f4decbc..8e3f9dc 100644
+--- a/client/public/sitemap.xml
++++ b/client/public/sitemap.xml
+@@ -2,6 +2,7 @@
+ <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+   <url><loc>https://fripseai.com/</loc></url>
+   <url><loc>https://fripseai.com/about/</loc></url>
++  <url><loc>https://fripseai.com/community/</loc></url>
+   <url><loc>https://fripseai.com/assessment/</loc></url>
+   <url><loc>https://fripseai.com/proof/</loc></url>
+   <url><loc>https://fripseai.com/quiz/</loc></url>
+diff --git a/client/src/App.tsx b/client/src/App.tsx
+index 2c59019..4ad92ea 100644
+--- a/client/src/App.tsx
++++ b/client/src/App.tsx
+@@ -16,12 +16,14 @@ import Booking from "@/pages/Booking";
+ import LeadCaptureDemo from "@/pages/LeadCaptureDemo";
+ import SmsOptIn from "@/pages/SmsOptIn";
+ import It from "@/pages/It";
++import Community from "@/pages/Community";
+ 
+ function Routes() {
+   return (
+     <Switch>
+       <Route path="/" component={Home} />
+       <Route path="/about" component={About} />
++      <Route path="/community" component={Community} />
+       <Route path="/assessment" component={Assessment} />
+       <Route path="/proof" component={Proof} />
+       <Route path="/quiz" component={Quiz} />
+diff --git a/client/src/components/Footer.tsx b/client/src/components/Footer.tsx
+index dd7b0d7..89c5557 100644
+--- a/client/src/components/Footer.tsx
++++ b/client/src/components/Footer.tsx
+@@ -60,6 +60,9 @@ const Footer: React.FC<FooterProps> = ({ showPartnerLink = true }) => {
+                 <li>
+                   <Link href="/about" className="text-gray-400 hover:text-white transition-colors">About</Link>
+                 </li>
++                <li>
++                  <Link href="/community" className="text-gray-400 hover:text-white transition-colors">Community</Link>
++                </li>
+                 <li>
+                   <Link href="/proof" className="text-gray-400 hover:text-white transition-colors">What you receive</Link>
+                 </li>
+diff --git a/client/src/components/Navbar.tsx b/client/src/components/Navbar.tsx
+index bf80ccf..361c288 100644
+--- a/client/src/components/Navbar.tsx
++++ b/client/src/components/Navbar.tsx
+@@ -77,6 +77,12 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
+             >
+               Proof
+             </Link>
++            <Link 
++              href="/community" 
++              className="text-gray-700 hover:text-secondary font-medium transition-colors"
++            >
++              Community
++            </Link>
+             <Link 
+               href="/about" 
+               className="text-gray-700 hover:text-secondary font-medium transition-colors"
+@@ -141,6 +147,13 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
+             >
+               Proof
+             </Link>
++            <Link 
++              href="/community" 
++              className="block text-gray-700 hover:text-secondary font-medium py-2 transition-colors"
++              onClick={() => setMobileMenuOpen(false)}
++            >
++              Community
++            </Link>
+             <Link 
+               href="/about" 
+               className="block text-gray-700 hover:text-secondary font-medium py-2 transition-colors"
+diff --git a/client/src/entry-server.tsx b/client/src/entry-server.tsx
+index c2b58e3..67ce0cc 100644
+--- a/client/src/entry-server.tsx
++++ b/client/src/entry-server.tsx
+@@ -21,6 +21,7 @@ export function render(path: string): RenderResult {
+ export const ROUTES: string[] = [
+   "/",
+   "/about",
++  "/community",
+   "/assessment",
+   "/proof",
+   "/quiz",
+diff --git a/client/src/pages/Community.tsx b/client/src/pages/Community.tsx
+new file mode 100644
+index 0000000..9fc9a54
+--- /dev/null
++++ b/client/src/pages/Community.tsx
+@@ -0,0 +1,397 @@
++import { FormEvent, useEffect, useState } from "react";
++import { Link } from "wouter";
++import Navbar from "@/components/Navbar";
++import Footer from "@/components/Footer";
++import Seo from "@/components/Seo";
++import { Button } from "@/components/ui/button";
++import { SITE } from "@/lib/schema";
++
++type PublicEvent = {
++  id: string;
++  title: string;
++  description: string;
++  hostBrand: "foundforai" | "fripse";
++  hostLabel: string;
++  timing: "upcoming" | "past";
++  dateLabel: string;
++  timeLabel: string;
++  venue: string | null;
++  registrationStatus: "open" | "closed";
++};
++
++const TITLE = "Practical AI for Utah Small Businesses | Fripse AI";
++const DESCRIPTION =
++  "Learn how to use ChatGPT, automate repetitive work, and bring AI into your business through practical workshops and hands-on education.";
++
++const LEARNING = [
++  {
++    title: "ChatGPT for Business",
++    body: "Practical ways to use AI for writing, research, communication, and everyday productivity.",
++  },
++  {
++    title: "AI Workflow Automation",
++    body: "Identify repetitive work and explore ways AI can reduce manual tasks.",
++  },
++  {
++    title: "AI Business Assessments",
++    body: "Understand where AI could create the most value in your organization.",
++  },
++  {
++    title: "AI for Your Team",
++    body: "Help employees build confidence using AI tools responsibly.",
++  },
++];
++
++function apiBase(): string {
++  const env = import.meta.env as unknown as { VITE_COMMUNITY_API_BASE?: string };
++  return (env.VITE_COMMUNITY_API_BASE || "https://foundforai.com").replace(/\/$/, "");
++}
++
++export default function Community() {
++  const [events, setEvents] = useState<PublicEvent[]>([]);
++  const upcoming = events.filter((event) => event.timing === "upcoming");
++  const fripseUpcoming = upcoming.filter((event) => event.hostBrand === "fripse");
++  const foundUpcoming = upcoming.filter((event) => event.hostBrand === "foundforai");
++  const openEvents = upcoming.filter((event) => event.registrationStatus === "open");
++
++  useEffect(() => {
++    let cancelled = false;
++    fetch(`${apiBase()}/api/community/events`, { headers: { accept: "application/json" } })
++      .then((response) => (response.ok ? response.json() : Promise.reject(new Error("events"))))
++      .then((data: { events?: PublicEvent[] }) => {
++        if (!cancelled && Array.isArray(data.events)) setEvents(data.events);
++      })
++      .catch(() => {
++        if (!cancelled) setEvents([]);
++      });
++    return () => {
++      cancelled = true;
++    };
++  }, []);
++
++  const jsonLd = {
++    "@context": "https://schema.org",
++    "@graph": [
++      {
++        "@type": "BreadcrumbList",
++        itemListElement: [
++          { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` },
++          { "@type": "ListItem", position: 2, name: "Community", item: `${SITE}/community/` },
++        ],
++      },
++      {
++        "@type": "WebPage",
++        "@id": `${SITE}/community/#webpage`,
++        url: `${SITE}/community/`,
++        name: TITLE,
++        description: DESCRIPTION,
++        isPartOf: { "@id": `${SITE}/#website` },
++        about: { "@id": `${SITE}/#org` },
++      },
++    ],
++  };
++
++  return (
++    <div className="min-h-screen">
++      <Seo title={TITLE} description={DESCRIPTION} path="/community" jsonLd={jsonLd} />
++      <Navbar activeSection="" />
++
++      <section className="pt-32 pb-16 bg-gradient-to-br from-gray-50 to-white">
++        <div className="container-custom">
++          <div className="max-w-4xl mx-auto text-center">
++            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
++              Practical AI for Utah Small Businesses
++            </h1>
++            <p className="text-xl md:text-2xl text-gray-700 mb-10 max-w-3xl mx-auto leading-relaxed">
++              Learn how to use ChatGPT, automate repetitive work, and bring AI into your business through practical workshops and hands-on education.
++            </p>
++            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
++              <a href="#upcoming">
++                <Button className="bg-[#007CFF] hover:bg-[#0066CC] text-white font-semibold" size="lg">
++                  Explore Upcoming Workshops
++                </Button>
++              </a>
++              <a href="#request-workshop" className="text-[#007CFF] hover:text-[#0066CC] font-medium underline">
++                Request an AI Workshop
++              </a>
++            </div>
++          </div>
++        </div>
++      </section>
++
++      <section className="py-16 bg-white">
++        <div className="container-custom">
++          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-10">What You'll Learn</h2>
++          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
++            {LEARNING.map((item) => (
++              <article key={item.title} className="rounded-lg border border-gray-200 p-6">
++                <h3 className="text-xl font-bold text-gray-900">{item.title}</h3>
++                <p className="mt-3 text-gray-700 leading-relaxed">{item.body}</p>
++              </article>
++            ))}
++          </div>
++        </div>
++      </section>
++
++      <section className="py-16 bg-gray-50">
++        <div className="container-custom max-w-3xl">
++          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Previous Community Experience</h2>
++          <p className="mt-4 text-gray-700 leading-relaxed">
++            Dustin Crump previously hosted local meetups where small-business owners learned how to use ChatGPT. Those sessions are in the past. No attendance count is published here.
++          </p>
++          <p className="mt-4 text-gray-700 leading-relaxed">
++            Photos from that teaching, including the June 18, 2026 AI visibility workshop in Holladay, are on the FoundForAI community page. This page does not repeat that gallery.
++          </p>
++          <figure className="mt-6">
++            <img
++              src="https://foundforai.com/events/june-2026-workshop-1.jpg"
++              alt="Presenting robots.txt basics at the June 18, 2026 AI visibility workshop in Holladay"
++              width={1600}
++              height={1200}
++              className="w-full max-w-xl rounded-lg"
++              loading="lazy"
++            />
++            <figcaption className="mt-2 text-sm text-gray-600">
++              June 18, 2026 AI visibility workshop in Holladay. Hosted by FoundForAI.
++            </figcaption>
++          </figure>
++          <p className="mt-4">
++            <a href="https://foundforai.com/community" className="text-[#007CFF] font-medium underline">
++              See the photos on FoundForAI
++            </a>
++          </p>
++        </div>
++      </section>
++
++      <section id="upcoming" className="py-16 bg-white scroll-mt-28">
++        <div className="container-custom max-w-3xl">
++          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Upcoming Events</h2>
++          {upcoming.length === 0 ? (
++            <p className="mt-4 text-gray-700 leading-relaxed">
++              No workshops scheduled yet.{" "}
++              <a href="#request-workshop" className="text-[#007CFF] font-medium underline">
++                Request an AI Workshop
++              </a>
++              .
++            </p>
++          ) : (
++            <div className="mt-6 space-y-4">
++              {[...fripseUpcoming, ...foundUpcoming].map((event) => (
++                <article key={event.id} className="rounded-lg border border-gray-200 p-5">
++                  <p className="text-sm font-semibold text-[#007CFF]">{event.hostLabel}</p>
++                  <h3 className="mt-1 text-xl font-bold text-gray-900">{event.title}</h3>
++                  <p className="mt-2 text-gray-700">{event.dateLabel}. {event.timeLabel}.</p>
++                  {event.venue ? <p className="mt-1 text-gray-600">{event.venue}</p> : null}
++                </article>
++              ))}
++            </div>
++          )}
++          {openEvents.length > 0 ? (
++            <RegistrationForm events={openEvents} />
++          ) : null}
++        </div>
++      </section>
++
++      <section className="py-16 bg-gray-50">
++        <div className="container-custom max-w-3xl">
++          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Business AI Assessment</h2>
++          <p className="mt-4 text-gray-700 leading-relaxed">
++            Fripse AI already offers an AI Business Assessment and a short readiness quiz. Use those. This page does not start a second assessment.
++          </p>
++          <div className="mt-6 flex flex-col sm:flex-row gap-4">
++            <Link href="/assessment">
++              <Button className="bg-[#007CFF] hover:bg-[#0066CC] text-white">View the assessment</Button>
++            </Link>
++            <Link href="/book" className="text-[#007CFF] font-medium underline self-center">
++              Book an assessment
++            </Link>
++          </div>
++        </div>
++      </section>
++
++      <section id="request-workshop" className="py-16 bg-white scroll-mt-28">
++        <div className="container-custom max-w-xl">
++          <h2 className="text-3xl font-bold text-gray-900">Request an AI Workshop</h2>
++          <p className="mt-3 text-gray-700">Tell Fripse AI what your group wants to learn. Marketing email is a separate, optional choice.</p>
++          <HostingForm />
++        </div>
++      </section>
++
++      <section className="py-16 bg-gray-50">
++        <div className="container-custom max-w-3xl">
++          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Related Expertise</h2>
++          <p className="mt-4 text-gray-700 leading-relaxed">
++            Need help making your business discoverable to AI assistants? Explore{" "}
++            <a href="https://foundforai.com" className="text-[#007CFF] font-medium underline">
++              FoundForAI's AI visibility and agent-ready website services
++            </a>
++            .
++          </p>
++        </div>
++      </section>
++
++      <Footer />
++    </div>
++  );
++}
++
++function RegistrationForm({ events }: { events: PublicEvent[] }) {
++  return (
++    <CommunityForm
++      heading="Register"
++      endpoint="/api/community/registrations"
++      extra={{ workshopId: events[0]?.id || "" }}
++      workshopOptions={events}
++      consentName="workshopCommunicationConsent"
++      consentLabel="Email me about this workshop, including time, place, and updates. Required to register."
++      success="You are registered. Workshop email and marketing email are saved as separate choices. A confirmation email was not sent."
++    />
++  );
++}
++
++function HostingForm() {
++  return (
++    <CommunityForm
++      heading=""
++      endpoint="/api/community/hosting-requests"
++      consentName="hostingContactConsent"
++      consentLabel="You can email me about this hosting request. Required."
++      message
++      success="Thanks. Your request is saved. It is not a marketing signup unless you checked that box."
++    />
++  );
++}
++
++function CommunityForm({
++  heading,
++  endpoint,
++  extra,
++  workshopOptions,
++  consentName,
++  consentLabel,
++  message,
++  success,
++}: {
++  heading: string;
++  endpoint: string;
++  extra?: Record<string, string>;
++  workshopOptions?: PublicEvent[];
++  consentName: string;
++  consentLabel: string;
++  message?: boolean;
++  success: string;
++}) {
++  const [errors, setErrors] = useState<Record<string, string>>({});
++  const [formError, setFormError] = useState("");
++  const [done, setDone] = useState("");
++  const [loading, setLoading] = useState(false);
++
++  async function onSubmit(event: FormEvent<HTMLFormElement>) {
++    event.preventDefault();
++    setLoading(true);
++    setErrors({});
++    setFormError("");
++    setDone("");
++    const formEl = event.currentTarget;
++    const form = new FormData(formEl);
++    const payload: Record<string, unknown> = {
++      name: String(form.get("name") || ""),
++      email: String(form.get("email") || ""),
++      businessName: String(form.get("businessName") || ""),
++      businessCategory: String(form.get("businessCategory") || ""),
++      learningGoals: String(form.get("learningGoals") || ""),
++      message: String(form.get("message") || ""),
++      workshopId: String(form.get("workshopId") || extra?.workshopId || ""),
++      companyWebsite: String(form.get("companyWebsite") || ""),
++      marketingConsent: form.get("marketingConsent") === "on",
++      sourceBrand: "fripse",
++    };
++    if (extra) {
++      for (const [key, value] of Object.entries(extra)) {
++        if (!payload[key]) payload[key] = value;
++      }
++    }
++    payload[consentName] = form.get(consentName) === "on";
++    try {
++      const response = await fetch(`${apiBase()}${endpoint}`, {
++        method: "POST",
++        headers: { "content-type": "application/json", accept: "application/json" },
++        body: JSON.stringify(payload),
++      });
++      const data = (await response.json()) as { error?: string; fields?: Record<string, string> };
++      if (!response.ok) {
++        setErrors(data.fields || {});
++        setFormError(data.error || "Please check the form and try again.");
++        return;
++      }
++      setDone(success);
++      formEl.reset();
++    } catch {
++      setFormError("The form could not be sent. Please try again in a moment.");
++    } finally {
++      setLoading(false);
++    }
++  }
++
++  return (
++    <form onSubmit={onSubmit} className="mt-8 space-y-4" noValidate>
++      {heading ? <h3 className="text-2xl font-bold text-gray-900">{heading}</h3> : null}
++      <div className="absolute left-[-9999px] h-px w-px overflow-hidden" aria-hidden="true">
++        <label>
++          Company website
++          <input name="companyWebsite" tabIndex={-1} autoComplete="off" />
++        </label>
++      </div>
++      {workshopOptions ? (
++        <label className="block text-sm font-medium text-gray-800">
++          Workshop
++          <select name="workshopId" defaultValue={workshopOptions[0]?.id} className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2">
++            {workshopOptions.map((event) => (
++              <option key={event.id} value={event.id}>{event.title}</option>
++            ))}
++          </select>
++          {errors.workshopId ? <span className="mt-1 block text-red-700">{errors.workshopId}</span> : null}
++        </label>
++      ) : null}
++      <Field name="name" label="Name" error={errors.name} />
++      <Field name="email" label="Email" type="email" error={errors.email} />
++      <Field name="businessName" label="Business name (optional)" />
++      {message ? (
++        <label className="block text-sm font-medium text-gray-800">
++          What would you like to learn?
++          <textarea name="message" className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2" rows={4} />
++          {errors.message ? <span className="mt-1 block text-red-700">{errors.message}</span> : null}
++        </label>
++      ) : (
++        <label className="block text-sm font-medium text-gray-800">
++          What do you want to learn? (optional)
++          <textarea name="learningGoals" className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2" rows={3} />
++        </label>
++      )}
++      <label className="flex items-start gap-3 text-sm text-gray-800">
++        <input name={consentName} type="checkbox" className="mt-1" />
++        <span>{consentLabel}</span>
++      </label>
++      {errors[consentName] ? <p className="text-sm text-red-700" role="alert">{errors[consentName]}</p> : null}
++      <label className="flex items-start gap-3 text-sm text-gray-800">
++        <input name="marketingConsent" type="checkbox" className="mt-1" />
++        <span>Email me occasionally about future workshops and related services. Optional, and not selected for you.</span>
++      </label>
++      {formError ? <p className="text-sm text-red-700" role="alert">{formError}</p> : null}
++      {done ? <p className="text-sm text-gray-800" role="status">{done}</p> : null}
++      <Button type="submit" disabled={loading} className="bg-[#007CFF] hover:bg-[#0066CC] text-white">
++        {loading ? "Sending..." : heading ? "Register" : "Request an AI Workshop"}
++      </Button>
++    </form>
++  );
++}
++
++function Field({ name, label, type = "text", error }: { name: string; label: string; type?: string; error?: string }) {
++  return (
++    <label className="block text-sm font-medium text-gray-800">
++      {label}
++      <input name={name} type={type} className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2" />
++      {error ? <span className="mt-1 block text-red-700">{error}</span> : null}
++    </label>
++  );
++}
+-- 
+2.43.0
+
