@@ -18,6 +18,7 @@ export default function Footer() {
           <Link href="/terms" data-testid="link-footer-terms">Terms</Link>
           <Link href="/refund-policy" data-testid="link-footer-refund">Refunds</Link>
           <Link href="/contact" data-testid="link-footer-contact">Contact</Link>
+          <Link href="/community" data-testid="link-footer-community">Community</Link>
           <Link href="/events" data-testid="link-footer-events">Events</Link>
           <Link href="/media" data-testid="link-footer-media">Media</Link>
         </nav>

@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "allowImportingTsExtensions": true,
+    "types": ["node"],
+    "lib": ["ES2022"]
+  },
+  "include": [
+    "lib/community/**/*.ts",
+    "api/community/**/*.ts",
+    "scripts/community-impact-summary.ts"
+  ],
+  "exclude": ["**/*.test.ts"]
+}

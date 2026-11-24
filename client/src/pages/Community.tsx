@@ -1,14 +1,15 @@
 import { Link } from 'wouter';
 import PageLayout from '@/components/PageLayout';
+import ApprovedTestimonials from '@/components/community/ApprovedTestimonials';
 import CommunityPhotoGrid from '@/components/CommunityPhotoGrid';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { EVENTS } from '@/data/events';
 import {
-  COMMUNITY_TESTIMONIALS,
   EARLIER_MEETUP_PHOTOS,
   JUNE_2026_WORKSHOP_PHOTOS,
 } from '@/data/community';
+import { useApprovedTestimonials, useCommunityEvents } from '@/lib/community/use-events';
 import {
   COMMUNITY_DESCRIPTION,
   COMMUNITY_FAQS,
@@ -53,6 +54,12 @@ const WORKSHOP_TOPICS = [
 ];
 
 export default function Community() {
+  const { events } = useCommunityEvents();
+  const testimonials = useApprovedTestimonials();
+  const upcoming = events.filter((event) => event.timing === 'upcoming');
+  const hostedHere = upcoming.filter((event) => event.hostBrand === 'foundforai');
+  const sisterEvents = upcoming.filter((event) => event.hostBrand === 'fripse');
+
   return (
     <PageLayout
       title={TITLE}
@@ -106,6 +113,11 @@ export default function Community() {
               build on that experience with future workshops shaped around what local business owners
               need.
             </p>
+            <p>
+              Found For AI is in Utah. The June 18, 2026 workshop was in Holladay, and I plan to keep
+              offering practical AI education for local small businesses. A date goes on this page
+              only after it is scheduled.
+            </p>
           </div>
           <CommunityPhotoGrid photos={EARLIER_MEETUP_PHOTOS} />
 
@@ -114,6 +126,7 @@ export default function Community() {
               <h3 className="text-2xl font-bold tracking-tight">
                 AI Visibility Workshop, June 18, 2026
               </h3>
+              <p className="mt-2 text-sm font-semibold text-foreground">Hosted by FoundForAI</p>
               <p className="mt-4 text-base md:text-lg text-muted-foreground leading-relaxed">
                 On June 18, 2026, Found For AI held a free, in-person workshop at Kiln in Holladay,
                 Utah, from {juneWorkshop.timeLabel}. The session focused on what ChatGPT, Gemini,
@@ -179,6 +192,48 @@ export default function Community() {
 
       <section className="py-16 md:py-20 border-t">
         <div className="max-w-3xl mx-auto px-4 md:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Sister company</h2>
+          <p className="mt-4 text-base md:text-lg text-muted-foreground leading-relaxed">
+            Looking to bring AI into your everyday business operations? Our sister company,{' '}
+            <a href="https://fripseai.com" className={linkClass}>
+              Fripse AI
+            </a>
+            , provides practical AI assessments, workflow automation, and employee training.
+          </p>
+        </div>
+      </section>
+
+      <section id="workshops" className="py-16 md:py-20 border-t bg-muted/30">
+        <div className="max-w-3xl mx-auto px-4 md:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Upcoming workshops</h2>
+          {hostedHere.length === 0 && sisterEvents.length === 0 ? (
+            <p className="mt-4 text-base md:text-lg text-muted-foreground leading-relaxed">
+              No workshops scheduled yet.{' '}
+              <Link href="/events#host-a-workshop" className={linkClass}>
+                Request a workshop
+              </Link>
+              .
+            </p>
+          ) : (
+            <div className="mt-6 space-y-4">
+              {hostedHere.map((event) => (
+                <EventLine key={event.id} event={event} />
+              ))}
+              {sisterEvents.map((event) => (
+                <EventLine key={event.id} event={event} />
+              ))}
+            </div>
+          )}
+          <p className="mt-6">
+            <Link href="/events" className={linkClass}>
+              View events and workshop updates
+            </Link>
+          </p>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-20 border-t">
+        <div className="max-w-3xl mx-auto px-4 md:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
             What future workshops could cover
           </h2>
@@ -226,24 +281,7 @@ export default function Community() {
         </div>
       </section>
 
-      {COMMUNITY_TESTIMONIALS.length > 0 ? (
-        <section className="py-16 md:py-20 border-t bg-muted/30">
-          <div className="max-w-3xl mx-auto px-4 md:px-6 lg:px-8">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">From business owners</h2>
-            <div className="mt-8 space-y-6">
-              {COMMUNITY_TESTIMONIALS.map((item) => (
-                <figure key={item.attribution} className="rounded-lg border bg-card p-6">
-                  <blockquote className="text-lg leading-relaxed">{item.quote}</blockquote>
-                  <figcaption className="mt-4 text-sm text-muted-foreground">
-                    {item.attribution}
-                    {item.detail ? `, ${item.detail}` : ''}
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
-          </div>
-        </section>
-      ) : null}
+      <ApprovedTestimonials items={testimonials} />
 
       <section className="py-16 md:py-24 border-t">
         <div className="max-w-2xl mx-auto px-4 md:px-6 lg:px-8 text-center">
@@ -269,5 +307,23 @@ export default function Community() {
         </div>
       </section>
     </PageLayout>
+  );
+}
+
+function EventLine({ event }: { event: { id: string; title: string; hostLabel: string; dateLabel: string; timeLabel: string } }) {
+  const details = event.id === 'ai-visibility-workshop-june-2026'
+    ? `/events/${event.id}`
+    : '/events#register';
+  return (
+    <article className="rounded-lg border bg-card p-4">
+      <p className="text-sm font-semibold">{event.hostLabel}</p>
+      <h3 className="mt-1 text-xl font-bold">{event.title}</h3>
+      <p className="mt-1 text-sm text-muted-foreground">{event.dateLabel} · {event.timeLabel}</p>
+      <p className="mt-3">
+        <Link href={details} className="text-primary font-semibold hover:underline">
+          {event.id === 'ai-visibility-workshop-june-2026' ? 'View the workshop page' : 'Registration details'}
+        </Link>
+      </p>
+    </article>
   );
 }

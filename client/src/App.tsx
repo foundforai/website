@@ -39,6 +39,8 @@ import SchemaValidator from "@/pages/tools/SchemaValidator";
 import FaqPersonasDelegating from "@/pages/FaqPersonasDelegating";
 import Events from "@/pages/Events";
 import Community from "@/pages/Community";
+import CommunityUnsubscribe from "@/pages/CommunityUnsubscribe";
+import AdminCommunity from "@/pages/AdminCommunity";
 import EventAIVisibilityWorkshopJune2026 from "@/pages/EventAIVisibilityWorkshopJune2026";
 import AgenticWebAssessment from "@/pages/AgenticWebAssessment";
 import NotFound from "@/pages/NotFound";
@@ -91,6 +93,8 @@ function AppRouter() {
         <Route path="/faq/personas/delegating-owner-operator" component={FaqPersonasDelegating} />
         <Route path="/events" component={Events} />
         <Route path="/community" component={Community} />
+        <Route path="/community/unsubscribe" component={CommunityUnsubscribe} />
+        <Route path="/admin/community" component={AdminCommunity} />
         <Route path="/events/ai-visibility-workshop-june-2026" component={EventAIVisibilityWorkshopJune2026} />
         <Route path="/agentic-web-assessment" component={AgenticWebAssessment} />
         <Route component={NotFound} />
