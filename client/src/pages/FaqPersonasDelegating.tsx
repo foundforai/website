@@ -32,7 +32,7 @@ const FAQS = [
   },
   {
     q: "How much should a small business owner expect to pay to get found in ChatGPT and other AI tools?",
-    a: `Suggested prices, pending a look at the site: the AI Actions Audit is ${pricing.audit.priceLabel}. AI Actions Setup is ${pricing.setup.priceLabel} ${pricing.setup.cadenceLabel}. Monitoring + Visibility is ${pricing.monitoring.priceLabel} ${pricing.monitoring.cadenceLabel}. Setup is delivered in ${pricing.deliveryBusinessDays} business days and includes We Fix It Free for ${pricing.fixItFreeDays} days. Multi-location and agency work is scoped separately. Request a consult and we'll confirm what fits. These are suggestions, not a quote.`,
+    a: `Suggested prices, pending a look at the site: the AI Actions Audit is ${pricing.audit.priceLabel}. AI Actions Setup is ${pricing.setup.priceLabel} ${pricing.setup.cadenceLabel}. Monitoring + Visibility is ${pricing.monitoring.priceLabel} ${pricing.monitoring.cadenceLabel}. AI Receptionist is ${pricing.receptionist.priceLabel}, ${pricing.receptionist.cadenceLabel}. Setup for AI Actions is delivered in ${pricing.deliveryBusinessDays} business days and includes We Fix It Free for ${pricing.fixItFreeDays} days. Multi-location and agency work is scoped separately. Request a consult and we'll confirm what fits. These are suggestions, not a quote.`,
   },
   {
     q: "My SEO guy says he's \"adding AI services\" — is that the same thing as hiring an AI visibility specialist?",

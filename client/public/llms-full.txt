@@ -155,12 +155,25 @@ step the customer sees first, inbox routing, and a re-test. Delivered in
 Monthly agent re-tests, follow-up help for quiet leads, AI visibility
 (AEO) tuning, and a plain monthly report.
 
-### 7.4 Multi-location and agencies
+### 7.4 AI Receptionist
+
+https://foundforai.com/ai-receptionist
+
+Answers the business phone line when staff cannot. Talks with callers
+naturally, answers common questions such as hours and services, and
+books, reschedules, or routes callers into the tools the business
+already uses. Found For AI sets it up and is the local first call for
+changes. Price: $500 setup. Plans from $299 per month. A fit for
+phone-heavy local businesses such as dental and orthodontic offices,
+salons, auto repair, and HVAC. Request a consult by email at
+https://foundforai.com/book-call.
+
+### 7.5 Multi-location and agencies
 
 Custom scoping. Request a consult by email at
 https://foundforai.com/book-call. There is no calendar booking on that page.
 
-### 7.5 Implementation capabilities
+### 7.6 Implementation capabilities
 
 When working with Found For AI, the following can be implemented:
 - AI visibility audit and action plan.
@@ -222,10 +235,13 @@ and rely on phone calls, bookings, or estimates. Typical fits include:
 ## 11. Frequently Asked Questions
 
 **How does pricing work?**
-Found For AI quotes custom rather than listing set packages. Every engagement is
-scoped to the business, its goals, footprint, and budget. The specific fees and
-terms are defined in a written proposal before any work begins. Book a call at
-https://foundforai.com/book-call to get a proposal.
+Suggested prices are published at https://foundforai.com/services.
+The AI Actions Audit is free. AI Actions Setup is $1,500 to $2,500 one
+time. Monitoring + Visibility is $199 to $399 per month. AI Receptionist
+is $500 setup, with plans from $299 per month. Multi-location and agency
+work is scoped separately. These figures are suggestions until a written
+proposal confirms the footprint. Request a consult at
+https://foundforai.com/book-call. That page does not book a calendar time.
 
 **What does an engagement include?**
 It starts with a full AI Visibility Audit, AI Data Layer installation, and
@@ -251,8 +267,8 @@ so before any extra work is done.
 
 **Can my current web person do this?**
 Most web teams focus on design, content, and traditional search. AI visibility
-is a different skill set. Found For AI only does AI search and AI visibility
-work, which is why agencies often bring us in behind the scenes.
+is a different skill set. Found For AI sets up AI visibility, AI Actions, and
+an AI Receptionist, which is why agencies often bring us in behind the scenes.
 
 **What if I don't have a website?**
 AI systems need a place to read services, location, and booking information.
@@ -307,8 +323,9 @@ discovery.
 - https://foundforai.com/ai-actions : How AI Actions work
 - https://foundforai.com/dental : Dentists and orthodontists
 - https://foundforai.com/visibility : AI visibility (AEO)
+- https://foundforai.com/ai-receptionist : AI Receptionist for the phone line
 - https://foundforai.com/audit : Free AI Actions Audit
-- https://foundforai.com/services : Suggested prices and tiers
+- https://foundforai.com/services : Suggested prices and tiers, including AI Receptionist
 - https://foundforai.com/case-studies/salt-lake-orthodontist : Oct 27, 2026 test
 - https://foundforai.com/book-call : Request a consult by email. No calendar.
 - https://foundforai.com/agentic-web-assessment : 3-minute self check

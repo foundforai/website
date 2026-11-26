@@ -1,7 +1,7 @@
 export const HOME_FAQS: { q: string; a: string }[] = [
   {
     q: 'Will AI book appointments by itself?',
-    a: 'No. The assistant sends a request, the person confirms it, and your team schedules the way you do now.',
+    a: 'On your website, no. AI Actions sends a request, the person confirms it, and your team schedules the way you do now. AI Receptionist is separate. It answers the phone when staff cannot, and it can book, reschedule, or route callers into the tools you already use.',
   },
   {
     q: 'Do I need a new website?',

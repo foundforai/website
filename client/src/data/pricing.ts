@@ -1,6 +1,7 @@
 /**
- * Suggested prices for the AI Actions revamp.
- * Pending review. Change prices here only.
+ * Published service prices. Change prices here only.
+ * AI Actions figures are suggestions, pending review.
+ * AI Receptionist is $500 setup, plans from $299/mo (approved 2026-11-26).
  */
 export const pricing = {
   currency: 'USD',
@@ -43,12 +44,27 @@ export const pricing = {
       'Plain monthly report',
     ],
   },
+  receptionist: {
+    name: 'AI Receptionist',
+    priceLabel: '$500 setup',
+    lowPrice: 500,
+    highPrice: 500,
+    cadenceLabel: 'plans from $299/mo',
+    plansFrom: 299,
+    items: [
+      'Answers the phone when your staff cannot',
+      'Talks with callers naturally',
+      'Common questions, including hours and services',
+      'Books, reschedules, or routes into tools you already use',
+      'Found For AI sets it up and is the local first call for changes',
+    ],
+  },
   deliveryBusinessDays: 7,
   fixItFreeDays: 60,
   auditReportBusinessDays: 3,
 } as const;
 
-export const pricingTiers = [pricing.audit, pricing.setup, pricing.monitoring] as const;
+export const pricingTiers = [pricing.audit, pricing.setup, pricing.monitoring, pricing.receptionist] as const;
 
 export function guaranteeLine(): string {
   return `Delivered in ${pricing.deliveryBusinessDays} business days. We Fix It Free for ${pricing.fixItFreeDays} days. Multi-location and agencies: custom scoping.`;

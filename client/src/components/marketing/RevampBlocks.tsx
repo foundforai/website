@@ -134,7 +134,7 @@ export function TierGrid() {
     <section className="revamp-section alt" id="tiers">
       <div className="revamp-wrap">
         <h2>Simple ways to start</h2>
-        <p className="revamp-sub">Start free. Add setup and monitoring when it makes sense.</p>
+        <p className="revamp-sub">Start free. Add setup, monitoring, or an AI Receptionist when it makes sense.</p>
         <div className="revamp-tiers">
           <article className="revamp-tier featured">
             <h3>{pricing.audit.name}</h3>
@@ -178,8 +178,44 @@ export function TierGrid() {
           </article>
         </div>
         <p className="revamp-note">{guaranteeLine()}</p>
+        <ReceptionistOffer />
       </div>
     </section>
+  );
+}
+
+export function ReceptionistOffer() {
+  const offer = pricing.receptionist;
+  return (
+    <article className="revamp-offer" id="ai-receptionist" data-testid="card-ai-receptionist">
+      <div>
+        <h3>{offer.name}</h3>
+        <ul>
+          {offer.items.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+        <p className="revamp-offer-fit">
+          A fit for phone-heavy local businesses such as dental and orthodontic offices, salons, auto repair, and HVAC.
+        </p>
+      </div>
+      <div>
+        <div className="revamp-price">
+          ${offer.lowPrice} <small>setup</small>
+        </div>
+        <p>{offer.cadenceLabel.charAt(0).toUpperCase() + offer.cadenceLabel.slice(1)}</p>
+        <div className="revamp-ctas">
+          <Link href="/book-call" className="revamp-btn">
+            Request a consult
+          </Link>
+        </div>
+        <p className="revamp-offer-more">
+          <Link href="/ai-receptionist" className="revamp-link">
+            See AI Receptionist →
+          </Link>
+        </p>
+      </div>
+    </article>
   );
 }
 

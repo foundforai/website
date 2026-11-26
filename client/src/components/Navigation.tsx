@@ -6,6 +6,7 @@ const LINKS = [
   { href: '/ai-actions', label: 'AI Actions' },
   { href: '/dental', label: 'Dental' },
   { href: '/visibility', label: 'Visibility' },
+  { href: '/ai-receptionist', label: 'Receptionist' },
   { href: '/about', label: 'About' },
 ];
 
@@ -22,7 +23,7 @@ export default function Navigation() {
         </Link>
 
         <nav className="site-nav" aria-label="Primary">
-          {LINKS.slice(0, 3).map((link) => (
+          {LINKS.slice(0, 4).map((link) => (
             <Link
               key={link.href}
               href={link.href}
