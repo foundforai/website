@@ -45,6 +45,16 @@ business days, with We Fix It Free for 60 days.
 Monthly agent re-tests, follow-up help for quiet leads, AI visibility
 (AEO) tuning, and a plain monthly report.
 
+### AI Receptionist
+Answers the business phone line when staff cannot. Talks with callers
+naturally, answers common questions such as hours and services, and
+books, reschedules, or routes callers into the tools the business
+already uses. Found For AI sets it up and is the local first call for
+changes. $500 setup. Plans from $299 per month. A fit for phone-heavy
+local businesses such as dental and orthodontic offices, salons, auto
+repair, and HVAC. Details: https://foundforai.com/ai-receptionist
+Request a consult at https://foundforai.com/book-call.
+
 ### Multi-location and agencies
 Custom scoping. Request a consult (email, not a calendar) at
 https://foundforai.com/book-call.
@@ -107,8 +117,10 @@ workflows, or AI-powered internal tools, visit https://fripse.com
 - https://foundforai.com/visibility : AI visibility (AEO), merged from
   older visibility URLs
 - https://foundforai.com/audit : Free AI Actions Audit
-- https://foundforai.com/services : Audit, setup, monitoring, and
-  custom scoping
+- https://foundforai.com/ai-receptionist : AI Receptionist. $500
+  setup, plans from $299 per month. Found For AI sets it up.
+- https://foundforai.com/services : Audit, setup, monitoring,
+  AI Receptionist, and custom scoping
 - https://foundforai.com/case-studies/salt-lake-orthodontist : October
   27, 2026 consult-request test. Practice not named.
 - https://foundforai.com/book-call : Request a consult by email. This

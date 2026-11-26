@@ -25,8 +25,9 @@ const STATIC_DEFAULT_LASTMOD = '2026-05-04';
 const REVAMP_LASTMOD = '2026-10-27';
 
 const STATIC_ROUTES: RouteEntry[] = [
-  { path: '/', prerender: true, sitemap: true, priority: 1.0, changefreq: 'weekly', lastmod: REVAMP_LASTMOD },
-  { path: '/ai-actions', prerender: true, sitemap: true, priority: 0.9, changefreq: 'monthly', lastmod: REVAMP_LASTMOD },
+  { path: '/', prerender: true, sitemap: true, priority: 1.0, changefreq: 'weekly', lastmod: '2026-11-26' },
+  { path: '/ai-actions', prerender: true, sitemap: true, priority: 0.9, changefreq: 'monthly', lastmod: '2026-11-26' },
+  { path: '/ai-receptionist', prerender: true, sitemap: true, priority: 0.9, changefreq: 'monthly', lastmod: '2026-11-26' },
   { path: '/dental', prerender: true, sitemap: true, priority: 0.9, changefreq: 'monthly', lastmod: REVAMP_LASTMOD },
   { path: '/visibility', prerender: true, sitemap: true, priority: 0.9, changefreq: 'monthly', lastmod: REVAMP_LASTMOD },
   { path: '/case-studies/salt-lake-orthodontist', prerender: true, sitemap: true, priority: 0.8, changefreq: 'monthly', lastmod: REVAMP_LASTMOD },
@@ -34,7 +35,7 @@ const STATIC_ROUTES: RouteEntry[] = [
   { path: '/scorecard', prerender: false, sitemap: false },
   { path: '/agentic-web-assessment', prerender: true, sitemap: true, priority: 0.8, changefreq: 'monthly', lastmod: REVAMP_LASTMOD },
   { path: '/scorecard/results', prerender: false, sitemap: false },
-  { path: '/services', prerender: true, sitemap: true, priority: 0.8, changefreq: 'monthly', lastmod: REVAMP_LASTMOD },
+  { path: '/services', prerender: true, sitemap: true, priority: 0.8, changefreq: 'monthly', lastmod: '2026-11-26' },
   { path: '/playbook', prerender: true, sitemap: true, priority: 0.9, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },
   { path: '/playbook/access', prerender: true, sitemap: false },
   { path: '/playbook/thanks', prerender: true, sitemap: false },
@@ -55,7 +56,7 @@ const STATIC_ROUTES: RouteEntry[] = [
   { path: '/tools', prerender: true, sitemap: true, priority: 0.8, changefreq: 'monthly', lastmod: '2026-05-12' },
   { path: '/tools/llms-txt-generator', prerender: true, sitemap: true, priority: 0.8, changefreq: 'monthly', lastmod: '2026-05-12' },
   { path: '/tools/schema-validator', prerender: true, sitemap: true, priority: 0.8, changefreq: 'monthly', lastmod: '2026-05-12' },
-  { path: '/faq/personas/delegating-owner-operator', prerender: true, sitemap: true, priority: 0.7, changefreq: 'monthly', lastmod: REVAMP_LASTMOD },
+  { path: '/faq/personas/delegating-owner-operator', prerender: true, sitemap: true, priority: 0.7, changefreq: 'monthly', lastmod: '2026-11-26' },
   { path: '/events', prerender: true, sitemap: true, priority: 0.8, changefreq: 'monthly', lastmod: '2026-11-24' },
   { path: '/events/ai-visibility-workshop-june-2026', prerender: true, sitemap: true, priority: 0.7, changefreq: 'monthly', lastmod: '2026-11-23' },
   { path: '/media', prerender: true, sitemap: true, priority: 0.6, changefreq: 'monthly', lastmod: STATIC_DEFAULT_LASTMOD },

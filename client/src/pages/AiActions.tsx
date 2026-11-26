@@ -93,6 +93,11 @@ export default function AiActions() {
                 Visibility is how assistants find you first →
               </Link>
             </p>
+            <p style={{ marginTop: 12 }}>
+              <Link href="/ai-receptionist" className="revamp-link">
+                AI Receptionist answers the phone when staff cannot →
+              </Link>
+            </p>
           </div>
         </section>
 

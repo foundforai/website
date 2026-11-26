@@ -20,8 +20,8 @@ const schemas = [
 export default function Services() {
   return (
     <PageLayout
-      title="AI Actions, monitoring, and visibility | Found For AI"
-      description={`Start with a free AI Actions Audit. Setup is ${pricing.setup.priceLabel} ${pricing.setup.cadenceLabel}. Monitoring and visibility is ${pricing.monitoring.priceLabel} ${pricing.monitoring.cadenceLabel}. Multi-location and agencies are custom.`}
+      title="AI Actions, visibility, and AI Receptionist | Found For AI"
+      description={`Start with a free AI Actions Audit. Setup is ${pricing.setup.priceLabel} ${pricing.setup.cadenceLabel}. Monitoring and visibility is ${pricing.monitoring.priceLabel} ${pricing.monitoring.cadenceLabel}. AI Receptionist is ${pricing.receptionist.priceLabel}, ${pricing.receptionist.cadenceLabel}. Multi-location and agencies are custom.`}
       canonical={PAGE}
       schemas={schemas}
     >
@@ -31,7 +31,7 @@ export default function Services() {
             <span className="revamp-eyebrow">Services</span>
             <h1>Start free. Add the rest when it helps.</h1>
             <p className="revamp-lead">
-              Three ways to work together: a free audit, a one-time AI Actions setup, and monthly monitoring with visibility. Larger footprints are scoped on their own.
+              A free audit, a one-time AI Actions setup, monthly monitoring with visibility, and an AI Receptionist for the phone. Larger footprints are scoped on their own.
             </p>
             <div className="revamp-ctas">
               <Link href="/audit" className="revamp-btn">
@@ -93,6 +93,18 @@ export default function Services() {
             <p style={{ marginTop: 18 }}>
               <Link href="/ai-actions" className="revamp-link">
                 Read how AI Actions work →
+              </Link>
+            </p>
+            <h2 style={{ marginTop: 36 }}>AI Receptionist</h2>
+            <p>
+              AI Receptionist answers your phone line when staff can't. It talks with callers naturally, answers common questions such as hours and services, and books, reschedules, or routes callers into the tools you already use. {pricing.receptionist.priceLabel}, {pricing.receptionist.cadenceLabel}. Found For AI sets it up and is the local first call for changes.
+            </p>
+            <p>
+              A fit for phone-heavy local businesses such as dental and orthodontic offices, salons, auto repair, and HVAC.
+            </p>
+            <p style={{ marginTop: 18 }}>
+              <Link href="/ai-receptionist" className="revamp-link">
+                See AI Receptionist →
               </Link>
             </p>
           </div>

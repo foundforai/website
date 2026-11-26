@@ -18,6 +18,7 @@ import Services from "@/pages/Services";
 import AiActions from "@/pages/AiActions";
 import Dental from "@/pages/Dental";
 import Visibility from "@/pages/Visibility";
+import AiReceptionist from "@/pages/AiReceptionist";
 import SaltLakeCaseStudy from "@/pages/SaltLakeCaseStudy";
 import BookCall from "@/pages/BookCall";
 import About from "@/pages/About";
@@ -61,6 +62,7 @@ function AppRouter() {
         <Route path="/ai-actions" component={AiActions} />
         <Route path="/dental" component={Dental} />
         <Route path="/visibility" component={Visibility} />
+        <Route path="/ai-receptionist" component={AiReceptionist} />
         <Route path="/case-studies/salt-lake-orthodontist" component={SaltLakeCaseStudy} />
         <Route path="/scorecard/results">{() => <Redirect to="/audit" />}</Route>
         <Route path="/scorecard">{() => <Redirect to="/audit" />}</Route>

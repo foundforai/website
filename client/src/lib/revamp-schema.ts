@@ -15,33 +15,57 @@ export function faqPageSchema(id: string, faqs: { q: string; a: string }[]) {
   };
 }
 
-export function tierServiceSchemas(pageUrl: string) {
-  return pricingTiers.map((tier) => {
-    const slug = tier.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-    const offer =
-      tier.lowPrice === tier.highPrice
-        ? {
-            '@type': 'Offer',
-            price: String(tier.lowPrice),
-            priceCurrency: pricing.currency,
-          }
-        : {
-            '@type': 'AggregateOffer',
-            lowPrice: String(tier.lowPrice),
-            highPrice: String(tier.highPrice),
-            priceCurrency: pricing.currency,
-          };
+type PricingTier = (typeof pricingTiers)[number];
 
-    return {
-      '@type': 'Service',
-      '@id': `${pageUrl}#${slug}`,
-      name: tier.name,
-      description: `${tier.name}. ${tier.items.join('. ')}.`,
-      serviceType: tier.name,
-      provider: { '@id': 'https://foundforai.com/#org' },
-      areaServed: { '@type': 'Country', name: 'United States' },
-      url: pageUrl,
-      offers: offer,
-    };
-  });
+function tierOffers(tier: PricingTier) {
+  if ('plansFrom' in tier) {
+    return [
+      {
+        '@type': 'Offer',
+        name: 'Setup',
+        price: String(tier.lowPrice),
+        priceCurrency: pricing.currency,
+      },
+      {
+        '@type': 'Offer',
+        name: 'Monthly plans',
+        price: String(tier.plansFrom),
+        priceCurrency: pricing.currency,
+        description: tier.cadenceLabel,
+      },
+    ];
+  }
+
+  return tier.lowPrice === tier.highPrice
+    ? {
+        '@type': 'Offer',
+        price: String(tier.lowPrice),
+        priceCurrency: pricing.currency,
+      }
+    : {
+        '@type': 'AggregateOffer',
+        lowPrice: String(tier.lowPrice),
+        highPrice: String(tier.highPrice),
+        priceCurrency: pricing.currency,
+      };
+}
+
+export function serviceSchema(pageUrl: string, tier: PricingTier) {
+  const slug = tier.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+  const priceBits = [tier.priceLabel, tier.cadenceLabel].filter(Boolean).join(', ');
+  return {
+    '@type': 'Service',
+    '@id': `${pageUrl}#${slug}`,
+    name: tier.name,
+    description: `${tier.name}. ${priceBits}. ${tier.items.join('. ')}.`,
+    serviceType: tier.name,
+    provider: { '@id': 'https://foundforai.com/#org' },
+    areaServed: { '@type': 'Country', name: 'United States' },
+    url: pageUrl,
+    offers: tierOffers(tier),
+  };
+}
+
+export function tierServiceSchemas(pageUrl: string) {
+  return pricingTiers.map((tier) => serviceSchema(pageUrl, tier));
 }

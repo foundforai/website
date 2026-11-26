@@ -82,6 +82,7 @@ html {
   font-weight: 600;
   font-size: 15px;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .site-nav a.active,
@@ -603,6 +604,61 @@ html {
   margin: 16px 0 0;
 }
 
+.revamp-offer {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: 1.45fr 0.7fr;
+  gap: 36px;
+  align-items: start;
+  background: #fff;
+  border: 1px solid hsl(220 14% 89%);
+  border-radius: 18px;
+  padding: 30px;
+}
+
+.revamp-offer h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+
+.revamp-offer p {
+  margin: 0;
+  color: hsl(220 10% 42%);
+}
+
+.revamp-offer ul {
+  padding: 0;
+  list-style: none;
+  margin: 16px 0 0;
+}
+
+.revamp-offer li {
+  padding: 6px 0 6px 26px;
+  position: relative;
+  color: #384152;
+}
+
+.revamp-offer li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: hsl(160 75% 40%);
+  font-weight: 800;
+}
+
+.revamp-offer-fit,
+.revamp-offer-more {
+  margin-top: 16px !important;
+}
+
+.revamp-offer .revamp-price {
+  margin-top: 0;
+}
+
+.revamp-offer .revamp-ctas {
+  margin-top: 18px;
+}
+
 .revamp-band-wrap {
   padding: 80px 0;
 }
@@ -804,6 +860,7 @@ html {
   .revamp-grid3,
   .revamp-grid2,
   .revamp-tiers,
+  .revamp-offer,
   .revamp-row {
     grid-template-columns: 1fr;
   }
@@ -858,4 +915,15 @@ html {
 
 .site-header-inner > a {
   flex-shrink: 0;
+}
+
+@media (max-width: 1180px) {
+  .site-nav {
+    gap: 12px;
+  }
+
+  .site-nav a,
+  .site-resources summary {
+    font-size: 13px;
+  }
 }
