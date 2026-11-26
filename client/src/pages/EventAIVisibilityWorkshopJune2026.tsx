@@ -6,7 +6,7 @@ import { buttonVariants } from '@/components/ui/button';
 import { Calendar, MapPin, ExternalLink } from 'lucide-react';
 import { breadcrumbList } from '@/lib/breadcrumb';
 import { cn } from '@/lib/utils';
-import { EVENTS, buildEventSchema } from '@/data/events';
+import { EVENTS } from '@/data/events';
 import { JUNE_2026_WORKSHOP_PHOTOS } from '@/data/community';
 
 function requireJuneWorkshop() {
@@ -81,28 +81,13 @@ const FAQS = [
   },
 ];
 
-const eventSchema = {
-  ...buildEventSchema(event),
-  isPartOf: {
-    '@type': 'EventSeries',
-    '@id': 'https://foundforai.com/events#series',
-    name: 'Found For AI Workshops',
-    url: 'https://foundforai.com/events',
-  },
-  organizer: { '@id': 'https://foundforai.com/#org' },
-  performer: [
-    { '@type': 'Person', '@id': 'https://foundforai.com/#dustin-crump', name: 'Dustin Crump' },
-    { '@type': 'Person', name: 'Brian Jolley' },
-  ],
-};
-
 const webPageSchema = {
   '@type': 'WebPage',
   '@id': `${PAGE_URL}#webpage`,
   url: PAGE_URL,
   name: TITLE,
   isPartOf: { '@id': 'https://foundforai.com/#website' },
-  about: { '@id': `${PAGE_URL}#event` },
+  about: { '@id': 'https://foundforai.com/#org' },
   description: DESCRIPTION,
   inLanguage: 'en-US',
   primaryImageOfPage: `https://foundforai.com${event.image}`,
@@ -125,7 +110,6 @@ const pageSchemas = [
     { name: event.title, url: PAGE_URL },
   ]),
   webPageSchema,
-  eventSchema,
   faqSchema,
 ];
 
@@ -156,6 +140,9 @@ export default function EventAIVisibilityWorkshopJune2026() {
           <div className="flex flex-wrap justify-center gap-2 mb-6">
             <span className="inline-flex items-center px-3 py-1 rounded-full bg-muted text-muted-foreground text-sm font-semibold">
               Past workshop
+            </span>
+            <span className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-semibold">
+              Hosted by FoundForAI
             </span>
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-semibold">
               <Calendar className="h-3.5 w-3.5" />

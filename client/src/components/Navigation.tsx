@@ -43,6 +43,13 @@ export default function Navigation() {
             </div>
           </details>
           <Link
+            href="/community"
+            className={location === '/community' ? 'active' : undefined}
+            data-testid="link-community"
+          >
+            Community
+          </Link>
+          <Link
             href="/about"
             className={location === '/about' ? 'active' : undefined}
             data-testid="link-about"
@@ -77,6 +84,9 @@ export default function Navigation() {
             {link.label}
           </Link>
         ))}
+        <Link href="/community" onClick={() => setOpen(false)}>
+          Community
+        </Link>
         {RESOURCE_LINKS.map((link) => (
           <Link key={link.href} href={link.href} onClick={() => setOpen(false)}>
             {link.label}

@@ -1,23 +1,17 @@
+import { useMemo, type ReactNode } from 'react';
 import PageLayout from '@/components/PageLayout';
+import HostingRequestForm from '@/components/community/HostingRequestForm';
+import WorkshopRegistrationForm from '@/components/community/WorkshopRegistrationForm';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Link } from 'wouter';
 import { ArrowRight, Calendar, MapPin } from 'lucide-react';
 import { breadcrumbList } from '@/lib/breadcrumb';
-import { EVENTS, upcomingEvents, pastEvents, buildEventSchema, type EventCard } from '@/data/events';
+import { upcomingEventSchema } from '@/lib/community/schema';
+import { useCommunityEvents } from '@/lib/community/use-events';
+import type { PublicEvent } from '@/lib/community/types';
 
 const PAGE_URL = 'https://foundforai.com/events';
-
-const eventSeriesSchema = {
-  '@type': 'EventSeries',
-  '@id': 'https://foundforai.com/events#series',
-  name: 'Found For AI Workshops',
-  description:
-    'Workshops from Found For AI on AI visibility for local businesses.',
-  url: PAGE_URL,
-  organizer: { '@id': 'https://foundforai.com/#org' },
-  subEvent: EVENTS.map((event) => buildEventSchema(event)),
-};
 
 const collectionPageSchema = {
   '@type': 'CollectionPage',
@@ -31,20 +25,33 @@ const collectionPageSchema = {
   publisher: { '@id': 'https://foundforai.com/#org' },
 };
 
-const pageSchemas = [
-  breadcrumbList([
-    { name: 'Home', url: 'https://foundforai.com/' },
-    { name: 'Events', url: PAGE_URL },
-  ]),
-  collectionPageSchema,
-  eventSeriesSchema,
-];
-
 export default function Events() {
-  const upcoming = upcomingEvents();
-  const past = pastEvents();
+  const { events } = useCommunityEvents();
+  const upcoming = events.filter((event) => event.timing === 'upcoming');
+  const past = events.filter((event) => event.timing === 'past').sort((a, b) => b.start.localeCompare(a.start));
   const featured = upcoming[0];
   const restUpcoming = upcoming.slice(1);
+  const pageSchemas = useMemo(() => {
+    const scheduled = upcoming.map((event) => upcomingEventSchema(event)).filter((schema): schema is Record<string, unknown> => Boolean(schema));
+    return [
+      breadcrumbList([
+        { name: 'Home', url: 'https://foundforai.com/' },
+        { name: 'Events', url: PAGE_URL },
+      ]),
+      collectionPageSchema,
+      ...(scheduled.length
+        ? [{
+            '@type': 'EventSeries',
+            '@id': 'https://foundforai.com/events#series',
+            name: 'Found For AI Workshops',
+            description: 'Scheduled workshops from Found For AI and sister-company sessions listed with their host.',
+            url: PAGE_URL,
+            organizer: { '@id': 'https://foundforai.com/#org' },
+            subEvent: scheduled,
+          }]
+        : []),
+    ];
+  }, [upcoming]);
 
   return (
     <PageLayout
@@ -69,7 +76,7 @@ export default function Events() {
         </div>
       </section>
 
-      {/* Upcoming — featured */}
+      {/* Upcoming featured */}
       <section className="py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-4 md:px-6 lg:px-8">
           <div className="mb-8">
@@ -84,24 +91,23 @@ export default function Events() {
           ) : (
             <Card>
               <CardContent className="py-10 text-center">
-                <p className="text-base text-foreground">
-                  No upcoming workshop dates are currently announced. Interested in a future session?{' '}
-                  <Link
-                    href="/contact"
-                    className="text-primary font-semibold hover:underline rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                  >
-                    Get in touch
-                  </Link>
-                  .
-                </p>
+                <p className="text-base text-foreground">No workshops scheduled yet.</p>
+                <a
+                  href="#host-a-workshop"
+                  className="mt-4 inline-flex text-primary font-semibold hover:underline rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                >
+                  Request a workshop
+                </a>
               </CardContent>
             </Card>
           )}
 
+          <WorkshopRegistrationForm events={events} sourceBrand="foundforai" />
+
           {restUpcoming.length > 0 && (
             <div className="mt-10 grid gap-5 md:grid-cols-2">
               {restUpcoming.map((e) => (
-                <EventCardCompact key={e.slug} event={e} />
+                <EventCardCompact key={e.id} event={e} />
               ))}
             </div>
           )}
@@ -113,17 +119,17 @@ export default function Events() {
         <div className="max-w-6xl mx-auto px-4 md:px-6 lg:px-8">
           <div className="mb-8">
             <div className="text-xs font-semibold uppercase tracking-widest text-primary">
-              Past events
+              Previous
             </div>
             <h2 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight">
-              Workshops we&rsquo;ve hosted
+              Previous workshops
             </h2>
           </div>
 
           {past.length > 0 ? (
             <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
               {past.map((e) => (
-                <EventCardCompact key={e.slug} event={e} muted />
+                <EventCardCompact key={e.id} event={e} muted />
               ))}
             </div>
           ) : (
@@ -163,6 +169,20 @@ export default function Events() {
         </div>
       </section>
 
+      <section id="host-a-workshop" className="py-16 md:py-20 border-t scroll-mt-24">
+        <div className="max-w-3xl mx-auto px-4 md:px-6 lg:px-8">
+          <div className="text-xs font-semibold uppercase tracking-widest text-primary">
+            Workshop hosting request
+          </div>
+          <h2 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight">Request a workshop</h2>
+          <p className="mt-4 text-base text-muted-foreground leading-relaxed">
+            Ask Found For AI to host a practical session for your team, chamber, library, or coworking space.
+            This request is separate from marketing email.
+          </p>
+          <HostingRequestForm sourceBrand="foundforai" />
+        </div>
+      </section>
+
       {/* Closing CTA */}
       <section className="py-16 md:py-24 border-t">
         <div className="max-w-2xl mx-auto px-4 md:px-6 lg:px-8 text-center">
@@ -190,14 +210,17 @@ export default function Events() {
   );
 }
 
-function FeaturedEventCard({ event }: { event: EventCard }) {
+function FeaturedEventCard({ event }: { event: PublicEvent }) {
   return (
     <Card className="overflow-hidden">
       <CardContent className="p-6 md:p-10 grid gap-8 md:grid-cols-[1.4fr_1fr] items-center">
         <div>
           <div className="flex flex-wrap items-center gap-2">
             <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-semibold">
-              {event.cost}
+              Free
+            </span>
+            <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-muted text-foreground text-xs font-semibold">
+              {event.hostLabel}
             </span>
             <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">
               <Calendar className="h-3 w-3" />
@@ -205,53 +228,50 @@ function FeaturedEventCard({ event }: { event: EventCard }) {
             </span>
             <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-muted text-muted-foreground text-xs font-semibold">
               <MapPin className="h-3 w-3" />
-              {event.locationLabel}
+              {event.venue || 'Online'}
             </span>
           </div>
           <h3 className="mt-5 text-2xl md:text-3xl font-bold tracking-tight leading-tight">
             {event.title}
           </h3>
           <p className="mt-4 text-base md:text-lg text-muted-foreground leading-relaxed">
-            {event.blurb}
+            {event.description}
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <a href={event.registerUrl} target="_blank" rel="noopener noreferrer">
+            <a href="#register">
               <Button
                 size="lg"
                 className="font-semibold"
                 style={{ backgroundColor: '#0F5FDB', borderColor: '#0F5FDB' }}
                 data-testid="button-events-register-featured"
               >
-                Register Now
+                Register
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </a>
-            <Link href={`/events/${event.slug}`}>
-              <Button
-                size="lg"
-                variant="outline"
-                className="font-semibold"
-                data-testid="button-events-details-featured"
-              >
-                Event details
-              </Button>
-            </Link>
+            {event.id === 'ai-visibility-workshop-june-2026' ? (
+              <Link href="/events/ai-visibility-workshop-june-2026">
+                <Button size="lg" variant="outline" className="font-semibold">
+                  Event details
+                </Button>
+              </Link>
+            ) : null}
           </div>
         </div>
 
         <div className="rounded-lg bg-primary/5 border p-6 space-y-4">
           <DetailRow label="When" value={`${event.dateLabel} · ${event.timeLabel}`} />
-          <DetailRow label="Where" value={event.locationLabel} />
-          <DetailRow label="Cost" value={event.cost} />
+          <DetailRow label="Where" value={event.venue || event.onlineUrl || 'To be announced'} />
+          <DetailRow label="Host" value={event.hostLabel} />
         </div>
       </CardContent>
     </Card>
   );
 }
 
-function EventCardCompact({ event, muted = false }: { event: EventCard; muted?: boolean }) {
+function EventCardCompact({ event, muted = false }: { event: PublicEvent; muted?: boolean }) {
   return (
-    <Link href={`/events/${event.slug}`}>
+    <CardLink event={event}>
       <Card
         className={`h-full cursor-pointer hover-elevate transition-shadow ${
           muted ? 'opacity-90' : ''
@@ -269,19 +289,26 @@ function EventCardCompact({ event, muted = false }: { event: EventCard; muted?: 
               </span>
             ) : (
               <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-semibold">
-                {event.cost}
+                {event.hostLabel}
               </span>
             )}
           </div>
           <h3 className="mt-3 text-lg font-bold leading-snug">{event.title}</h3>
-          <p className="mt-2 text-sm text-muted-foreground">{event.blurb}</p>
+          <p className="mt-2 text-sm text-muted-foreground">{event.description}</p>
           <div className="mt-4 text-sm text-primary font-semibold">
             {muted ? 'View event details' : 'View details'}
           </div>
         </CardContent>
       </Card>
-    </Link>
+    </CardLink>
   );
+}
+
+function CardLink({ event, children }: { event: PublicEvent; children: ReactNode }) {
+  if (event.id === 'ai-visibility-workshop-june-2026') {
+    return <Link href="/events/ai-visibility-workshop-june-2026">{children}</Link>;
+  }
+  return <div>{children}</div>;
 }
 
 function DetailRow({ label, value }: { label: string; value: string }) {

@@ -1,6 +1,5 @@
 import { breadcrumbList } from '../lib/breadcrumb.ts';
 import { JUNE_2026_WORKSHOP_PHOTOS, type CommunityPhoto } from './community.ts';
-import { EVENTS, buildEventSchema } from './events.ts';
 
 export const COMMUNITY_PAGE_URL = 'https://foundforai.com/community';
 export const COMMUNITY_TITLE = 'Community & Practical AI Workshops | Found For AI';
@@ -49,25 +48,8 @@ function photoObject(photo: CommunityPhoto, index: number) {
   };
 }
 
-export function buildCommunitySchemas(now: Date = new Date()): object[] {
-  const june = EVENTS.find((event) => event.slug === 'ai-visibility-workshop-june-2026');
-  if (!june) {
-    throw new Error('Missing June 2026 workshop event');
-  }
-
+export function buildCommunitySchemas(_now: Date = new Date()): object[] {
   const images = JUNE_2026_WORKSHOP_PHOTOS.map(photoObject);
-  const eventSchema = {
-    ...buildEventSchema(june, now),
-    '@type': 'EducationEvent',
-    organizer: { '@id': ORG_ID },
-    image: images.map((image) => ({ '@id': image['@id'] })),
-    performer: june.performers.map((name) =>
-      name === 'Dustin Crump'
-        ? { '@type': 'Person', '@id': PERSON_ID, name }
-        : { '@type': 'Person', name },
-    ),
-  };
-  delete (eventSchema as { offers?: unknown }).offers;
 
   return [
     breadcrumbList([
@@ -96,7 +78,6 @@ export function buildCommunitySchemas(now: Date = new Date()): object[] {
       worksFor: { '@id': ORG_ID },
       sameAs: DUSTIN_SAME_AS,
     },
-    eventSchema,
     ...images,
     {
       '@type': 'FAQPage',

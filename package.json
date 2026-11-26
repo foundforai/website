@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build && vite build --ssr src/entry-server.tsx --outDir ../dist-ssr && node prerender.mjs",
     "preview": "vite preview",
-    "check": "tsc"
+    "check": "tsc && tsc -p tsconfig.community.json",
+    "test": "node --experimental-strip-types lib/community/community.test.ts && node --experimental-strip-types client/src/data/events.test.ts",
+    "community:impact": "node --experimental-strip-types scripts/community-impact-summary.ts"
   },
   "dependencies": {
     "@calcom/embed-react": "^1.5.3",
@@ -49,6 +51,7 @@
     "input-otp": "^1.4.2",
     "lucide-react": "^0.453.0",
     "next-themes": "^0.4.6",
+    "postgres": "^4.1.1",
     "react": "^18.3.1",
     "react-day-picker": "^8.10.1",
     "react-dom": "^18.3.1",
